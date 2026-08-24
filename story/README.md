@@ -8,8 +8,9 @@ It covers all 17 curriculum topics and all 114 lessons, but it is intentionally 
 
 The proposal keeps three kinds of content separate:
 
-1. **Fictional frame** — Mariam, Zayd, the lantern and Numeria. These characters may speak, make
-   decisions and experience design consequences.
+1. **Fictional frame** — Omar and Zayd are the two boy protagonists; the lantern and Numeria form
+   their story world. They may speak, make decisions and experience design consequences. Both boys
+   reason, build and revise; their instructional lead roles rotate.
 2. **Documented STEM history** — source-checked accounts of people, manuscripts, instruments and
    engineering practices. Claims must distinguish invention, development, description,
    transmission and reconstruction.

@@ -71,11 +71,17 @@ a{color:inherit}.hero{position:relative;overflow:hidden;background:
 
 <section class="section" id="frame">
   <div class="eyebrow">The frame story</div><h2>A city built on amanah, one folio at a time.</h2>
-  <p class="intro">In present-day Jeddah, Mariam and Zayd—explicitly fictional Grade 4 archivists—find a brass lantern containing a water-damaged civic design journal. The class restores 17 linked folios and uses the recovered mathematics to design Numeria, an explicitly fictional exhibition city.</p>
+  <p class="intro">In present-day Jeddah, Omar and Zayd—explicitly fictional Grade 4 boy archivists—find a brass lantern containing a water-damaged civic design journal. The class restores 17 linked folios and uses the recovered mathematics to design Numeria, an explicitly fictional exhibition city.</p>
   <div class="grid">
     <article class="card"><span class="n">1</span><h3>Year-long question</h3><p>${data.drivingQuestion}</p></article>
     <article class="card"><span class="n">2</span><h3>Recurring objects</h3><p>The brass lantern, the damaged journal, a city seal, student method cards and one physical unit artifact. Callbacks create continuity without long exposition.</p></article>
     <article class="card"><span class="n">3</span><h3>The Nights technique</h3><p>End when curiosity is highest: an invoice reveals repeated batches; a verified measurement forms a pattern; a flat plan asks for volume. The next lesson answers the exact need.</p></article>
+  </div>
+  <h3 style="margin-top:24px">The two boy protagonists</h3>
+  <div class="grid">
+    <article class="card"><span class="n">O</span><h3>Omar · evidence keeper</h3><p>Examines records and measurements, asks whether claims are supported, notices missing information and maintains the Evidence Folio.</p></article>
+    <article class="card"><span class="n">Z</span><h3>Zayd · model builder</h3><p>Builds diagrams and prototypes, tests strategies, makes productive mistakes and maintains the Design Folio.</p></article>
+    <article class="card"><span class="n">↔</span><h3>Roles rotate</h3><p>Both boys reason, build, question and revise. Omar is not always correct, and Zayd is never limited to hands-on work.</p></article>
   </div>
 </section>
 
@@ -83,7 +89,7 @@ a{color:inherit}.hero{position:relative;overflow:hidden;background:
   <div class="eyebrow">Narrative architecture</div><h2>Three lanes. Never blur the labels.</h2>
   <p class="intro">Different truth status needs different visual treatment, language and review.</p>
   <div class="lanes">
-    <article class="lane fiction"><span class="tag">Fictional frame</span><h3>Mariam, Zayd and Numeria</h3><ul><li>May speak, choose, fail, revise and face design consequences.</li><li>Uses mystery, cliffhangers, nested tales and callbacks.</li><li>Clearly labelled “Our story” on screen.</li></ul></article>
+    <article class="lane fiction"><span class="tag">Fictional frame</span><h3>Omar, Zayd and Numeria</h3><ul><li>Two fictional Grade 4 boys who may speak, choose, fail, revise and face design consequences.</li><li>Omar begins as evidence keeper; Zayd begins as model builder. Both roles rotate.</li><li>Clearly labelled “Our story” on screen.</li></ul></article>
     <article class="lane history"><span class="tag">Documented STEM</span><h3>History of useful knowledge</h3><ul><li>Source-checked people, manuscripts, tools and reconstructions.</li><li>Uses “documented,” “described,” “developed” and “transmitted” precisely.</li><li>Never reduces cumulative knowledge to “one hero invented everything.”</li></ul></article>
     <article class="lane sacred"><span class="tag">Amanah Window</span><h3>Seerah and companions</h3><ul><li>Short, reverent, chronological and reviewed.</li><li>No depictions, invented dialogue, quantities or role-play.</li><li>Values reflection follows the math; sacred history is never the game mechanic.</li></ul></article>
   </div>

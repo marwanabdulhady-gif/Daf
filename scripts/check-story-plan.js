@@ -16,6 +16,9 @@ const shapes = new Map(story.screenDesign.lessonShapes.map((shape) => [shape.id,
 const errors = [];
 
 if (story.schemaVersion < 2) errors.push("story schema must support flexible screen plans");
+const mainCharacters = (story.characters && story.characters.main) || [];
+if (mainCharacters.length !== 2) errors.push("the frame must have exactly two main characters");
+if (mainCharacters.some((character) => character.gender !== "boy")) errors.push("all main characters must be boys");
 if (expected.length !== actual.length) errors.push(`coverage differs: curriculum ${expected.length}, story ${actual.length}`);
 
 expected.forEach((item, index) => {

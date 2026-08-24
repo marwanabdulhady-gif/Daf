@@ -2,12 +2,42 @@
   "schemaVersion": 2,
   "title": "The Lantern of Numeria — a 17-chapter story spine",
   "status": "flexible-screen planning proposal — not yet embedded in lesson decks",
-  "premise": "In present-day Jeddah, two fictional Grade 4 archivists, Mariam and Zayd, find a brass lantern holding a water-damaged civic design journal. Their class restores seventeen linked folios and uses each recovered idea to design Numeria: an explicitly fictional exhibition city built on amanah, evidence and beneficial knowledge.",
+  "premise": "In present-day Jeddah, two fictional Grade 4 archivists, Omar and Zayd, find a brass lantern holding a water-damaged civic design journal. Their class restores seventeen linked folios and uses each recovered idea to design Numeria: an explicitly fictional exhibition city built on amanah, evidence and beneficial knowledge.",
   "drivingQuestion": "How can mathematics help us design a city that deserves people’s trust?",
   "influences": {
     "oneThousandAndOneNights": "Borrow the craft, not the plots: a frame narrator, nested accounts, recurring objects, delayed answers, callbacks and a clean cliffhanger at the end of each lesson.",
     "oneThousandInventions": "Use source-checked episodes from the history of science and engineering as STEM provocations. Present knowledge as cumulative and cross-cultural; avoid simplistic “X invented Y” claims.",
     "seerah": "Use a separate, source-approved Amanah Window for chronology, character and values. The Prophet Muhammad ﷺ and his companions are never fictional characters, avatars, game pieces or suppliers of invented data."
+  },
+  "characters": {
+    "main": [
+      {
+        "id": "omar",
+        "name": "Omar",
+        "gender": "boy",
+        "role": "Evidence keeper",
+        "functions": [
+          "examines records and measurements",
+          "asks whether claims are supported",
+          "notices missing information",
+          "maintains the Evidence Folio"
+        ]
+      },
+      {
+        "id": "zayd",
+        "name": "Zayd",
+        "gender": "boy",
+        "role": "Model builder",
+        "functions": [
+          "builds diagrams and prototypes",
+          "tests alternative strategies",
+          "makes productive mistakes",
+          "maintains the Design Folio"
+        ]
+      }
+    ],
+    "rolePolicy": "Both boys reason, build, question, revise and sometimes make incomplete claims. Their lead role alternates so Omar is not always correct and Zayd is not only the hands-on character.",
+    "visualPolicy": "Original age-appropriate flat vector boys in modest contemporary clothing. They never resemble or represent the Prophet Muhammad ﷺ, his companions or any historical person."
   },
   "screenDesign": {
     "principle": "The lesson earns its number of screens from the mathematics, student actions and available class time. Keep a stable learning arc, never a fixed slide count. A screen exists only when it introduces one distinct cognitive or collaborative act.",
@@ -119,7 +149,7 @@
   },
   "guardrails": [
     "Narrative overhead is capped at about 90 seconds at the opening and 45 seconds at the close; mathematical work remains the mechanic.",
-    "Numeria, Mariam, Zayd, the lantern and all civic missions are labelled fictional. Historical STEM and Seerah cards use a visibly different “documented account” treatment.",
+    "Numeria, Omar, Zayd, the lantern and all civic missions are labelled fictional. Historical STEM and Seerah cards use a visibly different “documented account” treatment.",
     "No visual depiction of the Prophet Muhammad ﷺ or the named companions; use calligraphy-free object, place, manuscript or material-culture imagery approved by the school.",
     "No invented dialogue, quantities, motives or transactions are attributed to sacred figures. No sacred event becomes a battle, optimization, reward or role-play game.",
     "Every Seerah card carries a source field, reviewer, review date and approval status before it can appear to students.",
