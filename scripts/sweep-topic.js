@@ -12,8 +12,10 @@ const fs = require("fs"), path = require("path");
   const wait = ms => new Promise(r => setTimeout(r, ms));
   for (const f of files) {
     const before = all.length;
+    const src = fs.readFileSync(path.join("html", f), "utf8");
+    const total = (src.match(/^\s*\{?\s*phase: "/gm) || []).length;
     let painted = 0, maths = 0, canv = 0;
-    for (let s = 0; s < 10; s++) {
+    for (let s = 0; s < total; s++) {
       await p.goto("file://" + path.resolve("html", f) + "?slide=" + s, { waitUntil: "networkidle2", timeout: 60000 });
       /* board mode: step through the section gate and the attendance gate */
       await new Promise(r => setTimeout(r, 350));
@@ -38,7 +40,7 @@ const fs = require("fs"), path = require("path");
       await wait(300);
     }
     const errs = all.length - before;
-    console.log(`${errs ? "FAIL" : "PASS"}  ${f.replace(/^lesson-|\.html$/g, "").padEnd(52)} ${painted}/10 screens · ${maths} MathML · ${canv} canvases`);
+    console.log(`${errs ? "FAIL" : "PASS"}  ${f.replace(/^lesson-|\.html$/g, "").padEnd(52)} ${painted}/${total} screens · ${maths} MathML · ${canv} canvases`);
   }
   console.log(all.length ? "\n" + [...new Set(all)].join("\n") : "\nNO CONSOLE ERRORS");
   await b.close();

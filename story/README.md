@@ -20,13 +20,17 @@ The proposal keeps three kinds of content separate:
 ## Schema
 
 Each unit records its chapter title, driving question, unit artifact, STEM history anchor, protected
-Seerah window, PBL product and bridge to the next unit. Each lesson records:
+Seerah window, PBL product and bridge to the next unit. `screenDesign` defines flexible phases,
+authoring rules and six planning shapes. There is no course-wide slide quota.
+
+Each lesson records:
 
 - `storyBeat` — its chapter-level episode title;
 - `technique` — the storytelling move being used;
 - `storyMove` — the problem or reveal that creates the mathematical need;
 - `studentMission` — the observable mathematical action;
-- `handoff` — the object or unanswered need that opens the next lesson.
+- `handoff` — the object or unanswered need that opens the next lesson;
+- `screenPlan` — a lesson-specific shape, recommended count, non-binding planning band and rationale.
 
 ## Generate the readable plan
 
