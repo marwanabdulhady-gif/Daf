@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gamification Audit &amp; Redesign — Dar Al Fikr Grade 4 Mathematics</title>
+<style>
+  :root{
+    --teal:#12857C; --teal2:#1AA79B; --deep:#0A5F58; --gold:#C9A227;
+    --ink:#10242B; --ink2:#5A7076; --mint:#E8F6F4; --line:#CDE7E3;
+    --stop:#C74440; --ok:#388C46; --warn:#FA7E19;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#F4F9F8;color:var(--ink);
+    font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 26px 90px}
+  header{background:linear-gradient(135deg,var(--deep),var(--teal));color:#fff;padding:44px 26px 38px;margin-bottom:34px}
+  header .inner{max-width:960px;margin:0 auto}
+  header .eyebrow{font-size:11px;letter-spacing:.18em;font-weight:800;color:#9FE3DA;margin-bottom:10px}
+  header h1{margin:0 0 8px;font-size:31px;line-height:1.2;letter-spacing:-.01em}
+  header p{margin:0;color:#CFEDE8;font-size:15px;max-width:640px}
+  h2{margin:46px 0 14px;font-size:22px;color:var(--deep);border-bottom:3px solid var(--gold);
+     padding-bottom:8px;letter-spacing:-.01em}
+  h3{margin:26px 0 8px;font-size:16.5px;color:var(--teal)}
+  h4{margin:18px 0 6px;font-size:14.5px;color:var(--ink)}
+  p,li{font-size:15.2px}
+  ul,ol{padding-left:22px}
+  li{margin:5px 0}
+  code{background:var(--mint);padding:1px 6px;border-radius:5px;font-size:13.5px;
+       font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--deep)}
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+  th{background:var(--deep);color:#fff;text-align:left;padding:9px 11px;font-size:12.5px;
+     letter-spacing:.04em;font-weight:700}
+  td{border-bottom:1px solid var(--line);padding:9px 11px;vertical-align:top}
+  tr:nth-child(even) td{background:#fbfefe}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:16px 0;
+        box-shadow:0 2px 10px rgba(10,95,88,.05)}
+  .stop{border-left:6px solid var(--stop);background:#fff6f5}
+  .warnbox{border-left:6px solid var(--warn);background:#fff9f2}
+  .okbox{border-left:6px solid var(--ok);background:#f4fbf5}
+  .goldbox{border-left:6px solid var(--gold);background:#fffdf3}
+  .verdict{background:var(--ink);color:#EAF4F2;border-radius:16px;padding:24px 26px;margin:0 0 8px}
+  .verdict h2{color:#fff;border-bottom-color:var(--gold);margin-top:0}
+  .verdict p,.verdict li{color:#CFE3E0}
+  .verdict strong{color:#fff}
+  .tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;
+       padding:3px 9px;border-radius:999px;vertical-align:middle;margin-right:8px}
+  .t-stop{background:var(--stop);color:#fff}
+  .t-warn{background:var(--warn);color:#3a1f00}
+  .t-ok{background:var(--ok);color:#fff}
+  .t-info{background:var(--teal);color:#fff}
+  .lede{font-size:16.5px;color:var(--ink2);margin:-4px 0 20px}
+  .quote{border-left:4px solid var(--line);padding:2px 0 2px 16px;color:var(--ink2);font-style:italic;margin:12px 0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  .num{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#3a2c00;
+       font-weight:800;font-size:13px;align-items:center;justify-content:center;margin-right:9px;flex:0 0 auto}
+  .mech{display:flex;gap:2px;align-items:flex-start;margin:20px 0 0}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);color:var(--ink2);font-size:13px}
+  .kill{text-decoration:line-through;color:var(--ink2)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="eyebrow">DAR AL FIKR SCHOOLS · JEDDAH · GRADE 4 MATHEMATICS</div>
+    <h1>Gamification Audit &amp; Redesign</h1>
+    <p>A review of the proposed Seerah-themed gamified maths course, and a motivation model
+       designed for the specific students you actually teach.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="verdict">
+  <h2>Verdict in one page</h2>
+  <p>The plan is thoughtful and the arithmetic in it is almost all correct. But there are
+     <strong>three problems, and each one is fatal on its own.</strong></p>
+  <ol>
+    <li><strong>It contains religious content that must not ship.</strong> A visual depiction of the
+        Prophet ﷺ, invented wealth figures attributed to him, spoils-of-war logistics as a points
+        game, "theft of spoils" as a fun event, and a plague in Madinah. Any one of these reaches a
+        parent and the project is over. This is not a style note — fix this first, before anything else.</li>
+    <li><strong>Roughly a third of it is not Grade 4.</strong> Percentages, Zakat at 2.5%, dividing
+        fractions, probability, and decimal multiplication are Grade 5–7 content. Meanwhile four real
+        enVision topics are missing entirely, including all six angle lessons.</li>
+    <li><strong>The gamification is points wearing a costume.</strong> Bingo, relay races, quizzes and
+        badges. For affluent, status-rich, compliance-poor students this is the <em>worst possible</em>
+        design — they cannot be bought with imaginary currency, and they will identify it as a
+        worksheet in fancy dress within one lesson.</li>
+  </ol>
+  <p style="margin-bottom:0"><strong>The recommendation:</strong> do not build this in Articulate
+     Storyline. You already own a working 114-lesson engine. Keep the Seerah as the <em>ethical frame</em>,
+     move the scenarios to present-day Jeddah, and replace points with status, choice and consequence.
+     Details below.</p>
+</div>
+
+<h2>1 · Religious and reputational review — fix before anything is shown to anyone</h2>
+<p class="lede">Take this section to your Islamic Studies head of department before the next design
+   meeting. I am flagging what a qualified reviewer will flag; they should have the final word.</p>
+
+<div class="card stop">
+  <h3 style="color:var(--stop);margin-top:0">Must remove</h3>
+  <table>
+    <tr><th style="width:34%">In the plan</th><th>Why it cannot ship</th></tr>
+    <tr>
+      <td><em>"Visuals: Portrait illustration of Prophet Muhammad"</em> (Slide 1, Scene 1)</td>
+      <td>Visual depiction of the Prophet ﷺ is impermissible. In a Saudi Islamic school this is not a
+          debatable design choice. Delete the instruction entirely so no illustrator ever receives it.</td>
+    </tr>
+    <tr>
+      <td><em>"Prophet Muhammad has 500,000 dirhams and gives 123,456 in charity"</em></td>
+      <td>Invented specifics attributed to the Prophet ﷺ. Fabricating figures about sacred figures to
+          make a subtraction problem work is exactly what scholars object to. Use an unnamed merchant
+          in Makkah instead — the maths is identical.</td>
+    </tr>
+    <tr>
+      <td><em>"Catastrophic Event: Theft of Spoils"</em></td>
+      <td>This implies theft among the Sahaba. <em>Ghulul</em> — stealing from the spoils — is a
+          specifically condemned major sin. Presenting it as a game event is indefensible.</td>
+    </tr>
+    <tr>
+      <td><em>"Catastrophic Event: Plague"</em> in Madinah</td>
+      <td>There is a well-known hadith that Madinah is protected from plague. Your Islamic Studies
+          department will catch this immediately, and so will an informed parent.</td>
+    </tr>
+    <tr>
+      <td>The whole military-logistics chapter as a <em>game</em> — arrows per soldier, "Battle Planner,"
+          earning resources by solving multiplications</td>
+      <td>Turning the Prophet's ﷺ campaigns into a resource-optimisation strategy game is a
+          category error. The campaigns are sacred history, not a scenario to be min-maxed for points
+          by nine-year-olds.</td>
+    </tr>
+  </table>
+</div>
+
+<div class="card warnbox">
+  <h3 style="color:#a35200;margin-top:0">Must correct</h3>
+  <ul>
+    <li><strong>Spoils division ignores the actual rule.</strong> The plan divides 1,000 coins by 5
+        groups. The Qur'anic instruction (al-Anfal 8:41) sets aside <em>one fifth</em> first. The plan
+        managed to miss the one genuinely beautiful fractions lesson sitting inside its own topic — and
+        got the fiqh wrong at the same time.</li>
+    <li><strong>Zakat is not tax.</strong> The plan puts "Taxation and Charity (Zakat)" in one chapter
+        and has students optimise both. Zakat is <em>'ibadah</em> — an act of worship with fixed rules
+        and a <em>nisab</em> threshold. Teaching it beside "tax rate is 5%, calculate the tax" flattens
+        it into accountancy.</li>
+    <li><strong>Honorifics and spelling.</strong> No ﷺ anywhere in the document. "Mecca" throughout;
+        your school will expect <em>Makkah</em> and <em>Madinah</em>.</li>
+  </ul>
+</div>
+
+<h2>2 · "Rich, spoiled, don't want to work"</h2>
+<p>I want to be straight with you, because it affects the design.</p>
+<p>That description is a <strong>staff narrative, and it is self-fulfilling</strong>. A teacher who
+   believes a class will not work lowers what they ask for. The class meets the lower bar. The belief
+   is confirmed. I have to design against that loop, not into it — and so does your team.</p>
+<p>But underneath the label there is a real and specific design problem, and it is solvable. Here is
+   what you are actually describing:</p>
+
+<table>
+  <tr><th style="width:32%">What it looks like</th><th>What it actually is</th><th style="width:30%">Design consequence</th></tr>
+  <tr><td>"They don't care about rewards"</td>
+      <td>Extrinsic rewards have no scarcity value. A child with a driver and a PlayStation is not
+          motivated by 50 imaginary points or a sticker.</td>
+      <td>Remove points as the motivator. Use the one currency they cannot buy: <strong>status among
+          peers</strong>.</td></tr>
+  <tr><td>"They won't try"</td>
+      <td>Effort is socially expensive. In a high-status peer group, visible effort signals low
+          ability. Not trying is the safe play — you can always say you didn't care.</td>
+      <td><strong>Invert the status of effort.</strong> Make choosing the hard question the
+          high-status move, publicly, whether or not it is answered correctly.</td></tr>
+  <tr><td>"They're entitled"</td>
+      <td>They are heavily managed by adults — drivers, helpers, tutors, staff. They have almost no
+          genuine autonomy, so they assert it by refusing.</td>
+      <td><strong>Give real choice.</strong> A menu they select from, not a task they comply with.
+          Refusal stops being the only lever they own.</td></tr>
+  <tr><td>"Homework means nothing"</td>
+      <td>Many have private tutors. Completed homework is evidence about the tutor, not the student.</td>
+      <td><strong>Assess in the room.</strong> Process visible, live, unaided. Homework becomes
+          practice only, never evidence.</td></tr>
+  <tr><td>"They're bored"</td>
+      <td>Their baseline for production value is very high. A worksheet with a border does not
+          register as an experience.</td>
+      <td>Your existing decks already clear this bar. A Storyline quiz will not.</td></tr>
+</table>
+
+<div class="card goldbox">
+  <p style="margin:0"><strong>One more constraint nobody wrote down:</strong> the parents. Affluent
+  fee-paying parents in Jeddah will complain if maths looks like "playing games." Every gamified
+  system for this cohort needs a <strong>parent-facing artefact that looks rigorous</strong> — a
+  standards report, a portfolio, an exhibition. Build it in from day one or the system dies of
+  politics rather than pedagogy.</p>
+</div>
+
+<h2>3 · Why this particular gamification will fail here</h2>
+<p>What the plan calls gamification is <strong>pointsification</strong> — the thinnest layer of game
+   vocabulary over unchanged worksheets. Four specific failures:</p>
+
+<h3>The "catastrophic events" are not events</h3>
+<div class="quote">"A blockade forces Muhammad to re-calculate and re-allocate existing resources."</div>
+<p>Nothing has happened. The student does the same subtraction with different numbers. A real
+   consequence changes <em>what you can do next</em>, not the digits in the question. If the drought
+   does not mean the class actually has less to work with tomorrow, it is decoration.</p>
+
+<h3>There is no decision anywhere in it</h3>
+<p>Every task has one correct answer, supplied in the plan. "Distribute the spoils fairly" is not a
+   decision if fair means 1,000 ÷ 5. Games are made of choices with trade-offs. There is not a single
+   trade-off in fourteen chapters.</p>
+
+<h3>The games are drills</h3>
+<p>Multiplication Bingo. Fraction Subtraction Bingo. Multiplication Relay Race. Division Bingo. These
+   are timed drills. Your students will read them as a demand for compliance dressed up, and they are
+   right.</p>
+
+<h3>Points cannot buy anything</h3>
+<p>"Earn points for correct division." Points that buy nothing, unlock nothing and mean nothing to
+   anyone are worth nothing — most of all to a child for whom real points already buy real things.</p>
+
+<h2>4 · The same disease in the system I already built for you <span class="tag t-warn">SELF-AUDIT</span></h2>
+<p>I should hold my own work to this standard. I checked the 114 decks. The XP layer in them is weak
+   in exactly the way I have just criticised:</p>
+
+<table>
+  <tr><th style="width:44%">What the code actually does</th><th>Why that is a problem</th></tr>
+  <tr><td>234 award calls across 114 lessons. <strong>230 of them are a flat 25 points for
+      clicking a chip.</strong></td>
+      <td>The reward is for touching the screen, not for thinking. Students work this out fast.</td></tr>
+  <tr><td>All four badges unlock on the first click of each type — <strong>every badge is earned
+      inside the first lesson, in about ninety seconds.</strong></td>
+      <td>There is nothing left to pursue for the remaining 113 lessons.</td></tr>
+  <tr><td>Storage key is per-lesson, so <strong>XP resets to zero every lesson.</strong></td>
+      <td>No progression, no history, no reason to care about the number.</td></tr>
+  <tr><td>Exactly one award in the whole course is worth 50, and one is worth 15.</td>
+      <td>Locking a considered estimate and getting a hard question right are worth the same as a
+          click. Nothing signals what is valuable.</td></tr>
+  <tr><td>No class-level state, no teacher dashboard, no export.</td>
+      <td>The teacher gets no information out of it, and there is nothing to show a parent.</td></tr>
+</table>
+<p class="okbox card" style="margin-top:14px"><strong>What <em>is</em> strong in those decks, and worth
+   keeping:</strong> the ten-screen Amplify Desmos arc, the teacher rail with anticipated
+   misconceptions, "no public failure state" (wrong answers say <em>not yet</em> and open a model),
+   the class-commits-before-grading card sort, and the two-named-students Connect screen. Those are
+   real mechanics. The XP number bolted on top is the weak part.</p>
+
+<h2>5 · What to keep from the proposed plan</h2>
+<ul>
+  <li><span class="tag t-ok">KEEP</span> <strong>The narrative spine.</strong> A year-long story beats
+      disconnected topics. This instinct is correct.</li>
+  <li><span class="tag t-ok">KEEP</span> <strong>Weekly missions.</strong> A week-sized unit of work is
+      the right granularity — bigger than a lesson, smaller than a term.</li>
+  <li><span class="tag t-ok">KEEP</span> <strong>Interruption events.</strong> The instinct is right;
+      the implementation is empty. Made real, this is the strongest mechanic available.</li>
+  <li><span class="tag t-ok">KEEP</span> <strong>Cultural rootedness.</strong> Riyals, dates, caravans,
+      Makkah, Madinah. Maths in a context students recognise is worth a great deal.</li>
+  <li><span class="tag t-ok">KEEP</span> <strong>The hands-on activities.</strong> Fraction strips,
+      base-ten blocks, area models — genuinely good, and they belong beside the screens, not inside them.</li>
+</ul>
+
+<h2>6 · The redesign — seven mechanics that trade points for status</h2>
+<p class="lede">Each of these is buildable into the engine you already have. Together they replace the
+   XP number entirely.</p>
+
+<div class="mech"><span class="num">1</span><div>
+  <h4 style="margin-top:2px">The Sijill — a named-methods ledger</h4>
+  <p>When a student produces a method worth reusing, it is <strong>named after them and kept for the
+     rest of the year</strong>. "Use Layla's Method" appears on the board in March because of what she
+     did in October. Your Connect screens already surface two named strategies each lesson — this makes
+     the naming real and permanent. Peer status is the only currency these students cannot buy from
+     home, and it is free to issue.</p>
+</div></div>
+
+<div class="mech"><span class="num">2</span><div>
+  <h4 style="margin-top:2px">The hard lane</h4>
+  <p>Every Show What You Know gets a second, harder version. It is optional, it is visibly harder, and
+     <strong>only the hard lane can earn a naming right.</strong> Attempting it and failing is
+     announced positively; not attempting it earns nothing. This inverts the status of effort, which
+     is the single most important move for this cohort.</p>
+</div></div>
+
+<div class="mech"><span class="num">3</span><div>
+  <h4 style="margin-top:2px">Commit before you see</h4>
+  <p>Already half-built in the card sort — <em>no grading until the class commits</em>. Extend it to
+     every screen: predict, commit publicly, <em>then</em> the model runs. A student who has committed
+     is invested. A student who watched is not.</p>
+</div></div>
+
+<div class="mech"><span class="num">4</span><div>
+  <h4 style="margin-top:2px">Consequence that actually persists</h4>
+  <p>Replace the fake catastrophes. The class holds a <strong>shared budget that carries across
+     weeks</strong>. A wrong decision does not lose points — it loses something the class chose to
+     want, and next week starts poorer. One real consequence teaches more than fifty imaginary ones.</p>
+</div></div>
+
+<div class="mech"><span class="num">5</span><div>
+  <h4 style="margin-top:2px">Table scarcity</h4>
+  <p>Give each table fewer resources than it needs — one protractor, three number cards, a limited
+     number of "asks" of the teacher per lesson. Effort becomes owed to <em>peers</em>, not to the
+     teacher. Social debt is a far stronger lever than adult authority with these students.</p>
+</div></div>
+
+<div class="mech"><span class="num">6</span><div>
+  <h4 style="margin-top:2px">Delete every participation point</h4>
+  <p>All 230 click-rewards go. Nothing is awarded for touching the screen. If a reward survives at
+     all, it is earned by a hard-lane success or by getting a method into the Sijill. Scarcity is
+     the entire point — and these students are experts at spotting a participation trophy.</p>
+</div></div>
+
+<div class="mech"><span class="num">7</span><div>
+  <h4 style="margin-top:2px">A real audience at the end of each topic</h4>
+  <p>One artefact per topic, shown to someone who is not the teacher: parents at a short exhibition,
+     a Grade 3 class they teach, a genuine school problem they solve — how much paint the art room
+     needs, whether the canteen queue is fair. This is also your <strong>parent-facing rigour
+     artefact</strong>. It solves the motivation problem and the politics problem with one object.</p>
+</div></div>
+
+<h2>7 · Curriculum alignment — the chapter list is not Grade 4</h2>
+<p>Measured against enVision Mathematics 2024 Grade 4, which is what you are actually accountable for:</p>
+
+<table>
+  <tr><th style="width:38%">Proposed chapter</th><th style="width:14%">Verdict</th><th>Detail</th></tr>
+  <tr><td>1–7 · Place value → Add/subtract fractions</td><td><span class="tag t-ok">OK</span></td>
+      <td>Maps cleanly onto Topics 1–5, 7, 8, 9.</td></tr>
+  <tr><td>8 · Multiply <em>and divide</em> fractions</td><td><span class="tag t-stop">OFF-GRADE</span></td>
+      <td>Grade 4 does fraction × <em>whole number</em> only (Topic 10). Dividing a fraction by a
+          number is Grade 5–6. The plan's <code>(5/6) ÷ 3</code> is two years early.</td></tr>
+  <tr><td>9 · Understanding decimals</td><td><span class="tag t-warn">PARTLY</span></td>
+      <td>Tenths and hundredths are Grade 4 (Topic 12). But <code>0.75 × 8</code> and
+          <code>4.25 × 3</code> are decimal multiplication — 5.NBT.B.7.</td></tr>
+  <tr><td>10 · Percentages and Zakat</td><td><span class="tag t-stop">OFF-GRADE</span></td>
+      <td>Percentages are Grade 6. There is no percentage anywhere in Grade 4. The Zakat chapter
+          cannot run as written at all.</td></tr>
+  <tr><td>11 · Measurement conversion</td><td><span class="tag t-warn">PARTLY</span></td>
+      <td>Topic 13 is Grade 4 — but only <em>within</em> one system. Converting miles to km with
+          <code>× 1.609</code> is Grade 6.</td></tr>
+  <tr><td>12 · Data interpretation</td><td><span class="tag t-warn">PARTLY</span></td>
+      <td>Grade 4 data is <em>line plots with fractional scales</em> (Topic 11). Growth rates as
+          percentages are Grade 6.</td></tr>
+  <tr><td>13 · Geometry / city planning</td><td><span class="tag t-ok">OK</span></td>
+      <td>Maps onto Topics 15–16. Good fit.</td></tr>
+  <tr><td>14 · Probability and statistics</td><td><span class="tag t-stop">OFF-GRADE</span></td>
+      <td>Probability is Grade 7. Not in Grade 4 in any strand.</td></tr>
+</table>
+
+<p><strong>Missing entirely</strong> from the fourteen chapters: Topic 6 (using operations to solve
+   problems), Topic 11 (line plots), <strong>Topic 15 (angles — six lessons, an entire strand)</strong>,
+   and Topic 17 (step-up to Grade 5). If you teach the proposed course, your students sit their
+   assessments never having measured an angle.</p>
+
+<h2>8 · Where the Seerah actually belongs</h2>
+<p>The plan uses the Seerah as <em>simulation content</em> — students role-play managing the Prophet's ﷺ
+   caravans and campaigns. That is where all the religious risk comes from, and it is not even the
+   strongest use.</p>
+
+<div class="card okbox">
+  <p style="margin-top:0"><strong>Use the Seerah as the ethical frame. Use present-day Jeddah for the
+     scenarios.</strong></p>
+  <p>The Qur'an is direct about measurement and fair dealing — <em>"and establish the weighing with
+     justice, and do not fall short in the balance"</em> (al-Rahman 55:9), and the warning to those who
+     give short measure in Surah al-Mutaffifin. That is not decoration bolted onto a maths lesson.
+     <strong>It is a measurement standard.</strong> It tells a child exactly why precision is a moral
+     act and not a teacher's fussiness.</p>
+  <p style="margin-bottom:0">So: the value comes from the Seerah — <em>amanah</em>, <em>'adl</em>,
+     <em>mizan</em>, honest measure, fair share. The numbers come from the Corniche, the canteen, the
+     school build, riyals and halalas, Red Sea distances — which is already the local context in your
+     114 decks. Nothing sacred gets turned into a scoreboard, and nothing is lost.</p>
+</div>
+
+<h2>9 · Do not rebuild this in Articulate Storyline</h2>
+<table>
+  <tr><th style="width:30%"></th><th>Storyline</th><th>What you already own</th></tr>
+  <tr><td>Status</td><td>Not started. Sixteen slides of storyboard.</td>
+      <td>114 lessons, 1,140 screens, built and verified.</td></tr>
+  <tr><td>Cost of one change</td><td>Reopen the project, re-publish, re-upload SCORM.</td>
+      <td>Edit one file, run <code>./build.sh</code>, done in seconds.</td></tr>
+  <tr><td>Maths rendering</td><td>Images or typed text. Not editable, not accessible.</td>
+      <td>Live MathML from OMML, copy-pasteable into Word as real equations.</td></tr>
+  <tr><td>Visuals</td><td>Stock images from Freepik.</td>
+      <td>44 canvas tools drawing every model live — protractors, fraction bars, unit cubes.</td></tr>
+  <tr><td>Delivery</td><td>SCORM package, needs an LMS.</td>
+      <td>One HTML file. Works offline, on any device, no install.</td></tr>
+</table>
+<p>The honest comparison is not close. Storyline would be twelve months of work to arrive somewhere
+   behind where you already are.</p>
+
+<h2>10 · A six-week pilot you can defend</h2>
+<p>Do not roll this out to the whole grade. Run it on <strong>one class, one topic</strong>, and measure it.</p>
+<ol>
+  <li><strong>Week 0.</strong> Religious review with the Islamic Studies HoD. Fix section 1. Pick one
+      Grade 4 class and one topic already built — Topic 13 (measurement) is ideal because the
+      honest-measure frame is strongest there.</li>
+  <li><strong>Week 1.</strong> Strip participation points from the engine. Add the hard lane and the
+      Sijill. Baseline measure: in a normal lesson, count how many students volunteer an idea unprompted.</li>
+  <li><strong>Weeks 2–5.</strong> Run the topic. Table scarcity from week 2. Shared budget from week 3.</li>
+  <li><strong>Week 6.</strong> Exhibition to parents — the artefact is the politics solution.</li>
+</ol>
+
+<h3>Measure four things, not "engagement"</h3>
+<table>
+  <tr><th style="width:36%">Metric</th><th>How</th><th style="width:24%">Target</th></tr>
+  <tr><td><strong>Hard-lane take-up</strong></td><td>% of students choosing the harder question when the easy one is available</td><td>Above 40% by week 4</td></tr>
+  <tr><td><strong>Unprompted contributions</strong></td><td>Tally per lesson, same observer</td><td>Double the week-1 baseline</td></tr>
+  <tr><td><strong>Sijill entries per student</strong></td><td>Count of named methods; watch the spread, not the total</td><td>Every student named at least once by week 6</td></tr>
+  <tr><td><strong>Unaided in-class accuracy</strong></td><td>The Show What You Know screen only — never homework</td><td>The number you report to parents</td></tr>
+</table>
+
+<div class="card goldbox">
+  <p style="margin:0"><strong>If hard-lane take-up does not move, nothing else matters.</strong> That
+  single number tells you whether you have changed what effort <em>signals</em> in that room. Every
+  other metric follows from it.</p>
+</div>
+
+<footer>
+  Prepared for Dar Al Fikr Schools · Grade 4 Mathematics · reviewed against enVision Mathematics
+  (2024) Grade 4 and the 114 lessons currently built in <code>grade4-envision-lessons/</code>.
+  Section 1 should be confirmed by a qualified scholar or the Islamic Studies department before any
+  design work proceeds.
+</footer>
+
+</div>
+</body>
+</html>

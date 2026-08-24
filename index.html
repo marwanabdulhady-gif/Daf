@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NUMERIA — Dar Al Fikr · Grade 4 Mathematics</title>
+<style>
+  :root{
+    --teal:#12857C; --teal2:#1AA79B; --deep:#0A5F58; --gold:#C9A227; --ink:#10242B;
+    --mint:#E8F6F4; --line:#CDE7E3; --board:#0B1F24; --sand:#123239; --ruin:#31424A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:
+    radial-gradient(1200px 700px at 75% -10%, #14343C 0%, var(--board) 62%);
+    color:#EAF4F2;min-height:100vh}
+  header{display:flex;align-items:center;gap:18px;padding:20px 30px 12px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{width:40px;height:40px;color:var(--gold)}
+  .brand b{display:block;font-size:15px;letter-spacing:.02em}
+  .brand span{display:block;font-size:9.5px;letter-spacing:.22em;color:#9fc4bd}
+  .world{flex:1;min-width:260px;text-align:center}
+  .world h1{font-size:30px;letter-spacing:.14em;color:var(--gold);font-weight:900}
+  .world p{font-size:11.5px;color:#9fc4bd;letter-spacing:.06em}
+  .prog{min-width:220px;text-align:end}
+  .prog b{font-size:13px}
+  .prog-bar{height:9px;border-radius:6px;background:rgba(255,255,255,.1);margin-top:6px;overflow:hidden}
+  .prog-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal2),var(--gold));border-radius:6px;transition:width .6s}
+  .note{margin:0 30px 10px;padding:9px 14px;border:1px dashed rgba(201,162,39,.5);border-radius:10px;
+    font-size:11.5px;color:#cfb659;background:rgba(201,162,39,.07)}
+  .stage{position:relative;margin:4px 22px 26px}
+  svg.map{width:100%;height:auto;display:block}
+  .node{cursor:pointer}
+  .node circle.face{transition:all .25s}
+  .node:hover circle.face{filter:brightness(1.25)}
+  .node text{pointer-events:none;user-select:none}
+  .panel{position:fixed;top:0;inset-inline-end:0;height:100vh;width:min(430px,94vw);z-index:50;
+    background:#0E272E;border-inline-start:1.5px solid rgba(201,162,39,.35);
+    box-shadow:-18px 0 50px rgba(0,0,0,.5);transform:translateX(110%);transition:transform .28s ease;
+    display:flex;flex-direction:column}
+  .panel.open{transform:none}
+  .p-head{padding:20px 22px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .p-region{font-size:21px;font-weight:900}
+  .p-topic{font-size:11.5px;color:#9fc4bd;margin-top:3px}
+  .p-blurb{font-size:12.5px;color:#cfe8e3;margin-top:8px;font-style:italic}
+  .p-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .btn{border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#EAF4F2;
+    border-radius:10px;padding:8px 14px;font:700 12px inherit;cursor:pointer;transition:all .15s}
+  .btn:hover{border-color:var(--gold);color:#fff}
+  .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  .btn.gold:hover{filter:brightness(1.1)}
+  .p-list{flex:1;overflow:auto;padding:12px 16px 24px}
+  .p-lesson{display:block;text-decoration:none;color:#EAF4F2;border:1px solid rgba(255,255,255,.1);
+    border-radius:10px;padding:9px 12px;margin-bottom:7px;transition:all .15s;background:rgba(255,255,255,.03)}
+  .p-lesson:hover{border-color:var(--teal2);background:rgba(26,167,155,.1)}
+  .p-lesson.dead{opacity:.4;cursor:default}
+  .p-lesson .c{font:800 10.5px "Courier New",monospace;color:var(--teal2)}
+  .p-lesson .t{font-size:12.5px;font-weight:700;margin-top:1px}
+  .p-lesson .s{font-size:10px;color:#9fc4bd;margin-top:2px}
+  .p-boss{border-color:rgba(201,162,39,.55);background:rgba(201,162,39,.08)}
+  .p-boss .c{color:var(--gold)}
+  .p-boss:hover{border-color:var(--gold);background:rgba(201,162,39,.16)}
+  .p-close{position:absolute;top:14px;inset-inline-end:14px;background:none;border:none;color:#9fc4bd;
+    font-size:20px;cursor:pointer}
+  .p-close:hover{color:#fff}
+  footer{padding:0 30px 26px;font-size:10.5px;color:#5f7d78;text-align:center;letter-spacing:.05em}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <svg viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
+      <path d="M20 0l4.2 10.1L34.1 5.9 29.9 16 40 20l-10.1 4.2 4.2 9.9L24 29.9 20 40l-4.2-10.1L5.9 34.1 10.1 24 0 20l10.1-4.2L5.9 5.9 16 10.1z"/>
+    </svg>
+    <div><b>Dar Al Fikr Schools</b><span>FAITH · RIGHTEOUSNESS · WISDOM</span></div>
+  </div>
+  <div class="world">
+    <h1>NUMERIA</h1>
+    <p>THE LOST CITY OFF THE JEDDAH COAST · REBUILT ONE TOPIC AT A TIME · GRADE 4 MATHEMATICS</p>
+  </div>
+  <div class="prog">
+    <b><span id="doneCount">0</span> / 17 regions rebuilt</b>
+    <div class="prog-bar"><i id="progFill" style="width:0%"></i></div>
+  </div>
+</header>
+<div class="note"><b>Projector note:</b> in an app preview this map cannot open lesson files — download the
+folder and open index.html in a real browser. Region stamps save in this browser only.</div>
+<div class="stage">
+  <svg class="map" id="map" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+<aside class="panel" id="panel">
+  <button class="p-close" id="pClose" title="Close">&#10005;</button>
+  <div class="p-head">
+    <div class="p-region" id="pRegion"></div>
+    <div class="p-topic" id="pTopic"></div>
+    <div class="p-blurb" id="pBlurb"></div>
+    <div class="p-actions">
+      <button class="btn gold" id="pStamp"></button>
+    </div>
+  </div>
+  <div class="p-list" id="pList"></div>
+</aside>
+<footer>Savvas enVision Mathematics (2024) · Grade 4 · 17 topics · 114 lessons · region stamps: localStorage daf.map.v1</footer>
+<script>
+const DATA = [{"n":1,"topic":"Generalize Place Value Understanding","name":"Place-Value Harbor","col":"#6042A6","blurb":"Where every ship is worth ten of the one before.","x":150,"y":175,"lessons":[{"code":"1-1","title":"Numbers Through One Million","std":"4.NBT.A.2","file":"lesson-1-1-numbers-through-one-million.html"},{"code":"1-2","title":"Place Value Relationships","std":"4.NBT.A.1","file":"lesson-1-2-place-value-relationships.html"},{"code":"1-3","title":"Compare Whole Numbers","std":"4.NBT.A.2","file":"lesson-1-3-compare-whole-numbers.html"},{"code":"1-4","title":"Round Whole Numbers","std":"4.NBT.A.3","file":"lesson-1-4-round-whole-numbers.html"},{"code":"1-5","title":"Problem Solving: Construct Arguments","std":"MP.3","file":"lesson-1-5-problem-solving-construct-arguments.html"}],"boss":null},{"n":2,"topic":"Fluently Add and Subtract Multi-Digit Whole Numbers","name":"The Souq of Sums","col":"#6042A6","blurb":"Nothing leaves this market without a regrouped total.","x":430,"y":130,"lessons":[{"code":"2-1","title":"Finding Sums and Differences with Mental Math","std":"4.NBT.B.4","file":"lesson-2-1-finding-sums-and-differences-with-mental-math.html"},{"code":"2-2","title":"Estimate Sums and Differences","std":"4.NBT.B.4","file":"lesson-2-2-estimate-sums-and-differences.html"},{"code":"2-3","title":"Add Whole Numbers","std":"4.NBT.B.4","file":"lesson-2-3-add-whole-numbers.html"},{"code":"2-4","title":"Add Greater Numbers","std":"4.NBT.B.4","file":"lesson-2-4-add-greater-numbers.html"},{"code":"2-5","title":"Subtract Whole Numbers","std":"4.NBT.B.4","file":"lesson-2-5-subtract-whole-numbers.html"},{"code":"2-6","title":"Subtract Greater Numbers","std":"4.NBT.B.4","file":"lesson-2-6-subtract-greater-numbers.html"},{"code":"2-7","title":"Subtract Across Zeros","std":"4.NBT.B.4","file":"lesson-2-7-subtract-across-zeros.html"},{"code":"2-8","title":"Problem Solving: Reasoning","std":"MP.2","file":"lesson-2-8-problem-solving-reasoning.html"}],"boss":null},{"n":3,"topic":"Use Strategies and Properties to Multiply by 1-Digit Numbers","name":"Product Palm Grove","col":"#FA7E19","blurb":"One-digit multipliers grow in orderly rows.","x":710,"y":170,"lessons":[{"code":"3-1","title":"Multiply by Multiples of 10, 100, and 1,000","std":"4.NBT.B.5","file":"lesson-3-1-multiply-by-multiples-of-10-100-and-1000.html"},{"code":"3-2","title":"Estimate Products","std":"4.NBT.B.5","file":"lesson-3-2-estimate-products.html"},{"code":"3-3","title":"Use Arrays and Partial Products to Multiply","std":"4.NBT.B.5","file":"lesson-3-3-use-arrays-and-partial-products-to-multiply.html"},{"code":"3-4","title":"Use Area Models and Partial Products to Multiply","std":"4.NBT.B.5","file":"lesson-3-4-use-area-models-and-partial-products-to-multiply.html"},{"code":"3-5","title":"More Use Area Models and Partial Products to Multiply","std":"4.NBT.B.5","file":"lesson-3-5-more-use-area-models-and-partial-products-to-multiply.html"},{"code":"3-6","title":"Mental Math Strategies for Multiplication","std":"4.NBT.B.5","file":"lesson-3-6-mental-math-strategies-for-multiplication.html"},{"code":"3-7","title":"Choose a Strategy to Multiply","std":"4.NBT.B.5","file":"lesson-3-7-choose-a-strategy-to-multiply.html"},{"code":"3-8","title":"Problem Solving: Model with Math","std":"MP.4","file":"lesson-3-8-problem-solving-model-with-math.html"}],"boss":null},{"n":4,"topic":"Use Strategies and Properties to Multiply by 2-Digit Numbers","name":"The Tower of Times","col":"#FA7E19","blurb":"Two-digit by two-digit, floor by partial floor.","x":990,"y":125,"lessons":[{"code":"4-1","title":"Multiply Multiples of 10","std":"4.NBT.B.5","file":"lesson-4-1-multiply-multiples-of-10.html"},{"code":"4-2","title":"Use Models to Multiply 2-Digit Numbers by Multiples of 10","std":"4.NBT.B.5","file":"lesson-4-2-use-models-to-multiply-2-digit-numbers-by-multiples-of-10.html"},{"code":"4-3","title":"Estimate: Use Rounding or Compatible Numbers","std":"4.NBT.B.5","file":"lesson-4-3-estimate-use-rounding-or-compatible-numbers.html"},{"code":"4-4","title":"Arrays and Partial Products","std":"4.NBT.B.5","file":"lesson-4-4-arrays-and-partial-products.html"},{"code":"4-5","title":"Area Models and Partial Products","std":"4.NBT.B.5","file":"lesson-4-5-area-models-and-partial-products.html"},{"code":"4-6","title":"Use Partial Products to Multiply by 2-Digit Numbers","std":"4.NBT.B.5","file":"lesson-4-6-use-partial-products-to-multiply-by-2-digit-numbers.html"},{"code":"4-7","title":"Problem Solving: Make Sense and Persevere","std":"MP.1","file":"lesson-4-7-problem-solving-make-sense-and-persevere.html"}],"boss":null},{"n":5,"topic":"Use Strategies and Properties to Divide by 1-Digit Numbers","name":"Division Dunes","col":"#FA7E19","blurb":"Share the caravan loads; watch for remainders in the sand.","x":1270,"y":170,"lessons":[{"code":"5-1","title":"Mental Math: Find Quotients","std":"4.NBT.B.6","file":"lesson-5-1-mental-math-find-quotients.html"},{"code":"5-2","title":"Mental Math: Estimate Quotients","std":"4.NBT.B.6","file":"lesson-5-2-mental-math-estimate-quotients.html"},{"code":"5-3","title":"Mental Math: Estimate Quotients for Greater Dividends","std":"4.NBT.B.6","file":"lesson-5-3-mental-math-estimate-quotients-for-greater-dividends.html"},{"code":"5-4","title":"Interpret Remainders","std":"4.OA.A.3","file":"lesson-5-4-interpret-remainders.html"},{"code":"5-5","title":"Use Partial Quotients to Divide","std":"4.NBT.B.6","file":"lesson-5-5-use-partial-quotients-to-divide.html"},{"code":"5-6","title":"Use Partial Quotients to Divide: Greater Dividends","std":"4.NBT.B.6","file":"lesson-5-6-use-partial-quotients-to-divide-greater-dividends.html"},{"code":"5-7","title":"Use Sharing to Divide","std":"4.NBT.B.6","file":"lesson-5-7-use-sharing-to-divide.html"},{"code":"5-8","title":"Continue Sharing to Divide","std":"4.NBT.B.6","file":"lesson-5-8-continue-sharing-to-divide.html"},{"code":"5-9","title":"Choose a Strategy to Divide","std":"4.NBT.B.6","file":"lesson-5-9-choose-a-strategy-to-divide.html"},{"code":"5-10","title":"Problem Solving: Model with Math","std":"MP.4","file":"lesson-5-10-problem-solving-model-with-math.html"}],"boss":null},{"n":6,"topic":"Use Operations with Whole Numbers to Solve Problems","name":"Caravan Crossroads","col":"#FA7E19","blurb":"Multi-step problems meet here from every direction.","x":1290,"y":355,"lessons":[{"code":"6-1","title":"Solve Comparison Problems","std":"4.OA.A.2","file":"lesson-6-1-solve-comparison-problems.html"},{"code":"6-2","title":"Continue to Solve Comparison Problems","std":"4.OA.A.2","file":"lesson-6-2-continue-to-solve-comparison-problems.html"},{"code":"6-3","title":"Model Multi-Step Problems","std":"MP.4","file":"lesson-6-3-model-multi-step-problems.html"},{"code":"6-4","title":"More Model Multi-Step Problems","std":"MP.4","file":"lesson-6-4-more-model-multi-step-problems.html"},{"code":"6-5","title":"Solve Multi-Step Problems","std":"4.OA.A.3","file":"lesson-6-5-solve-multi-step-problems.html"},{"code":"6-6","title":"Problem Solving: Make Sense and Persevere","std":"MP.1","file":"lesson-6-6-problem-solving-make-sense-and-persevere.html"}],"boss":null},{"n":7,"topic":"Factors and Multiples","name":"Factor Reef","col":"#FA7E19","blurb":"Every number breaks into the pairs that built it.","x":1010,"y":395,"lessons":[{"code":"7-1","title":"Understand Factors","std":"4.OA.B.4","file":"lesson-7-1-understand-factors.html"},{"code":"7-2","title":"Factors","std":"4.OA.B.4","file":"lesson-7-2-factors.html"},{"code":"7-3","title":"Repeated Reasoning","std":"MP.8","file":"lesson-7-3-repeated-reasoning.html"},{"code":"7-4","title":"Prime and Composite Numbers","std":"4.OA.B.4","file":"lesson-7-4-prime-and-composite-numbers.html"},{"code":"7-5","title":"Multiples","std":"4.OA.B.4","file":"lesson-7-5-multiples.html"}],"boss":null},{"n":8,"topic":"Extend Understanding of Fraction Equivalence and Ordering","name":"The Fraction Isles","col":"#2D70B3","blurb":"Different names, same island — equivalence rules the water.","x":730,"y":350,"lessons":[{"code":"8-1","title":"Equivalent Fractions: Area Models","std":"4.NF.A.1","file":"lesson-8-1-equivalent-fractions-area-models.html"},{"code":"8-2","title":"Equivalent Fractions: Number Lines","std":"4.NF.A.1","file":"lesson-8-2-equivalent-fractions-number-lines.html"},{"code":"8-3","title":"Generate Equivalent Fractions: Multiplication","std":"4.NF.A.1","file":"lesson-8-3-generate-equivalent-fractions-multiplication.html"},{"code":"8-4","title":"Generate Equivalent Fractions: Division","std":"4.NF.A.1","file":"lesson-8-4-generate-equivalent-fractions-division.html"},{"code":"8-5","title":"Use Benchmarks to Compare Fractions","std":"4.NF.A.2","file":"lesson-8-5-use-benchmarks-to-compare-fractions.html"},{"code":"8-6","title":"Compare Fractions","std":"4.NF.A.2","file":"lesson-8-6-compare-fractions.html"},{"code":"8-7","title":"Problem Solving: Construct Arguments","std":"MP.3","file":"lesson-8-7-problem-solving-construct-arguments.html"}],"boss":null},{"n":9,"topic":"Understand Addition and Subtraction of Fractions","name":"Kunafa Kitchens","col":"#2D70B3","blurb":"Add and subtract the slices; the tray never lies.","x":450,"y":395,"lessons":[{"code":"9-1","title":"Model Addition of Fractions","std":"4.NF.B.3","file":"lesson-9-1-model-addition-of-fractions.html"},{"code":"9-2","title":"Decompose Fractions","std":"4.NF.B.3b","file":"lesson-9-2-decompose-fractions.html"},{"code":"9-3","title":"Add Fractions with Like Denominators","std":"4.NF.B.3a","file":"lesson-9-3-add-fractions-with-like-denominators.html"},{"code":"9-4","title":"Model Subtraction of Fractions","std":"4.NF.B.3","file":"lesson-9-4-model-subtraction-of-fractions.html"},{"code":"9-5","title":"Subtract Fractions with Like Denominators","std":"4.NF.B.3a","file":"lesson-9-5-subtract-fractions-with-like-denominators.html"},{"code":"9-6","title":"Add and Subtract Fractions with Like Denominators","std":"4.NF.B.3a","file":"lesson-9-6-add-and-subtract-fractions-with-like-denominators.html"},{"code":"9-7","title":"Model Addition and Subtraction of Mixed Numbers","std":"4.NF.B.3c","file":"lesson-9-7-model-addition-and-subtraction-of-mixed-numbers.html"},{"code":"9-8","title":"Add Mixed Numbers","std":"4.NF.B.3c","file":"lesson-9-8-add-mixed-numbers.html"},{"code":"9-9","title":"Subtract Mixed Numbers","std":"4.NF.B.3c","file":"lesson-9-9-subtract-mixed-numbers.html"},{"code":"9-10","title":"Problem Solving: Model with Math","std":"MP.4","file":"lesson-9-10-problem-solving-model-with-math.html"}],"boss":null},{"n":10,"topic":"Extend Multiplication Concepts to Fractions","name":"The Scaling Strait","col":"#2D70B3","blurb":"Whole numbers times fractions, current times distance.","x":170,"y":350,"lessons":[{"code":"10-1","title":"Fractions as Multiples of Unit Fractions","std":"4.NF.B.4a","file":"lesson-10-1-fractions-as-multiples-of-unit-fractions.html"},{"code":"10-2","title":"Multiply a Fraction by a Whole Number: Use Models","std":"4.NF.B.4b","file":"lesson-10-2-multiply-a-fraction-by-a-whole-number-use-models.html"},{"code":"10-3","title":"Multiply a Fraction by a Whole Number: Use Symbols","std":"4.NF.B.4b","file":"lesson-10-3-multiply-a-fraction-by-a-whole-number-use-symbols.html"},{"code":"10-4","title":"Solve Time Problems","std":"4.MD.A.2","file":"lesson-10-4-solve-time-problems.html"},{"code":"10-5","title":"Problem Solving: Model with Math","std":"4.NF.B.4c","file":"lesson-10-5-problem-solving-model-with-math.html"}],"boss":null},{"n":11,"topic":"Represent and Interpret Data on Line Plots","name":"The Pearl Ledger","col":"#C74440","blurb":"Line plots of every diver's haul, to the eighth of an inch.","x":150,"y":570,"lessons":[{"code":"11-1","title":"Read Line Plots","std":"4.MD.B.4","file":"lesson-11-1-read-line-plots.html"},{"code":"11-2","title":"Make Line Plots","std":"4.MD.B.4","file":"lesson-11-2-make-line-plots.html"},{"code":"11-3","title":"Use Line Plots to Solve Problems","std":"4.MD.B.4","file":"lesson-11-3-use-line-plots-to-solve-problems.html"},{"code":"11-4","title":"Problem Solving: Critique Reasoning","std":"MP.3","file":"lesson-11-4-problem-solving-critique-reasoning.html"}],"boss":null},{"n":12,"topic":"Understand and Compare Decimals","name":"Decimal Docks","col":"#C74440","blurb":"Tenths and hundredths tie up side by side.","x":430,"y":615,"lessons":[{"code":"12-1","title":"Fractions and Decimals","std":"4.NF.C.6","file":"lesson-12-1-fractions-and-decimals.html"},{"code":"12-2","title":"Fractions and Decimals on the Number Line","std":"4.NF.C.6","file":"lesson-12-2-fractions-and-decimals-on-the-number-line.html"},{"code":"12-3","title":"Compare Decimals","std":"4.NF.C.7","file":"lesson-12-3-compare-decimals.html"},{"code":"12-4","title":"Add Fractions with Denominators of 10 or 100","std":"4.NF.C.5","file":"lesson-12-4-add-fractions-with-denominators-of-10-or-100.html"},{"code":"12-5","title":"Solve Word Problems Involving Money","std":"4.MD.A.2","file":"lesson-12-5-solve-word-problems-involving-money.html"},{"code":"12-6","title":"Problem Solving: Look For and Use Structure","std":"MP.7","file":"lesson-12-6-problem-solving-look-for-and-use-structure.html"}],"boss":null},{"n":13,"topic":"Measurement: Find Equivalence in Units of Measure","name":"The Measure Market","col":"#12857C","blurb":"Cubits to metres, jugs to cups — units trade honestly here.","x":710,"y":565,"lessons":[{"code":"13-1","title":"Equivalence with Customary Units of Length","std":"4.MD.A.1","file":"lesson-13-1-equivalence-with-customary-units-of-length.html"},{"code":"13-2","title":"Equivalence with Customary Units of Capacity","std":"4.MD.A.1","file":"lesson-13-2-equivalence-with-customary-units-of-capacity.html"},{"code":"13-3","title":"Equivalence with Customary Units of Weight","std":"4.MD.A.1","file":"lesson-13-3-equivalence-with-customary-units-of-weight.html"},{"code":"13-4","title":"Equivalence with Metric Units of Length","std":"4.MD.A.1","file":"lesson-13-4-equivalence-with-metric-units-of-length.html"},{"code":"13-5","title":"Equivalence with Metric Units of Capacity and Mass","std":"4.MD.A.1","file":"lesson-13-5-equivalence-with-metric-units-of-capacity-and-mass.html"},{"code":"13-6","title":"Solve Perimeter and Area Problems","std":"4.MD.A.3","file":"lesson-13-6-solve-perimeter-and-area-problems.html"},{"code":"13-7","title":"Problem Solving: Precision","std":"MP.6","file":"lesson-13-7-problem-solving-precision.html"}],"boss":{"name":"The Muddler","file":"lesson-boss-13-boss-the-muddler-of-the-measure-market.html"}},{"n":14,"topic":"Algebra: Generate and Analyze Patterns","name":"Pattern Oasis","col":"#388C46","blurb":"Rules repeat like palm rows; say the next before it grows.","x":990,"y":615,"lessons":[{"code":"14-1","title":"Number Sequences","std":"4.OA.C.5","file":"lesson-14-1-number-sequences.html"},{"code":"14-2","title":"Patterns: Number Rules","std":"4.OA.C.5","file":"lesson-14-2-patterns-number-rules.html"},{"code":"14-3","title":"Patterns: Repeating Shapes","std":"4.OA.C.5","file":"lesson-14-3-patterns-repeating-shapes.html"},{"code":"14-4","title":"Problem Solving: Look For and Use Structure","std":"MP.7","file":"lesson-14-4-problem-solving-look-for-and-use-structure.html"}],"boss":null},{"n":15,"topic":"Geometric Measurement: Understand Concepts of Angles and Angle Measurement","name":"Angle Heights","col":"#B3488F","blurb":"Degrees are counted one turn at a time up these cliffs.","x":1270,"y":570,"lessons":[{"code":"15-1","title":"Lines, Rays, and Angles","std":"4.G.A.1","file":"lesson-15-1-lines-rays-and-angles.html"},{"code":"15-2","title":"Understand Angles and Unit Angles","std":"4.MD.C.5","file":"lesson-15-2-understand-angles-and-unit-angles.html"},{"code":"15-3","title":"Measure with Unit Angles","std":"4.MD.C.5b","file":"lesson-15-3-measure-with-unit-angles.html"},{"code":"15-4","title":"Measure and Draw Angles","std":"4.MD.C.6","file":"lesson-15-4-measure-and-draw-angles.html"},{"code":"15-5","title":"Add and Subtract Angle Measures","std":"4.MD.C.7","file":"lesson-15-5-add-and-subtract-angle-measures.html"},{"code":"15-6","title":"Problem Solving: Use Appropriate Tools","std":"MP.5","file":"lesson-15-6-problem-solving-use-appropriate-tools.html"}],"boss":null},{"n":16,"topic":"Lines, Angles, and Shapes","name":"Geometry Gardens","col":"#B3488F","blurb":"Lines, angles and symmetry, planted in beds.","x":1000,"y":790,"lessons":[{"code":"16-1","title":"Lines","std":"4.G.A.1","file":"lesson-16-1-lines.html"},{"code":"16-2","title":"Classify Triangles","std":"4.G.A.2","file":"lesson-16-2-classify-triangles.html"},{"code":"16-3","title":"Classify Quadrilaterals","std":"4.G.A.2","file":"lesson-16-3-classify-quadrilaterals.html"},{"code":"16-4","title":"Line Symmetry","std":"4.G.A.3","file":"lesson-16-4-line-symmetry.html"},{"code":"16-5","title":"Draw Shapes with Line Symmetry","std":"4.G.A.3","file":"lesson-16-5-draw-shapes-with-line-symmetry.html"},{"code":"16-6","title":"Problem Solving: Critique Reasoning","std":"MP.3","file":"lesson-16-6-problem-solving-critique-reasoning.html"}],"boss":null},{"n":17,"topic":"Step-Up to Grade 5","name":"The Grand Gate","col":"#0A5F58","blurb":"The road out of Numeria — first steps into Grade 5.","x":640,"y":800,"lessons":[{"code":"17-1","title":"Understand Decimal Place Value","std":"5.NBT.A.3a","file":"lesson-17-1-understand-decimal-place-value.html"},{"code":"17-2","title":"Compare Decimals","std":"5.NBT.A.3b","file":"lesson-17-2-compare-decimals.html"},{"code":"17-3","title":"Use Models to Add and Subtract Decimals","std":"5.NBT.B.7","file":"lesson-17-3-use-models-to-add-and-subtract-decimals.html"},{"code":"17-4","title":"Estimate the Product of a Decimal and a Whole Number","std":"5.NBT.B.7","file":"lesson-17-4-estimate-the-product-of-a-decimal-and-a-whole-number.html"},{"code":"17-5","title":"Find Common Denominators","std":"5.NF.A.1","file":"lesson-17-5-find-common-denominators.html"},{"code":"17-6","title":"Add Fractions with Unlike Denominators","std":"5.NF.A.1","file":"lesson-17-6-add-fractions-with-unlike-denominators.html"},{"code":"17-7","title":"Subtract Fractions with Unlike Denominators","std":"5.NF.A.1","file":"lesson-17-7-subtract-fractions-with-unlike-denominators.html"},{"code":"17-8","title":"Multiply a Whole Number by a Fraction","std":"5.NF.B.4a","file":"lesson-17-8-multiply-a-whole-number-by-a-fraction.html"},{"code":"17-9","title":"Divide Whole Numbers by Unit Fractions","std":"5.NF.B.7b","file":"lesson-17-9-divide-whole-numbers-by-unit-fractions.html"},{"code":"17-10","title":"Model Volume","std":"5.MD.C.3","file":"lesson-17-10-model-volume.html"}],"boss":null}];
+const KEY = "daf.map.v1";
+const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } };
+const save = (st) => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} };
+let state = load();
+
+const svg = document.getElementById("map");
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs, parent) => {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(e); return e;
+};
+
+function draw() {
+  svg.innerHTML = "";
+  /* sea + shore hints */
+  el("rect", { x: 0, y: 0, width: 1440, height: 900, rx: 26, fill: "rgba(18,133,124,.06)" });
+  for (let i = 0; i < 6; i++)
+    el("path", { d: "M" + (30 + i * 12) + " " + (700 + i * 26) + " q 40 -14 80 0 t 80 0 t 80 0",
+      fill: "none", stroke: "rgba(26,167,155,.25)", "stroke-width": 2, "stroke-linecap": "round" });
+  /* the route */
+  let d = "";
+  DATA.forEach((r, i) => { d += (i ? " L " : "M ") + r.x + " " + r.y; });
+  el("path", { d, fill: "none", stroke: "rgba(201,162,39,.45)", "stroke-width": 3,
+    "stroke-dasharray": "2 10", "stroke-linecap": "round" });
+
+  DATA.forEach((r) => {
+    const on = !!state[r.n];
+    const g = el("g", { class: "node", transform: "translate(" + r.x + "," + r.y + ")" });
+    g.addEventListener("click", () => openPanel(r));
+    /* ruin rubble or glow */
+    if (on) el("circle", { r: 40, fill: r.col, opacity: .18 }, g);
+    el("circle", { class: "face", r: 27, fill: on ? r.col : "#31424A",
+      stroke: on ? "#C9A227" : "rgba(255,255,255,.25)", "stroke-width": on ? 3.5 : 1.5,
+      "stroke-dasharray": on ? "none" : "5 4" }, g);
+    el("text", { y: 6, "text-anchor": "middle", "font-size": 17, "font-weight": 900,
+      fill: on ? "#fff" : "#8ba3a0" }, g).textContent = r.n;
+    if (on) {
+      const st = el("path", { transform: "translate(20,-26) scale(0.55)",
+        d: "M0 -14l3 7 7-3-3 7 7 3-7 3 3 7-7-3-3 7-3-7-7 3 3-7-7-3 7-3-3-7 7 3z", fill: "#C9A227" }, g);
+    }
+    el("text", { y: 48, "text-anchor": "middle", "font-size": 13, "font-weight": 800,
+      fill: on ? "#EAF4F2" : "#71898f" }, g).textContent = r.name;
+    el("text", { y: 63, "text-anchor": "middle", "font-size": 9.5, "letter-spacing": 1,
+      fill: on ? "#9fc4bd" : "#546a70" }, g).textContent = on ? "REBUILT" : "IN RUINS \u00b7 TOPIC " + r.n;
+  });
+  const done = DATA.filter((r) => state[r.n]).length;
+  document.getElementById("doneCount").textContent = done;
+  document.getElementById("progFill").style.width = (done / 17 * 100) + "%";
+}
+
+let current = null;
+function openPanel(r) {
+  current = r;
+  document.getElementById("pRegion").textContent = r.n + " \u00b7 " + r.name;
+  document.getElementById("pRegion").style.color = r.col === "#31424A" ? "#fff" : r.col;
+  document.getElementById("pTopic").textContent = "TOPIC " + r.n + " \u00b7 " + r.topic + " \u00b7 " + r.lessons.length + " lessons";
+  document.getElementById("pBlurb").textContent = "\u201c" + r.blurb + "\u201d";
+  const stamp = document.getElementById("pStamp");
+  stamp.textContent = state[r.n] ? "\u2605 Rebuilt \u2014 tap to undo" : "Stamp this region REBUILT";
+  const list = document.getElementById("pList");
+  list.innerHTML = "";
+  r.lessons.forEach((l) => {
+    const a = document.createElement(l.file ? "a" : "div");
+    a.className = "p-lesson" + (l.file ? "" : " dead");
+    if (l.file) a.href = "html/" + l.file;
+    a.innerHTML = '<span class="c">' + l.code + '</span><div class="t">' + l.title +
+      '</div><div class="s">' + (l.std || "") + "</div>";
+    list.appendChild(a);
+  });
+  if (r.boss && r.boss.file) {
+    const a = document.createElement("a");
+    a.className = "p-lesson p-boss";
+    a.href = "html/" + r.boss.file;
+    a.innerHTML = '<span class="c">BOSS</span><div class="t">\u2694 ' + r.boss.name +
+      '</div><div class="s">whole-class battle \u00b7 run it as the topic review</div>';
+    list.appendChild(a);
+  } else {
+    const dv = document.createElement("div");
+    dv.className = "p-lesson dead";
+    dv.innerHTML = '<span class="c">BOSS</span><div class="t">This region\u2019s boss has not surfaced yet</div>';
+    list.appendChild(dv);
+  }
+  document.getElementById("panel").classList.add("open");
+}
+document.getElementById("pStamp").addEventListener("click", () => {
+  if (!current) return;
+  state[current.n] = !state[current.n];
+  save(state); draw(); openPanel(current);
+});
+document.getElementById("pClose").addEventListener("click", () =>
+  document.getElementById("panel").classList.remove("open"));
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") document.getElementById("panel").classList.remove("open");
+});
+draw();
+</script>
+</body>
+</html>

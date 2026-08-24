@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Integration Plan — Motivation System into the 114 Grade 4 Lessons</title>
+<style>
+  :root{
+    --teal:#12857C; --teal2:#1AA79B; --deep:#0A5F58; --gold:#C9A227;
+    --ink:#10242B; --ink2:#5A7076; --mint:#E8F6F4; --line:#CDE7E3;
+    --stop:#C74440; --ok:#388C46; --warn:#FA7E19; --purple:#6042A6; --blue:#2D70B3;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#F4F9F8;color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 26px 90px}
+  header{background:linear-gradient(135deg,var(--deep),var(--teal));color:#fff;padding:42px 26px 36px;margin-bottom:30px}
+  header .inner{max-width:1000px;margin:0 auto}
+  header .eyebrow{font-size:11px;letter-spacing:.18em;font-weight:800;color:#9FE3DA;margin-bottom:10px}
+  header h1{margin:0 0 8px;font-size:30px;line-height:1.2}
+  header p{margin:0;color:#CFEDE8;font-size:15px;max-width:680px}
+  h2{margin:44px 0 12px;font-size:21px;color:var(--deep);border-bottom:3px solid var(--gold);padding-bottom:8px}
+  h3{margin:26px 0 8px;font-size:16.5px;color:var(--teal)}
+  h4{margin:16px 0 5px;font-size:14px;color:var(--ink);letter-spacing:.01em}
+  p,li{font-size:15px}
+  ul,ol{padding-left:21px} li{margin:4px 0}
+  code{background:var(--mint);padding:1px 6px;border-radius:5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--deep)}
+  table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.6px}
+  th{background:var(--deep);color:#fff;text-align:left;padding:9px 10px;font-size:12px;letter-spacing:.04em}
+  td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top}
+  tr:nth-child(even) td{background:#fbfefe}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0;
+        box-shadow:0 2px 10px rgba(10,95,88,.05)}
+  .key{background:var(--ink);color:#EAF4F2;border-radius:16px;padding:22px 24px;margin:0 0 10px}
+  .key h2{color:#fff;border-bottom-color:var(--gold);margin-top:0}
+  .key p,.key li{color:#CFE3E0} .key strong{color:#fff}
+  .goldbox{border-left:6px solid var(--gold);background:#fffdf3}
+  .okbox{border-left:6px solid var(--ok);background:#f4fbf5}
+  .warnbox{border-left:6px solid var(--warn);background:#fff9f2}
+  .tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;
+       padding:3px 8px;border-radius:999px;margin-right:6px;vertical-align:middle}
+  .t-eng{background:var(--blue);color:#fff}
+  .t-vis{background:var(--purple);color:#fff}
+  .t-print{background:var(--warn);color:#3a1f00}
+  .t-teach{background:var(--ok);color:#fff}
+  .t-new{background:var(--gold);color:#3a2c00}
+  .lede{font-size:16px;color:var(--ink2);margin:-4px 0 18px}
+  .mech{border:1px solid var(--line);border-radius:14px;background:#fff;margin:16px 0;overflow:hidden}
+  .mech .hd{background:var(--mint);padding:12px 18px;border-bottom:1px solid var(--line);
+            display:flex;align-items:center;gap:10px}
+  .mech .hd .n{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#3a2c00;
+       font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .mech .hd b{font-size:15.5px;color:var(--deep)}
+  .mech .bd{padding:14px 18px}
+  .mech table{margin:6px 0 0}
+  .before-after{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .before-after>div{padding:14px 16px}
+  .ba-l{background:#fbf7f7;border-right:1px solid var(--line)}
+  .ba-r{background:#f5fbf7}
+  .ba-l h4{color:var(--stop)} .ba-r h4{color:var(--ok)}
+  .before-after ol{font-size:13.4px;padding-left:20px;margin:6px 0 0}
+  @media(max-width:760px){.before-after{grid-template-columns:1fr}.ba-l{border-right:0;border-bottom:1px solid var(--line)}}
+  footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink2);font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="eyebrow">DAR AL FIKR SCHOOLS · IMPLEMENTATION PLAN</div>
+    <h1>Integrating the motivation system into the 114 lessons</h1>
+    <p>What to add, what to draw, what to build, and in what order — mapped onto the code that
+       already exists.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="key">
+  <h2>The fact that makes this cheap</h2>
+  <p>All 114 lessons are built from the <strong>same ten routine components</strong> in one 394-line
+     file. I checked: <strong>114 of 114</strong> lessons use <code>ShowWhatYouKnow</code>, and
+     <strong>114 of 114</strong> use <code>CompareConnect</code>.</p>
+  <p style="margin-bottom:0">So a mechanic added to <code>engine/routines.jsx</code> once
+     <strong>inherits to every lesson in the course automatically</strong>. The engine work is small
+     and central. The only per-lesson work is writing content — and that is one hard question per
+     lesson, nothing more.</p>
+</div>
+
+<h2>1 · The three layers you are building</h2>
+<table>
+  <tr><th style="width:20%">Layer</th><th style="width:34%">Lives in</th><th>Owns</th></tr>
+  <tr><td><strong>Student deck</strong><br><span style="color:var(--ink2)">114 HTML files</span></td>
+      <td><code>engine/routines.jsx</code>, <code>engine/app.jsx</code>, <code>lessons/*.jsx</code></td>
+      <td>The lesson. Commit-before-reveal, the hard lane, nominating a method. Deliberately
+          <strong>close to stateless</strong> — it reports events, it does not keep the ledger.</td></tr>
+  <tr><td><strong>Teacher console</strong> <span class="tag t-new">NEW</span><br><span style="color:var(--ink2)">1 HTML file</span></td>
+      <td><code>console.html</code></td>
+      <td>The class state: roster, Sijill, hard-lane record, shared budget, tokens. Runs on the
+          board machine. Exports JSON.</td></tr>
+  <tr><td><strong>Paper</strong> <span class="tag t-new">NEW</span><br><span style="color:var(--ink2)">4 print assets</span></td>
+      <td><code>print/</code></td>
+      <td>Scarcity tokens, the Sijill wall card, the exhibition poster, the parent standards sheet.</td></tr>
+</table>
+
+<div class="card warnbox">
+  <h4 style="margin-top:0;color:#a35200">Why the ledger must not live in the student deck</h4>
+  <p style="margin-bottom:0">The decks are opened as <code>file://</code> pages. Browsers treat that
+  origin inconsistently — Chrome shares <code>localStorage</code> across local files, Safari blocks it
+  outright. Cross-lesson student state would be unreliable and would silently vanish on a different
+  device. <strong>The Sijill and the budget are class-level, teacher-owned data anyway.</strong> Putting
+  them in one console file the teacher runs removes the sync problem entirely and is simpler to build.</p>
+</div>
+
+<h2>2 · The seven mechanics — element, visual, tool</h2>
+
+<div class="mech">
+  <div class="hd"><span class="n">1</span><b>The Sijill — named-methods ledger</b></div>
+  <div class="bd">
+    <p style="margin-top:0">Every deck already ends its Connect screen with two <em>fictional</em>
+       named strategies — "Salma's way", "Ziad's way". The mechanic is to let the teacher
+       <strong>overwrite the fictional name with the real student who produced that method in the
+       room</strong>, and keep it for the year.</p>
+    <table>
+      <tr><th style="width:15%">Add</th><th style="width:42%">What</th><th>Where</th></tr>
+      <tr><td><span class="tag t-eng">ELEMENT</span></td>
+          <td>A <em>"This was ______'s method"</em> field on each of the two Connect panels. Writes
+              <code>{topic, lesson, method, student}</code> to the console.</td>
+          <td><code>routines.jsx</code> → <code>CompareConnect</code></td></tr>
+      <tr><td><span class="tag t-vis">VISUAL</span></td>
+          <td><strong>Sijill card</strong> — a gold-bordered slip showing the method name, the
+              student, and the lesson it came from. Reuses the existing <code>Star8</code> mark.</td>
+          <td>new component in <code>routines.jsx</code></td></tr>
+      <tr><td><span class="tag t-vis">VISUAL</span></td>
+          <td><strong>Sijill modal</strong> — press <code>S</code> in any deck to see every named
+              method so far this year, grouped by topic.</td>
+          <td><code>app.jsx</code>, beside the existing Overview / Rail / Math modals</td></tr>
+      <tr><td><span class="tag t-print">PRINT</span></td>
+          <td><strong>Sijill wall card</strong> — A5, one per named method, goes on the classroom
+              wall. This is the mechanic that actually works; the screen version is the backup.</td>
+          <td><code>print/sijill-card.html</code></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="mech">
+  <div class="hd"><span class="n">2</span><b>The hard lane</b></div>
+  <div class="bd">
+    <p style="margin-top:0">The single most important mechanic. Each Show What You Know gains an
+       optional second question that is <strong>visibly harder</strong>. Attempting it is logged
+       whether or not it is answered correctly; <strong>only the hard lane can earn a Sijill
+       naming.</strong></p>
+    <table>
+      <tr><th style="width:15%">Add</th><th style="width:42%">What</th><th>Where</th></tr>
+      <tr><td><span class="tag t-eng">ELEMENT</span></td>
+          <td>New <code>hard</code> prop on <code>ShowWhatYouKnow</code>:
+              <code>{prompt, omml, options, right, support}</code>. Same shape as the existing
+              question, so nothing new to learn.</td>
+          <td><code>routines.jsx</code> → <code>ShowWhatYouKnow</code></td></tr>
+      <tr><td><span class="tag t-vis">VISUAL</span></td>
+          <td><strong>Two doors.</strong> Before the question appears: two panels — <em>Standard</em>
+              and <em>Harder</em> — the harder one marked with a gold chevron. Choosing is public and
+              deliberate. No default, no skip.</td>
+          <td>new component <code>LaneChoice</code></td></tr>
+      <tr><td><span class="tag t-vis">VISUAL</span></td>
+          <td><strong>Attempt ribbon.</strong> A gold ribbon on the Close screen reading
+              <em>"took the harder question"</em> — shown for an attempt, not a success. This is the
+              inversion; it must be visible.</td>
+          <td><code>routines.jsx</code> → <code>Closing</code></td></tr>
+      <tr><td><span class="tag t-teach">CONTENT</span></td>
+          <td><strong>114 hard questions</strong>, one per lesson. Roughly 2–3 hours of authoring per
+              topic. This is the bulk of the real work.</td>
+          <td><code>lessons/*.jsx</code></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="mech">
+  <div class="hd"><span class="n">3</span><b>Commit before you see</b></div>
+  <div class="bd">
+    <p style="margin-top:0">Half-built already. <code>LaunchEstimate</code> has <em>Lock my
+       estimate</em>; <code>CardSort</code> has <em>no grading until the class commits</em>. Extend the
+       same idea to the two Monitor screens in every lesson.</p>
+    <table>
+      <tr><th style="width:15%">Add</th><th style="width:42%">What</th><th>Where</th></tr>
+      <tr><td><span class="tag t-eng">ELEMENT</span></td>
+          <td><code>commit</code> prop on <code>ExploreChips</code>: student picks a chip, presses
+              <em>Call it</em>, and <em>only then</em> does the canvas animate the model.</td>
+          <td><code>routines.jsx</code> → <code>ExploreChips</code></td></tr>
+      <tr><td><span class="tag t-vis">VISUAL</span></td>
+          <td><strong>Commit bar</strong> — a teal bar under the chips that fills and locks. Once
+              locked it shows the prediction next to the result, so the student sees their own
+              thinking beside the answer.</td>
+          <td>new component <code>CommitBar</code></td></tr>
+      <tr><td><span class="tag t-teach">CONTENT</span></td>
+          <td>None. The chips already exist in all 114 lessons.</td>
+          <td>—</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="mech">
+  <div class="hd"><span class="n">4</span><b>A shared budget that carries across weeks</b></div>
+  <div class="bd">
+    <p style="margin-top:0">Replaces the fake "catastrophic events". The class holds one resource —
+       riyals for a real thing they chose — that <strong>persists between lessons</strong>. A poor
+       collective decision means next week starts poorer.</p>
+    <table>
+      <tr><th style="width:15%">Add</th><th style="width:42%">What</th><th>Where</th></tr>
+      <tr><td><span class="tag t-eng">ELEMENT</span></td>
+          <td>Budget lives in the console. The deck shows it read-only and can post a
+              <code>spend</code> event at the Close screen.</td>
+          <td><code>console.html</code> + <code>app.jsx</code> footer</td></tr>
+      <tr><td><span class="tag t-vis">VISUAL</span></td>
+          <td><strong>Budget strip</strong> — spent / committed / remaining. The existing
+              <code>D.strip()</code> canvas tool already draws exactly this, including the dashed
+              "unknown" segment and the total brace. <span class="tag t-ok" style="background:var(--ok);color:#fff">NO NEW TOOL</span></td>
+          <td><code>draw.js</code> → <code>strip</code> (exists)</td></tr>
+      <tr><td><span class="tag t-teach">CONTENT</span></td>
+          <td>One decision per week that the class actually votes on. Written by the teacher, not
+              scripted in the deck.</td>
+          <td>teacher</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="mech">
+  <div class="hd"><span class="n">5</span><b>Table scarcity</b></div>
+  <div class="bd">
+    <p style="margin-top:0">Mostly a paper mechanic, and stronger for it. Each table gets fewer
+       resources than it needs — <strong>three "ask the teacher" tokens per lesson</strong>, one
+       protractor between four, a limited set of number cards. Effort becomes owed to peers.</p>
+    <table>
+      <tr><th style="width:15%">Add</th><th style="width:42%">What</th><th>Where</th></tr>
+      <tr><td><span class="tag t-print">PRINT</span></td>
+          <td><strong>Token sheet</strong> — A4, 32 tokens, Dar Al Fikr eight-point star, cut and
+              laminate once. Costs almost nothing and does most of the work.</td>
+          <td><code>print/tokens.html</code></td></tr>
+      <tr><td><span class="tag t-vis">VISUAL</span></td>
+          <td><strong><code>tokenRow()</code></strong> — new canvas tool. A row of star tokens,
+              spent ones drawn hollow. Used on the console so the room can see what is left.
+              <span class="tag t-new">NEW TOOL</span></td>
+          <td><code>draw.js</code></td></tr>
+      <tr><td><span class="tag t-teach">TEACHING</span></td>
+          <td>The rule has to be held. A teacher who answers a question without taking a token
+              destroys the mechanic in one lesson.</td>
+          <td>training</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="mech">
+  <div class="hd"><span class="n">6</span><b>Delete every participation point</b></div>
+  <div class="bd">
+    <p style="margin-top:0">The subtraction, and the easiest change to make. There are
+       <strong>227 <code>award()</code> calls in <code>lessons/</code></strong> and 7 in the routines.
+       Almost all are a flat 25 points for clicking a chip.</p>
+    <table>
+      <tr><th style="width:15%">Add</th><th style="width:42%">What</th><th>Where</th></tr>
+      <tr><td><span class="tag t-eng">REMOVE</span></td>
+          <td>All 227 lesson-level <code>award(...)</code> calls, by script — they follow one pattern,
+              so this is a regex pass plus a verify run, not a manual edit.</td>
+          <td><code>lessons/*.jsx</code></td></tr>
+      <tr><td><span class="tag t-eng">REMOVE</span></td>
+          <td><code>XPBar</code> and <code>Badges</code> from the header. The four badges currently all
+              unlock in the first ninety seconds; they are noise.</td>
+          <td><code>app.jsx</code> → <code>Header</code></td></tr>
+      <tr><td><span class="tag t-vis">REPLACE WITH</span></td>
+          <td><strong>Two scarce numbers</strong> in the header instead: <em>Sijill entries</em> and
+              <em>hard lanes taken</em>. Both are hard to get, so both mean something.</td>
+          <td><code>app.jsx</code></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="mech">
+  <div class="hd"><span class="n">7</span><b>Exhibition at the end of each topic</b></div>
+  <div class="bd">
+    <p style="margin-top:0">One artefact per topic, shown to someone who is not the teacher. This is
+       simultaneously the motivation mechanic and the <strong>parent-politics solution</strong>.</p>
+    <table>
+      <tr><th style="width:15%">Add</th><th style="width:42%">What</th><th>Where</th></tr>
+      <tr><td><span class="tag t-print">PRINT</span></td>
+          <td><strong>Exhibition poster template</strong> — A3. The question, the method, the named
+              student, the answer, and what it is used for.</td>
+          <td><code>print/exhibition.html</code></td></tr>
+      <tr><td><span class="tag t-print">PRINT</span></td>
+          <td><strong>Parent standards sheet</strong> — generated from the console: which enVision
+              standards were covered, unaided in-class accuracy, Sijill entries for that child.
+              This is what makes the system look rigorous rather than like playing.</td>
+          <td><code>console.html</code> → print view</td></tr>
+      <tr><td><span class="tag t-teach">CONTENT</span></td>
+          <td>17 exhibition briefs — one per topic. Real school problems: paint for the art room,
+              is the canteen queue fair, how much shade does the yard need.</td>
+          <td>teacher + me</td></tr>
+    </table>
+  </div>
+</div>
+
+<h2>3 · Everything new, in one list</h2>
+
+<h3><span class="tag t-eng">ENGINE</span> React components — 5 new, 4 modified</h3>
+<table>
+  <tr><th style="width:26%">Component</th><th style="width:12%">Status</th><th>Purpose</th></tr>
+  <tr><td><code>LaneChoice</code></td><td><span class="tag t-new">NEW</span></td><td>The two doors — standard or harder. Public, deliberate, no default.</td></tr>
+  <tr><td><code>SijillCard</code></td><td><span class="tag t-new">NEW</span></td><td>A named method, its owner, and where it came from.</td></tr>
+  <tr><td><code>SijillModal</code></td><td><span class="tag t-new">NEW</span></td><td>Every named method this year. Bound to key <code>S</code>.</td></tr>
+  <tr><td><code>CommitBar</code></td><td><span class="tag t-new">NEW</span></td><td>Lock a prediction before the model runs; show it beside the result.</td></tr>
+  <tr><td><code>BudgetBanner</code></td><td><span class="tag t-new">NEW</span></td><td>Read-only class budget in the footer.</td></tr>
+  <tr><td><code>ShowWhatYouKnow</code></td><td>modified</td><td>Accepts <code>hard</code>; routes through <code>LaneChoice</code>.</td></tr>
+  <tr><td><code>CompareConnect</code></td><td>modified</td><td>Name-the-method field on each panel.</td></tr>
+  <tr><td><code>ExploreChips</code></td><td>modified</td><td>Optional <code>commit</code> gate before the canvas animates.</td></tr>
+  <tr><td><code>Closing</code></td><td>modified</td><td>Badges out; hard-lane ribbon and Sijill entries in.</td></tr>
+</table>
+
+<h3><span class="tag t-vis">VISUALS</span> Canvas tools — only 2 new</h3>
+<p class="lede" style="margin-bottom:10px">The existing 44-tool kit covers almost all of it. Be
+  suspicious of any plan that needs a lot of new drawing code.</p>
+<table>
+  <tr><th style="width:22%">Tool</th><th style="width:12%">Status</th><th>Used for</th></tr>
+  <tr><td><code>tokenRow()</code></td><td><span class="tag t-new">NEW</span></td>
+      <td>Scarcity tokens remaining — star tokens, spent ones hollow.</td></tr>
+  <tr><td><code>sparkline()</code></td><td><span class="tag t-new">NEW</span></td>
+      <td>Hard-lane take-up over the weeks, on the console. The one number that tells you whether
+          this is working.</td></tr>
+  <tr><td><code>strip()</code></td><td>exists</td><td>The budget bar — spent / committed / remaining, with the total brace.</td></tr>
+  <tr><td><code>star8()</code></td><td>exists</td><td>Sijill marks and tokens.</td></tr>
+  <tr><td><code>table()</code></td><td>exists</td><td>Sijill roster and the console ledger.</td></tr>
+  <tr><td><code>bar()</code></td><td>exists</td><td>Per-student Sijill spread on the console.</td></tr>
+</table>
+
+<h3><span class="tag t-print">PRINT</span> Four paper assets</h3>
+<ul>
+  <li><strong>Token sheet</strong> — A4 × 32 tokens. Laminate once, use all year.</li>
+  <li><strong>Sijill wall card</strong> — A5. One per named method. The wall does more than the screen.</li>
+  <li><strong>Exhibition poster</strong> — A3 template for the end-of-topic artefact.</li>
+  <li><strong>Parent standards sheet</strong> — A4, generated per child from the console.</li>
+</ul>
+
+<h3><span class="tag t-teach">CLASSROOM</span> What has to be in the room</h3>
+<table>
+  <tr><th style="width:30%">Item</th><th>Note</th></tr>
+  <tr><td>Board machine running <code>console.html</code></td><td>Any laptop. The console is one HTML file — no install, no server, no LMS.</td></tr>
+  <tr><td>Laminated tokens, 8 per table</td><td>The scarcity mechanic. Cheapest, highest-yield item on this list.</td></tr>
+  <tr><td>Wall space for the Sijill</td><td>Roughly 1 m². Non-negotiable — this is where the status lives.</td></tr>
+  <tr><td>Deliberately too few protractors and rulers</td><td>You almost certainly already have this.</td></tr>
+  <tr><td>A visible class budget on the wall</td><td>Whiteboard corner is fine.</td></tr>
+</table>
+
+<h2>4 · What one lesson looks like afterwards</h2>
+<p class="lede">Lesson 13-1, <em>Equivalence with Customary Units of Length</em> — the pilot lesson.
+   Same ten screens. Same maths. Different economy.</p>
+
+<div class="before-after">
+  <div class="ba-l">
+    <h4>Now</h4>
+    <ol>
+      <li>Notice &amp; Wonder — <em>+10 per click</em></li>
+      <li>Launch estimate — <em>+15 to lock</em></li>
+      <li>Fit inches into a foot — <em>+25 to click</em></li>
+      <li>Build the table — <em>+25 to click</em></li>
+      <li>Card sort — <em>+25 to commit</em></li>
+      <li>Two named methods — <em>+10 to switch tab</em></li>
+      <li>Board</li>
+      <li>The rule — <em>+20 to tap</em></li>
+      <li>SWYK: 5 feet = ? inches — <em>+50</em></li>
+      <li>Close — <strong>"170 XP"</strong>, then reset to zero</li>
+    </ol>
+    <p style="font-size:13px;color:var(--ink2);margin-bottom:0">Every reward is for touching the
+       screen. All four badges were earned in lesson 1-1 in September.</p>
+  </div>
+  <div class="ba-r">
+    <h4>After</h4>
+    <ol>
+      <li>Notice &amp; Wonder — no reward, no change</li>
+      <li>Launch estimate — lock stays; <strong>no points</strong></li>
+      <li><strong>Call it</strong> before the bar animates</li>
+      <li><strong>Call it</strong> before the table fills</li>
+      <li>Card sort — class commits (unchanged)</li>
+      <li>Two methods → <strong>"This was ______'s method"</strong> → Sijill</li>
+      <li>Board</li>
+      <li>The rule</li>
+      <li><strong>Two doors.</strong> Standard: <em>5 feet = ? inches.</em> Harder: <em>the banner
+          ribbon is 2 yards 1 foot — how many inches?</em></li>
+      <li>Close — <strong>ribbon for taking the hard lane</strong>, Sijill count, class budget</li>
+    </ol>
+    <p style="font-size:13px;color:var(--ink2);margin-bottom:0">Nothing is earned by clicking. Two
+       things are scarce, and both are visible to peers.</p>
+  </div>
+</div>
+
+<h2>5 · Build order</h2>
+<table>
+  <tr><th style="width:8%">Phase</th><th style="width:24%">Deliverable</th><th style="width:16%">Scope</th><th>Why this order</th></tr>
+  <tr><td><strong>0</strong></td><td>Religious review sign-off</td><td>Islamic Studies HoD</td>
+      <td>Gate. Nothing else starts until section 1 of the audit is closed.</td></tr>
+  <tr><td><strong>1</strong></td><td>Strip the 227 participation awards; remove XP bar and badges</td>
+      <td>1 script pass<br>+ <code>verify.js</code></td>
+      <td>Subtractive, reversible, and it makes everything after it legible. Do it first.</td></tr>
+  <tr><td><strong>2</strong></td><td><code>LaneChoice</code> + <code>hard</code> prop + ribbon</td>
+      <td><code>routines.jsx</code></td>
+      <td>The mechanic that carries the whole design. Build it before anything decorative.</td></tr>
+  <tr><td><strong>3</strong></td><td>Hard questions for <strong>Topic 13 only</strong> (7 lessons)</td>
+      <td>7 × <code>lessons/</code></td>
+      <td>Enough for the pilot. Do not write 114 until one topic has been in front of children.</td></tr>
+  <tr><td><strong>4</strong></td><td><code>console.html</code> + Sijill + name-the-method field</td>
+      <td>1 new file<br>+ <code>CompareConnect</code></td>
+      <td>Needs the roster, so it needs the real class.</td></tr>
+  <tr><td><strong>5</strong></td><td>Token sheet, Sijill wall card</td><td><code>print/</code></td>
+      <td>Paper before polish. Cheap and high-yield.</td></tr>
+  <tr><td><strong>6</strong></td><td><em>Run the six-week pilot</em></td><td>one class</td>
+      <td><strong>Stop and measure.</strong> Hard-lane take-up decides whether phase 7 happens at all.</td></tr>
+  <tr><td><strong>7</strong></td><td>Remaining 107 hard questions; budget; exhibition; parent sheet</td>
+      <td>rest of course</td>
+      <td>Only worth doing once the pilot number moves.</td></tr>
+</table>
+
+<div class="card okbox">
+  <p style="margin:0"><strong>Phases 1–5 are a few days of work, not a term.</strong> Because the
+  mechanics live in shared components, adding the hard lane to the engine adds it to all 114 lessons
+  at once. The long pole is not code — it is writing 114 good hard questions, and phase 3 deliberately
+  defers 107 of them until you know the mechanic works.</p>
+</div>
+
+<h2>6 · The three things most likely to break this</h2>
+<ol>
+  <li><strong>A teacher answers a question without taking a token.</strong> Scarcity mechanics die the
+      first time the rule is not held. This is a training issue, not a code issue, and it is the most
+      probable failure.</li>
+  <li><strong>The Sijill fills up with the same four names.</strong> Watch the <em>spread</em>, not the
+      total. If the same confident students are named every week, the hard lane is pitched too high —
+      lower it until the middle of the class can reach it.</li>
+  <li><strong>Someone re-adds points "to encourage the quiet ones".</strong> It will be well meant and
+      it will undo the design. Participation points are exactly what tells a status-conscious child
+      that the currency is worthless.</li>
+</ol>
+
+<footer>
+  Dar Al Fikr Schools · Grade 4 Mathematics · plan written against the current build:
+  114 lessons, 10 shared routines, 44 canvas tools, 2,166 passing guardrail checks.
+  Companion document: <code>gamification-audit-dar-al-fikr.html</code>.
+</footer>
+
+</div>
+</body>
+</html>
