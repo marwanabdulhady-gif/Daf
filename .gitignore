@@ -1,0 +1,14 @@
+# Dependencies and tool caches
+node_modules/
+.cache/
+
+# Test and browser artifacts
+coverage/
+screenshots/
+*.log
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
