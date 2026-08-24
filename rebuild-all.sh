@@ -10,5 +10,5 @@ for (const b of (d.bosses||[]))
 ' | while IFS=$'\t' read -r code title; do
   ./build.sh "$code" "$title" > /dev/null
 done
-node make-index.js > /dev/null 2>&1 || true
+node scripts/make-index.js > /dev/null 2>&1 || true
 echo "rebuilt $(ls html | wc -l) lessons"

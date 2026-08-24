@@ -13,8 +13,10 @@ const fs = require("fs"), path = require("path");
   for (const f of files) {
     const url = "file://" + path.resolve("html", f);
     const before = allErrs.length;
+    const src = fs.readFileSync(path.join("html", f), "utf8");
+    const total = (src.match(/^\s*\{?\s*phase: "/gm) || []).length;
     let painted = 0, maths = 0, canvases = 0;
-    for (let s = 0; s < 10; s++) {
+    for (let s = 0; s < total; s++) {
       await p.goto(url + "?slide=" + s, { waitUntil: "networkidle2", timeout: 60000 });
       /* board mode: step through the section gate and the attendance gate */
       await new Promise(r => setTimeout(r, 350));
@@ -45,7 +47,7 @@ const fs = require("fs"), path = require("path");
       await wait(400);
     }
     const errs = allErrs.length - before;
-    console.log(`${errs === 0 ? "PASS" : "FAIL"}  ${f.padEnd(52)} screens painted ${painted}/10 · ${maths} MathML · ${canvases} canvases · ${errs} errors`);
+    console.log(`${errs === 0 ? "PASS" : "FAIL"}  ${f.padEnd(52)} screens painted ${painted}/${total} · ${maths} MathML · ${canvases} canvases · ${errs} errors`);
   }
   console.log(allErrs.length ? "\n" + [...new Set(allErrs)].join("\n") : "\nNO CONSOLE ERRORS ACROSS ALL LESSONS");
   await b.close();

@@ -22,11 +22,15 @@ for (const file of files) {
   ok(!/\{\s*ar\s*:/.test(jsx), file + " · G6a no bilingual objects");
   ok(!/toLowerCase\(\)\s*===\s*"l"/.test(jsx), file + " · G6d no L key");
   const sketches = (jsx.match(/<Sketch|draw=\{/g) || []).length;
-  ok(sketches >= 8, file + " · G7 live canvases (" + sketches + ")");
-  ok(/try \{\s*ReactDOM\.createRoot/.test(jsx), file + " · G11 offline fallback");
   const nMetas = (jsx.match(/^\s*\{?\s*phase: "/gm) || []).length;
   const nCases = (jsx.match(/^\s*case \d+:/gm) || []).length;
-  ok(nMetas === nCases, file + ` · G12 metas(${nMetas}) === cases(${nCases})`);
+  /* Flexible lessons: require live mathematical canvases in roughly 70% of the
+     sequence, with a floor of four. Do not silently turn a longer lesson into
+     text slides, but do not force an eight-screen lesson to pretend it has ten. */
+  const minSketches = Math.max(4, Math.ceil(nMetas * 0.7));
+  ok(sketches >= minSketches, file + ` · G7 live canvases (${sketches}/${nMetas}, minimum ${minSketches})`);
+  ok(/try \{\s*ReactDOM\.createRoot/.test(jsx), file + " · G11 offline fallback");
+  ok(nMetas >= 1 && nMetas === nCases, file + ` · G12 metas(${nMetas}) === cases(${nCases})`);
   ok(/registerPreset\("daf-react"[\s\S]*runtime:\s*"classic"/.test(src), file + " · G13 classic jsx runtime");
   ok(/tag === "input"/.test(jsx), file + " · keyboard yields to inputs");
   ok(/D\.board\(/.test(jsx), file + " · has a board screen");

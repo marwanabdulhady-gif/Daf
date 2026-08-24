@@ -1,14 +1,27 @@
 {
-  "name": "reference",
+  "name": "dar-al-fikr-grade-4-mathematics",
   "version": "1.0.0",
-  "main": "omml.js",
+  "private": true,
+  "description": "Interactive Savvas enVision Grade 4 mathematics lessons for Dar Al Fikr Schools.",
+  "main": "engine/omml.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/omml.test.js",
+    "verify": "node scripts/verify.js",
+    "check:research": "node scripts/check-research-gate.js",
+    "check:story": "node scripts/check-story-plan.js",
+    "check:topic": "node scripts/check-topic.js",
+    "sweep": "node scripts/sweep.js",
+    "sweep:topic": "node scripts/sweep-topic.js",
+    "build:index": "node scripts/make-index.js",
+    "build:story-plan": "node scripts/make-story-plan.js",
+    "rebuild": "./rebuild-all.sh"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "grade-4",
+    "mathematics",
+    "interactive-lessons"
+  ],
+  "license": "UNLICENSED",
   "dependencies": {
     "@babel/standalone": "^7.29.8",
     "@xmldom/xmldom": "^0.9.11",

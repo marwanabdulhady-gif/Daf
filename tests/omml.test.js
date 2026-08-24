@@ -1,6 +1,6 @@
 const { DOMParser } = require("@xmldom/xmldom");
 globalThis.__DAF_XML_PARSER__ = (xml) => new DOMParser().parseFromString(xml, "text/xml");
-const DAFMath = require("./omml.js");
+const DAFMath = require("../engine/omml.js");
 
 const M = 'xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"';
 
@@ -112,7 +112,7 @@ if (west.includes("<mn>3</mn>") && !/[\u0660-\u0669]/.test(west)) { pass++; cons
 else { fail++; console.log("  FAIL  digits stay western -> " + west); }
 
 // the renderer itself must contain no arabic-script support
-const fsrc = require("fs").readFileSync(__dirname + "/omml.js", "utf8");
+const fsrc = require("fs").readFileSync(__dirname + "/../engine/omml.js", "utf8");
 if (!/[\u0600-\u06FF]/.test(fsrc) && !/dir="rtl"/.test(fsrc)) { pass++; console.log("  PASS  renderer source is arabic-free"); }
 else { fail++; console.log("  FAIL  renderer source still carries arabic/RTL support"); }
 

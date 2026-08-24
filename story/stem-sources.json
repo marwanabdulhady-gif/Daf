@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "windows": [
+    {
+      "id": "t1-hindu-arabic-place-value",
+      "topic": 1,
+      "lessonCodes": ["1-1"],
+      "title": "A number method that travelled",
+      "studentText": "The digits we use belong to the Hindu-Arabic numeral tradition. Place-value methods developed in India. Scholars working in the Islamic world studied, explained and transmitted them. Around the ninth century, al-Khwarizmi wrote about calculating with Hindu numerals. Knowledge travelled because people made methods clear enough for others to use.",
+      "inquiry": "Why does a place-value system make a large civic record easier to store, check and calculate with?",
+      "modernConnection": "Modern spreadsheets and databases still depend on each digit keeping a precise position.",
+      "teacherNote": "Say developed, described and transmitted—not invented by one person. Al-Khwarizmi's original Arabic arithmetic text is lost; later Latin versions survive in changed form.",
+      "sources": [
+        {
+          "label": "MacTutor · Al-Khwarizmi biography",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khwarizmi/"
+        },
+        {
+          "label": "Encyclopaedia Britannica · Zero",
+          "url": "https://www.britannica.com/science/zero-mathematics"
+        }
+      ],
+      "status": "source-checked draft"
+    }
+  ]
+}
