@@ -403,6 +403,7 @@ npm install                                            # test-time only
 npm test                                               # OMML renderer unit tests
 npm run build:index                                    # regenerate the topic hub
 npm run build:story-plan                               # regenerate the storytelling plan
+npm run check:research -- docs/research/pr-01-foundation-and-lesson-1-1.md
 npm run check:story                                    # validate 114 flexible screen plans
 npm run verify                                         # guardrail checks across built lessons
 npm run check:topic -- 17                              # deep consistency check for one topic

@@ -7,6 +7,7 @@
   "scripts": {
     "test": "node tests/omml.test.js",
     "verify": "node scripts/verify.js",
+    "check:research": "node scripts/check-research-gate.js",
     "check:story": "node scripts/check-story-plan.js",
     "check:topic": "node scripts/check-topic.js",
     "sweep": "node scripts/sweep.js",
