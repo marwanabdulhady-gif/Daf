@@ -1,8 +1,12 @@
 # Story curriculum data
 
-`story-map.json` is the source of truth for the proposed **Lantern of Numeria** narrative layer.
-It covers all 17 curriculum topics and all 114 lessons, but it is intentionally separate from
-`curriculum.json` until the school approves the frame.
+`story-map.json` is the source of truth for the **Lantern of Numeria** narrative layer. It covers
+all 17 curriculum topics and all 114 lessons and remains separate from `curriculum.json` so story,
+source and religious review status never alter the mathematical scope. Lesson `1-1` is the first
+implemented vertical slice; the remaining lesson records are the rollout plan.
+
+`stem-sources.json` stores student wording, inquiry prompts, teacher cautions and links for reviewed
+STEM windows. `scripts/story-for-lesson.js` extracts only the payload needed by one standalone deck.
 
 ## Truth-status model
 

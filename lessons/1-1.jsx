@@ -182,132 +182,132 @@ const LESSON = {
   metas: [
     {
       phase: "warmup",
-      title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "One chart. No question yet. Every noticing counts.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Those repeating words have a name. We will get to it.",
+      title: "The lantern opens a <em>damaged census</em>",
+      lead: "Omar and Zayd find seven surviving digits, but the headings and commas are missing.",
+      goal: "Notice the repeated place-value structure before anyone names a rule.",
+      pull: "A city-planning record is hidden in those boxes.",
       rail: {
-        launch: "I am not asking a question yet. Just look, then tell me one thing.",
-        monitor: ["Noticing the labels repeat", "Noticing the groups of three", "Noticing the colours change"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Reading the chart right to left instead of naming places from the right."
+        launch: "This is our fictional frame. Ask only: what survives, and what seems to be missing?",
+        monitor: ["Noticing the groups of three", "Noticing repeating place names", "Wondering where commas belong"],
+        connect: "Which noticing could help an archivist rebuild the page?",
+        misconception: "Treating the lantern as an answer machine. It reveals evidence, never a solution."
       }
     },
     {
       phase: "launch",
-      title: "How many people live in <em>Jeddah</em>?",
-      lead: "About 4,697,000. Say that out loud. Where do you pause?",
-      goal: "Create the need — a big number is easier to read in chunks.",
-      pull: "Estimate first, then we will build the number together.",
+      title: "Numeria needs a <em>trustworthy population record</em>",
+      lead: "The simulated planning folio uses 4,697,000. How should a city planner read and store it?",
+      goal: "Connect large-number notation to a realistic civic data task.",
+      pull: "Lock a prediction before the place-value model appears.",
       rail: {
-        launch: "Try to say it without stopping. Now try again and pause where the commas are.",
-        monitor: ["Reading digit by digit", "Pausing at the commas", "Naming millions and thousands"],
-        connect: "What did the commas do for your voice?",
-        misconception: "Reading 4,697,000 as four six nine seven. Do not correct it — ask them to try again with pauses."
+        launch: "Clarify that 4,697,000 is simulated planning data, not a live Jeddah census figure.",
+        monitor: ["Reading digit by digit", "Pausing at commas", "Naming millions and thousands"],
+        connect: "How do the commas make this record easier to check aloud?",
+        misconception: "Presenting a simulated number as a current population fact."
       }
     },
     {
       phase: "monitor",
-      title: "Every digit has a <em>place</em> and a <em>value</em>",
-      lead: "Tap a place. Watch what that digit is actually worth.",
-      goal: "Separate the digit from the value it carries.",
-      pull: "Now let us write all of those values down at once.",
+      title: "Zayd asks: what is each digit <em>worth</em>?",
+      lead: "A digit is not enough evidence. Its position decides its value.",
+      goal: "Separate the digit from the value it carries in the civic record.",
+      pull: "Omar wants every value written so another person can audit it.",
       rail: {
-        launch: "Predict the value before you tap.",
-        monitor: ["Reading the value off the chart", "Counting zeros", "Using the period name"],
-        connect: "Why is the 7 worth 70,000 and not 7?",
+        launch: "Predict the value before selecting a place.",
+        monitor: ["Reading the value from position", "Counting zeros", "Using a period name"],
+        connect: "Why can the same digit represent different amounts?",
         misconception: "Saying the digit instead of its value."
       }
     },
     {
       phase: "monitor",
-      title: "Break it apart — <em>expanded form</em>",
-      lead: "Add one digit at a time and watch the value drop out underneath.",
-      goal: "Expanded form is the chart, written as a sum.",
-      pull: "Three ways to write one number. Can you match them?",
+      title: "Omar rebuilds the <em>missing values</em>",
+      lead: "Each recovered digit becomes one part of an expanded record.",
+      goal: "Use expanded form as an auditable version of the place-value chart.",
+      pull: "Three damaged records now need to be matched.",
       rail: {
-        launch: "Predict the next value before you reveal it.",
-        monitor: ["Writing each value with its zeros", "Skipping the zero digit", "Checking the sum"],
-        connect: "What happens to a place that holds a zero?",
+        launch: "Ask which value will appear before revealing the next part.",
+        monitor: ["Writing each value with zeros", "Skipping a zero digit correctly", "Checking the complete sum"],
+        connect: "How does expanded form help someone detect a copying error?",
         misconception: "Writing 62,415 as 6 + 2 + 4 + 1 + 5."
       }
     },
     {
       phase: "monitor",
-      title: "Match the <em>three forms</em>",
-      lead: "Standard, expanded, and word form all describe the same number.",
-      goal: "Move fluently between the three representations.",
-      pull: "Two students matched these differently. Let us look.",
+      title: "Three records need <em>correct matches</em>",
+      lead: "Standard form and word form must point to exactly the same quantity.",
+      goal: "Move between representations while protecting every placeholder zero.",
+      pull: "The class has two methods for checking the matches.",
       rail: {
-        launch: "There is no single right order — only a right match.",
-        monitor: ["Matching by the first digit", "Matching by counting places", "Reading the word form aloud"],
-        connect: "How did you know that one belonged there?",
-        misconception: "Matching by how long the number looks."
+        launch: "Do not grade until the class commits to all three matches.",
+        monitor: ["Matching from the greatest place", "Checking placeholder zeros", "Reading the words aloud"],
+        connect: "Which feature gave you the strongest evidence?",
+        misconception: "Matching records only because they look similar in length."
       }
     },
     {
       phase: "connect",
-      title: "Two ways to <em>read it</em>",
-      lead: "Sara reads by periods. Khalid counts places first. Both are correct.",
-      goal: "The comparison produces the rule — not the teacher.",
-      pull: "Now we put it on the board.",
+      title: "The class brings <em>two methods</em>",
+      lead: "The fictional boys step back. Real student strategies become the dialogue.",
+      goal: "Compare methods and name a reusable strategy in the Sijill.",
+      pull: "Zayd will draw the shared structure on the Evidence Board.",
       rail: {
-        launch: "Show both without judging either.",
-        monitor: ["Seeing the periods inside the counting", "Preferring the chart", "Reading straight off the commas"],
-        connect: "Where do both students use the number three?",
-        misconception: "Treating one method as the real method."
+        launch: "Replace the sample names with students from this room when possible.",
+        monitor: ["Seeing periods inside the chart", "Preferring one representation", "Explaining why both work"],
+        connect: "Where do both methods use groups of three?",
+        misconception: "Treating one valid representation as the only real method."
       }
     },
     {
       phase: "synth",
-      title: "On the <em>board</em>",
-      lead: "Group the digits in threes from the right. Put a comma between the groups. Read each group, then say its name.",
-      goal: "The moment the lesson is taught — not displayed.",
-      pull: "Say it in one sentence.",
+      title: "The rule enters the <em>Evidence Folio</em>",
+      lead: "Group from the right, mark the periods, then read each period by name.",
+      goal: "Build the rule publicly from the strategies students just compared.",
+      pull: "This place-value method has its own journey through history.",
       rail: {
-        launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Grouping from the right", "Restating it in their own words"],
-        connect: "Who can say the rule in one sentence?",
+        launch: "Draw with the class rather than presenting a completed rule.",
+        monitor: ["Predicting the next grouping", "Starting from the right", "Restating the rule"],
+        connect: "Which part of the rule prevents the most errors?",
         misconception: "Grouping in threes from the left."
       }
     },
     {
       phase: "synth",
-      title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
+      title: "A method travelled <em>across cultures</em>",
+      lead: "Place value was developed, studied, explained and transmitted across generations.",
+      goal: "Connect the mathematical rule to a source-checked history of useful knowledge.",
+      pull: "Now use the method to repair the first census line.",
       rail: {
-        launch: "Read it together, one voice.",
-        monitor: ["Linking periods to commas", "Testing it on a new number", "Asking about a zero in the middle"],
-        connect: "Does the rule still work when a period holds a zero?",
-        misconception: "Dropping a period that is all zeros when reading aloud."
+        launch: "Use developed, described and transmitted—not invented by one person.",
+        monitor: ["Linking zero to place holding", "Connecting written methods to data records", "Asking how knowledge travelled"],
+        connect: "Why would clear place value matter to a modern spreadsheet?",
+        misconception: "Claiming that al-Khwarizmi single-handedly invented the numeral system."
       }
     },
     {
       phase: "swyk",
-      title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.",
-      pull: "Well done. Let us see what you collected today.",
+      title: "Can we restore the <em>first census line</em>?",
+      lead: "Choose the record that preserves every place, including the empty ones.",
+      goal: "Use independent evidence to complete the story decision.",
+      pull: "A correct record restores the first fragment of Folio 1.",
       rail: {
-        launch: "Two minutes. Write your thinking, not just your answer.",
-        monitor: ["Using the chart", "Counting places", "Checking the zero in the tens"],
-        connect: "Collect responses to open tomorrow.",
-        misconception: "Ignoring the zero and reading three hundred five thousand seventy-two as 305,72."
+        launch: "Two minutes. Require a place-value reason, not only an option letter.",
+        monitor: ["Using the chart", "Counting places", "Protecting the zero in the hundreds place"],
+        connect: "Which zero is doing important work?",
+        misconception: "Ignoring a placeholder zero when translating words to digits."
       }
     },
     {
       phase: "connect",
-      title: "What you <em>collected</em> today",
-      lead: "Points are for thinking, not for speed.",
-      goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: what is a digit worth compared to the one on its right?",
+      title: "Fragment one is <em>restored</em>",
+      lead: "The population line is readable, checkable and ready for the unit services brief.",
+      goal: "Close with a real-world transfer and a precise mathematical cliffhanger.",
+      pull: "Next: one digit moves one place—and its value changes tenfold.",
       rail: {
-        launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the chart", "Ready for place value relationships"],
-        connect: "Who is teaching it at home tonight?",
-        misconception: "Chasing points instead of understanding."
+        launch: "Name the artifact contribution, then reveal only the next mathematical need.",
+        monitor: ["Explaining periods", "Using expanded form to audit", "Ready to discuss ten-times relationships"],
+        connect: "Where might your family see a large number that must be copied accurately?",
+        misconception: "Remembering the story but not the place-value method."
       }
     }
   ],
@@ -319,62 +319,92 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <NoticeWonder draw={drawChartIntro} height={262} award={award}
-            notices={["The labels repeat", "There are groups of three", "Each group has a name", "Some places are empty"]}
-            wonders={["Why groups of three?", "What comes after millions?", "Why the commas?"]} />
+          <StoryShell lane="fiction" character="lantern"
+            title="The page with seven empty boxes"
+            text="Omar sees a damaged civic folio. Zayd notices that the surviving places repeat in groups. The lantern reveals evidence—but never answers."
+            clue="Rebuild the headings before reading the record">
+            <NoticeWonder draw={drawChartIntro} height={238} award={award}
+              notices={["The labels repeat", "There are groups of three", "Each group has a name", "Some places are empty"]}
+              wonders={["Why groups of three?", "What comes after millions?", "Where do the commas belong?"]}
+              footnote="Story evidence counts only when the class can describe the mathematical structure." />
+          </StoryShell>
         );
 
       case 1:
         return (
-          <LaunchEstimate draw={drawJeddah} height={268} award={award}
-            label="How many digits does Jeddah's population have?"
-            min={4} max={10} start={6} unit="digits"
-            after="Locked. Now let us look at what each of those digits is worth."
-            note="A number this big is easier to say in chunks than all at once." />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="A planner must be able to read the record aloud"
+            text="The folio uses a simulated Jeddah planning figure. Omar marks it as model data so nobody mistakes it for a current census fact."
+            clue="How many places must the restored record protect?">
+            <LaunchEstimate draw={drawJeddah} height={235} award={award}
+              label="How many digits does 4,697,000 have?"
+              min={4} max={10} start={6} unit="digits"
+              after="Locked. Now build the evidence instead of waiting for a reveal."
+              note="Real planners use place value to store, compare and check large civic data. This lesson uses simulated data." />
+          </StoryShell>
         );
 
       case 2:
         return (
-          <ExploreChips draw={makeChartFocus(place)} height={250}
-            label="Tap a place in 874,203"
-            value={place}
-            onPick={(v) => setPlace(v)}
-            chips={[
-              { v: 0, label: "8" }, { v: 1, label: "7" }, { v: 2, label: "4" },
-              { v: 3, label: "2" }, { v: 4, label: "0" }, { v: 5, label: "3" }
-            ]}
-            caption={<MathEl omml={M.sixDigit} size="xl" display="block" />}
-            footnote="The digit tells you how many. The place tells you how much." />
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd builds a movable place-value frame"
+            text="He can slide a digit, but the class must predict what that position makes it worth before selecting it."
+            clue="Digit and value are different pieces of evidence">
+            <ExploreChips draw={makeChartFocus(place)} height={225}
+              label="Test a place in 874,203"
+              value={place}
+              onPick={(v) => setPlace(v)}
+              chips={[
+                { v: 0, label: "8" }, { v: 1, label: "7" }, { v: 2, label: "4" },
+                { v: 3, label: "2" }, { v: 4, label: "0" }, { v: 5, label: "3" }
+              ]}
+              caption={<MathEl omml={M.sixDigit} size="xl" display="block" />}
+              footnote="The digit tells how many. Position tells how much." />
+          </StoryShell>
         );
 
       case 3:
         return (
-          <ExploreChips draw={makeExpanded(shown)} height={272}
-            label="Reveal the value of each digit in 62,415"
-            value={shown}
-            onPick={(v) => setShown(v)}
-            chips={[1, 2, 3, 4, 5].map((n) => ({ v: n, label: n + (n === 1 ? " digit" : " digits") }))}
-            caption={<MathEl omml={M.compareForms} size="lg" display="block" />}
-            footnote="Expanded form is just the chart, written as a sum." />
+          <StoryShell lane="fiction" character="omar"
+            title="Omar turns the frame into an audit trail"
+            text="A copied total is easier to check when every non-zero place is written as its full value."
+            clue="Expanded form exposes a misplaced digit">
+            <ExploreChips draw={makeExpanded(shown)} height={235}
+              label="Build the value of each digit in 62,415"
+              value={shown}
+              onPick={(v) => setShown(v)}
+              chips={[1, 2, 3, 4, 5].map((n) => ({ v: n, label: n + (n === 1 ? " digit" : " digits") }))}
+              caption={<MathEl omml={M.compareForms} size="lg" display="block" />}
+              footnote="Expanded form is the chart written as a checkable sum." />
+          </StoryShell>
         );
 
       case 4:
         return (
-          <CardSort award={award} columns={3}
-            items={[
-              { id: "s1", text: "305,072", target: "t1" },
-              { id: "s2", text: "350,072", target: "t2" },
-              { id: "s3", text: "305,702", target: "t3" }
-            ]}
-            targets={[
-              { id: "t1", label: "three hundred five thousand, seventy-two" },
-              { id: "t2", label: "three hundred fifty thousand, seventy-two" },
-              { id: "t3", label: "three hundred five thousand, seven hundred two" }
-            ]} />
+          <StoryShell lane="fiction" character="both" pose="question"
+            title="Water blurred the links between three records"
+            text="Omar checks the words while Zayd checks the places. The class must commit before the folio marks any match."
+            clue="A zero may be empty, but its place is not optional">
+            <CardSort award={award} columns={3} commitLabel="Seal the three matches"
+              items={[
+                { id: "s1", text: "305,072", target: "t1" },
+                { id: "s2", text: "350,072", target: "t2" },
+                { id: "s3", text: "305,702", target: "t3" }
+              ]}
+              targets={[
+                { id: "t1", label: "three hundred five thousand, seventy-two" },
+                { id: "t2", label: "three hundred fifty thousand, seventy-two" },
+                { id: "t3", label: "three hundred five thousand, seven hundred two" }
+              ]} />
+          </StoryShell>
         );
 
       case 5:
         return (
+          <StoryShell lane="fiction" character="both" pose="present"
+            title="Omar and Zayd step out of the way"
+            text="The strongest methods now come from students in this room. Compare them, then preserve one useful method in the Sijill."
+            clue="Two representations can protect the same value">
           <CompareConnect award={award}
             left={{
               name: "Sara's way — read by periods", h: 88,
@@ -405,41 +435,63 @@ const LESSON = {
             diff={["Sara chunks, Khalid counts places",
                    "Khalid needs the chart, Sara does not",
                    "Sara is faster once she trusts the commas"]} />
+          </StoryShell>
         );
 
       case 6:
-        return <BoardScreen draw={drawBoard11} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The shared rule is drawn into the Evidence Folio"
+            text="Zayd builds only what the class can justify from the two student methods."
+            clue="Group from the right, then name each period">
+            <BoardScreen draw={drawBoard11} height={380}
+              caption="The mathematical rule—not a story click—restores the folio heading." />
+          </StoryShell>
+        );
 
       case 7:
         return (
-          <RuleScreen award={award}
-            ommls={[{ omml: M.onePeriod, alt: "each period has three places" }]}
-            hand={"Group in threes from the right · comma between periods · read each period, then say its name"}
-            cards={[
-              { title: "The number we built", omml: M.jeddahStandard, note: "four million, six hundred ninety-seven thousand" },
-              { title: "Tap to see it expanded", omml: M.standard305, revealOmml: M.expanded305, reveal: true,
-                note: "the zero in the hundreds place holds the place open" }
-            ]} />
+          <STEMWindow window={STORY && STORY.stemWindows && STORY.stemWindows[0]}>
+            <RuleScreen award={award}
+              ommls={[{ omml: M.onePeriod, alt: "each period has three places" }]}
+              hand={"Group in threes from the right · comma between periods · read each period, then say its name"}
+              cards={[
+                { title: "The number we built", omml: M.jeddahStandard, note: "four million, six hundred ninety-seven thousand" },
+                { title: "Tap to see it expanded", omml: M.standard305, revealOmml: M.expanded305, reveal: true,
+                  note: "the zero in the hundreds place holds the place open" }
+              ]} />
+          </STEMWindow>
         );
 
       case 8:
         return (
-          <ShowWhatYouKnow award={award}
-            prompt="Which number is three hundred five thousand, seventy-two?"
-            options={[{ v: "a", text: "35,072" }, { v: "b", text: "305,072" }, { v: "c", text: "305,720" }, { v: "d", text: "350,072" }]}
-            right="b"
-            support={{
-              yes: "Yes — the hundreds place holds a zero, and the tens hold 7.",
-              notYet: "Not yet — put it in the chart first.",
-              draw: drawSupport11, h: 84,
-              hint: "Which places have nothing in them? A zero holds that place open."
-            }} />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar will stamp only a record the class can defend"
+            text="The choice must preserve every place. Give a place-value reason before the teacher reveals the model."
+            clue="This evidence becomes the first line of the services brief">
+            <ShowWhatYouKnow award={award}
+              prompt="Which number is three hundred five thousand, seventy-two?"
+              options={[{ v: "a", text: "35,072" }, { v: "b", text: "305,072" }, { v: "c", text: "305,720" }, { v: "d", text: "350,072" }]}
+              right="b"
+              support={{
+                yes: "Yes — the hundreds place holds a zero, and the tens hold 7.",
+                notYet: "Not yet — put it in the chart first.",
+                draw: drawSupport11, h: 84,
+                hint: "Which places have nothing in them? A zero holds that place open."
+              }} />
+          </StoryShell>
         );
 
       case 9:
         return (
-          <Closing game={game} omml={M.jeddahStandard}
-            action="Find a number with more than four digits at home — on a bill, a car, a phone — and read it out loud by periods." />
+          <StoryHandoff
+            title="The first census fragment is restored"
+            text="Omar files the checkable number record. Zayd notices that the same digit appears again—one chair to the left."
+            artifact="Population and services brief · readable large-number record"
+            next="What happens to a digit's value when it moves one place left?">
+            <Closing game={game} omml={M.jeddahStandard}
+              action="Find a large number on a real bill, ticket or information screen. Identify whether it is real data or an estimate, then read it aloud by periods." />
+          </StoryHandoff>
         );
 
       default:

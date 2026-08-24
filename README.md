@@ -8,7 +8,9 @@ Single-file, interactive, gamified HTML lessons for **Savvas enVision Mathematic
 
 The proposed year-long story frame is **[The Lantern of Numeria](docs/plans/storytelling-curriculum-plan.html)**. It connects all 17 topics and maps a story purpose, student mission and handoff for every one of the 114 lessons. Its machine-readable source is [`story/story-map.json`](story/story-map.json).
 
-The proposal borrows the frame-story and cliffhanger craft of *One Thousand and One Nights*, uses source-checked Muslim STEM history as inquiry prompts, and keeps Seerah in a separate, qualified-review lane. It is a plan, not yet embedded in the lesson decks.
+The proposal borrows the frame-story and cliffhanger craft of *One Thousand and One Nights*, uses source-checked Muslim STEM history as inquiry prompts, and keeps Seerah in a separate, qualified-review lane.
+
+**Story implementation status:** the first vertical-slice lesson, `1-1`, is now built with the boy protagonists Omar and Zayd, a brass-lantern cold open, folio progress, animated unit motifs, a simulated civic-data mission, a source-checked Hindu-Arabic place-value STEM window, an artifact update and a cliffhanger into lesson `1-2`. The remaining lessons are still in the planned rollout.
 
 ## Progress — 114 of 114 lessons ✅ complete
 

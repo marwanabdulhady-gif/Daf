@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "title": "The Lantern of Numeria — a 17-chapter story spine",
-  "status": "flexible-screen planning proposal — not yet embedded in lesson decks",
+  "status": "pilot implementation in progress — lesson 1-1 applied",
   "premise": "In present-day Jeddah, two fictional Grade 4 archivists, Omar and Zayd, find a brass lantern holding a water-damaged civic design journal. Their class restores seventeen linked folios and uses each recovered idea to design Numeria: an explicitly fictional exhibition city built on amanah, evidence and beneficial knowledge.",
   "drivingQuestion": "How can mathematics help us design a city that deserves people’s trust?",
   "influences": {
@@ -185,7 +185,8 @@
             "recommended": 10,
             "planningBand": "9–12",
             "reason": "A new relationship, category or structure must be noticed before it is formalized."
-          }
+          },
+          "implementationStatus": "pilot-built"
         },
         {
           "code": "1-2",

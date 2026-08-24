@@ -247,6 +247,50 @@
       }
       .glass-card.chosen { border-color: var(--c); border-width: 2px; background: #fff; }
 
+      /* ---------------- story layer: three truth-status lanes ------------ */
+      .visual > .story-shell {
+        width: 100%; max-height: 100%; overflow-y: auto; padding: 1px 5px 5px;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.24) transparent;
+      }
+      .story-shell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+      .story-ribbon {
+        position: relative; min-height: 76px; overflow: hidden;
+        display: grid; grid-template-columns: auto minmax(0,1fr) minmax(145px,210px);
+        gap: 12px; align-items: center; padding: 8px 13px;
+        border-radius: 16px; border: 1px solid rgba(96,66,166,.24);
+        background: linear-gradient(112deg,#fff 0%,#f8f4ff 68%,#f0e9fa 100%);
+        box-shadow: 0 9px 24px rgba(7,30,39,.07);
+      }
+      .lane-stem .story-ribbon { border-color: rgba(45,112,179,.28); background: linear-gradient(112deg,#fff,#eef7ff); }
+      .lane-amanah .story-ribbon { border-color: rgba(56,140,70,.3); background: linear-gradient(112deg,#fff,#eff8ef); }
+      .story-motif { position: absolute; inset-inline-end: 0; bottom: -18px; width: 210px; height: 115px; color: #6042A6; opacity: .075; pointer-events: none; }
+      .lane-stem .story-motif { color: #2D70B3; }.lane-amanah .story-motif { color: #388C46; }
+      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; }
+      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); }
+      .story-ribbon-copy { position: relative; z-index: 2; min-width: 0; }
+      .story-lane { display: inline-flex; gap: 6px; align-items: center; font-size: 8.5px; font-weight: 950; letter-spacing: .13em; text-transform: uppercase; color: #6042A6; }
+      .lane-stem .story-lane { color: #2D70B3; }.lane-amanah .story-lane { color: #388C46; }
+      .story-ribbon-copy>b { display: block; margin-top: 2px; color: var(--daf-ink); font-size: 13px; line-height: 1.25; }
+      .story-ribbon-copy p { margin: 2px 0 0; color: var(--daf-ink-2); font-size: 10.5px; line-height: 1.38; }
+      .story-ribbon-copy small { display: block; margin-top: 4px; color: #6042A6; font-size: 9.5px; font-weight: 850; }
+      .lane-stem .story-ribbon-copy small { color: #2D70B3; }
+      .folio-progress { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 5px 8px; align-items: center; padding: 8px 9px; border-radius: 11px; background: rgba(255,255,255,.78); border: 1px solid rgba(96,66,166,.16); }
+      .folio-label { min-width: 0; }.folio-label b { display:block; font-size: 9px; color:#6042A6; text-transform:uppercase; letter-spacing:.1em; }.folio-label span { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:8.5px; color:var(--daf-ink-2); }
+      .folio-progress em { grid-row: 1 / span 2; grid-column: 2; font: 800 10px "JetBrains Mono",monospace; color:#6042A6; font-style:normal; }
+      .folio-pips { display:flex; gap:3px; }.folio-pips i { display:block; width:12px; height:4px; border-radius:5px; background:#ddd5ed; }.folio-pips i.restored { background:linear-gradient(90deg,#6042A6,#C9A227); }
+      .story-content { display:flex; flex-direction:column; gap:10px; min-width:0; }
+      .story-content>.glass-panel { flex: 1; }
+      .story-shell.compact .story-ribbon { min-height: 84px; }
+      .stem-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .stem-source-card { border:1px solid rgba(45,112,179,.25); border-radius:15px; background:#F2F8FD; padding:14px; }
+      .stem-source-card h3 { margin:8px 0 4px; font-size:13px; color:#1D5C91; }.stem-source-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .stem-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#2D70B3; text-transform:uppercase; }
+      .stem-source-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.stem-source-card summary { cursor:pointer; font-weight:900; color:#2D70B3; }.stem-source-card a { display:block; color:#1D5C91; margin-top:5px; }
+      .stem-math { min-width:0; display:flex; }.stem-math>.glass-panel { flex:1; }
+      .handoff-artifact { display:flex; gap:11px; align-items:center; padding:10px 14px; border-radius:13px; color:#fff; background:linear-gradient(100deg,#0B1F24,#12857C); border:1px solid rgba(201,162,39,.55); }
+      .handoff-artifact>span { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--daf-gold); color:#10242B; }.handoff-artifact b { display:block; color:var(--daf-gold-2); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }.handoff-artifact p { margin:2px 0 0; font-size:11px; color:#EAF4F2; }
+      @media(max-width:900px){.story-ribbon{grid-template-columns:auto minmax(0,1fr)}.folio-progress{display:none}.stem-layout{grid-template-columns:1fr}.story-ribbon-copy p{font-size:9.5px}}
+
       .btn { border: none; cursor: pointer; font-weight: 800; border-radius: 10px; transition: all 0.25s var(--ease); font-size: 12px; padding: 10px 18px; font-family: inherit; }
       .btn-primary { background: var(--c-grad); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--c) 32%, transparent); }
       .btn-primary:hover { transform: translateY(-2px); }
@@ -3064,6 +3108,7 @@
   }
 }
 ;</script>
+    <script>window.DAF_STORY = {"title":"The Lantern of Numeria — a 17-chapter story spine","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"unit":{"topic":1,"chapter":"The census in the brass lantern","question":"Can the class recover a damaged city census without changing what any digit means?","artifact":"A restored census folio and place-value key","pbl":"Teams prepare a one-page population and services brief for the fictional city of Numeria.","bridge":"The recovered population is much larger than expected. The council cannot plan services until the damaged budget ledger is audited.","lessonCount":5},"lesson":{"code":"1-1","curriculumTitle":"Numbers Through One Million","standard":"4.NBT.A.2","storyBeat":"The page with seven empty boxes","technique":"Mystery object / cold open","storyMove":"A torn census page shows seven places but no labels. The class must decide how to read the surviving number.","studentMission":"Read, write and represent the population so the archivist can restore the first line.","handoff":"End on the object or unanswered need that opens “Place Value Relationships”.","screenPlan":{"shape":"concept-discovery","shapeLabel":"Concept discovery","recommended":10,"planningBand":"9–12","reason":"A new relationship, category or structure must be noticed before it is formalized."},"implementationStatus":"pilot-built","index":0,"numberInUnit":1},"stemWindows":[{"id":"t1-hindu-arabic-place-value","topic":1,"lessonCodes":["1-1"],"title":"A number method that travelled","studentText":"The digits we use belong to the Hindu-Arabic numeral tradition. Place-value methods developed in India. Scholars working in the Islamic world studied, explained and transmitted them. Around the ninth century, al-Khwarizmi wrote about calculating with Hindu numerals. Knowledge travelled because people made methods clear enough for others to use.","inquiry":"Why does a place-value system make a large civic record easier to store, check and calculate with?","modernConnection":"Modern spreadsheets and databases still depend on each digit keeping a precise position.","teacherNote":"Say developed, described and transmitted—not invented by one person. Al-Khwarizmi's original Arabic arithmetic text is lost; later Latin versions survive in changed form.","sources":[{"label":"MacTutor · Al-Khwarizmi biography","url":"https://mathshistory.st-andrews.ac.uk/Biographies/Al-Khwarizmi/"},{"label":"Encyclopaedia Britannica · Zero","url":"https://www.britannica.com/science/zero-mathematics"}],"status":"source-checked draft"}]};</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
 const D = window.DAFDraw;
@@ -3368,6 +3413,160 @@ function gameReducer(g, a) {
     case "reset": return freshGame();
     default: return g;
   }
+}
+/* ===========================================================================
+   STORY LAYER · fictional boys, truth-status lanes, folio progress and STEM
+   Reusable by every lesson. Sacred history never enters these fictional parts.
+   =========================================================================== */
+const STORY = window.DAF_STORY || null;
+
+function StoryCharacter({ id, pose, size }) {
+  const who = id === "zayd" ? "zayd" : "omar";
+  const zayd = who === "zayd";
+  const s = size || 76;
+  const wave = pose === "present" || pose === "question";
+  const build = pose === "build";
+  const skin = zayd ? "#B9784B" : "#9C633F";
+  const shirt = zayd ? "#2D70B3" : "#12857C";
+  const accent = zayd ? "#FA7E19" : "#C9A227";
+  const label = zayd ? "Zayd, the model builder" : "Omar, the evidence keeper";
+  return (
+    <svg className="story-character" style={{ width: s + "px", height: (s * 1.12) + "px" }}
+      viewBox="0 0 100 112" role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy="106" rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d="M29 103 L33 61 Q50 51 67 61 L72 103 Z" fill={shirt} />
+      <path d="M37 63 Q50 74 63 63" fill="none" stroke={accent} strokeWidth="3" />
+      <rect x="43" y="48" width="14" height="15" rx="6" fill={skin} />
+      <circle cx="50" cy="34" r="21" fill={skin} />
+      <path d={zayd ? "M30 31 Q33 8 51 11 Q70 11 72 34 Q62 22 52 22 Q39 25 30 31" : "M30 29 Q35 9 51 11 Q69 10 71 31 Q60 20 48 22 Q38 24 30 29"} fill="#172E35" />
+      <circle cx="42" cy="35" r="2.2" fill="#10242B" /><circle cx="58" cy="35" r="2.2" fill="#10242B" />
+      <path d="M43 44 Q50 49 58 43" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      {wave ? (
+        <g><path d="M32 68 Q17 58 19 40" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <circle cx="20" cy="37" r="5" fill={skin} /></g>
+      ) : (
+        <path d="M33 69 Q23 82 25 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {build ? (
+        <g><path d="M67 69 Q79 76 76 91" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <rect x="68" y="86" width="21" height="11" rx="2" fill={accent} />
+          <path d="M72 90h13M76 87v10M82 87v10" stroke="#fff" strokeWidth="1" /></g>
+      ) : (
+        <path d="M67 69 Q78 82 75 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {!zayd && (
+        <g transform="translate(63 72) rotate(-14)"><rect width="21" height="27" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" />
+          <path d="M5 7h11M5 12h9M5 17h11" stroke={shirt} strokeWidth="1.5" /></g>
+      )}
+    </svg>
+  );
+}
+
+function StoryLantern({ size }) {
+  const s = size || 64;
+  return (
+    <svg className="story-lantern" style={{ width: s + "px", height: s + "px" }} viewBox="0 0 80 80" role="img" aria-label="The brass lantern">
+      <title>The brass lantern</title>
+      <path d="M31 8h18M35 8v8h10V8" fill="none" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+      <path d="M26 22 Q40 12 54 22 L59 57 Q40 69 21 57 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="3" />
+      <path d="M30 25h20l4 28H26z" fill="#FFF8D8" stroke="#C9A227" strokeWidth="2" />
+      <path d="M40 27v24M28 40h24" stroke="#C9A227" strokeWidth="2" opacity=".8" />
+      <circle cx="40" cy="40" r="7" fill="#C9A227" opacity=".42" />
+      <path d="M26 61h28M31 67h18" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function UnitShapeMotif({ topic }) {
+  if (topic !== 1) return <Star8 className="story-motif" />;
+  return (
+    <svg className="story-motif" viewBox="0 0 180 100" aria-hidden="true">
+      <path d="M8 85 Q28 52 48 85 Q68 52 88 85 Q108 52 128 85 Q148 52 172 85" fill="none" stroke="currentColor" strokeWidth="3" />
+      {[14, 42, 70, 98, 126, 154].map((x, i) => <rect key={x} x={x} y={18 + (i % 2) * 10} width="20" height="28" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />)}
+      <path d="M18 58h140" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" />
+    </svg>
+  );
+}
+
+function FolioProgress({ label }) {
+  if (!STORY) return null;
+  const n = STORY.lesson.numberInUnit, total = STORY.unit.lessonCount;
+  return (
+    <div className="folio-progress" aria-label={`Folio progress ${n} of ${total}`}>
+      <div className="folio-label"><b>Folio {STORY.unit.topic}</b><span>{label || STORY.unit.chapter}</span></div>
+      <div className="folio-pips">
+        {Array.from({ length: total }, (_, i) => <i key={i} className={i < n ? "restored" : ""} />)}
+      </div>
+      <em>{n}/{total}</em>
+    </div>
+  );
+}
+
+const STORY_LANES = {
+  fiction: { label: "Our story", icon: "fa-book-open", cls: "fiction" },
+  stem: { label: "History of useful knowledge", icon: "fa-compass-drafting", cls: "stem" },
+  amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
+};
+
+function StoryShell({ lane, character, pose, title, text, clue, children, compact }) {
+  const info = STORY_LANES[lane || "fiction"];
+  const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  return (
+    <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
+      <div className="story-ribbon">
+        <UnitShapeMotif topic={topic} />
+        <div className="story-cast">
+          {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
+            : character === "lantern" ? <StoryLantern size={58} />
+            : character ? <StoryCharacter id={character} pose={pose} size={60} />
+            : <StoryLantern size={54} />}
+        </div>
+        <div className="story-ribbon-copy">
+          <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
+          <b>{title}</b>
+          <p>{text}</p>
+          {clue && <small><Icon name="fa-key" /> {clue}</small>}
+        </div>
+        <FolioProgress />
+      </div>
+      <div className="story-content">{children}</div>
+    </div>
+  );
+}
+
+function STEMWindow({ window: item, children }) {
+  if (!item) return <>{children}</>;
+  return (
+    <StoryShell lane="stem" title={item.title} text={item.studentText} clue={item.inquiry} compact>
+      <div className="stem-layout">
+        <div className="stem-source-card">
+          <div className="stem-status"><Icon name="fa-circle-check" /> {item.status}</div>
+          <h3>Why this matters now</h3>
+          <p>{item.modernConnection}</p>
+          <details>
+            <summary>Teacher source notes</summary>
+            <p>{item.teacherNote}</p>
+            {(item.sources || []).map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+
+function StoryHandoff({ title, text, artifact, next, children }) {
+  return (
+    <StoryShell lane="fiction" character="both" pose="present" title={title} text={text}
+      clue={next ? "Next folio clue · " + next : null}>
+      <div className="handoff-artifact">
+        <span><Icon name="fa-stamp" /></span>
+        <div><b>Artifact updated</b><p>{artifact}</p></div>
+      </div>
+      {children}
+    </StoryShell>
+  );
 }
 /* ===========================================================================
    ROUTINE LIBRARY
@@ -4045,132 +4244,132 @@ const LESSON = {
   metas: [
     {
       phase: "warmup",
-      title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "One chart. No question yet. Every noticing counts.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Those repeating words have a name. We will get to it.",
+      title: "The lantern opens a <em>damaged census</em>",
+      lead: "Omar and Zayd find seven surviving digits, but the headings and commas are missing.",
+      goal: "Notice the repeated place-value structure before anyone names a rule.",
+      pull: "A city-planning record is hidden in those boxes.",
       rail: {
-        launch: "I am not asking a question yet. Just look, then tell me one thing.",
-        monitor: ["Noticing the labels repeat", "Noticing the groups of three", "Noticing the colours change"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Reading the chart right to left instead of naming places from the right."
+        launch: "This is our fictional frame. Ask only: what survives, and what seems to be missing?",
+        monitor: ["Noticing the groups of three", "Noticing repeating place names", "Wondering where commas belong"],
+        connect: "Which noticing could help an archivist rebuild the page?",
+        misconception: "Treating the lantern as an answer machine. It reveals evidence, never a solution."
       }
     },
     {
       phase: "launch",
-      title: "How many people live in <em>Jeddah</em>?",
-      lead: "About 4,697,000. Say that out loud. Where do you pause?",
-      goal: "Create the need — a big number is easier to read in chunks.",
-      pull: "Estimate first, then we will build the number together.",
+      title: "Numeria needs a <em>trustworthy population record</em>",
+      lead: "The simulated planning folio uses 4,697,000. How should a city planner read and store it?",
+      goal: "Connect large-number notation to a realistic civic data task.",
+      pull: "Lock a prediction before the place-value model appears.",
       rail: {
-        launch: "Try to say it without stopping. Now try again and pause where the commas are.",
-        monitor: ["Reading digit by digit", "Pausing at the commas", "Naming millions and thousands"],
-        connect: "What did the commas do for your voice?",
-        misconception: "Reading 4,697,000 as four six nine seven. Do not correct it — ask them to try again with pauses."
+        launch: "Clarify that 4,697,000 is simulated planning data, not a live Jeddah census figure.",
+        monitor: ["Reading digit by digit", "Pausing at commas", "Naming millions and thousands"],
+        connect: "How do the commas make this record easier to check aloud?",
+        misconception: "Presenting a simulated number as a current population fact."
       }
     },
     {
       phase: "monitor",
-      title: "Every digit has a <em>place</em> and a <em>value</em>",
-      lead: "Tap a place. Watch what that digit is actually worth.",
-      goal: "Separate the digit from the value it carries.",
-      pull: "Now let us write all of those values down at once.",
+      title: "Zayd asks: what is each digit <em>worth</em>?",
+      lead: "A digit is not enough evidence. Its position decides its value.",
+      goal: "Separate the digit from the value it carries in the civic record.",
+      pull: "Omar wants every value written so another person can audit it.",
       rail: {
-        launch: "Predict the value before you tap.",
-        monitor: ["Reading the value off the chart", "Counting zeros", "Using the period name"],
-        connect: "Why is the 7 worth 70,000 and not 7?",
+        launch: "Predict the value before selecting a place.",
+        monitor: ["Reading the value from position", "Counting zeros", "Using a period name"],
+        connect: "Why can the same digit represent different amounts?",
         misconception: "Saying the digit instead of its value."
       }
     },
     {
       phase: "monitor",
-      title: "Break it apart — <em>expanded form</em>",
-      lead: "Add one digit at a time and watch the value drop out underneath.",
-      goal: "Expanded form is the chart, written as a sum.",
-      pull: "Three ways to write one number. Can you match them?",
+      title: "Omar rebuilds the <em>missing values</em>",
+      lead: "Each recovered digit becomes one part of an expanded record.",
+      goal: "Use expanded form as an auditable version of the place-value chart.",
+      pull: "Three damaged records now need to be matched.",
       rail: {
-        launch: "Predict the next value before you reveal it.",
-        monitor: ["Writing each value with its zeros", "Skipping the zero digit", "Checking the sum"],
-        connect: "What happens to a place that holds a zero?",
+        launch: "Ask which value will appear before revealing the next part.",
+        monitor: ["Writing each value with zeros", "Skipping a zero digit correctly", "Checking the complete sum"],
+        connect: "How does expanded form help someone detect a copying error?",
         misconception: "Writing 62,415 as 6 + 2 + 4 + 1 + 5."
       }
     },
     {
       phase: "monitor",
-      title: "Match the <em>three forms</em>",
-      lead: "Standard, expanded, and word form all describe the same number.",
-      goal: "Move fluently between the three representations.",
-      pull: "Two students matched these differently. Let us look.",
+      title: "Three records need <em>correct matches</em>",
+      lead: "Standard form and word form must point to exactly the same quantity.",
+      goal: "Move between representations while protecting every placeholder zero.",
+      pull: "The class has two methods for checking the matches.",
       rail: {
-        launch: "There is no single right order — only a right match.",
-        monitor: ["Matching by the first digit", "Matching by counting places", "Reading the word form aloud"],
-        connect: "How did you know that one belonged there?",
-        misconception: "Matching by how long the number looks."
+        launch: "Do not grade until the class commits to all three matches.",
+        monitor: ["Matching from the greatest place", "Checking placeholder zeros", "Reading the words aloud"],
+        connect: "Which feature gave you the strongest evidence?",
+        misconception: "Matching records only because they look similar in length."
       }
     },
     {
       phase: "connect",
-      title: "Two ways to <em>read it</em>",
-      lead: "Sara reads by periods. Khalid counts places first. Both are correct.",
-      goal: "The comparison produces the rule — not the teacher.",
-      pull: "Now we put it on the board.",
+      title: "The class brings <em>two methods</em>",
+      lead: "The fictional boys step back. Real student strategies become the dialogue.",
+      goal: "Compare methods and name a reusable strategy in the Sijill.",
+      pull: "Zayd will draw the shared structure on the Evidence Board.",
       rail: {
-        launch: "Show both without judging either.",
-        monitor: ["Seeing the periods inside the counting", "Preferring the chart", "Reading straight off the commas"],
-        connect: "Where do both students use the number three?",
-        misconception: "Treating one method as the real method."
+        launch: "Replace the sample names with students from this room when possible.",
+        monitor: ["Seeing periods inside the chart", "Preferring one representation", "Explaining why both work"],
+        connect: "Where do both methods use groups of three?",
+        misconception: "Treating one valid representation as the only real method."
       }
     },
     {
       phase: "synth",
-      title: "On the <em>board</em>",
-      lead: "Group the digits in threes from the right. Put a comma between the groups. Read each group, then say its name.",
-      goal: "The moment the lesson is taught — not displayed.",
-      pull: "Say it in one sentence.",
+      title: "The rule enters the <em>Evidence Folio</em>",
+      lead: "Group from the right, mark the periods, then read each period by name.",
+      goal: "Build the rule publicly from the strategies students just compared.",
+      pull: "This place-value method has its own journey through history.",
       rail: {
-        launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Grouping from the right", "Restating it in their own words"],
-        connect: "Who can say the rule in one sentence?",
+        launch: "Draw with the class rather than presenting a completed rule.",
+        monitor: ["Predicting the next grouping", "Starting from the right", "Restating the rule"],
+        connect: "Which part of the rule prevents the most errors?",
         misconception: "Grouping in threes from the left."
       }
     },
     {
       phase: "synth",
-      title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
+      title: "A method travelled <em>across cultures</em>",
+      lead: "Place value was developed, studied, explained and transmitted across generations.",
+      goal: "Connect the mathematical rule to a source-checked history of useful knowledge.",
+      pull: "Now use the method to repair the first census line.",
       rail: {
-        launch: "Read it together, one voice.",
-        monitor: ["Linking periods to commas", "Testing it on a new number", "Asking about a zero in the middle"],
-        connect: "Does the rule still work when a period holds a zero?",
-        misconception: "Dropping a period that is all zeros when reading aloud."
+        launch: "Use developed, described and transmitted—not invented by one person.",
+        monitor: ["Linking zero to place holding", "Connecting written methods to data records", "Asking how knowledge travelled"],
+        connect: "Why would clear place value matter to a modern spreadsheet?",
+        misconception: "Claiming that al-Khwarizmi single-handedly invented the numeral system."
       }
     },
     {
       phase: "swyk",
-      title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.",
-      pull: "Well done. Let us see what you collected today.",
+      title: "Can we restore the <em>first census line</em>?",
+      lead: "Choose the record that preserves every place, including the empty ones.",
+      goal: "Use independent evidence to complete the story decision.",
+      pull: "A correct record restores the first fragment of Folio 1.",
       rail: {
-        launch: "Two minutes. Write your thinking, not just your answer.",
-        monitor: ["Using the chart", "Counting places", "Checking the zero in the tens"],
-        connect: "Collect responses to open tomorrow.",
-        misconception: "Ignoring the zero and reading three hundred five thousand seventy-two as 305,72."
+        launch: "Two minutes. Require a place-value reason, not only an option letter.",
+        monitor: ["Using the chart", "Counting places", "Protecting the zero in the hundreds place"],
+        connect: "Which zero is doing important work?",
+        misconception: "Ignoring a placeholder zero when translating words to digits."
       }
     },
     {
       phase: "connect",
-      title: "What you <em>collected</em> today",
-      lead: "Points are for thinking, not for speed.",
-      goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: what is a digit worth compared to the one on its right?",
+      title: "Fragment one is <em>restored</em>",
+      lead: "The population line is readable, checkable and ready for the unit services brief.",
+      goal: "Close with a real-world transfer and a precise mathematical cliffhanger.",
+      pull: "Next: one digit moves one place—and its value changes tenfold.",
       rail: {
-        launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the chart", "Ready for place value relationships"],
-        connect: "Who is teaching it at home tonight?",
-        misconception: "Chasing points instead of understanding."
+        launch: "Name the artifact contribution, then reveal only the next mathematical need.",
+        monitor: ["Explaining periods", "Using expanded form to audit", "Ready to discuss ten-times relationships"],
+        connect: "Where might your family see a large number that must be copied accurately?",
+        misconception: "Remembering the story but not the place-value method."
       }
     }
   ],
@@ -4182,62 +4381,92 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <NoticeWonder draw={drawChartIntro} height={262} award={award}
-            notices={["The labels repeat", "There are groups of three", "Each group has a name", "Some places are empty"]}
-            wonders={["Why groups of three?", "What comes after millions?", "Why the commas?"]} />
+          <StoryShell lane="fiction" character="lantern"
+            title="The page with seven empty boxes"
+            text="Omar sees a damaged civic folio. Zayd notices that the surviving places repeat in groups. The lantern reveals evidence—but never answers."
+            clue="Rebuild the headings before reading the record">
+            <NoticeWonder draw={drawChartIntro} height={238} award={award}
+              notices={["The labels repeat", "There are groups of three", "Each group has a name", "Some places are empty"]}
+              wonders={["Why groups of three?", "What comes after millions?", "Where do the commas belong?"]}
+              footnote="Story evidence counts only when the class can describe the mathematical structure." />
+          </StoryShell>
         );
 
       case 1:
         return (
-          <LaunchEstimate draw={drawJeddah} height={268} award={award}
-            label="How many digits does Jeddah's population have?"
-            min={4} max={10} start={6} unit="digits"
-            after="Locked. Now let us look at what each of those digits is worth."
-            note="A number this big is easier to say in chunks than all at once." />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="A planner must be able to read the record aloud"
+            text="The folio uses a simulated Jeddah planning figure. Omar marks it as model data so nobody mistakes it for a current census fact."
+            clue="How many places must the restored record protect?">
+            <LaunchEstimate draw={drawJeddah} height={235} award={award}
+              label="How many digits does 4,697,000 have?"
+              min={4} max={10} start={6} unit="digits"
+              after="Locked. Now build the evidence instead of waiting for a reveal."
+              note="Real planners use place value to store, compare and check large civic data. This lesson uses simulated data." />
+          </StoryShell>
         );
 
       case 2:
         return (
-          <ExploreChips draw={makeChartFocus(place)} height={250}
-            label="Tap a place in 874,203"
-            value={place}
-            onPick={(v) => setPlace(v)}
-            chips={[
-              { v: 0, label: "8" }, { v: 1, label: "7" }, { v: 2, label: "4" },
-              { v: 3, label: "2" }, { v: 4, label: "0" }, { v: 5, label: "3" }
-            ]}
-            caption={<MathEl omml={M.sixDigit} size="xl" display="block" />}
-            footnote="The digit tells you how many. The place tells you how much." />
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd builds a movable place-value frame"
+            text="He can slide a digit, but the class must predict what that position makes it worth before selecting it."
+            clue="Digit and value are different pieces of evidence">
+            <ExploreChips draw={makeChartFocus(place)} height={225}
+              label="Test a place in 874,203"
+              value={place}
+              onPick={(v) => setPlace(v)}
+              chips={[
+                { v: 0, label: "8" }, { v: 1, label: "7" }, { v: 2, label: "4" },
+                { v: 3, label: "2" }, { v: 4, label: "0" }, { v: 5, label: "3" }
+              ]}
+              caption={<MathEl omml={M.sixDigit} size="xl" display="block" />}
+              footnote="The digit tells how many. Position tells how much." />
+          </StoryShell>
         );
 
       case 3:
         return (
-          <ExploreChips draw={makeExpanded(shown)} height={272}
-            label="Reveal the value of each digit in 62,415"
-            value={shown}
-            onPick={(v) => setShown(v)}
-            chips={[1, 2, 3, 4, 5].map((n) => ({ v: n, label: n + (n === 1 ? " digit" : " digits") }))}
-            caption={<MathEl omml={M.compareForms} size="lg" display="block" />}
-            footnote="Expanded form is just the chart, written as a sum." />
+          <StoryShell lane="fiction" character="omar"
+            title="Omar turns the frame into an audit trail"
+            text="A copied total is easier to check when every non-zero place is written as its full value."
+            clue="Expanded form exposes a misplaced digit">
+            <ExploreChips draw={makeExpanded(shown)} height={235}
+              label="Build the value of each digit in 62,415"
+              value={shown}
+              onPick={(v) => setShown(v)}
+              chips={[1, 2, 3, 4, 5].map((n) => ({ v: n, label: n + (n === 1 ? " digit" : " digits") }))}
+              caption={<MathEl omml={M.compareForms} size="lg" display="block" />}
+              footnote="Expanded form is the chart written as a checkable sum." />
+          </StoryShell>
         );
 
       case 4:
         return (
-          <CardSort award={award} columns={3}
-            items={[
-              { id: "s1", text: "305,072", target: "t1" },
-              { id: "s2", text: "350,072", target: "t2" },
-              { id: "s3", text: "305,702", target: "t3" }
-            ]}
-            targets={[
-              { id: "t1", label: "three hundred five thousand, seventy-two" },
-              { id: "t2", label: "three hundred fifty thousand, seventy-two" },
-              { id: "t3", label: "three hundred five thousand, seven hundred two" }
-            ]} />
+          <StoryShell lane="fiction" character="both" pose="question"
+            title="Water blurred the links between three records"
+            text="Omar checks the words while Zayd checks the places. The class must commit before the folio marks any match."
+            clue="A zero may be empty, but its place is not optional">
+            <CardSort award={award} columns={3} commitLabel="Seal the three matches"
+              items={[
+                { id: "s1", text: "305,072", target: "t1" },
+                { id: "s2", text: "350,072", target: "t2" },
+                { id: "s3", text: "305,702", target: "t3" }
+              ]}
+              targets={[
+                { id: "t1", label: "three hundred five thousand, seventy-two" },
+                { id: "t2", label: "three hundred fifty thousand, seventy-two" },
+                { id: "t3", label: "three hundred five thousand, seven hundred two" }
+              ]} />
+          </StoryShell>
         );
 
       case 5:
         return (
+          <StoryShell lane="fiction" character="both" pose="present"
+            title="Omar and Zayd step out of the way"
+            text="The strongest methods now come from students in this room. Compare them, then preserve one useful method in the Sijill."
+            clue="Two representations can protect the same value">
           <CompareConnect award={award}
             left={{
               name: "Sara's way — read by periods", h: 88,
@@ -4268,41 +4497,63 @@ const LESSON = {
             diff={["Sara chunks, Khalid counts places",
                    "Khalid needs the chart, Sara does not",
                    "Sara is faster once she trusts the commas"]} />
+          </StoryShell>
         );
 
       case 6:
-        return <BoardScreen draw={drawBoard11} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The shared rule is drawn into the Evidence Folio"
+            text="Zayd builds only what the class can justify from the two student methods."
+            clue="Group from the right, then name each period">
+            <BoardScreen draw={drawBoard11} height={380}
+              caption="The mathematical rule—not a story click—restores the folio heading." />
+          </StoryShell>
+        );
 
       case 7:
         return (
-          <RuleScreen award={award}
-            ommls={[{ omml: M.onePeriod, alt: "each period has three places" }]}
-            hand={"Group in threes from the right · comma between periods · read each period, then say its name"}
-            cards={[
-              { title: "The number we built", omml: M.jeddahStandard, note: "four million, six hundred ninety-seven thousand" },
-              { title: "Tap to see it expanded", omml: M.standard305, revealOmml: M.expanded305, reveal: true,
-                note: "the zero in the hundreds place holds the place open" }
-            ]} />
+          <STEMWindow window={STORY && STORY.stemWindows && STORY.stemWindows[0]}>
+            <RuleScreen award={award}
+              ommls={[{ omml: M.onePeriod, alt: "each period has three places" }]}
+              hand={"Group in threes from the right · comma between periods · read each period, then say its name"}
+              cards={[
+                { title: "The number we built", omml: M.jeddahStandard, note: "four million, six hundred ninety-seven thousand" },
+                { title: "Tap to see it expanded", omml: M.standard305, revealOmml: M.expanded305, reveal: true,
+                  note: "the zero in the hundreds place holds the place open" }
+              ]} />
+          </STEMWindow>
         );
 
       case 8:
         return (
-          <ShowWhatYouKnow award={award}
-            prompt="Which number is three hundred five thousand, seventy-two?"
-            options={[{ v: "a", text: "35,072" }, { v: "b", text: "305,072" }, { v: "c", text: "305,720" }, { v: "d", text: "350,072" }]}
-            right="b"
-            support={{
-              yes: "Yes — the hundreds place holds a zero, and the tens hold 7.",
-              notYet: "Not yet — put it in the chart first.",
-              draw: drawSupport11, h: 84,
-              hint: "Which places have nothing in them? A zero holds that place open."
-            }} />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar will stamp only a record the class can defend"
+            text="The choice must preserve every place. Give a place-value reason before the teacher reveals the model."
+            clue="This evidence becomes the first line of the services brief">
+            <ShowWhatYouKnow award={award}
+              prompt="Which number is three hundred five thousand, seventy-two?"
+              options={[{ v: "a", text: "35,072" }, { v: "b", text: "305,072" }, { v: "c", text: "305,720" }, { v: "d", text: "350,072" }]}
+              right="b"
+              support={{
+                yes: "Yes — the hundreds place holds a zero, and the tens hold 7.",
+                notYet: "Not yet — put it in the chart first.",
+                draw: drawSupport11, h: 84,
+                hint: "Which places have nothing in them? A zero holds that place open."
+              }} />
+          </StoryShell>
         );
 
       case 9:
         return (
-          <Closing game={game} omml={M.jeddahStandard}
-            action="Find a number with more than four digits at home — on a bill, a car, a phone — and read it out loud by periods." />
+          <StoryHandoff
+            title="The first census fragment is restored"
+            text="Omar files the checkable number record. Zayd notices that the same digit appears again—one chair to the left."
+            artifact="Population and services brief · readable large-number record"
+            next="What happens to a digit's value when it moves one place left?">
+            <Closing game={game} omml={M.jeddahStandard}
+              action="Find a large number on a real bill, ticket or information screen. Identify whether it is real data or an estimate, then read it aloud by periods." />
+          </StoryHandoff>
         );
 
       default:
