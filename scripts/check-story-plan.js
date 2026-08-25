@@ -37,6 +37,10 @@ expected.forEach((item, index) => {
   else if (plan.recommended < limits[0] || plan.recommended > limits[1]) errors.push(`${item.code}: target outside planning band`);
   for (const key of ["storyBeat", "technique", "storyMove", "studentMission", "handoff"])
     if (!got.lesson[key]) errors.push(`${item.code}: missing ${key}`);
+  /* A lesson that has been implemented ships its handoff text in the deck; the
+     map record must then carry the real handoff, not the authoring instruction. */
+  if (got.lesson.implementationStatus && /^end on the object/i.test(got.lesson.handoff || ""))
+    errors.push(`${item.code}: implemented lesson still has a generic author-instruction handoff`);
 });
 
 const usedShapes = new Set(actual.map((entry) => entry.lesson.screenPlan && entry.lesson.screenPlan.shape));

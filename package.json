@@ -5,10 +5,10 @@
   "description": "Interactive Savvas enVision Grade 4 mathematics lessons for Dar Al Fikr Schools.",
   "main": "engine/omml.js",
   "scripts": {
-    "test": "node tests/omml.test.js",
+    "test": "node tests/omml.test.js && node tests/folio-state.test.js",
     "verify": "node scripts/verify.js",
     "check:research": "node scripts/check-research-gate.js",
-    "check:story": "node scripts/check-story-plan.js",
+    "check:story": "node scripts/check-story-plan.js && node scripts/check-story-foundation.js",
     "check:topic": "node scripts/check-topic.js",
     "sweep": "node scripts/sweep.js",
     "sweep:topic": "node scripts/sweep-topic.js",

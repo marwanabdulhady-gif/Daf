@@ -10,7 +10,7 @@ The proposed year-long story frame is **[The Lantern of Numeria](docs/plans/stor
 
 The proposal borrows the frame-story and cliffhanger craft of *One Thousand and One Nights*, uses source-checked Muslim STEM history as inquiry prompts, and keeps Seerah in a separate, qualified-review lane.
 
-**Story implementation status:** the first vertical-slice lesson, `1-1`, is now built with the boy protagonists Omar and Zayd, a brass-lantern cold open, folio progress, animated unit motifs, a simulated civic-data mission, a source-checked Hindu-Arabic place-value STEM window, an artifact update and a cliffhanger into lesson `1-2`. The remaining lessons are still in the planned rollout.
+**Story implementation status:** the first vertical-slice lesson, `1-1`, is now built with the boy protagonists Omar and Zayd, a brass-lantern cold open, folio progress, animated unit motifs, a simulated civic-data mission, a source-checked Hindu-Arabic place-value STEM window, an artifact update and a cliffhanger into lesson `1-2`. The remaining lessons are still in the planned rollout. The foundation itself was audited and completed in the PR 01 follow-up: every one of the 115 decks now carries its embedded story payload, the source registry uses a controlled status vocabulary (only `source-checked` windows may ship), and `npm run check:story` validates the screen plans, the registry and every embedded payload — see [`docs/research/pr-01-followup-foundation-audit.md`](docs/research/pr-01-followup-foundation-audit.md).
 
 ## Progress — 114 of 114 lessons ✅ complete
 
@@ -377,11 +377,14 @@ engine/              shared across every lesson — edit once, rebuild all
                        fractions, decimals, measurement, geometry and volume
   primitives.jsx       PHASES, OMML helpers, MathEl, Sketch, XP and badges
   routines.jsx         shared routines for flexible-length lesson sequences
+  folio-state.js       durable class folio state (localStorage, class-level only, export/reset)
   app.jsx              generic shell, driven entirely by the LESSON object
 lessons/             one JSX source file per lesson, plus topic bosses
 html/                generated deliverables — one self-contained HTML file per lesson
 story/               approved/planned narrative data, separate from core curriculum data
   story-map.json       17 connected unit arcs and all 114 lesson story beats
+  stem-sources.json    reviewed STEM windows (schema v2: re-verification dates, image provenance)
+  amanah-sources.json  blocked Seerah/Amanah registry with approval states (approved = 6-field audit record)
 docs/
   plans/               implementation and storytelling plans
   audits/              curriculum and gamification reviews
@@ -404,7 +407,7 @@ npm test                                               # OMML renderer unit test
 npm run build:index                                    # regenerate the topic hub
 npm run build:story-plan                               # regenerate the storytelling plan
 npm run check:research -- docs/research/pr-01-foundation-and-lesson-1-1.md
-npm run check:story                                    # validate 114 flexible screen plans
+npm run check:story                                    # validate 114 screen plans, source registry, embedded payloads
 npm run verify                                         # guardrail checks across built lessons
 npm run check:topic -- 17                              # deep consistency check for one topic
 npm run sweep:topic -- 17                              # live browser pass over one topic
