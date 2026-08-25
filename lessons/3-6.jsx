@@ -16,9 +16,10 @@ const M = {
 };
 
 /* compensation: 5 x 20 rectangle with a slice taken off */
-const makeCompensate = (cut) => (ctx, W, H, frame) => {
+const makeCompensate = (cut, onCut) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onCut) D.tap(ctx, { x: 78, y: 60, w: W - 150, h: 100, value: 0, on: () => onCut(!cut) });
   const x = 78, y = 66, w = W - 150, h = 96;
   const keepW = w * (18 / 20);
   ctx.save();
@@ -56,9 +57,10 @@ const makeCompensate = (cut) => (ctx, W, H, frame) => {
 };
 
 /* double and halve */
-const makeDoubleHalve = (step) => (ctx, W, H, frame) => {
+const makeDoubleHalve = (step, onStep) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onStep(step === 0 ? 1 : 0) });
   const pairs = [[5, 18], [10, 9]];
   const p = pairs[step];
   const x = 82, y = 68, w = (W - 160) * (p[1] / 18), h = 22 + p[0] * 6;
@@ -166,92 +168,84 @@ const LESSON = {
   ixl: ["YR9", "5C8", "B6N"],
 
   metas: [
-    { phase: "warmup", title: "Which strategy <em>doesn't belong</em>?",
-      lead: "Four ways to work out 5 × 18. Every one has a reason.",
-      goal: "Reasoning before answers — no card is wrong.",
-      pull: "All four give 90. They do not all cost the same effort.",
-      rail: { launch: "Choose a card, then convince your partner.",
-        monitor: ["Reasoning from ease", "Reasoning from the property used", "Reasoning from the number of steps"],
-        connect: "Can every card be the odd one out?",
-        misconception: "Assuming the shortest method is always the best." } },
+    { phase: "warmup", title: "The delayed <em>delivery</em>",
+      lead: "The delivery note is late and the paper is gone. Five rows of 18 prayer mats at the market — the order must be updated in the air.",
+      goal: "Notice the product hides a friendly number one step away.",
+      pull: "Change the numbers, protect the product.",
+      rail: { launch: "Fictional frame. Just look at the rows — no working yet.",
+        monitor: ["Noticing 18 is near 20", "Seeing five rows", "Wonding what a mental method is"],
+        connect: "What friendly number is 18 almost touching?",
+        misconception: "Reaching for the paper before trying the head." } },
 
-    { phase: "launch", title: "Five rows of <em>eighteen</em>",
-      lead: "The hall needs 5 rows of 18 prayer mats. No pencil.",
-      goal: "Create the need — 18 is awkward, 20 is not.",
-      pull: "Estimate first, then we will make it friendly.",
-      rail: { launch: "Hands down. What is the total, and what did your brain do first?",
-        monitor: ["Adding 18 five times", "Using 5 x 20", "Splitting 18 into 10 and 8"],
-        connect: "Who changed a number before multiplying?",
-        misconception: "Believing mental maths means picturing the written method." } },
+    { phase: "launch", title: "Five rows of <em>eighteen mats</em>",
+      lead: "How many prayer mats? No pencil — what did your brain do first?",
+      goal: "Create the need — 5 × 20 is easy, 5 × 18 is not yet.",
+      pull: "5 × 20 is easy. 5 × 18 is not — yet.",
+      rail: { launch: "Hands down. Give a total, and say what you did to the numbers.",
+        monitor: ["Adding 18 five times", "Stretching 18 to 20", "Splitting 18 into 10 and 8"],
+        connect: "Who changed the numbers before multiplying?",
+        misconception: "Believing mental math means the written method done silently." } },
 
-    { phase: "monitor", title: "Overshoot, then <em>take it back</em>",
-      lead: "Multiply by 20 instead, then remove what you added.",
-      goal: "Compensation in multiplication removes a whole group, not one unit.",
-      pull: "There is another trick hiding in these numbers.",
-      rail: { launch: "Predict how much you will have to take off.",
-        monitor: ["Taking off 2", "Taking off 5 x 2", "Explaining why it is 10"],
-        connect: "Why do you take off 10 and not 2?",
-        misconception: "Subtracting 2 instead of 5 groups of 2." } },
+    { phase: "monitor", title: "Zayd stretches to <em>20</em>, then cuts",
+      lead: "Overshoot to 5 × 20, then take the extra back — five twos, one for each row.",
+      goal: "Compensation: change the numbers, protect the product.",
+      pull: "You added 2 to every one of the 5 rows — so you must take off 5 twos.",
+      rail: { launch: "Predict the total before the slice is cut.",
+        monitor: ["Stretching to 20", "Counting five twos", "Subtracting 10 from 100"],
+        connect: "Why are there five twos, not just one?",
+        misconception: "Taking off only one 2 instead of 5 × 2." } },
 
-    { phase: "monitor", title: "Double one, <em>halve the other</em>",
-      lead: "Twice as many rows, half as long. The rectangle keeps its area.",
-      goal: "The associative property, seen as a reshaped rectangle.",
-      pull: "Name each strategy when you meet it.",
-      rail: { launch: "Predict the new pair of numbers before you tap.",
-        monitor: ["Doubling and halving correctly", "Doubling both", "Checking the product"],
-        connect: "Why does the product not change?",
-        misconception: "Doubling one factor without halving the other." } },
+    { phase: "monitor", title: "Omar <em>doubles and halves</em>",
+      lead: "Twice as many rows, half as long — the squares never left the rectangle.",
+      goal: "Reshape the factors when one is even and the other can halve.",
+      pull: "5 × 18 = 10 × 9 — the same squares, a new shape.",
+      rail: { launch: "Before you tap: how many rows after the reshape?",
+        monitor: ["Doubling the rows", "Halving the length", "Seeing 10 × 9"],
+        connect: "Did the total change when the shape changed?",
+        misconception: "Thinking the reshape changes the product." } },
 
     { phase: "monitor", title: "Name the <em>strategy</em>",
-      lead: "Match each piece of working to its strategy. No grading until the class commits.",
-      goal: "Name the strategies so students can choose one on purpose.",
-      pull: "Two students used different strategies on the same numbers.",
-      rail: { launch: "Read each one out loud before you place it.",
-        monitor: ["Spotting a changed factor", "Spotting a split", "Spotting a doubling"],
-        connect: "Which strategy suits numbers ending in 9?",
-        misconception: "Calling every mental method compensation." } },
+      lead: "Three pieces of working. Each one is a different strategy.",
+      goal: "Sort the working so the class can choose a strategy on purpose.",
+      pull: "Read each working before you place it.",
+      rail: { launch: "Say what the working does to the numbers.",
+        monitor: ["Spotting the overshoot", "Spotting the split", "Spotting the reshape"],
+        connect: "How could you tell them apart?",
+        misconception: "Thinking any mental method is compensation." } },
 
-    { phase: "connect", title: "Two ways to <em>make it easy</em>",
-      lead: "Wafa overshot to 20. Jamal split 18 into 10 and 8. Both got 90.",
+    { phase: "connect", title: "Wafa <em>overshoots</em>. Jamal <em>splits</em>",
+      lead: "Wafa: 5 × 20 − 5 × 2. Jamal: 5 × 10 + 5 × 8. Both get 90.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Overshooting", "Splitting", "Choosing by the numbers given"],
-        connect: "Which would you choose for 6 x 49?",
+        monitor: ["Comparing overshoot and split", "Checking both reach 90", "Choosing by the numbers"],
+        connect: "Which strategy would you choose for 6 × 49?",
         misconception: "Believing one strategy must always be used." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Stretch the rectangle to 20, then cut off the piece you added.",
+    { phase: "synth", title: "On the <em>board</em>: change the numbers, protect the product",
+      lead: "Draw the rectangle. Change its shape. Count that the squares never left.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the extra strip", "Naming its size", "Restating it in their own words"],
+        monitor: ["Predicting the next stroke", "Watching the area stay fixed", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Forgetting to undo the change." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the change and the undo", "Testing on a new product", "Choosing a strategy deliberately"],
-        connect: "Which numbers make compensation worth using?",
-        misconception: "Using compensation when the number is nowhere near a ten." } },
+        misconception: "Changing one factor without protecting the product." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Show what you changed and what you took off.",
-        monitor: ["Using 6 x 50", "Taking off 6", "Taking off 1"],
+      lead: "6 × 49 in your head. What do you take off after 6 × 50?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Say the strategy out loud.",
+        monitor: ["Stretching 49 to 50", "Counting six ones", "Subtracting 6 from 300"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Taking off 1 instead of 6." } },
+        misconception: "Taking off 1 instead of 6 — one extra per row." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The order is <em>updated</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: choosing the right strategy for any product.",
-      rail: { launch: "Ask three students to name a strategy and when they would use it.",
-        monitor: ["Able to explain it to someone else", "Still needs the rectangle", "Ready to choose freely"],
+      pull: "Tomorrow: three methods at the gate — three contractors, one order.",
+      rail: { launch: "Ask three students to say their strategy in their own words.",
+        monitor: ["Able to explain the strategy", "Still adds by repeated rows", "Ready to choose between methods"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -262,91 +256,141 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <WODB award={award}
-          prompt="Four ways to reach 5 × 18 = 90. Which one doesn't belong?"
-          cards={[
-            { id: "a", omml: M.compensate, why: "Overshoots to 20, then takes the extra back" },
-            { id: "b", omml: M.breakApart, why: "Splits 18 by place value into 10 and 8" },
-            { id: "c", omml: M.doubleHalve, why: "The only one that changes both factors at once" },
-            { id: "d", text: "18+18+18+18+18", why: "The only one that does not multiply at all" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The delayed delivery"
+            text="The delivery note is late and the paper is gone. Five rows of 18 prayer mats at the market — the order must be updated in the air."
+            clue="A friendly number is one step away">
+            <NoticeWonder draw={drawMarket} height={252} award={award}
+              notices={["There are 5 rows", "Each row has 18", "18 is near 20", "There is no paper"]}
+              wonders={["How many mats in total?", "Can I change the rows and keep the total?", "Which change is friendliest?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawMarket} height={252} award={award}
-          label="How many prayer mats?" min={40} max={160} start={90} unit="mats"
-          after="Locked. Now let us see what your brain did to make it easy."
-          note="5 x 20 is easy. 5 x 18 is not — yet." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Five rows of eighteen mats"
+            text="Omar asks for the mental total before the order is updated — no pencil, just the numbers."
+            clue="5 × 20 is easy. 5 × 18 is not — yet.">
+            <LaunchEstimate draw={drawMarket} height={252} award={award}
+              label="How many prayer mats?" min={40} max={160} start={90} unit="mats"
+              after="Locked. Now let us see what your brain did to make it easy."
+              note="The market counts are simulated — the strategies work on any product." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeCompensate(cut)} height={252}
-          label="Stretch it to 20, then cut the extra off"
-          value={cut ? 1 : 0}
-          onPick={(v) => setCut(v === 1)}
-          chips={[{ v: 0, label: "5 × 18" }, { v: 1, label: "stretch to 5 × 20" }]}
-          caption={<MathEl omml={M.compensate} size="xl" display="block" />}
-          footnote="You added 2 to every one of the 5 rows — so you must take off 5 twos." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd stretches to 20, then cuts"
+            text="He can stretch the rows to 20 — the class must say what has to be taken back."
+            clue="You added 2 to every one of the 5 rows">
+            <ExploreChips draw={makeCompensate(cut, setCut)} height={252}
+              label="Stretch it to 20, then cut the extra off"
+              value={cut ? 1 : 0}
+              onPick={(v) => setCut(v === 1)}
+              chips={[{ v: 0, label: "5 × 18" }, { v: 1, label: "stretch to 5 × 20" }]}
+              caption={<MathEl omml={M.compensate} size="xl" display="block" />}
+              footnote="You added 2 to every one of the 5 rows — so you must take off 5 twos." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeDoubleHalve(step)} height={252}
-          label="Reshape the rectangle"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "5 × 18" }, { v: 1, label: "double and halve" }]}
-          caption={<MathEl omml={M.doubleHalve} size="xl" display="block" />}
-          footnote="Twice as many rows, half as long — the squares never left." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar doubles and halves"
+            text="His rectangle changes shape — twice as many rows, half as long — but the squares never leave."
+            clue="5 × 18 = 10 × 9 — the same squares, a new shape">
+            <ExploreChips draw={makeDoubleHalve(step, setStep)} height={252}
+              label="Reshape the rectangle"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "5 × 18" }, { v: 1, label: "double and halve" }]}
+              caption={<MathEl omml={M.doubleHalve} size="xl" display="block" />}
+              footnote="Twice as many rows, half as long — the squares never left." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "w1", text: "5 × 20 − 5 × 2", target: "comp" },
-            { id: "w2", text: "5 × 10 + 5 × 8", target: "split" },
-            { id: "w3", text: "10 × 9", target: "reshape" }
-          ]}
-          targets={[
-            { id: "comp", label: "compensation — overshoot, then take back" },
-            { id: "split", label: "breaking apart by place value" },
-            { id: "reshape", label: "double one, halve the other" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Name the strategy"
+            text="Omar and Zayd lay three pieces of working on the table. Each one is a different strategy."
+            clue="Read each working before you place it">
+            <CardSort award={award} columns={3}
+              items={[
+                { id: "w1", text: "5 × 20 − 5 × 2", target: "comp" },
+                { id: "w2", text: "5 × 10 + 5 × 8", target: "split" },
+                { id: "w3", text: "10 × 9", target: "reshape" }
+              ]}
+              targets={[
+                { id: "comp", label: "compensation — overshoot, then take back" },
+                { id: "split", label: "breaking apart by place value" },
+                { id: "reshape", label: "double one, halve the other" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Wafa's way — overshoot", omml: M.compensate, h: 92,
-                  quote: "I did 5 times 20, then took off the two extra in each row." }}
-          right={{ name: "Jamal's way — split it", omml: M.breakApart, h: 92,
-                   quote: "Ten of them, then eight of them." }}
-          same={["Both get 90", "Both avoid writing it down", "Both use a friendly number"]}
-          diff={["Wafa subtracts at the end, Jamal adds", "Jamal never overshoots",
-                 "Wafa's is faster when the number is near a ten"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 90"
+            text="Wafa overshoots to 20 and takes back. Jamal splits the 18 into 10 and 8. Both get 90."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Wafa's way — overshoot", omml: M.compensate, h: 92,
+                      quote: "I did 5 times 20, then took off the two extra in each row." }}
+              right={{ name: "Jamal's way — split it", omml: M.breakApart, h: 92,
+                       quote: "Ten of them, then eight of them." }}
+              same={["Both get 90", "Both avoid writing it down", "Both use a friendly number"]}
+              diff={["Wafa subtracts at the end, Jamal adds", "Jamal never overshoots",
+                     "Wafa's is faster when the number is near a ten"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard36} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The strategy is drawn, not declared"
+            text="Zayd builds only what the class can justify: the shape changed, the product protected."
+            clue="Change the numbers, protect the product">
+            <BoardScreen draw={drawBoard36} height={430}
+              caption="Change the numbers, protect the product." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "change the numbers, protect the product" }]}
-          hand={"make one factor friendly · do the easy multiplication · then undo exactly what you changed"}
-          cards={[
-            { title: "The product we built", omml: M.compensate, note: "5 rows, 2 extra in each" },
-            { title: "Tap for another strategy", omml: M.problem, revealOmml: M.doubleHalve, reveal: true,
-              note: "double one factor, halve the other" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar updates the order in the air"
+            text="6 × 49. Say the strategy first — then the number you take off."
+            clue="Stretching 49 to 50 adds 1 to each of the 6 rows">
+            <ShowWhatYouKnow award={award}
+              prompt="Work out 6 × 49 in your head. What do you take off after 6 × 50?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "1" }, { v: "b", text: "6" }, { v: "c", text: "50" }, { v: "d", text: "49" }]}
+              right="b"
+              support={{
+                yes: "Yes — 6 × 50 = 300, take off 6, so 294.",
+                notYet: "Not yet — you added 1 to each of the six groups.",
+                draw: drawSupport36, h: 96,
+                hint: "You stretched 49 to 50. That is 1 extra in every one of the 6 rows."
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Work out 6 × 49 in your head. What do you take off after 6 × 50?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "1" }, { v: "b", text: "6" }, { v: "c", text: "50" }, { v: "d", text: "49" }]}
-          right="b"
-          support={{
-            yes: "Yes — 6 × 50 = 300, take off 6, so 294.",
-            notYet: "Not yet — you added 1 to each of the six groups.",
-            draw: drawSupport36, h: 96,
-            hint: "You stretched 49 to 50. That is 1 extra in every one of the 6 rows."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Multiply a price ending in 9 by a small number in your head tonight, using overshoot and take back." />;
+        return (
+          <StoryHandoff
+            title="The order is updated"
+            text="Omar updates the order in the air and signs it from memory. At the gate, three contractors step up to the same order — each holding a different multiplication strategy."
+            artifact="Grove plan · order updated mentally"
+            next="Three methods at the gate — three contractors, one order. Which strategy earns the contract?">
+            <Closing game={game} omml={M.rule}
+              action="Change a product in your head tonight — stretch, split or reshape — and say which you chose and why." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

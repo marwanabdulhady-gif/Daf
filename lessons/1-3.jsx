@@ -1,8 +1,9 @@
 /* ===========================================================================
    SAVVAS enVision Mathematics · Grade 4 · Topic 1
-   LESSON 1-3 · Compare Whole Numbers                    Standard: 4.NBT.A.2
+   LESSON 1-3 · Compare Whole Numbers                 Standard: 4.NBT.A.2
    I can ... compare two multi-digit numbers using place value, and record the
             comparison with the symbols for greater than, less than or equal.
+   Story beat: "Two districts, one clinic" — both lead (role rotation resumes).
    =========================================================================== */
 
 const M = {
@@ -10,27 +11,52 @@ const M = {
   pairLess: om(mt("328,234<394,284")),
   sameStart: om(mt("6,716>6,714")),
   equalPair: om(mt("12,050=12,050")),
-  greaterSym: om(mt(">")),
-  lessSym: om(mt("<")),
-  equalSym: om(mt("=")),
   firstDiff: om(mnor("compare the first place that is "), mt("different")),
-  swykPair: om(mt("47,891"), mnor(" and "), mt("47,918")),
-  swykAnswer: om(mt("47,891<47,918"))
+  swykAnswer: om(mt("350,072>305,072"))
 };
 
-/* ---- drawings ------------------------------------------------------------ */
+/* ---- lesson-specific drawings ------------------------------------------- */
+
+/* Cold open / launch: two district cards, each claiming to be bigger */
+const drawClaim = (ctx, W, H, frame) => {
+  const f = frame % 640;
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  const cards = [
+    { name: "EAST DISTRICT", num: "394,284", col: "#388C46", x: 18, a: D.at(f, 0, 240) },
+    { name: "WEST DISTRICT", num: "328,234", col: "#2D70B3", x: W / 2 + 10, a: D.at(f, 160, 400) }
+  ];
+  const cw = W / 2 - 32;
+  cards.forEach((c) => {
+    if (c.a <= 0) return;
+    ctx.save();
+    ctx.globalAlpha = c.a;
+    D.rr(ctx, c.x, 40, cw, H - 84, 12);
+    ctx.fillStyle = "rgba(255,255,255,.05)"; ctx.fill();
+    ctx.strokeStyle = c.col; ctx.lineWidth = 2; ctx.stroke();
+    ctx.restore();
+    D.txt(ctx, c.name, c.x + cw / 2, 68, { size: 12, col: c.col, font: "mono", weight: 700, alpha: c.a });
+    D.txt(ctx, c.num, c.x + cw / 2, 112, { size: 30, col: "#EAF4F2", font: "marker", alpha: c.a });
+  });
+  const claim = D.at(f, 300, 460);
+  if (claim > 0) {
+    D.txt(ctx, "“WE are the bigger district!”", W / 2, H - 44,
+      { size: 15, col: "#C9A227", font: "marker", alpha: claim });
+    D.txt(ctx, "both cards cannot be right — only evidence can settle it", W / 2, H - 20,
+      { size: 12, col: "rgba(234,244,242,.6)", font: "marker", alpha: D.at(f, 380, 520) });
+  }
+};
 
 /* two numbers aligned in a chart, scanning left to right */
-const makeScanner = (step) => (ctx, W, H, frame) => {
+const makeScanner = (step, onTap) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   const a = "394284", b = "328234";
   const cw = Math.min(52, (W - 90) / 6), x0 = W / 2 - (6 * cw) / 2;
   const yA = 74, yB = 132;
-  const places = ["hundred\nthousands", "ten\nthousands", "thousands", "hundreds", "tens", "ones"];
-
   for (let i = 0; i < 6; i++) {
     const cx = x0 + i * cw + cw / 2;
+    if (onTap) D.tap(ctx, { x: x0 + i * cw, y: yA - 26, w: cw, h: 84, value: i, on: onTap });
     const scanned = i < step;
     const active = i === step;
     const dim = i > step;
@@ -46,7 +72,6 @@ const makeScanner = (step) => (ctx, W, H, frame) => {
     D.txt(ctx, b[i], cx, yB, { size: 30, col: active ? "#C9A227" : col, font: "marker" });
     if (scanned) D.txt(ctx, "same", cx, yB + 34, { size: 9.5, col: "rgba(52,211,153,.75)", font: "mono", weight: 700 });
   }
-
   if (step === 1) {
     D.txt(ctx, "9 is greater than 2 — stop here", W / 2, yB + 72, { size: 16, col: "#C9A227", font: "marker" });
     D.txt(ctx, "394,284 is the greater number", W / 2, H - 22, { size: 15, col: "#34D399", font: "marker" });
@@ -58,7 +83,7 @@ const makeScanner = (step) => (ctx, W, H, frame) => {
   }
 };
 
-/* number line placement */
+/* number line check: further right means greater */
 const drawLinePlace = (ctx, W, H, frame) => {
   const CYCLE = 520, f = frame % CYCLE;
   const p1 = D.at(f, 0, 110), p2 = D.at(f, 100, 240), p3 = D.at(f, 240, 360);
@@ -88,85 +113,44 @@ const drawLinePlace = (ctx, W, H, frame) => {
     { size: 13, col: "#C9A227", font: "marker" });
 };
 
-/* Launch: two Red Sea dive depths */
-const drawDepths = (ctx, W, H, frame) => {
-  const CYCLE = 560, f = frame % CYCLE;
-  const p1 = D.at(f, 0, 100), p2 = D.at(f, 90, 240), p3 = D.at(f, 240, 350);
-  D.rr(ctx, 0, 0, W, H, 14);
-  ctx.fillStyle = "#0B1F24"; ctx.fill();
-  /* water */
-  ctx.save();
-  ctx.globalAlpha = 0.16 * p1;
-  D.rr(ctx, 10, 40, W - 20, H - 56, 10);
-  ctx.fillStyle = "#2D70B3"; ctx.fill();
-  ctx.restore();
-  D.marker(ctx, [[14, 42], [W - 14, 42]], p1, "rgba(103,232,249,.7)", 2.4);
-  D.txt(ctx, "Red Sea", W / 2, 24, { size: 12.5, col: "#67E8F9", font: "marker", alpha: p1 });
-
-  const sites = [
-    { name: "Abu Tair", v: 1834, x: W * 0.3, col: "#FA7E19" },
-    { name: "Shaab Nazar", v: 1843, x: W * 0.7, col: "#C9A227" }
-  ];
-  sites.forEach((s, n) => {
-    const a = D.at(p2, n * 0.3, n * 0.3 + 0.6);
-    if (a <= 0) return;
-    const depth = 60 + (s.v - 1800) * 3.4;
-    D.marker(ctx, [[s.x, 44], [s.x, 44 + depth * a]], 1, s.col, 2);
-    ctx.save();
-    ctx.globalAlpha = a;
-    ctx.beginPath(); ctx.arc(s.x, 44 + depth, 6, 0, Math.PI * 2);
-    ctx.fillStyle = s.col; ctx.fill();
-    ctx.restore();
-    D.txt(ctx, s.name, s.x, 44 + depth + 24, { size: 12, col: s.col, font: "marker", alpha: a });
-    if (p3 > 0) D.txt(ctx, s.v.toLocaleString("en-US") + " m", s.x, 44 + depth + 46,
-      { size: 16, col: "#EAF4F2", font: "marker", alpha: p3 });
-  });
-  if (p3 > 0.7) D.txt(ctx, "which site is deeper?", W / 2, H - 16,
-    { size: 13, col: "#C9A227", font: "marker" });
-};
-
-/* Board: the comparison algorithm */
+/* Board: the first-different-place rule */
 const drawBoard13 = (ctx, W, H, frame) => {
-  const CYCLE = 760, f = frame % CYCLE;
-  D.board(ctx, W, H, { t: frame, title: "Which number is greater?" });
-  const p1 = D.at(f, 20, 130), p2 = D.at(f, 130, 270), p3 = D.at(f, 270, 430), p4 = D.at(f, 430, 600);
-
+  const CYCLE = 720, f = frame % CYCLE;
+  D.board(ctx, W, H, { t: frame, title: "How do we compare two big numbers?" });
+  const p1 = D.at(f, 20, 140), p2 = D.at(f, 140, 300), p3 = D.at(f, 300, 460), p4 = D.at(f, 460, 600);
   const a = "394284", b = "328234";
-  const cw = 46, x0 = W / 2 - (6 * cw) / 2, yA = 106, yB = 164;
+  const cw = 54, x0 = W / 2 - (6 * cw) / 2, yA = 120, yB = 176;
   for (let i = 0; i < 6; i++) {
-    const av = D.at(p1, i / 6, i / 6 + 0.35);
-    if (av <= 0) continue;
+    const aa = D.at(p1, i / 6, i / 6 + 0.4);
+    if (aa <= 0) continue;
     const cx = x0 + i * cw + cw / 2;
-    D.txt(ctx, a[i], cx, yA, { size: 30, col: "#EAF4F2", font: "marker", alpha: av });
-    D.txt(ctx, b[i], cx, yB, { size: 30, col: "#EAF4F2", font: "marker", alpha: av });
+    D.txt(ctx, a[i], cx, yA, { size: 30, col: "#EAF4F2", font: "marker", alpha: aa });
+    D.txt(ctx, b[i], cx, yB, { size: 30, col: "#EAF4F2", font: "marker", alpha: aa });
   }
-
-  /* scan left to right */
   if (p2 > 0) {
-    const cx0 = x0 + cw / 2;
-    D.marker(ctx, [[cx0 - 18, yB + 34], [cx0 + cw + 18, yB + 34]], p2, "rgba(201,162,39,.6)", 2);
-    D.txt(ctx, "same", cx0, yB + 54, { size: 11, col: "#34D399", font: "marker", alpha: p2 });
+    const same = D.at(p2, 0, 0.5);
+    D.rr(ctx, x0 + 2, yA - 24, cw - 4, (yB - yA) + 48, 8);
+    ctx.strokeStyle = "rgba(52,211,153,.6)"; ctx.lineWidth = 2;
+    ctx.globalAlpha = same; ctx.stroke(); ctx.globalAlpha = 1;
+    D.txt(ctx, "same — keep going", x0 + cw / 2, yB + 44, { size: 11, col: "#34D399", font: "marker", alpha: same });
+    const diff = D.at(p2, 0.5, 1);
+    const cx = x0 + cw * 1.5;
+    D.rr(ctx, x0 + cw + 2, yA - 24, cw - 4, (yB - yA) + 48, 8);
+    ctx.strokeStyle = "#C9A227"; ctx.lineWidth = 2;
+    ctx.globalAlpha = diff; ctx.stroke(); ctx.globalAlpha = 1;
+    D.txt(ctx, "9 beats 2 — stop", cx, yB + 44, { size: 12, col: "#C9A227", font: "marker", alpha: diff });
   }
-
   if (p3 > 0) {
-    const cx1 = x0 + cw * 1.5;
-    ctx.save();
-    ctx.globalAlpha = p3;
-    D.rr(ctx, cx1 - cw / 2 + 2, yA - 26, cw - 4, 84, 8);
-    ctx.strokeStyle = "#C9A227"; ctx.lineWidth = 2.4; ctx.stroke();
-    ctx.restore();
-    D.txt(ctx, "9 is greater than 2", cx1 + 118, yA + 26,
-      { size: 15, col: "#C9A227", font: "marker", alpha: D.at(f, 320, 400) });
-    D.txt(ctx, "the first place that differs decides it", W / 2, yB + 88,
-      { size: 14, col: "#EAF4F2", font: "marker", alpha: D.at(f, 350, 430) });
+    D.marker(ctx, [[W / 2, yB + 66], [W / 2, yB + 92]], p3, "#C9A227", 2);
+    D.txt(ctx, "394,284 > 328,234", W / 2, yB + 112,
+      { size: 19, col: "#EAF4F2", font: "marker", alpha: p3 });
   }
-
   if (p4 > 0) {
     const yb = H - 44;
-    D.marker(ctx, [[60, yb - 30], [W - 60, yb - 30]], p4, "rgba(201,162,39,.45)", 1.6);
-    D.txt(ctx, "394,284  is greater than  328,234", W / 2, yb - 2,
-      { size: 18, col: "#C9A227", font: "marker", alpha: D.at(f, 470, 550) });
-    D.star8(ctx, W - 46, yb - 2, 16, D.at(f, 520, 620), "rgba(201,162,39,.7)", 1.6);
+    D.marker(ctx, [[60, yb - 26], [W - 60, yb - 26]], p4, "rgba(201,162,39,.45)", 1.6);
+    D.txt(ctx, "start at the greatest place; compare the first place that is different",
+      W / 2, yb, { size: 15, col: "#C9A227", font: "marker", alpha: p4 });
+    D.star8(ctx, W - 46, yb - 2, 16, D.at(f, 540, 640), "rgba(201,162,39,.7)", 1.6);
   }
 };
 
@@ -174,14 +158,19 @@ const drawSupport13 = (ctx, W, H) => {
   ctx.clearRect(0, 0, W, H);
   D.rr(ctx, 0, 0, W, H, 10);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
-  const a = "47891", b = "47918";
-  const cw = Math.min(40, (W - 40) / 5), x0 = W / 2 - (5 * cw) / 2;
-  for (let i = 0; i < 5; i++) {
+  const a = "305072", b = "350072";
+  const cw = 44, x0 = W / 2 - (6 * cw) / 2;
+  for (let i = 0; i < 6; i++) {
     const cx = x0 + i * cw + cw / 2;
-    const same = a[i] === b[i];
-    D.txt(ctx, a[i], cx, 26, { size: 21, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
-    D.txt(ctx, b[i], cx, 58, { size: 21, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
+    const diff = i === 1;
+    if (diff) {
+      D.rr(ctx, cx - cw / 2 + 2, 12, cw - 4, H - 24, 8);
+      ctx.strokeStyle = "#C9A227"; ctx.lineWidth = 2; ctx.stroke();
+    }
+    D.txt(ctx, a[i], cx, 30, { size: 18, col: diff ? "#C9A227" : "#EAF4F2", font: "marker" });
+    D.txt(ctx, b[i], cx, 56, { size: 18, col: diff ? "#C9A227" : "#EAF4F2", font: "marker" });
   }
+  D.txt(ctx, "first difference: 0 vs 5", W / 2, H - 10, { size: 11, col: "#C9A227", font: "marker" });
 };
 
 /* ---- the lesson ---------------------------------------------------------- */
@@ -194,219 +183,290 @@ const LESSON = {
   ixl: ["6Y2", "USN", "94E"],
 
   metas: [
-    { phase: "warmup",
-      title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Two numbers, lined up. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Lining them up was not an accident.",
-      rail: { launch: "I am not asking which is bigger yet. Just look.",
-        monitor: ["Noticing the same number of digits", "Noticing a place where they match", "Noticing where they split"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Comparing the last digit first." } },
-
-    { phase: "launch",
-      title: "Which dive site is <em>deeper</em>?",
-      lead: "Abu Tair reaches 1,834 m. Shaab Nazar reaches 1,843 m. They look almost the same.",
-      goal: "Create the need — a careful method beats a glance.",
-      pull: "Estimate first, then we will check place by place.",
-      rail: { launch: "Read both numbers out loud. Do they sound different?",
-        monitor: ["Guessing from the last digit", "Comparing the tens", "Lining the numbers up"],
-        connect: "Which place actually decided it?",
-        misconception: "Longer-looking means greater. Do not correct it — ask them to line the numbers up." } },
-
-    { phase: "monitor",
-      title: "Scan from the <em>greatest place</em>",
-      lead: "Step one place at a time. Stop the moment the digits differ.",
-      goal: "Build the compare algorithm as a habit, not a rule to recite.",
-      pull: "Same answer, different picture. Let us see it on a line.",
-      rail: { launch: "Predict where the numbers will split before you step.",
-        monitor: ["Stepping one place at a time", "Jumping straight to the difference", "Checking every place anyway"],
-        connect: "Why can you stop as soon as the digits differ?",
-        misconception: "Continuing past the deciding place and changing the answer." } },
-
-    { phase: "monitor",
-      title: "Put them on a <em>number line</em>",
-      lead: "The greater number sits further to the right.",
-      goal: "A second representation for the same comparison.",
-      pull: "Now record it with a symbol.",
-      rail: { launch: "Where would you place each number between 300,000 and 400,000?",
-        monitor: ["Estimating position", "Using the hundred thousands", "Checking against the midpoint"],
-        connect: "How does the line agree with the chart?",
-        misconception: "Placing numbers by their last digits." } },
-
-    { phase: "monitor",
-      title: "Choose the <em>symbol</em>",
-      lead: "Drag each pair to the symbol that makes it true.",
-      goal: "Record a comparison correctly.",
-      pull: "Two students explained the same comparison differently.",
-      rail: { launch: "Read each pair out loud before you place it.",
-        monitor: ["Reading left to right", "Reversing the pair", "Checking with the chart"],
-        connect: "How do you read that statement out loud?",
-        misconception: "Pointing the symbol the wrong way." } },
-
-    { phase: "connect",
-      title: "Two ways to <em>say it</em>",
-      lead: "Maryam wrote it one way. Ziad wrote it the other. Both are true.",
-      goal: "The comparison produces the rule — not the teacher.",
-      pull: "Now we put it on the board.",
-      rail: { launch: "Show both without judging either.",
-        monitor: ["Seeing both statements as the same fact", "Preferring greater than", "Flipping the order carefully"],
-        connect: "What has to change when you swap the numbers around?",
-        misconception: "Thinking one order is correct and the other is wrong." } },
-
-    { phase: "synth",
-      title: "On the <em>board</em>",
-      lead: "Line them up. Start at the greatest place. The first place that differs decides it.",
-      goal: "The moment the lesson is taught — not displayed.",
-      pull: "Say it in one sentence.",
-      rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Lining digits up carefully", "Restating it in their own words"],
-        connect: "Who can say the rule in one sentence?",
-        misconception: "Comparing digit counts instead of place values." } },
-
-    { phase: "synth",
-      title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Linking to place value", "Testing on a fresh pair", "Asking about numbers of different lengths"],
-        connect: "What if one number has more digits than the other?",
-        misconception: "Assuming equal length is required." } },
-
-    { phase: "swyk",
-      title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.",
-      pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Write your thinking, not just your answer.",
-        monitor: ["Lining the numbers up", "Scanning from the left", "Stopping at the deciding place"],
-        connect: "Collect responses to open tomorrow.",
-        misconception: "Comparing the ones place because the digits look bigger there." } },
-
-    { phase: "connect",
-      title: "What you <em>collected</em> today",
-      lead: "Points are for thinking, not for speed.",
-      goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: how do we round a number to a friendly one?",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the chart", "Ready to round"],
-        connect: "Who is teaching it at home tonight?",
-        misconception: "Chasing points instead of understanding." } }
+    {
+      phase: "warmup",
+      title: "Two districts, <em>one claim each</em>",
+      lead: "Two district cards surface in the lantern projection — and both of them claim to be the bigger district.",
+      goal: "Notice that both claims cannot be true and that evidence, not volume, settles it.",
+      pull: "The council needs a comparison it can defend.",
+      rail: {
+        launch: "Fictional frame. Ask only: what do the two cards both claim, and can both be right?",
+        monitor: ["Noticing both cards claim bigger", "Comparing digit counts", "Wonding what settles it"],
+        connect: "What kind of evidence would settle a claim like this?",
+        misconception: "Thinking the louder or flashier card wins."
+      }
+    },
+    {
+      phase: "launch",
+      title: "The council must place the <em>first clinic</em>",
+      lead: "East district says 394,284 people; West district says 328,234. Lock a prediction: how many places must we check?",
+      goal: "Predict where the comparison will be decided before scanning.",
+      pull: "The district figures are simulated planning data.",
+      rail: {
+        launch: "State that the district counts are simulated planning data.",
+        monitor: ["Predicting the deciding place", "Noticing the shared 3", "Arguing from the left"],
+        connect: "Why start at the greatest place rather than the smallest?",
+        misconception: "Comparing from the ones place because it is easier to read."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Zayd scans <em>from the left</em>",
+      lead: "His scanner highlights one place at a time. The class chooses where the numbers first differ.",
+      goal: "Find the first differing place and stop there.",
+      pull: "Every earlier place said 'same' — that is evidence too.",
+      rail: {
+        launch: "Predict the deciding place before the scan reveals it.",
+        monitor: ["Checking places left to right", "Saying 'same' for equal places", "Stopping at the first difference"],
+        connect: "Why can we stop instead of checking every digit?",
+        misconception: "Adding up digits from both numbers to compare totals."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Omar checks on the <em>number line</em>",
+      lead: "A different representation, the same verdict: further right means greater.",
+      goal: "Confirm the chart comparison with a second representation.",
+      pull: "Two representations agreeing is stronger evidence.",
+      rail: {
+        launch: "Ask where each district sits before the dots appear.",
+        monitor: ["Placing numbers on the line", "Reading distance as magnitude", "Matching both representations"],
+        connect: "Which representation settled it faster for you — and why?",
+        misconception: "Placing by how long the number looks when written."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Three claims need <em>symbols</em>",
+      lead: "The council's record must use >, < or =. Commit to all three comparisons before the folio checks.",
+      goal: "Record comparisons with symbols, including different digit counts and equal pairs.",
+      pull: "One pair has a zero doing important work.",
+      rail: {
+        launch: "Do not grade until the class commits to all three symbols.",
+        monitor: ["Comparing digit counts first", "Scanning same-length pairs", "Accepting equality as an answer"],
+        connect: "Which comparison surprised you most?",
+        misconception: "Judging 1,000 smaller than 999 'because it has a zero in it' — digit count beats zeros."
+      }
+    },
+    {
+      phase: "connect",
+      title: "The class brings <em>two methods</em>",
+      lead: "The boys step back. Real student strategies for comparing take the board.",
+      goal: "Compare methods and name the reusable rule in the Sijill.",
+      pull: "One method has a shortcut — and a limit.",
+      rail: {
+        launch: "Replace the sample names with students from this room when possible.",
+        monitor: ["Digit-count shortcut vs full scan", "Checking where the shortcut fails", "Explaining both"],
+        connect: "When does the digit-count shortcut fail, and what do you fall back on?",
+        misconception: "Believing one method is the only correct way to compare."
+      }
+    },
+    {
+      phase: "synth",
+      title: "The rule enters the <em>Evidence Folio</em>",
+      lead: "Start at the greatest place; compare the first place that is different.",
+      goal: "Build the comparison rule publicly from the strategies just compared.",
+      pull: "The clinic placement now rests on a defensible record.",
+      rail: {
+        launch: "Draw with the class rather than presenting a finished rule.",
+        monitor: ["Restating the rule", "Applying it to a new pair", "Using symbols correctly"],
+        connect: "Which part of the rule prevents comparing from the wrong end?",
+        misconception: "Comparing the first digits only, without checking they are the same."
+      }
+    },
+    {
+      phase: "swyk",
+      title: "Can the council place the <em>clinic</em>?",
+      lead: "A supply card is smudged: is the district 305,072 or 350,072 — and which reading is the greater number?",
+      goal: "Use the first-different-place rule independently with embedded zeros.",
+      pull: "A defended comparison stamps the third fragment of Folio 1.",
+      rail: {
+        launch: "Two minutes. Require the deciding place, not only an option letter.",
+        monitor: ["Scanning from the greatest place", "Reading the zero in the ten-thousands", "Naming the deciding place"],
+        connect: "Which place decided it — and what was doing the work there?",
+        misconception: "Letting the zero in 305,072 feel like 'nothing' instead of a place that holds 0 ten-thousands."
+      }
+    },
+    {
+      phase: "connect",
+      title: "Fragment three is <em>restored</em>",
+      lead: "The clinic goes to the bigger district — on evidence. Then the supply ledger raises a new problem.",
+      goal: "Close with a transfer task and the estimation cliffhanger.",
+      pull: "Next: exact totals arrive too late — the council needs a useful estimate now.",
+      rail: {
+        launch: "Name the artifact contribution, then reveal only the next mathematical need.",
+        monitor: ["Explaining the deciding place", "Using symbols", "Ready to estimate"],
+        connect: "Where does your community compare two numbers to make a decision?",
+        misconception: "Remembering the clinic story but not the comparison rule."
+      }
+    }
   ],
 
   Visual: function ({ i, award, game }) {
     const [step, setStep] = useState(0);
+    const [linePick, setLinePick] = useState(0);
 
     switch (i) {
       case 0:
         return (
-          <NoticeWonder draw={makeScanner(0)} height={258} award={award}
-            notices={["They both have six digits", "The first digits match", "The second digits are different", "They are lined up"]}
-            wonders={["Which is bigger?", "Does the first digit decide?", "What if they matched all the way?"]} />
+          <StoryShell lane="fiction" character="lantern"
+            title="Two districts, one claim each"
+            text="Omar and Zayd lift two district cards from the census folio. Each one claims to be the bigger district. The lantern shows the numbers — and refuses to pick a side."
+            clue="Claims are not evidence. What is?">
+            <NoticeWonder draw={drawClaim} height={238} award={award}
+              notices={["Both cards claim 'bigger'", "Both numbers have six digits", "They share the first digit", "One claim must be wrong"]}
+              wonders={["How do we know which number is really larger?", "Do we need every digit to decide?", "What if one number had more digits?"]}
+              footnote="The claim is the story. The comparison is the mathematics." />
+          </StoryShell>
         );
 
       case 1:
         return (
-          <LaunchEstimate draw={drawDepths} height={264} award={award}
-            label="How many metres deeper is the deeper site?"
-            min={1} max={40} start={12} unit="m"
-            after="Locked. Now let us compare them place by place."
-            note="They look almost identical. A glance is not enough." />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The clinic goes to the bigger district"
+            text="Omar marks the district counts as simulated planning data — then asks how far the council must scan before the claim settles."
+            clue="Lock a prediction before the scanner moves">
+            <LaunchEstimate draw={drawClaim} height={235} award={award}
+              label="How many places must we check before 394,284 and 328,234 settle?"
+              min={1} max={6} start={4} unit="places"
+              after="Locked. Now scan and see where the evidence lands."
+              note="District counts here are simulated planning data — the rule works on any pair." />
+          </StoryShell>
         );
 
       case 2:
         return (
-          <ExploreChips draw={makeScanner(step)} height={258}
-            label="Step through the places, left to right"
-            value={step}
-            onPick={(v) => setStep(v)}
-            chips={[
-              { v: 0, label: "hundred thousands" }, { v: 1, label: "ten thousands" },
-              { v: 2, label: "thousands" }, { v: 3, label: "hundreds" }
-            ]}
-            caption={<MathEl omml={M.pair} size="xl" display="block" />}
-            footnote="Once the digits differ, you can stop — nothing to the right can change it." />
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd's scanner starts at the left"
+            text="He can highlight any place, but the class must name the first place that differs before the scan confirms it."
+            clue="Same is evidence too — it tells you to keep going">
+            <ExploreChips draw={makeScanner(step, setStep)} height={225}
+              label="Where do the two numbers first differ?"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "hundred thousands" }, { v: 1, label: "ten thousands" }, { v: 2, label: "thousands" }, { v: 3, label: "hundreds" }]}
+              caption={<MathEl omml={M.pair} size="lg" display="block" />}
+              footnote="Start at the greatest place; stop at the first difference." />
+          </StoryShell>
         );
 
       case 3:
         return (
-          <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
-            <Sketch draw={drawLinePlace} height={256} />
-            <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
-              <MathEl omml={M.pairLess} size="xl" display="block" />
-              <div style={{ fontSize: "11px", color: "var(--daf-ink-2)", marginTop: "6px" }}>
-                The same comparison, written the other way round.
-              </div>
-            </div>
-          </div>
+          <StoryShell lane="fiction" character="omar"
+            title="Omar checks on the number line"
+            text="A second representation, the same verdict. He wants both methods agreeing before the council hears one answer."
+            clue="Further right means greater">
+            <ExploreChips draw={drawLinePlace} height={225}
+              label="Which district sits further right?"
+              value={linePick}
+              onPick={(v) => setLinePick(v)}
+              chips={[{ v: 0, label: "East · 394,284" }, { v: 1, label: "West · 328,234" }]}
+              caption={<MathEl omml={M.pairLess} size="lg" display="block" />}
+              footnote="Two representations agreeing is stronger evidence than either alone." />
+          </StoryShell>
         );
 
       case 4:
         return (
-          <CardSort award={award} columns={3} commitLabel="The class is ready — check the symbols"
-            items={[
-              { id: "p1", text: "6,716 ? 6,714", target: "gt" },
-              { id: "p2", text: "12,217 ? 21,127", target: "lt" },
-              { id: "p3", text: "12,050 ? 12,050", target: "eq" }
-            ]}
-            targets={[
-              { id: "gt", omml: M.greaterSym, label: "is greater than" },
-              { id: "lt", omml: M.lessSym, label: "is less than" },
-              { id: "eq", omml: M.equalSym, label: "is equal to" }
-            ]} />
+          <StoryShell lane="fiction" character="both" pose="question"
+            title="The record needs symbols, not words"
+            text="Omar reads each pair aloud while Zayd places the symbol. The class must commit to all three before the folio checks."
+            clue="One pair has different digit counts. One pair is equal.">
+            <CardSort award={award} columns={3} commitLabel="Seal the comparison record"
+              items={[
+                { id: "s1", text: "4,697,000  vs  999,999", target: "t1" },
+                { id: "s2", text: "4,679,000  vs  4,697,000", target: "t2" },
+                { id: "s3", text: "12,050  vs  12,050", target: "t3" }
+              ]}
+              targets={[
+                { id: "t1", label: ">" },
+                { id: "t2", label: "<" },
+                { id: "t3", label: "=" }
+              ]} />
+          </StoryShell>
         );
 
       case 5:
         return (
+          <StoryShell lane="fiction" character="both" pose="present"
+            title="Omar and Zayd step out of the way"
+            text="The strongest comparison methods now come from students in this room. Compare them, then preserve one in the Sijill."
+            clue="One method has a shortcut — and a limit">
           <CompareConnect award={award}
-            left={{ name: "Maryam's way — greater than", omml: M.pair, h: 92,
-                    quote: "I put the bigger number first and used greater than." }}
-            right={{ name: "Ziad's way — less than", omml: M.pairLess, h: 92,
-                     quote: "I put the smaller number first and used less than." }}
-            same={["Both are true statements", "Both compare the same two numbers",
-                   "Both were decided at the ten thousands place"]}
-            diff={["The order of the numbers is swapped", "The symbol points the other way",
-                   "They are read out loud differently"]} />
+            left={{
+              name: "Sara's way — count digits first", h: 88,
+              draw: (ctx, W, H, frame) => {
+                ctx.clearRect(0, 0, W, H);
+                D.rr(ctx, 0, 0, W, H, 9);
+                ctx.fillStyle = "#0B1F24"; ctx.fill();
+                const p = D.at(frame % 400, 0, 140);
+                D.txt(ctx, "4,697,000 has 7 digits", W / 2, H / 2 - 14, { size: 16, col: "#EAF4F2", font: "marker", alpha: p });
+                D.txt(ctx, "999,999 has 6 digits", W / 2, H / 2 + 12, { size: 16, col: "#EAF4F2", font: "marker", alpha: D.at(frame % 400, 120, 240) });
+                D.txt(ctx, "7 digits beats 6 digits — done", W / 2, H / 2 + 38, { size: 12, col: "#C9A227", font: "marker", alpha: D.at(frame % 400, 220, 330) });
+              },
+              quote: "Different digit counts? The longer one is greater."
+            }}
+            right={{
+              name: "Khalid's way — scan the first difference", h: 88,
+              draw: (ctx, W, H, frame) => {
+                ctx.clearRect(0, 0, W, H);
+                D.rr(ctx, 0, 0, W, H, 9);
+                ctx.fillStyle = "#0B1F24"; ctx.fill();
+                const p = D.at(frame % 400, 0, 140);
+                D.txt(ctx, "4,6 7 9,000 vs 4,6 9 7,000", W / 2, H / 2 - 8, { size: 17, col: "#EAF4F2", font: "marker", alpha: p });
+                D.txt(ctx, "same… same… 7 vs 9 → stop", W / 2, H / 2 + 22, { size: 12, col: "#34D399", font: "marker", alpha: D.at(frame % 400, 160, 280) });
+              },
+              quote: "Same length? Scan left and stop at the first difference."
+            }}
+            same={["Both start at the greatest place",
+                   "Both use place value, not size of writing",
+                   "Both can be checked on the number line"]}
+            diff={["Sara's shortcut needs different digit counts",
+                   "Khalid's scan works for every pair",
+                   "When the counts match, Sara falls back to Khalid's scan"]} />
+          </StoryShell>
         );
 
       case 6:
-        return <BoardScreen draw={drawBoard13} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The shared rule is drawn into the Evidence Folio"
+            text="Zayd builds only what the class can justify from the two student methods."
+            clue="Greatest place first · first difference decides">
+            <BoardScreen draw={drawBoard13} height={380}
+              caption="The comparison rule — not a claim — places the clinic." />
+          </StoryShell>
+        );
 
       case 7:
         return (
-          <RuleScreen award={award}
-            ommls={[{ omml: M.firstDiff, alt: "compare the first place that is different" }]}
-            hand={"line the numbers up · start at the greatest place · the first place that differs decides it"}
-            cards={[
-              { title: "The pair we compared", omml: M.pair, note: "decided at the ten thousands place" },
-              { title: "Tap to test it on a close pair", omml: M.sameStart, revealOmml: M.equalPair, reveal: true,
-                note: "when every place matches, the numbers are equal" }
-            ]} />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar defends the record the council will sign"
+            text="A smudged supply card leaves two readings. Name the greater number — and the place that decided it."
+            clue="The zero is holding a place, not disappearing">
+            <ShowWhatYouKnow award={award}
+              prompt="The card reads 305,072 or 350,072. Which is the greater number?"
+              options={[{ v: "a", text: "305,072" }, { v: "b", text: "350,072" }, { v: "c", text: "They are equal" }, { v: "d", text: "Cannot be compared" }]}
+              right="b"
+              support={{
+                yes: "Yes — the ten-thousands places differ first: 5 beats 0, so 350,072 is greater.",
+                notYet: "Not yet — scan from the greatest place. Which place is the first to differ?",
+                draw: drawSupport13, h: 84,
+                hint: "The zero in 305,072 holds the ten-thousands place open."
+              }} />
+          </StoryShell>
         );
 
       case 8:
         return (
-          <ShowWhatYouKnow award={award}
-            prompt="Which statement is true?"
-            omml={M.swykPair}
-            options={[
-              { v: "a", text: "47,891 is greater" }, { v: "b", text: "47,918 is greater" },
-              { v: "c", text: "they are equal" }, { v: "d", text: "you cannot tell" }
-            ]}
-            right="b"
-            support={{
-              yes: "Yes — they match until the hundreds place, where 9 beats 8.",
-              notYet: "Not yet — line them up and scan from the left.",
-              draw: drawSupport13, h: 84,
-              hint: "The gold digits are the first ones that differ. Which is greater there?"
-            }} />
-        );
-
-      case 9:
-        return (
-          <Closing game={game} omml={M.pair}
-            action="Find two prices at home and write a true comparison using a symbol." />
+          <StoryHandoff
+            title="The comparison is sealed"
+            text="The clinic goes to the bigger district — on evidence the council can re-check. Then Zayd opens the supply ledger: exact totals will arrive too late."
+            artifact="Population and services brief · clinic placement record"
+            next="Exact counts arrive too late — the council needs a useful estimate now.">
+            <Closing game={game} omml={M.swykAnswer}
+              action="Compare two real numbers (distances, prices, populations). Record which place settled it and write the comparison with a symbol." />
+          </StoryHandoff>
         );
 
       default:

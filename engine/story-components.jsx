@@ -73,14 +73,21 @@ function UnitShapeMotif({ topic }) {
   );
 }
 
+/* Pips light from the class's stamped folio state when this computer has it
+   (daf.folio.v1); otherwise they fall back to position in the unit. The state
+   is class-level only — never student data — and non-critical: a cleared
+   browser changes nothing else in the deck. */
 function FolioProgress({ label }) {
   if (!STORY) return null;
   const n = STORY.lesson.numberInUnit, total = STORY.unit.lessonCount;
+  const codes = (STORY.unit && STORY.unit.lessonCodes) || [];
+  const stamped = (window.DAF_FOLIO && window.DAF_FOLIO.lessons) || null;
+  const done = (i) => stamped ? !!stamped[codes[i]] : i < n;
   return (
     <div className="folio-progress" aria-label={`Folio progress ${n} of ${total}`}>
       <div className="folio-label"><b>Folio {STORY.unit.topic}</b><span>{label || STORY.unit.chapter}</span></div>
       <div className="folio-pips">
-        {Array.from({ length: total }, (_, i) => <i key={i} className={i < n ? "restored" : ""} />)}
+        {Array.from({ length: total }, (_, i) => <i key={i} className={done(i) ? "restored" : ""} />)}
       </div>
       <em>{n}/{total}</em>
     </div>
@@ -141,14 +148,68 @@ function STEMWindow({ window: item, children }) {
 }
 
 function StoryHandoff({ title, text, artifact, next, children }) {
+  const code = (typeof LESSON !== "undefined" && LESSON.code) || "";
+  const [stamped, setStamped] = useState(false);
+  const [saved, setSaved] = useState(true);
+  useEffect(() => {
+    setStamped(!!(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  }, [code]);
+  const stamp = () => {
+    const cls = window.DAF_CURRENT_CLASS;
+    if (!cls || !code) return;
+    const on = !(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]);
+    setSaved(folioStamp(cls, code, on));
+    window.DAF_FOLIO = folioFor(cls);
+    setStamped(!!(window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  };
   return (
     <StoryShell lane="fiction" character="both" pose="present" title={title} text={text}
       clue={next ? "Next folio clue · " + next : null}>
       <div className="handoff-artifact">
         <span><Icon name="fa-stamp" /></span>
         <div><b>Artifact updated</b><p>{artifact}</p></div>
+        <button className={"btn btn-ghost btn-sm folio-stamp" + (stamped ? " on" : "")} onClick={stamp}
+          title="Class record on this computer — no points involved">
+          <Icon name={stamped ? "fa-rotate-left" : "fa-stamp"} />
+          {stamped ? "Folio page restored · tap to undo" : "Restore this folio page"}
+        </button>
+        {!saved && <small className="folio-save-note">Folio change could not be saved on this computer — export the class folio from the dojo before you leave.</small>}
       </div>
       {children}
+    </StoryShell>
+  );
+}
+
+/* ===========================================================================
+   AMANAH WINDOW · sacred-history lane (PR 02). Reverent, chronological,
+   non-gamified: no XP, no clue mechanics, no invented dialogue or quantities.
+   Only registry windows in `approved` state with the complete six-field audit
+   record (studentText, source, translation, reviewer, reviewDate) ever render
+   here; the payload embeds approved windows only, so an unapproved window is
+   invisible to the deck entirely.
+   =========================================================================== */
+const AMANAH_LANE = "amanah";
+
+function AmanahWindow({ window: item, children }) {
+  const approved = !!(item
+    && item.status === "approved"
+    && item.studentText && item.reviewer && item.reviewDate && item.source && item.translation);
+  if (!approved) return <>{children}</>;
+  return (
+    <StoryShell lane={AMANAH_LANE} title={item.title || "Amanah Window"} text={item.studentText} compact>
+      <div className="amanah-layout">
+        <div className="amanah-card">
+          <div className="amanah-status"><Icon name="fa-book" /> Reviewed · {item.reviewer} · {item.reviewDate}</div>
+          <h3>Values reflection</h3>
+          <p>The reflection follows the mathematics of this lesson; sacred history is never the game mechanic.</p>
+          <details>
+            <summary>Teacher review record</summary>
+            <p>Source: {item.source}</p>
+            <p>Translation used: {item.translation}</p>
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
     </StoryShell>
   );
 }

@@ -13,9 +13,10 @@ const M = {
   swykAnswer: om(mt("1,500-1,302=198"))
 };
 
-const makeBar = (kind) => (ctx, W, H, frame) => {
+const makeBar = (kind, onKind) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onKind) { const order = ["equal", "compare", "part"]; D.tap(ctx, { x: 62, y: 56, w: W - 124, h: 110, value: 0, on: () => { const i = order.indexOf(kind); onKind(order[(i + 1) % order.length]); } }); }
   const x = 62, w = W - 124;
   if (kind === "equal") {
     const parts = [];
@@ -42,9 +43,10 @@ const makeBar = (kind) => (ctx, W, H, frame) => {
   }
 };
 
-const makeSteps = (step) => (ctx, W, H, frame) => {
+const makeSteps = (step, onStep) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: 62, y: 56, w: W - 124, h: 120, value: 0, on: () => onStep((step + 1) % 3) });
   const x = 62, w = W - 124;
   const parts = [];
   for (let k = 0; k < 6; k++) parts.push({ v: 145, label: "145", col: "#2D70B3" });
@@ -116,6 +118,75 @@ const drawSupport38 = (ctx, W, H) => {
     parts: [{ v: 1302, label: "7 × 186 = 1,302", col: "#12857C" }, { v: 198, label: "?", col: "#C9A227" }] });
 };
 
+
+/* Critique: the grove team's polished claim, with a hidden gap */
+const makeClaim = (found, onFound) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onFound) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onFound(!found) });
+  D.txt(ctx, "the grove team's claim to the council", W / 2, 26, { size: 13, col: "#2D70B3", font: "marker" });
+  const lines = [
+    { t: "we packed 6 boxes of 145 books", ok: true },
+    { t: "6 × 145 = 870 packed", ok: true },
+    { t: "so we have 870 to spare", ok: false }
+  ];
+  let y = 62;
+  lines.forEach((l) => {
+    const flagged = found && !l.ok;
+    ctx.save();
+    D.rr(ctx, 30, y - 15, W - 60, 34, 7);
+    ctx.fillStyle = flagged ? "rgba(199,68,64,.18)" : "rgba(234,244,242,.04)";
+    ctx.fill();
+    if (flagged) { ctx.strokeStyle = "#C74440"; ctx.lineWidth = 2; ctx.stroke(); }
+    ctx.restore();
+    D.txt(ctx, l.t, W / 2, y + 2, { size: 13.5, col: flagged ? "#C74440" : "#EAF4F2", font: "marker" });
+    y += 42;
+  });
+  D.txt(ctx, found ? "the order was 1,000 — 870 packed leaves 130 still to pack"
+                   : "polished — but which line has no evidence behind it?",
+    W / 2, H - 18, { size: 13, col: found ? "#C74440" : "#C9A227", font: "marker" });
+};
+
+/* Revision: choose the second step that completes the two-step model */
+const makeFix = (pick, onPick) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onPick) D.tap(ctx, { x: 56, y: 40, w: W - 112, h: 110, value: 0, on: (v, tx) => {
+    const opts = [W / 2 - 150, W / 2, W / 2 + 150];
+    let best = 0, bd = Infinity;
+    opts.forEach((x, i) => { const d = Math.abs(x - tx); if (d < bd) { bd = d; best = i; } });
+    onPick(best);
+  }});
+  const opts = ["1,000 − 870", "870 − 130", "1,000 − 145"];
+  opts.forEach((o, i) => {
+    const x = W / 2 + (i - 1) * 150;
+    const chosen = pick === i;
+    ctx.save();
+    D.rr(ctx, x - 62, 44, 124, 34, 8);
+    ctx.fillStyle = chosen ? (i === 0 ? "rgba(18,133,124,.25)" : "rgba(199,68,64,.18)") : "rgba(234,244,242,.05)";
+    ctx.fill();
+    ctx.strokeStyle = chosen ? (i === 0 ? "#12857C" : "#C74440") : "rgba(234,244,242,.3)";
+    ctx.lineWidth = chosen ? 2 : 1; ctx.stroke();
+    ctx.restore();
+    D.txt(ctx, o, x, 61, { size: 13, col: chosen ? (i === 0 ? "#34D399" : "#C74440") : "#EAF4F2", font: "mono", weight: 700 });
+  });
+  D.txt(ctx, "step 1 held: 6 × 145 = 870 packed", W / 2, 108, { size: 13.5, col: "#34D399", font: "marker" });
+  if (pick === 0) {
+    D.txt(ctx, "step 2: 1,000 − 870 = 130 still to pack", W / 2, 146, { size: 15, col: "#34D399", font: "marker" });
+    D.txt(ctx, "the corrected claim — the council can check both steps", W / 2, H - 18,
+      { size: 13, col: "#C9A227", font: "marker" });
+  } else if (pick > 0) {
+    D.txt(ctx, pick === 1 ? "that subtracts the spare from the packed — backwards"
+                          : "that uses one box instead of the whole order",
+      W / 2, 150, { size: 13.5, col: "#C74440", font: "marker" });
+    D.txt(ctx, "which step takes the packed books from the 1,000 order?", W / 2, H - 18,
+      { size: 13, col: "#C9A227", font: "marker" });
+  } else {
+    D.txt(ctx, "the second step is still missing — choose it", W / 2, 150,
+      { size: 13.5, col: "rgba(234,244,242,.6)", font: "marker" });
+  }
+};
+
 const LESSON = {
   code: "3-8",
   storageKey: "daf-g4-t3-l8",
@@ -125,92 +196,120 @@ const LESSON = {
   ixl: ["TFH"],
 
   metas: [
-    { phase: "warmup", title: "Which bar <em>doesn't belong</em>?",
-      lead: "Three diagrams for multiplication problems. Every one has a reason.",
-      goal: "Reasoning before answers — no card is wrong.",
-      pull: "Where the question mark sits changes everything.",
+    { phase: "warmup", title: "The grove model <em>stands</em>",
+      lead: "The council table: 6 boxes of 145 books packed for the grove, an order for 1,000 — and the team's model waiting to be defended.",
+      goal: "Notice the model: the unknown goes where the question is.",
+      pull: "The warehouse counts are simulated — the modelling works on any order.",
+      rail: { launch: "Fictional frame. Look at the boxes and the order — no working yet.",
+        monitor: ["Counting the boxes", "Reading the 1,000 order", "Wonding what the model needs"],
+        connect: "Where in the model is the question?",
+        misconception: "Starting with an equation before a diagram." } },
+
+    { phase: "launch", title: "Which model <em>doesn't belong</em>?",
+      lead: "Three bar diagrams and a bare pair of numbers. Three of them are models; one is not.",
+      goal: "Find the card that is not a model — and why it fails.",
+      pull: "A model needs a shape the question can sit in.",
       rail: { launch: "Choose a card, then convince your partner.",
-        monitor: ["Reasoning from the unknown", "Reasoning from the number of bars", "Reasoning from the operation"],
-        connect: "Can every card be the odd one out?",
-        misconception: "Choosing the operation from a key word instead of the structure." } },
+        monitor: ["Reading the equal-groups bar", "Reading the compare bar", "Flagging the bare numbers"],
+        connect: "What does a model need that the numbers alone do not have?",
+        misconception: "Treating any two numbers as a model." } },
 
-    { phase: "launch", title: "Six boxes, <em>one order</em>",
-      lead: "6 boxes hold 145 books each. The order is for 1,000. What could you ask?",
-      goal: "Create the need — numbers alone do not say what to do.",
-      pull: "Estimate an answer to your own question first.",
-      rail: { launch: "Do not solve anything. Just tell me a question these numbers could answer.",
-        monitor: ["Asking for the total", "Asking how many are missing", "Asking how many more boxes"],
-        connect: "Which question needs two steps?",
-        misconception: "Assuming there is only one possible question." } },
-
-    { phase: "monitor", title: "Draw what you <em>know</em>",
-      lead: "Equal groups, a comparison, or a missing part. Pick the shape that fits.",
-      goal: "The diagram names the operation.",
-      pull: "Some questions need two bars, not one.",
+    { phase: "monitor", title: "Zayd draws the <em>model</em>",
+      lead: "Equal groups, times as many, or a missing part — the bar takes the shape of the question.",
+      goal: "Choose the diagram that fits, before choosing the operation.",
+      pull: "Where the question mark sits tells you which operation you need.",
       rail: { launch: "Predict where the question mark will sit before you tap.",
-        monitor: ["Placing the unknown correctly", "Drawing equal groups", "Confusing compare with total"],
-        connect: "Where is the unknown in each one?",
-        misconception: "Drawing one bar for a comparison problem." } },
+        monitor: ["Placing the unknown", "Naming the shape", "Matching shape to operation"],
+        connect: "Which shape does 6 boxes of 145 need?",
+        misconception: "Drawing the bar before knowing what is unknown." } },
 
-    { phase: "monitor", title: "A problem in <em>two steps</em>",
-      lead: "How many are still to pack? You cannot answer that in one move.",
-      goal: "Multi-step problems chain two diagrams.",
-      pull: "Sort some questions by how many steps they need.",
-      rail: { launch: "What must you work out before you can answer?",
-        monitor: ["Multiplying first", "Subtracting first", "Trying one step"],
+    { phase: "monitor", title: "The <em>two-step</em> model",
+      lead: "How many are still to pack? Step 1: the total packed. Step 2: the order minus that total.",
+      goal: "Chain two steps in one model — step 1 feeds step 2.",
+      pull: "The answer to step 1 becomes a number you need in step 2.",
+      rail: { launch: "What do you have to work out before you can answer?",
+        monitor: ["Finding 6 × 145 first", "Subtracting from 1,000 first", "Naming the middle answer"],
         connect: "Why can the second step not come first?",
         misconception: "Subtracting 145 from 1,000 and stopping." } },
 
     { phase: "monitor", title: "One step or <em>two</em>?",
-      lead: "Sort each question. No grading until the class commits.",
-      goal: "Recognise a hidden middle step.",
-      pull: "Two students wrote different equations for the same problem.",
-      rail: { launch: "Ask yourself: do I already know every number I need?",
-        monitor: ["Counting the unknowns", "Checking what is given", "Solving first, sorting after"],
+      lead: "Four questions from the grove. Each one needs one step or two.",
+      goal: "Recognise the hidden middle step before modelling.",
+      pull: "Ask: do I already know every number I need?",
+      rail: { launch: "Say the middle answer before you place the question.",
+        monitor: ["Checking what is given", "Counting the unknowns", "Solving first, sorting after"],
         connect: "What made the two-step ones different?",
-        misconception: "Counting the numbers rather than the unknowns." } },
+        misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Two <em>equations</em>, one problem",
-      lead: "Fatima wrote 6 × 145 = b. Hamza wrote 1,000 − 6 × 145 = b. Both are right.",
+    { phase: "connect", title: "Fatima <em>writes two</em>. Hamza writes <em>one</em>",
+      lead: "Fatima: one equation at a time, the middle answer shown. Hamza: the whole chain in one line. Both reach 130.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Writing the first step only", "Writing both steps in one line", "Using a letter for the unknown"],
-        connect: "What is b standing for in each equation?",
-        misconception: "Using the same letter for two different unknowns." } },
+        monitor: ["Following the two equations", "Reading the one-line chain", "Finding the middle answer in each"],
+        connect: "Which form would you defend to the council, and why?",
+        misconception: "Believing the shorter equation is always clearer." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Draw the bar. Find the question mark. Then write the equation that says the same thing.",
+    { phase: "monitor", title: "The claim's <em>hidden gap</em>",
+      lead: "The grove team presents: 870 packed, so they have 870 to spare. Polished — but one line has no evidence.",
+      goal: "Critique a defended claim: find the step that does not follow.",
+      pull: "The total packed is not the spare.",
+      rail: { launch: "Each line must follow from the line before it.",
+        monitor: ["Checking the packed total", "Checking the order number", "Flagging the spare claim"],
+        connect: "What number was the claim pretending was the order?",
+        misconception: "Accepting the final line because the claim sounds confident." } },
+
+    { phase: "monitor", title: "Supply the <em>missing step</em>",
+      lead: "The total held: 870 packed. Now choose the step that takes it from the 1,000 order.",
+      goal: "Revise the model by supplying the missing step.",
+      pull: "The corrected claim holds when every step follows.",
+      rail: { launch: "What does each candidate step actually answer?",
+        monitor: ["Reading 1,000 − 870", "Discarding 870 − 130", "Discarding 1,000 − 145"],
+        connect: "How do you know the revised model now holds?",
+        misconception: "Choosing the step that uses the most familiar numbers." } },
+
+    { phase: "synth", title: "On the <em>board</em>: the unknown goes where the question is",
+      lead: "Draw the model. Place the unknown. Write the equations the model shows.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next bar", "Naming the unknown", "Restating it in their own words"],
+        monitor: ["Predicting the next bar", "Placing the unknown", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Writing the equation before drawing anything." } },
+        misconception: "Writing equations with no diagram behind them." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "The model is the argument: every number in it has a job.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the unknown", "Testing on a new problem", "Asking about three-step problems"],
-        connect: "Does the bar still help when there are three steps?",
-        misconception: "Treating the bar as decoration rather than a decision tool." } },
+        monitor: ["Naming each bar's job", "Checking the add-back", "Testing on a new problem"],
+        connect: "Which number in the model is the easiest to misplace?",
+        misconception: "Dropping the middle answer from a two-step model." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Draw the bar before you calculate.",
+      lead: "7 crates of 186 pens, an order for 1,500. How many are still needed?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Draw the model before you calculate.",
         monitor: ["Drawing first", "Finding the middle step", "Checking against an estimate"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Answering with the number packed instead of the number left." } },
+        misconception: "Answering 1,302 — the packed total instead of what is still needed." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "monitor", title: "The council asks for <em>steadiness</em>",
+      lead: "Before the seal, the class says what the grove taught it about carrying a claim.",
+      goal: "Close the unit on the standard, not the score.",
+      pull: "A model you can re-check is a model people can trust.",
+      rail: { launch: "Ask for the rule in students' own words before the seal.",
+        monitor: ["Naming the unknown's place", "Naming the two steps", "Saying 'check' unprompted"],
+        connect: "What would you refuse to defend, and why?",
+        misconception: "Treating the seal as a reward for speed." } },
+
+    { phase: "connect", title: "The grove model is <em>defended</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Next topic: multiplying by two-digit numbers.",
-      rail: { launch: "Ask three students how they decide which operation to use.",
-        monitor: ["Able to explain it to someone else", "Still needs the bar", "Ready for Topic 4"],
+      pull: "Next chapter: the workshop tower — two-digit multiplication at once.",
+      rail: { launch: "Ask three students how they would defend the model.",
+        monitor: ["Able to explain the model", "Still needs the bars", "Ready for two-digit factors"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -218,94 +317,214 @@ const LESSON = {
   Visual: function ({ i, award, game }) {
     const [kind, setKind] = useState("equal");
     const [step, setStep] = useState(0);
+    const [gap, setGap] = useState(false);
+    const [pick, setPick] = useState(-1);
 
     switch (i) {
       case 0:
-        return <WODB award={award}
-          prompt="Three bar diagrams. Which one doesn't belong?"
-          cards={[
-            { id: "a", draw: makeBar("equal"), h: 112, why: "Equal groups with the total missing — multiply" },
-            { id: "b", draw: makeBar("compare"), h: 112, why: "The only one with two separate bars, comparing" },
-            { id: "c", draw: makeBar("part"), h: 112, why: "The total is known and a part is missing — subtract" },
-            { id: "d", text: "6 and 145", why: "The only card with no diagram at all" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The grove model stands"
+            text="The council table: 6 boxes of 145 books packed for the grove, an order for 1,000 — and the team's model waiting to be defended."
+            clue="The unknown goes where the question is">
+            <NoticeWonder draw={drawWarehouse} height={256} award={award}
+              notices={["There are 6 boxes", "Each box holds 145", "The order is 1,000", "The model has a question mark"]}
+              wonders={["How many books are packed?", "How many are still to pack?", "Where does the unknown sit?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawWarehouse} height={256} award={award}
-          label="About how many books are in the 6 boxes?" min={500} max={1200} start={870} unit="books"
-          after="Locked. Now decide what your question actually needs."
-          note="The order is for 1,000. That number is going to matter." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Which model doesn't belong?"
+            text="Omar lays four cards before the council: three bar diagrams and a bare pair of numbers. One of them is not a model."
+            clue="A model needs a shape the question can sit in.">
+            <WODB award={award}
+              prompt="Three bar diagrams and a pair of numbers. Which one doesn't belong?"
+              cards={[
+                { id: "a", draw: makeBar("equal"), h: 112, why: "Equal groups with the total missing — multiply" },
+                { id: "b", draw: makeBar("compare"), h: 112, why: "The only one with two separate bars, comparing" },
+                { id: "c", draw: makeBar("part"), h: 112, why: "The total is known and a part is missing — subtract" },
+                { id: "d", text: "6 and 145", why: "The only card with no diagram at all" }
+              ]} />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeBar(kind)} height={254}
-          label="Choose the diagram that fits"
-          value={kind}
-          onPick={(v) => setKind(v)}
-          chips={[{ v: "equal", label: "equal groups" }, { v: "compare", label: "times as many" }, { v: "part", label: "part missing" }]}
-          caption={<MathEl omml={M.unknown} size="lg" display="block" />}
-          footnote="Where the question mark sits tells you which operation you need." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd draws the model"
+            text="He can draw any of the three shapes — the class must name the relationship before the bars appear."
+            clue="Where the question mark sits tells you the operation">
+            <ExploreChips draw={makeBar(kind, setKind)} height={254}
+              label="Choose the diagram that fits"
+              value={kind}
+              onPick={(v) => setKind(v)}
+              chips={[{ v: "equal", label: "equal groups" }, { v: "compare", label: "times as many" }, { v: "part", label: "part missing" }]}
+              caption={<MathEl omml={M.unknown} size="lg" display="block" />}
+              footnote="Where the question mark sits tells you which operation you need." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeSteps(step)} height={266}
-          label="How many are still to pack?"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "the question" }, { v: 1, label: "step 1" }, { v: 2, label: "step 2" }]}
-          caption={<MathEl omml={M.twoStep} size="lg" display="block" />}
-          footnote="The answer to step 1 becomes a number you need in step 2." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The two-step model"
+            text="How many are still to pack? Omar builds the answer one step at a time — step 1 feeds step 2."
+            clue="What do you have to work out before you can answer?">
+            <ExploreChips draw={makeSteps(step, setStep)} height={266}
+              label="How many are still to pack?"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "the question" }, { v: 1, label: "step 1" }, { v: 2, label: "step 2" }]}
+              caption={<MathEl omml={M.twoStep} size="lg" display="block" />}
+              footnote="The answer to step 1 becomes a number you need in step 2." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "q1", text: "How many books in 6 boxes?", target: "one" },
-            { id: "q2", text: "Layla read 4 times as many as 128", target: "one" },
-            { id: "q3", text: "How many are still to pack?", target: "two" },
-            { id: "q4", text: "How many more boxes are needed?", target: "two" }
-          ]}
-          targets={[
-            { id: "one", label: "one step" },
-            { id: "two", label: "two steps — something must be worked out first" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="One step or two?"
+            text="Omar and Zayd lay four questions from the grove on the table. Each one needs one step — or two."
+            clue="Do I already know every number I need?">
+            <CardSort award={award} columns={2} commitLabel="Sort the questions"
+              items={[
+                { id: "q1", text: "How many books in 6 boxes?", target: "one" },
+                { id: "q2", text: "Layla read 4 times as many as 128", target: "one" },
+                { id: "q3", text: "How many are still to pack?", target: "two" },
+                { id: "q4", text: "How many more boxes are needed?", target: "two" }
+              ]}
+              targets={[
+                { id: "one", label: "one step" },
+                { id: "two", label: "two steps — something must be worked out first" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Fatima's way — one step at a time", omml: M.equal, h: 92,
-                  quote: "First I find the total, then I write a second equation." }}
-          right={{ name: "Hamza's way — one equation", omml: M.twoStep, h: 92,
-                   quote: "I put the whole thing in one line." }}
-          same={["Both reach 130", "Both multiply then subtract", "Both use a letter for the unknown"]}
-          diff={["Fatima writes two equations", "Hamza's is shorter but harder to read",
-                 "Fatima's shows the middle answer"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 130"
+            text="Fatima writes one equation at a time, the middle answer shown. Hamza puts the whole chain in one line. Both reach 130."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Fatima's way — one step at a time", omml: M.equal, h: 92,
+                      quote: "First I find the total, then I write a second equation." }}
+              right={{ name: "Hamza's way — one equation", omml: M.twoStep, h: 92,
+                       quote: "I put the whole thing in one line." }}
+              same={["Both reach 130", "Both multiply then subtract", "Both use a letter for the unknown"]}
+              diff={["Fatima writes two equations", "Hamza's is shorter but harder to read",
+                     "Fatima's shows the middle answer"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard38} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The claim's hidden gap"
+            text="The grove team presents to the council: 870 packed, so they have 870 to spare. Zayd reads it line by line — one step has no evidence."
+            clue="The total packed is not the spare">
+            <ExploreChips draw={makeClaim(gap, setGap)} height={252}
+              label="Does the defended claim hold?"
+              value={gap ? 1 : 0}
+              onPick={(v) => setGap(v === 1)}
+              chips={[{ v: 0, label: "no gap — it is polished" }, { v: 1, label: "the gap is the second step" }]}
+              caption={<MathEl omml={M.equal} size="lg" display="block" />}
+              footnote="A confident claim can still hide a faulty step." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.unknown, alt: "the unknown goes where the question is" }]}
-          hand={"draw the bar \u00b7 mark the unknown \u00b7 write the equation that says the same thing"}
-          cards={[
-            { title: "The total we found", omml: M.equal, note: "6 equal groups of 145" },
-            { title: "Tap to see the second step", omml: M.compare, revealOmml: M.twoStep, reveal: true,
-              note: "step 1 feeds step 2" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar supplies the missing step"
+            text="The packed total held: 870. Now choose the step that takes it from the 1,000 order — and the corrected claim appears."
+            clue="The corrected claim holds when every step follows">
+            <ExploreChips draw={makeFix(pick, setPick)} height={252}
+              label="Choose the missing second step"
+              value={pick}
+              onPick={(v) => setPick(v)}
+              chips={[{ v: 0, label: "1,000 − 870" }, { v: 1, label: "870 − 130" }, { v: 2, label: "1,000 − 145" }]}
+              caption={<MathEl omml={M.twoStep} size="lg" display="block" />}
+              footnote="The council can check both steps of the revised model." />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="A school packs 7 crates of 186 pens. The order is for 1,500 pens. How many are still needed?"
-          omml={M.swykStep}
-          options={[{ v: "a", text: "1,302" }, { v: "b", text: "198" }, { v: "c", text: "288" }, { v: "d", text: "1,314" }]}
-          right="b"
-          support={{
-            yes: "Yes \u2014 7 \u00d7 186 = 1,302, then 1,500 \u2212 1,302 = 198.",
-            notYet: "Not yet \u2014 what do you have to work out before you can answer?",
-            draw: drawSupport38, h: 82,
-            hint: "The question asks how many are STILL NEEDED, not how many are packed."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The model is drawn, not declared"
+            text="Zayd builds only what the class can justify: the bars drawn, the unknown placed, the equations the model shows."
+            clue="The unknown goes where the question is">
+            <BoardScreen draw={drawBoard38} height={430}
+              caption="The unknown goes where the question is." />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.unknown}
-          action="Find a real multiplication at home \u2014 packs, rows, prices \u2014 and draw its bar before you solve it." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The rule goes into the grove plan with its reason, not alone."
+            clue="Every number in the model has a job">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.unknown, alt: "the unknown goes where the question is" }]}
+              hand={"draw the model · place the unknown · write the equations the model shows"}
+              cards={[
+                { title: "The model we defended", omml: M.twoStep, note: "870 packed, 130 still to pack" },
+                { title: "Tap to see the middle answer", omml: M.equal, revealOmml: M.compare, reveal: true,
+                  note: "the middle answer is part of the argument" }
+              ]} />
+          </StoryShell>
+        );
+
+      case 10:
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar defends a two-step he can check"
+            text="7 crates of 186 pens, an order for 1,500. Show both steps — in order — before the seal."
+            clue="The middle step is the packed total">
+            <ShowWhatYouKnow award={award}
+              prompt="A school packs 7 crates of 186 pens. The order is for 1,500 pens. How many are still needed?"
+              omml={M.swykStep}
+              options={[{ v: "a", text: "1,302" }, { v: "b", text: "198" }, { v: "c", text: "288" }, { v: "d", text: "1,314" }]}
+              right="b"
+              support={{
+                yes: "Yes — 7 × 186 = 1,302, then 1,500 − 1,302 = 198.",
+                notYet: "Not yet — what do you have to work out before you can answer?",
+                draw: drawSupport38, h: 82,
+                hint: "The question asks how many are STILL NEEDED, not how many are packed."
+              }} />
+          </StoryShell>
+        );
+
+      case 11:
+        return (
+          <AmanahWindow window={STORY && STORY.amanahWindows && STORY.amanahWindows[0]}>
+            <div style={{ textAlign: "center", padding: "30px 20px" }}>
+              <div style={{ fontSize: "20px", fontWeight: 800, color: "#10242B", marginBottom: "14px" }}>Steadiness</div>
+              <p style={{ fontSize: "15px", lineHeight: 1.7, color: "#10242B", maxWidth: "520px", margin: "0 auto 10px" }}>
+                The grove taught the class that a claim is carried, not shouted. Every number in the model has a job, and the model is checked before it is defended.
+              </p>
+              <p style={{ fontSize: "13px", lineHeight: 1.6, color: "#5B6B70", maxWidth: "520px", margin: "0 auto" }}>
+                Steadiness means staying with the question until every step of the answer has evidence behind it.
+              </p>
+            </div>
+          </AmanahWindow>
+        );
+
+      case 12:
+        return (
+          <StoryHandoff
+            title="The grove model is defended"
+            text="Omar signs the defended model. Inside it, a rolled blueprint unrolls: a workshop tower, fabricating many two-digit panels at once. The grove design works — but it needs a larger multiplication model."
+            artifact="Grove model · defended before the council"
+            next="The grove design works, but its workshop fabricates many two-digit panels at once. A larger multiplication model is required.">
+            <Closing game={game} omml={M.unknown}
+              action="Draw a bar model for a real two-step problem tonight and write the equations it shows." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

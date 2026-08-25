@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "title": "The Lantern of Numeria — a 17-chapter story spine",
-  "status": "pilot implementation in progress — lesson 1-1 applied",
-  "premise": "In present-day Jeddah, two fictional Grade 4 archivists, Omar and Zayd, find a brass lantern holding a water-damaged civic design journal. Their class restores seventeen linked folios and uses each recovered idea to design Numeria: an explicitly fictional exhibition city built on amanah, evidence and beneficial knowledge.",
+  "title": "The Lantern of Numeria — The Tale of the Seventeen Doors",
+  "status": "Topics 1-7 story-built · remaining topics mapped for later PRs",
+  "premise": "In present-day Jeddah, two fictional Grade 4 archivists, Omar and Zayd, find a brass lantern holding a water-damaged civic design journal. Their class restores seventeen linked folios — each restored folio is one of the city's seventeen doors, each unit is a quest through one door, and each lesson is a mission of that quest. A stain of confusion in the journal's margins (the Muddler of the Measure Market, whose face the class meets only at door 13) is what damaged them; the stain is labelled fictional, like Numeria. Using each recovered idea, the class designs Numeria: an explicitly fictional exhibition city built on amanah, evidence and beneficial knowledge, and ends the year writing the letter forward to the Grade 5 class. Narrative contract: docs/plans/narrative/00-epic-architecture.md.",
   "drivingQuestion": "How can mathematics help us design a city that deserves people’s trust?",
   "influences": {
     "oneThousandAndOneNights": "Borrow the craft, not the plots: a frame narrator, nested accounts, recurring objects, delayed answers, callbacks and a clean cliffhanger at the end of each lesson.",
@@ -178,7 +178,7 @@
           "technique": "Mystery object / cold open",
           "storyMove": "A torn census page shows seven places but no labels. The class must decide how to read the surviving number.",
           "studentMission": "Read, write and represent the population so the archivist can restore the first line.",
-          "handoff": "End on the object or unanswered need that opens “Place Value Relationships”.",
+          "handoff": "The restored census record stands, and one digit sits a place to the left. The question that opens “Place Value Relationships”: what happens to a digit's value when it moves one place left?",
           "screenPlan": {
             "shape": "concept-discovery",
             "shapeLabel": "Concept discovery",
@@ -196,7 +196,8 @@
           "technique": "Foreshadowing and prediction",
           "storyMove": "A single digit slides one place in the lantern projection, changing the entire district count.",
           "studentMission": "Explain the ten-times relationship and rebuild the place-value key.",
-          "handoff": "End on the object or unanswered need that opens “Compare Whole Numbers”.",
+          "implementationStatus": "story-built",
+          "handoff": "The restored place-value key is filed, but two district cards both claim the bigger count. The question that opens “Compare Whole Numbers”: which number is really bigger — and what evidence settles it?",
           "screenPlan": {
             "shape": "concept-discovery",
             "shapeLabel": "Concept discovery",
@@ -213,7 +214,8 @@
           "technique": "Escalating complication",
           "storyMove": "Two district cards both claim to serve the larger population. Only comparison evidence can settle the claim.",
           "studentMission": "Compare the whole numbers and recommend the first clinic location.",
-          "handoff": "End on the object or unanswered need that opens “Round Whole Numbers”.",
+          "implementationStatus": "story-built",
+          "handoff": "The comparison record is sealed and the clinic is placed, but the supply ledger shows exact totals arriving too late. The question that opens “Round Whole Numbers”: what estimate is useful enough for the council — and why?",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
@@ -230,7 +232,8 @@
           "technique": "Choice with a consequence",
           "storyMove": "Exact totals will arrive too late; the council needs a useful estimate now.",
           "studentMission": "Round each population to the requested place and explain why that precision is enough.",
-          "handoff": "End on the object or unanswered need that opens “Problem Solving: Construct Arguments”.",
+          "implementationStatus": "story-built",
+          "handoff": "The estimate sheet is sealed and the supply order goes out. Two teams now hold different population statements before the council. The question that opens “Problem Solving: Construct Arguments”: which statement is supported by the evidence — and what makes an argument sound?",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
@@ -247,6 +250,7 @@
           "technique": "Nested STEM story",
           "storyMove": "Two teams defend different population statements before the council. A sound argument earns the seal.",
           "studentMission": "Construct an evidence-based argument; the seal reveals the budget ledger for Chapter 2.",
+          "implementationStatus": "story-built",
           "handoff": "The recovered population is much larger than expected. The council cannot plan services until the damaged budget ledger is audited.",
           "screenPlan": {
             "shape": "reasoning-studio",
@@ -278,14 +282,15 @@
           "technique": "Mystery object / cold open",
           "storyMove": "The class has sixty seconds to catch a mental error before it becomes permanent ink.",
           "studentMission": "Use mental sums and differences to flag the suspicious ledger line.",
-          "handoff": "End on the object or unanswered need that opens “Estimate Sums and Differences”.",
+          "handoff": "The checked lines are inked, but three bid totals still sit under sealed covers — and only one of them is even possible.",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "The lesson develops one focused efficient strategy; a long narrative or extra representations would dilute fluency."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "2-2",
@@ -295,14 +300,15 @@
           "technique": "Foreshadowing and prediction",
           "storyMove": "The bids stay covered until teams commit to reasonable totals.",
           "studentMission": "Estimate sums and differences and reject any impossible bid.",
-          "handoff": "End on the object or unanswered need that opens “Add Whole Numbers”.",
+          "handoff": "The reasonable bid is unsealed. The first market row must now be combined exactly — with a check beside the total.",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "The lesson develops one focused efficient strategy; a long narrative or extra representations would dilute fluency."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "2-3",
@@ -312,14 +318,15 @@
           "technique": "Escalating complication",
           "storyMove": "Receipts from one market row must be combined exactly.",
           "studentMission": "Add multi-digit whole numbers and record a check beside the total.",
-          "handoff": "End on the object or unanswered need that opens “Add Greater Numbers”.",
+          "handoff": "The first row is inked, but a second bundle arrives — city-sized, and bigger than the old columns.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "2-4",
@@ -329,14 +336,15 @@
           "technique": "Choice with a consequence",
           "storyMove": "A second bundle contains larger numbers than the old ledger columns were designed for.",
           "studentMission": "Add greater whole numbers and redesign the columns without losing place value.",
-          "handoff": "End on the object or unanswered need that opens “Subtract Whole Numbers”.",
+          "handoff": "The council approves the spend. What remains in the reserve — and how do you prove it?",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "2-5",
@@ -346,14 +354,15 @@
           "technique": "Nested STEM story",
           "storyMove": "The council has approved spending; the reserve must be reported honestly.",
           "studentMission": "Subtract whole numbers and interpret the difference in context.",
-          "handoff": "End on the object or unanswered need that opens “Subtract Greater Numbers”.",
+          "handoff": "The reserve is proven, but the warehouse expansion plan arrives — the reserve and the spend now stretch across more places.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "2-6",
@@ -363,14 +372,15 @@
           "technique": "Reversal: expose a misconception",
           "storyMove": "The reserve and expenditure now extend across more places.",
           "studentMission": "Subtract greater numbers and use addition to verify the result.",
-          "handoff": "End on the object or unanswered need that opens “Subtract Across Zeros”.",
+          "handoff": "The expansion holds, but water damage erases the regrouping marks — across a line of silent zeros.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "2-7",
@@ -380,14 +390,15 @@
           "technique": "Evidence reveal",
           "storyMove": "Water damage erased the regrouping marks across zeros.",
           "studentMission": "Reconstruct subtraction across zeros and annotate every regrouping decision.",
-          "handoff": "End on the object or unanswered need that opens “Problem Solving: Reasoning”.",
+          "handoff": "Every trade is annotated, but the auditor lays a polished solution under the seal — and a polished answer can still hide a faulty step.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "2-8",
@@ -404,7 +415,8 @@
             "recommended": 14,
             "planningBand": "12–16",
             "reason": "Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."
-          }
+          },
+          "implementationStatus": "story-built"
         }
       ]
     },
@@ -428,14 +440,15 @@
           "technique": "Mystery object / cold open",
           "storyMove": "Shade tiles arrive in bundles of tens, hundreds and thousands.",
           "studentMission": "Multiply by multiples of 10, 100 and 1,000 to inventory the delivery.",
-          "handoff": "End on the object or unanswered need that opens “Estimate Products”.",
+          "handoff": "The foreman's quick promise: the whole order fits on one truck — can the class estimate before the truck arrives?",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "3-2",
@@ -445,14 +458,15 @@
           "technique": "Foreshadowing and prediction",
           "storyMove": "A foreman claims the order will fit on one truck; the class must estimate before trusting the claim.",
           "studentMission": "Estimate products and judge the promise as reasonable or unreasonable.",
-          "handoff": "End on the object or unanswered need that opens “Use Arrays and Partial Products to Multiply”.",
+          "handoff": "The plan shows equal rows of panels — but the total count is hidden. How can you tell it without counting every panel?",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "The lesson develops one focused efficient strategy; a long narrative or extra representations would dilute fluency."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "3-3",
@@ -462,14 +476,15 @@
           "technique": "Escalating complication",
           "storyMove": "A plan shows equal rows but hides the total number of panels.",
           "studentMission": "Use arrays and partial products to recover the total.",
-          "handoff": "End on the object or unanswered need that opens “Use Area Models and Partial Products to Multiply”.",
+          "handoff": "The next plan is a long roof — its area model is easier to price once it is partitioned.",
           "screenPlan": {
             "shape": "model-investigation",
             "shapeLabel": "Model investigation",
             "recommended": 12,
             "planningBand": "10–14",
             "reason": "Students need more than one representation and time to connect concrete, visual and symbolic models."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "3-4",
@@ -479,14 +494,15 @@
           "technique": "Choice with a consequence",
           "storyMove": "A long roof is easier to price when its area model is partitioned.",
           "studentMission": "Use area models and partial products to multiply.",
-          "handoff": "End on the object or unanswered need that opens “More Use Area Models and Partial Products to Multiply”.",
+          "handoff": "The next courtyard has an awkward side — that rectangle does not split in the obvious place.",
           "screenPlan": {
             "shape": "model-investigation",
             "shapeLabel": "Model investigation",
             "recommended": 12,
             "planningBand": "10–14",
             "reason": "Students need more than one representation and time to connect concrete, visual and symbolic models."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "3-5",
@@ -496,14 +512,15 @@
           "technique": "Nested STEM story",
           "storyMove": "The next rectangle does not split in the obvious place.",
           "studentMission": "Create and compare two valid area-model decompositions.",
-          "handoff": "End on the object or unanswered need that opens “Mental Math Strategies for Multiplication”.",
+          "handoff": "The delivery is delayed — with no paper available, the order must be updated with a mental strategy.",
           "screenPlan": {
             "shape": "model-investigation",
             "shapeLabel": "Model investigation",
             "recommended": 12,
             "planningBand": "10–14",
             "reason": "Students need more than one representation and time to connect concrete, visual and symbolic models."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "3-6",
@@ -513,14 +530,15 @@
           "technique": "Reversal: expose a misconception",
           "storyMove": "With no paper available, teams need a mental strategy to update the order.",
           "studentMission": "Use distributive, associative or compatible-number reasoning mentally.",
-          "handoff": "End on the object or unanswered need that opens “Choose a Strategy to Multiply”.",
+          "handoff": "Three methods at the gate — three contractors, one order. Which strategy earns the contract?",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "The lesson develops one focused efficient strategy; a long narrative or extra representations would dilute fluency."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "3-7",
@@ -530,14 +548,15 @@
           "technique": "Evidence reveal",
           "storyMove": "Three contractors use different multiplication strategies for the same order.",
           "studentMission": "Choose the most useful strategy and defend the choice.",
-          "handoff": "End on the object or unanswered need that opens “Problem Solving: Model with Math”.",
+          "handoff": "The grove model stands before the council — and a rolled blueprint inside the model shows a two-digit workshop tower.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "3-8",
@@ -554,7 +573,8 @@
             "recommended": 14,
             "planningBand": "12–16",
             "reason": "Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."
-          }
+          },
+          "implementationStatus": "story-built"
         }
       ]
     },
@@ -578,14 +598,15 @@
           "technique": "Mystery object / cold open",
           "storyMove": "Each workshop floor makes a multiple-of-ten batch.",
           "studentMission": "Multiply multiples of 10 to predict the day’s output.",
-          "handoff": "End on the object or unanswered need that opens “Use Models to Multiply 2-Digit Numbers by Multiples of 10”.",
+          "handoff": "The long order card: a two-digit order repeated for tens of customers. A larger model is needed.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "4-2",
@@ -595,14 +616,15 @@
           "technique": "Foreshadowing and prediction",
           "storyMove": "A two-digit order must be repeated by tens of customers.",
           "studentMission": "Use a model to multiply a two-digit number by a multiple of 10.",
-          "handoff": "End on the object or unanswered need that opens “Estimate: Use Rounding or Compatible Numbers”.",
+          "handoff": "Before any cutting, the class must choose rounding or compatible numbers for a safe estimate. Will the beams fit?",
           "screenPlan": {
             "shape": "model-investigation",
             "shapeLabel": "Model investigation",
             "recommended": 12,
             "planningBand": "10–14",
             "reason": "Students need more than one representation and time to connect concrete, visual and symbolic models."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "4-3",
@@ -612,14 +634,15 @@
           "technique": "Escalating complication",
           "storyMove": "Before cutting, the class must choose rounding or compatible numbers for a safe estimate.",
           "studentMission": "Estimate the product and explain the method choice.",
-          "handoff": "End on the object or unanswered need that opens “Arrays and Partial Products”.",
+          "handoff": "The production frame reveals rows and columns as parts of one product.",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "The lesson develops one focused efficient strategy; a long narrative or extra representations would dilute fluency."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "4-4",
@@ -629,14 +652,15 @@
           "technique": "Choice with a consequence",
           "storyMove": "The production frame reveals rows and columns as parts of one product.",
           "studentMission": "Use arrays and partial products to calculate output.",
-          "handoff": "End on the object or unanswered need that opens “Area Models and Partial Products”.",
+          "handoff": "The roof plan is partitioned into rooms — each one a region, each region a partial product.",
           "screenPlan": {
             "shape": "model-investigation",
             "shapeLabel": "Model investigation",
             "recommended": 12,
             "planningBand": "10–14",
             "reason": "Students need more than one representation and time to connect concrete, visual and symbolic models."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "4-5",
@@ -646,14 +670,15 @@
           "technique": "Nested STEM story",
           "storyMove": "The tower plan partitions a large rectangle into manageable rooms.",
           "studentMission": "Use an area model and connect every region to a partial product.",
-          "handoff": "End on the object or unanswered need that opens “Use Partial Products to Multiply by 2-Digit Numbers”.",
+          "handoff": "The final production schedule: four products written in a column and added once.",
           "screenPlan": {
             "shape": "model-investigation",
             "shapeLabel": "Model investigation",
             "recommended": 12,
             "planningBand": "10–14",
             "reason": "Students need more than one representation and time to connect concrete, visual and symbolic models."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "4-6",
@@ -663,14 +688,15 @@
           "technique": "Reversal: expose a misconception",
           "storyMove": "The workshop needs an exact two-digit-by-two-digit total before the bell.",
           "studentMission": "Use partial products and verify that all place-value parts are included.",
-          "handoff": "End on the object or unanswered need that opens “Problem Solving: Make Sense and Persevere”.",
+          "handoff": "The lift is jammed and the obvious plan fails midway — the team must persist and revise without guessing.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "4-7",
@@ -687,7 +713,8 @@
             "recommended": 14,
             "planningBand": "12–16",
             "reason": "Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."
-          }
+          },
+          "implementationStatus": "story-built"
         }
       ]
     },
@@ -711,14 +738,15 @@
           "technique": "Mystery object / cold open",
           "storyMove": "The first crates can be split using known facts.",
           "studentMission": "Find quotients mentally and name the multiplication fact used.",
-          "handoff": "End on the object or unanswered need that opens “Mental Math: Estimate Quotients”.",
+          "handoff": "How many carts, approximately? The next manifest will not divide cleanly.",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "The lesson develops one focused efficient strategy; a long narrative or extra representations would dilute fluency."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "5-2",
@@ -728,14 +756,15 @@
           "technique": "Foreshadowing and prediction",
           "storyMove": "The transport team needs a fast range before exact loading begins.",
           "studentMission": "Estimate quotients with compatible numbers.",
-          "handoff": "End on the object or unanswered need that opens “Mental Math: Estimate Quotients for Greater Dividends”.",
+          "handoff": "A larger manifest — the dividend is too large for the first estimate strategy.",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "The lesson develops one focused efficient strategy; a long narrative or extra representations would dilute fluency."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "5-3",
@@ -745,14 +774,15 @@
           "technique": "Escalating complication",
           "storyMove": "The new dividend is too large for the first estimate strategy.",
           "studentMission": "Estimate quotients for greater dividends and justify the benchmark.",
-          "handoff": "End on the object or unanswered need that opens “Interpret Remainders”.",
+          "handoff": "The manifest divides cleanly for the carts — but not for the people. Two are left at the gate.",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "The lesson develops one focused efficient strategy; a long narrative or extra representations would dilute fluency."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "5-4",
@@ -762,14 +792,15 @@
           "technique": "Choice with a consequence",
           "storyMove": "A remainder could mean another vehicle, leftovers or an incomplete group.",
           "studentMission": "Interpret the remainder according to the transport story.",
-          "handoff": "End on the object or unanswered need that opens “Use Partial Quotients to Divide”.",
+          "handoff": "Unload a useful chunk — take out the groups you can see, not one group at a time.",
           "screenPlan": {
             "shape": "application-lab",
             "shapeLabel": "Application / PBL lab",
             "recommended": 13,
             "planningBand": "11–15",
             "reason": "The context requires setup, modelling or data/tool use, a test and an interpreted decision."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "5-5",
@@ -779,14 +810,15 @@
           "technique": "Nested STEM story",
           "storyMove": "Teams remove large, easy groups from the manifest instead of one group at a time.",
           "studentMission": "Use partial quotients to divide.",
-          "handoff": "End on the object or unanswered need that opens “Use Partial Quotients to Divide: Greater Dividends”.",
+          "handoff": "The longest inventory sheet — the same partial-quotient strategy must survive a greater dividend.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "5-6",
@@ -796,14 +828,15 @@
           "technique": "Reversal: expose a misconception",
           "storyMove": "The same partial-quotient strategy must now survive a greater dividend.",
           "studentMission": "Divide greater dividends and check with multiplication.",
-          "handoff": "End on the object or unanswered need that opens “Use Sharing to Divide”.",
+          "handoff": "One share at every table — supplies are dealt one round at a time so the equality is visible.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "5-7",
@@ -813,14 +846,15 @@
           "technique": "Evidence reveal",
           "storyMove": "Supplies are dealt one round at a time so the equality is visible.",
           "studentMission": "Use sharing to divide and connect rounds to the quotient.",
-          "handoff": "End on the object or unanswered need that opens “Continue Sharing to Divide”.",
+          "handoff": "The share crosses a place — the hundreds will not go round.",
           "screenPlan": {
             "shape": "model-investigation",
             "shapeLabel": "Model investigation",
             "recommended": 12,
             "planningBand": "10–14",
             "reason": "Students need more than one representation and time to connect concrete, visual and symbolic models."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "5-8",
@@ -830,14 +864,15 @@
           "technique": "Council scene: defend a claim",
           "storyMove": "Sharing continues after the largest place is exhausted.",
           "studentMission": "Continue sharing across place values without losing units.",
-          "handoff": "End on the object or unanswered need that opens “Choose a Strategy to Divide”.",
+          "handoff": "Three loading methods at the gate — read the numbers before you pick a method.",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "This continuation lesson can reactivate the previous model quickly and devote its limited screens to a new variation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "5-9",
@@ -847,14 +882,15 @@
           "technique": "Callback and synthesis",
           "storyMove": "Different manifests favour different strategies.",
           "studentMission": "Choose a division strategy and explain why it is efficient here.",
-          "handoff": "End on the object or unanswered need that opens “Problem Solving: Model with Math”.",
+          "handoff": "The dispatch board: the full allocation — and two districts with competing impact reports.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "5-10",
@@ -864,14 +900,15 @@
           "technique": "Cliffhanger handoff",
           "storyMove": "The class models the full allocation; two districts then submit competing impact reports.",
           "studentMission": "Model the division situation and carry both reports into Chapter 6.",
-          "handoff": "Two distribution plans help different numbers of people. Comparing and combining their effects creates the multi-step problems of Chapter 6.",
+          "handoff": "Two districts, two plans — which plan best serves the city when no single operation tells the whole story?",
           "screenPlan": {
             "shape": "reasoning-studio",
             "shapeLabel": "Reasoning studio",
             "recommended": 14,
             "planningBand": "12–16",
             "reason": "Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."
-          }
+          },
+          "implementationStatus": "story-built"
         }
       ]
     },
@@ -895,14 +932,15 @@
           "technique": "Mystery object / cold open",
           "storyMove": "One district says it serves “three times as many”; the comparison must be represented precisely.",
           "studentMission": "Solve a multiplicative comparison problem.",
-          "handoff": "End on the object or unanswered need that opens “Continue to Solve Comparison Problems”.",
+          "handoff": "The claim changes direction — the unknown moves to a new place on the bar.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "6-2",
@@ -912,14 +950,15 @@
           "technique": "Foreshadowing and prediction",
           "storyMove": "A second report states the unknown in a different position.",
           "studentMission": "Continue solving comparison problems and label the meaning of each quantity.",
-          "handoff": "End on the object or unanswered need that opens “Model Multi-Step Problems”.",
+          "handoff": "A plan with three steps — costs, capacity and remaining resources in one scenario.",
           "screenPlan": {
             "shape": "compact-practice",
             "shapeLabel": "Compact practice",
             "recommended": 8,
             "planningBand": "7–9",
             "reason": "This continuation lesson can reactivate the previous model quickly and devote its limited screens to a new variation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "6-3",
@@ -929,14 +968,15 @@
           "technique": "Escalating complication",
           "storyMove": "Costs, capacity and remaining resources appear in one scenario.",
           "studentMission": "Model the multi-step problem before calculating.",
-          "handoff": "End on the object or unanswered need that opens “More Model Multi-Step Problems”.",
+          "handoff": "A condition arrives late — a new constraint changes which operations belong in the plan.",
           "screenPlan": {
             "shape": "reasoning-studio",
             "shapeLabel": "Reasoning studio",
             "recommended": 14,
             "planningBand": "12–16",
             "reason": "Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "6-4",
@@ -946,14 +986,15 @@
           "technique": "Choice with a consequence",
           "storyMove": "A new constraint changes which operations belong in the plan.",
           "studentMission": "Revise the model and solve the updated multi-step problem.",
-          "handoff": "End on the object or unanswered need that opens “Solve Multi-Step Problems”.",
+          "handoff": "The council's final calculation — the complete proposal, one defensible recommendation.",
           "screenPlan": {
             "shape": "reasoning-studio",
             "shapeLabel": "Reasoning studio",
             "recommended": 14,
             "planningBand": "12–16",
             "reason": "Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "6-5",
@@ -963,14 +1004,15 @@
           "technique": "Nested STEM story",
           "storyMove": "Teams receive the complete proposal and must make a defensible recommendation.",
           "studentMission": "Solve the multi-step problem and check whether the answer fits the context.",
-          "handoff": "End on the object or unanswered need that opens “Problem Solving: Make Sense and Persevere”.",
+          "handoff": "A plan that would not cooperate — a tempting path reaches a dead end; persistence and a new representation are required.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "6-6",
@@ -980,14 +1022,15 @@
           "technique": "Reversal: expose a misconception",
           "storyMove": "A tempting path reaches a dead end; persistence and a new representation are required.",
           "studentMission": "Make sense, persevere and present the decision board; modular dimensions are the next clue.",
-          "handoff": "The chosen plan needs repeatable modules that fit several spaces. The council asks for every possible rectangular arrangement: factors.",
+          "handoff": "A tile with more than one shape — the module that must fit every design.",
           "screenPlan": {
             "shape": "reasoning-studio",
             "shapeLabel": "Reasoning studio",
             "recommended": 14,
             "planningBand": "12–16",
             "reason": "Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."
-          }
+          },
+          "implementationStatus": "story-built"
         }
       ]
     },
@@ -1011,14 +1054,15 @@
           "technique": "Mystery object / cold open",
           "storyMove": "The same number of pieces makes several rectangles.",
           "studentMission": "Identify factor pairs by building arrays.",
-          "handoff": "End on the object or unanswered need that opens “Factors”.",
+          "handoff": "Every possible rectangle — the architect accepts the module only when no factor pair is missing.",
           "screenPlan": {
             "shape": "concept-discovery",
             "shapeLabel": "Concept discovery",
             "recommended": 10,
             "planningBand": "9–12",
             "reason": "A new relationship, category or structure must be noticed before it is formalized."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "7-2",
@@ -1028,14 +1072,15 @@
           "technique": "Foreshadowing and prediction",
           "storyMove": "The architect will accept the module only when no factor pair is missing.",
           "studentMission": "List all factors systematically.",
-          "handoff": "End on the object or unanswered need that opens “Repeated Reasoning”.",
+          "handoff": "The rectangle pattern repeats — the same method, bigger tiles.",
           "screenPlan": {
             "shape": "concept-discovery",
             "shapeLabel": "Concept discovery",
             "recommended": 10,
             "planningBand": "9–12",
             "reason": "A new relationship, category or structure must be noticed before it is formalized."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "7-3",
@@ -1045,14 +1090,15 @@
           "technique": "Escalating complication",
           "storyMove": "Teams notice a repeatable method as dimensions grow.",
           "studentMission": "Use repeated reasoning to predict and verify factor pairs.",
-          "handoff": "End on the object or unanswered need that opens “Prime and Composite Numbers”.",
+          "handoff": "The indivisible border tile — some counts make only one rectangular pair; others make many.",
           "screenPlan": {
             "shape": "reasoning-studio",
             "shapeLabel": "Reasoning studio",
             "recommended": 14,
             "planningBand": "12–16",
             "reason": "Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "7-4",
@@ -1062,14 +1108,15 @@
           "technique": "Choice with a consequence",
           "storyMove": "Some counts make only one rectangular pair; others make many.",
           "studentMission": "Classify numbers as prime or composite and justify with arrays.",
-          "handoff": "End on the object or unanswered need that opens “Multiples”.",
+          "handoff": "When will the teams meet? — cleaning and inspection cycles overlap on particular days.",
           "screenPlan": {
             "shape": "concept-discovery",
             "shapeLabel": "Concept discovery",
             "recommended": 10,
             "planningBand": "9–12",
             "reason": "A new relationship, category or structure must be noticed before it is formalized."
-          }
+          },
+          "implementationStatus": "story-built"
         },
         {
           "code": "7-5",
@@ -1079,14 +1126,15 @@
           "technique": "Nested STEM story",
           "storyMove": "Cleaning and inspection cycles overlap on particular days.",
           "studentMission": "Generate multiples and find a useful overlap; the schedule unlocks the Fraction Isles.",
-          "handoff": "The tiles fit, but the water gardens require equal parts of different shapes. Whole-number modules open the Fraction Isles.",
+          "handoff": "Two gardens, one water share — two different-looking shares that may cover the same part.",
           "screenPlan": {
             "shape": "strategy-workshop",
             "shapeLabel": "Strategy workshop",
             "recommended": 9,
             "planningBand": "8–11",
             "reason": "The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."
-          }
+          },
+          "implementationStatus": "story-built"
         }
       ]
     },

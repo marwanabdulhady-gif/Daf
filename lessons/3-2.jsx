@@ -40,9 +40,10 @@ const drawCrates = (ctx, W, H, frame) => {
     { size: 15, col: "#C9A227", font: "marker", alpha: p3 });
 };
 
-const makeRoundFactor = (to) => (ctx, W, H, frame) => {
+const makeRoundFactor = (to, onTo) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onTo) D.tap(ctx, { x: 62, y: 60, w: W - 124, h: 80, value: 0, on: () => onTo(to === 100 ? 10 : 100) });
   const cfg = to === 100 ? { lo: 200, hi: 300 } : { lo: 230, hi: 240 };
   D.roundLine(ctx, { x: 62, y: 88, w: W - 124, lo: cfg.lo, hi: cfg.hi, value: 235, prog: 1 });
   const rounded = to === 100 ? 200 : 240;
@@ -53,9 +54,10 @@ const makeRoundFactor = (to) => (ctx, W, H, frame) => {
     W / 2, H - 18, { size: 13, col: "rgba(234,244,242,.7)", font: "marker" });
 };
 
-const makeOverUnder = (which) => (ctx, W, H, frame) => {
+const makeOverUnder = (which, onWhich) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onWhich) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onWhich(which === "under" ? "over" : "under") });
   const exact = 1880;
   const est = which === "under" ? 1600 : 1920;
   const x = 60, w = W - 120, y = H / 2 + 8;
@@ -116,92 +118,84 @@ const LESSON = {
   ixl: ["WDG"],
 
   metas: [
-    { phase: "warmup", title: "Which estimate <em>doesn't belong</em>?",
-      lead: "Four estimates for 8 × 235. Every one has a reason.",
-      goal: "Reasoning before answers — no card is wrong.",
-      pull: "Closer is not always better. It depends what you need it for.",
-      rail: { launch: "Choose a card, then convince your partner.",
-        monitor: ["Reasoning from the rounding", "Reasoning from closeness", "Reasoning from ease"],
-        connect: "Can every card be the odd one out?",
-        misconception: "Assuming the closest estimate is always the best one." } },
+    { phase: "warmup", title: "Eight crates, <em>one promise</em>",
+      lead: "Eight crates of dates for the market, 235 in each. The foreman promises the whole order fits on one truck — before anyone counts.",
+      goal: "Notice the order is a product — and that the promise can be checked with an estimate.",
+      pull: "The crate counts are simulated — the estimate works on any order.",
+      rail: { launch: "Fictional frame. Just look at the crates — no exact work yet.",
+        monitor: ["Noticing 235 is near 200 and 240", "Wonding how big the order is", "Trusting the promise"],
+        connect: "How could you check the promise without counting every date?",
+        misconception: "Believing the exact product is needed before a decision." } },
 
-    { phase: "launch", title: "Eight boxes of <em>dates</em>",
-      lead: "Each box holds 235. The trader needs a number now, not a perfect one.",
-      goal: "Create the need — an estimate answers a different question.",
-      pull: "Estimate first, then we will see how you did it.",
-      rail: { launch: "No pencils. About how many dates?",
-        monitor: ["Rounding 235 to 200", "Rounding to 240", "Multiplying exactly"],
-        connect: "Which number did you change, and why that one?",
-        misconception: "Rounding the 8 as well and losing the fact." } },
+    { phase: "launch", title: "The estimate <em>before the promise</em>",
+      lead: "8 × 235. Round one factor to a fact you know — what does the order come to?",
+      goal: "Estimate the product by rounding one factor.",
+      pull: "Round one factor to a basic fact you know.",
+      rail: { launch: "Give the estimate and the factor you rounded.",
+        monitor: ["Rounding 235 to 200", "Rounding 235 to 240", "Multiplying the rounds"],
+        connect: "Which rounding is easier, and which is closer?",
+        misconception: "Rounding both factors and losing the basic fact." } },
 
-    { phase: "monitor", title: "Round to a fact you <em>know</em>",
-      lead: "Put 235 on a line and choose an end.",
-      goal: "Estimating a product means rounding one factor.",
-      pull: "Is your estimate above the real answer or below it?",
-      rail: { launch: "Predict the rounded factor before you tap.",
-        monitor: ["Rounding to hundreds", "Rounding to tens", "Rounding both factors"],
-        connect: "Why do we leave the 8 alone?",
-        misconception: "Rounding the single-digit factor to 10." } },
+    { phase: "monitor", title: "Zayd rounds the <em>factor</em>",
+      lead: "To the hundred, or to the ten — each round gives a different promise.",
+      goal: "Choose the rounding place the decision needs.",
+      pull: "Rounded down → the real answer is bigger. Rounded up → it is smaller.",
+      rail: { launch: "Predict the estimate before the line shows it.",
+        monitor: ["Rounding to 200", "Rounding to 240", "Saying which way the round went"],
+        connect: "Why does rounding down mean the real answer is bigger?",
+        misconception: "Believing the estimate is always smaller than the exact product." } },
 
-    { phase: "monitor", title: "Over or <em>under</em>?",
-      lead: "See where each estimate sits against the exact answer.",
-      goal: "Know the direction of your error before you need it.",
-      pull: "Now judge some answers for reasonableness.",
-      rail: { launch: "Predict above or below before you tap.",
-        monitor: ["Linking rounding down to under", "Linking rounding up to over", "Guessing"],
-        connect: "When would you deliberately choose an over-estimate?",
-        misconception: "Thinking an over-estimate means a mistake." } },
+    { phase: "monitor", title: "Which answers could be <em>real</em>?",
+      lead: "Four claimed products for the order. The estimate catches the impossible ones.",
+      goal: "Use the estimate to flag an answer that cannot be right.",
+      pull: "Close to my estimate — or nowhere near.",
+      rail: { launch: "Compare each claim to your estimate before you sort.",
+        monitor: ["Comparing claims to the estimate", "Spotting 188 as too small", "Spotting 18,800 as too big"],
+        connect: "What made the impossible claims impossible?",
+        misconception: "Accepting any tidy-looking product." } },
 
-    { phase: "monitor", title: "Reasonable or <em>not</em>?",
-      lead: "Sort each answer. No grading until the class commits.",
-      goal: "Use an estimate to catch a wrong answer.",
-      pull: "Two students estimated the same product differently.",
-      rail: { launch: "Estimate first, then judge each answer.",
-        monitor: ["Comparing against the estimate", "Checking the digit count", "Calculating exactly"],
-        connect: "Which one was obviously wrong, and how did you know?",
-        misconception: "Judging by whether the answer looks tidy." } },
+    { phase: "monitor", title: "Omar names the <em>direction</em>",
+      lead: "Rounded down or rounded up? The estimate is a range, not a guess.",
+      goal: "Say whether the exact product sits above or below the estimate.",
+      pull: "The estimate carries its direction.",
+      rail: { launch: "Before you tap: which way did the round go?",
+        monitor: ["Naming rounded-down", "Naming rounded-up", "Placing the exact answer"],
+        connect: "How does the direction help you check the exact product?",
+        misconception: "Reporting an estimate without its direction." } },
 
-    { phase: "connect", title: "Two ways to <em>round it</em>",
-      lead: "Huda rounded to 200. Zaid rounded to 240. Both are useful.",
+    { phase: "connect", title: "Huda rounds <em>coarse</em>. Zaid rounds <em>close</em>",
+      lead: "Huda rounds to 200, Zaid to 240. Both estimates defend the order.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Choosing the easy fact", "Choosing the closer number", "Choosing for a purpose"],
-        connect: "Which estimate would you use to order boxes, and why?",
-        misconception: "Believing only one rounding place is allowed." } },
+        monitor: ["Comparing the rounding places", "Comparing ease and closeness", "Checking both are near 1,880"],
+        connect: "Which rounding would you use for a delivery decision?",
+        misconception: "Thinking finer rounding is always better." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Round one factor to something you can multiply in your head. Then attach the place.",
+    { phase: "synth", title: "On the <em>board</em>: a promise with a range",
+      lead: "Round one factor to a fact you know. The estimate is a range, with a direction.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Naming the basic fact", "Restating it in their own words"],
+        monitor: ["Naming the basic fact", "Naming the direction", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Rounding after multiplying." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the basic fact", "Testing on a new product", "Predicting over or under"],
-        connect: "Can you tell before you calculate whether your estimate is too big?",
-        misconception: "Forgetting that rounding down always under-estimates a product." } },
+        misconception: "Estimating both factors at once." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Show the rounded factor you used.",
-        monitor: ["Rounding to 500", "Rounding to 510", "Multiplying exactly"],
+      lead: "6 × 512 — rounded to the nearest hundred, what is the estimate?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Round the three-digit factor first.",
+        monitor: ["Rounding 512 to 500", "Using 6 × 5", "Saying the direction"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Rounding 512 up to 600." } },
+        misconception: "Answering 30,000 — a zero was added to the estimate." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The promise is <em>checked</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: the exact product, built from an array.",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the line", "Ready for arrays"],
+      pull: "Tomorrow: equal rows of panels — but the total count is hidden.",
+      rail: { launch: "Ask three students to say their estimate and its direction.",
+        monitor: ["Able to explain the rounding", "Still rounds both factors", "Ready for arrays"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -212,91 +206,140 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <WODB award={award}
-          prompt="Four estimates for 8 × 235. Which one doesn't belong?"
-          cards={[
-            { id: "a", text: "1,600", why: "Rounded 235 down to 200 — the easiest fact to use" },
-            { id: "b", text: "1,920", why: "Rounded 235 up to 240 — much closer, more work" },
-            { id: "c", text: "1,880", why: "The only one that is not an estimate — it is exact" },
-            { id: "d", text: "2,400", why: "The only one that rounds both factors, and is far off" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Eight crates, one promise"
+            text="Eight crates of dates for the market, 235 in each. The foreman promises the order fits on one truck — before anyone has counted."
+            clue="A promise can be checked with an estimate">
+            <NoticeWonder draw={drawCrates} height={256} award={award}
+              notices={["Each crate holds 235", "There are eight crates", "235 is near 200 and 240", "The truck promise is untested"]}
+              wonders={["About how many dates in total?", "Which rounding is easier?", "Can the estimate check the promise?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawCrates} height={260} award={award}
-          label="About how many dates in 8 boxes of 235?"
-          min={800} max={3000} start={1800} unit="dates"
-          after="Locked. Now let us see which number you rounded."
-          note="The trader needs a number now. Exact can wait." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The estimate before the promise"
+            text="Omar asks for the estimate before the foreman's promise stands — round one factor to a fact you know."
+            clue="Round one factor to a basic fact you know">
+            <LaunchEstimate draw={drawCrates} height={260} award={award}
+              label="8 × 235 — the estimate before the promise" min={1400} max={2200} start={1600} unit="dates"
+              after="Locked. Now round the factor and see which way the estimate sits."
+              note="The crate counts are simulated — the estimate works on any order." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeRoundFactor(to)} height={252}
-          label="Round 235 to the ..."
-          value={to}
-          onPick={(v) => setTo(v)}
-          chips={[{ v: 100, label: "nearest hundred" }, { v: 10, label: "nearest ten" }]}
-          caption={<MathEl omml={to === 100 ? M.estimate : M.closer} size="xl" display="block" />}
-          footnote="The 8 stays as it is — it is already a fact you know." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd rounds the factor"
+            text="He can round 235 to the hundred or to the ten — the class must say which estimate each round gives."
+            clue="Rounded down → the real answer is bigger">
+            <ExploreChips draw={makeRoundFactor(to, setTo)} height={252}
+              label="Round the 235, then multiply by 8"
+              value={to}
+              onPick={(v) => setTo(v)}
+              chips={[{ v: 100, label: "round to the hundred" }, { v: 10, label: "round to the ten" }]}
+              caption={<MathEl omml={to === 100 ? M.estimate : M.closer} size="xl" display="block" />}
+              footnote="Rounded down → the real answer is bigger. Rounded up → it is smaller." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeOverUnder(which)} height={250}
-          label="Where does each estimate sit?"
-          value={which}
-          onPick={(v) => setWhich(v)}
-          chips={[{ v: "under", label: "8 × 200" }, { v: "over", label: "8 × 240" }]}
-          caption={<MathEl omml={which === "under" ? M.under : M.over} size="lg" display="block" />}
-          footnote="If you round the factor down, the product must come out smaller." />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Which answers could be real?"
+            text="Four merchants claim products for the order. The estimate catches the ones that cannot be right."
+            clue="Close to my estimate — or nowhere near">
+            <CardSort award={award} columns={2} commitLabel="Check the claims"
+              items={[
+                { id: "r1", text: "8 × 235 = 1,880", target: "ok" },
+                { id: "r2", text: "8 × 235 = 188", target: "no" },
+                { id: "r3", text: "8 × 235 = 18,800", target: "no" },
+                { id: "r4", text: "7 × 412 = 2,884", target: "ok" }
+              ]}
+              targets={[
+                { id: "ok", label: "reasonable — close to my estimate" },
+                { id: "no", label: "not reasonable — nowhere near" }
+              ]} />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "r1", text: "8 × 235 = 1,880", target: "ok" },
-            { id: "r2", text: "8 × 235 = 188", target: "no" },
-            { id: "r3", text: "8 × 235 = 18,800", target: "no" },
-            { id: "r4", text: "7 × 412 = 2,884", target: "ok" }
-          ]}
-          targets={[
-            { id: "ok", label: "reasonable — close to my estimate" },
-            { id: "no", label: "not reasonable — nowhere near" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar names the direction"
+            text="Rounded down or rounded up? His estimate is a range — and the direction tells you where the exact product sits."
+            clue="The estimate carries its direction">
+            <ExploreChips draw={makeOverUnder(which, setWhich)} height={250}
+              label="Which way does the round sit?"
+              value={which}
+              onPick={(v) => setWhich(v)}
+              chips={[{ v: "under", label: "rounded down" }, { v: "over", label: "rounded up" }]}
+              caption={<MathEl omml={which === "under" ? M.under : M.over} size="lg" display="block" />}
+              footnote="The exact product sits on the far side of the estimate." />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Huda's way — round to 200", omml: M.estimate, h: 92,
-                  quote: "8 times 2 is 16, so 8 times 200 is 1,600." }}
-          right={{ name: "Zaid's way — round to 240", omml: M.closer, h: 92,
-                   quote: "8 times 24 is 192, so 8 times 240 is 1,920." }}
-          same={["Both round one factor", "Both use a fact they know", "Both are close to 1,880"]}
-          diff={["Huda's is easier", "Zaid's is closer", "Huda knows hers is too small"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one defensible order"
+            text="Huda rounds to 200, Zaid to 240. Both estimates sit near the exact 1,880 — for different reasons."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Huda's way — round to 200", omml: M.estimate, h: 92,
+                      quote: "8 times 2 is 16, so 8 times 200 is 1,600." }}
+              right={{ name: "Zaid's way — round to 240", omml: M.closer, h: 92,
+                       quote: "8 times 24 is 192, so 8 times 240 is 1,920." }}
+              same={["Both round one factor", "Both use a fact they know", "Both are close to 1,880"]}
+              diff={["Huda's is easier", "Zaid's is closer", "Huda knows hers is too small"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard32} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The estimate is drawn with its direction"
+            text="Zayd builds only what the class can justify: the factor rounded, the fact named, the direction stated."
+            clue="A promise with a range">
+            <BoardScreen draw={drawBoard32} height={430}
+              caption="An estimate is a promise with a range." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "round one factor to a basic fact you know" }]}
-          hand={"round one factor · use the basic fact · attach the place · then check the real answer against it"}
-          cards={[
-            { title: "The estimate we made", omml: M.estimate, note: "the exact answer is 1,880" },
-            { title: "Tap for a closer estimate", omml: M.exact, revealOmml: M.closer, reveal: true,
-              note: "rounding to tens costs more effort" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the checked promise"
+            text="6 × 512, rounded to the nearest hundred. Show the estimate — and the direction."
+            clue="512 is nearer to 500 than to 600">
+            <ShowWhatYouKnow award={award}
+              prompt="Estimate 6 × 512 by rounding to the nearest hundred."
+              omml={M.swyk}
+              options={[{ v: "a", text: "3,000" }, { v: "b", text: "300" }, { v: "c", text: "3,600" }, { v: "d", text: "30,000" }]}
+              right="a"
+              support={{
+                yes: "Yes — 6 × 5 = 30, so 6 × 500 = 3,000. The exact answer, 3,072, is close.",
+                notYet: "Not yet — round 512 first, then use the basic fact.",
+                draw: drawSupport32, h: 82,
+                hint: "Is 512 nearer to 500 or 600? Now what is 6 × 5?"
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Estimate 6 × 512 by rounding to the nearest hundred."
-          omml={M.swyk}
-          options={[{ v: "a", text: "300" }, { v: "b", text: "3,000" }, { v: "c", text: "3,600" }, { v: "d", text: "30,000" }]}
-          right="b"
-          support={{
-            yes: "Yes — 6 × 5 = 30, so 6 × 500 = 3,000. The exact answer, 3,072, is close.",
-            notYet: "Not yet — round 512 first, then use the basic fact.",
-            draw: drawSupport32, h: 82,
-            hint: "Is 512 nearer to 500 or 600? Now what is 6 × 5?"
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Estimate the cost of 6 of something at the shop before you check the real price." />;
+        return (
+          <StoryHandoff
+            title="The promise is checked"
+            text="Omar files the estimate beside the exact 1,880 — the promise holds. Zayd unrolls the grove plan: equal rows of shade panels, but the total count is hidden."
+            artifact="Grove plan · product estimated"
+            next="The plan shows equal rows of panels — but the total count is hidden. How can you tell it without counting every panel?">
+            <Closing game={game} omml={M.rule}
+              action="Estimate the cost of 6 of something at the shop before you check the real price." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

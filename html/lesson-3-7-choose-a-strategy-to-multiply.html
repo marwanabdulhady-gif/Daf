@@ -135,6 +135,49 @@
         from { opacity: 0; transform: scale(1.014); filter: blur(6px); }
         to { opacity: 1; transform: none; filter: none; }
       }
+      /* THE STAGE (light paper scheme) — the slide IS the stage: the school's
+         light paper, teal + gold accents. Panels are borderless so the canvas
+         and the controls float directly on the stage (the canvas paints the
+         same paper via the light-stage remap in draw.js — no board, no box).
+         Interactive controls span the full stage width, not a bordered box. */
+      .visual > .glass-panel,
+      .visual > .story-shell .glass-panel {
+        background: transparent; border: none; box-shadow: none;
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+      }
+      .visual > .glass-panel:has(canvas),
+      .visual > .story-shell .glass-panel:has(canvas) { padding: 6px; }
+      .chip-bar { width: 100%; padding: 2px 2px 4px; }
+      .chip-label { font-weight: 900; font-size: 12px; color: var(--c); margin: 0 2px 9px; }
+      .chip-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+      .chip-row .btn { flex: 1 1 auto; min-width: 110px; }
+      .stage-line { text-align: center; font-size: 12.5px; color: var(--daf-ink-2); padding: 2px 8px 8px; }
+
+      /* THE STAGE — board screens are full-stage: the drawing owns the whole
+         visual area at full height (no framed box), Dar Al Fikr deep-teal
+         surface with the logo-gold breathing frame drawn by D.stage itself. */
+      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; }
+      .board-stage { position: relative; flex: 1; min-height: 300px; }
+      .stage-caption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 11.5px; color: rgba(16,36,43,.62); padding: 0 18px; pointer-events: none; }
+      .screen:has(.board-stage) { grid-template-columns: minmax(270px, 29%) 1fr; }
+
+      /* Staggered element reveals (Syntax-Academy revealUp, English edition):
+         every element on the screen enters with a .08s offset. Disabled under
+         prefers-reduced-motion (static state, per the accessibility policy). */
+      @keyframes revealUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+      }
+      .screen .copy > *, .screen .visual > * { animation: revealUp .5s var(--ease) both; }
+      .screen .copy > :nth-child(1), .screen .visual > :nth-child(1) { animation-delay: .06s; }
+      .screen .copy > :nth-child(2), .screen .visual > :nth-child(2) { animation-delay: .14s; }
+      .screen .copy > :nth-child(3), .screen .visual > :nth-child(3) { animation-delay: .22s; }
+      .screen .copy > :nth-child(4), .screen .visual > :nth-child(4) { animation-delay: .30s; }
+      .screen .copy > :nth-child(5), .screen .visual > :nth-child(5) { animation-delay: .38s; }
+      .screen .copy > :nth-child(6), .screen .visual > :nth-child(6) { animation-delay: .46s; }
+      @media (prefers-reduced-motion: reduce) {
+        .screen .copy > *, .screen .visual > * { animation: none; }
+      }
 
       .copy {
         position: relative; z-index: 5;
@@ -246,6 +289,59 @@
         box-shadow: 0 16px 36px color-mix(in srgb, var(--c) 18%, transparent);
       }
       .glass-card.chosen { border-color: var(--c); border-width: 2px; background: #fff; }
+
+      /* ---------------- story layer: three truth-status lanes ------------ */
+      .visual > .story-shell {
+        width: 100%; max-height: 100%; overflow-y: auto; padding: 1px 5px 5px;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.24) transparent;
+      }
+      .story-shell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+      .story-ribbon {
+        position: relative; min-height: 76px; overflow: hidden;
+        display: grid; grid-template-columns: auto minmax(0,1fr) minmax(145px,210px);
+        gap: 12px; align-items: center; padding: 8px 13px;
+        border-radius: 16px; border: 1px solid rgba(96,66,166,.24);
+        background: linear-gradient(112deg,#fff 0%,#f8f4ff 68%,#f0e9fa 100%);
+        box-shadow: 0 9px 24px rgba(7,30,39,.07);
+      }
+      .lane-stem .story-ribbon { border-color: rgba(45,112,179,.28); background: linear-gradient(112deg,#fff,#eef7ff); }
+      .lane-amanah .story-ribbon { border-color: rgba(56,140,70,.3); background: linear-gradient(112deg,#fff,#eff8ef); }
+      .story-motif { position: absolute; inset-inline-end: 0; bottom: -18px; width: 210px; height: 115px; color: #6042A6; opacity: .075; pointer-events: none; }
+      .lane-stem .story-motif { color: #2D70B3; }.lane-amanah .story-motif { color: #388C46; }
+      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; }
+      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); }
+      .story-ribbon-copy { position: relative; z-index: 2; min-width: 0; }
+      .story-lane { display: inline-flex; gap: 6px; align-items: center; font-size: 8.5px; font-weight: 950; letter-spacing: .13em; text-transform: uppercase; color: #6042A6; }
+      .lane-stem .story-lane { color: #2D70B3; }.lane-amanah .story-lane { color: #388C46; }
+      .story-ribbon-copy>b { display: block; margin-top: 2px; color: var(--daf-ink); font-size: 13px; line-height: 1.25; }
+      .story-ribbon-copy p { margin: 2px 0 0; color: var(--daf-ink-2); font-size: 10.5px; line-height: 1.38; }
+      .story-ribbon-copy small { display: block; margin-top: 4px; color: #6042A6; font-size: 9.5px; font-weight: 850; }
+      .lane-stem .story-ribbon-copy small { color: #2D70B3; }
+      .folio-progress { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 5px 8px; align-items: center; padding: 8px 9px; border-radius: 11px; background: rgba(255,255,255,.78); border: 1px solid rgba(96,66,166,.16); }
+      .folio-label { min-width: 0; }.folio-label b { display:block; font-size: 9px; color:#6042A6; text-transform:uppercase; letter-spacing:.1em; }.folio-label span { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:8.5px; color:var(--daf-ink-2); }
+      .folio-progress em { grid-row: 1 / span 2; grid-column: 2; font: 800 10px "JetBrains Mono",monospace; color:#6042A6; font-style:normal; }
+      .folio-pips { display:flex; gap:3px; }.folio-pips i { display:block; width:12px; height:4px; border-radius:5px; background:#ddd5ed; }.folio-pips i.restored { background:linear-gradient(90deg,#6042A6,#C9A227); }
+      .story-content { display:flex; flex-direction:column; gap:10px; min-width:0; }
+      .story-content>.glass-panel { flex: 1; }
+      .story-shell.compact .story-ribbon { min-height: 84px; }
+      .stem-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .stem-source-card { border:1px solid rgba(45,112,179,.25); border-radius:15px; background:#F2F8FD; padding:14px; }
+      .stem-source-card h3 { margin:8px 0 4px; font-size:13px; color:#1D5C91; }.stem-source-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .stem-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#2D70B3; text-transform:uppercase; }
+      .stem-source-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.stem-source-card summary { cursor:pointer; font-weight:900; color:#2D70B3; }.stem-source-card a { display:block; color:#1D5C91; margin-top:5px; }
+      .stem-math { min-width:0; display:flex; }.stem-math>.glass-panel { flex:1; }
+      .handoff-artifact { display:flex; gap:11px; align-items:center; padding:10px 14px; border-radius:13px; color:#fff; background:linear-gradient(100deg,#0B1F24,#12857C); border:1px solid rgba(201,162,39,.55); }
+      .handoff-artifact>span { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--daf-gold); color:#10242B; }.handoff-artifact b { display:block; color:var(--daf-gold-2); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }.handoff-artifact p { margin:2px 0 0; font-size:11px; color:#EAF4F2; }
+      .handoff-artifact .folio-stamp { margin-left:auto; align-self:center; }
+      .handoff-artifact .folio-stamp.on { color:#0B1F24; background:var(--daf-gold); }
+      .folio-save-note { flex-basis:100%; margin:0; font-size:9.5px; color:#F2C9C7; }
+      .amanah-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .amanah-card { border:1px solid rgba(56,140,70,.3); border-radius:15px; background:#F0F8F0; padding:14px; }
+      .amanah-card h3 { margin:8px 0 4px; font-size:13px; color:#2C6E38; }.amanah-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .amanah-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#388C46; text-transform:uppercase; }
+      .amanah-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.amanah-card summary { cursor:pointer; font-weight:900; color:#388C46; }
+      @media(max-width:900px){.amanah-layout{grid-template-columns:1fr}}
+      @media(max-width:900px){.story-ribbon{grid-template-columns:auto minmax(0,1fr)}.folio-progress{display:none}.stem-layout{grid-template-columns:1fr}.story-ribbon-copy p{font-size:9.5px}}
 
       .btn { border: none; cursor: pointer; font-weight: 800; border-radius: 10px; transition: all 0.25s var(--ease); font-size: 12px; padding: 10px 18px; font-family: inherit; }
       .btn-primary { background: var(--c-grad); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--c) 32%, transparent); }
@@ -387,7 +483,8 @@
       .dj-last{flex:1;min-width:200px}
       .dj-last em{font-style:normal;font:800 12px "JetBrains Mono",monospace}
       .dj-last em.pos{color:#7ED08C} .dj-last em.neg{color:#F2938F}
-      .dj-exports{display:flex;gap:14px}
+      .dj-exports{display:flex;gap:14px;flex-wrap:wrap}
+      .dj-note{flex-basis:100%;font-size:9px;color:rgba(217,237,235,.45);margin-top:2px}
       .dj-exports a{color:#9fc4bd;cursor:pointer;display:inline-flex;gap:6px;align-items:center;
         font-size:11px;letter-spacing:.06em;text-decoration:none}
       .dj-exports a:hover{color:var(--daf-gold)}
@@ -501,6 +598,8 @@
         border: 1px solid var(--daf-line); border-bottom-width: 2px; border-radius: 5px;
         font: 700 10px "JetBrains Mono", monospace; color: var(--daf-deep); background: #fff;
       }
+
+      
     </style>
   </head>
   <body>
@@ -962,8 +1061,53 @@
 (function (global) {
   "use strict";
 
+  /* LIGHT STAGE (Dar Al Fikr paper scheme) — the stage is the school's
+     light paper, so canvas colours are remapped from dark-board "chalk"
+     to ink-on-paper. The board colour itself becomes transparent, so the
+     drawing sits directly on the stage: no blackboard box can exist. */
+  var LIGHT_MAP = {
+    "#0b1f24": "transparent",
+    "#eaf4f2": "#10242b",
+    "#34d399": "#12857c",
+    "#f2938f": "#c75440",
+    "#e0665f": "#c75440",
+    "#ffa94d": "#fa7e19",
+    "#4a9be0": "#2d70b3",
+    "#fff": "#10242b"
+  };
+  function remapStyle(v) {
+    if (typeof v !== "string") return v;
+    var l = v.toLowerCase();
+    if (LIGHT_MAP[l]) return LIGHT_MAP[l];
+    var m = l.match(/^rgba\((234,244,242|52,211,153|74,155,224|255,255,255|160,190,200|120,150,160),([\d.]+)\)$/);
+    if (m) {
+      var rgb = m[1] === "234,244,242" ? "16,36,43"
+        : m[1] === "52,211,153" ? "18,133,124"
+        : m[1] === "74,155,224" ? "45,112,179"
+        : "16,36,43";
+      return "rgba(" + rgb + "," + m[2] + ")";
+    }
+    return v;
+  }
+
   function fit(canvas) {
-    var ctx = canvas.getContext("2d");
+    var raw = canvas.getContext("2d");
+    /* Canvas 2D methods are brand-checked: they must be called with the real
+       context as `this`. The remap proxy therefore binds every method to the
+       target context in a get trap (a set trap alone makes every native call
+       throw "Illegal invocation" and blank the whole page). */
+    var ctx = new Proxy(raw, {
+      get: function (target, prop) {
+        var val = Reflect.get(target, prop, target);
+        if (typeof val === "function") return val.bind(target);
+        return val;
+      },
+      set: function (target, prop, val) {
+        if (prop === "fillStyle" || prop === "strokeStyle") val = remapStyle(val);
+        Reflect.set(target, prop, val);
+        return true;
+      }
+    });
     var state = { ctx: ctx, W: 0, H: 0 };
     function resize() {
       var dpr = Math.min(global.devicePixelRatio || 1, 2);
@@ -1052,6 +1196,7 @@
     o = o || {};
     ctx.save();
     var size = o.size || 15;
+    var microAlpha = size < 10 ? 0.7 : 1;   /* stage: keep the canvas airy */
     var fam = o.font === "marker" ? '"Lemonada", cursive'
             : o.font === "mono" ? '"JetBrains Mono", monospace'
             : '"Cabinet Grotesk", sans-serif';
@@ -1059,39 +1204,50 @@
     ctx.fillStyle = o.col || "#EAF4F2";
     ctx.textAlign = o.align || "center";
     ctx.textBaseline = o.baseline || "middle";
-    ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.globalAlpha = (o.alpha == null ? 1 : o.alpha) * microAlpha;
     ctx.fillText(s, x, y);
     ctx.restore();
   }
 
-  /* THE BOARD — dark surface, dot grid, breathing gold frame */
-  function board(ctx, W, H, o) {
+  /* THE STAGE — the whole canvas is the slide: Dar Al Fikr deep-teal surface
+     (the brand canvas colour, not a black presentation deck), dot grid, and a
+     breathing frame in the logo gold. No inner board frame — the drawing has
+     the full area. English edition: labels stay LTR with western digits
+     (guardrails G5a/G5b). */
+  function accentCSS(name, fallback) {
+    try {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    } catch (e) { return fallback; }
+  }
+  function accent() { return accentCSS("--c", "#C9A227"); }
+  function accent2() { return accentCSS("--c-2", "#C9A227"); }
+
+  var GOLD = "#C9A227"; /* Dar Al Fikr logo gold */
+
+  function stage(ctx, W, H, o) {
     o = o || {};
     var t = o.t || 0;
-    var pad = o.pad == null ? 6 : o.pad;
     ctx.save();
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.fillStyle = "#0B1F24";
-    ctx.fill();
-    ctx.clip();
-    ctx.fillStyle = "rgba(234,244,242,.07)";
-    for (var x = pad + 14; x < W - pad; x += 26) {
-      for (var y = pad + 14; y < H - pad; y += 26) {
+    ctx.fillStyle = "rgba(234,244,242,.07)"
+    for (var x = 16; x < W; x += 26) {
+      for (var y = 16; y < H; y += 26) {
         ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill();
       }
     }
     ctx.restore();
-    /* breathing gold frame */
-    var breathe = 1 + Math.sin(t / 42) * 0.012;
+    /* breathing frame in the logo gold — the school's own colour scheme */
     ctx.save();
-    ctx.translate(W / 2, H / 2); ctx.scale(breathe, breathe); ctx.translate(-W / 2, -H / 2);
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.strokeStyle = "rgba(201,162,39," + (0.55 + Math.sin(t / 42) * 0.2) + ")";
-    ctx.lineWidth = 2;
-    ctx.stroke();
+    ctx.globalAlpha = 0.4 + Math.sin(t / 42) * 0.2;
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 2.5;
+    ctx.strokeRect(3, 3, W - 6, H - 6);
     ctx.restore();
-    if (o.title) txt(ctx, o.title, W / 2, pad + 24, { size: 13, col: "#C9A227", font: "mono", weight: 700 });
+    if (o.title) txt(ctx, o.title, W / 2, 26, { size: 13, col: GOLD, font: "mono", weight: 700 });
   }
+
+  /* THE BOARD — kept as the stage surface (synthesis screens) */
+  function board(ctx, W, H, o) { stage(ctx, W, H, o); }
 
   /* TAPE / BAR MODEL — the default fraction manipulative */
   function bar(ctx, o) {
@@ -1372,9 +1528,6 @@
       var cx = x + i * cw;
       var a2 = at(prog, 0.25 + (i / slots) * 0.5, 0.25 + (i / slots) * 0.5 + 0.3);
       if (a2 <= 0) continue;
-      var place = ["hundreds", "tens", "ones"][i % 3];
-      txt(ctx, place, cx + cw / 2, yPlace + 10,
-        { size: 8.5, col: "rgba(234,244,242,.45)", font: "mono", weight: 500, alpha: a2 });
       ctx.save();
       ctx.globalAlpha = a2;
       rr(ctx, cx + 3, yDigit - 2, cw - 6, hRow * 1.05, 6);
@@ -1385,6 +1538,9 @@
       ctx.stroke();
       ctx.restore();
       var d = i >= pad ? digits.charAt(i - pad) : "";
+      if (d !== "" && o.onTap) {
+        tap(ctx, { x: cx + 3, y: yDigit - 2, w: cw - 6, h: hRow * 1.05, value: i - pad, on: o.onTap });
+      }
       if (d !== "") {
         var isHi = o.highlight != null && (i - pad) === o.highlight;
         txt(ctx, d, cx + cw / 2, yDigit + hRow * 0.52,
@@ -2989,9 +3145,30 @@
     return { shown: Math.min(shown, total), total: total };
   }
 
+/* Tappable canvas regions — the drawing IS the control. Drawing code
+     registers hit regions each frame via D.tap(ctx, region); the Sketch
+     component clears them per frame and dispatches pointer taps to them. */
+  function clearTaps(canvas) { canvas.__taps = []; }
+  function tap(ctx, region) {
+    var canvas = ctx && ctx.canvas;
+    if (!canvas) return;
+    canvas.__taps = canvas.__taps || [];
+    canvas.__taps.push(region);
+  }
+  function hit(canvas, x, y) {
+    var taps = (canvas && canvas.__taps) || [];
+    for (var i = taps.length - 1; i >= 0; i--) {
+      var t = taps[i];
+      if (x >= t.x && x <= t.x + t.w && y >= t.y && y <= t.y + t.h) return t;
+    }
+    return null;
+  }
+
   global.DAFDraw = {
     fit: fit, loop: loop, at: at, ease: ease, easeOut: easeOut,
-    marker: marker, rr: rr, txt: txt, board: board,
+    tap: tap, clearTaps: clearTaps, hit: hit,
+    marker: marker, rr: rr, txt: txt, board: board, stage: stage,
+    accent: accent, accent2: accent2,
     bar: bar, numberLine: numberLine, areaGrid: areaGrid, star8: star8, fig: fig,
     axes: axes, plotLine: plotLine, plotPoints: plotPoints, table: table,
     pvChart: pvChart, digitBlocks: digitBlocks, roundLine: roundLine,
@@ -3006,6 +3183,95 @@
     decChart: decChart, cubePrism: cubePrism
   };
 })(window);
+/* ===========================================================================
+   DURABLE STORY STATE · class folio stamps (PR 02)
+
+   What this is: a per-class record of which lesson folio pages the class has
+   restored, kept in localStorage on this computer only. It is class-level
+   data — class name, lesson code and timestamps — and never stores student
+   names, scores or anything personal (student records stay in the dojo
+   session log, which is exported on demand).
+
+   Design follows the research gate (docs/research/pr-02-source-review-infrastructure.md,
+   S1/S2): the state is tiny, best-effort and NON-CRITICAL — when storage is
+   missing, cleared or evicted every deck behaves exactly as before (folio
+   pips fall back to position-based), and one tap can export a JSON backup.
+   There is no server, no sync and no cross-machine state.
+   =========================================================================== */
+const FOLIO_KEY = "daf.folio.v1";
+
+function folioStorage() {
+  /* test hook (node): an in-memory store object, mirroring __DAF_XML_PARSER__ */
+  if (typeof globalThis !== "undefined" && globalThis.__DAF_FOLIO_LS__) return globalThis.__DAF_FOLIO_LS__;
+  try { return (typeof window !== "undefined" && window.localStorage) || null; }
+  catch (e) { return null; }
+}
+
+function folioLoad() {
+  const ls = folioStorage();
+  if (!ls) return { version: 1, classes: {} };
+  try {
+    const st = JSON.parse(ls.getItem(FOLIO_KEY) || "{}") || {};
+    if (!st.classes) st.classes = {};
+    return st;
+  } catch (e) { return { version: 1, classes: {} }; }
+}
+
+function folioSave(st) {
+  const ls = folioStorage();
+  if (!ls) return false;
+  try {
+    st.version = 1;
+    ls.setItem(FOLIO_KEY, JSON.stringify(st));
+    return true;
+  } catch (e) { return false; } /* quota or disabled storage: degrade silently */
+}
+
+/* Stamped lessons for one class: { "1-1": "2026-08-24T09:00:00.000Z", ... } */
+function folioFor(className) {
+  if (!className) return { lessons: {} };
+  const c = folioLoad().classes[className];
+  return { lessons: (c && c.lessons) || {} };
+}
+
+/* Stamp (on !== false) or unstamp (on === false) one lesson for a class.
+   Returns true when the change was saved to this computer. */
+function folioStamp(className, code, on) {
+  if (!className || !code) return false;
+  const st = folioLoad();
+  const c = st.classes[className] || (st.classes[className] = { lessons: {} });
+  if (!c.lessons) c.lessons = {};
+  if (on === false) delete c.lessons[code];
+  else c.lessons[code] = new Date().toISOString();
+  c.updatedAt = new Date().toISOString();
+  return folioSave(st);
+}
+
+/* Clear the whole class folio on this computer. */
+function folioReset(className) {
+  if (!className) return true;
+  const st = folioLoad();
+  delete st.classes[className];
+  return folioSave(st);
+}
+
+/* Export the class folio as a JSON file the school can keep. */
+function folioExport(className) {
+  const data = JSON.stringify({
+    app: "Dar Al Fikr Grade 4 Mathematics",
+    key: FOLIO_KEY,
+    exportedAt: new Date().toISOString(),
+    class: className,
+    state: folioFor(className)
+  }, null, 2);
+  const blob = new Blob([data], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "daf-" + String(className).replace(/[^\w.-]+/g, "-") + "-folio.json";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
     </script>
     <script>window.DAF_ROSTER = {
   "school": "Dar Al Fikr Schools",
@@ -3064,6 +3330,7 @@
   }
 }
 ;</script>
+    <script>window.DAF_STORY = {"title":"The Lantern of Numeria — The Tale of the Seventeen Doors","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"unit":{"topic":3,"chapter":"The palm grove of repeating rows","question":"How can one small group describe hundreds or thousands of repeated objects?","artifact":"A scale drawing and materials schedule for a shade grove","pbl":"Design a shaded reading grove using equal rows, arrays and one-digit multiplication.","bridge":"The grove design works, but its workshop fabricates many two-digit panels at once. A larger multiplication model is required.","lessonCount":8,"lessonCodes":["3-1","3-2","3-3","3-4","3-5","3-6","3-7","3-8"]},"lesson":{"code":"3-7","curriculumTitle":"Choose a Strategy to Multiply","standard":"4.NBT.B.5","storyBeat":"Three methods at the gate","technique":"Evidence reveal","storyMove":"Three contractors use different multiplication strategies for the same order.","studentMission":"Choose the most useful strategy and defend the choice.","handoff":"The grove model stands before the council — and a rolled blueprint inside the model shows a two-digit workshop tower.","screenPlan":{"shape":"strategy-workshop","shapeLabel":"Strategy workshop","recommended":9,"planningBand":"8–11","reason":"The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."},"implementationStatus":"story-built","index":6,"numberInUnit":7},"stemWindows":[],"amanahWindows":[]};</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
 const D = window.DAFDraw;
@@ -3170,13 +3437,28 @@ function Sketch({ draw, height, style }) {
     const stop = D.loop((frame) => {
       if (!st.W || !st.H) return;
       st.ctx.clearRect(0, 0, st.W, st.H);
+      D.clearTaps(cv);
       draw(st.ctx, st.W, st.H, frame);
     });
     return () => { stop(); if (st.destroy) st.destroy(); };
   }, [draw]);
+  /* The canvas itself is interactive: drawings register tappable regions
+     (D.tap) and pointer taps are dispatched to them — the drawing IS the
+     control. Chips stay as the accessible fallback. */
+  const pointer = (e, down) => {
+    const cv = ref.current;
+    if (!cv) return;
+    const r = cv.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    const hit = D.hit(cv, x, y);
+    cv.style.cursor = hit ? "pointer" : "default";
+    if (down && hit && hit.on) hit.on(hit.value, x, y);
+  };
   return (
     <canvas
       ref={ref}
+      onClick={(e) => pointer(e, true)}
+      onMouseMove={(e) => pointer(e, false)}
       style={Object.assign({ width: "100%", height: (height || 300) + "px", display: "block" }, style || {})}
     />
   );
@@ -3370,6 +3652,221 @@ function gameReducer(g, a) {
   }
 }
 /* ===========================================================================
+   STORY LAYER · fictional boys, truth-status lanes, folio progress and STEM
+   Reusable by every lesson. Sacred history never enters these fictional parts.
+   =========================================================================== */
+const STORY = window.DAF_STORY || null;
+
+function StoryCharacter({ id, pose, size }) {
+  const who = id === "zayd" ? "zayd" : "omar";
+  const zayd = who === "zayd";
+  const s = size || 76;
+  const wave = pose === "present" || pose === "question";
+  const build = pose === "build";
+  const skin = zayd ? "#B9784B" : "#9C633F";
+  const shirt = zayd ? "#2D70B3" : "#12857C";
+  const accent = zayd ? "#FA7E19" : "#C9A227";
+  const label = zayd ? "Zayd, the model builder" : "Omar, the evidence keeper";
+  return (
+    <svg className="story-character" style={{ width: s + "px", height: (s * 1.12) + "px" }}
+      viewBox="0 0 100 112" role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy="106" rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d="M29 103 L33 61 Q50 51 67 61 L72 103 Z" fill={shirt} />
+      <path d="M37 63 Q50 74 63 63" fill="none" stroke={accent} strokeWidth="3" />
+      <rect x="43" y="48" width="14" height="15" rx="6" fill={skin} />
+      <circle cx="50" cy="34" r="21" fill={skin} />
+      <path d={zayd ? "M30 31 Q33 8 51 11 Q70 11 72 34 Q62 22 52 22 Q39 25 30 31" : "M30 29 Q35 9 51 11 Q69 10 71 31 Q60 20 48 22 Q38 24 30 29"} fill="#172E35" />
+      <circle cx="42" cy="35" r="2.2" fill="#10242B" /><circle cx="58" cy="35" r="2.2" fill="#10242B" />
+      <path d="M43 44 Q50 49 58 43" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      {wave ? (
+        <g><path d="M32 68 Q17 58 19 40" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <circle cx="20" cy="37" r="5" fill={skin} /></g>
+      ) : (
+        <path d="M33 69 Q23 82 25 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {build ? (
+        <g><path d="M67 69 Q79 76 76 91" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <rect x="68" y="86" width="21" height="11" rx="2" fill={accent} />
+          <path d="M72 90h13M76 87v10M82 87v10" stroke="#fff" strokeWidth="1" /></g>
+      ) : (
+        <path d="M67 69 Q78 82 75 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {!zayd && (
+        <g transform="translate(63 72) rotate(-14)"><rect width="21" height="27" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" />
+          <path d="M5 7h11M5 12h9M5 17h11" stroke={shirt} strokeWidth="1.5" /></g>
+      )}
+    </svg>
+  );
+}
+
+function StoryLantern({ size }) {
+  const s = size || 64;
+  return (
+    <svg className="story-lantern" style={{ width: s + "px", height: s + "px" }} viewBox="0 0 80 80" role="img" aria-label="The brass lantern">
+      <title>The brass lantern</title>
+      <path d="M31 8h18M35 8v8h10V8" fill="none" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+      <path d="M26 22 Q40 12 54 22 L59 57 Q40 69 21 57 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="3" />
+      <path d="M30 25h20l4 28H26z" fill="#FFF8D8" stroke="#C9A227" strokeWidth="2" />
+      <path d="M40 27v24M28 40h24" stroke="#C9A227" strokeWidth="2" opacity=".8" />
+      <circle cx="40" cy="40" r="7" fill="#C9A227" opacity=".42" />
+      <path d="M26 61h28M31 67h18" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function UnitShapeMotif({ topic }) {
+  if (topic !== 1) return <Star8 className="story-motif" />;
+  return (
+    <svg className="story-motif" viewBox="0 0 180 100" aria-hidden="true">
+      <path d="M8 85 Q28 52 48 85 Q68 52 88 85 Q108 52 128 85 Q148 52 172 85" fill="none" stroke="currentColor" strokeWidth="3" />
+      {[14, 42, 70, 98, 126, 154].map((x, i) => <rect key={x} x={x} y={18 + (i % 2) * 10} width="20" height="28" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />)}
+      <path d="M18 58h140" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" />
+    </svg>
+  );
+}
+
+/* Pips light from the class's stamped folio state when this computer has it
+   (daf.folio.v1); otherwise they fall back to position in the unit. The state
+   is class-level only — never student data — and non-critical: a cleared
+   browser changes nothing else in the deck. */
+function FolioProgress({ label }) {
+  if (!STORY) return null;
+  const n = STORY.lesson.numberInUnit, total = STORY.unit.lessonCount;
+  const codes = (STORY.unit && STORY.unit.lessonCodes) || [];
+  const stamped = (window.DAF_FOLIO && window.DAF_FOLIO.lessons) || null;
+  const done = (i) => stamped ? !!stamped[codes[i]] : i < n;
+  return (
+    <div className="folio-progress" aria-label={`Folio progress ${n} of ${total}`}>
+      <div className="folio-label"><b>Folio {STORY.unit.topic}</b><span>{label || STORY.unit.chapter}</span></div>
+      <div className="folio-pips">
+        {Array.from({ length: total }, (_, i) => <i key={i} className={done(i) ? "restored" : ""} />)}
+      </div>
+      <em>{n}/{total}</em>
+    </div>
+  );
+}
+
+const STORY_LANES = {
+  fiction: { label: "Our story", icon: "fa-book-open", cls: "fiction" },
+  stem: { label: "History of useful knowledge", icon: "fa-compass-drafting", cls: "stem" },
+  amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
+};
+
+function StoryShell({ lane, character, pose, title, text, clue, children, compact }) {
+  const info = STORY_LANES[lane || "fiction"];
+  const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  return (
+    <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
+      <div className="story-ribbon">
+        <UnitShapeMotif topic={topic} />
+        <div className="story-cast">
+          {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
+            : character === "lantern" ? <StoryLantern size={58} />
+            : character ? <StoryCharacter id={character} pose={pose} size={60} />
+            : <StoryLantern size={54} />}
+        </div>
+        <div className="story-ribbon-copy">
+          <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
+          <b>{title}</b>
+          <p>{text}</p>
+          {clue && <small><Icon name="fa-key" /> {clue}</small>}
+        </div>
+        <FolioProgress />
+      </div>
+      <div className="story-content">{children}</div>
+    </div>
+  );
+}
+
+function STEMWindow({ window: item, children }) {
+  if (!item) return <>{children}</>;
+  return (
+    <StoryShell lane="stem" title={item.title} text={item.studentText} clue={item.inquiry} compact>
+      <div className="stem-layout">
+        <div className="stem-source-card">
+          <div className="stem-status"><Icon name="fa-circle-check" /> {item.status}</div>
+          <h3>Why this matters now</h3>
+          <p>{item.modernConnection}</p>
+          <details>
+            <summary>Teacher source notes</summary>
+            <p>{item.teacherNote}</p>
+            {(item.sources || []).map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+
+function StoryHandoff({ title, text, artifact, next, children }) {
+  const code = (typeof LESSON !== "undefined" && LESSON.code) || "";
+  const [stamped, setStamped] = useState(false);
+  const [saved, setSaved] = useState(true);
+  useEffect(() => {
+    setStamped(!!(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  }, [code]);
+  const stamp = () => {
+    const cls = window.DAF_CURRENT_CLASS;
+    if (!cls || !code) return;
+    const on = !(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]);
+    setSaved(folioStamp(cls, code, on));
+    window.DAF_FOLIO = folioFor(cls);
+    setStamped(!!(window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  };
+  return (
+    <StoryShell lane="fiction" character="both" pose="present" title={title} text={text}
+      clue={next ? "Next folio clue · " + next : null}>
+      <div className="handoff-artifact">
+        <span><Icon name="fa-stamp" /></span>
+        <div><b>Artifact updated</b><p>{artifact}</p></div>
+        <button className={"btn btn-ghost btn-sm folio-stamp" + (stamped ? " on" : "")} onClick={stamp}
+          title="Class record on this computer — no points involved">
+          <Icon name={stamped ? "fa-rotate-left" : "fa-stamp"} />
+          {stamped ? "Folio page restored · tap to undo" : "Restore this folio page"}
+        </button>
+        {!saved && <small className="folio-save-note">Folio change could not be saved on this computer — export the class folio from the dojo before you leave.</small>}
+      </div>
+      {children}
+    </StoryShell>
+  );
+}
+
+/* ===========================================================================
+   AMANAH WINDOW · sacred-history lane (PR 02). Reverent, chronological,
+   non-gamified: no XP, no clue mechanics, no invented dialogue or quantities.
+   Only registry windows in `approved` state with the complete six-field audit
+   record (studentText, source, translation, reviewer, reviewDate) ever render
+   here; the payload embeds approved windows only, so an unapproved window is
+   invisible to the deck entirely.
+   =========================================================================== */
+const AMANAH_LANE = "amanah";
+
+function AmanahWindow({ window: item, children }) {
+  const approved = !!(item
+    && item.status === "approved"
+    && item.studentText && item.reviewer && item.reviewDate && item.source && item.translation);
+  if (!approved) return <>{children}</>;
+  return (
+    <StoryShell lane={AMANAH_LANE} title={item.title || "Amanah Window"} text={item.studentText} compact>
+      <div className="amanah-layout">
+        <div className="amanah-card">
+          <div className="amanah-status"><Icon name="fa-book" /> Reviewed · {item.reviewer} · {item.reviewDate}</div>
+          <h3>Values reflection</h3>
+          <p>The reflection follows the mathematics of this lesson; sacred history is never the game mechanic.</p>
+          <details>
+            <summary>Teacher review record</summary>
+            <p>Source: {item.source}</p>
+            <p>Translation used: {item.translation}</p>
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+/* ===========================================================================
    ROUTINE LIBRARY
    The Amplify Desmos instructional routines as prop-driven components, so a
    lesson file only supplies content and its own canvas drawings.
@@ -3493,9 +3990,9 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
   return (
     <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
       <Sketch draw={draw} height={height || 250} />
-      <div className="glass-card" style={{ cursor: "default" }}>
-        <div style={{ fontWeight: 900, fontSize: "12px", color: "var(--c)", marginBottom: "9px" }}>{label}</div>
-        <div style={{ display: "flex", gap: "7px", flexWrap: "wrap" }}>
+      <div className="chip-bar">
+        <div className="chip-label">{label}</div>
+        <div className="chip-row">
           {chips.map((c) => (
             <button key={c.v} onClick={() => onPick(c.v)}
               className={"btn btn-sm " + (value === c.v ? "btn-primary" : "btn-ghost")}>
@@ -3505,7 +4002,7 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
         </div>
       </div>
       {caption && (
-        <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
+        <div className="stage-line">
           {caption}
           {footnote && <div style={{ fontSize: "11px", color: "var(--daf-ink-2)", marginTop: "6px" }}>{footnote}</div>}
         </div>
@@ -3637,10 +4134,10 @@ function CompareConnect({ left, right, same, diff, award }) {
 /* ---- Synthesis · the board ---------------------------------------------- */
 function BoardScreen({ draw, height, caption }) {
   return (
-    <div className="glass-panel" style={{ padding: "12px" }}>
-      <Sketch draw={draw} height={height || 430} />
-      <div style={{ textAlign: "center", fontSize: "11.5px", color: "var(--daf-ink-2)", marginTop: "9px" }}>
-        {caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}
+    <div className="glass-panel board-panel" style={{ padding: 0 }}>
+      <div className="board-stage">
+        <Sketch draw={draw} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", borderRadius: "12px" }} />
+        <div className="stage-caption">{caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}</div>
       </div>
     </div>
   );
@@ -3888,9 +4385,10 @@ const CASES = [
     pick: "partial products", col: "#2D70B3", work: "1,800 + 240 + 42 = 2,082" }
 ];
 
-const makeChooser = (id) => (ctx, W, H, frame) => {
+const makeChooser = (id, onId) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onId) { const order = ["near", "round", "messy"]; D.tap(ctx, { x: W / 2 - 150, y: 130, w: 300, h: 40, value: 0, on: () => { const i = order.indexOf(id); onId(order[(i + 1) % order.length]); } }); }
   const c = CASES.filter(function (k) { return k.id === id; })[0];
   D.txt(ctx, c.label, W / 2, 58, { size: 34, col: "#EAF4F2", font: "marker" });
   D.marker(ctx, [[W / 2 - 120, 82], [W / 2 + 120, 82]], 1, "rgba(201,162,39,.45)", 1.6);
@@ -3904,7 +4402,7 @@ const makeChooser = (id) => (ctx, W, H, frame) => {
   D.txt(ctx, c.work, W / 2, H - 20, { size: 15, col: "#34D399", font: "marker" });
 };
 
-const makeCompare3 = (n) => (ctx, W, H, frame) => {
+const makeCompare3 = (n, onN) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   const rows = [
@@ -3914,6 +4412,7 @@ const makeCompare3 = (n) => (ctx, W, H, frame) => {
   ];
   rows.forEach(function (r, k) {
     var a = k < n ? 1 : 0.18;
+    if (onN) D.tap(ctx, { x: 70, y: 62 + k * 52 - 16, w: W - 140, h: 40, value: k + 1, on: function (v) { onN(v); } });
     D.txt(ctx, r[0], 70, 62 + k * 52, { size: 14, col: r[3], font: "marker", align: "left", alpha: a });
     D.txt(ctx, r[1], W / 2 + 40, 62 + k * 52, { size: 15, col: "#EAF4F2", font: "marker", alpha: a });
     for (var s = 0; s < r[2]; s++) {
@@ -4006,92 +4505,93 @@ const LESSON = {
   ixl: ["QKA", "G7M"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Three multiplications side by side. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "They are all multiplication. They do not all want the same treatment.",
-      rail: { launch: "I am not asking you to solve any of them. Just look at the numbers.",
-        monitor: ["Noticing 99 is near 100", "Noticing 25 inside 250", "Saying 347 looks hard"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Treating every product as the same kind of job." } },
+    { phase: "warmup", title: "Three methods at the <em>gate</em>",
+      lead: "Three contractors stand at the gate with one order each: 7 × 99, 4 × 250 and 6 × 347. Each holds a different strategy.",
+      goal: "Notice the numbers before the methods — the numbers pick the method.",
+      pull: "Look at the numbers before you choose a method.",
+      rail: { launch: "Fictional frame. Just read the three orders — no working yet.",
+        monitor: ["Noticing 99 is near 100", "Spotting the 25 inside 250", "Calling 347 messy"],
+        connect: "Would you work all three the same way?",
+        misconception: "Using one method for every product out of habit." } },
 
-    { phase: "launch", title: "Three orders, three <em>different jobs</em>",
-      lead: "7 × 99, 4 × 250 and 6 × 347. Same operation, very different numbers.",
-      goal: "Create the need — strategy choice is a decision, not a habit.",
-      pull: "Estimate one of them, then we will pick methods.",
-      rail: { launch: "Which of these three would you do first, and why that one?",
-        monitor: ["Choosing the easiest", "Choosing left to right", "Spotting the near-hundred"],
-        connect: "What made one of them look easier than the others?",
-        misconception: "Using the most recently taught method for everything." } },
+    { phase: "launch", title: "Estimate <em>7 × 99</em> first",
+      lead: "The first contractor's order: 7 × 99. Estimate before the method is chosen.",
+      goal: "Create the need — one of these three barely needs any work at all.",
+      pull: "One of these three barely needs any work at all.",
+      rail: { launch: "Give the estimate and what the 99 made you think of.",
+        monitor: ["Rounding 99 to 100", "Saying the answer is a bit less", "Estimating by rows"],
+        connect: "Why is 99 almost free to multiply?",
+        misconception: "Estimating 7 × 99 as 630 — the wrong direction." } },
 
-    { phase: "monitor", title: "Match the numbers to a <em>method</em>",
-      lead: "Tap each product and see which strategy fits it.",
-      goal: "Link a feature of the numbers to a choice of method.",
-      pull: "Does the choice really save work? Let us count the steps.",
-      rail: { launch: "Predict the method before you tap.",
-        monitor: ["Spotting near numbers", "Spotting known facts", "Defaulting to one method"],
-        connect: "What feature of the numbers did you look at first?",
-        misconception: "Choosing by the size of the numbers alone." } },
+    { phase: "monitor", title: "The <em>chooser</em>",
+      lead: "Tap a product and the method that suits it appears — the feature in the numbers does the choosing.",
+      goal: "Match each product to the strategy its numbers invite.",
+      pull: "The feature you spot in the numbers is what picks the method.",
+      rail: { launch: "Before you tap: say what the numbers have.",
+        monitor: ["Naming the near-hundred", "Naming the hidden fact", "Naming the messy digits"],
+        connect: "What did each method borrow from the numbers?",
+        misconception: "Choosing by speed of memory instead of the numbers." } },
 
-    { phase: "monitor", title: "Count the <em>steps</em>",
-      lead: "Three methods for 6 × 347. All correct. Not all cheap.",
-      goal: "Efficiency is a real reason to choose.",
-      pull: "Now sort some products by the strategy they deserve.",
-      rail: { launch: "Predict which method has the fewest steps.",
-        monitor: ["Counting steps", "Preferring the familiar", "Noticing repeated addition is worst"],
-        connect: "Is the shortest method always the safest for you?",
-        misconception: "Confusing fewest steps with easiest to get right." } },
+    { phase: "monitor", title: "Three methods, <em>one</em> product",
+      lead: "6 × 347 three ways: partial products, overshoot, repeated addition. Correct is not the same as efficient.",
+      goal: "Compare methods on the same product and judge efficiency.",
+      pull: "Correct is not the same as efficient.",
+      rail: { launch: "Predict which method is longest before you reveal it.",
+        monitor: ["Following the partials", "Following the overshoot", "Counting the repeated additions"],
+        connect: "Which method would you trust for a check, and which for speed?",
+        misconception: "Believing the first correct method is always the best." } },
 
-    { phase: "monitor", title: "Sort by <em>strategy</em>",
-      lead: "Which method does each product deserve? No grading until the class commits.",
-      goal: "Apply the decision to unfamiliar numbers.",
-      pull: "Two students chose differently on the same product.",
-      rail: { launch: "Look at the numbers before you look at the options.",
-        monitor: ["Spotting near-hundreds", "Spotting known facts", "Defaulting to partial products"],
-        connect: "Which one was hardest to place, and why?",
+    { phase: "monitor", title: "Match the <em>method</em>",
+      lead: "Three new products at the gate. Each one invites exactly one strategy.",
+      goal: "Choose the strategy from the numbers, on purpose.",
+      pull: "Read the numbers, then the method.",
+      rail: { launch: "Say the feature before you place the product.",
+        monitor: ["Spotting 98 near 100", "Spotting the 25 fact", "Sending 463 to partials"],
+        connect: "Which product could actually use two methods?",
         misconception: "Sorting by the size of the answer." } },
 
-    { phase: "connect", title: "Two students, <em>two choices</em>",
-      lead: "Sara overshot for 7 × 99. Omar used partial products. Both got 693.",
+    { phase: "connect", title: "Sara <em>overshoots</em>. Omar <em>splits</em>",
+      lead: "Sara: 7 × 100 − 7. Omar: split the 99 into 90 and 9. Both get 693.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Defending a choice", "Counting steps", "Changing their mind with reason"],
-        connect: "Is Omar wrong? What would you say to him?",
-        misconception: "Thinking a slower correct method is a mistake." } },
+        monitor: ["Comparing the two routes", "Checking both reach 693", "Saying when each helps"],
+        connect: "Which method would you use for 7 × 102?",
+        misconception: "Believing overshoot works in both directions." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Ask three questions of the numbers, in order. The answer names your method.",
+    { phase: "synth", title: "On the <em>board</em>: the numbers pick the method",
+      lead: "Read the numbers. Find the feature. Choose the method that uses it.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Asking the questions in order", "Skipping to the last one", "Restating it in their own words"],
+        monitor: ["Naming the feature", "Choosing the method", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Reading the flow chart as a rule rather than a habit of looking." } },
+        misconception: "Choosing the method before reading the numbers." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "Look at the numbers before you choose a method.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the feature they look for", "Testing on a new product", "Defending a choice"],
-        connect: "Which strategy never lets you down, even when it is slow?",
-        misconception: "Believing there is one best method for everything." } },
+        monitor: ["Naming the feature first", "Choosing overshoot for 198", "Saying what to take off"],
+        connect: "What feature does 198 have?",
+        misconception: "Overshooting without taking back the full amount." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Name your strategy, then use it.",
-        monitor: ["Spotting 198 near 200", "Using partial products", "Taking off 16"],
+      lead: "8 × 198 — which strategy suits it, and what do you take off?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Name the feature, then the method.",
+        monitor: ["Stretching 198 to 200", "Counting eight twos", "Subtracting 16 from 1,600"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Taking off 2 instead of 8 twos." } },
+        misconception: "Taking off 2 instead of 16 — one extra per row." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The contract is <em>earned</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: turning a word problem into an equation.",
-      rail: { launch: "Ask three students what they look at first.",
-        monitor: ["Able to explain it to someone else", "Still defaults to one method", "Ready to model problems"],
+      pull: "Tomorrow: the grove model stands — the council will defend a claim.",
+      rail: { launch: "Ask three students to say how they choose.",
+        monitor: ["Able to explain the choice", "Still uses one method always", "Ready for the grove model"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -4102,86 +4602,158 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawShop} height={252} award={award}
-          notices={["99 is nearly 100", "250 has a 25 in it", "347 looks messy", "They are all times a single digit"]}
-          wonders={["Would I do them the same way?", "Which is quickest?", "Is there a rule for choosing?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Three methods at the gate"
+            text="Three contractors stand at the gate with one order each: 7 × 99, 4 × 250 and 6 × 347. Each holds a different strategy."
+            clue="The numbers pick the method">
+            <NoticeWonder draw={drawShop} height={252} award={award}
+              notices={["99 is nearly 100", "250 has a 25 in it", "347 looks messy", "They are all times a single digit"]}
+              wonders={["Would I do them the same way?", "Which is quickest?", "Is there a rule for choosing?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawShop} height={252} award={award}
-          label="Estimate 7 × 99" min={400} max={1000} start={700} unit=""
-          after="Locked. Now let us match each product to a method."
-          note="One of these three barely needs any work at all." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The first contractor's order"
+            text="Omar takes the first slip — 7 × 99 — and asks for the estimate before any method is chosen."
+            clue="One of these three barely needs any work at all.">
+            <LaunchEstimate draw={drawShop} height={252} award={award}
+              label="Estimate 7 × 99" min={400} max={1000} start={700} unit=""
+              after="Locked. Now let us match each product to a method."
+              note="The order counts are simulated — the choosing works on any product." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeChooser(id)} height={252}
-          label="Tap a product"
-          value={id}
-          onPick={(v) => setId(v)}
-          chips={CASES.map((c) => ({ v: c.id, label: c.label }))}
-          caption={<MathEl omml={id === "near" ? M.nearWork : id === "round" ? M.roundWork : M.messyWork} size="lg" display="block" />}
-          footnote="The feature you spot in the numbers is what picks the method." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd runs the chooser"
+            text="He can tap any product — the class must say what feature in the numbers picks the method."
+            clue="The feature you spot in the numbers is what picks the method">
+            <ExploreChips draw={makeChooser(id, setId)} height={252}
+              label="Tap a product"
+              value={id}
+              onPick={(v) => setId(v)}
+              chips={CASES.map((c) => ({ v: c.id, label: c.label }))}
+              caption={<MathEl omml={id === "near" ? M.nearWork : id === "round" ? M.roundWork : M.messyWork} size="lg" display="block" />}
+              footnote="The feature you spot in the numbers is what picks the method." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeCompare3(n)} height={252}
-          label="Reveal each method for 6 × 347"
-          value={n}
-          onPick={(v) => setN(v)}
-          chips={[{ v: 1, label: "partial products" }, { v: 2, label: "+ overshoot" }, { v: 3, label: "+ repeated addition" }]}
-          caption={<MathEl omml={M.messyWork} size="lg" display="block" />}
-          footnote="Correct is not the same as efficient." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Three methods, one product"
+            text="6 × 347 three ways. Zayd reveals each method — the class must judge which is efficient, not just correct."
+            clue="Correct is not the same as efficient">
+            <ExploreChips draw={makeCompare3(n, setN)} height={252}
+              label="Reveal each method for 6 × 347"
+              value={n}
+              onPick={(v) => setN(v)}
+              chips={[{ v: 1, label: "partial products" }, { v: 2, label: "+ overshoot" }, { v: 3, label: "+ repeated addition" }]}
+              caption={<MathEl omml={M.messyWork} size="lg" display="block" />}
+              footnote="Correct is not the same as efficient." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "c1", text: "9 × 98", target: "over" },
-            { id: "c2", text: "4 × 25", target: "fact" },
-            { id: "c3", text: "7 × 463", target: "partial" }
-          ]}
-          targets={[
-            { id: "over", label: "overshoot and take back" },
-            { id: "fact", label: "a fact I already know" },
-            { id: "partial", label: "partial products" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Match the method"
+            text="Three more products arrive at the gate. Each one invites exactly one strategy."
+            clue="Read the numbers, then the method">
+            <CardSort award={award} columns={3}
+              items={[
+                { id: "c1", text: "9 × 98", target: "over" },
+                { id: "c2", text: "4 × 25", target: "fact" },
+                { id: "c3", text: "7 × 463", target: "partial" }
+              ]}
+              targets={[
+                { id: "over", label: "overshoot and take back" },
+                { id: "fact", label: "a fact I already know" },
+                { id: "partial", label: "partial products" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Sara's way — overshoot", omml: M.nearWork, h: 92,
-                  quote: "99 is one away from 100, so I did 700 minus 7." }}
-          right={{ name: "Omar's way — partial products", omml: M.messyWork, h: 92,
-                   quote: "I split 99 into 90 and 9 and multiplied both." }}
-          same={["Both get 693", "Both are correct", "Both use place value somewhere"]}
-          diff={["Sara does two steps, Omar does three", "Omar's method always works",
-                 "Sara's only helps when a factor is near a ten"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two contractors, one 693"
+            text="Sara overshoots to 100 and takes back. Omar splits the 99 into 90 and 9. Both get 693."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Sara's way — overshoot", omml: M.nearWork, h: 92,
+                      quote: "99 is one away from 100, so I did 700 minus 7." }}
+              right={{ name: "Omar's way — partial products", omml: M.messyWork, h: 92,
+                       quote: "I split 99 into 90 and 9 and multiplied both." }}
+              same={["Both get 693", "Both are correct", "Both use place value somewhere"]}
+              diff={["Sara does two steps, Omar does three", "Omar's method always works",
+                     "Sara's only helps when a factor is near a ten"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard37} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The choosing is drawn, not declared"
+            text="Zayd builds only what the class can justify: the feature named, the method chosen, the product protected."
+            clue="The numbers pick the method">
+            <BoardScreen draw={drawBoard37} height={430}
+              caption="Look at the numbers before you choose a method." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "look at the numbers before you choose a method" }]}
-          hand={"near a ten? overshoot \u00b7 a known fact inside? use it \u00b7 neither? partial products"}
-          cards={[
-            { title: "The easy one", omml: M.nearWork, note: "7 \u00d7 99 barely needs any work" },
-            { title: "Tap for the one with no shortcut", omml: M.messy, revealOmml: M.messyWork, reveal: true,
-              note: "partial products never lets you down" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The rule goes into the grove plan with its reason, not alone."
+            clue="The feature in the numbers does the choosing">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "look at the numbers before you choose a method" }]}
+              hand={"read the numbers · name the feature · choose the method that uses it"}
+              cards={[
+                { title: "The near-hundred case", omml: M.nearWork, note: "700, then take off 7" },
+                { title: "Tap to see the hidden fact", omml: M.round, revealOmml: M.roundWork, reveal: true,
+                  note: "4 × 25 = 100, so 4 × 250 = 1,000" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Which strategy suits 8 × 198 best, and what do you take off?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "take off 2" }, { v: "b", text: "take off 16" }, { v: "c", text: "take off 8" }, { v: "d", text: "no shortcut" }]}
-          right="b"
-          support={{
-            yes: "Yes — 8 \u00d7 200 = 1,600, take off 8 \u00d7 2 = 16, so 1,584.",
-            notYet: "Not yet — you added 2 to each of the eight groups.",
-            draw: drawSupport37, h: 96,
-            hint: "Stretching 198 to 200 adds 2 to every one of the 8 rows."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar chooses for 8 × 198"
+            text="The last slip at the gate. Name the feature — then the method — then what you take off."
+            clue="Stretching 198 to 200 adds 2 to each of the 8 rows">
+            <ShowWhatYouKnow award={award}
+              prompt="Which strategy suits 8 × 198 best, and what do you take off?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "take off 2" }, { v: "b", text: "take off 16" }, { v: "c", text: "take off 8" }, { v: "d", text: "no shortcut" }]}
+              right="b"
+              support={{
+                yes: "Yes — 8 × 200 = 1,600, take off 8 × 2 = 16, so 1,584.",
+                notYet: "Not yet — you added 2 to each of the eight groups.",
+                draw: drawSupport37, h: 96,
+                hint: "Stretching 198 to 200 adds 2 to every one of the 8 rows."
+              }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Pick any two numbers at home, say which strategy they deserve, then use it." />;
+        return (
+          <StoryHandoff
+            title="The contract is earned"
+            text="Omar signs the order with the method named beside it. The grove's final model waits for the council — and inside the model, a rolled blueprint of a workshop tower."
+            artifact="Grove plan · strategies chosen by the numbers"
+            next="The grove model stands before the council — and a rolled blueprint inside the model shows a two-digit workshop tower.">
+            <Closing game={game} omml={M.rule}
+              action="Choose the method for a real product tonight and say the feature that made you choose." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }
@@ -4341,6 +4913,31 @@ function TeacherRail({ meta, onClose }) {
       <p>{r.connect}</p>
       <h4>ANTICIPATED MISCONCEPTION</h4>
       <p style={{ color: "#f2c9c7" }}>{r.misconception}</p>
+      {STORY && (STORY.stemWindows || []).length > 0 && (
+        <div>
+          <h4>SOURCES · HISTORY OF USEFUL KNOWLEDGE</h4>
+          {STORY.stemWindows.map((w) => (
+            <div key={w.id} style={{
+              marginBottom: "8px", background: "rgba(255,255,255,.05)",
+              borderRadius: "8px", padding: "8px 10px"
+            }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: "#cfe6e2" }}>
+                {w.title}{" "}
+                <span className="mono" style={{ fontSize: "10px", color: "var(--daf-gold)" }}>{w.status}</span>
+              </div>
+              <p style={{ fontSize: "11.5px", color: "#cfe6e2", margin: "5px 0 0", lineHeight: 1.5 }}>
+                {w.teacherNote}
+              </p>
+              {(w.sources || []).map((s) => (
+                <a key={s.url} href={s.url} target="_blank" rel="noreferrer"
+                  style={{ display: "block", fontSize: "11px", color: "#9cc0ba", marginTop: "4px" }}>
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
       {LESSON.ixl && LESSON.ixl.length > 0 && (
         <div>
           <h4>IXL PRACTICE TO ASSIGN</h4>
@@ -4842,6 +5439,16 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => {
+            if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
+              folioReset(game.section);
+              window.DAF_FOLIO = folioFor(game.section);
+            }
+          }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
+        </span>
+        <span className="dj-note">
+          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>
@@ -4937,6 +5544,15 @@ function App() {
     document.documentElement.style.setProperty("--c", ph.c);
     document.documentElement.style.setProperty("--c-2", ph.c2);
   }, [i]);
+
+  /* Durable story state (PR 02): the class's folio cache is class-level only
+     (lesson stamps, no student data), lives on this computer and refreshes
+     when a class is picked. Missing or cleared storage degrades silently to
+     position-based folio pips. */
+  useEffect(() => {
+    window.DAF_CURRENT_CLASS = (game && game.section) || null;
+    window.DAF_FOLIO = folioFor(window.DAF_CURRENT_CLASS);
+  }, [game && game.section]);
 
   useEffect(() => setReplay((r) => r + 1), [i]);
 

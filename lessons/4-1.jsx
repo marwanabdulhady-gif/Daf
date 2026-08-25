@@ -148,53 +148,53 @@ const LESSON = {
   ixl: ["A6Y"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Three multiplications, stacked. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "One thing stays. One thing grows.",
-      rail: { launch: "I am not asking you to work anything out. Just look down the list.",
-        monitor: ["Noticing the 12", "Counting zeros in the factors", "Predicting the next line"],
+    { phase: "warmup", title: "Three lines, <em>one fact</em>",
+      lead: "The tower's first production log: 3 × 4, 30 × 4, 30 × 40. Each floor makes a multiple-of-ten batch — and the 12 never moves.",
+      goal: "Notice the pattern: the basic fact stays, the zeros add up.",
+      pull: "Something stays exactly the same all the way down.",
+      rail: { launch: "Fictional frame. I am not asking you to work anything out. Just look down the list.",
+        monitor: ["Noticing the 12", "Counting zeros in both factors", "Predicting the next line"],
         connect: "Who noticed something nobody else did?",
-        misconception: "Counting only the zeros in one factor." } },
+        misconception: "Counting the zeros in the answer instead of in the factors." } },
 
     { phase: "launch", title: "Thirty rows of <em>forty tiles</em>",
-      lead: "The courtyard is being tiled. Estimate before you calculate.",
-      goal: "Create the need — nobody counts 1,200 tiles one at a time.",
-      pull: "You already know 3 × 4. Let us see how far that gets us.",
+      lead: "The tower's courtyard floor: 30 rows of 40 tiles. Nobody counts 1,200 tiles one at a time.",
+      goal: "Create the need — a basic fact can carry a much bigger one.",
+      pull: "The courtyard counts are simulated — the rule works on any floor.",
       rail: { launch: "Roughly how many tiles? Do not count.",
-        monitor: ["Using 3 x 4 then guessing zeros", "Adding 40 thirty times", "Estimating wildly"],
+        monitor: ["Using 3 × 4 then adding zeros", "Adding 40 thirty times", "Estimating wildly"],
         connect: "What basic fact is hiding in this problem?",
         misconception: "Adding one zero instead of two." } },
 
-    { phase: "monitor", title: "Add the zeros <em>one factor at a time</em>",
-      lead: "Reveal each line and watch the zeros accumulate.",
+    { phase: "monitor", title: "Zayd reveals the <em>batch lines</em>",
+      lead: "One floor at a time. The digits never move — the zeros come from both factors.",
       goal: "Zeros come from both factors, not just one.",
-      pull: "But why does it work? Group the tiles.",
-      rail: { launch: "Predict each line before you reveal it.",
+      pull: "One zero from the 30, one from the 40 — two in the product.",
+      rail: { launch: "Predict each line before Zayd reveals it.",
         monitor: ["Predicting correctly", "Counting zeros in both factors", "Explaining in tens and hundreds"],
-        connect: "How many zeros will 300 x 40 have?",
-        misconception: "Counting the zeros in the answer rather than in the factors." } },
+        connect: "How many zeros will 300 × 40 have?",
+        misconception: "Adding a zero per answer digit instead of per factor." } },
 
     { phase: "monitor", title: "Group them into <em>hundreds</em>",
       lead: "Thirty by forty is a grid. Group it and it becomes twelve hundreds.",
       goal: "A ten times a ten is a hundred — that is where the zeros come from.",
-      pull: "Now match products to expressions.",
+      pull: "Each grouped square is ten by ten — a hundred tiles.",
       rail: { launch: "Before you tap: how many groups of 100 will there be?",
         monitor: ["Counting the groups", "Naming the unit", "Reading 12 hundreds as 1,200"],
-        connect: "Why is each big square worth 100?",
+        connect: "Why is each grouped square worth 100?",
         misconception: "Thinking each grouped square is worth 10." } },
 
     { phase: "monitor", title: "Match the <em>product</em>",
-      lead: "Which expression gives that answer? No grading until the class commits.",
+      lead: "Three products from the production log. Each one belongs to one batch.",
       goal: "Read the zero pattern backwards.",
-      pull: "Two students explained the zeros differently.",
+      pull: "Look at the basic fact first, then the zeros.",
       rail: { launch: "Look at the basic fact first, then the zeros.",
         monitor: ["Using the basic fact", "Counting zeros", "Calculating fully"],
         connect: "Which part did you check first?",
         misconception: "Matching by the number of digits in the answer." } },
 
-    { phase: "connect", title: "Two ways to <em>say why</em>",
-      lead: "Nada counts zeros. Tarek thinks in tens and hundreds. Both get 1,200.",
+    { phase: "connect", title: "Nada <em>counts</em>. Tarek <em>names units</em>",
+      lead: "Nada counts the zeros. Tarek thinks in tens and hundreds. Both get 1,200.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -202,7 +202,7 @@ const LESSON = {
         connect: "Whose explanation survives if you forget the rule?",
         misconception: "Believing the zero count is the mathematics rather than a consequence of it." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
+    { phase: "synth", title: "On the <em>board</em>: the 12 never moves",
       lead: "3 tens times 4 tens. Twelve, and a hundred. Twelve hundreds.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
@@ -216,24 +216,25 @@ const LESSON = {
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the fact and the zeros", "Testing on a new fact", "Asking about 50 x 40"],
+        monitor: ["Naming the fact and the zeros", "Testing on a new fact", "Asking about 50 × 40"],
         connect: "What happens when the basic fact itself ends in a zero?",
-        misconception: "Writing 50 x 40 as 200 because 5 x 4 = 20 and only two zeros are copied." } },
+        misconception: "Writing 50 × 40 as 200 because 5 × 4 = 20 and only two zeros are copied." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
+      lead: "60 × 50 — the basic fact first, then the zeros.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
       rail: { launch: "Two minutes. Write the basic fact first.",
-        monitor: ["Writing 6 x 5 first", "Counting both zeros", "Forgetting the zero inside 30"],
+        monitor: ["Writing 6 × 5 first", "Counting both zeros", "Forgetting the zero inside 30"],
         connect: "Collect responses to open tomorrow.",
         misconception: "Answering 300 instead of 3,000." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The first floors are <em>logged</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: a two-digit number times a multiple of ten.",
+      pull: "Tomorrow: the long order card — two-digit orders, repeated by tens of customers.",
       rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the grid", "Ready for 23 x 40"],
+        monitor: ["Able to explain it to someone else", "Still needs the grid", "Ready for 23 × 40"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -244,83 +245,155 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeZeroLadder(3)} height={254} award={award}
-          notices={["The 12 is always there", "The zeros keep growing", "Both factors gain a zero", "The answers get bigger fast"]}
-          wonders={["Where do the zeros come from?", "Does it work for any fact?", "What is 300 × 40?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Ten floors begin at once"
+            text="The workshop tower's first production log: 3 × 4, 30 × 4, 30 × 40. Each floor makes a multiple-of-ten batch — and the 12 never moves."
+            clue="The digits never change — the zeros add up">
+            <NoticeWonder draw={makeZeroLadder(3)} height={254} award={award}
+              notices={["The 12 is always there", "The zeros keep growing", "Both factors gain a zero", "The answers get bigger fast"]}
+              wonders={["Where do the zeros come from?", "Does it work for any fact?", "What is 300 × 40?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawTiles} height={254} award={award}
-          label="About how many tiles?" min={200} max={3000} start={1200} unit="tiles"
-          after="Locked. Now let us see where the zeros come from."
-          note="You already know 3 × 4. That fact is doing most of the work." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Thirty rows of forty tiles"
+            text="Omar checks the courtyard floor of the tower: 30 rows of 40 tiles. The workshop needs a number before the tiles are cut."
+            clue="You already know 3 × 4 — that fact is doing most of the work.">
+            <LaunchEstimate draw={drawTiles} height={254} award={award}
+              label="About how many tiles?" min={200} max={3000} start={1200} unit="tiles"
+              after="Locked. Now let us see where the zeros come from."
+              note="The courtyard counts are simulated — the rule works on any floor." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeZeroLadder(n)} height={254}
-          label="Reveal one line at a time"
-          value={n}
-          onPick={(v) => setN(v)}
-          chips={STEPS.map((s, k) => ({ v: k + 1, label: s.label }))}
-          caption={<MathEl omml={M.bothTens} size="xl" display="block" />}
-          footnote="One zero from the 30 and one from the 40 — two in the product." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd reveals the batch lines"
+            text="He can reveal any line, but the class must predict the product before the zeros add up."
+            clue="One zero from the 30, one from the 40">
+            <ExploreChips draw={makeZeroLadder(n)} height={254}
+              label="Reveal one line at a time"
+              value={n}
+              onPick={(v) => setN(v)}
+              chips={STEPS.map((s, k) => ({ v: k + 1, label: s.label }))}
+              caption={<MathEl omml={M.bothTens} size="xl" display="block" />}
+              footnote="One zero from the 30 and one from the 40 — two in the product." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeTileGrid(on)} height={254}
-          label="Group the tiles"
-          value={on ? 1 : 0}
-          onPick={(v) => setOn(v === 1)}
-          chips={[{ v: 0, label: "1,200 single tiles" }, { v: 1, label: "group into hundreds" }]}
-          caption={<MathEl omml={M.why} size="lg" display="block" />}
-          footnote="Each grouped square is ten by ten — a hundred tiles." />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Group the courtyard into hundreds"
+            text="Omar and Zayd group the single tiles — ten by ten — and the floor becomes twelve hundreds."
+            clue="Each grouped square is a hundred tiles">
+            <ExploreChips draw={makeTileGrid(on)} height={254}
+              label="Group the tiles"
+              value={on ? 1 : 0}
+              onPick={(v) => setOn(v === 1)}
+              chips={[{ v: 0, label: "1,200 single tiles" }, { v: 1, label: "group into hundreds" }]}
+              caption={<MathEl omml={M.why} size="lg" display="block" />}
+              footnote="Each grouped square is ten by ten — a hundred tiles." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "z1", text: "1,200", target: "g1" },
-            { id: "z2", text: "120", target: "g2" },
-            { id: "z3", text: "12,000", target: "g3" }
-          ]}
-          targets={[
-            { id: "g2", label: "30 × 4" }, { id: "g1", label: "30 × 40" }, { id: "g3", label: "300 × 40" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Match the product"
+            text="Three products from the production log. Each one belongs to exactly one batch."
+            clue="Look at the basic fact first, then the zeros">
+            <CardSort award={award} columns={3}
+              items={[
+                { id: "z1", text: "1,200", target: "g1" },
+                { id: "z2", text: "120", target: "g2" },
+                { id: "z3", text: "12,000", target: "g3" }
+              ]}
+              targets={[
+                { id: "g2", label: "30 × 4" }, { id: "g1", label: "30 × 40" }, { id: "g3", label: "300 × 40" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Nada's way — count the zeros", omml: M.bothTens, h: 92,
-                  quote: "3 times 4 is 12, and there are two zeros to copy across." }}
-          right={{ name: "Tarek's way — name the units", omml: M.why, h: 92,
-                   quote: "Three tens times four tens is twelve hundreds." }}
-          same={["Both get 1,200", "Both start from 3 × 4", "Both are quick"]}
-          diff={["Nada counts, Tarek names units", "Tarek can explain why", "Nada's is faster to say"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 1,200"
+            text="Nada counts the zeros. Tarek names the units. Both get 1,200 — for different reasons."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Nada's way — count the zeros", omml: M.bothTens, h: 92,
+                      quote: "3 times 4 is 12, and there are two zeros to copy across." }}
+              right={{ name: "Tarek's way — name the units", omml: M.why, h: 92,
+                       quote: "Three tens times four tens is twelve hundreds." }}
+              same={["Both get 1,200", "Both start from 3 × 4", "Both are quick"]}
+              diff={["Nada counts, Tarek names units", "Tarek can explain why", "Nada's is faster to say"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard41} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule is drawn into the production log"
+            text="Zayd builds only what the class can justify: the fact multiplied, the zeros from both factors attached."
+            clue="The 12 never moves — the zeros just add up">
+            <BoardScreen draw={drawBoard41} height={430}
+              caption="The 12 never moves — the zeros just add up." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "multiply the fact, then count the zeros in both factors" }]}
-          hand={"find the basic fact \u00b7 multiply it \u00b7 count the zeros in BOTH factors \u00b7 attach them all"}
-          cards={[
-            { title: "The tiles we counted", omml: M.bothTens, note: "30 × 40, two zeros" },
-            { title: "Tap to see the danger case", omml: M.tiles, revealOmml: M.swykAnswer, reveal: true,
-              note: "when the fact itself ends in zero, that zero counts too" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The rule goes into the tower's plan with its reason, not alone."
+            clue="When the fact ends in a zero, that zero counts too">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "multiply the fact, then count the zeros in both factors" }]}
+              hand={"find the basic fact · multiply it · count the zeros in BOTH factors · attach them all"}
+              cards={[
+                { title: "The tiles we counted", omml: M.bothTens, note: "30 × 40, two zeros" },
+                { title: "Tap to see the danger case", omml: M.tiles, revealOmml: M.swykAnswer, reveal: true,
+                  note: "when the fact itself ends in zero, that zero counts too" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="What is 60 × 50?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "300" }, { v: "b", text: "3,000" }, { v: "c", text: "30,000" }, { v: "d", text: "110" }]}
-          right="b"
-          support={{
-            yes: "Yes — 6 × 5 = 30, plus two more zeros from the factors, so 3,000.",
-            notYet: "Not yet — the fact 6 × 5 already ends in a zero. Count that one too.",
-            draw: drawSupport41, h: 96,
-            hint: "30, then two more zeros: 3,000."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs only a batch he can defend"
+            text="60 × 50. Show the basic fact first — then the zeros."
+            clue="6 × 5 = 30, then two more zeros">
+            <ShowWhatYouKnow award={award}
+              prompt="What is 60 × 50?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "300" }, { v: "b", text: "3,000" }, { v: "c", text: "30,000" }, { v: "d", text: "110" }]}
+              right="b"
+              support={{
+                yes: "Yes — 6 × 5 = 30, plus two more zeros from the factors, so 3,000.",
+                notYet: "Not yet — the fact 6 × 5 already ends in a zero. Count that one too.",
+                draw: drawSupport41, h: 96,
+                hint: "30, then two more zeros: 3,000."
+              }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Find two multiples of ten at home — prices, distances — and multiply them in your head." />;
+        return (
+          <StoryHandoff
+            title="The first floors are logged"
+            text="Omar signs the batch totals into the tower's log. Under the cover, a long order card slips out: a two-digit order, repeated for tens of customers at once."
+            artifact="Tower log · first floors counted"
+            next="The long order card: a two-digit order repeated for tens of customers. A larger model is needed.">
+            <Closing game={game} omml={M.rule}
+              action="Find two multiples of ten at home — prices, distances — and multiply them in your head." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

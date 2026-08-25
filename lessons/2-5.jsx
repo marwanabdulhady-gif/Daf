@@ -32,18 +32,20 @@ const drawStock = (ctx, W, H, frame) => {
   }
 };
 
-const makeColumnSub = (step) => (ctx, W, H, frame) => {
+const makeColumnSub = (step, onStep) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: W / 2 - 90, y: 30, w: 180, h: H - 70, value: 0, on: () => onStep((step + 1) % 4) });
   D.columnOp(ctx, { x: W / 2 - 90, y: 30, w: 180, a: 534, b: 268, op: "-", prog: step / 3, t: frame, cw: 42 });
-  const notes = ["start with the ones", "4 cannot take 8 — trade a ten, now 14 − 8 = 6",
+  const notes = ["start with the ones — tap to step", "4 cannot take 8 — trade a ten, now 14 − 8 = 6",
                  "2 tens cannot take 6 — trade a hundred, now 12 − 6 = 6", "4 − 2 = 2 hundreds"];
   D.txt(ctx, notes[step], W / 2, H - 18, { size: 13.5, col: step === 3 ? "#34D399" : "#C9A227", font: "marker" });
 };
 
-const makeTrade = (traded) => (ctx, W, H, frame) => {
+const makeTrade = (traded, onTrade) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onTrade) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onTrade(!traded) });
   const s = 8, base = H - 74;
   /* three tens rods and four ones, then one rod breaks into ten ones */
   const rods = traded ? 2 : 3;
@@ -107,91 +109,84 @@ const LESSON = {
   ixl: ["FCP", "6SZ"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "A bar with one part missing. No question yet.", goal: "An invitation — every student has something to say.",
-      pull: "The missing part has a name: the difference.",
-      rail: { launch: "I am not asking you to work it out. Just describe what you see.",
+    { phase: "warmup", title: "The reserve <em>and the spend</em>",
+      lead: "534 juice cartons in the stockroom. 268 sold. The approved spend is written beside the reserve.",
+      goal: "Notice the missing part — it has a name: the difference.",
+      pull: "The stockroom counts are simulated — the regrouping works on any pair.",
+      rail: { launch: "Fictional frame. Just describe the bar — no working yet.",
         monitor: ["Noticing the whole is 534", "Noticing one part is unknown", "Estimating the gap"],
-        connect: "Who noticed something nobody else did?",
+        connect: "What is the missing part called?",
         misconception: "Reading the bar as two separate numbers rather than a part and a whole." } },
 
-    { phase: "launch", title: "How many <em>are left</em>?",
-      lead: "534 cartons at the start of the week. 268 were sold. Estimate first.",
-      goal: "Create the need — and a check for the exact answer.",
-      pull: "Now let us take it apart one column at a time.",
-      rail: { launch: "Round both first. Roughly how many are left?",
-        monitor: ["Rounding to 530 and 270", "Counting up from 268", "Going straight to the algorithm"],
-        connect: "What should the exact answer be close to?",
-        misconception: "Subtracting the smaller digit from the larger one in each column." } },
+    { phase: "launch", title: "How many are <em>left</em>?",
+      lead: "534 − 268. The reserve, estimated first — then the difference proven.",
+      goal: "Estimate the difference before the algorithm.",
+      pull: "The difference must be near the estimate.",
+      rail: { launch: "Give an estimate and the place you rounded to.",
+        monitor: ["Rounding to tens", "Subtracting the rounds", "Checking the gap is plausible"],
+        connect: "What should the exact difference be near?",
+        misconception: "Subtracting the smaller digit from the bigger digit in each column." } },
 
-    { phase: "monitor", title: "One <em>column</em> at a time",
-      lead: "Start with the ones. Step through and watch the trade.",
-      goal: "The algorithm as a sequence of place-value trades.",
-      pull: "What is actually being crossed out?",
-      rail: { launch: "Predict each column before you step.",
-        monitor: ["Starting from the ones", "Taking the smaller from the larger", "Tracking both trades"],
-        connect: "Why can you not just do 8 take away 4?",
-        misconception: "Flipping the digits to avoid regrouping — the classic 4 minus 8 becomes 8 minus 4." } },
+    { phase: "monitor", title: "Zayd steps the <em>subtraction</em>",
+      lead: "Ones, tens, hundreds — each column trades before it is subtracted.",
+      goal: "Subtract by place, trading a ten or a hundred when a column cannot give.",
+      pull: "Trade, then subtract.",
+      rail: { launch: "Predict the trade before Zayd steps the column.",
+        monitor: ["Trading a ten for the ones", "Trading a hundred for the tens", "Checking the hundreds after the trades"],
+        connect: "Why did the tens column change before it was touched?",
+        misconception: "Answering 8 − 4 = 4 in the ones instead of ungrouping a ten." } },
 
-    { phase: "monitor", title: "Trade one <em>ten</em>",
-      lead: "Watch a ten rod break into ten ones.",
-      goal: "Regrouping is a physical trade, not a written trick.",
-      pull: "Which of these will need a trade?",
-      rail: { launch: "Before you tap: how many ones will there be after the trade?",
-        monitor: ["Counting the new ones", "Noticing the tens went down by one", "Checking the total is unchanged"],
-        connect: "Is it still the same number of cartons?",
-        misconception: "Thinking the trade adds ten to the number." } },
+    { phase: "monitor", title: "Omar trades <em>one ten</em>",
+      lead: "4 ones cannot take 8. Trade one ten — the number is renamed, its value does not change.",
+      goal: "See ungrouping as a rename, not a change of value.",
+      pull: "Subtraction does not commute: never answer 8 − 4 instead of ungrouping.",
+      rail: { launch: "Before you tap: how many ones can give away 8?",
+        monitor: ["Trading one ten for ten ones", "Counting 14 − 8 = 6", "Saying the value stayed the same"],
+        connect: "Did 534 become a different number when you traded?",
+        misconception: "Subtraction treated as commutative — 73 − 25 answered as 5 − 3." } },
 
-    { phase: "monitor", title: "Will it need a <em>trade</em>?",
-      lead: "Sort each subtraction before you calculate. No grading until the class commits.",
-      goal: "Predict regrouping from the digits.",
-      pull: "Two students checked the same answer differently.",
-      rail: { launch: "Look only at the ones column first.",
-        monitor: ["Comparing the ones digits", "Checking every column", "Calculating fully first"],
-        connect: "Which column did you check, and why that one?",
-        misconception: "Assuming a bigger number on top means no trade." } },
+    { phase: "monitor", title: "Check by <em>adding back</em>",
+      lead: "Four lines from the stockroom: some prove the difference, some are just the story.",
+      goal: "Verify a difference by adding it back to the subtrahend.",
+      pull: "Difference + subtrahend = minuend.",
+      rail: { launch: "Name what each line is doing before you place it.",
+        monitor: ["Spotting the add-back", "Spotting the estimate", "Asking what 268 − 266 would mean"],
+        connect: "Which line proves 266?",
+        misconception: "Treating the estimate 530 − 270 as the answer." } },
 
-    { phase: "connect", title: "Two ways to <em>check it</em>",
-      lead: "Lina added her answer back. Sami counted up from 268. Both landed on 534.",
+    { phase: "connect", title: "Aya trades. <em>Musa adds back.</em>",
+      lead: "Aya trades, then subtracts. Musa adds the difference back to verify. Both defend 266.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Adding the answer back", "Counting up in jumps", "Re-doing the subtraction"],
-        connect: "Why does adding the answer back prove it?",
-        misconception: "Checking by repeating the same method and the same mistake." } },
+        monitor: ["Following the trades", "Following the add-back", "Seeing both defend 266"],
+        connect: "Which check would catch a trade made the wrong way?",
+        misconception: "Believing the add-back is only for checking, never for finding the difference." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "One ten becomes ten ones. The number is renamed, not changed.",
+    { phase: "synth", title: "On the <em>board</em>: subtract by place, verify by adding back",
+      lead: "Draw the columns. Trade the ten. The regrouping renames the number — it never changes its value.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Naming the trade", "Restating it in their own words"],
-        connect: "Who can say what the crossing out means in one sentence?",
-        misconception: "Saying borrow without saying what is borrowed or from where." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the trade", "Testing on a bigger difference", "Checking by adding back"],
-        connect: "What happens if the next place is a zero?",
-        misconception: "Assuming there is always a ten available next door." } },
+        monitor: ["Naming the trade as it is drawn", "Saying the value is unchanged", "Restating it in their own words"],
+        connect: "Who can say the rule in one sentence?",
+        misconception: "Crossing out digits without saying what was traded." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Estimate, calculate, then check by adding back.",
-        monitor: ["Estimating first", "Trading correctly", "Checking by addition"],
+      lead: "725 − 348 — the proven difference?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Show the trades you made.",
+        monitor: ["Trading in the ones", "Trading in the tens", "Adding the difference back"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Doing 5 minus 8 as 8 minus 5 in the ones column." } },
+        misconception: "Answering 387 — the tens trade was forgotten." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The reserve is <em>proven</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: the same method, with much bigger numbers.",
-      rail: { launch: "Ask three students to say what a trade means.",
-        monitor: ["Able to explain it to someone else", "Still needs the blocks", "Ready for greater numbers"],
+      pull: "Tomorrow: the warehouse expansion plan arrives.",
+      rail: { launch: "Ask three students to say where their trade happened.",
+        monitor: ["Able to explain the trade", "Still needs the blocks", "Ready for four-place differences"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -202,85 +197,140 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawStock} height={256} award={award}
-          notices={["The whole is 534", "One part is missing", "268 were sold", "The missing part is smaller"]}
-          wonders={["How many are left?", "Is it about half?", "Do I add or subtract?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The reserve and the spend"
+            text="The stockroom bar: 534 cartons at the start, 268 sold, and the council's approved spend written beside the reserve. The missing part is the difference."
+            clue="The missing part has a name">
+            <NoticeWonder draw={drawStock} height={256} award={award}
+              notices={["The whole is 534", "One part is 268", "The other part is unknown", "The spend is written beside the reserve"]}
+              wonders={["How many cartons are left?", "Which column will need a trade?", "How is the difference checked?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStock} height={256} award={award}
-          label="About how many cartons are left?" min={100} max={400} start={260} unit="cartons"
-          after="Locked. Keep it — you will check your exact answer against it."
-          note="Round both numbers, then subtract the friendly ones." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The reserve, estimated first"
+            text="Omar asks for the estimate before any trade is made — the reserve report must carry a difference the class can prove."
+            clue="Round both numbers, then subtract the rounds">
+            <LaunchEstimate draw={drawStock} height={256} award={award}
+              label="534 − 268 — the reserve, estimated first" min={200} max={350} start={250} unit="cartons"
+              after="Locked. Now step the subtraction and find the trades."
+              note="The stockroom counts are simulated — the regrouping works on any pair." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeColumnSub(step)} height={262}
-          label="Step through the columns"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "set it up" }, { v: 1, label: "ones" }, { v: 2, label: "tens" }, { v: 3, label: "hundreds" }]}
-          caption={<MathEl omml={M.answer} size="xl" display="block" />}
-          footnote="A crossed-out digit is a number that has been renamed, not reduced." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd steps the subtraction"
+            text="He can step any column, but the class must predict the trade before the column changes."
+            clue="Trade, then subtract">
+            <ExploreChips draw={makeColumnSub(step, setStep)} height={252}
+              label="Step the columns of 534 − 268"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "start with the ones" }, { v: 1, label: "the ones trade" }, { v: 2, label: "the tens trade" }, { v: 3, label: "the hundreds" }]}
+              caption={<MathEl omml={M.regroup} size="lg" display="block" />}
+              footnote="4 ones cannot take 8 — trade a ten, now 14 − 8 = 6." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeTrade(traded)} height={252}
-          label="Trade a ten for ten ones"
-          value={traded ? 1 : 0}
-          onPick={(v) => setTraded(v === 1)}
-          chips={[{ v: 0, label: "before the trade" }, { v: 1, label: "after the trade" }]}
-          caption={<MathEl omml={traded ? M.traded : M.regroup} size="lg" display="block" />}
-          footnote="Three tens and four ones is the same amount as two tens and fourteen ones." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar trades one ten"
+            text="His blocks show it plainly: 4 ones cannot give away 8 — so one ten is ungrouped into ten ones."
+            clue="The number is renamed — its value does not change">
+            <ExploreChips draw={makeTrade(traded, setTraded)} height={252}
+              label="Can 4 ones give away 8?"
+              value={traded ? 1 : 0}
+              onPick={(v) => setTraded(v === 1)}
+              chips={[{ v: 0, label: "no trade" }, { v: 1, label: "trade a ten" }]}
+              caption={<MathEl omml={M.traded} size="lg" display="block" />}
+              footnote="Subtraction does not commute: never answer 8 − 4 instead of ungrouping." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "s1", text: "534 − 268", target: "yes" },
-            { id: "s2", text: "579 − 236", target: "no" },
-            { id: "s3", text: "412 − 187", target: "yes" },
-            { id: "s4", text: "846 − 325", target: "no" }
-          ]}
-          targets={[
-            { id: "yes", label: "needs a trade" },
-            { id: "no", label: "no trade needed" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Check by adding back"
+            text="Omar and Zayd lay four lines from the stockroom on the table. The reserve report wants the difference proven — difference plus sold equals the start."
+            clue="Difference + subtrahend = minuend">
+            <CardSort award={award} columns={2} commitLabel="Prove the difference"
+              items={[
+                { id: "s1", text: "266 + 268 = 534", target: "check" },
+                { id: "s2", text: "268 − 266", target: "story" },
+                { id: "s3", text: "530 − 270 = 260", target: "check" },
+                { id: "s4", text: "266", target: "story" }
+              ]}
+              targets={[
+                { id: "check", label: "a check — it proves the difference" },
+                { id: "story", label: "part of the story — not a check" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Lina's way — add it back", omml: M.check, h: 92,
-                  quote: "If my answer is right, it adds back to 534." }}
-          right={{ name: "Sami's way — count up", omml: M.estimate, h: 92,
-                   quote: "From 268 up to 534 in jumps: 32, then 234." }}
-          same={["Both check the same answer", "Both connect adding and subtracting", "Both land on 534"]}
-          diff={["Lina adds, Sami counts up", "Sami never subtracts at all", "Lina's check is faster to write"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 266"
+            text="Aya trades, then subtracts. Musa adds the difference back to verify. Both defend 266."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Aya's way — trade, then subtract", omml: M.traded, h: 92,
+                      quote: "I ungrouped a ten, then 14 − 8 = 6." }}
+              right={{ name: "Musa's way — add back to verify", omml: M.check, h: 92,
+                       quote: "266 back into 268 gives 534 — the start." }}
+              same={["Both defend 266", "Both trade before subtracting", "Both can be checked"]}
+              diff={["Aya's work shows the trades", "Musa's work proves the difference", "Musa's check catches a lost trade"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard25} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The trade is drawn, not declared"
+            text="Zayd builds only what the class can justify: the ten ungrouped, the columns renamed, the value unchanged."
+            clue="Regrouping renames the number — it never changes its value">
+            <BoardScreen draw={drawBoard25} height={430}
+              caption="Subtract by place; verify by adding back." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.regroup, alt: "four ones cannot take eight, trade a ten" }]}
-          hand={"start on the right · if the top digit is too small, trade one from the next place · ten arrive, one leaves"}
-          cards={[
-            { title: "The difference we found", omml: M.answer, note: "our estimate was 260 — close" },
-            { title: "Tap to check it by adding", omml: M.traded, revealOmml: M.check, reveal: true,
-              note: "adding the answer back proves it" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the reserve report"
+            text="725 − 348. Show the difference — and the add-back that proves it."
+            clue="Difference + sold = the start">
+            <ShowWhatYouKnow award={award}
+              prompt="725 − 348 — the proven difference?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "377" }, { v: "b", text: "387" }, { v: "c", text: "375" }, { v: "d", text: "477" }]}
+              right="a"
+              support={{
+                yes: "Yes — the trades run left and 377 adds back to 725.",
+                notYet: "Not yet — add it back: 377 + 348 must be 725.",
+                draw: drawSupport25, h: 82,
+                hint: "5 ones cannot take 8 — the ones trade. Then the tens must take the ten."
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Subtract 725 − 348."
-          omml={M.swyk}
-          options={[{ v: "a", text: "377" }, { v: "b", text: "423" }, { v: "c", text: "387" }, { v: "d", text: "1,073" }]}
-          right="a"
-          support={{
-            yes: "Yes — and 377 + 348 = 725, so it checks out.",
-            notYet: "Not yet — look at the ones column. Can 5 give away 8?",
-            draw: drawSupport25, h: 96,
-            hint: "Trade a ten: 15 − 8 = 7. Then the tens are 1, not 2."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.answer}
-          action="Subtract two three-digit numbers at home, then check by adding your answer back." />;
+        return (
+          <StoryHandoff
+            title="The reserve is proven"
+            text="Omar signs the reserve report — difference, and the add-back beside it. Zayd carries the warehouse expansion plan in: the reserve and the spend now stretch across more places."
+            artifact="Reserve report · difference + check"
+            next="The warehouse expansion plan arrives — the reserve and the spend now stretch across more places.">
+            <Closing game={game} omml={M.check}
+              action="Subtract two real amounts tonight — a bill, a distance — and add the difference back." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

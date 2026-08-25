@@ -147,92 +147,84 @@ const LESSON = {
   ixl: ["7FH", "2K3", "6J4"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Four divisions, stacked. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "One digit stays put the whole way down.",
-      rail: { launch: "I am not asking you to work anything out. Just look down the list.",
+    { phase: "warmup", title: "Loads that divide <em>cleanly</em>",
+      lead: "The caravan's first crates: 12 ÷ 4, 120 ÷ 4, 1,200 ÷ 4, 12,000 ÷ 4. The 3 is always there, and the zeros appear on both sides.",
+      goal: "Notice the quotient pattern before any calculating.",
+      pull: "The 3 stays. Only the place moves.",
+      rail: { launch: "Fictional frame. Look down the list — no working yet.",
         monitor: ["Noticing the 3", "Counting zeros on both sides", "Predicting the next line"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Seeing four unrelated facts instead of one pattern." } },
+        connect: "What stays the same all the way down?",
+        misconception: "Thinking the zeros only appear in the answer." } },
 
-    { phase: "launch", title: "Two hundred and forty students, <em>six buses</em>",
-      lead: "Shared equally. You already know 24 ÷ 6.",
-      goal: "Create the need — a basic fact can carry a much bigger one.",
-      pull: "Estimate first, then we will see why it works.",
-      rail: { launch: "Nobody counts 240 students one at a time. What fact helps?",
-        monitor: ["Sharing one at a time", "Using 24 ÷ 6 then adding a zero", "Thinking in tens"],
-        connect: "What basic fact is hiding inside this problem?",
-        misconception: "Adding a zero as a rule with no meaning behind it." } },
+    { phase: "launch", title: "How many students <em>per bus</em>?",
+      lead: "240 students, 6 buses. The caravan master needs the load per bus before the gates open.",
+      goal: "Create the need — a known fact can carry a bigger division.",
+      pull: "The trip roster is simulated — the place-value idea works on any load.",
+      rail: { launch: "Nobody divides 240 by 6 longhand at the gate. What fact helps?",
+        monitor: ["Using 24 ÷ 6", "Sharing 240 tens by 6", "Estimating wildly"],
+        connect: "What basic fact is hiding in 240 ÷ 6?",
+        misconception: "Believing mental division needs the written method." } },
 
-    { phase: "monitor", title: "Follow the <em>pattern</em>",
-      lead: "Reveal one line at a time. Watch the digits and watch the zeros.",
-      goal: "The basic fact stays; the place value changes.",
-      pull: "But why? Share the blocks and see.",
-      rail: { launch: "Predict each line before you reveal it.",
-        monitor: ["Predicting correctly", "Counting zeros carefully", "Explaining in place-value words"],
-        connect: "How many zeros will 120,000 ÷ 4 have?",
-        misconception: "Adding zeros to the answer that were never in the dividend." } },
+    { phase: "monitor", title: "Zayd climbs the <em>ladder</em>",
+      lead: "One line at a time: 12, 120, 1,200, 12,000. The digits never move — the place does.",
+      goal: "Divide the fact, then keep the place the dividend had.",
+      pull: "The basic fact stays the same. Only the place value moves.",
+      rail: { launch: "Predict each line before Zayd reveals it.",
+        monitor: ["Predicting the quotient", "Counting the zeros", "Explaining in hundreds"],
+        connect: "What is 12,000 ÷ 4 before it is shown?",
+        misconception: "Dividing 12 by 4 and copying the zeros onto the wrong number." } },
 
-    { phase: "monitor", title: "Share <em>twelve of something</em>",
-      lead: "Twelve ones, twelve tens, twelve hundreds. The sharing never changes.",
-      goal: "The pattern is a place-value fact, not a zero trick.",
-      pull: "Now match some quotients to their expressions.",
-      rail: { launch: "Before you tap: how many will each group get?",
-        monitor: ["Counting the blocks", "Naming the unit", "Reading 3 hundreds as 300"],
-        connect: "Why is 3 hundreds written as 300?",
-        misconception: "Reading 3 hundreds as 3." } },
+    { phase: "monitor", title: "Twelve of <em>anything</em>",
+      lead: "Twelve ones, twelve tens, twelve hundreds — they share the same way. Only the unit changes.",
+      goal: "A quotient keeps the place value the dividend had.",
+      pull: "Twelve of anything shares the same way — it is the unit that changes.",
+      rail: { launch: "Before you tap: what is 12 hundreds ÷ 4?",
+        monitor: ["Sharing the ones", "Sharing the tens", "Naming the unit of the answer"],
+        connect: "Why is 1,200 ÷ 4 three hundreds, not just 3?",
+        misconception: "Answering 3 instead of 300 — the place was dropped." } },
 
     { phase: "monitor", title: "Match the <em>quotient</em>",
-      lead: "Which division gives that answer? No grading until the class commits.",
-      goal: "Read the pattern backwards.",
-      pull: "Two students explained the zeros differently.",
+      lead: "Three quotients from the manifest. Each one belongs to one division.",
+      goal: "Read the zero pattern backwards.",
+      pull: "Look at the basic fact first, then the zeros.",
       rail: { launch: "Look at the basic fact first, then the zeros.",
-        monitor: ["Using the basic fact", "Counting zeros", "Calculating fully"],
+        monitor: ["Using the basic fact", "Counting zeros", "Checking the place of the answer"],
         connect: "Which part did you check first?",
         misconception: "Matching by the number of digits." } },
 
-    { phase: "connect", title: "Two ways to <em>say why</em>",
-      lead: "Hind counts zeros. Saud thinks in hundreds. Both get 300.",
+    { phase: "connect", title: "Hind <em>counts</em>. Saud <em>names the unit</em>",
+      lead: "Hind copies the zeros across. Saud says three hundreds. Both get 300.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
         monitor: ["Counting zeros fluently", "Naming the unit", "Using both together"],
         connect: "Whose explanation survives if you forget the rule?",
-        misconception: "Believing the zero-counting shortcut is the mathematics." } },
+        misconception: "Believing zero-copying is the mathematics, not a consequence of it." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "12 hundreds shared by 4 is 3 hundreds. Three hundreds is 300.",
+    { phase: "synth", title: "On the <em>board</em>: divide the fact, keep the place",
+      lead: "12 hundreds ÷ 4 is 3 hundreds. Three hundreds is 300.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next line", "Naming the unit each time", "Restating it in their own words"],
+        monitor: ["Predicting the next line", "Naming the unit", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Memorising cross off the zeros without the unit." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the fact and the place", "Testing on a new fact", "Asking about 240 ÷ 60"],
-        connect: "What happens when the divisor has zeros too?",
-        misconception: "Cancelling zeros without checking there are enough on both sides." } },
+        misconception: "Memorising copy the zeros without the unit." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
+      lead: "3,500 ÷ 7 — the basic fact first, then the place.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
       rail: { launch: "Two minutes. Write the basic fact first.",
-        monitor: ["Writing 35 ÷ 7 first", "Counting zeros", "Guessing the size"],
+        monitor: ["Writing 35 ÷ 7", "Keeping the hundreds place", "Reading 5 hundreds"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Answering 50 instead of 500." } },
+        misconception: "Answering 50 — the place was kept as tens." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The first loads are <em>split</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: when the numbers are not so tidy.",
+      pull: "Tomorrow: how many carts, approximately? The manifest will not divide cleanly.",
       rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the blocks", "Ready to estimate"],
+        monitor: ["Able to explain the place", "Still copies zeros blindly", "Ready for compatible numbers"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -243,83 +235,138 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeDivLadder(4)} height={256} award={award}
-          notices={["The 3 is always there", "Zeros appear on both sides", "The 4 never changes", "The answers get ten times bigger"]}
-          wonders={["What comes next?", "Why does the 3 stay?", "Does it work for any fact?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Loads that divide cleanly"
+            text="The caravan's first crates come out even: 12, 120, 1,200, 12,000 — all shared by 4. The 3 is always there."
+            clue="The 3 stays — only the place moves.">
+            <NoticeWonder draw={makeDivLadder(4)} height={256} award={award}
+              notices={["The 3 is always there", "Zeros appear on both sides", "The 4 never changes", "The answers get ten times bigger"]}
+              wonders={["What comes next?", "Why does the 3 stay?", "Does it work for any fact?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawBuses51} height={256} award={award}
-          label="How many students on each bus?" min={10} max={80} start={40} unit="students"
-          after="Locked. Now let us see the pattern behind it."
-          note="You already know 24 ÷ 6. That fact is doing most of the work." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The load per bus, before the gates open"
+            text="Omar asks the caravan master's question: 240 students, 6 buses — how many on each, in your head?"
+            clue="24 ÷ 6 is doing most of the work.">
+            <LaunchEstimate draw={drawBuses51} height={256} award={award}
+              label="How many students on each bus?" min={10} max={80} start={40} unit="students"
+              after="Locked. Now let us see the pattern behind it."
+              note="The trip roster is simulated — the place-value idea works on any load." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeDivLadder(n)} height={256}
-          label="Reveal one line at a time"
-          value={n}
-          onPick={(v) => setN(v)}
-          chips={STEPS.map((s, k) => ({ v: k + 1, label: s.label }))}
-          caption={<MathEl omml={M.hundreds} size="xl" display="block" />}
-          footnote="The basic fact stays the same. Only the place value moves." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd climbs the quotient ladder"
+            text="He can reveal any line — the class must predict the quotient before the zeros appear."
+            clue="The basic fact stays the same. Only the place value moves.">
+            <ExploreChips draw={makeDivLadder(n)} height={256}
+              label="Reveal one line at a time"
+              value={n}
+              onPick={(v) => setN(v)}
+              chips={STEPS.map((s, k) => ({ v: k + 1, label: s.label }))}
+              caption={<MathEl omml={M.hundreds} size="xl" display="block" />}
+              footnote="The basic fact stays the same. Only the place value moves." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeShareUnits(unit)} height={256}
-          label="Share twelve ..."
-          value={unit}
-          onPick={(v) => setUnit(v)}
-          chips={[{ v: 1, label: "ones" }, { v: 10, label: "tens" }, { v: 100, label: "hundreds" }]}
-          caption={<MathEl omml={M.why} size="lg" display="block" />}
-          footnote="Twelve of anything shares the same way — it is the unit that changes." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Twelve of anything shares the same way"
+            text="Twelve ones, twelve tens, twelve hundreds — the sharing never changes; the unit of the answer does."
+            clue="The quotient keeps the place value the dividend had.">
+            <ExploreChips draw={makeShareUnits(unit)} height={256}
+              label="Share twelve ..."
+              value={unit}
+              onPick={(v) => setUnit(v)}
+              chips={[{ v: 1, label: "ones" }, { v: 10, label: "tens" }, { v: 100, label: "hundreds" }]}
+              caption={<MathEl omml={M.why} size="lg" display="block" />}
+              footnote="Twelve of anything shares the same way — it is the unit that changes." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "d1", text: "300", target: "e1" },
-            { id: "d2", text: "30", target: "e2" },
-            { id: "d3", text: "3,000", target: "e3" }
-          ]}
-          targets={[
-            { id: "e2", label: "120 ÷ 4" }, { id: "e1", label: "1,200 ÷ 4" }, { id: "e3", label: "12,000 ÷ 4" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Match the quotient"
+            text="Omar and Zayd lay three quotients on the dispatch board. Each one belongs to one division."
+            clue="Look at the basic fact first, then the zeros.">
+            <CardSort award={award} columns={3}
+              items={[
+                { id: "d1", text: "300", target: "e1" },
+                { id: "d2", text: "30", target: "e2" },
+                { id: "d3", text: "3,000", target: "e3" }
+              ]}
+              targets={[
+                { id: "e2", label: "120 ÷ 4" }, { id: "e1", label: "1,200 ÷ 4" }, { id: "e3", label: "12,000 ÷ 4" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Hind's way — count the zeros", omml: M.hundreds, h: 92,
-                  quote: "12 ÷ 4 is 3, then I copy across the two zeros." }}
-          right={{ name: "Saud's way — name the unit", omml: M.why, h: 92,
-                   quote: "Twelve hundreds shared by four is three hundreds." }}
-          same={["Both get 300", "Both start from 12 ÷ 4", "Both are quick"]}
-          diff={["Hind counts, Saud names the unit", "Saud can explain why", "Hind's is faster to say"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 300"
+            text="Hind copies the zeros across. Saud names three hundreds. Both get 300."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Hind's way — count the zeros", omml: M.hundreds, h: 92,
+                      quote: "12 ÷ 4 is 3, then I copy across the two zeros." }}
+              right={{ name: "Saud's way — name the unit", omml: M.why, h: 92,
+                       quote: "Twelve hundreds shared by four is three hundreds." }}
+              same={["Both get 300", "Both start from 12 ÷ 4", "Both are quick"]}
+              diff={["Hind counts, Saud names the unit", "Saud can explain why", "Hind's is faster to say"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard51} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule is written into the dispatch board"
+            text="Zayd builds only what the class can justify: the fact divided, the place kept."
+            clue="Divide the fact · then keep the place.">
+            <BoardScreen draw={drawBoard51} height={430}
+              caption="Divide the fact · then keep the place." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "divide the fact, then keep the place" }]}
-          hand={"find the basic fact \u00b7 divide it \u00b7 the answer keeps the place value the dividend had"}
-          cards={[
-            { title: "The buses we filled", omml: M.buses, note: "24 ÷ 6 = 4, so 240 ÷ 6 = 40" },
-            { title: "Tap to climb one more place", omml: M.hundreds, revealOmml: M.thousands, reveal: true,
-              note: "the fact never changes" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the first load"
+            text="3,500 ÷ 7. Show the basic fact first — then the place."
+            clue="35 hundreds ÷ 7 is 5 hundreds.">
+            <ShowWhatYouKnow award={award}
+              prompt="What is 3,500 ÷ 7?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "50" }, { v: "b", text: "500" }, { v: "c", text: "5,000" }, { v: "d", text: "5" }]}
+              right="b"
+              support={{
+                yes: "Yes — 35 ÷ 7 = 5, and 35 hundreds shared by 7 is 5 hundreds.",
+                notYet: "Not yet — write the basic fact first, then keep the place.",
+                draw: drawSupport51, h: 96,
+                hint: "3,500 is 35 hundreds. What is 35 ÷ 7?"
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="What is 3,500 ÷ 7?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "50" }, { v: "b", text: "500" }, { v: "c", text: "5,000" }, { v: "d", text: "5" }]}
-          right="b"
-          support={{
-            yes: "Yes — 35 ÷ 7 = 5, and 35 hundreds shared by 7 is 5 hundreds.",
-            notYet: "Not yet — write the basic fact first, then keep the place.",
-            draw: drawSupport51, h: 96,
-            hint: "3,500 is 35 hundreds. What is 35 ÷ 7?"
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Find a number ending in zeros at home and share it by a single digit in your head." />;
+        return (
+          <StoryHandoff
+            title="The first loads are split"
+            text="Omar signs the first dispatch: every load divides cleanly. The next manifest does not divide at all — the transport team needs a fast range before exact loading begins."
+            artifact="Caravan schedule · first loads shared"
+            next="How many carts, approximately? The next manifest will not divide cleanly.">
+            <Closing game={game} omml={M.rule}
+              action="Find a number ending in zeros at home and share it by a single digit in your head." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

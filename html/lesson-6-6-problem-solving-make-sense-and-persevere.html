@@ -135,6 +135,49 @@
         from { opacity: 0; transform: scale(1.014); filter: blur(6px); }
         to { opacity: 1; transform: none; filter: none; }
       }
+      /* THE STAGE (light paper scheme) — the slide IS the stage: the school's
+         light paper, teal + gold accents. Panels are borderless so the canvas
+         and the controls float directly on the stage (the canvas paints the
+         same paper via the light-stage remap in draw.js — no board, no box).
+         Interactive controls span the full stage width, not a bordered box. */
+      .visual > .glass-panel,
+      .visual > .story-shell .glass-panel {
+        background: transparent; border: none; box-shadow: none;
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+      }
+      .visual > .glass-panel:has(canvas),
+      .visual > .story-shell .glass-panel:has(canvas) { padding: 6px; }
+      .chip-bar { width: 100%; padding: 2px 2px 4px; }
+      .chip-label { font-weight: 900; font-size: 12px; color: var(--c); margin: 0 2px 9px; }
+      .chip-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+      .chip-row .btn { flex: 1 1 auto; min-width: 110px; }
+      .stage-line { text-align: center; font-size: 12.5px; color: var(--daf-ink-2); padding: 2px 8px 8px; }
+
+      /* THE STAGE — board screens are full-stage: the drawing owns the whole
+         visual area at full height (no framed box), Dar Al Fikr deep-teal
+         surface with the logo-gold breathing frame drawn by D.stage itself. */
+      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; }
+      .board-stage { position: relative; flex: 1; min-height: 300px; }
+      .stage-caption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 11.5px; color: rgba(16,36,43,.62); padding: 0 18px; pointer-events: none; }
+      .screen:has(.board-stage) { grid-template-columns: minmax(270px, 29%) 1fr; }
+
+      /* Staggered element reveals (Syntax-Academy revealUp, English edition):
+         every element on the screen enters with a .08s offset. Disabled under
+         prefers-reduced-motion (static state, per the accessibility policy). */
+      @keyframes revealUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+      }
+      .screen .copy > *, .screen .visual > * { animation: revealUp .5s var(--ease) both; }
+      .screen .copy > :nth-child(1), .screen .visual > :nth-child(1) { animation-delay: .06s; }
+      .screen .copy > :nth-child(2), .screen .visual > :nth-child(2) { animation-delay: .14s; }
+      .screen .copy > :nth-child(3), .screen .visual > :nth-child(3) { animation-delay: .22s; }
+      .screen .copy > :nth-child(4), .screen .visual > :nth-child(4) { animation-delay: .30s; }
+      .screen .copy > :nth-child(5), .screen .visual > :nth-child(5) { animation-delay: .38s; }
+      .screen .copy > :nth-child(6), .screen .visual > :nth-child(6) { animation-delay: .46s; }
+      @media (prefers-reduced-motion: reduce) {
+        .screen .copy > *, .screen .visual > * { animation: none; }
+      }
 
       .copy {
         position: relative; z-index: 5;
@@ -246,6 +289,59 @@
         box-shadow: 0 16px 36px color-mix(in srgb, var(--c) 18%, transparent);
       }
       .glass-card.chosen { border-color: var(--c); border-width: 2px; background: #fff; }
+
+      /* ---------------- story layer: three truth-status lanes ------------ */
+      .visual > .story-shell {
+        width: 100%; max-height: 100%; overflow-y: auto; padding: 1px 5px 5px;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.24) transparent;
+      }
+      .story-shell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+      .story-ribbon {
+        position: relative; min-height: 76px; overflow: hidden;
+        display: grid; grid-template-columns: auto minmax(0,1fr) minmax(145px,210px);
+        gap: 12px; align-items: center; padding: 8px 13px;
+        border-radius: 16px; border: 1px solid rgba(96,66,166,.24);
+        background: linear-gradient(112deg,#fff 0%,#f8f4ff 68%,#f0e9fa 100%);
+        box-shadow: 0 9px 24px rgba(7,30,39,.07);
+      }
+      .lane-stem .story-ribbon { border-color: rgba(45,112,179,.28); background: linear-gradient(112deg,#fff,#eef7ff); }
+      .lane-amanah .story-ribbon { border-color: rgba(56,140,70,.3); background: linear-gradient(112deg,#fff,#eff8ef); }
+      .story-motif { position: absolute; inset-inline-end: 0; bottom: -18px; width: 210px; height: 115px; color: #6042A6; opacity: .075; pointer-events: none; }
+      .lane-stem .story-motif { color: #2D70B3; }.lane-amanah .story-motif { color: #388C46; }
+      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; }
+      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); }
+      .story-ribbon-copy { position: relative; z-index: 2; min-width: 0; }
+      .story-lane { display: inline-flex; gap: 6px; align-items: center; font-size: 8.5px; font-weight: 950; letter-spacing: .13em; text-transform: uppercase; color: #6042A6; }
+      .lane-stem .story-lane { color: #2D70B3; }.lane-amanah .story-lane { color: #388C46; }
+      .story-ribbon-copy>b { display: block; margin-top: 2px; color: var(--daf-ink); font-size: 13px; line-height: 1.25; }
+      .story-ribbon-copy p { margin: 2px 0 0; color: var(--daf-ink-2); font-size: 10.5px; line-height: 1.38; }
+      .story-ribbon-copy small { display: block; margin-top: 4px; color: #6042A6; font-size: 9.5px; font-weight: 850; }
+      .lane-stem .story-ribbon-copy small { color: #2D70B3; }
+      .folio-progress { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 5px 8px; align-items: center; padding: 8px 9px; border-radius: 11px; background: rgba(255,255,255,.78); border: 1px solid rgba(96,66,166,.16); }
+      .folio-label { min-width: 0; }.folio-label b { display:block; font-size: 9px; color:#6042A6; text-transform:uppercase; letter-spacing:.1em; }.folio-label span { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:8.5px; color:var(--daf-ink-2); }
+      .folio-progress em { grid-row: 1 / span 2; grid-column: 2; font: 800 10px "JetBrains Mono",monospace; color:#6042A6; font-style:normal; }
+      .folio-pips { display:flex; gap:3px; }.folio-pips i { display:block; width:12px; height:4px; border-radius:5px; background:#ddd5ed; }.folio-pips i.restored { background:linear-gradient(90deg,#6042A6,#C9A227); }
+      .story-content { display:flex; flex-direction:column; gap:10px; min-width:0; }
+      .story-content>.glass-panel { flex: 1; }
+      .story-shell.compact .story-ribbon { min-height: 84px; }
+      .stem-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .stem-source-card { border:1px solid rgba(45,112,179,.25); border-radius:15px; background:#F2F8FD; padding:14px; }
+      .stem-source-card h3 { margin:8px 0 4px; font-size:13px; color:#1D5C91; }.stem-source-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .stem-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#2D70B3; text-transform:uppercase; }
+      .stem-source-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.stem-source-card summary { cursor:pointer; font-weight:900; color:#2D70B3; }.stem-source-card a { display:block; color:#1D5C91; margin-top:5px; }
+      .stem-math { min-width:0; display:flex; }.stem-math>.glass-panel { flex:1; }
+      .handoff-artifact { display:flex; gap:11px; align-items:center; padding:10px 14px; border-radius:13px; color:#fff; background:linear-gradient(100deg,#0B1F24,#12857C); border:1px solid rgba(201,162,39,.55); }
+      .handoff-artifact>span { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--daf-gold); color:#10242B; }.handoff-artifact b { display:block; color:var(--daf-gold-2); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }.handoff-artifact p { margin:2px 0 0; font-size:11px; color:#EAF4F2; }
+      .handoff-artifact .folio-stamp { margin-left:auto; align-self:center; }
+      .handoff-artifact .folio-stamp.on { color:#0B1F24; background:var(--daf-gold); }
+      .folio-save-note { flex-basis:100%; margin:0; font-size:9.5px; color:#F2C9C7; }
+      .amanah-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .amanah-card { border:1px solid rgba(56,140,70,.3); border-radius:15px; background:#F0F8F0; padding:14px; }
+      .amanah-card h3 { margin:8px 0 4px; font-size:13px; color:#2C6E38; }.amanah-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .amanah-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#388C46; text-transform:uppercase; }
+      .amanah-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.amanah-card summary { cursor:pointer; font-weight:900; color:#388C46; }
+      @media(max-width:900px){.amanah-layout{grid-template-columns:1fr}}
+      @media(max-width:900px){.story-ribbon{grid-template-columns:auto minmax(0,1fr)}.folio-progress{display:none}.stem-layout{grid-template-columns:1fr}.story-ribbon-copy p{font-size:9.5px}}
 
       .btn { border: none; cursor: pointer; font-weight: 800; border-radius: 10px; transition: all 0.25s var(--ease); font-size: 12px; padding: 10px 18px; font-family: inherit; }
       .btn-primary { background: var(--c-grad); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--c) 32%, transparent); }
@@ -387,7 +483,8 @@
       .dj-last{flex:1;min-width:200px}
       .dj-last em{font-style:normal;font:800 12px "JetBrains Mono",monospace}
       .dj-last em.pos{color:#7ED08C} .dj-last em.neg{color:#F2938F}
-      .dj-exports{display:flex;gap:14px}
+      .dj-exports{display:flex;gap:14px;flex-wrap:wrap}
+      .dj-note{flex-basis:100%;font-size:9px;color:rgba(217,237,235,.45);margin-top:2px}
       .dj-exports a{color:#9fc4bd;cursor:pointer;display:inline-flex;gap:6px;align-items:center;
         font-size:11px;letter-spacing:.06em;text-decoration:none}
       .dj-exports a:hover{color:var(--daf-gold)}
@@ -501,6 +598,8 @@
         border: 1px solid var(--daf-line); border-bottom-width: 2px; border-radius: 5px;
         font: 700 10px "JetBrains Mono", monospace; color: var(--daf-deep); background: #fff;
       }
+
+      
     </style>
   </head>
   <body>
@@ -962,8 +1061,53 @@
 (function (global) {
   "use strict";
 
+  /* LIGHT STAGE (Dar Al Fikr paper scheme) — the stage is the school's
+     light paper, so canvas colours are remapped from dark-board "chalk"
+     to ink-on-paper. The board colour itself becomes transparent, so the
+     drawing sits directly on the stage: no blackboard box can exist. */
+  var LIGHT_MAP = {
+    "#0b1f24": "transparent",
+    "#eaf4f2": "#10242b",
+    "#34d399": "#12857c",
+    "#f2938f": "#c75440",
+    "#e0665f": "#c75440",
+    "#ffa94d": "#fa7e19",
+    "#4a9be0": "#2d70b3",
+    "#fff": "#10242b"
+  };
+  function remapStyle(v) {
+    if (typeof v !== "string") return v;
+    var l = v.toLowerCase();
+    if (LIGHT_MAP[l]) return LIGHT_MAP[l];
+    var m = l.match(/^rgba\((234,244,242|52,211,153|74,155,224|255,255,255|160,190,200|120,150,160),([\d.]+)\)$/);
+    if (m) {
+      var rgb = m[1] === "234,244,242" ? "16,36,43"
+        : m[1] === "52,211,153" ? "18,133,124"
+        : m[1] === "74,155,224" ? "45,112,179"
+        : "16,36,43";
+      return "rgba(" + rgb + "," + m[2] + ")";
+    }
+    return v;
+  }
+
   function fit(canvas) {
-    var ctx = canvas.getContext("2d");
+    var raw = canvas.getContext("2d");
+    /* Canvas 2D methods are brand-checked: they must be called with the real
+       context as `this`. The remap proxy therefore binds every method to the
+       target context in a get trap (a set trap alone makes every native call
+       throw "Illegal invocation" and blank the whole page). */
+    var ctx = new Proxy(raw, {
+      get: function (target, prop) {
+        var val = Reflect.get(target, prop, target);
+        if (typeof val === "function") return val.bind(target);
+        return val;
+      },
+      set: function (target, prop, val) {
+        if (prop === "fillStyle" || prop === "strokeStyle") val = remapStyle(val);
+        Reflect.set(target, prop, val);
+        return true;
+      }
+    });
     var state = { ctx: ctx, W: 0, H: 0 };
     function resize() {
       var dpr = Math.min(global.devicePixelRatio || 1, 2);
@@ -1052,6 +1196,7 @@
     o = o || {};
     ctx.save();
     var size = o.size || 15;
+    var microAlpha = size < 10 ? 0.7 : 1;   /* stage: keep the canvas airy */
     var fam = o.font === "marker" ? '"Lemonada", cursive'
             : o.font === "mono" ? '"JetBrains Mono", monospace'
             : '"Cabinet Grotesk", sans-serif';
@@ -1059,39 +1204,50 @@
     ctx.fillStyle = o.col || "#EAF4F2";
     ctx.textAlign = o.align || "center";
     ctx.textBaseline = o.baseline || "middle";
-    ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.globalAlpha = (o.alpha == null ? 1 : o.alpha) * microAlpha;
     ctx.fillText(s, x, y);
     ctx.restore();
   }
 
-  /* THE BOARD — dark surface, dot grid, breathing gold frame */
-  function board(ctx, W, H, o) {
+  /* THE STAGE — the whole canvas is the slide: Dar Al Fikr deep-teal surface
+     (the brand canvas colour, not a black presentation deck), dot grid, and a
+     breathing frame in the logo gold. No inner board frame — the drawing has
+     the full area. English edition: labels stay LTR with western digits
+     (guardrails G5a/G5b). */
+  function accentCSS(name, fallback) {
+    try {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    } catch (e) { return fallback; }
+  }
+  function accent() { return accentCSS("--c", "#C9A227"); }
+  function accent2() { return accentCSS("--c-2", "#C9A227"); }
+
+  var GOLD = "#C9A227"; /* Dar Al Fikr logo gold */
+
+  function stage(ctx, W, H, o) {
     o = o || {};
     var t = o.t || 0;
-    var pad = o.pad == null ? 6 : o.pad;
     ctx.save();
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.fillStyle = "#0B1F24";
-    ctx.fill();
-    ctx.clip();
-    ctx.fillStyle = "rgba(234,244,242,.07)";
-    for (var x = pad + 14; x < W - pad; x += 26) {
-      for (var y = pad + 14; y < H - pad; y += 26) {
+    ctx.fillStyle = "rgba(234,244,242,.07)"
+    for (var x = 16; x < W; x += 26) {
+      for (var y = 16; y < H; y += 26) {
         ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill();
       }
     }
     ctx.restore();
-    /* breathing gold frame */
-    var breathe = 1 + Math.sin(t / 42) * 0.012;
+    /* breathing frame in the logo gold — the school's own colour scheme */
     ctx.save();
-    ctx.translate(W / 2, H / 2); ctx.scale(breathe, breathe); ctx.translate(-W / 2, -H / 2);
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.strokeStyle = "rgba(201,162,39," + (0.55 + Math.sin(t / 42) * 0.2) + ")";
-    ctx.lineWidth = 2;
-    ctx.stroke();
+    ctx.globalAlpha = 0.4 + Math.sin(t / 42) * 0.2;
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 2.5;
+    ctx.strokeRect(3, 3, W - 6, H - 6);
     ctx.restore();
-    if (o.title) txt(ctx, o.title, W / 2, pad + 24, { size: 13, col: "#C9A227", font: "mono", weight: 700 });
+    if (o.title) txt(ctx, o.title, W / 2, 26, { size: 13, col: GOLD, font: "mono", weight: 700 });
   }
+
+  /* THE BOARD — kept as the stage surface (synthesis screens) */
+  function board(ctx, W, H, o) { stage(ctx, W, H, o); }
 
   /* TAPE / BAR MODEL — the default fraction manipulative */
   function bar(ctx, o) {
@@ -1372,9 +1528,6 @@
       var cx = x + i * cw;
       var a2 = at(prog, 0.25 + (i / slots) * 0.5, 0.25 + (i / slots) * 0.5 + 0.3);
       if (a2 <= 0) continue;
-      var place = ["hundreds", "tens", "ones"][i % 3];
-      txt(ctx, place, cx + cw / 2, yPlace + 10,
-        { size: 8.5, col: "rgba(234,244,242,.45)", font: "mono", weight: 500, alpha: a2 });
       ctx.save();
       ctx.globalAlpha = a2;
       rr(ctx, cx + 3, yDigit - 2, cw - 6, hRow * 1.05, 6);
@@ -1385,6 +1538,9 @@
       ctx.stroke();
       ctx.restore();
       var d = i >= pad ? digits.charAt(i - pad) : "";
+      if (d !== "" && o.onTap) {
+        tap(ctx, { x: cx + 3, y: yDigit - 2, w: cw - 6, h: hRow * 1.05, value: i - pad, on: o.onTap });
+      }
       if (d !== "") {
         var isHi = o.highlight != null && (i - pad) === o.highlight;
         txt(ctx, d, cx + cw / 2, yDigit + hRow * 0.52,
@@ -2989,9 +3145,30 @@
     return { shown: Math.min(shown, total), total: total };
   }
 
+/* Tappable canvas regions — the drawing IS the control. Drawing code
+     registers hit regions each frame via D.tap(ctx, region); the Sketch
+     component clears them per frame and dispatches pointer taps to them. */
+  function clearTaps(canvas) { canvas.__taps = []; }
+  function tap(ctx, region) {
+    var canvas = ctx && ctx.canvas;
+    if (!canvas) return;
+    canvas.__taps = canvas.__taps || [];
+    canvas.__taps.push(region);
+  }
+  function hit(canvas, x, y) {
+    var taps = (canvas && canvas.__taps) || [];
+    for (var i = taps.length - 1; i >= 0; i--) {
+      var t = taps[i];
+      if (x >= t.x && x <= t.x + t.w && y >= t.y && y <= t.y + t.h) return t;
+    }
+    return null;
+  }
+
   global.DAFDraw = {
     fit: fit, loop: loop, at: at, ease: ease, easeOut: easeOut,
-    marker: marker, rr: rr, txt: txt, board: board,
+    tap: tap, clearTaps: clearTaps, hit: hit,
+    marker: marker, rr: rr, txt: txt, board: board, stage: stage,
+    accent: accent, accent2: accent2,
     bar: bar, numberLine: numberLine, areaGrid: areaGrid, star8: star8, fig: fig,
     axes: axes, plotLine: plotLine, plotPoints: plotPoints, table: table,
     pvChart: pvChart, digitBlocks: digitBlocks, roundLine: roundLine,
@@ -3006,6 +3183,95 @@
     decChart: decChart, cubePrism: cubePrism
   };
 })(window);
+/* ===========================================================================
+   DURABLE STORY STATE · class folio stamps (PR 02)
+
+   What this is: a per-class record of which lesson folio pages the class has
+   restored, kept in localStorage on this computer only. It is class-level
+   data — class name, lesson code and timestamps — and never stores student
+   names, scores or anything personal (student records stay in the dojo
+   session log, which is exported on demand).
+
+   Design follows the research gate (docs/research/pr-02-source-review-infrastructure.md,
+   S1/S2): the state is tiny, best-effort and NON-CRITICAL — when storage is
+   missing, cleared or evicted every deck behaves exactly as before (folio
+   pips fall back to position-based), and one tap can export a JSON backup.
+   There is no server, no sync and no cross-machine state.
+   =========================================================================== */
+const FOLIO_KEY = "daf.folio.v1";
+
+function folioStorage() {
+  /* test hook (node): an in-memory store object, mirroring __DAF_XML_PARSER__ */
+  if (typeof globalThis !== "undefined" && globalThis.__DAF_FOLIO_LS__) return globalThis.__DAF_FOLIO_LS__;
+  try { return (typeof window !== "undefined" && window.localStorage) || null; }
+  catch (e) { return null; }
+}
+
+function folioLoad() {
+  const ls = folioStorage();
+  if (!ls) return { version: 1, classes: {} };
+  try {
+    const st = JSON.parse(ls.getItem(FOLIO_KEY) || "{}") || {};
+    if (!st.classes) st.classes = {};
+    return st;
+  } catch (e) { return { version: 1, classes: {} }; }
+}
+
+function folioSave(st) {
+  const ls = folioStorage();
+  if (!ls) return false;
+  try {
+    st.version = 1;
+    ls.setItem(FOLIO_KEY, JSON.stringify(st));
+    return true;
+  } catch (e) { return false; } /* quota or disabled storage: degrade silently */
+}
+
+/* Stamped lessons for one class: { "1-1": "2026-08-24T09:00:00.000Z", ... } */
+function folioFor(className) {
+  if (!className) return { lessons: {} };
+  const c = folioLoad().classes[className];
+  return { lessons: (c && c.lessons) || {} };
+}
+
+/* Stamp (on !== false) or unstamp (on === false) one lesson for a class.
+   Returns true when the change was saved to this computer. */
+function folioStamp(className, code, on) {
+  if (!className || !code) return false;
+  const st = folioLoad();
+  const c = st.classes[className] || (st.classes[className] = { lessons: {} });
+  if (!c.lessons) c.lessons = {};
+  if (on === false) delete c.lessons[code];
+  else c.lessons[code] = new Date().toISOString();
+  c.updatedAt = new Date().toISOString();
+  return folioSave(st);
+}
+
+/* Clear the whole class folio on this computer. */
+function folioReset(className) {
+  if (!className) return true;
+  const st = folioLoad();
+  delete st.classes[className];
+  return folioSave(st);
+}
+
+/* Export the class folio as a JSON file the school can keep. */
+function folioExport(className) {
+  const data = JSON.stringify({
+    app: "Dar Al Fikr Grade 4 Mathematics",
+    key: FOLIO_KEY,
+    exportedAt: new Date().toISOString(),
+    class: className,
+    state: folioFor(className)
+  }, null, 2);
+  const blob = new Blob([data], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "daf-" + String(className).replace(/[^\w.-]+/g, "-") + "-folio.json";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
     </script>
     <script>window.DAF_ROSTER = {
   "school": "Dar Al Fikr Schools",
@@ -3064,6 +3330,7 @@
   }
 }
 ;</script>
+    <script>window.DAF_STORY = {"title":"The Lantern of Numeria — The Tale of the Seventeen Doors","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"unit":{"topic":6,"chapter":"The council of competing plans","question":"Which plan best serves the city when no single operation tells the whole story?","artifact":"A multi-step decision board with assumptions and checks","pbl":"Compare two school-service proposals using multi-step whole-number models.","bridge":"The chosen plan needs repeatable modules that fit several spaces. The council asks for every possible rectangular arrangement: factors.","lessonCount":6,"lessonCodes":["6-1","6-2","6-3","6-4","6-5","6-6"]},"lesson":{"code":"6-6","curriculumTitle":"Problem Solving: Make Sense and Persevere","standard":"MP.1","storyBeat":"The plan that would not cooperate","technique":"Reversal: expose a misconception","storyMove":"A tempting path reaches a dead end; persistence and a new representation are required.","studentMission":"Make sense, persevere and present the decision board; modular dimensions are the next clue.","handoff":"A tile with more than one shape — the module that must fit every design.","screenPlan":{"shape":"reasoning-studio","shapeLabel":"Reasoning studio","recommended":14,"planningBand":"12–16","reason":"Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."},"implementationStatus":"story-built","index":5,"numberInUnit":6},"stemWindows":[],"amanahWindows":[]};</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
 const D = window.DAFDraw;
@@ -3170,13 +3437,28 @@ function Sketch({ draw, height, style }) {
     const stop = D.loop((frame) => {
       if (!st.W || !st.H) return;
       st.ctx.clearRect(0, 0, st.W, st.H);
+      D.clearTaps(cv);
       draw(st.ctx, st.W, st.H, frame);
     });
     return () => { stop(); if (st.destroy) st.destroy(); };
   }, [draw]);
+  /* The canvas itself is interactive: drawings register tappable regions
+     (D.tap) and pointer taps are dispatched to them — the drawing IS the
+     control. Chips stay as the accessible fallback. */
+  const pointer = (e, down) => {
+    const cv = ref.current;
+    if (!cv) return;
+    const r = cv.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    const hit = D.hit(cv, x, y);
+    cv.style.cursor = hit ? "pointer" : "default";
+    if (down && hit && hit.on) hit.on(hit.value, x, y);
+  };
   return (
     <canvas
       ref={ref}
+      onClick={(e) => pointer(e, true)}
+      onMouseMove={(e) => pointer(e, false)}
       style={Object.assign({ width: "100%", height: (height || 300) + "px", display: "block" }, style || {})}
     />
   );
@@ -3370,6 +3652,221 @@ function gameReducer(g, a) {
   }
 }
 /* ===========================================================================
+   STORY LAYER · fictional boys, truth-status lanes, folio progress and STEM
+   Reusable by every lesson. Sacred history never enters these fictional parts.
+   =========================================================================== */
+const STORY = window.DAF_STORY || null;
+
+function StoryCharacter({ id, pose, size }) {
+  const who = id === "zayd" ? "zayd" : "omar";
+  const zayd = who === "zayd";
+  const s = size || 76;
+  const wave = pose === "present" || pose === "question";
+  const build = pose === "build";
+  const skin = zayd ? "#B9784B" : "#9C633F";
+  const shirt = zayd ? "#2D70B3" : "#12857C";
+  const accent = zayd ? "#FA7E19" : "#C9A227";
+  const label = zayd ? "Zayd, the model builder" : "Omar, the evidence keeper";
+  return (
+    <svg className="story-character" style={{ width: s + "px", height: (s * 1.12) + "px" }}
+      viewBox="0 0 100 112" role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy="106" rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d="M29 103 L33 61 Q50 51 67 61 L72 103 Z" fill={shirt} />
+      <path d="M37 63 Q50 74 63 63" fill="none" stroke={accent} strokeWidth="3" />
+      <rect x="43" y="48" width="14" height="15" rx="6" fill={skin} />
+      <circle cx="50" cy="34" r="21" fill={skin} />
+      <path d={zayd ? "M30 31 Q33 8 51 11 Q70 11 72 34 Q62 22 52 22 Q39 25 30 31" : "M30 29 Q35 9 51 11 Q69 10 71 31 Q60 20 48 22 Q38 24 30 29"} fill="#172E35" />
+      <circle cx="42" cy="35" r="2.2" fill="#10242B" /><circle cx="58" cy="35" r="2.2" fill="#10242B" />
+      <path d="M43 44 Q50 49 58 43" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      {wave ? (
+        <g><path d="M32 68 Q17 58 19 40" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <circle cx="20" cy="37" r="5" fill={skin} /></g>
+      ) : (
+        <path d="M33 69 Q23 82 25 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {build ? (
+        <g><path d="M67 69 Q79 76 76 91" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <rect x="68" y="86" width="21" height="11" rx="2" fill={accent} />
+          <path d="M72 90h13M76 87v10M82 87v10" stroke="#fff" strokeWidth="1" /></g>
+      ) : (
+        <path d="M67 69 Q78 82 75 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {!zayd && (
+        <g transform="translate(63 72) rotate(-14)"><rect width="21" height="27" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" />
+          <path d="M5 7h11M5 12h9M5 17h11" stroke={shirt} strokeWidth="1.5" /></g>
+      )}
+    </svg>
+  );
+}
+
+function StoryLantern({ size }) {
+  const s = size || 64;
+  return (
+    <svg className="story-lantern" style={{ width: s + "px", height: s + "px" }} viewBox="0 0 80 80" role="img" aria-label="The brass lantern">
+      <title>The brass lantern</title>
+      <path d="M31 8h18M35 8v8h10V8" fill="none" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+      <path d="M26 22 Q40 12 54 22 L59 57 Q40 69 21 57 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="3" />
+      <path d="M30 25h20l4 28H26z" fill="#FFF8D8" stroke="#C9A227" strokeWidth="2" />
+      <path d="M40 27v24M28 40h24" stroke="#C9A227" strokeWidth="2" opacity=".8" />
+      <circle cx="40" cy="40" r="7" fill="#C9A227" opacity=".42" />
+      <path d="M26 61h28M31 67h18" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function UnitShapeMotif({ topic }) {
+  if (topic !== 1) return <Star8 className="story-motif" />;
+  return (
+    <svg className="story-motif" viewBox="0 0 180 100" aria-hidden="true">
+      <path d="M8 85 Q28 52 48 85 Q68 52 88 85 Q108 52 128 85 Q148 52 172 85" fill="none" stroke="currentColor" strokeWidth="3" />
+      {[14, 42, 70, 98, 126, 154].map((x, i) => <rect key={x} x={x} y={18 + (i % 2) * 10} width="20" height="28" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />)}
+      <path d="M18 58h140" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" />
+    </svg>
+  );
+}
+
+/* Pips light from the class's stamped folio state when this computer has it
+   (daf.folio.v1); otherwise they fall back to position in the unit. The state
+   is class-level only — never student data — and non-critical: a cleared
+   browser changes nothing else in the deck. */
+function FolioProgress({ label }) {
+  if (!STORY) return null;
+  const n = STORY.lesson.numberInUnit, total = STORY.unit.lessonCount;
+  const codes = (STORY.unit && STORY.unit.lessonCodes) || [];
+  const stamped = (window.DAF_FOLIO && window.DAF_FOLIO.lessons) || null;
+  const done = (i) => stamped ? !!stamped[codes[i]] : i < n;
+  return (
+    <div className="folio-progress" aria-label={`Folio progress ${n} of ${total}`}>
+      <div className="folio-label"><b>Folio {STORY.unit.topic}</b><span>{label || STORY.unit.chapter}</span></div>
+      <div className="folio-pips">
+        {Array.from({ length: total }, (_, i) => <i key={i} className={done(i) ? "restored" : ""} />)}
+      </div>
+      <em>{n}/{total}</em>
+    </div>
+  );
+}
+
+const STORY_LANES = {
+  fiction: { label: "Our story", icon: "fa-book-open", cls: "fiction" },
+  stem: { label: "History of useful knowledge", icon: "fa-compass-drafting", cls: "stem" },
+  amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
+};
+
+function StoryShell({ lane, character, pose, title, text, clue, children, compact }) {
+  const info = STORY_LANES[lane || "fiction"];
+  const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  return (
+    <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
+      <div className="story-ribbon">
+        <UnitShapeMotif topic={topic} />
+        <div className="story-cast">
+          {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
+            : character === "lantern" ? <StoryLantern size={58} />
+            : character ? <StoryCharacter id={character} pose={pose} size={60} />
+            : <StoryLantern size={54} />}
+        </div>
+        <div className="story-ribbon-copy">
+          <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
+          <b>{title}</b>
+          <p>{text}</p>
+          {clue && <small><Icon name="fa-key" /> {clue}</small>}
+        </div>
+        <FolioProgress />
+      </div>
+      <div className="story-content">{children}</div>
+    </div>
+  );
+}
+
+function STEMWindow({ window: item, children }) {
+  if (!item) return <>{children}</>;
+  return (
+    <StoryShell lane="stem" title={item.title} text={item.studentText} clue={item.inquiry} compact>
+      <div className="stem-layout">
+        <div className="stem-source-card">
+          <div className="stem-status"><Icon name="fa-circle-check" /> {item.status}</div>
+          <h3>Why this matters now</h3>
+          <p>{item.modernConnection}</p>
+          <details>
+            <summary>Teacher source notes</summary>
+            <p>{item.teacherNote}</p>
+            {(item.sources || []).map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+
+function StoryHandoff({ title, text, artifact, next, children }) {
+  const code = (typeof LESSON !== "undefined" && LESSON.code) || "";
+  const [stamped, setStamped] = useState(false);
+  const [saved, setSaved] = useState(true);
+  useEffect(() => {
+    setStamped(!!(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  }, [code]);
+  const stamp = () => {
+    const cls = window.DAF_CURRENT_CLASS;
+    if (!cls || !code) return;
+    const on = !(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]);
+    setSaved(folioStamp(cls, code, on));
+    window.DAF_FOLIO = folioFor(cls);
+    setStamped(!!(window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  };
+  return (
+    <StoryShell lane="fiction" character="both" pose="present" title={title} text={text}
+      clue={next ? "Next folio clue · " + next : null}>
+      <div className="handoff-artifact">
+        <span><Icon name="fa-stamp" /></span>
+        <div><b>Artifact updated</b><p>{artifact}</p></div>
+        <button className={"btn btn-ghost btn-sm folio-stamp" + (stamped ? " on" : "")} onClick={stamp}
+          title="Class record on this computer — no points involved">
+          <Icon name={stamped ? "fa-rotate-left" : "fa-stamp"} />
+          {stamped ? "Folio page restored · tap to undo" : "Restore this folio page"}
+        </button>
+        {!saved && <small className="folio-save-note">Folio change could not be saved on this computer — export the class folio from the dojo before you leave.</small>}
+      </div>
+      {children}
+    </StoryShell>
+  );
+}
+
+/* ===========================================================================
+   AMANAH WINDOW · sacred-history lane (PR 02). Reverent, chronological,
+   non-gamified: no XP, no clue mechanics, no invented dialogue or quantities.
+   Only registry windows in `approved` state with the complete six-field audit
+   record (studentText, source, translation, reviewer, reviewDate) ever render
+   here; the payload embeds approved windows only, so an unapproved window is
+   invisible to the deck entirely.
+   =========================================================================== */
+const AMANAH_LANE = "amanah";
+
+function AmanahWindow({ window: item, children }) {
+  const approved = !!(item
+    && item.status === "approved"
+    && item.studentText && item.reviewer && item.reviewDate && item.source && item.translation);
+  if (!approved) return <>{children}</>;
+  return (
+    <StoryShell lane={AMANAH_LANE} title={item.title || "Amanah Window"} text={item.studentText} compact>
+      <div className="amanah-layout">
+        <div className="amanah-card">
+          <div className="amanah-status"><Icon name="fa-book" /> Reviewed · {item.reviewer} · {item.reviewDate}</div>
+          <h3>Values reflection</h3>
+          <p>The reflection follows the mathematics of this lesson; sacred history is never the game mechanic.</p>
+          <details>
+            <summary>Teacher review record</summary>
+            <p>Source: {item.source}</p>
+            <p>Translation used: {item.translation}</p>
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+/* ===========================================================================
    ROUTINE LIBRARY
    The Amplify Desmos instructional routines as prop-driven components, so a
    lesson file only supplies content and its own canvas drawings.
@@ -3493,9 +3990,9 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
   return (
     <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
       <Sketch draw={draw} height={height || 250} />
-      <div className="glass-card" style={{ cursor: "default" }}>
-        <div style={{ fontWeight: 900, fontSize: "12px", color: "var(--c)", marginBottom: "9px" }}>{label}</div>
-        <div style={{ display: "flex", gap: "7px", flexWrap: "wrap" }}>
+      <div className="chip-bar">
+        <div className="chip-label">{label}</div>
+        <div className="chip-row">
           {chips.map((c) => (
             <button key={c.v} onClick={() => onPick(c.v)}
               className={"btn btn-sm " + (value === c.v ? "btn-primary" : "btn-ghost")}>
@@ -3505,7 +4002,7 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
         </div>
       </div>
       {caption && (
-        <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
+        <div className="stage-line">
           {caption}
           {footnote && <div style={{ fontSize: "11px", color: "var(--daf-ink-2)", marginTop: "6px" }}>{footnote}</div>}
         </div>
@@ -3637,10 +4134,10 @@ function CompareConnect({ left, right, same, diff, award }) {
 /* ---- Synthesis · the board ---------------------------------------------- */
 function BoardScreen({ draw, height, caption }) {
   return (
-    <div className="glass-panel" style={{ padding: "12px" }}>
-      <Sketch draw={draw} height={height || 430} />
-      <div style={{ textAlign: "center", fontSize: "11.5px", color: "var(--daf-ink-2)", marginTop: "9px" }}>
-        {caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}
+    <div className="glass-panel board-panel" style={{ padding: 0 }}>
+      <div className="board-stage">
+        <Sketch draw={draw} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", borderRadius: "12px" }} />
+        <div className="stage-caption">{caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}</div>
       </div>
     </div>
   );
@@ -3868,14 +4365,14 @@ function Closing({ game, action, omml }) {
    =========================================================================== */
 
 const M = {
-  step1: om(mt("4×24=96")),
-  step2: om(mt("96÷3=32")),
-  chain: om(mt("4×24=96"), mnor(", then "), mt("96÷3=32")),
+  step1: om(mt("8×6=48")),
+  step2: om(mt("48×3=144")),
+  chain: om(mt("8×6=48"), mnor(", then "), mt("48×3=144")),
   hidden: om(mnor("one sitting was never worked out")),
-  wrong: om(mt("24÷3=8")),
-  rule: om(mnor("@RULE@")),
-  swyk: om(mt("5×24=120")),
-  swykAnswer: om(mt("120÷3=40"))
+  wrong: om(mt("200÷8=25")),
+  rule: om(mnor("plan the order first — one sitting, then the rest")),
+  swyk: om(mt("9×8=72")),
+  swykAnswer: om(mt("72×2=144"))
 };
 
 /* the diagram growing one step at a time */
@@ -3885,10 +4382,10 @@ const makeChain66 = (step) => (ctx, W, H, frame) => {
   const x = 60, w = W - 120;
   D.strip(ctx, { x: x, y: 58, w: w * 0.34, h: 42, prog: step >= 1 ? 1 : 0.001,
     total: step >= 1 ? 48 : "?", parts: [{ v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }] });
-  if (step >= 1) D.txt(ctx, "step 1: 4×24=96", W / 2, 124, { size: 14.5, col: "#34D399", font: "marker" });
+  if (step >= 1) D.txt(ctx, "step 1: 8×6=48", W / 2, 124, { size: 14.5, col: "#34D399", font: "marker" });
   if (step >= 2) {
     D.strip(ctx, { x: x, y: 162, w: w, h: 42, prog: 1, total: 144, parts: [{ v: 48, label: "48", col: "#388C46" }, { v: 48, label: "48", col: "#388C46" }, { v: 48, label: "48", col: "#388C46" }] });
-    D.txt(ctx, "step 2: 96÷3=32", W / 2, 234, { size: 14.5, col: "#34D399", font: "marker" });
+    D.txt(ctx, "step 2: 48×3=144", W / 2, 234, { size: 14.5, col: "#34D399", font: "marker" });
   }
   D.txt(ctx, step === 2 ? "144 guests can be seated" : "the question is not answered yet",
     W / 2, H - 16, { size: 13.5, col: step === 2 ? "#C9A227" : "rgba(234,244,242,.6)", font: "marker" });
@@ -3911,7 +4408,7 @@ const makeHidden66 = (found) => (ctx, W, H, frame) => {
     D.txt(ctx, l.t, W / 2, y + 2, { size: 13.5, col: "#EAF4F2", font: "marker" });
     y += 48;
   });
-  D.txt(ctx, found ? "24 ÷ 3 shares one row, not all four" : "which number do you not actually have yet?",
+  D.txt(ctx, found ? "200 ÷ 8 invents a number the story never gave" : "which number do you not actually have yet?",
     W / 2, H - 16, { size: 13.5, col: found ? "#C74440" : "#C9A227", font: "marker" });
 };
 
@@ -3924,7 +4421,7 @@ const drawStory66 = (ctx, W, H, frame) => {
   D.strip(ctx, { x: 60, y: 58, w: (W - 120) * 0.5, h: 40, prog: p2, parts: [{ v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }] });
   D.strip(ctx, { x: 60, y: 126, w: W - 120, h: 40, prog: p2, parts: [{ v: 48, label: "48", col: "#388C46" }, { v: 48, label: "48", col: "#388C46" }, { v: 48, label: "48", col: "#388C46" }] });
   if (p3 > 0) {
-    D.txt(ctx, "4 rows of 24 chairs · 3 halls", W / 2, 192, { size: 13.5, col: "#EAF4F2", font: "marker", alpha: p3 });
+    D.txt(ctx, "8 tables of 6 seats · 3 sittings", W / 2, 192, { size: 13.5, col: "#EAF4F2", font: "marker", alpha: p3 });
     D.txt(ctx, "how many guests can be seated in all?", W / 2, H - 16, { size: 14.5, col: "#C9A227", font: "marker", alpha: p3 });
   }
 };
@@ -3935,10 +4432,10 @@ const drawBoard66 = (ctx, W, H, frame) => {
   const p1 = D.at(f, 20, 220), p2 = D.at(f, 240, 420), p3 = D.at(f, 440, 620), p4 = D.at(f, 620, 770);
   const x = 96, w = W - 192;
   D.strip(ctx, { x: x, y: 112, w: w * 0.34, h: 44, prog: p1, total: p2 > 0 ? 48 : "?", parts: [{ v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }, { v: 6, label: "6", col: "#2D70B3" }] });
-  if (p2 > 0) D.txt(ctx, "4×24=96", W / 2, 198, { size: 19, col: "#34D399", font: "marker", alpha: p2 });
+  if (p2 > 0) D.txt(ctx, "8×6=48", W / 2, 198, { size: 19, col: "#34D399", font: "marker", alpha: p2 });
   if (p3 > 0) {
     D.strip(ctx, { x: x, y: 232, w: w, h: 44, prog: p3, total: 144, parts: [{ v: 48, label: "48", col: "#388C46" }, { v: 48, label: "48", col: "#388C46" }, { v: 48, label: "48", col: "#388C46" }] });
-    D.txt(ctx, "96÷3=32", W / 2, 318, { size: 19, col: "#34D399", font: "marker", alpha: D.at(f, 500, 600) });
+    D.txt(ctx, "48×3=144", W / 2, 318, { size: 19, col: "#34D399", font: "marker", alpha: D.at(f, 500, 600) });
   }
   if (p4 > 0) {
     const yb = H - 38;
@@ -3955,6 +4452,34 @@ const drawSupport66 = (ctx, W, H) => {
   D.strip(ctx, { x: 24, y: 26, w: W - 48, h: 38, prog: 1, total: 144, parts: [{ v: 72, label: "72", col: "#388C46" }, { v: 72, label: "72", col: "#388C46" }] });
 };
 
+
+/* Kareem's way: one table first — 6 seats × 3 sittings, then 8 tables */
+const makeKareem66 = (step, onStep) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14); ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: 30, y: 40, w: W - 60, h: H - 80, value: 0, on: () => onStep((step + 1) % 3) });
+  const rows = [
+    { n: "1", t: "one table: 6 × 3 = 18 seats", col: "#2D70B3" },
+    { n: "2", t: "eight tables: 18 × 8 = 144", col: "#FA7E19" }
+  ];
+  let y = 74;
+  rows.forEach((r, k) => {
+    const on = k < step;
+    ctx.save();
+    D.rr(ctx, 30, y - 18, W - 60, 42, 8);
+    ctx.fillStyle = on ? "rgba(234,244,242,.06)" : "rgba(234,244,242,.02)";
+    ctx.fill();
+    ctx.strokeStyle = on ? r.col : "rgba(234,244,242,.15)";
+    ctx.lineWidth = on ? 2 : 1; ctx.stroke();
+    ctx.restore();
+    D.txt(ctx, r.n, 52, y + 3, { size: 15, col: r.col, font: "mono", weight: 700, alpha: on ? 1 : 0.3 });
+    D.txt(ctx, on ? r.t : "…", W / 2 + 30, y + 3, { size: 14.5, col: "#EAF4F2", font: "marker", alpha: on ? 1 : 0.25 });
+    y += 54;
+  });
+  D.txt(ctx, step === 2 ? "different order, same 144 — the multiplication does not care"
+                       : "Kareem groups by table, not by sitting",
+    W / 2, H - 16, { size: 13, col: step === 2 ? "#34D399" : "#C9A227", font: "marker" });
+};
+
 const LESSON = {
   code: "6-6",
   storageKey: "daf-g4-t6-l6",
@@ -3964,92 +4489,111 @@ const LESSON = {
   ixl: ["R8U"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Two bars, and a question mark. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "There is a number here you do not have yet.",
-      rail: { launch: "I am not asking for an answer. Just describe the two bars.",
-        monitor: ["Reading the known numbers", "Spotting the question mark", "Comparing the lengths"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Assuming every number in the picture is given." } },
+    { phase: "warmup", title: "The plan that <em>would not cooperate</em>",
+      lead: "8 tables of 6 seats, 3 sittings. Three numbers, and no method written on the page — the plan will only work if the class finds its order.",
+      goal: "Notice a plan with no obvious method: the numbers must be made to talk.",
+      pull: "Three numbers, and no method written on the page.",
+      rail: { launch: "Fictional frame. Look at the numbers — no working yet.",
+        monitor: ["Counting the tables", "Counting the sittings", "Wonding which number to touch first"],
+        connect: "Which two numbers belong together first?",
+        misconception: "Dividing the seats by the sittings — one table's seats are not all the guests." } },
 
-    { phase: "launch", title: "Eight tables, <em>three sittings</em>",
-      lead: "8 tables seat 6 each, and there are 3 sittings. Estimate how many guests in all.",
-      goal: "Create the need — the question needs a number nobody gave you.",
-      pull: "Estimate first, then find the missing middle.",
-      rail: { launch: "Try to answer it in one step. What stops you?",
-        monitor: ["Getting stuck", "Finding the middle number", "Guessing"],
-        connect: "Which number did you have to work out first?",
-        misconception: "Multiplying only two of the three numbers." } },
+    { phase: "launch", title: "About how many guests <em>in all</em>?",
+      lead: "8 × 6 = 48 per sitting, and 48 × 3 ≈ 150. The estimate says the answer sits near 150.",
+      goal: "Create the need — estimate the final answer before the plan is found.",
+      pull: "The guest count is simulated — the perseverance works on any plan.",
+      rail: { launch: "Give a guest range and say the two steps you used.",
+        monitor: ["Estimating one sitting", "Multiplying by 3", "Checking the range"],
+        connect: "Why estimate before the method is found?",
+        misconception: "Estimating with the wrong pair — 8 × 3 instead of 8 × 6 × 3." } },
 
-    { phase: "monitor", title: "Build it in <em>two steps</em>",
-      lead: "Find how many one sitting holds first. Only then multiply by the sittings.",
-      goal: "Multi-step problems chain two diagrams together.",
-      pull: "Some working looks right and still misses a step.",
-      rail: { launch: "Predict the middle number before you tap.",
-        monitor: ["Finding the middle first", "Skipping to the end", "Checking against an estimate"],
-        connect: "Why can the second step not come first?",
-        misconception: "Dividing before multiplying." } },
+    { phase: "monitor", title: "The tempting path <em>reaches a dead end</em>",
+      lead: "A polished plan says 200 ÷ 8 = 25 guests per table. The number 200 is not in the story — the path was tempting, and it died there.",
+      goal: "Name a dead end as a finding, not a failure.",
+      pull: "200 ÷ 8 invents a number the story never gave.",
+      rail: { launch: "Each line must use a number the story gives.",
+        monitor: ["Checking where 200 came from", "Flagging the invented number", "Naming the dead end"],
+        connect: "What did the tempting path do wrong?",
+        misconception: "Giving up when the first path fails." } },
 
-    { phase: "monitor", title: "Find the <em>missing step</em>",
-      lead: "Every line here is true. One number was never worked out.",
-      goal: "Critique working, not just produce it.",
-      pull: "Now sort some questions by how many steps they need.",
-      rail: { launch: "Read it line by line. Where does a number appear from nowhere?",
-        monitor: ["Checking each line", "Looking for the jump", "Rewriting the working"],
-        connect: "Which number was assumed rather than found?",
-        misconception: "Accepting working because every line is individually true." } },
+    { phase: "monitor", title: "Rana's <em>new representation</em>",
+      lead: "One sitting first: 8 tables × 6 seats = 48. Then the three sittings: 48 × 3 = 144. The new representation saves the plan.",
+      goal: "Persist with a new representation when the first path dies.",
+      pull: "The answer to step 1 becomes a number you need in step 2.",
+      rail: { launch: "Before step 2: which number from step 1 is it using?",
+        monitor: ["Finding 48 first", "Multiplying 48 × 3", "Naming the middle answer"],
+        connect: "Why did the new representation work where the old one died?",
+        misconception: "Trying the same dead path a second time." } },
 
     { phase: "monitor", title: "One step or <em>two</em>?",
-      lead: "Sort each question. No grading until the class commits.",
-      goal: "Recognise a hidden middle step.",
-      pull: "Two students solved the same problem in a different order.",
-      rail: { launch: "Ask: do I already know every number I need?",
-        monitor: ["Counting the unknowns", "Checking what is given", "Solving first, sorting after"],
+      lead: "Four dinner questions. Each one needs one step — or two.",
+      goal: "Recognise the hidden middle step in a two-operations plan.",
+      pull: "Do I already know every number I need?",
+      rail: { launch: "Say the middle answer before you place the question.",
+        monitor: ["Checking what is given", "Counting the unknowns", "Solving first, sorting after"],
         connect: "What made the two-step ones different?",
-        misconception: "Counting the numbers rather than the unknowns." } },
+        misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Two <em>routes</em>, one answer",
-      lead: "Rana found one sitting first. Kareem found one table across all sittings. Both got 144.",
+    { phase: "monitor", title: "Kareem groups <em>by table</em>, not by sitting",
+      lead: "One table: 6 seats × 3 sittings = 18. Eight tables: 18 × 8 = 144. A different order, the same 144.",
+      goal: "See that the order of multiplying does not matter — and that both orders are worth writing down.",
+      pull: "The multiplication does not care which order you work in.",
+      rail: { launch: "Before each step: which grouping is it?",
+        monitor: ["Grouping by table", "Multiplying 18 × 8", "Comparing to Rana's 144"],
+        connect: "Why do both orders reach 144?",
+        misconception: "Believing only one grouping is correct." } },
+
+    { phase: "connect", title: "Two merchants, one <em>144</em>",
+      lead: "Rana groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Following one route", "Following the other", "Checking both agree"],
-        connect: "Why do both routes work?",
-        misconception: "Believing there is only one correct order." } },
+        monitor: ["Comparing the groupings", "Checking both reach 144", "Saying which is easier to defend"],
+        connect: "Which plan would you defend to the council, and why?",
+        misconception: "Discarding a plan that reached the same answer a different way." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Draw one sitting. Then copy it for every sitting. Count the whole.",
+    { phase: "synth", title: "On the <em>board</em>: plan the order first",
+      lead: "The numbers will not tell you the method — the plan does. One sitting, then the rest; or one table, then the rest.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next bar", "Naming the middle number", "Restating it in their own words"],
+        monitor: ["Naming the grouping", "Building the chain", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Writing the equation before drawing anything." } },
+        misconception: "Answering with one table's 18 instead of the dinner's 144." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "A dead end is a finding. Keep the question, change the representation, and the plan cooperates.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the middle step", "Testing on a new problem", "Answering the actual question"],
-        connect: "How do you know when you have finished?",
-        misconception: "Stopping at the first number you can calculate." } },
+        monitor: ["Naming the dead end", "Choosing the new representation", "Testing on a new plan"],
+        connect: "What is the sign that a path is a dead end?",
+        misconception: "Keeping an invented number because the path was started." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Draw the bar, find the middle number, then answer.",
-        monitor: ["Finding the middle step", "Answering the middle step", "Checking the question"],
+      lead: "A hall has 9 rows of 8 chairs, used for 2 shows. How many seats are used in all?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Show the grouping you chose.",
+        monitor: ["Finding 9 × 8", "Multiplying 72 × 2", "Naming the middle answer"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Answering 72 \u2014 one show, not both." } },
+        misconception: "Answering 72 — one show was called the whole dinner." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "monitor", title: "The plan asks for <em>steadiness</em>",
+      lead: "Before the seal, the class says what the dinner taught it about not giving up.",
+      goal: "Close the quest on the standard, not the score.",
+      pull: "A plan you can re-check is a plan people can trust.",
+      rail: { launch: "Ask for the rule in students' own words before the seal.",
+        monitor: ["Naming the dead end", "Naming the new representation", "Saying 'persevere' unprompted"],
+        connect: "What would you refuse to sign, and why?",
+        misconception: "Treating persistence as repeating the failed path." } },
+
+    { phase: "connect", title: "The dinner is <em>seated</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Next topic: factors and multiples.",
-      rail: { launch: "Ask three students to name the middle step in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the bar", "Ready for harder problems"],
+      pull: "Next door: a tile with more than one shape — the module that must fit every design.",
+      rail: { launch: "Ask three students how they would save a dead-end plan.",
+        monitor: ["Able to explain the new representation", "Still gives up at the dead end", "Ready for the module tile"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -4057,89 +4601,191 @@ const LESSON = {
   Visual: function ({ i, award, game }) {
     const [step, setStep] = useState(0);
     const [found, setFound] = useState(false);
+    const [kareem, setKareem] = useState(0);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawStory66} height={256} award={award}
-          notices={["Eight equal tables", "Three equal sittings", "The bars are different lengths", "There is a question mark"]}
-          wonders={["How many in one sitting?", "Do I multiply twice?", "Which comes first?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The plan that would not cooperate"
+            text="8 tables of 6 seats, 3 sittings. Three numbers, and no method written on the page — the plan will only work if the class finds its order."
+            clue="Three numbers, and no method written on the page.">
+            <NoticeWonder draw={drawStory66} height={256} award={award}
+              notices={["Eight equal tables", "Three equal sittings", "The bars are different lengths", "There is a question mark"]}
+              wonders={["How many in one sitting?", "Do I multiply twice?", "Which comes first?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStory66} height={256} award={award}
-          label="About how many guests in all?" min={40} max={300} start={144} unit="guests"
-          after="Locked. Now let us find the number nobody gave us."
-          note="Three numbers, and no method written on the page." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The guest range, before the plan"
+            text="Omar asks the dinner's question: about how many guests in all — with a fast range, before the method is found?"
+            clue="8 × 6 = 48 per sitting, and 48 × 3 ≈ 150.">
+            <LaunchEstimate draw={drawStory66} height={256} award={award}
+              label="About how many guests in all?" min={40} max={300} start={144} unit="guests"
+              after="Locked. Now let us find the number nobody gave us."
+              note="The guest count is simulated — the perseverance works on any plan." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeChain66(step)} height={266}
-          label="How many guests altogether?"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "the question" }, { v: 1, label: "step 1" }, { v: 2, label: "step 2" }]}
-          caption={<MathEl omml={M.chain} size="lg" display="block" />}
-          footnote="The answer to step 1 becomes a number you need in step 2." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The tempting path reaches a dead end"
+            text="A polished plan on the board: 200 ÷ 8 = 25 guests per table. Omar reads it line by line — the number 200 is not in the story."
+            clue="200 ÷ 8 invents a number the story never gave.">
+            <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
+              <Sketch draw={makeHidden66(found)} height={252} />
+              <div style={{ textAlign: "center" }}>
+                <button className="btn btn-primary" disabled={found}
+                  style={{ opacity: found ? 0.5 : 1 }}
+                  onClick={() => { setFound(true); }}>
+                  <Icon name="fa-magnifying-glass" /> Show the number that was never in the story
+                </button>
+              </div>
+              <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
+                <MathEl omml={M.hidden} size="lg" display="block" />
+              </div>
+            </div>
+          </StoryShell>
+        );
 
       case 3:
         return (
-          <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
-            <Sketch draw={makeHidden66(found)} height={252} />
-            <div style={{ textAlign: "center" }}>
-              <button className="btn btn-primary" disabled={found}
-                style={{ opacity: found ? 0.5 : 1 }}
-                onClick={() => { setFound(true); }}>
-                <Icon name="fa-magnifying-glass" /> Show the number that was never found
-              </button>
-            </div>
-            <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
-              <MathEl omml={M.hidden} size="lg" display="block" />
-            </div>
-          </div>
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Rana's new representation"
+            text="The dead end named, Rana changes the picture: one sitting first — 8 tables × 6 seats — then the three sittings."
+            clue="One sitting first — the answer to step 1 becomes the number step 2 needs.">
+            <ExploreChips draw={makeChain66(step)} height={266}
+              label="How many guests altogether?"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "the question" }, { v: 1, label: "step 1" }, { v: 2, label: "step 2" }]}
+              caption={<MathEl omml={M.chain} size="lg" display="block" />}
+              footnote="The answer to step 1 becomes a number you need in step 2." />
+          </StoryShell>
         );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[{ id: "t1", text: "How many seats in one sitting?", target: "one" }, { id: "t2", text: "How many guests altogether?", target: "two" }, { id: "t3", text: "How many seats at one table?", target: "one" }, { id: "t4", text: "How many more sittings for 200 guests?", target: "two" }]}
-          targets={[
-            { id: "one", label: "one step" },
-            { id: "two", label: "two steps — something must be found first" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="One step or two?"
+            text="Omar and Zayd lay four dinner questions on the table. Each one needs one step — or two."
+            clue="Do I already know every number I need?">
+            <CardSort award={award} columns={2}
+              items={[{ id: "t1", text: "How many seats in one sitting?", target: "one" }, { id: "t2", text: "How many guests altogether?", target: "two" }, { id: "t3", text: "How many seats at one table?", target: "one" }, { id: "t4", text: "How many more sittings for 200 guests?", target: "two" }]}
+              targets={[
+                { id: "one", label: "one step" },
+                { id: "two", label: "two steps — something must be found first" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Rana's way — one sitting first", omml: M.step1, h: 92, quote: "8 tables of 6 is 48, then three sittings." }}
-          right={{ name: "Kareem's way — one table first", omml: M.chain, h: 92, quote: "One table seats 6 three times, so 18 \u2014 then eight tables." }}
-          same={["Both get 144", "Both use all three numbers", "Both multiply twice"]}
-          diff={["Rana groups by sitting, Kareem by table", "The order of multiplying does not matter", "Both plans are worth writing down"]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Kareem groups by table"
+            text="Kareem's new representation: one table — 6 seats × 3 sittings = 18. Then eight tables: 18 × 8 = 144."
+            clue="A different order, the same 144.">
+            <ExploreChips draw={makeKareem66(kareem, setKareem)} height={256}
+              label="Kareem's way — one table first"
+              value={kareem}
+              onPick={(v) => setKareem(v)}
+              chips={[{ v: 0, label: "the question" }, { v: 1, label: "one table" }, { v: 2, label: "eight tables" }]}
+              caption={<MathEl omml={M.answer} size="lg" display="block" />}
+              footnote="The multiplication does not care which order you work in." />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard66} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 144"
+            text="Rana groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Rana's way — one sitting first", omml: M.step1, h: 92, quote: "8 tables of 6 is 48, then three sittings." }}
+              right={{ name: "Kareem's way — one table first", omml: M.chain, h: 92, quote: "One table seats 6 three times, so 18 — then eight tables." }}
+              same={["Both get 144", "Both use all three numbers", "Both multiply twice"]}
+              diff={["Rana groups by sitting, Kareem by table", "The order of multiplying does not matter", "Both plans are worth writing down"]} />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "@RULE@" }]}
-          hand={"draw what you know · find the number that is missing · then answer the question asked"}
-          cards={[
-            { title: "The middle step", omml: M.step1, note: "not the answer, but the key to it" },
-            { title: "Tap for the real answer", omml: M.wrong, revealOmml: M.step2, reveal: true,
-              note: "one row is not the whole" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The plan is drawn, not declared"
+            text="Zayd builds only what the class can justify: the dead end named, the new representation chosen, the check ready."
+            clue="Plan the order first — one sitting, then the rest.">
+            <BoardScreen draw={drawBoard66} height={430}
+              caption="Plan the order first — one sitting, then the rest." />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="A hall has 9 rows of 8 chairs, used for 2 shows. How many seats are used in all?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "72" }, { v: "b", text: "144" }, { v: "c", text: "19" }, { v: "d", text: "36" }]}
-          right="b"
-          support={{
-            yes: "Yes — 5 × 24 = 120 books, and 120 ÷ 3 = 40 each.",
-            notYet: "Not yet — what did you have to work out before you could answer?",
-            draw: drawSupport66, h: 82,
-            hint: "Find one show first, then double it."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="A dead end is a finding. Keep the question, change the representation, and the plan cooperates."
+            clue="The new representation is part of the argument.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "plan the order first — one sitting, then the rest" }]}
+              hand={"name the dead end · keep the question · change the representation · check both ways"}
+              cards={[
+                { title: "The middle step", omml: M.step1, note: "one sitting: 8 × 6 = 48" },
+                { title: "Tap for the other order", omml: M.wrong, revealOmml: M.step2, reveal: true,
+                  note: "Kareem's table-first order reaches the same 144" }
+              ]} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Find a problem at home with three numbers and write your plan before solving it." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the seated plan"
+            text="9 rows of 8 chairs, 2 shows. Choose your grouping — then the middle step."
+            clue="72 is one show. The question asks for both.">
+            <ShowWhatYouKnow award={award}
+              prompt="A hall has 9 rows of 8 chairs, used for 2 shows. How many seats are used in all?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "72" }, { v: "b", text: "144" }, { v: "c", text: "19" }, { v: "d", text: "36" }]}
+              right="b"
+              support={{
+                yes: "Yes — 9 × 8 = 72 seats for one show, and 72 × 2 = 144 in all.",
+                notYet: "Not yet — what did you have to work out before you could answer?",
+                draw: drawSupport66, h: 82,
+                hint: "Find one show first, then double it."
+              }} />
+          </StoryShell>
+        );
+
+      case 10:
+        return (
+          <AmanahWindow window={STORY && STORY.amanahWindows && STORY.amanahWindows[0]}>
+            <div style={{ textAlign: "center", padding: "30px 20px" }}>
+              <div style={{ fontSize: "20px", fontWeight: 800, color: "#10242B", marginBottom: "14px" }}>Steadiness</div>
+              <p style={{ fontSize: "15px", lineHeight: 1.7, color: "#10242B", maxWidth: "520px", margin: "0 auto 10px" }}>
+                The dinner taught the class what steadiness looks like in work: a path fails, the number is kept, the picture changes, and the plan is checked twice. Care that survives a dead end is the care people can rely on.
+              </p>
+              <p style={{ fontSize: "13px", lineHeight: 1.6, color: "#5B6B70", maxWidth: "520px", margin: "0 auto" }}>
+                The dinner plan is signed when its answer survives a second representation.
+              </p>
+            </div>
+          </AmanahWindow>
+        );
+
+      case 11:
+        return (
+          <StoryHandoff
+            title="The dinner is seated"
+            text="Omar signs the seated plan: the dead end named, the two representations checked, the 144 defended. But the city's next design is different: a single tile that must fit every space — and only some numbers will let it."
+            artifact="Council board · persevered plan"
+            next="A tile with more than one shape — the module that must fit every design.">
+            <Closing game={game} omml={M.rule}
+              action="Find a problem at home with three numbers and write your plan before solving it." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }
@@ -4299,6 +4945,31 @@ function TeacherRail({ meta, onClose }) {
       <p>{r.connect}</p>
       <h4>ANTICIPATED MISCONCEPTION</h4>
       <p style={{ color: "#f2c9c7" }}>{r.misconception}</p>
+      {STORY && (STORY.stemWindows || []).length > 0 && (
+        <div>
+          <h4>SOURCES · HISTORY OF USEFUL KNOWLEDGE</h4>
+          {STORY.stemWindows.map((w) => (
+            <div key={w.id} style={{
+              marginBottom: "8px", background: "rgba(255,255,255,.05)",
+              borderRadius: "8px", padding: "8px 10px"
+            }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: "#cfe6e2" }}>
+                {w.title}{" "}
+                <span className="mono" style={{ fontSize: "10px", color: "var(--daf-gold)" }}>{w.status}</span>
+              </div>
+              <p style={{ fontSize: "11.5px", color: "#cfe6e2", margin: "5px 0 0", lineHeight: 1.5 }}>
+                {w.teacherNote}
+              </p>
+              {(w.sources || []).map((s) => (
+                <a key={s.url} href={s.url} target="_blank" rel="noreferrer"
+                  style={{ display: "block", fontSize: "11px", color: "#9cc0ba", marginTop: "4px" }}>
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
       {LESSON.ixl && LESSON.ixl.length > 0 && (
         <div>
           <h4>IXL PRACTICE TO ASSIGN</h4>
@@ -4800,6 +5471,16 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => {
+            if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
+              folioReset(game.section);
+              window.DAF_FOLIO = folioFor(game.section);
+            }
+          }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
+        </span>
+        <span className="dj-note">
+          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>
@@ -4895,6 +5576,15 @@ function App() {
     document.documentElement.style.setProperty("--c", ph.c);
     document.documentElement.style.setProperty("--c-2", ph.c2);
   }, [i]);
+
+  /* Durable story state (PR 02): the class's folio cache is class-level only
+     (lesson stamps, no student data), lives on this computer and refreshes
+     when a class is picked. Missing or cleared storage degrades silently to
+     position-based folio pips. */
+  useEffect(() => {
+    window.DAF_CURRENT_CLASS = (game && game.section) || null;
+    window.DAF_FOLIO = folioFor(window.DAF_CURRENT_CLASS);
+  }, [game && game.section]);
 
   useEffect(() => setReplay((r) => r + 1), [i]);
 

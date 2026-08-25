@@ -131,92 +131,93 @@ const LESSON = {
   ixl: ["8QG", "M49"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Counters being dealt into equal groups. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Dealing one at a time works. It is just slow.",
-      rail: { launch: "I am not asking how many each. Just watch the dealing.",
-        monitor: ["Counting the groups", "Counting one group", "Predicting the end"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Believing sharing must always be one at a time." } },
+    { phase: "warmup", title: "One share at <em>every table</em>",
+      lead: "52 dates, 4 plates. They are dealt one at a time, round after round — and the plates fill up evenly.",
+      goal: "Notice sharing by place: the tens go round first.",
+      pull: "52 is 5 tens and 2 ones. Only 4 of those tens will go round.",
+      rail: { launch: "Fictional frame. Watch the dealing — no working yet.",
+        monitor: ["Counting the rounds", "Seeing the tens go round", "Noticing the leftover ten"],
+        connect: "Why do the tens go round before the ones?",
+        misconception: "Dealing the ones first, one at a time, forever." } },
 
-    { phase: "launch", title: "Fifty-two dates, <em>four plates</em>",
-      lead: "52 dates shared equally between 4 plates. Estimate first.",
-      goal: "Create the need — share the big units first.",
-      pull: "Estimate first, then share the tens.",
-      rail: { launch: "Roughly how many each? Then \u2014 what would you share first?",
-        monitor: ["Dealing one at a time", "Sharing tens first", "Guessing"],
-        connect: "Why start with the tens and not the ones?",
-        misconception: "Starting with the ones and losing track." } },
+    { phase: "launch", title: "About how many <em>dates per plate</em>?",
+      lead: "52 dates, 4 plates. Lock the per-plate number before the sharing begins.",
+      goal: "Create the need — sharing by place is faster than one at a time.",
+      pull: "52 is 5 tens and 2 ones. Only 4 of those tens will go round.",
+      rail: { launch: "Give a per-plate number and say what you saw.",
+        monitor: ["Sharing the tens first", "Estimating first", "Dealing one at a time"],
+        connect: "What is the fastest way to see 13?",
+        misconception: "Believing one-at-a-time dealing is the only sharing." } },
 
-    { phase: "monitor", title: "Share the <em>tens</em> first",
-      lead: "Hand out whole tens. Then look at what will not go round.",
-      goal: "Sharing by place value, biggest units first.",
-      pull: "The leftover ten has to be broken up.",
-      rail: { launch: "Predict how many tens each group gets.",
-        monitor: ["Sharing tens evenly", "Noticing the leftover", "Regrouping into ones"],
-        connect: "What do you do with a ten that will not go round?",
-        misconception: "Throwing away the leftover ten." } },
+    { phase: "monitor", title: "Zayd shares the <em>tens first</em>",
+      lead: "One ten each uses 40. The last ten will not go round — it is broken into ten ones, and the ones share too.",
+      goal: "Share the biggest units first, then regroup what will not go round.",
+      pull: "A ten that will not go round is broken into ten ones.",
+      rail: { launch: "Before each round: what is going round?",
+        monitor: ["Sharing the tens", "Regrouping the leftover ten", "Sharing the ones"],
+        connect: "Why did the tens have to be broken?",
+        misconception: "Leaving the unshared ten unbroken and stopping." } },
 
-    { phase: "monitor", title: "The written <em>record</em>",
-      lead: "The same sharing, written down one place at a time.",
-      goal: "Connect the blocks to the written method.",
-      pull: "Now match some divisions to their answers.",
-      rail: { launch: "Predict each line before you step.",
-        monitor: ["Matching blocks to lines", "Working tens then ones", "Losing the remainder"],
-        connect: "Where are the tens in the written record?",
-        misconception: "Reading the written record as a different method." } },
+    { phase: "monitor", title: "Write it down <em>as you go</em>",
+      lead: "Every line of the record is a handful of blocks: one ten each, then the regrouped ones.",
+      goal: "Record the sharing as it happens — the record is the proof.",
+      pull: "Every line of the record is a handful of blocks.",
+      rail: { launch: "Before each line: which handful is it?",
+        monitor: ["Writing the tens line", "Writing the ones line", "Counting one group at the end"],
+        connect: "How does the record prove 13?",
+        misconception: "Recording the answer without the sharing." } },
 
-    { phase: "monitor", title: "Match the <em>quotient</em>",
-      lead: "Which answer belongs to that division? No grading until the class commits.",
-      goal: "Estimate first, then match.",
-      pull: "Two students shared the same amount differently.",
-      rail: { launch: "Estimate each one before you place it.",
-        monitor: ["Estimating first", "Dividing exactly", "Checking by multiplying back"],
-        connect: "Which did you estimate and which did you calculate?",
-        misconception: "Matching by the size of the dividend alone." } },
+    { phase: "monitor", title: "Match the <em>share</em>",
+      lead: "Three shares from the kitchen. Each one belongs to one division.",
+      goal: "Check a sharing answer against its division.",
+      pull: "Multiply back: groups × share = the big number.",
+      rail: { launch: "Check each claim by multiplying back before you place it.",
+        monitor: ["Multiplying back 52 ÷ 4", "Checking 75 ÷ 5", "Checking 72 ÷ 6"],
+        connect: "Which claim failed its check?",
+        misconception: "Matching by the number of digits." } },
 
-    { phase: "connect", title: "Two ways to <em>share it</em>",
-      lead: "Hala shared the tens first. Nawaf dealt one at a time. Both got 13.",
+    { phase: "connect", title: "Hala shares <em>tens</em>. Nawaf deals <em>ones</em>",
+      lead: "Hala: one ten each, then break the last one. Nawaf: one at a time until they ran out — 52 moves. Both get 13.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Sharing tens first", "Dealing one at a time", "Checking both answers"],
-        connect: "Whose method would still work with a thousand counters?",
-        misconception: "Believing dealing one at a time is just as good." } },
+        monitor: ["Comparing the rounds", "Counting Nawaf's moves", "Saying which scales to hundreds"],
+        connect: "Which sharing would you use for 520 ÷ 4?",
+        misconception: "Believing one-at-a-time dealing is always fairer." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Share the tens. Regroup what is left. Share the ones. Count what one group holds.",
+    { phase: "synth", title: "On the <em>board</em>: share the biggest units first",
+      lead: "Share the tens. Regroup what will not go round. Share the ones. Count one group.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next share", "Naming the regroup", "Restating it in their own words"],
+        monitor: ["Predicting the next round", "Seeing the regroup", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Forgetting the regroup step." } },
+        misconception: "Skipping the regrouped ones." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "The sharing and the record are the same thing, seen twice.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the order of places", "Testing on a new division", "Checking by multiplying back"],
-        connect: "What would happen with 5,200 dates?",
-        misconception: "Sharing the ones before the tens." } },
+        monitor: ["Naming the rounds", "Checking the record", "Testing on a new share"],
+        connect: "What is the moment the sharing can go wrong?",
+        misconception: "Answering 12 — the regrouped ones were dropped." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Share the tens first.",
-        monitor: ["Sharing tens first", "Regrouping correctly", "Reporting the remainder"],
+      lead: "75 between 5 groups — share by place.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Show the rounds.",
+        monitor: ["Sharing the tens", "Regrouping the 2 tens", "Sharing the 25 ones"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Sharing the ones first and losing a ten." } },
+        misconception: "Answering 12 r 5 — the regroup was skipped." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The plates are <em>equal</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: sharing when the numbers get bigger.",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the blocks", "Ready to choose a strategy"],
+      pull: "Tomorrow: the share crosses a place — the hundreds will not go round.",
+      rail: { launch: "Ask three students to say the sharing in their own words.",
+        monitor: ["Able to explain the regroup", "Still deals one at a time", "Ready for three-place sharing"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -227,75 +228,147 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawStory57} height={256} award={award}
-          notices={["They are dealt one at a time", "The groups fill up evenly", "There are 4 groups", "Some are left at the end"]}
-          wonders={["How many each?", "Is there a faster way?", "What about the leftovers?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="One share at every table"
+            text="52 dates, 4 plates, dealt one at a time round after round — and the plates fill up evenly, the tens going round first."
+            clue="52 is 5 tens and 2 ones — only 4 tens will go round.">
+            <NoticeWonder draw={drawStory57} height={256} award={award}
+              notices={["They are dealt one at a time", "The groups fill up evenly", "There are 4 groups", "Some are left at the end"]}
+              wonders={["How many each?", "Is there a faster way?", "What about the leftovers?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStory57} height={256} award={award}
-          label="About how many dates per plate?" min={5} max={30} start={13} unit="dates"
-          after="Locked. Now let us share the tens first."
-          note="52 is 5 tens and 2 ones. Only 4 of those tens will go round." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The dates per plate, before the dealing"
+            text="Omar asks the kitchen's question: 52 dates, 4 plates — about how many per plate, and what is the fastest way to see it?"
+            clue="The tens go round before the ones.">
+            <LaunchEstimate draw={drawStory57} height={256} award={award}
+              label="About how many dates per plate?" min={5} max={30} start={13} unit="dates"
+              after="Locked. Now let us share the tens first."
+              note="The date count is simulated — the sharing works on any division." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeShareBlocks57(stage)} height={258}
-          label="Share by place value"
-          value={stage}
-          onPick={(v) => setStage(v)}
-          chips={[{ v: 0, label: "before sharing" }, { v: 1, label: "share the tens" }, { v: 2, label: "share the ones" }]}
-          caption={<MathEl omml={stage >= 2 ? M.answer : M.shareTens} size="xl" display="block" />}
-          footnote="A ten that will not go round is broken into ten ones." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd shares by place value"
+            text="He can stop the sharing at any round — the class must see the tens go round, the regroup, and the ones follow."
+            clue="A ten that will not go round is broken into ten ones.">
+            <ExploreChips draw={makeShareBlocks57(stage)} height={258}
+              label="Share by place value"
+              value={stage}
+              onPick={(v) => setStage(v)}
+              chips={[{ v: 0, label: "before sharing" }, { v: 1, label: "share the tens" }, { v: 2, label: "share the ones" }]}
+              caption={<MathEl omml={stage >= 2 ? M.answer : M.shareTens} size="xl" display="block" />}
+              footnote="A ten that will not go round is broken into ten ones." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeRecord57(step)} height={256}
-          label="Write it down as you go"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 1, label: "the tens" }, { v: 2, label: "the ones" }]}
-          caption={<MathEl omml={M.regroup} size="lg" display="block" />}
-          footnote="Every line of the record is a handful of blocks." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar writes it down as he goes"
+            text="His record is a handful of blocks per line — the sharing and the proof in the same drawing."
+            clue="Every line of the record is a handful of blocks.">
+            <ExploreChips draw={makeRecord57(step)} height={256}
+              label="Write it down as you go"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 1, label: "the tens" }, { v: 2, label: "the ones" }]}
+              caption={<MathEl omml={M.regroup} size="lg" display="block" />}
+              footnote="Every line of the record is a handful of blocks." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[{ id: "s1", text: "13", target: "t1" }, { id: "s2", text: "15", target: "t2" }, { id: "s3", text: "12", target: "t3" }]}
-          targets={[{ id: "t1", label: "52 ÷ 4" }, { id: "t2", label: "75 ÷ 5" }, { id: "t3", label: "72 ÷ 6" }]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Match the share"
+            text="Omar and Zayd lay three shares on the kitchen board. Each one must survive its multiply-back check."
+            clue="Groups × share = the big number.">
+            <CardSort award={award} columns={3}
+              items={[{ id: "s1", text: "13", target: "t1" }, { id: "s2", text: "15", target: "t2" }, { id: "s3", text: "12", target: "t3" }]}
+              targets={[{ id: "t1", label: "52 ÷ 4" }, { id: "t2", label: "75 ÷ 5" }, { id: "t3", label: "72 ÷ 6" }]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Hala's way — tens first", omml: M.shareTens, h: 92, quote: "One ten each, then I broke the last one up." }}
-          right={{ name: "Nawaf's way — one at a time", omml: M.answer, h: 92, quote: "I dealt them out like cards until they ran out." }}
-          same={["Both get 13", "Both share equally", "Both end with nothing left over"]}
-          diff={["Hala shares tens, Nawaf shares ones", "Nawaf takes 52 moves", "Hala's method still works with hundreds"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 13"
+            text="Hala shares tens and regroups. Nawaf deals one at a time — 52 moves. Both plates hold 13."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Hala's way — tens first", omml: M.shareTens, h: 92, quote: "One ten each, then I broke the last one up." }}
+              right={{ name: "Nawaf's way — one at a time", omml: M.answer, h: 92, quote: "I dealt them out like cards until they ran out." }}
+              same={["Both get 13", "Both share equally", "Both end with nothing left over"]}
+              diff={["Hala shares tens, Nawaf shares ones", "Nawaf takes 52 moves", "Hala's method still works with hundreds"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard57} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The sharing is drawn, not declared"
+            text="Zayd builds only what the class can justify: the rounds, the regroup, the record."
+            clue="Share the biggest units first, then regroup.">
+            <BoardScreen draw={drawBoard57} height={430}
+              caption="Share the biggest units first, then regroup." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "share the biggest units first, then regroup" }]}
-          hand={"share the tens · regroup what will not go round · share the ones · count one group"}
-          cards={[
-            { title: "The sharing we did", omml: M.answer, note: "one ten and three ones each" },
-            { title: "Tap to check it", omml: M.shareTens, revealOmml: M.check, reveal: true,
-              note: "multiply back to prove it" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The sharing and the record are the same thing, seen twice."
+            clue="The record proves the share.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "share the biggest units first, then regroup" }]}
+              hand={"share the tens · regroup what will not go round · share the ones · count one group"}
+              cards={[
+                { title: "The sharing we did", omml: M.answer, note: "one ten and three ones each" },
+                { title: "Tap to check it", omml: M.shareTens, revealOmml: M.check, reveal: true,
+                  note: "multiply back to prove it" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Share 75 between 5 groups."
-          omml={M.swyk}
-          options={[{ v: "a", text: "12" }, { v: "b", text: "15" }, { v: "c", text: "14" }, { v: "d", text: "13 r 5" }]}
-          right="b"
-          support={{
-            yes: "Yes — one ten each uses 50, then 25 ones share as 5 each. 10 + 5 = 15.",
-            notYet: "Not yet — share the tens first, then regroup what is left.",
-            draw: drawSupport57, h: 92,
-            hint: "Share the 7 tens first: 5 go round, 2 are left to regroup."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the equal plates"
+            text="75 between 5 groups. Show the rounds — then the regroup."
+            clue="5 tens go round; 2 tens regroup into 25 ones.">
+            <ShowWhatYouKnow award={award}
+              prompt="Share 75 between 5 groups."
+              omml={M.swyk}
+              options={[{ v: "a", text: "12" }, { v: "b", text: "15" }, { v: "c", text: "14" }, { v: "d", text: "13 r 5" }]}
+              right="b"
+              support={{
+                yes: "Yes — one ten each uses 50, then 25 ones share as 5 each. 10 + 5 = 15.",
+                notYet: "Not yet — share the tens first, then regroup what is left.",
+                draw: drawSupport57, h: 92,
+                hint: "Share the 7 tens first: 5 go round, 2 are left to regroup."
+              }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Share a handful of things at home into equal groups by giving out tens first." />;
+        return (
+          <StoryHandoff
+            title="The plates are equal"
+            text="Omar signs the equal plates. The next crate is three places deep: 278 books, 4 crates — and the hundreds will not go round at all."
+            artifact="Caravan schedule · sharing by place"
+            next="The share crosses a place — the hundreds will not go round.">
+            <Closing game={game} omml={M.rule}
+              action="Share a handful of things at home into equal groups by giving out tens first." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

@@ -100,98 +100,99 @@ const drawSupport45 = (ctx, W, H) => {
 const LESSON = {
   code: "4-5",
   storageKey: "daf-g4-t4-l5",
-  title: "Area Models and Partial Products",
+  title: "More Use Area Models and Partial Products to Multiply",
   unit: "GRADE 4 · TOPIC 4 · LESSON 4-5 · 4.NBT.B.5",
   math: M,
   ixl: ["8K7", "ERB"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "A rectangle cut into four pieces. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Four pieces, not two. Something has changed.",
-      rail: { launch: "I am not asking for a total yet. Just describe the rectangle.",
-        monitor: ["Counting four regions", "Reading the edge numbers", "Noticing both sides are split"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Expecting two regions because yesterday had two." } },
+    { phase: "warmup", title: "Rooms inside the <em>rectangle</em>",
+      lead: "The tower plan partitions a large rectangle into rooms: 47 by 28, four regions, the corner one tiny.",
+      goal: "Notice the area model is the same frame, one room per place value.",
+      pull: "Each region is one partial product.",
+      rail: { launch: "Fictional frame. Look at the rooms — no total yet.",
+        monitor: ["Counting the rooms", "Reading the edge numbers", "Noticing the corner room"],
+        connect: "Why is each room a different size?",
+        misconception: "Thinking all four regions must be the same size." } },
 
-    { phase: "launch", title: "Forty-seven rows of <em>twenty-eight</em>",
-      lead: "A plantation has 47 rows with 28 palms in each. Estimate first.",
-      goal: "Create the need — when both factors are awkward, both get split.",
-      pull: "Estimate first, then we will build all four pieces.",
-      rail: { launch: "Roughly how many? Round both in your head.",
-        monitor: ["Rounding both", "Splitting one factor only", "Trying repeated addition"],
-        connect: "Why does splitting one factor not finish the job?",
-        misconception: "Splitting only the first factor and stopping." } },
+    { phase: "launch", title: "About how many <em>palm trees</em>?",
+      lead: "47 × 28. Lock the estimate before the rooms are priced.",
+      goal: "Estimate the product before the exact model.",
+      pull: "50 × 30 gets you close. Now for the exact number.",
+      rail: { launch: "Give the estimate and what you rounded.",
+        monitor: ["Rounding 47 to 50", "Rounding 28 to 30", "Multiplying 50 × 30"],
+        connect: "Why is 1,500 near but above the exact answer?",
+        misconception: "Rounding both factors down by habit." } },
 
-    { phase: "monitor", title: "Fill all <em>four regions</em>",
-      lead: "Tens by tens, tens by ones, ones by tens, ones by ones.",
-      goal: "Two splits make four partial products.",
-      pull: "Now write those four pieces in a list.",
-      rail: { launch: "Predict each region before you tap.",
-        monitor: ["Working in reading order", "Naming each region", "Missing the ones-by-ones corner"],
-        connect: "Which region is biggest, and why?",
-        misconception: "Forgetting the small ones-by-ones region." } },
+    { phase: "monitor", title: "Zayd prices the <em>rooms</em>",
+      lead: "40 × 20, 40 × 8, 7 × 20, 7 × 8 — one room at a time.",
+      goal: "Price each region; every place meets every place.",
+      pull: "Every room has a price, even the tiny one.",
+      rail: { launch: "Predict each room before it is priced.",
+        monitor: ["Pricing 40 × 20", "Pricing 7 × 8", "Seeing all four rooms priced"],
+        connect: "Which room is cheapest, and does it still count?",
+        misconception: "Skipping the corner room because it is small." } },
 
-    { phase: "monitor", title: "Add the <em>four parts</em>",
-      lead: "Miss one and the answer is wrong — even the smallest one.",
-      goal: "Record and total four partial products.",
-      pull: "Match some grids to their partial products.",
-      rail: { launch: "Predict each line before you reveal it.",
-        monitor: ["Listing all four", "Adding as they go", "Dropping the smallest"],
-        connect: "How much does the smallest part change the answer?",
-        misconception: "Stopping after the two largest parts." } },
+    { phase: "monitor", title: "The <em>four</em> partial products",
+      lead: "800 + 320 + 140 + 56 — every room has to appear in the list.",
+      goal: "Write all four partial products and add them once.",
+      pull: "The smallest room still changes the total.",
+      rail: { launch: "Which room first?",
+        monitor: ["Writing 800", "Writing 320 and 140", "Writing the corner 56"],
+        connect: "What would the total be if the corner was missing?",
+        misconception: "Answering 1,260 — the corner 56 was dropped." } },
 
-    { phase: "monitor", title: "Match the <em>grid</em>",
-      lead: "Which set of four belongs to that grid? No grading until the class commits.",
-      goal: "Read a four-region model backwards.",
-      pull: "Two students recorded the same product differently.",
-      rail: { launch: "Look at the biggest region first.",
-        monitor: ["Checking the tens-by-tens part", "Checking the corner", "Adding to test"],
-        connect: "How did you know which belonged?",
-        misconception: "Matching by the total instead of the parts." } },
+    { phase: "monitor", title: "Match the <em>model</em>",
+      lead: "Three partial-product sums. Each one belongs to one tower plan.",
+      goal: "Read four-part models back to their products.",
+      pull: "The parts always match the digits.",
+      rail: { launch: "Name the digits each sum's parts describe.",
+        monitor: ["Reading 800 + 320 + 140 + 56", "Reading 600 + 240 + 120 + 48", "Checking all four parts match"],
+        connect: "How do you know which product a model belongs to?",
+        misconception: "Matching by the biggest two parts only." } },
 
-    { phase: "connect", title: "Two ways to <em>record it</em>",
-      lead: "Rana labelled every region. Faris only wrote the four products. Both give 1,316.",
+    { phase: "connect", title: "Rana <em>labels</em>. Faris writes <em>the four</em>",
+      lead: "Rana labels every edge first. Faris goes round the grid and writes the four answers. Both get 1,316.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Using the grid", "Using a list", "Checking both totals"],
-        connect: "Which record would you trust under time pressure?",
-        misconception: "Believing the grid and the list are different methods." } },
+        monitor: ["Comparing the labelling styles", "Checking both reach 1,316", "Seeing where each form catches mistakes"],
+        connect: "Which form catches your own mistakes faster?",
+        misconception: "Believing writing less is always faster." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Split both factors. Four regions. Multiply each. Add all four.",
+    { phase: "synth", title: "On the <em>board</em>: each region is one partial product",
+      lead: "Partition the rectangle. Price each room. Add them all.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next region", "Naming each product", "Restating it in their own words"],
+        monitor: ["Predicting the next stroke", "Naming each room", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Forgetting to add all four parts." } },
+        misconception: "Partitioning at a number that is not a place value." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "Each region is one partial product. Every room, added.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming both decompositions", "Testing on a new product", "Checking against an estimate"],
-        connect: "Which region would disappear if one factor had no ones?",
-        misconception: "Thinking two splits give two partial products." } },
+        monitor: ["Naming the four rooms", "Checking the add-back", "Testing on a new product"],
+        connect: "Which room is easiest to forget?",
+        misconception: "Dropping the ones × ones corner." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Write all four partial products.",
-        monitor: ["Listing four parts", "Adding correctly", "Estimating first"],
+      lead: "36 × 24 — the plan, all four rooms priced.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Price all four rooms.",
+        monitor: ["Splitting 36 at 30", "Splitting 24 at 20", "Adding all four parts"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Adding only the two biggest regions." } },
+        misconception: "Answering 840 — the corner 24 was dropped." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The rooms are <em>priced</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: writing it without drawing the rectangle at all.",
+      pull: "Tomorrow: the final production schedule, written in a column.",
       rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the grid", "Ready for the next step"],
+        monitor: ["Able to explain the rooms", "Still drops the corner", "Ready for the column form"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -202,75 +203,147 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeGrid(4)} height={256} award={award}
-          notices={["There are four pieces", "Both sides are split", "One piece is much bigger", "The corner piece is tiny"]}
-          wonders={["Why four?", "Do I add them all?", "What is the total?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Rooms inside the rectangle"
+            text="The tower plan partitions a large rectangle into rooms: 47 by 28, four regions, the corner one tiny."
+            clue="Each region is one partial product">
+            <NoticeWonder draw={makeGrid(4)} height={256} award={award}
+              notices={["There are four pieces", "Both sides are split", "One piece is much bigger", "The corner piece is tiny"]}
+              wonders={["Why four?", "Do I add them all?", "What is the total?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStory45} height={256} award={award}
-          label="About how many palm trees?" min={800} max={2200} start={1500} unit="trees"
-          after="Locked. Now let us fill in all four regions."
-          note="50 × 30 gets you close. Now for the exact number." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The estimate before the rooms"
+            text="Omar asks for the estimate before the rooms are priced — the plan needs a number the council can defend."
+            clue="50 × 30 gets you close. Now for the exact number.">
+            <LaunchEstimate draw={drawStory45} height={256} award={award}
+              label="About how many palm trees?" min={800} max={2200} start={1500} unit="trees"
+              after="Locked. Now let us fill in all four regions."
+              note="The plan counts are simulated — the model works on any two-digit by two-digit." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeGrid(n)} height={256}
-          label="Fill one region at a time"
-          value={n}
-          onPick={(v) => setN(v)}
-          chips={[{ v: 1, label: "region 1" }, { v: 2, label: "region 2" }, { v: 3, label: "region 3" }, { v: 4, label: "region 4" }]}
-          caption={<MathEl omml={M.decompose} size="lg" display="block" />}
-          footnote="Two splits across and two down — that is four pieces, always." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd prices the rooms"
+            text="He can price one room at a time — the class must predict each price before it appears."
+            clue="Every room has a price, even the tiny one">
+            <ExploreChips draw={makeGrid(n)} height={256}
+              label="Price one room at a time"
+              value={n}
+              onPick={(v) => setN(v)}
+              chips={[{ v: 1, label: "room 1" }, { v: 2, label: "room 2" }, { v: 3, label: "room 3" }, { v: 4, label: "room 4" }]}
+              caption={<MathEl omml={M.decompose} size="lg" display="block" />}
+              footnote="47 = 40 + 7 and 28 = 20 + 8 — four rooms, four prices." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeLadder(shown)} height={256}
-          label="Write the partial products"
-          value={shown}
-          onPick={(v) => setShown(v)}
-          chips={[{ v: 1, label: "part 1" }, { v: 2, label: "+ part 2" }, { v: 3, label: "+ part 3" }, { v: 4, label: "+ part 4" }]}
-          caption={<MathEl omml={M.answer} size="xl" display="block" />}
-          footnote="The smallest region still changes the answer." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The four partial products"
+            text="He can reveal each partial — the class must see that every room appears in the list."
+            clue="The smallest room still changes the total">
+            <ExploreChips draw={makeLadder(shown)} height={256}
+              label="Write the partial products"
+              value={shown}
+              onPick={(v) => setShown(v)}
+              chips={[{ v: 1, label: "part 1" }, { v: 2, label: "+ part 2" }, { v: 3, label: "+ part 3" }, { v: 4, label: "+ part 4" }]}
+              caption={<MathEl omml={M.answer} size="xl" display="block" />}
+              footnote="The smallest room still changes the total." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[{ id: "h1", text: "800 + 320 + 140 + 56", target: "u1" }, { id: "h2", text: "600 + 240 + 120 + 48", target: "u2" }, { id: "h3", text: "1,000 + 250 + 200 + 50", target: "u3" }]}
-          targets={[{ id: "u1", label: "47 × 28" }, { id: "u2", label: "36 × 24" }, { id: "u3", label: "45 × 25" }]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Match the model"
+            text="Omar and Zayd lay three partial-product sums on the table. Each one belongs to one tower plan."
+            clue="The parts always match the digits">
+            <CardSort award={award} columns={3}
+              items={[{ id: "h1", text: "800 + 320 + 140 + 56", target: "u1" }, { id: "h2", text: "600 + 240 + 120 + 48", target: "u2" }, { id: "h3", text: "1,000 + 250 + 200 + 50", target: "u3" }]}
+              targets={[{ id: "u1", label: "47 × 28" }, { id: "u2", label: "36 × 24" }, { id: "u3", label: "45 × 25" }]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Rana's way — label everything", omml: M.parts, h: 92, quote: "I write the numbers on every edge first." }}
-          right={{ name: "Faris's way — just the four", omml: M.answer, h: 92, quote: "I go round the grid and write the four answers." }}
-          same={["Both get 1,316", "Both use four regions", "Both split by place value"]}
-          diff={["Rana labels the edges", "Faris writes less", "Rana catches her own mistakes faster"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 1,316"
+            text="Rana labels every edge first. Faris goes round the grid and writes the four answers. Both get 1,316."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Rana's way — label everything", omml: M.parts, h: 92, quote: "I write the numbers on every edge first." }}
+              right={{ name: "Faris's way — just the four", omml: M.answer, h: 92, quote: "I go round the grid and write the four answers." }}
+              same={["Both get 1,316", "Both use four regions", "Both split by place value"]}
+              diff={["Rana labels the edges", "Faris writes less", "Rana catches her own mistakes faster"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard45} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The plan is drawn, not declared"
+            text="Zayd builds only what the class can justify: the rectangle partitioned, each room priced, all of them added."
+            clue="Each region is one partial product">
+            <BoardScreen draw={drawBoard45} height={430}
+              caption="Each region is one partial product." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "each region is one partial product" }]}
-          hand={"split both factors · four regions · multiply each · add all four"}
-          cards={[
-            { title: "The product we built", omml: M.answer, note: "our estimate was 1,500" },
-            { title: "Tap to see the four parts", omml: M.estimate, revealOmml: M.parts, reveal: true,
-              note: "every region, added up" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The rule goes into the tower's plan with its reason, not alone."
+            clue="Every room, added up">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "each region is one partial product" }]}
+              hand={"partition the rectangle · price each room · multiply each · add them all"}
+              cards={[
+                { title: "The plan we priced", omml: M.answer, note: "our estimate was 1,500" },
+                { title: "Tap to see the rooms", omml: M.estimate, revealOmml: M.parts, reveal: true,
+                  note: "all four rooms, added up" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Use an area model to work out 36 × 24."
-          omml={M.swyk}
-          options={[{ v: "a", text: "744" }, { v: "b", text: "864" }, { v: "c", text: "840" }, { v: "d", text: "624" }]}
-          right="b"
-          support={{
-            yes: "Yes — 600 + 240 + 120 + 48 = 864.",
-            notYet: "Not yet — check that you added all four regions.",
-            draw: drawSupport45, h: 92,
-            hint: "The four regions are 30×20, 30×4, 6×20 and 6×4."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs only a total with every room"
+            text="36 × 24. Show the plan — and all four rooms priced."
+            clue="600 + 240 + 120 + 48 = 864">
+            <ShowWhatYouKnow award={award}
+              prompt="Use an area model to work out 36 × 24."
+              omml={M.swyk}
+              options={[{ v: "a", text: "744" }, { v: "b", text: "864" }, { v: "c", text: "840" }, { v: "d", text: "624" }]}
+              right="b"
+              support={{
+                yes: "Yes — 600 + 240 + 120 + 48 = 864.",
+                notYet: "Not yet — check that you added all four regions.",
+                draw: drawSupport45, h: 92,
+                hint: "The four regions are 30×20, 30×4, 6×20 and 6×4."
+              }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Find two two-digit numbers on a receipt and multiply them with an area model." />;
+        return (
+          <StoryHandoff
+            title="The rooms are priced"
+            text="Omar signs the plan with every room beside it. The final production schedule is due before the bell — and this time it must be written in a column, not a rectangle."
+            artifact="Tower plan · rooms priced"
+            next="The final production schedule: four products written in a column and added once.">
+            <Closing game={game} omml={M.rule}
+              action="Price a two-digit by two-digit plan tonight and show all four rooms." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }
