@@ -220,7 +220,7 @@ const LESSON = {
         misconception: "Using the pint-to-cup factor for a quart-to-cup conversion." } },
 
     { phase: "connect", title: "Two ways to reach <em>cups</em>",
-      lead: "Ziad went gallon to quarts to pints to cups. Salma multiplied by sixteen.",
+      lead: "Ziad went gallon to quarts to pints to cups. Khalil multiplied by sixteen.",
       goal: "A chain of steps and one big factor agree.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask where the sixteen came from.",
@@ -313,10 +313,10 @@ const LESSON = {
         return <CompareConnect award={award}
           left={{ name: "Ziad's way — down the ladder", omml: M.chain, h: 92,
             quote: "Gallon to quarts, quarts to pints, pints to cups. Sixteen." }}
-          right={{ name: "Salma's way — one factor", omml: M.gallonCup, h: 92,
+          right={{ name: "Khalil's way — one factor", omml: M.gallonCup, h: 92,
             quote: "I know a gallon is sixteen cups, so I multiplied straight away." }}
           same={["Both give 16 cups", "Both describe one gallon", "Both make the number bigger"]}
-          diff={["Ziad steps three times", "Salma uses one fact", "Ziad's works even if you forget"]} />;
+          diff={["Ziad steps three times", "Khalil uses one fact", "Ziad's works even if you forget"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard132} height={430} />;

@@ -171,7 +171,7 @@ const LESSON = {
         misconception: "Dividing when converting a big unit into a small one." } },
 
     { phase: "connect", title: "Two ways to <em>convert</em>",
-      lead: "Noura went yards to feet to inches. Hala multiplied by thirty six in one go.",
+      lead: "Joud went yards to feet to inches. Qais multiplied by thirty six in one go.",
       goal: "A two-step conversion and a one-step conversion agree.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask where the thirty six came from.",
@@ -261,12 +261,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Noura's way — two steps", omml: M.three, h: 92,
+          left={{ name: "Joud's way — two steps", omml: M.three, h: 92,
             quote: "One yard is 3 feet. Each foot is 12 inches. So 3 lots of 12." }}
-          right={{ name: "Hala's way — one step", omml: M.yardInch, h: 92,
+          right={{ name: "Qais's way — one step", omml: M.yardInch, h: 92,
             quote: "I just remembered a yard is 36 inches." }}
           same={["Both give 36 inches", "Both describe one yard", "Both make the number bigger"]}
-          diff={["Noura converts twice", "Hala uses one fact", "Noura's works even if you forget 36"]} />;
+          diff={["Joud converts twice", "Qais uses one fact", "Joud's works even if you forget 36"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard131} height={430} />;

@@ -212,7 +212,7 @@ const LESSON = {
         misconception: "Subtracting minutes column-style without regrouping sixty." } },
 
     { phase: "connect", title: "Two ways to <em>find it</em>",
-      lead: "Reem counted forward in hops. Faisal took the whole hour off first and adjusted.",
+      lead: "Anees counted forward in hops. Faisal took the whole hour off first and adjusted.",
       goal: "Compare counting on with subtracting back.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both methods without endorsing either.",
@@ -302,12 +302,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — count forward", omml: M.total, h: 92,
+          left={{ name: "Anees's way — count forward", omml: M.total, h: 92,
             quote: "Fifteen up to four, one whole hour, then twenty more." }}
           right={{ name: "Faisal's way — go back from 5:20", omml: M.asMixed, h: 92,
             quote: "An hour and a half back is 3:50. That is five minutes too far, so 1 hour 35." }}
           same={["Both give 1 hour 35 minutes", "Both respect sixty minutes to the hour", "Both can be checked on the clocks"]}
-          diff={["Reem counts on, Faisal counts back", "Faisal has to adjust at the end", "Reem's hops are easier to say aloud"]} />;
+          diff={["Anees counts on, Faisal counts back", "Faisal has to adjust at the end", "Anees's hops are easier to say aloud"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard104} height={430}
@@ -323,7 +323,7 @@ const LESSON = {
 
       case 8:
         return <ShowWhatYouKnow award={award}
-          prompt="Layla starts her homework at 2:50 p.m. and finishes at 4:15 p.m. How long did it take?"
+          prompt="Layth starts her homework at 2:50 p.m. and finishes at 4:15 p.m. How long did it take?"
           omml={M.swyk}
           options={[{ v: "a", text: "1 h 65 min" }, { v: "b", text: "2 h 25 min" }, { v: "c", text: "1 h 25 min" }, { v: "d", text: "1 h 35 min" }]}
           right="c"

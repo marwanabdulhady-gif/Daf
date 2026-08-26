@@ -32,20 +32,22 @@ const drawStock = (ctx, W, H, frame) => {
   }
 };
 
-const makeColumnSub = (step) => (ctx, W, H, frame) => {
+const makeColumnSub = (step, onStep) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: W / 2 - 132, y: 30, w: 264, h: H - 70, value: 0, on: () => onStep((step + 1) % 7) });
   D.columnOp(ctx, { x: W / 2 - 132, y: 30, w: 264, a: 482517, b: 96348, op: "-", prog: step / 6, t: frame, cw: 26 });
-  const notes = ["line the places up", "ones: 7 − 8 needs a trade, 17 − 8 = 9",
+  const notes = ["line the places up — tap to step", "ones: 7 − 8 needs a trade, 17 − 8 = 9",
                  "tens: 0 − 4 needs a trade, 10 − 4 = 6", "hundreds: 4 − 3 = 1",
                  "thousands: 1 − 6 needs a trade, 11 − 6 = 5",
                  "ten thousands: 7 − 9 needs a trade, 17 − 9 = 8", "hundred thousands: 3 − 0 = 3"];
   D.txt(ctx, notes[step], W / 2, H - 18, { size: 13.5, col: step === 3 ? "#34D399" : "#C9A227", font: "marker" });
 };
 
-const makeAlign = (mode) => (ctx, W, H, frame) => {
+const makeAlign = (mode, onMode) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onMode) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onMode(mode === 1 ? 0 : 1) });
   const a = "482517", b = mode === 1 ? " 96348" : "96348 ";
   const cw = 46, x0 = W / 2 - 3 * cw;
   const names = ["hund. th.", "ten th.", "thousands", "hundreds", "tens", "ones"];
@@ -110,181 +112,228 @@ const LESSON = {
   ixl: ["TSJ", "WLN", "YPD"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "A bar with one part missing. No question yet.", goal: "An invitation — every student has something to say.",
-      pull: "The missing part has a name: the difference.",
-      rail: { launch: "I am not asking you to work it out. Just describe what you see.",
-        monitor: ["Noticing the whole is 534", "Noticing one part is unknown", "Estimating the gap"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Reading the bar as two separate numbers rather than a part and a whole." } },
+    { phase: "warmup", title: "The expansion plan <em>beside the reserve</em>",
+      lead: "One town in Makkah Region has 482,517 people; the other 96,348. The expansion plan needs the difference.",
+      goal: "Notice that the two numbers have different lengths — and that the places must still line up.",
+      pull: "The town figures are simulated — the method works on any city-sized pair.",
+      rail: { launch: "Fictional frame. Just look at the bar — no working yet.",
+        monitor: ["Noticing the whole is 482,517", "Noticing the shorter number", "Estimating the gap"],
+        connect: "Where should the 9 of 96,348 sit?",
+        misconception: "Lining up the shorter number on the left edge." } },
 
     { phase: "launch", title: "How many <em>more</em>?",
-      lead: "One town has 482,517 people. The other has 96,348. How many more? Estimate first.",
-      goal: "Create the need — and a check for the exact answer.",
-      pull: "Now let us take it apart one column at a time.",
-      rail: { launch: "Round both first. Roughly how many are left?",
-        monitor: ["Rounding to 530 and 270", "Counting up from 268", "Going straight to the algorithm"],
-        connect: "What should the exact answer be close to?",
+      lead: "482,517 − 96,348. The difference, estimated to the nearest thousand first.",
+      goal: "Estimate the big difference before the exact one.",
+      pull: "The exact answer must sit near the estimate.",
+      rail: { launch: "Round both to thousands. Roughly how many more?",
+        monitor: ["Rounding to 483,000 and 96,000", "Subtracting the rounds", "Checking the gap is plausible"],
+        connect: "What should the exact difference be near?",
         misconception: "Subtracting the smaller digit from the larger one in each column." } },
 
-    { phase: "monitor", title: "One <em>column</em> at a time",
-      lead: "Start with the ones. Step through and watch the trade.",
-      goal: "The algorithm as a sequence of place-value trades.",
-      pull: "What is actually being crossed out?",
-      rail: { launch: "Predict each column before you step.",
-        monitor: ["Starting from the ones", "Taking the smaller from the larger", "Tracking both trades"],
-        connect: "Why can you not just do 8 take away 4?",
-        misconception: "Flipping the digits to avoid regrouping — the classic 4 minus 8 becomes 8 minus 4." } },
+    { phase: "monitor", title: "Zayd lines the <em>places</em> up",
+      lead: "Right-aligned on the ones, or left-aligned on the edges? The columns do not forgive a misread.",
+      goal: "Line up the places, not the edges — the wrong column misreads.",
+      pull: "Line up the places, not the edges.",
+      rail: { launch: "Before you tap: where does the 9 sit?",
+        monitor: ["Placing the 9 in the ten-thousands", "Seeing the ones under the ones", "Reading the misaligned 9 as ten thousands"],
+        connect: "Why does the left-aligned version give nonsense?",
+        misconception: "Lining up by the left edge so 96,348 starts in the hundred-thousands." } },
 
-    { phase: "monitor", title: "Line up the <em>places</em>",
-      lead: "Six digits over five. Where does the smaller number go?",
-      goal: "Place alignment is the whole difficulty with greater numbers.",
-      pull: "Which of these will need a trade?",
-      rail: { launch: "Before you tap: which column should the 8 of 96,348 sit in?",
-        monitor: ["Aligning from the right", "Aligning from the left", "Using the place labels"],
-        connect: "What goes wrong if you line them up on the left?",
-        misconception: "Lining the numbers up by their left edge." } },
+    { phase: "monitor", title: "Omar steps the <em>big subtraction</em>",
+      lead: "Ones to hundred-thousands — the trades run left, through zeros when they appear.",
+      goal: "Subtract six places with every trade shown.",
+      pull: "17 − 8 = 9, and the trades keep going left.",
+      rail: { launch: "Predict the trade before Omar steps the column.",
+        monitor: ["Trading through the ones", "Trading when the tens hit zero", "Checking the hundred-thousands"],
+        connect: "What happened in the tens when the ones traded?",
+        misconception: "Answering 8 − 7 in the ones instead of ungrouping." } },
 
-    { phase: "monitor", title: "Will it need a <em>trade</em>?",
-      lead: "Sort each subtraction before you calculate. No grading until the class commits.",
-      goal: "Predict regrouping from the digits.",
-      pull: "Two students checked the same answer differently.",
-      rail: { launch: "Look only at the ones column first.",
-        monitor: ["Comparing the ones digits", "Checking every column", "Calculating fully first"],
-        connect: "Which column did you check, and why that one?",
-        misconception: "Assuming a bigger number on top means no trade." } },
+    { phase: "monitor", title: "The add-back <em>proves it</em>",
+      lead: "Four lines from the expansion report: some verify the difference, some are just the story.",
+      goal: "Verify the big difference by adding it back.",
+      pull: "Difference + the smaller town = the larger town.",
+      rail: { launch: "Name what each line is doing before you place it.",
+        monitor: ["Spotting the add-back", "Spotting the estimate", "Asking what 96,348 − 386,169 would mean"],
+        connect: "Which line proves 386,169?",
+        misconception: "Treating the estimate 483,000 − 96,000 as the answer." } },
 
-    { phase: "connect", title: "Two ways to <em>check it</em>",
-      lead: "Lina added her answer back. Sami counted up from 268. Both landed on 534.",
+    { phase: "connect", title: "Hassan estimates and <em>adds back</em>. Musa aligns and trades",
+      lead: "Hassan: estimate, subtract, add back. Musa: align, trade, verify. Both defend 386,169.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Adding the answer back", "Counting up in jumps", "Re-doing the subtraction"],
-        connect: "Why does adding the answer back prove it?",
-        misconception: "Checking by repeating the same method and the same mistake." } },
+        monitor: ["Checking the exact against 387,000", "Following the trades", "Seeing both defend the same number"],
+        connect: "Which step would catch a misaligned column first?",
+        misconception: "Believing the estimate replaces the exact difference." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "One ten becomes ten ones. The number is renamed, not changed.",
+    { phase: "synth", title: "On the <em>board</em>: the expansion holds",
+      lead: "Places aligned, trades shown, the value never changed by a regrouping.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Naming the trade", "Restating it in their own words"],
-        connect: "Who can say what the crossing out means in one sentence?",
-        misconception: "Saying borrow without saying what is borrowed or from where." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the trade", "Testing on a bigger difference", "Checking by adding back"],
-        connect: "What happens if the next place is a zero?",
-        misconception: "Assuming there is always a ten available next door." } },
+        monitor: ["Lining up by the ones", "Following the trades", "Restating it in their own words"],
+        connect: "Who can say the rule in one sentence?",
+        misconception: "Crossing out digits without saying what was traded." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Estimate, calculate, then check by adding back.",
-        monitor: ["Estimating first", "Trading correctly", "Checking by addition"],
+      lead: "310,254 − 87,169 — the verified difference?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Line up the places, then trade.",
+        monitor: ["Lining up by the ones", "Trading through the zeros", "Adding the difference back"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Doing 5 minus 8 as 8 minus 5 in the ones column." } },
+        misconception: "Answering 223,185 — a trade was lost in the tens." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The expansion is <em>verified</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: the same method, with much bigger numbers.",
-      rail: { launch: "Ask three students to say what a trade means.",
-        monitor: ["Able to explain it to someone else", "Still needs the blocks", "Ready for greater numbers"],
+      pull: "Tomorrow: water damage erases the regrouping marks.",
+      rail: { launch: "Ask three students to say how they lined the numbers up.",
+        monitor: ["Able to explain the alignment", "Still lines up by the edges", "Ready for across-zero subtractions"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
 
   Visual: function ({ i, award, game }) {
+    const [mode, setMode] = useState(1);
     const [step, setStep] = useState(0);
-    const [traded, setTraded] = useState(false);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawStock} height={256} award={award}
-          notices={["The whole is 482,517", "One part is missing", "96,348 is much smaller", "The missing part is bigger"]}
-          wonders={["How many more?", "Is it about 400,000?", "How do I line them up?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The expansion plan beside the reserve"
+            text="The warehouse expansion plan opens beside the reserve ledger: 482,517 people in the larger town, 96,348 in the smaller. The plan needs the difference."
+            clue="The places must still line up">
+            <NoticeWonder draw={drawStock} height={256} award={award}
+              notices={["One number has six digits, one has five", "The bar is almost full", "The difference is unknown", "The plan is waiting"]}
+              wonders={["How many more people in the larger town?", "Where should the 9 of 96,348 sit?", "What estimate should the difference be near?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStock} height={256} award={award}
-          label="About how many more people?" min={200000} max={500000} start={390000} unit=""
-          after="Locked. Keep it — you will check your exact answer against it."
-          note="Round both numbers, then subtract the friendly ones." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The difference, estimated first"
+            text="Omar asks for the estimate to the nearest thousand before the expansion report is written — the difference must sit near it."
+            clue="Round both to thousands, then subtract the rounds">
+            <LaunchEstimate draw={drawStock} height={256} award={award}
+              label="482,517 − 96,348 — the difference, estimated first" min={300000} max={450000} start={387000} unit="people"
+              after="Locked. Now line up the places and step the big subtraction."
+              note="The town figures are simulated — the method works on any city-sized pair." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeColumnSub(step)} height={262}
-          label="Step through the columns"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "set up" }, { v: 1, label: "ones" }, { v: 2, label: "tens" },
-                  { v: 3, label: "hundreds" }, { v: 4, label: "thousands" }, { v: 5, label: "ten th." }, { v: 6, label: "hund. th." }]}
-          caption={<MathEl omml={M.answer} size="xl" display="block" />}
-          footnote="A crossed-out digit is a number that has been renamed, not reduced." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd lines the places up"
+            text="He can align the two numbers on the ones or on the left edges — the class must say which column each digit joins."
+            clue="Line up the places, not the edges">
+            <ExploreChips draw={makeAlign(mode, setMode)} height={252}
+              label="Where should 96,348 sit under 482,517?"
+              value={mode}
+              onPick={(v) => setMode(v)}
+              chips={[{ v: 1, label: "line up the places" }, { v: 0, label: "line up the edges" }]}
+              caption={<MathEl omml={M.regroup} size="lg" display="block" />}
+              footnote="Line up the places, not the edges." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeAlign(traded ? 1 : 0)} height={252}
-          label="Line the two numbers up"
-          value={traded ? 1 : 0}
-          onPick={(v) => setTraded(v === 1)}
-          chips={[{ v: 0, label: "align left" }, { v: 1, label: "align right" }]}
-          caption={<MathEl omml={traded ? M.answer : M.regroup} size="lg" display="block" />}
-          footnote="A five-digit number has nothing in the hundred thousands. Line up the ones and the rest follow." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar steps the big subtraction"
+            text="He can step any column, but the class must predict the trade before the column changes."
+            clue="The trades run left — through zeros when they appear">
+            <ExploreChips draw={makeColumnSub(step, setStep)} height={252}
+              label="Step the columns of 482,517 − 96,348"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "line up the places" }, { v: 1, label: "ones" }, { v: 2, label: "tens" }, { v: 3, label: "hundreds" }, { v: 4, label: "thousands" }, { v: 5, label: "ten thousands" }, { v: 6, label: "hundred thousands" }]}
+              caption={<MathEl omml={M.traded} size="lg" display="block" />}
+              footnote="17 − 8 = 9 — and the trades keep going left." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "s1", text: "482,517 − 96,348", target: "yes" },
-            { id: "s2", text: "579,684 − 236,412", target: "no" },
-            { id: "s3", text: "412,050 − 187,300", target: "yes" },
-            { id: "s4", text: "846,975 − 325,410", target: "no" }
-          ]}
-          targets={[
-            { id: "yes", label: "needs a trade" },
-            { id: "no", label: "no trade needed" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="The add-back proves it"
+            text="Omar and Zayd lay four lines from the expansion report on the table. The report wants the difference verified — difference plus the smaller town equals the larger."
+            clue="Difference + the smaller town = the larger town">
+            <CardSort award={award} columns={2} commitLabel="Verify the report"
+              items={[
+                { id: "e1", text: "386,169 + 96,348 = 482,517", target: "check" },
+                { id: "e2", text: "96,348 − 386,169", target: "story" },
+                { id: "e3", text: "483,000 − 96,000 = 387,000", target: "check" },
+                { id: "e4", text: "386,169", target: "story" }
+              ]}
+              targets={[
+                { id: "check", label: "a check — it verifies the difference" },
+                { id: "story", label: "part of the story — not a check" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Lina's way — add it back", omml: M.check, h: 92,
-                  quote: "If my answer is right, it adds back to 534." }}
-          right={{ name: "Sami's way — count up", omml: M.estimate, h: 92,
-                   quote: "From 268 up to 534 in jumps: 32, then 234." }}
-          same={["Both check the same answer", "Both connect adding and subtracting", "Both land on 534"]}
-          diff={["Lina adds, Sami counts up", "Sami never subtracts at all", "Lina's check is faster to write"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 386,169"
+            text="Hassan estimates, subtracts and adds back. Musa aligns, trades and verifies. Both defend 386,169."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Hassan's way — estimate, subtract, add back", omml: M.estimate, h: 92,
+                      quote: "483,000 − 96,000 is 387,000 — the exact difference sits near it." }}
+              right={{ name: "Musa's way — align, trade, verify", omml: M.check, h: 92,
+                       quote: "The places line up on the ones, and the add-back proves 386,169." }}
+              same={["Both defend 386,169", "Both line up by the places", "Both can be verified"]}
+              diff={["Hassan's estimate catches a wildly wrong total", "Musa's alignment catches a misplaced digit", "Hassan works fast, Musa works sure"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard25} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The expansion holds"
+            text="Zayd builds only what the class can justify: the places aligned, the trades shown, the value unchanged by every regrouping."
+            clue="Places aligned, trades shown">
+            <BoardScreen draw={drawBoard25} height={430}
+              caption="The expansion holds: places aligned, trades shown." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.regroup, alt: "four ones cannot take eight, trade a ten" }]}
-          hand={"start on the right · if the top digit is too small, trade one from the next place · ten arrive, one leaves"}
-          cards={[
-            { title: "The difference we found", omml: M.answer, note: "our estimate was 260 — close" },
-            { title: "Tap to check it by adding", omml: M.traded, revealOmml: M.check, reveal: true,
-              note: "adding the answer back proves it" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the expansion report"
+            text="310,254 − 87,169. Show the verified difference — and the add-back beside it."
+            clue="Difference + the smaller town = the larger town">
+            <ShowWhatYouKnow award={award}
+              prompt="310,254 − 87,169 — the verified difference?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "223,085" }, { v: "b", text: "223,185" }, { v: "c", text: "213,085" }, { v: "d", text: "233,085" }]}
+              right="a"
+              support={{
+                yes: "Yes — the trades run left and 223,085 adds back to 310,254.",
+                notYet: "Not yet — add it back: 223,085 + 87,169 must be 310,254.",
+                draw: drawSupport25, h: 82,
+                hint: "4 ones cannot take 9 — the ones trade. Then the tens must take the ten."
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Subtract 310,254 − 87,169."
-          omml={M.swyk}
-          options={[{ v: "a", text: "223,085" }, { v: "b", text: "233,085" }, { v: "c", text: "222,915" }, { v: "d", text: "397,423" }]}
-          right="a"
-          support={{
-            yes: "Yes — and 223,085 + 87,169 = 310,254, so it checks out.",
-            notYet: "Not yet — check that 87,169 is lined up under the right places.",
-            draw: drawSupport25, h: 96,
-            hint: "87,169 has five digits. Its 8 belongs under the ten thousands."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.answer}
-          action="Find two populations online, subtract them, and check by adding your answer back." />;
+        return (
+          <StoryHandoff
+            title="The expansion is verified"
+            text="Omar signs the expansion report — difference, and the add-back beside it. A drop of water crosses the ledger and erases the regrouping marks — across a line of silent zeros."
+            artifact="Expansion report · verified"
+            next="Water damage erases the regrouping marks — across a line of silent zeros.">
+            <Closing game={game} omml={M.regroup}
+              action="Subtract two five-place numbers tonight and line them up by the ones." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

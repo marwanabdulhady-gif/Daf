@@ -59,7 +59,7 @@ const drawTrack = (ctx, W, H, frame) => {
   D.fracLine(ctx, { x: 68, y: 96, w: W - 136, den: 4, whole: 1, prog: p2, labelAll: true,
     marks: p3 > 0.3 ? [{ n: 2, den: 4, label: "here", col: "#FA7E19" }] : [] });
   if (p3 > 0) {
-    D.txt(ctx, "Salma stopped halfway round", W / 2, 158,
+    D.txt(ctx, "Khalil stopped halfway round", W / 2, 158,
       { size: 13.5, col: "#EAF4F2", font: "marker", alpha: p3 });
     D.txt(ctx, "what else could we call that point?", W / 2, H - 16,
       { size: 14.5, col: "#C9A227", font: "marker", alpha: p3 });
@@ -122,7 +122,7 @@ const LESSON = {
         connect: "Who noticed something nobody else did?",
         misconception: "Counting tick marks instead of intervals." } },
 
-    { phase: "launch", title: "Salma stopped <em>halfway</em>",
+    { phase: "launch", title: "Khalil stopped <em>halfway</em>",
       lead: "The track is marked in quarters. She stopped at the halfway point. Estimate which mark.",
       goal: "Create the need — the same place can be named more than one way.",
       pull: "Cut the line differently and the name changes.",

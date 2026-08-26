@@ -41,7 +41,7 @@ const makeSeq126 = (n) => (ctx, W, H, frame) => {
         { size: 10.5, col: "#C9A227", font: "mono", weight: 700 });
     }
   }
-  D.txt(ctx, "Salma saves 5 halalas every day", W / 2, 30,
+  D.txt(ctx, "Khalil saves 5 halalas every day", W / 2, 30,
     { size: 13.5, col: "#EAF4F2", font: "marker" });
   D.txt(ctx, "after " + n + (n === 1 ? " day: " : " days: ") + (n * 0.05).toFixed(2) + " SR",
     W / 2, 62, { size: 19, col: "#34D399", font: "marker" });
@@ -94,7 +94,7 @@ const drawStory126 = (ctx, W, H, frame) => {
   const p1 = D.at(f, 0, 110), p3 = D.at(f, 400, 540);
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
-  D.txt(ctx, "Salma's savings jar", W / 2, 22,
+  D.txt(ctx, "Khalil's savings jar", W / 2, 22,
     { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
   for (let k = 0; k < 8; k++) {
     const a = D.at(f, 70 + k * 34, 170 + k * 34);
@@ -184,8 +184,8 @@ const LESSON = {
         connect: "What is the same about every jump?",
         misconception: "Reading 0.05 to 0.10 as a jump of five." } },
 
-    { phase: "launch", title: "Salma's <em>savings jar</em>",
-      lead: "Salma puts five halalas into her jar every day. Estimate how many days until the jar holds exactly one riyal.",
+    { phase: "launch", title: "Khalil's <em>savings jar</em>",
+      lead: "Khalil puts five halalas into her jar every day. Estimate how many days until the jar holds exactly one riyal.",
       goal: "Create the need for a shortcut instead of twenty additions.",
       pull: "Now let us look for the repeat.",
       rail: { launch: "Commit to a number of days before you calculate anything.",
@@ -221,12 +221,12 @@ const LESSON = {
         misconception: "Using a shortcut without checking it applies." } },
 
     { phase: "connect", title: "Two ways to <em>get there</em>",
-      lead: "Hala added 0.05 twenty times. Omar noticed twenty fives make a hundred halalas.",
+      lead: "Qais added 0.05 twenty times. Omar noticed twenty fives make a hundred halalas.",
       goal: "The long way is not wrong — it is just slower and riskier.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one would survive a hundred days.",
         monitor: ["Adding repeatedly", "Using the multiplication", "Checking one against the other"],
-        connect: "What did Omar see that Hala did not?",
+        connect: "What did Omar see that Qais did not?",
         misconception: "Believing structure is guessing." } },
 
     { phase: "synth", title: "On the <em>board</em>",
@@ -312,12 +312,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — add them all", omml: M.longWay, h: 92,
+          left={{ name: "Qais's way — add them all", omml: M.longWay, h: 92,
             quote: "I added five halalas twenty times and got to a riyal." }}
           right={{ name: "Omar's way — use the structure", omml: M.shortcut, h: 92,
             quote: "Twenty fives is a hundred halalas. That is one riyal." }}
           same={["Both give twenty days", "Both use five halalas a day", "Both can be checked on the line"]}
-          diff={["Hala does twenty additions", "Omar does one multiplication", "Omar's works for a whole year"]} />;
+          diff={["Qais does twenty additions", "Omar does one multiplication", "Omar's works for a whole year"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard126} height={430} />;

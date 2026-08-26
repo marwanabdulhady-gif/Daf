@@ -127,6 +127,41 @@ const drawSupport54 = (ctx, W, H) => {
     { size: 12, col: "#C9A227", font: "marker" });
 };
 
+
+/* the passengers left at the gate: one division, three honest endings */
+const makeGate54 = (step, onStep) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14); ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onStep((step + 1) % 4) });
+  D.txt(ctx, "38 students · the cars seat 4", W / 2, 30, { size: 13.5, col: "rgba(234,244,242,.75)", font: "marker" });
+  /* nine full cars of four, plus two waiting */
+  for (let c = 0; c < 9; c++) {
+    const x = 52 + (c % 9) * ((W - 104) / 9) + 6;
+    const on = step >= 1;
+    ctx.save();
+    ctx.globalAlpha = on ? 1 : 0.3;
+    D.rr(ctx, x, 66, (W - 104) / 9 - 12, 40, 6);
+    ctx.strokeStyle = "#2D70B3"; ctx.lineWidth = 1.8; ctx.stroke();
+    ctx.restore();
+    D.txt(ctx, "4", x + (W - 104) / 18 - 6, 86, { size: 13, col: "#EAF4F2", font: "marker", alpha: on ? 1 : 0.3 });
+  }
+  /* the two who cannot be shared */
+  const waitX = W / 2 - 14;
+  for (let p = 0; p < 2; p++) {
+    ctx.save();
+    ctx.globalAlpha = step >= 1 ? 1 : 0.35;
+    ctx.beginPath(); ctx.arc(waitX + p * 26, 140, 9, 0, Math.PI * 2);
+    ctx.fillStyle = "#FA7E19"; ctx.fill();
+    ctx.restore();
+  }
+  const endings = [
+    { t: "the gate asks: what happens to the last two?", col: "rgba(234,244,242,.6)" },
+    { t: "drop: 9 full cars — the answer to 'how many full cars?'", col: "#EAF4F2" },
+    { t: "round up: 10 cars — the answer to 'so everyone rides?'", col: "#34D399" },
+    { t: "report: 2 left over — the remainder, named and kept", col: "#C9A227" }
+  ];
+  D.txt(ctx, endings[step].t, W / 2, H - 20, { size: 13.5, col: endings[step].col, font: "marker" });
+};
+
 const LESSON = {
   code: "5-4",
   storageKey: "daf-g4-t5-l4",
@@ -136,92 +171,102 @@ const LESSON = {
   ixl: ["7BS", "PYQ", "5WV"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Thirty-eight students, and teams of four. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Two of them are a different colour. That is not decoration.",
-      rail: { launch: "I am not asking how many teams. Just look at the picture.",
-        monitor: ["Counting in fours", "Spotting the two gold figures", "Estimating the teams"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Assuming everything must divide evenly." } },
+    { phase: "warmup", title: "The division that <em>won't close</em>",
+      lead: "38 students, teams of 4. Nine teams fill, and two are still standing — a different colour, because they do not fit.",
+      goal: "Notice a remainder is a number with a job to do.",
+      pull: "The division will not come out exactly. That is the whole lesson.",
+      rail: { launch: "Fictional frame. Look at the deal — no working yet.",
+        monitor: ["Counting the full teams", "Noticing the two left over", "Wonding what happens to them"],
+        connect: "What are the last two for?",
+        misconception: "Thinking a remainder means the division was done wrong." } },
 
-    { phase: "launch", title: "What about the <em>last two</em>?",
-      lead: "38 students, teams of 4. The division does not come out exactly.",
-      goal: "Create the need — the leftover needs a decision, not just a number.",
-      pull: "Estimate the teams, then we will deal with the leftovers.",
-      rail: { launch: "How many teams? And then — what about the two left standing?",
-        monitor: ["Saying 9 remainder 2", "Saying 9 and a half", "Arguing about the last two"],
-        connect: "Does the maths tell you what to do with them?",
-        misconception: "Writing 9.5 teams." } },
+    { phase: "launch", title: "How many <em>full teams</em> of 4?",
+      lead: "38 ÷ 4. Lock the number of complete teams before the leftovers are decided.",
+      goal: "Create the need — the quotient and the remainder answer different questions.",
+      pull: "Nine in each group, and two that cannot be shared.",
+      rail: { launch: "Give the full-team count and say what you are ignoring.",
+        monitor: ["Counting full groups", "Estimating first", "Asking about the leftovers"],
+        connect: "What does 9 r 2 actually tell you?",
+        misconception: "Reading the remainder as an error to erase." } },
 
-    { phase: "monitor", title: "Deal them <em>out</em>",
-      lead: "One at a time, into four groups. Watch what is left at the end.",
-      goal: "See the remainder physically before naming it.",
-      pull: "The same 9 remainder 2 can mean three different things.",
-      rail: { launch: "Predict how many each group will get.",
-        monitor: ["Dealing evenly", "Counting each group", "Noticing the two that cannot go"],
-        connect: "Why can the last two not be shared?",
-        misconception: "Putting the last two in one group to make it fair-ish." } },
+    { phase: "monitor", title: "Zayd deals them <em>out</em>",
+      lead: "Twelve, twenty-four, thirty-six, all 38 — the deal shows the nine in each group and the two that stop.",
+      goal: "See the quotient and the remainder in the same picture.",
+      pull: "Nine in each group, and two that cannot be shared.",
+      rail: { launch: "Predict the leftovers before the deal finishes.",
+        monitor: ["Counting full groups", "Naming the remainder", "Checking 9 × 4 + 2"],
+        connect: "Why do exactly two stop?",
+        misconception: "Dealing the last two into a tenth group of four." } },
 
-    { phase: "monitor", title: "Three <em>questions</em>, three answers",
-      lead: "Same numbers. Same division. The question decides the answer.",
-      goal: "Drop it, round up, or report it — the story chooses.",
-      pull: "Now sort some questions by what they need.",
-      rail: { launch: "Read each question out loud before you tap.",
-        monitor: ["Matching question to action", "Always answering 9", "Explaining the car question"],
-        connect: "Which question needed the answer to go UP?",
-        misconception: "Giving the same answer to all three questions." } },
+    { phase: "monitor", title: "The numbers never changed — <em>the question did</em>",
+      lead: "Full teams? Cars needed? Left over? The same 38 ÷ 4 answers all three — differently.",
+      goal: "Change the question and the remainder's meaning changes with it.",
+      pull: "The numbers never changed. Only the question did.",
+      rail: { launch: "Before you tap: what is the question asking for?",
+        monitor: ["Dropping the remainder", "Rounding the quotient up", "Reporting the remainder"],
+        connect: "How did the answer change without the numbers changing?",
+        misconception: "Believing one division has only one answer." } },
 
-    { phase: "monitor", title: "What does the <em>remainder</em> mean here?",
-      lead: "Sort each question. No grading until the class commits.",
-      goal: "Apply the decision to unfamiliar stories.",
-      pull: "Two students answered the same problem differently — and both were right.",
-      rail: { launch: "Ask: does everyone still need to be carried?",
-        monitor: ["Reading the question carefully", "Answering by habit", "Explaining their choice"],
-        connect: "Which word in the question gave it away?",
-        misconception: "Deciding by the numbers instead of by the story." } },
+    { phase: "monitor", title: "What is the remainder <em>for</em>?",
+      lead: "Three honest endings for one division: drop it, round up, or report it. The story decides.",
+      goal: "Interpret the remainder as another group, leftovers, or an incomplete group.",
+      pull: "The story decides what to do with the remainder.",
+      rail: { launch: "Before you tap: which question is the gate asking?",
+        monitor: ["Naming the ending", "Justifying it with the story", "Checking the arithmetic"],
+        connect: "Which ending would be wrong for this story, and why?",
+        misconception: "Always rounding the quotient up, whatever the story." } },
 
-    { phase: "connect", title: "Two <em>right</em> answers",
-      lead: "Sana said 9. Ibrahim said 10. Neither made a mistake.",
+    { phase: "monitor", title: "Sort the <em>questions</em>",
+      lead: "Three box questions. Each one needs a different ending for its remainder.",
+      goal: "Match questions to remainder interpretations.",
+      pull: "Do I already know what the leftover is for?",
+      rail: { launch: "Say the ending before you place the question.",
+        monitor: ["Spotting the full-box question", "Spotting the hold-them-all question", "Spotting the leftovers question"],
+        connect: "What made each question different?",
+        misconception: "Counting the numbers in the question instead of the unknowns." } },
+
+    { phase: "connect", title: "Bashir said <em>9</em>. Ibrahim said <em>10</em>",
+      lead: "Bashir dropped the remainder. Ibrahim rounded up. They answered different questions — neither is wrong.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Defending 9", "Defending 10", "Noticing they answered different questions"],
-        connect: "What question was each of them answering?",
-        misconception: "Believing one of them must be wrong." } },
+        monitor: ["Naming the question each answered", "Checking both divided 38 by 4", "Saying which story needs which"],
+        connect: "Which question did the gate actually ask?",
+        misconception: "Believing the longer answer is the better one." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "One division. Three questions. Drop it, round up, or report it.",
+    { phase: "synth", title: "On the <em>board</em>: the story decides",
+      lead: "Divide. Then read the question again. Drop the remainder, round up, or report it — on purpose.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next row", "Naming the action", "Restating it in their own words"],
+        monitor: ["Re-reading the question", "Naming the ending", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Learning three rules instead of one habit — read the question." } },
+        misconception: "Answering 9 r 2 as if it were a final answer." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "One division, three honest endings. The question chooses.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the three actions", "Testing on a new story", "Checking with 9 × 4 + 2"],
-        connect: "How can you check a division with a remainder?",
-        misconception: "Forgetting the remainder when checking by multiplying back." } },
+        monitor: ["Naming the ending", "Checking with the story", "Testing on a new problem"],
+        connect: "Which ending is the hardest to get right?",
+        misconception: "Rounding up when the story asks for full groups." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Divide, then read the question again.",
-        monitor: ["Getting 8 r 2", "Rounding up to 9", "Answering 8"],
+      lead: "50 guests, tables of 6. How many tables so everyone has a seat?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Say the question before the arithmetic.",
+        monitor: ["Dividing 50 by 6", "Naming the ending", "Rounding up on purpose"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Answering 8 and leaving two guests standing." } },
+        misconception: "Answering 8 — the two standing guests have no seat." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The gate is <em>explained</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: dividing bigger numbers, one chunk at a time.",
-      rail: { launch: "Ask three students what they do with a remainder.",
-        monitor: ["Able to explain all three actions", "Still answers by habit", "Ready for partial quotients"],
+      pull: "Tomorrow: unload a useful chunk — take out the groups you can see.",
+      rail: { launch: "Ask three students to say which ending they chose and why.",
+        monitor: ["Able to explain the interpretation", "Still erases the remainder", "Ready for partial quotients"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -229,90 +274,179 @@ const LESSON = {
   Visual: function ({ i, award, game }) {
     const [dealt, setDealt] = useState(12);
     const [kind, setKind] = useState("drop");
+    const [gate, setGate] = useState(0);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawSportsDay} height={256} award={award}
-          notices={["There are 38 students", "Teams of 4", "Two are a different colour", "It will not come out evenly"]}
-          wonders={["How many teams?", "What happens to the last two?", "Can a team have 5?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The division that won't close"
+            text="38 students, teams of 4. Nine teams fill, and two are still standing at the gate — a different colour, because they do not fit."
+            clue="A remainder is a number with a job to do.">
+            <NoticeWonder draw={drawSportsDay} height={256} award={award}
+              notices={["There are 38 students", "Teams of 4", "Two are a different colour", "It will not come out evenly"]}
+              wonders={["How many teams?", "What happens to the last two?", "Can a team have 5?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawSportsDay} height={256} award={award}
-          label="How many full teams of 4?" min={4} max={16} start={9} unit="teams"
-          after="Locked. Now let us deal them out and see."
-          note="The division will not come out exactly. That is the whole lesson." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The full teams, before the leftovers"
+            text="Omar asks the gate's first question: 38 ÷ 4 — how many complete teams, exactly?"
+            clue="Nine in each group, and two that cannot be shared.">
+            <LaunchEstimate draw={drawSportsDay} height={256} award={award}
+              label="How many full teams of 4?" min={4} max={16} start={9} unit="teams"
+              after="Locked. Now let us deal them out and see."
+              note="The student count is simulated — the remainder idea works on any division." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeShare54(dealt)} height={256}
-          label="Deal the students out"
-          value={dealt}
-          onPick={(v) => setDealt(v)}
-          chips={[{ v: 12, label: "12 dealt" }, { v: 24, label: "24 dealt" }, { v: 36, label: "36 dealt" }, { v: 38, label: "all 38" }]}
-          caption={<MathEl omml={M.problem} size="xl" display="block" />}
-          footnote="Nine in each group, and two that cannot be shared." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd deals them out"
+            text="He can stop the deal anywhere — the class must see the full groups and the leftovers in the same picture."
+            clue="The quotient and the remainder live in the same deal.">
+            <ExploreChips draw={makeShare54(dealt)} height={256}
+              label="Deal the students out"
+              value={dealt}
+              onPick={(v) => setDealt(v)}
+              chips={[{ v: 12, label: "12 dealt" }, { v: 24, label: "24 dealt" }, { v: 36, label: "36 dealt" }, { v: 38, label: "all 38" }]}
+              caption={<MathEl omml={M.problem} size="xl" display="block" />}
+              footnote="Nine in each group, and two that cannot be shared." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeInterpret(kind)} height={258}
-          label="Change the question"
-          value={kind}
-          onPick={(v) => setKind(v)}
-          chips={[{ v: "drop", label: "full teams?" }, { v: "up", label: "cars needed?" }, { v: "rem", label: "left over?" }]}
-          caption={<MathEl omml={kind === "drop" ? M.quotient : kind === "up" ? M.roundUp : M.remainder} size="lg" display="block" />}
-          footnote="The numbers never changed. Only the question did." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The numbers never changed — the question did"
+            text="Omar changes the question at the gate, not the numbers: full teams? cars for everyone? what is left?"
+            clue="One division answers three questions — differently.">
+            <ExploreChips draw={makeInterpret(kind)} height={258}
+              label="Change the question"
+              value={kind}
+              onPick={(v) => setKind(v)}
+              chips={[{ v: "drop", label: "full teams?" }, { v: "up", label: "cars needed?" }, { v: "rem", label: "left over?" }]}
+              caption={<MathEl omml={kind === "drop" ? M.quotient : kind === "up" ? M.roundUp : M.remainder} size="lg" display="block" />}
+              footnote="The numbers never changed. Only the question did." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "k1", text: "How many full boxes of 4?", target: "drop" },
-            { id: "k2", text: "How many boxes to hold them all?", target: "up" },
-            { id: "k3", text: "How many will not fit in a full box?", target: "rem" }
-          ]}
-          targets={[
-            { id: "drop", label: "drop the remainder" },
-            { id: "up", label: "round the quotient up" },
-            { id: "rem", label: "the remainder is the answer" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The passengers left at the gate"
+            text="Zayd builds the gate scene: nine full cars, two waiting. Each honest ending is a different answer to a different question."
+            clue="The story decides what to do with the remainder.">
+            <ExploreChips draw={makeGate54(gate)} height={258}
+              label="What happens at the gate?"
+              value={gate}
+              onPick={(v) => setGate(v)}
+              chips={[{ v: 0, label: "the question" }, { v: 1, label: "drop" }, { v: 2, label: "round up" }, { v: 3, label: "report" }]}
+              caption={<MathEl omml={M.rule} size="lg" display="block" />}
+              footnote="Drop it, round up, or report it — on purpose, never by accident." />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Sana said 9", omml: M.quotient, h: 92,
-                  quote: "Only 9 teams are complete, so the answer is 9." }}
-          right={{ name: "Ibrahim said 10", omml: M.roundUp, h: 92,
-                   quote: "Every student needs a car, so we need 10." }}
-          same={["Both divided 38 by 4", "Both got 9 remainder 2", "Both used the remainder"]}
-          diff={["Sana dropped it, Ibrahim rounded up",
-                 "They answered different questions",
-                 "Neither of them is wrong"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Sort the questions"
+            text="Omar and Zayd lay three box questions on the table. Each one needs a different ending for its remainder."
+            clue="Do I already know what the leftover is for?">
+            <CardSort award={award} columns={3}
+              items={[
+                { id: "k1", text: "How many full boxes of 4?", target: "drop" },
+                { id: "k2", text: "How many boxes to hold them all?", target: "up" },
+                { id: "k3", text: "How many will not fit in a full box?", target: "rem" }
+              ]}
+              targets={[
+                { id: "drop", label: "drop the remainder" },
+                { id: "up", label: "round the quotient up" },
+                { id: "rem", label: "the remainder is the answer" }
+              ]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard54} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, two right answers"
+            text="Bashir said 9 — full teams. Ibrahim said 10 — cars for everyone. Different questions, different endings."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Bashir said 9", omml: M.quotient, h: 92,
+                      quote: "Only 9 teams are complete, so the answer is 9." }}
+              right={{ name: "Ibrahim said 10", omml: M.roundUp, h: 92,
+                       quote: "Every student needs a car, so we need 10." }}
+              same={["Both divided 38 by 4", "Both got 9 remainder 2", "Both used the remainder"]}
+              diff={["Bashir dropped it, Ibrahim rounded up",
+                     "They answered different questions",
+                     "Neither of them is wrong"]} />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "the story decides what to do with the remainder" }]}
-          hand={"divide \u00b7 then read the question again \u00b7 drop it, round up, or report it"}
-          cards={[
-            { title: "The division we did", omml: M.problem, note: "9 in each group, 2 left over" },
-            { title: "Tap to check it", omml: M.remainder, revealOmml: M.check, reveal: true,
-              note: "multiply back and add the remainder" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The story decides — on the board"
+            text="Zayd builds only what the class can justify: the division, the re-read question, the chosen ending."
+            clue="Divide · then read the question again · drop it, round up, or report it.">
+            <BoardScreen draw={drawBoard54} height={430}
+              caption="The story decides what to do with the remainder." />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="50 guests are seated at tables of 6. How many tables are needed so everyone has a seat?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "8" }, { v: "b", text: "9" }, { v: "c", text: "2" }, { v: "d", text: "8 r 2" }]}
-          right="b"
-          support={{
-            yes: "Yes — 8 full tables and 2 guests left, so a 9th table is needed.",
-            notYet: "Not yet — where do the last two guests sit?",
-            draw: drawSupport54, h: 92,
-            hint: "8 tables seat 48. Two guests are still standing."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="One division, three honest endings. The question chooses; the arithmetic obeys."
+            clue="The remainder is never an error — it is a number waiting for its job.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "the story decides what to do with the remainder" }]}
+              hand={"divide · then read the question again · drop it, round up, or report it"}
+              cards={[
+                { title: "The division we did", omml: M.problem, note: "9 in each group, 2 left over" },
+                { title: "Tap to check it", omml: M.remainder, revealOmml: M.check, reveal: true,
+                  note: "multiply back and add the remainder" }
+              ]} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Share something at home that does not divide evenly, and say out loud what you did with the leftovers." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the gate report"
+            text="50 guests, tables of 6. Say the question — then the ending."
+            clue="The two standing guests still need a seat.">
+            <ShowWhatYouKnow award={award}
+              prompt="50 guests are seated at tables of 6. How many tables are needed so everyone has a seat?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "8" }, { v: "b", text: "9" }, { v: "c", text: "2" }, { v: "d", text: "8 r 2" }]}
+              right="b"
+              support={{
+                yes: "Yes — 8 full tables and 2 guests left, so a 9th table is needed.",
+                notYet: "Not yet — where do the last two guests sit?",
+                draw: drawSupport54, h: 92,
+                hint: "8 tables seat 48. Two guests are still standing."
+              }} />
+          </StoryShell>
+        );
+
+      case 10:
+        return (
+          <StoryHandoff
+            title="The gate is explained"
+            text="Omar signs the gate report: every remainder interpreted, every ending justified. The next manifest is long — the plan is to unload in useful chunks, the groups you can see straight away."
+            artifact="Caravan schedule · remainders interpreted"
+            next="Unload a useful chunk — take out the groups you can see, instead of one group at a time.">
+            <Closing game={game} omml={M.rule}
+              action="Share something at home that does not divide evenly, and say out loud what you did with the leftovers." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

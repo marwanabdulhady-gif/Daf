@@ -205,7 +205,7 @@ const LESSON = {
         misconception: "Writing 0.34 + 0.5 = 0.39." } },
 
     { phase: "connect", title: "Two ways to <em>check</em>",
-      lead: "Hala added the answer back. Reem shaded a grid to see it.",
+      lead: "Qais added the answer back. Anees shaded a grid to see it.",
       goal: "Every subtraction can be checked by adding.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one catches a regrouping slip.",
@@ -295,12 +295,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — add it back", omml: M.checkBack, h: 92,
+          left={{ name: "Qais's way — add it back", omml: M.checkBack, h: 92,
             quote: "0.34 plus 0.28 gives 0.62, so my subtraction was right." }}
-          right={{ name: "Reem's way — shade a grid", omml: M.subModel, h: 92,
+          right={{ name: "Anees's way — shade a grid", omml: M.subModel, h: 92,
             quote: "I shaded 62 and rubbed out 28. Thirty four left." }}
           same={["Both check the same answer", "Both use hundredths", "Both agree"]}
-          diff={["Hala uses arithmetic", "Reem uses a picture", "Hala's is quicker in a test"]} />;
+          diff={["Qais uses arithmetic", "Anees uses a picture", "Qais's is quicker in a test"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard173} height={430} />;

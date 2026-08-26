@@ -268,12 +268,12 @@ const LESSON = {
         misconception: "Using the quotient instead of the remainder." } },
 
     { phase: "connect", title: "Two ways to reach tile <em>twenty</em>",
-      lead: "Salma drew all twenty. Ibrahim divided twenty by three.",
+      lead: "Khalil drew all twenty. Ibrahim divided twenty by three.",
       goal: "Drawing works but does not scale; division does.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one survives tile one thousand.",
         monitor: ["Drawing them all", "Dividing", "Checking they agree"],
-        connect: "What is the risk in Salma's method?",
+        connect: "What is the risk in Khalil's method?",
         misconception: "Believing division is guessing." } },
 
     { phase: "synth", title: "On the <em>board</em>",
@@ -359,12 +359,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Salma's way — draw them all", omml: M.wrongWay, h: 92,
+          left={{ name: "Khalil's way — draw them all", omml: M.wrongWay, h: 92,
             quote: "I drew twenty shapes and looked at the last one." }}
           right={{ name: "Ibrahim's way — divide", omml: M.worked, h: 92,
             quote: "Twenty divided by three is six remainder two. Second shape of the core." }}
           same={["Both give a moon", "Both use the core of three", "Both are correct here"]}
-          diff={["Salma draws twenty shapes", "Ibrahim does one division", "Only Ibrahim's reaches tile 1,000"]} />;
+          diff={["Khalil draws twenty shapes", "Ibrahim does one division", "Only Ibrahim's reaches tile 1,000"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard143} height={430} />;

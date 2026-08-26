@@ -138,92 +138,93 @@ const LESSON = {
   ixl: ["GE8", "DKK", "2UB"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Three divisions side by side. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "They are all division. They do not all want the same treatment.",
-      rail: { launch: "I am not asking you to solve any of them. Just look at the numbers.",
-        monitor: ["Noticing the zeros in 2,400", "Saying 738 looks hard", "Noticing 52 is small"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Treating every division as the same kind of job." } },
+    { phase: "warmup", title: "Three jobs at the <em>gate</em>",
+      lead: "2,400 ÷ 6, 738 ÷ 6 and 52 ÷ 4 wait at the gate — one barely needs any work at all.",
+      goal: "Notice the numbers invite different strategies.",
+      pull: "Would I do them the same way?",
+      rail: { launch: "Fictional frame. Read the three jobs — no working yet.",
+        monitor: ["Noticing the zeros in 2,400", "Noticing 738 is the biggest", "Noticing 52 is small"],
+        connect: "Which job looks easiest, and why?",
+        misconception: "Using one method for everything, out of habit." } },
 
-    { phase: "launch", title: "Three jobs, three <em>different tools</em>",
-      lead: "2,400 ÷ 6, 738 ÷ 6 and 52 ÷ 4. Same operation, very different numbers.",
-      goal: "Create the need — strategy choice is a decision, not a habit.",
-      pull: "Estimate one, then we will pick methods.",
-      rail: { launch: "Which of these three would you do first, and why that one?",
-        monitor: ["Choosing the easiest", "Choosing left to right", "Spotting the zeros"],
-        connect: "What made one of them look easier?",
-        misconception: "Using the most recently taught method for everything." } },
+    { phase: "launch", title: "Estimate <em>738 ÷ 6</em> first",
+      lead: "The middle job needs an estimate before any method is chosen — 6 × 100 = 600, so about 120.",
+      goal: "Create the need — the estimate is the safety net for every method.",
+      pull: "One of these three barely needs any work at all.",
+      rail: { launch: "Give the estimate and the compatible number you used.",
+        monitor: ["Using 600", "Saying about 120", "Comparing to the other jobs"],
+        connect: "Why estimate before choosing the method?",
+        misconception: "Choosing the method and estimating after the fact." } },
 
-    { phase: "monitor", title: "Match the numbers to a <em>method</em>",
-      lead: "Tap each division and see which strategy fits it.",
-      goal: "Link a feature of the numbers to a choice of method.",
-      pull: "There is one step you do whatever you choose.",
-      rail: { launch: "Predict the method before you tap.",
-        monitor: ["Spotting zeros", "Spotting big easy chunks", "Defaulting to one method"],
-        connect: "What feature did you look at first?",
-        misconception: "Choosing by the size of the numbers alone." } },
+    { phase: "monitor", title: "Zayd matches <em>jobs to methods</em>",
+      lead: "Zeros and a fact? In your head. Big with easy chunks? Partial quotients. Small? Share it.",
+      goal: "Match each division to the strategy its numbers invite.",
+      pull: "The feature you spot in the numbers is what picks the method.",
+      rail: { launch: "Before you tap: what feature does the job have?",
+        monitor: ["Spotting the zeros", "Spotting the easy chunks", "Spotting the small dividend"],
+        connect: "What feature did you use to choose?",
+        misconception: "Picking the method before reading the numbers." } },
 
-    { phase: "monitor", title: "Estimate <em>first</em>, always",
-      lead: "Three answers are offered. An estimate kills two of them straight away.",
-      goal: "The estimate is the safety net for every method.",
-      pull: "Now sort some divisions by the method they deserve.",
-      rail: { launch: "Before you tap: which answers are obviously impossible?",
-        monitor: ["Estimating with 6 x 100", "Checking digit counts", "Calculating exactly"],
-        connect: "How did the estimate rule out 13 and 1,230?",
-        misconception: "Trusting a calculated answer without sizing it up." } },
+    { phase: "monitor", title: "The <em>estimate gate</em>",
+      lead: "Three answers walk in. The estimate lets the disasters out and the reasonable ones through.",
+      goal: "Whatever the method, an estimate catches the disasters.",
+      pull: "Whatever method you choose, an estimate catches the disasters.",
+      rail: { launch: "Before the gate: which answers survive?",
+        monitor: ["Checking each answer against the estimate", "Flagging the place-value slip", "Letting the reasonable ones through"],
+        connect: "What would the estimate have caught?",
+        misconception: "Trusting the method's answer without a check." } },
 
-    { phase: "monitor", title: "Sort by <em>strategy</em>",
-      lead: "Which method does each division deserve? No grading until the class commits.",
-      goal: "Apply the decision to unfamiliar numbers.",
-      pull: "Two students chose differently on the same division.",
-      rail: { launch: "Look at the numbers before you look at the options.",
-        monitor: ["Spotting zeros", "Spotting chunks", "Defaulting to partial quotients"],
-        connect: "Which one was hardest to place, and why?",
-        misconception: "Sorting by the size of the answer." } },
+    { phase: "monitor", title: "Sort the <em>jobs</em>",
+      lead: "Three more jobs at the gate. Each one invites exactly one strategy.",
+      goal: "Choose the division strategy the numbers invite.",
+      pull: "Read the numbers before you pick a method.",
+      rail: { launch: "Say the feature before you place the job.",
+        monitor: ["Sending 3,600 ÷ 9 to mental math", "Sending 894 ÷ 6 to chunks", "Sending 64 ÷ 4 to sharing"],
+        connect: "Which feature decided each choice?",
+        misconception: "Sorting by the size of the numbers only." } },
 
-    { phase: "connect", title: "Two students, <em>two choices</em>",
-      lead: "Aisha did 738 ÷ 6 with chunks. Talal shared place by place. Both got 123.",
+    { phase: "connect", title: "Nidal <em>chunks</em>. Talal <em>shares</em>",
+      lead: "Nidal: 100, then 20, then 3. Talal: hundreds, tens, ones. Both get 123 — and both check against the estimate.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Defending a choice", "Counting steps", "Changing their mind with reason"],
-        connect: "Is Talal wrong? What would you say to him?",
-        misconception: "Thinking a slower correct method is a mistake." } },
+        monitor: ["Comparing chunk choices", "Comparing fixed order", "Checking both use the estimate"],
+        connect: "When does chunk-choice beat fixed order?",
+        misconception: "Believing one strategy is the best for every job." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Ask three questions of the numbers. Then estimate. Then calculate.",
+    { phase: "synth", title: "On the <em>board</em>: read the numbers first",
+      lead: "Zeros and a fact? Head. Big with easy chunks? Chunks. Small? Share it. Always estimate first.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Asking the questions in order", "Skipping to the last", "Restating it in their own words"],
+        monitor: ["Naming the feature", "Choosing the method", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Reading the flow chart as a rule rather than a habit of looking." } },
+        misconception: "Forgetting the estimate when the method is familiar." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "The method serves the numbers, not the other way round.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the feature they look for", "Testing on a new division", "Estimating first"],
-        connect: "Which method never lets you down, even when it is slow?",
-        misconception: "Believing there is one best method for everything." } },
+        monitor: ["Naming the feature", "Choosing the method", "Checking with the estimate"],
+        connect: "Which method would you pick for 4,800 ÷ 8, and why?",
+        misconception: "Answering 60 — the method was right, the place was not." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Name your strategy, then use it.",
-        monitor: ["Spotting the basic fact", "Counting zeros", "Doing long division"],
+      lead: "4,800 ÷ 8 — the method first, then the answer.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Say the feature, the method, the answer.",
+        monitor: ["Spotting the zeros", "Choosing mental math", "Keeping the hundreds place"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Answering 60 instead of 600." } },
+        misconception: "Answering 600 — the place kept was wrong." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The gate is <em>staffed</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: division inside a story with more than one step.",
-      rail: { launch: "Ask three students what they look at first.",
-        monitor: ["Able to explain it to someone else", "Still defaults to one method", "Ready to model problems"],
+      pull: "Tomorrow: the dispatch board — the full allocation, and two districts with competing reports.",
+      rail: { launch: "Ask three students to say a feature, a method, a check.",
+        monitor: ["Able to explain the choice", "Still uses one method always", "Ready for the dispatch board"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -234,86 +235,158 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawThreeJobs} height={252} award={award}
-          notices={["2,400 has zeros", "738 is the biggest", "52 is small", "They all divide by a single digit"]}
-          wonders={["Would I do them the same way?", "Which is quickest?", "Is there a rule for choosing?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Three jobs at the gate"
+            text="2,400 ÷ 6, 738 ÷ 6 and 52 ÷ 4 wait at the gate. One of them barely needs any work at all."
+            clue="The numbers invite different strategies.">
+            <NoticeWonder draw={drawThreeJobs} height={252} award={award}
+              notices={["2,400 has zeros", "738 is the biggest", "52 is small", "They all divide by a single digit"]}
+              wonders={["Would I do them the same way?", "Which is quickest?", "Is there a rule for choosing?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawThreeJobs} height={252} award={award}
-          label="Estimate 738 ÷ 6" min={50} max={300} start={120} unit=""
-          after="Locked. Now let us match each job to a method."
-          note="One of these three barely needs any work at all." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The estimate before the method"
+            text="Omar sets the gate's first rule: estimate the middle job before any method is chosen."
+            clue="6 × 100 = 600, so 738 ÷ 6 is about 120.">
+            <LaunchEstimate draw={drawThreeJobs} height={252} award={award}
+              label="Estimate 738 ÷ 6" min={50} max={300} start={120} unit=""
+              after="Locked. Now let us match each job to a method."
+              note="The job counts are simulated — the choosing works on any division." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeChooser59(id)} height={252}
-          label="Tap a division"
-          value={id}
-          onPick={(v) => setId(v)}
-          chips={CASES.map((c) => ({ v: c.id, label: c.label }))}
-          caption={<MathEl omml={id === "mental" ? M.mental : id === "chunk" ? M.chunk : M.share} size="lg" display="block" />}
-          footnote="The feature you spot in the numbers is what picks the method." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd matches jobs to methods"
+            text="He can open any job — the class must name the feature that picks its method."
+            clue="The feature you spot in the numbers is what picks the method.">
+            <ExploreChips draw={makeChooser59(id)} height={252}
+              label="Tap a division"
+              value={id}
+              onPick={(v) => setId(v)}
+              chips={CASES.map((c) => ({ v: c.id, label: c.label }))}
+              caption={<MathEl omml={id === "mental" ? M.mental : id === "chunk" ? M.chunk : M.share} size="lg" display="block" />}
+              footnote="The feature you spot in the numbers is what picks the method." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeEstimateGate(on)} height={252}
-          label="Which answers survive an estimate?"
-          value={on ? 1 : 0}
-          onPick={(v) => setOn(v === 1)}
-          chips={[{ v: 0, label: "three answers" }, { v: 1, label: "estimate first" }]}
-          caption={<MathEl omml={M.estimateFirst} size="lg" display="block" />}
-          footnote="Whatever method you choose, an estimate catches the disasters." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar runs the estimate gate"
+            text="Three answers walk in. The estimate lets the disasters out and the reasonable ones through."
+            clue="Whatever the method, an estimate catches the disasters.">
+            <ExploreChips draw={makeEstimateGate(on)} height={252}
+              label="Which answers survive an estimate?"
+              value={on ? 1 : 0}
+              onPick={(v) => setOn(v === 1)}
+              chips={[{ v: 0, label: "three answers" }, { v: 1, label: "estimate first" }]}
+              caption={<MathEl omml={M.estimateFirst} size="lg" display="block" />}
+              footnote="Whatever method you choose, an estimate catches the disasters." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "c1", text: "3,600 ÷ 9", target: "mental" },
-            { id: "c2", text: "894 ÷ 6", target: "chunk" },
-            { id: "c3", text: "64 ÷ 4", target: "share" }
-          ]}
-          targets={[
-            { id: "mental", label: "mental math — a fact with zeros" },
-            { id: "chunk", label: "partial quotients" },
-            { id: "share", label: "share by place value" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Sort the jobs"
+            text="Omar and Zayd lay three more jobs on the board. Each one invites exactly one strategy."
+            clue="Say the feature before you place the job.">
+            <CardSort award={award} columns={3}
+              items={[
+                { id: "c1", text: "3,600 ÷ 9", target: "mental" },
+                { id: "c2", text: "894 ÷ 6", target: "chunk" },
+                { id: "c3", text: "64 ÷ 4", target: "share" }
+              ]}
+              targets={[
+                { id: "mental", label: "mental math — a fact with zeros" },
+                { id: "chunk", label: "partial quotients" },
+                { id: "share", label: "share by place value" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Aisha's way — chunks", omml: M.chunk, h: 92,
-                  quote: "I took out 100 groups, then 20, then 3." }}
-          right={{ name: "Talal's way — place by place", omml: M.share, h: 92,
-                   quote: "Hundreds, then tens, then ones." }}
-          same={["Both get 123", "Both work from the biggest units", "Both check against an estimate"]}
-          diff={["Aisha chooses her chunks", "Talal follows a fixed order",
-                 "Aisha finishes in fewer steps when she spots a big chunk"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 123"
+            text="Nidal chooses chunks — 100, then 20, then 3. Talal follows the places. Both check against the estimate."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Nidal's way — chunks", omml: M.chunk, h: 92,
+                      quote: "I took out 100 groups, then 20, then 3." }}
+              right={{ name: "Talal's way — place by place", omml: M.share, h: 92,
+                       quote: "Hundreds, then tens, then ones." }}
+              same={["Both get 123", "Both work from the biggest units", "Both check against an estimate"]}
+              diff={["Nidal chooses her chunks", "Talal follows a fixed order",
+                     "Nidal finishes in fewer steps when she spots a big chunk"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard59} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The choosing is drawn, not declared"
+            text="Zayd builds only what the class can justify: the feature named, the method chosen, the estimate held behind it."
+            clue="Read the numbers before you pick a method.">
+            <BoardScreen draw={drawBoard59} height={430}
+              caption="Read the numbers before you pick a method." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "read the numbers before you pick a method" }]}
-          hand={"zeros and a fact? in your head \u00b7 big with easy chunks? partial quotients \u00b7 small? share it \u00b7 always estimate first"}
-          cards={[
-            { title: "The easy one", omml: M.mental, note: "2,400 \u00f7 6 needs no working at all" },
-            { title: "Tap for the safety net", omml: M.chunk, revealOmml: M.estimateFirst, reveal: true,
-              note: "every method needs an estimate behind it" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The method serves the numbers, not the other way round."
+            clue="The estimate is the safety net for every method.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "read the numbers before you pick a method" }]}
+              hand={"zeros and a fact? in your head · big with easy chunks? partial quotients · small? share it · always estimate first"}
+              cards={[
+                { title: "The easy one", omml: M.mental, note: "2,400 ÷ 6 needs no working at all" },
+                { title: "Tap for the safety net", omml: M.chunk, revealOmml: M.estimateFirst, reveal: true,
+                  note: "every method needs an estimate behind it" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="What is 4,800 ÷ 8?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "60" }, { v: "b", text: "600" }, { v: "c", text: "6,000" }, { v: "d", text: "6" }]}
-          right="b"
-          support={{
-            yes: "Yes — 48 ÷ 8 = 6, and 48 hundreds shared by 8 is 6 hundreds.",
-            notYet: "Not yet — this one is a basic fact with zeros. No long working needed.",
-            draw: drawSupport59, h: 96,
-            hint: "4,800 is 48 hundreds. What is 48 ÷ 8?"
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the gate log"
+            text="4,800 ÷ 8. Say the feature — then the method — then the answer."
+            clue="48 hundreds ÷ 8 is 6 hundreds.">
+            <ShowWhatYouKnow award={award}
+              prompt="What is 4,800 ÷ 8?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "60" }, { v: "b", text: "600" }, { v: "c", text: "6,000" }, { v: "d", text: "6" }]}
+              right="b"
+              support={{
+                yes: "Yes — 48 ÷ 8 = 6, and 48 hundreds shared by 8 is 6 hundreds.",
+                notYet: "Not yet — this one is a basic fact with zeros. No long working needed.",
+                draw: drawSupport59, h: 96,
+                hint: "4,800 is 48 hundreds. What is 48 ÷ 8?"
+              }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Pick any division at home, say which strategy it deserves, estimate, then do it." />;
+        return (
+          <StoryHandoff
+            title="The gate is staffed"
+            text="Omar signs the gate log: every job matched to its method, every answer checked by estimate. The last board of the caravan is the dispatch board itself — the full allocation, and two districts already arguing about what it means."
+            artifact="Caravan schedule · strategies chosen"
+            next="The dispatch board: the full allocation — and two districts with competing impact reports.">
+            <Closing game={game} omml={M.rule}
+              action="Pick any division at home, say which strategy it deserves, estimate, then do it." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

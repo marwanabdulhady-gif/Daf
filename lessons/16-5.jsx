@@ -271,7 +271,7 @@ const LESSON = {
         misconception: "Accepting a drawing because it looks balanced." } },
 
     { phase: "connect", title: "Two ways to <em>complete it</em>",
-      lead: "Layla reflected every corner. Omar traced the half and flipped the tracing over.",
+      lead: "Layth reflected every corner. Omar traced the half and flipped the tracing over.",
       goal: "Both methods implement the same reflection.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one you can do on a whiteboard.",
@@ -361,12 +361,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Layla's way — reflect each corner", omml: M.mirrorPoint, h: 92,
+          left={{ name: "Layth's way — reflect each corner", omml: M.mirrorPoint, h: 92,
             quote: "I counted the squares for every corner, then joined them." }}
           right={{ name: "Omar's way — trace and flip", omml: M.checkFold, h: 92,
             quote: "I traced the half, flipped the paper over and drew round it." }}
           same={["Both give the same shape", "Both make the fold work", "Both keep distances equal"]}
-          diff={["Layla counts squares", "Omar uses tracing paper", "Layla's works on a whiteboard"]} />;
+          diff={["Layth counts squares", "Omar uses tracing paper", "Layth's works on a whiteboard"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard165} height={430} />;

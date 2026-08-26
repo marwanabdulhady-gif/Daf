@@ -136,92 +136,84 @@ const LESSON = {
   ixl: ["CWE"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "A number line with some marks picked out. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Some of those numbers divide neatly. Most do not.",
-      rail: { launch: "I am not asking you to divide anything. Just look at the marks.",
-        monitor: ["Noticing the marks are spaced evenly", "Reading the divisions underneath", "Spotting the orange dot"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Assuming the nearest mark is always the best one to use." } },
+    { phase: "warmup", title: "Marks that <em>divide exactly</em>",
+      lead: "On the number line, some marks divide by 6 with nothing left over — and 245 sits between two of them.",
+      goal: "Notice that an estimate can be a number that divides cleanly.",
+      pull: "Why not just round? Some nearby numbers divide — and some do not.",
+      rail: { launch: "Fictional frame. Look at the marks — no working yet.",
+        monitor: ["Noticing the even gaps", "Finding 240 and 300", "Wonding which mark to use"],
+        connect: "What do all the green marks have in common?",
+        misconception: "Rounding first and checking later." } },
 
-    { phase: "launch", title: "Two hundred and forty-five bottles, <em>six classes</em>",
-      lead: "245 bottles shared between 6 classes. Nobody needs the exact number yet.",
-      goal: "Create the need — an estimate is enough, and it must be easy.",
-      pull: "Estimate first, then we will find a friendly number.",
-      rail: { launch: "No pencils. About how many each?",
-        monitor: ["Trying the exact division", "Rounding to the nearest hundred", "Looking for a number that divides"],
-        connect: "What makes a number easy to divide by 6?",
-        misconception: "Rounding to the nearest ten even when it does not divide." } },
+    { phase: "launch", title: "About how many <em>bottles per class</em>?",
+      lead: "245 water bottles, 6 classes. The caravan master needs a fast number, not a slow one.",
+      goal: "Create the need — 6 does not go into 245 neatly, but it goes into 240.",
+      pull: "The bottle count is simulated — the compatible idea works on any manifest.",
+      rail: { launch: "Give a per-class number and the mark you used.",
+        monitor: ["Picking 240", "Picking 245 and dividing anyway", "Estimating by rounding only"],
+        connect: "Why is 240 easier than 245?",
+        misconception: "Rounding 245 to 250, which 6 does not divide." } },
 
-    { phase: "monitor", title: "Find a <em>compatible number</em>",
-      lead: "Not the nearest number — the nearest number the divisor goes into exactly.",
-      goal: "Compatible numbers are chosen for divisibility, not for nearness.",
-      pull: "Which choice gets you closest?",
-      rail: { launch: "Predict which mark you would use before you tap.",
-        monitor: ["Choosing a multiple of the divisor", "Choosing the nearest round number", "Testing by dividing"],
-        connect: "Why is a multiple of 6 so much easier here?",
-        misconception: "Confusing rounding with finding a compatible number." } },
+    { phase: "monitor", title: "Zayd picks a <em>compatible number</em>",
+      lead: "180, 240, 300 — each divides by 6 exactly. Compatible means the divisor goes in with nothing left over.",
+      goal: "Choose the compatible number that is also close.",
+      pull: "Compatible means the divisor goes into it with nothing left over.",
+      rail: { launch: "Before you tap: which mark would you trust?",
+        monitor: ["Choosing 240", "Checking 180 divides", "Comparing closeness"],
+        connect: "Which compatible number is closest to 245?",
+        misconception: "Picking a number that divides but is far away." } },
 
-    { phase: "monitor", title: "How <em>close</em> did you get?",
-      lead: "Compare each candidate against the exact answer.",
-      goal: "A good estimate is close AND easy.",
-      pull: "Now sort some answers for reasonableness.",
-      rail: { launch: "Predict which will be closest before you tap.",
-        monitor: ["Measuring the gap", "Preferring the easiest", "Balancing both"],
-        connect: "Would you rather be closer, or faster?",
-        misconception: "Believing the closest estimate is always worth the extra work." } },
+    { phase: "monitor", title: "Omar compares the <em>candidates</em>",
+      lead: "Each candidate is easy — but only some are close. Closer is better, but only if it is still easy.",
+      goal: "Judge a compatible estimate by ease and closeness together.",
+      pull: "Closer is better — but only if it is still easy.",
+      rail: { launch: "Before you tap: which candidate earns the trust?",
+        monitor: ["Comparing 180 and 240", "Saying 240 is closer", "Checking both are easy"],
+        connect: "What makes 240 the better candidate than 180?",
+        misconception: "Picking the closest number even if it does not divide." } },
 
-    { phase: "monitor", title: "Reasonable or <em>not</em>?",
-      lead: "Sort each answer against your estimate. No grading until the class commits.",
-      goal: "Use an estimate to catch a wrong answer.",
-      pull: "Two students chose different compatible numbers.",
-      rail: { launch: "Estimate first, then judge each answer.",
-        monitor: ["Comparing against the estimate", "Checking the digit count", "Dividing exactly"],
-        connect: "Which one was obviously wrong, and how did you know?",
-        misconception: "Judging by whether the answer looks tidy." } },
+    { phase: "monitor", title: "Which estimates <em>survive</em>?",
+      lead: "Four claimed estimates for 245 ÷ 6. The compatible number catches the disasters.",
+      goal: "Flag an estimate that cannot be right.",
+      pull: "Close to my estimate — or nowhere near.",
+      rail: { launch: "Compare each claim to your compatible estimate before you sort.",
+        monitor: ["Comparing claims to 40", "Spotting 4 as too small", "Spotting 400 as too big"],
+        connect: "What made the impossible estimates impossible?",
+        misconception: "Accepting a tidy-looking estimate." } },
 
-    { phase: "connect", title: "Two <em>friendly numbers</em>",
-      lead: "Dalia used 240. Majed used 180. Both are compatible with 6.",
+    { phase: "connect", title: "Anas uses <em>240</em>. Majed uses <em>180</em>",
+      lead: "Anas: 240, nearly exact. Majed: 180, safely low. Both are honest estimates.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Choosing below", "Choosing above", "Choosing for a purpose"],
-        connect: "If you must not run short, which estimate do you want?",
-        misconception: "Believing there is only one compatible number." } },
+        monitor: ["Comparing closeness", "Comparing ease", "Saying which decision needs which"],
+        connect: "When is a safely-low estimate the right one?",
+        misconception: "Believing only the closest estimate counts." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Look for the nearest number the divisor goes into exactly. Divide that instead.",
+    { phase: "synth", title: "On the <em>board</em>: the nearest number the divisor goes into",
+      lead: "Look for the nearest multiple of the divisor. Divide that. Use it to check the real answer.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Naming the multiple", "Restating it in their own words"],
+        monitor: ["Finding the compatible mark", "Dividing it", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Rounding first and hoping it divides." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the compatible number", "Testing on a new division", "Checking the direction of the error"],
-        connect: "If you estimate with a bigger number, is your answer too big or too small?",
-        misconception: "Forgetting that a bigger dividend gives a bigger quotient." } },
+        misconception: "Rounding without checking the divisor goes in." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Show the compatible number you used.",
-        monitor: ["Finding a multiple of 7", "Rounding instead", "Dividing exactly"],
+      lead: "430 ÷ 7 — the compatible number first.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Say the compatible number aloud.",
+        monitor: ["Finding 420", "Dividing 420 by 7", "Checking closeness"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Rounding 430 to 400, which 7 does not divide." } },
+        misconception: "Estimating 40 — the place was dropped." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The range is <em>agreed</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: the same idea with much bigger numbers.",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the line", "Ready for the next step"],
+      pull: "Tomorrow: a larger manifest — the dividend is too big for the first strategy.",
+      rail: { launch: "Ask three students to say their compatible number.",
+        monitor: ["Able to explain the choice", "Still rounds without checking", "Ready for bigger dividends"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -232,78 +224,133 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeCompat(240)} height={254} award={award}
-          notices={["The marks are evenly spaced", "Each one divides exactly", "The orange dot is between two marks", "6 goes into all of them"]}
-          wonders={["Which mark should I use?", "Why not just round?", "How close will I get?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Marks that divide exactly"
+            text="On the manifest's number line, some marks divide by 6 with nothing left over — and 245 bottles sits between two of them."
+            clue="An estimate can be a number that divides cleanly.">
+            <NoticeWonder draw={makeCompat(240)} height={254} award={award}
+              notices={["The marks are evenly spaced", "Each one divides exactly", "The orange dot is between two marks", "6 goes into all of them"]}
+              wonders={["Which mark should I use?", "Why not just round?", "How close will I get?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStory52} height={254} award={award}
-          label="About how many bottles per class?" min={20} max={80} start={40} unit="bottles"
-          after="Locked. Now let us find a number that divides neatly."
-          note="6 does not go into 245 neatly. But it goes into 240 perfectly." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="A fast number, not a slow one"
+            text="Omar asks the transport team's question: 245 bottles, 6 classes — about how many each, quickly?"
+            clue="6 does not go into 245 neatly — but it goes into 240.">
+            <LaunchEstimate draw={drawStory52} height={254} award={award}
+              label="About how many bottles per class?" min={20} max={80} start={40} unit="bottles"
+              after="Locked. Now let us find a number that divides neatly."
+              note="The bottle count is simulated — the compatible idea works on any manifest." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeCompat(pick)} height={254}
-          label="Pick a compatible number"
-          value={pick}
-          onPick={(v) => setPick(v)}
-          chips={[{ v: 180, label: "180" }, { v: 240, label: "240" }, { v: 300, label: "300" }]}
-          caption={<MathEl omml={M.compatible} size="xl" display="block" />}
-          footnote="Compatible means the divisor goes into it with nothing left over." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd picks a compatible number"
+            text="He can test any candidate mark — the class must say which one divides exactly and is also close."
+            clue="Compatible means the divisor goes into it with nothing left over.">
+            <ExploreChips draw={makeCompat(pick)} height={254}
+              label="Pick a compatible number"
+              value={pick}
+              onPick={(v) => setPick(v)}
+              chips={[{ v: 180, label: "180" }, { v: 240, label: "240" }, { v: 300, label: "300" }]}
+              caption={<MathEl omml={M.compatible} size="xl" display="block" />}
+              footnote="Compatible means the divisor goes into it with nothing left over." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeClose52(close)} height={254}
-          label="Compare the candidates"
-          value={close}
-          onPick={(v) => setClose(v)}
-          chips={[{ v: 180, label: "180" }, { v: 240, label: "240" }, { v: 300, label: "300" }]}
-          caption={<MathEl omml={M.exact} size="lg" display="block" />}
-          footnote="Closer is better — but only if it is still easy." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar compares the candidates"
+            text="Each candidate is easy — the question is which one is also close enough to trust."
+            clue="Closer is better — but only if it is still easy.">
+            <ExploreChips draw={makeClose52(close)} height={254}
+              label="Compare the candidates"
+              value={close}
+              onPick={(v) => setClose(v)}
+              chips={[{ v: 180, label: "180" }, { v: 240, label: "240" }, { v: 300, label: "300" }]}
+              caption={<MathEl omml={M.exact} size="lg" display="block" />}
+              footnote="Closer is better — but only if it is still easy." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[{ id: "a1", text: "245 ÷ 6 ≈ 41", target: "ok" }, { id: "a2", text: "245 ÷ 6 ≈ 4", target: "no" }, { id: "a3", text: "245 ÷ 6 ≈ 400", target: "no" }, { id: "a4", text: "245 ÷ 6 ≈ 40", target: "ok" }]}
-          targets={[
-            { id: "ok", label: "reasonable — close to my estimate" },
-            { id: "no", label: "not reasonable — nowhere near" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Which estimates survive?"
+            text="Omar and Zayd lay four claimed estimates on the board. The compatible number catches the disasters."
+            clue="Close to my estimate — or nowhere near.">
+            <CardSort award={award} columns={2}
+              items={[{ id: "a1", text: "245 ÷ 6 ≈ 41", target: "ok" }, { id: "a2", text: "245 ÷ 6 ≈ 4", target: "no" }, { id: "a3", text: "245 ÷ 6 ≈ 400", target: "no" }, { id: "a4", text: "245 ÷ 6 ≈ 40", target: "ok" }]}
+              targets={[
+                { id: "ok", label: "reasonable — close to my estimate" },
+                { id: "no", label: "not reasonable — nowhere near" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Dalia's way — use 240", omml: M.compatible, h: 92, quote: "6 goes into 240 exactly 40 times." }}
-          right={{ name: "Majed's way — use 180", omml: M.other, h: 92, quote: "6 goes into 180 exactly 30 times." }}
-          same={["Both use a multiple of 6", "Both are easy to do in the head", "Both give a sensible size"]}
-          diff={["240 is much closer to 245", "Majed knows his answer is too low", "Dalia's estimate is nearly exact"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, two honest estimates"
+            text="Anas uses 240 — nearly exact. Majed uses 180 — safely low. Both tell the truth about the range."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Anas's way — use 240", omml: M.compatible, h: 92, quote: "6 goes into 240 exactly 40 times." }}
+              right={{ name: "Majed's way — use 180", omml: M.other, h: 92, quote: "6 goes into 180 exactly 30 times." }}
+              same={["Both use a multiple of 6", "Both are easy to do in the head", "Both give a sensible size"]}
+              diff={["240 is much closer to 245", "Majed knows his answer is too low", "Anas's estimate is nearly exact"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard52} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule is drawn with its reason"
+            text="Zayd builds only what the class can justify: the compatible mark found, divided, and held up to the real number."
+            clue="The nearest number the divisor goes into exactly.">
+            <BoardScreen draw={drawBoard52} height={430}
+              caption="Use the nearest number the divisor goes into exactly." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "use the nearest number the divisor goes into exactly" }]}
-          hand={"look for the nearest multiple of the divisor · divide that · use it to check the real answer"}
-          cards={[
-            { title: "The estimate we made", omml: M.compatible, note: "the exact answer is about 41" },
-            { title: "Tap for the other choice", omml: M.exact, revealOmml: M.other, reveal: true,
-              note: "a different compatible number, a different estimate" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the range"
+            text="430 ÷ 7. Name the compatible number — then the estimate."
+            clue="7 × 6 = 42, so 7 × 60 = 420.">
+            <ShowWhatYouKnow award={award}
+              prompt="Estimate 430 ÷ 7 using a compatible number."
+              omml={M.swyk}
+              options={[{ v: "a", text: "about 40" }, { v: "b", text: "about 60" }, { v: "c", text: "about 6" }, { v: "d", text: "about 600" }]}
+              right="b"
+              support={{
+                yes: "Yes — 7 goes into 420 exactly 60 times, and 420 is very close to 430.",
+                notYet: "Not yet — look for a number nearby that 7 divides exactly.",
+                draw: drawSupport52, h: 92,
+                hint: "7 × 6 = 42, so 7 × 60 = 420."
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Estimate 430 ÷ 7 using a compatible number."
-          omml={M.swyk}
-          options={[{ v: "a", text: "about 40" }, { v: "b", text: "about 60" }, { v: "c", text: "about 6" }, { v: "d", text: "about 600" }]}
-          right="b"
-          support={{
-            yes: "Yes — 7 goes into 420 exactly 60 times, and 420 is very close to 430.",
-            notYet: "Not yet — look for a number nearby that 7 divides exactly.",
-            draw: drawSupport52, h: 92,
-            hint: "7 × 6 = 42, so 7 × 60 = 420."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Share a number of things at home between 6 people and estimate before you count." />;
+        return (
+          <StoryHandoff
+            title="The range is agreed"
+            text="Omar signs the fast range. The next manifest is a different animal: 3,170 travellers, 8 coaches — the dividend is too large for the first strategy."
+            artifact="Caravan schedule · quotient range agreed"
+            next="A larger manifest — the dividend is too large for the first estimate strategy.">
+            <Closing game={game} omml={M.rule}
+              action="Share a number of things at home between 6 people and estimate before you count." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

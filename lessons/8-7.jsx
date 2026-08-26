@@ -232,7 +232,7 @@ const LESSON = {
 
     { phase: "connect",
       title: "Two ways to <em>convince</em>",
-      lead: "Rana wrote three sentences. Adel wrote one. Both are complete.",
+      lead: "Karam wrote three sentences. Adel wrote one. Both are complete.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -361,7 +361,7 @@ const LESSON = {
       case 5:
         return (
           <CompareConnect award={award}
-            left={{ name: "Rana's way — three sentences", h: 96,
+            left={{ name: "Karam's way — three sentences", h: 96,
               draw: (ctx, W, H, frame) => {
                 ctx.clearRect(0, 0, W, H);
                 D.rr(ctx, 0, 0, W, H, 9);
@@ -377,8 +377,8 @@ const LESSON = {
             right={{ name: "Adel's way — one sentence", omml: M.evidence, h: 96,
               quote: "The hundreds place decides it: 600 beats 500." }}
             same={["Both name the hundreds place", "Both use real numbers", "Both reach the same conclusion"]}
-            diff={["Rana shows every step", "Adel trusts the reader to know the rule",
-                   "Rana's is easier to follow the first time"]} />
+            diff={["Karam shows every step", "Adel trusts the reader to know the rule",
+                   "Karam's is easier to follow the first time"]} />
         );
 
       case 6:

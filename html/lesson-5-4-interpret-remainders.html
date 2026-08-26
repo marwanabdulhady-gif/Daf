@@ -135,6 +135,49 @@
         from { opacity: 0; transform: scale(1.014); filter: blur(6px); }
         to { opacity: 1; transform: none; filter: none; }
       }
+      /* THE STAGE (light paper scheme) — the slide IS the stage: the school's
+         light paper, teal + gold accents. Panels are borderless so the canvas
+         and the controls float directly on the stage (the canvas paints the
+         same paper via the light-stage remap in draw.js — no board, no box).
+         Interactive controls span the full stage width, not a bordered box. */
+      .visual > .glass-panel,
+      .visual > .story-shell .glass-panel {
+        background: transparent; border: none; box-shadow: none;
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+      }
+      .visual > .glass-panel:has(canvas),
+      .visual > .story-shell .glass-panel:has(canvas) { padding: 6px; }
+      .chip-bar { width: 100%; padding: 2px 2px 4px; }
+      .chip-label { font-weight: 900; font-size: 12px; color: var(--c); margin: 0 2px 9px; }
+      .chip-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+      .chip-row .btn { flex: 1 1 auto; min-width: 110px; }
+      .stage-line { text-align: center; font-size: 12.5px; color: var(--daf-ink-2); padding: 2px 8px 8px; }
+
+      /* THE STAGE — board screens are full-stage: the drawing owns the whole
+         visual area at full height (no framed box), Dar Al Fikr deep-teal
+         surface with the logo-gold breathing frame drawn by D.stage itself. */
+      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; }
+      .board-stage { position: relative; flex: 1; min-height: 300px; }
+      .stage-caption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 11.5px; color: rgba(16,36,43,.62); padding: 0 18px; pointer-events: none; }
+      .screen:has(.board-stage) { grid-template-columns: minmax(270px, 29%) 1fr; }
+
+      /* Staggered element reveals (Syntax-Academy revealUp, English edition):
+         every element on the screen enters with a .08s offset. Disabled under
+         prefers-reduced-motion (static state, per the accessibility policy). */
+      @keyframes revealUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+      }
+      .screen .copy > *, .screen .visual > * { animation: revealUp .5s var(--ease) both; }
+      .screen .copy > :nth-child(1), .screen .visual > :nth-child(1) { animation-delay: .06s; }
+      .screen .copy > :nth-child(2), .screen .visual > :nth-child(2) { animation-delay: .14s; }
+      .screen .copy > :nth-child(3), .screen .visual > :nth-child(3) { animation-delay: .22s; }
+      .screen .copy > :nth-child(4), .screen .visual > :nth-child(4) { animation-delay: .30s; }
+      .screen .copy > :nth-child(5), .screen .visual > :nth-child(5) { animation-delay: .38s; }
+      .screen .copy > :nth-child(6), .screen .visual > :nth-child(6) { animation-delay: .46s; }
+      @media (prefers-reduced-motion: reduce) {
+        .screen .copy > *, .screen .visual > * { animation: none; }
+      }
 
       .copy {
         position: relative; z-index: 5;
@@ -246,6 +289,59 @@
         box-shadow: 0 16px 36px color-mix(in srgb, var(--c) 18%, transparent);
       }
       .glass-card.chosen { border-color: var(--c); border-width: 2px; background: #fff; }
+
+      /* ---------------- story layer: three truth-status lanes ------------ */
+      .visual > .story-shell {
+        width: 100%; max-height: 100%; overflow-y: auto; padding: 1px 5px 5px;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.24) transparent;
+      }
+      .story-shell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+      .story-ribbon {
+        position: relative; min-height: 76px; overflow: hidden;
+        display: grid; grid-template-columns: auto minmax(0,1fr) minmax(145px,210px);
+        gap: 12px; align-items: center; padding: 8px 13px;
+        border-radius: 16px; border: 1px solid rgba(96,66,166,.24);
+        background: linear-gradient(112deg,#fff 0%,#f8f4ff 68%,#f0e9fa 100%);
+        box-shadow: 0 9px 24px rgba(7,30,39,.07);
+      }
+      .lane-stem .story-ribbon { border-color: rgba(45,112,179,.28); background: linear-gradient(112deg,#fff,#eef7ff); }
+      .lane-amanah .story-ribbon { border-color: rgba(56,140,70,.3); background: linear-gradient(112deg,#fff,#eff8ef); }
+      .story-motif { position: absolute; inset-inline-end: 0; bottom: -18px; width: 210px; height: 115px; color: #6042A6; opacity: .075; pointer-events: none; }
+      .lane-stem .story-motif { color: #2D70B3; }.lane-amanah .story-motif { color: #388C46; }
+      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; }
+      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); }
+      .story-ribbon-copy { position: relative; z-index: 2; min-width: 0; }
+      .story-lane { display: inline-flex; gap: 6px; align-items: center; font-size: 8.5px; font-weight: 950; letter-spacing: .13em; text-transform: uppercase; color: #6042A6; }
+      .lane-stem .story-lane { color: #2D70B3; }.lane-amanah .story-lane { color: #388C46; }
+      .story-ribbon-copy>b { display: block; margin-top: 2px; color: var(--daf-ink); font-size: 13px; line-height: 1.25; }
+      .story-ribbon-copy p { margin: 2px 0 0; color: var(--daf-ink-2); font-size: 10.5px; line-height: 1.38; }
+      .story-ribbon-copy small { display: block; margin-top: 4px; color: #6042A6; font-size: 9.5px; font-weight: 850; }
+      .lane-stem .story-ribbon-copy small { color: #2D70B3; }
+      .folio-progress { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 5px 8px; align-items: center; padding: 8px 9px; border-radius: 11px; background: rgba(255,255,255,.78); border: 1px solid rgba(96,66,166,.16); }
+      .folio-label { min-width: 0; }.folio-label b { display:block; font-size: 9px; color:#6042A6; text-transform:uppercase; letter-spacing:.1em; }.folio-label span { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:8.5px; color:var(--daf-ink-2); }
+      .folio-progress em { grid-row: 1 / span 2; grid-column: 2; font: 800 10px "JetBrains Mono",monospace; color:#6042A6; font-style:normal; }
+      .folio-pips { display:flex; gap:3px; }.folio-pips i { display:block; width:12px; height:4px; border-radius:5px; background:#ddd5ed; }.folio-pips i.restored { background:linear-gradient(90deg,#6042A6,#C9A227); }
+      .story-content { display:flex; flex-direction:column; gap:10px; min-width:0; }
+      .story-content>.glass-panel { flex: 1; }
+      .story-shell.compact .story-ribbon { min-height: 84px; }
+      .stem-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .stem-source-card { border:1px solid rgba(45,112,179,.25); border-radius:15px; background:#F2F8FD; padding:14px; }
+      .stem-source-card h3 { margin:8px 0 4px; font-size:13px; color:#1D5C91; }.stem-source-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .stem-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#2D70B3; text-transform:uppercase; }
+      .stem-source-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.stem-source-card summary { cursor:pointer; font-weight:900; color:#2D70B3; }.stem-source-card a { display:block; color:#1D5C91; margin-top:5px; }
+      .stem-math { min-width:0; display:flex; }.stem-math>.glass-panel { flex:1; }
+      .handoff-artifact { display:flex; gap:11px; align-items:center; padding:10px 14px; border-radius:13px; color:#fff; background:linear-gradient(100deg,#0B1F24,#12857C); border:1px solid rgba(201,162,39,.55); }
+      .handoff-artifact>span { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--daf-gold); color:#10242B; }.handoff-artifact b { display:block; color:var(--daf-gold-2); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }.handoff-artifact p { margin:2px 0 0; font-size:11px; color:#EAF4F2; }
+      .handoff-artifact .folio-stamp { margin-left:auto; align-self:center; }
+      .handoff-artifact .folio-stamp.on { color:#0B1F24; background:var(--daf-gold); }
+      .folio-save-note { flex-basis:100%; margin:0; font-size:9.5px; color:#F2C9C7; }
+      .amanah-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .amanah-card { border:1px solid rgba(56,140,70,.3); border-radius:15px; background:#F0F8F0; padding:14px; }
+      .amanah-card h3 { margin:8px 0 4px; font-size:13px; color:#2C6E38; }.amanah-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .amanah-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#388C46; text-transform:uppercase; }
+      .amanah-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.amanah-card summary { cursor:pointer; font-weight:900; color:#388C46; }
+      @media(max-width:900px){.amanah-layout{grid-template-columns:1fr}}
+      @media(max-width:900px){.story-ribbon{grid-template-columns:auto minmax(0,1fr)}.folio-progress{display:none}.stem-layout{grid-template-columns:1fr}.story-ribbon-copy p{font-size:9.5px}}
 
       .btn { border: none; cursor: pointer; font-weight: 800; border-radius: 10px; transition: all 0.25s var(--ease); font-size: 12px; padding: 10px 18px; font-family: inherit; }
       .btn-primary { background: var(--c-grad); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--c) 32%, transparent); }
@@ -387,7 +483,8 @@
       .dj-last{flex:1;min-width:200px}
       .dj-last em{font-style:normal;font:800 12px "JetBrains Mono",monospace}
       .dj-last em.pos{color:#7ED08C} .dj-last em.neg{color:#F2938F}
-      .dj-exports{display:flex;gap:14px}
+      .dj-exports{display:flex;gap:14px;flex-wrap:wrap}
+      .dj-note{flex-basis:100%;font-size:9px;color:rgba(217,237,235,.45);margin-top:2px}
       .dj-exports a{color:#9fc4bd;cursor:pointer;display:inline-flex;gap:6px;align-items:center;
         font-size:11px;letter-spacing:.06em;text-decoration:none}
       .dj-exports a:hover{color:var(--daf-gold)}
@@ -501,6 +598,8 @@
         border: 1px solid var(--daf-line); border-bottom-width: 2px; border-radius: 5px;
         font: 700 10px "JetBrains Mono", monospace; color: var(--daf-deep); background: #fff;
       }
+
+      
     </style>
   </head>
   <body>
@@ -962,8 +1061,53 @@
 (function (global) {
   "use strict";
 
+  /* LIGHT STAGE (Dar Al Fikr paper scheme) — the stage is the school's
+     light paper, so canvas colours are remapped from dark-board "chalk"
+     to ink-on-paper. The board colour itself becomes transparent, so the
+     drawing sits directly on the stage: no blackboard box can exist. */
+  var LIGHT_MAP = {
+    "#0b1f24": "transparent",
+    "#eaf4f2": "#10242b",
+    "#34d399": "#12857c",
+    "#f2938f": "#c75440",
+    "#e0665f": "#c75440",
+    "#ffa94d": "#fa7e19",
+    "#4a9be0": "#2d70b3",
+    "#fff": "#10242b"
+  };
+  function remapStyle(v) {
+    if (typeof v !== "string") return v;
+    var l = v.toLowerCase();
+    if (LIGHT_MAP[l]) return LIGHT_MAP[l];
+    var m = l.match(/^rgba\((234,244,242|52,211,153|74,155,224|255,255,255|160,190,200|120,150,160),([\d.]+)\)$/);
+    if (m) {
+      var rgb = m[1] === "234,244,242" ? "16,36,43"
+        : m[1] === "52,211,153" ? "18,133,124"
+        : m[1] === "74,155,224" ? "45,112,179"
+        : "16,36,43";
+      return "rgba(" + rgb + "," + m[2] + ")";
+    }
+    return v;
+  }
+
   function fit(canvas) {
-    var ctx = canvas.getContext("2d");
+    var raw = canvas.getContext("2d");
+    /* Canvas 2D methods are brand-checked: they must be called with the real
+       context as `this`. The remap proxy therefore binds every method to the
+       target context in a get trap (a set trap alone makes every native call
+       throw "Illegal invocation" and blank the whole page). */
+    var ctx = new Proxy(raw, {
+      get: function (target, prop) {
+        var val = Reflect.get(target, prop, target);
+        if (typeof val === "function") return val.bind(target);
+        return val;
+      },
+      set: function (target, prop, val) {
+        if (prop === "fillStyle" || prop === "strokeStyle") val = remapStyle(val);
+        Reflect.set(target, prop, val);
+        return true;
+      }
+    });
     var state = { ctx: ctx, W: 0, H: 0 };
     function resize() {
       var dpr = Math.min(global.devicePixelRatio || 1, 2);
@@ -1052,6 +1196,7 @@
     o = o || {};
     ctx.save();
     var size = o.size || 15;
+    var microAlpha = size < 10 ? 0.7 : 1;   /* stage: keep the canvas airy */
     var fam = o.font === "marker" ? '"Lemonada", cursive'
             : o.font === "mono" ? '"JetBrains Mono", monospace'
             : '"Cabinet Grotesk", sans-serif';
@@ -1059,39 +1204,50 @@
     ctx.fillStyle = o.col || "#EAF4F2";
     ctx.textAlign = o.align || "center";
     ctx.textBaseline = o.baseline || "middle";
-    ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.globalAlpha = (o.alpha == null ? 1 : o.alpha) * microAlpha;
     ctx.fillText(s, x, y);
     ctx.restore();
   }
 
-  /* THE BOARD — dark surface, dot grid, breathing gold frame */
-  function board(ctx, W, H, o) {
+  /* THE STAGE — the whole canvas is the slide: Dar Al Fikr deep-teal surface
+     (the brand canvas colour, not a black presentation deck), dot grid, and a
+     breathing frame in the logo gold. No inner board frame — the drawing has
+     the full area. English edition: labels stay LTR with western digits
+     (guardrails G5a/G5b). */
+  function accentCSS(name, fallback) {
+    try {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    } catch (e) { return fallback; }
+  }
+  function accent() { return accentCSS("--c", "#C9A227"); }
+  function accent2() { return accentCSS("--c-2", "#C9A227"); }
+
+  var GOLD = "#C9A227"; /* Dar Al Fikr logo gold */
+
+  function stage(ctx, W, H, o) {
     o = o || {};
     var t = o.t || 0;
-    var pad = o.pad == null ? 6 : o.pad;
     ctx.save();
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.fillStyle = "#0B1F24";
-    ctx.fill();
-    ctx.clip();
-    ctx.fillStyle = "rgba(234,244,242,.07)";
-    for (var x = pad + 14; x < W - pad; x += 26) {
-      for (var y = pad + 14; y < H - pad; y += 26) {
+    ctx.fillStyle = "rgba(234,244,242,.07)"
+    for (var x = 16; x < W; x += 26) {
+      for (var y = 16; y < H; y += 26) {
         ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill();
       }
     }
     ctx.restore();
-    /* breathing gold frame */
-    var breathe = 1 + Math.sin(t / 42) * 0.012;
+    /* breathing frame in the logo gold — the school's own colour scheme */
     ctx.save();
-    ctx.translate(W / 2, H / 2); ctx.scale(breathe, breathe); ctx.translate(-W / 2, -H / 2);
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.strokeStyle = "rgba(201,162,39," + (0.55 + Math.sin(t / 42) * 0.2) + ")";
-    ctx.lineWidth = 2;
-    ctx.stroke();
+    ctx.globalAlpha = 0.4 + Math.sin(t / 42) * 0.2;
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 2.5;
+    ctx.strokeRect(3, 3, W - 6, H - 6);
     ctx.restore();
-    if (o.title) txt(ctx, o.title, W / 2, pad + 24, { size: 13, col: "#C9A227", font: "mono", weight: 700 });
+    if (o.title) txt(ctx, o.title, W / 2, 26, { size: 13, col: GOLD, font: "mono", weight: 700 });
   }
+
+  /* THE BOARD — kept as the stage surface (synthesis screens) */
+  function board(ctx, W, H, o) { stage(ctx, W, H, o); }
 
   /* TAPE / BAR MODEL — the default fraction manipulative */
   function bar(ctx, o) {
@@ -1372,9 +1528,6 @@
       var cx = x + i * cw;
       var a2 = at(prog, 0.25 + (i / slots) * 0.5, 0.25 + (i / slots) * 0.5 + 0.3);
       if (a2 <= 0) continue;
-      var place = ["hundreds", "tens", "ones"][i % 3];
-      txt(ctx, place, cx + cw / 2, yPlace + 10,
-        { size: 8.5, col: "rgba(234,244,242,.45)", font: "mono", weight: 500, alpha: a2 });
       ctx.save();
       ctx.globalAlpha = a2;
       rr(ctx, cx + 3, yDigit - 2, cw - 6, hRow * 1.05, 6);
@@ -1385,6 +1538,9 @@
       ctx.stroke();
       ctx.restore();
       var d = i >= pad ? digits.charAt(i - pad) : "";
+      if (d !== "" && o.onTap) {
+        tap(ctx, { x: cx + 3, y: yDigit - 2, w: cw - 6, h: hRow * 1.05, value: i - pad, on: o.onTap });
+      }
       if (d !== "") {
         var isHi = o.highlight != null && (i - pad) === o.highlight;
         txt(ctx, d, cx + cw / 2, yDigit + hRow * 0.52,
@@ -2989,9 +3145,30 @@
     return { shown: Math.min(shown, total), total: total };
   }
 
+/* Tappable canvas regions — the drawing IS the control. Drawing code
+     registers hit regions each frame via D.tap(ctx, region); the Sketch
+     component clears them per frame and dispatches pointer taps to them. */
+  function clearTaps(canvas) { canvas.__taps = []; }
+  function tap(ctx, region) {
+    var canvas = ctx && ctx.canvas;
+    if (!canvas) return;
+    canvas.__taps = canvas.__taps || [];
+    canvas.__taps.push(region);
+  }
+  function hit(canvas, x, y) {
+    var taps = (canvas && canvas.__taps) || [];
+    for (var i = taps.length - 1; i >= 0; i--) {
+      var t = taps[i];
+      if (x >= t.x && x <= t.x + t.w && y >= t.y && y <= t.y + t.h) return t;
+    }
+    return null;
+  }
+
   global.DAFDraw = {
     fit: fit, loop: loop, at: at, ease: ease, easeOut: easeOut,
-    marker: marker, rr: rr, txt: txt, board: board,
+    tap: tap, clearTaps: clearTaps, hit: hit,
+    marker: marker, rr: rr, txt: txt, board: board, stage: stage,
+    accent: accent, accent2: accent2,
     bar: bar, numberLine: numberLine, areaGrid: areaGrid, star8: star8, fig: fig,
     axes: axes, plotLine: plotLine, plotPoints: plotPoints, table: table,
     pvChart: pvChart, digitBlocks: digitBlocks, roundLine: roundLine,
@@ -3006,6 +3183,95 @@
     decChart: decChart, cubePrism: cubePrism
   };
 })(window);
+/* ===========================================================================
+   DURABLE STORY STATE · class folio stamps (PR 02)
+
+   What this is: a per-class record of which lesson folio pages the class has
+   restored, kept in localStorage on this computer only. It is class-level
+   data — class name, lesson code and timestamps — and never stores student
+   names, scores or anything personal (student records stay in the dojo
+   session log, which is exported on demand).
+
+   Design follows the research gate (docs/research/pr-02-source-review-infrastructure.md,
+   S1/S2): the state is tiny, best-effort and NON-CRITICAL — when storage is
+   missing, cleared or evicted every deck behaves exactly as before (folio
+   pips fall back to position-based), and one tap can export a JSON backup.
+   There is no server, no sync and no cross-machine state.
+   =========================================================================== */
+const FOLIO_KEY = "daf.folio.v1";
+
+function folioStorage() {
+  /* test hook (node): an in-memory store object, mirroring __DAF_XML_PARSER__ */
+  if (typeof globalThis !== "undefined" && globalThis.__DAF_FOLIO_LS__) return globalThis.__DAF_FOLIO_LS__;
+  try { return (typeof window !== "undefined" && window.localStorage) || null; }
+  catch (e) { return null; }
+}
+
+function folioLoad() {
+  const ls = folioStorage();
+  if (!ls) return { version: 1, classes: {} };
+  try {
+    const st = JSON.parse(ls.getItem(FOLIO_KEY) || "{}") || {};
+    if (!st.classes) st.classes = {};
+    return st;
+  } catch (e) { return { version: 1, classes: {} }; }
+}
+
+function folioSave(st) {
+  const ls = folioStorage();
+  if (!ls) return false;
+  try {
+    st.version = 1;
+    ls.setItem(FOLIO_KEY, JSON.stringify(st));
+    return true;
+  } catch (e) { return false; } /* quota or disabled storage: degrade silently */
+}
+
+/* Stamped lessons for one class: { "1-1": "2026-08-24T09:00:00.000Z", ... } */
+function folioFor(className) {
+  if (!className) return { lessons: {} };
+  const c = folioLoad().classes[className];
+  return { lessons: (c && c.lessons) || {} };
+}
+
+/* Stamp (on !== false) or unstamp (on === false) one lesson for a class.
+   Returns true when the change was saved to this computer. */
+function folioStamp(className, code, on) {
+  if (!className || !code) return false;
+  const st = folioLoad();
+  const c = st.classes[className] || (st.classes[className] = { lessons: {} });
+  if (!c.lessons) c.lessons = {};
+  if (on === false) delete c.lessons[code];
+  else c.lessons[code] = new Date().toISOString();
+  c.updatedAt = new Date().toISOString();
+  return folioSave(st);
+}
+
+/* Clear the whole class folio on this computer. */
+function folioReset(className) {
+  if (!className) return true;
+  const st = folioLoad();
+  delete st.classes[className];
+  return folioSave(st);
+}
+
+/* Export the class folio as a JSON file the school can keep. */
+function folioExport(className) {
+  const data = JSON.stringify({
+    app: "Dar Al Fikr Grade 4 Mathematics",
+    key: FOLIO_KEY,
+    exportedAt: new Date().toISOString(),
+    class: className,
+    state: folioFor(className)
+  }, null, 2);
+  const blob = new Blob([data], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "daf-" + String(className).replace(/[^\w.-]+/g, "-") + "-folio.json";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
     </script>
     <script>window.DAF_ROSTER = {
   "school": "Dar Al Fikr Schools",
@@ -3013,57 +3279,165 @@
   "year": "2025-2026",
   "note": "Edit this file, then run ./rebuild-all.sh to update all 114 lesson decks.",
   "markTiers": [
-    { "xp": 400, "marks": 1 },
-    { "xp": 800, "marks": 2 },
-    { "xp": 1200, "marks": 3 }
+    {
+      "xp": 400,
+      "marks": 1
+    },
+    {
+      "xp": 800,
+      "marks": 2
+    },
+    {
+      "xp": 1200,
+      "marks": 3
+    }
   ],
   "markCap": 3,
   "markFloor": 50,
   "behaviours": {
     "note": "Reason buttons in the points panel (press P). Edit freely, then run ./rebuild-all.sh",
-    "steps": [1, 5, 10],
+    "steps": [
+      1,
+      5,
+      10
+    ],
     "positive": [
-      { "label": "Explained a method", "xp": 5, "icon": "fa-comment-dots" },
-      { "label": "Helped a partner", "xp": 5, "icon": "fa-handshake-angle" },
-      { "label": "Answered on the board", "xp": 10, "icon": "fa-chalkboard" },
-      { "label": "Took the harder question", "xp": 15, "icon": "fa-mountain-sun", "metric": "hard" },
-      { "label": "Right first try", "xp": 15, "icon": "fa-circle-check", "metric": "correct" },
-      { "label": "Method into the Sijill", "xp": 30, "icon": "fa-feather", "metric": "sijill" }
+      {
+        "label": "Explained a method",
+        "xp": 5,
+        "icon": "fa-comment-dots"
+      },
+      {
+        "label": "Helped a partner",
+        "xp": 5,
+        "icon": "fa-handshake-angle"
+      },
+      {
+        "label": "Answered on the board",
+        "xp": 10,
+        "icon": "fa-chalkboard"
+      },
+      {
+        "label": "Took the harder question",
+        "xp": 15,
+        "icon": "fa-mountain-sun",
+        "metric": "hard"
+      },
+      {
+        "label": "Right first try",
+        "xp": 15,
+        "icon": "fa-circle-check",
+        "metric": "correct"
+      },
+      {
+        "label": "Method into the Sijill",
+        "xp": 30,
+        "icon": "fa-feather",
+        "metric": "sijill"
+      }
     ],
     "needsWork": [
-      { "label": "Off task", "xp": -5, "icon": "fa-hourglass-half" },
-      { "label": "Talking over others", "xp": -5, "icon": "fa-volume-xmark" },
-      { "label": "Would not start", "xp": -10, "icon": "fa-circle-xmark" },
-      { "label": "Unkind to a classmate", "xp": -10, "icon": "fa-face-frown" }
+      {
+        "label": "Off task",
+        "xp": -5,
+        "icon": "fa-hourglass-half"
+      },
+      {
+        "label": "Talking over others",
+        "xp": -5,
+        "icon": "fa-volume-xmark"
+      },
+      {
+        "label": "Would not start",
+        "xp": -10,
+        "icon": "fa-circle-xmark"
+      },
+      {
+        "label": "Unkind to a classmate",
+        "xp": -10,
+        "icon": "fa-face-frown"
+      }
     ]
   },
   "privileges": [
-    { "xp": 100, "name": "Choose your table for the week" },
-    { "xp": 200, "name": "Choose the context for next lesson's problems" },
-    { "xp": 300, "name": "Enter a method into the Sijill yourself" },
-    { "xp": 500, "name": "Run the opener for the class" },
-    { "xp": 800, "name": "Choose your table's exhibition problem" }
+    {
+      "xp": 100,
+      "name": "Choose your table for the week"
+    },
+    {
+      "xp": 200,
+      "name": "Choose the context for next lesson's problems"
+    },
+    {
+      "xp": 300,
+      "name": "Enter a method into the Sijill yourself"
+    },
+    {
+      "xp": 500,
+      "name": "Run the opener for the class"
+    },
+    {
+      "xp": 800,
+      "name": "Choose your table's exhibition problem"
+    }
   ],
   "sections": {
     "4A": [
-      "Layla Al-Harbi", "Yousef Bakr", "Salma Al-Ghamdi", "Omar Baeshen",
-      "Reem Al-Sudairi", "Faisal Nassief", "Sana Al-Amoudi", "Ibrahim Zahid",
-      "Noura Al-Qahtani", "Hala Bin Mahfouz", "Ziad Al-Turki", "Jana Al-Shaikh",
-      "Rakan Al-Dossari", "Maryam Al-Juffali", "Tariq Al-Otaibi", "Dana Al-Rashid",
-      "Khalid Al-Anzi", "Lina Al-Sabban", "Sultan Al-Mutairi", "Aseel Al-Barrak",
-      "Majed Al-Suwailem", "Rana Al-Fadl", "Bader Al-Khereiji", "Talia Al-Hazmi"
+      "Abdullah Al-Harbi",
+      "Yousef Bakr",
+      "Bandar Al-Ghamdi",
+      "Omar Baeshen",
+      "Fares Al-Sudairi",
+      "Faisal Nassief",
+      "Ghazi Al-Amoudi",
+      "Ibrahim Zahid",
+      "Hisham Al-Qahtani",
+      "Hudayfair Bin Mahfouz",
+      "Ziad Al-Turki",
+      "Jareer Al-Shaikh",
+      "Rakan Al-Dossari",
+      "Laith Al-Juffali",
+      "Tariq Al-Otaibi",
+      "Majid Al-Rashid",
+      "Khalid Al-Anzi",
+      "Manan Al-Sabban",
+      "Sultan Al-Mutairi",
+      "Musab Al-Barrak",
+      "Majed Al-Suwailem",
+      "Nizar Al-Fadl",
+      "Bader Al-Khereiji",
+      "Obaid Al-Hazmi"
     ],
     "4B": [
-      "Ahmed Al-Mansouri", "Joud Al-Sheikh", "Turki Al-Rajhi", "Shahd Al-Nemer",
-      "Fahad Al-Sanea", "Ghala Al-Aqeel", "Nawaf Al-Habib", "Rimas Al-Zamil",
-      "Saud Al-Muhaidib", "Yara Al-Bassam", "Abdulaziz Al-Naimi", "Leen Al-Shammari",
-      "Mishal Al-Duraibi", "Haya Al-Faraj", "Waleed Al-Hokair", "Retaj Al-Ghurair",
-      "Nayef Al-Sulaiman", "Deem Al-Marzouq", "Rayan Al-Qassabi", "Sadeem Al-Wabel",
-      "Hassan Al-Jasser", "Alia Al-Rowais", "Meshari Al-Tamimi", "Basma Al-Nafisi"
+      "Ahmed Al-Mansouri",
+      "Joud Al-Sheikh",
+      "Turki Al-Rajhi",
+      "Sami Al-Nemer",
+      "Fahad Al-Sanea",
+      "Sattam Al-Aqeel",
+      "Nawaf Al-Habib",
+      "Shuraym Al-Zamil",
+      "Saud Al-Muhaidib",
+      "Tawfiq Al-Bassam",
+      "Abdulaziz Al-Naimi",
+      "Ubaid Al-Shammari",
+      "Mishal Al-Duraibi",
+      "Yazan Al-Faraj",
+      "Waleed Al-Hokair",
+      "Zaher Al-Ghurair",
+      "Nayef Al-Sulaiman",
+      "Hanzala Al-Marzouq",
+      "Rayan Al-Qassabi",
+      "Sadeem Al-Wabel",
+      "Hassan Al-Jasser",
+      "Khalifa Al-Rowais",
+      "Meshari Al-Tamimi",
+      "Sayer Al-Nafisi"
     ]
   }
 }
 ;</script>
+    <script>window.DAF_STORY = {"title":"The Lantern of Numeria — The Tale of the Seventeen Doors","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"supporting":[{"id":"hafizah","name":"Hafizah","role":"the Lantern Keeper","doors":[1,17],"prop":"lantern"},{"id":"zafir","name":"Ustadh Zafir","role":"the traveling scholar","doors":[2,5,6,7,13,17],"prop":"compass"},{"id":"rashed","name":"Rashed","role":"the Rival's Report","doors":[2,5,6,7,13,17],"prop":"clipboard"},{"id":"abulaila","name":"Abu Laila","role":"the merchant of the souq","doors":[2],"prop":"ledger"},{"id":"ihsan","name":"Ihsan","role":"the auditor","doors":[2,6],"prop":"seal"},{"id":"khalida","name":"Khalida","role":"the foreman","doors":[3,4],"prop":"ruler"},{"id":"mansur","name":"Mansur","role":"the caravan master","doors":[5],"prop":"tally"},{"id":"salma","name":"Salma","role":"the council scribe","doors":[6],"prop":"quill"},{"id":"mariam","name":"Mariam","role":"the architect","doors":[7,14,16],"prop":"compass"},{"id":"munira","name":"Munira","role":"the ferrywoman of the Fraction Isles","doors":[8],"prop":"oar"},{"id":"farida","name":"Farida","role":"the head cook","doors":[9],"prop":"ladle"},{"id":"zaynab","name":"Zaynab","role":"the clockmaker","doors":[10],"prop":"key"},{"id":"rashid","name":"Rashid","role":"the pearl diver","doors":[11],"prop":"mask"},{"id":"amina","name":"Amina","role":"the dockmaster","doors":[12],"prop":"clipboard"},{"id":"yusuf","name":"Yusuf","role":"the market warden","doors":[13],"prop":"balance"},{"id":"farid","name":"Farid","role":"the astronomer","doors":[15],"prop":"astrolabe"}],"unit":{"topic":5,"chapter":"The caravan of equal loads","question":"How can supplies be shared efficiently while every remainder is interpreted honestly?","artifact":"A distribution and transport schedule","pbl":"Allocate donated books or water bottles among school locations and justify every remainder.","bridge":"Two distribution plans help different numbers of people. Comparing and combining their effects creates the multi-step problems of Chapter 6.","lessonCount":10,"lessonCodes":["5-1","5-2","5-3","5-4","5-5","5-6","5-7","5-8","5-9","5-10"]},"lesson":{"code":"5-4","curriculumTitle":"Interpret Remainders","standard":"4.OA.A.3","storyBeat":"The passengers left at the gate","technique":"Choice with a consequence","storyMove":"A remainder could mean another vehicle, leftovers or an incomplete group.","studentMission":"Interpret the remainder according to the transport story.","handoff":"Unload a useful chunk — take out the groups you can see, not one group at a time.","screenPlan":{"shape":"application-lab","shapeLabel":"Application / PBL lab","recommended":13,"planningBand":"11–15","reason":"The context requires setup, modelling or data/tool use, a test and an interpreted decision."},"implementationStatus":"story-built","index":3,"numberInUnit":4},"stemWindows":[],"amanahWindows":[]};</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
 const D = window.DAFDraw;
@@ -3170,13 +3544,28 @@ function Sketch({ draw, height, style }) {
     const stop = D.loop((frame) => {
       if (!st.W || !st.H) return;
       st.ctx.clearRect(0, 0, st.W, st.H);
+      D.clearTaps(cv);
       draw(st.ctx, st.W, st.H, frame);
     });
     return () => { stop(); if (st.destroy) st.destroy(); };
   }, [draw]);
+  /* The canvas itself is interactive: drawings register tappable regions
+     (D.tap) and pointer taps are dispatched to them — the drawing IS the
+     control. Chips stay as the accessible fallback. */
+  const pointer = (e, down) => {
+    const cv = ref.current;
+    if (!cv) return;
+    const r = cv.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    const hit = D.hit(cv, x, y);
+    cv.style.cursor = hit ? "pointer" : "default";
+    if (down && hit && hit.on) hit.on(hit.value, x, y);
+  };
   return (
     <canvas
       ref={ref}
+      onClick={(e) => pointer(e, true)}
+      onMouseMove={(e) => pointer(e, false)}
       style={Object.assign({ width: "100%", height: (height || 300) + "px", display: "block" }, style || {})}
     />
   );
@@ -3370,6 +3759,315 @@ function gameReducer(g, a) {
   }
 }
 /* ===========================================================================
+   STORY LAYER · fictional boys, truth-status lanes, folio progress and STEM
+   Reusable by every lesson. Sacred history never enters these fictional parts.
+   =========================================================================== */
+const STORY = window.DAF_STORY || null;
+
+function StoryCharacter({ id, pose, size }) {
+  const who = id === "zayd" ? "zayd" : "omar";
+  const zayd = who === "zayd";
+  const s = size || 76;
+  const wave = pose === "present" || pose === "question";
+  const build = pose === "build";
+  const skin = zayd ? "#B9784B" : "#9C633F";
+  const shirt = zayd ? "#2D70B3" : "#12857C";
+  const accent = zayd ? "#FA7E19" : "#C9A227";
+  const label = zayd ? "Zayd, the model builder" : "Omar, the evidence keeper";
+  return (
+    <svg className="story-character" style={{ width: s + "px", height: (s * 1.12) + "px" }}
+      viewBox="0 0 100 112" role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy="106" rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d="M29 103 L33 61 Q50 51 67 61 L72 103 Z" fill={shirt} />
+      <path d="M37 63 Q50 74 63 63" fill="none" stroke={accent} strokeWidth="3" />
+      <rect x="43" y="48" width="14" height="15" rx="6" fill={skin} />
+      <circle cx="50" cy="34" r="21" fill={skin} />
+      <path d={zayd ? "M30 31 Q33 8 51 11 Q70 11 72 34 Q62 22 52 22 Q39 25 30 31" : "M30 29 Q35 9 51 11 Q69 10 71 31 Q60 20 48 22 Q38 24 30 29"} fill="#172E35" />
+      <circle cx="42" cy="35" r="2.2" fill="#10242B" /><circle cx="58" cy="35" r="2.2" fill="#10242B" />
+      <path d="M43 44 Q50 49 58 43" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      {wave ? (
+        <g><path d="M32 68 Q17 58 19 40" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <circle cx="20" cy="37" r="5" fill={skin} /></g>
+      ) : (
+        <path d="M33 69 Q23 82 25 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {build ? (
+        <g><path d="M67 69 Q79 76 76 91" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <rect x="68" y="86" width="21" height="11" rx="2" fill={accent} />
+          <path d="M72 90h13M76 87v10M82 87v10" stroke="#fff" strokeWidth="1" /></g>
+      ) : (
+        <path d="M67 69 Q78 82 75 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {!zayd && (
+        <g transform="translate(63 72) rotate(-14)"><rect width="21" height="27" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" />
+          <path d="M5 7h11M5 12h9M5 17h11" stroke={shirt} strokeWidth="1.5" /></g>
+      )}
+    </svg>
+  );
+}
+
+function StoryLantern({ size }) {
+  const s = size || 64;
+  return (
+    <svg className="story-lantern" style={{ width: s + "px", height: s + "px" }} viewBox="0 0 80 80" role="img" aria-label="The brass lantern">
+      <title>The brass lantern</title>
+      <path d="M31 8h18M35 8v8h10V8" fill="none" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+      <path d="M26 22 Q40 12 54 22 L59 57 Q40 69 21 57 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="3" />
+      <path d="M30 25h20l4 28H26z" fill="#FFF8D8" stroke="#C9A227" strokeWidth="2" />
+      <path d="M40 27v24M28 40h24" stroke="#C9A227" strokeWidth="2" opacity=".8" />
+      <circle cx="40" cy="40" r="7" fill="#C9A227" opacity=".42" />
+      <path d="M26 61h28M31 67h18" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/* ===========================================================================
+   SUPPORTING CAST · fictional quest givers, the guide and the rival
+   (docs/plans/narrative/03-supporting-cast.md). Original fictional people of
+   present-day Jeddah — flat vector, modest contemporary clothing. Sacred
+   history never enters these fictional parts; labels come from the payload.
+   =========================================================================== */
+const SUPPORTING = {
+  hafizah:  { label: "Hafizah, the Lantern Keeper", jacket: "#6B5B73", accent: "#C9CDD3", skin: "#A06B45", head: "scarf", glasses: true, prop: "lantern" },
+  zafir:    { label: "Ustadh Zafir, the traveling scholar", jacket: "#4A6B8A", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#3A2E28", prop: "compass" },
+  rashed:   { label: "Rashed, the Rival's Report", boy: true, jacket: "#7A5CA8", accent: "#F2938F", skin: "#9C633F", head: "hair", hair: "#172E35", prop: "clipboard" },
+  abulaila: { label: "Abu Laila, the merchant of the souq", jacket: "#7A4E2D", accent: "#C9A227", skin: "#9C633F", head: "cap", cap: "#C9CDD3", prop: "ledger" },
+  ihsan:    { label: "Ihsan, the auditor", jacket: "#3A4A5A", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", glasses: true, prop: "seal" },
+  khalida:  { label: "Khalida, the foreman", jacket: "#5A6B7A", accent: "#FA7E19", skin: "#A06B45", head: "helmet", helmet: "#FA7E19", prop: "ruler" },
+  mansur:   { label: "Mansur, the caravan master", jacket: "#5A7A6B", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", prop: "tally" },
+  salma:    { label: "Salma, the council scribe", jacket: "#5A6B7A", accent: "#F2938F", skin: "#A06B45", head: "scarf", scarf: "#F2938F", prop: "quill" },
+  mariam:   { label: "Mariam, the architect", jacket: "#5A4A6B", accent: "#C9A227", skin: "#A06B45", head: "band", band: "#C9A227", hair: "#2A2E33", prop: "compass" },
+  munira:   { label: "Munira, the ferrywoman of the Fraction Isles", jacket: "#2D70B3", accent: "#C9A227", skin: "#A06B45", head: "scarf", scarf: "#2D70B3", prop: "oar" },
+  farida:   { label: "Farida, the head cook", jacket: "#7A4E5A", accent: "#F2938F", skin: "#A06B45", head: "scarf", scarf: "#F2938F", prop: "ladle" },
+  zaynab:   { label: "Zaynab, the clockmaker", jacket: "#4A6B8A", accent: "#C9A227", skin: "#A06B45", head: "band", band: "#C9A227", hair: "#2A2E33", prop: "key" },
+  rashid:   { label: "Rashid, the pearl diver", jacket: "#3A6B7A", accent: "#C9CDD3", skin: "#9C633F", head: "hair", hair: "#2A2E33", prop: "mask" },
+  amina:    { label: "Amina, the dockmaster", jacket: "#5A6B7A", accent: "#2D70B3", skin: "#A06B45", head: "cap", cap: "#2D70B3", prop: "clipboard" },
+  yusuf:    { label: "Yusuf, the market warden", jacket: "#5A4A3A", accent: "#C75440", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", prop: "balance" },
+  farid:    { label: "Farid, the astronomer", jacket: "#4A4A6B", accent: "#6042A6", skin: "#8A5A3B", head: "band", band: "#6042A6", hair: "#2A2E33", prop: "astrolabe" }
+};
+
+function SupportProp({ kind, accent, jacket }) {
+  switch (kind) {
+    case "lantern":
+      return <g transform="translate(64 66) scale(0.62)"><path d="M11 0h8M13 0v4h4V0" fill="none" stroke="#8A6D1B" strokeWidth="2.4" strokeLinecap="round" /><path d="M7 9 Q15 4 23 9 L25 26 Q15 31 5 26 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="2" /><path d="M9 28h12M11 31h8" stroke="#8A6D1B" strokeWidth="2" strokeLinecap="round" /></g>;
+    case "compass":
+      return <g transform="translate(74 84)"><circle r="9" fill="none" stroke={accent} strokeWidth="2.4" /><path d="M0 -6 L3 3 L-3 3 Z" fill={accent} /><path d="M0 9 v6 M-4 15 h8" stroke={accent} strokeWidth="1.6" fill="none" /></g>;
+    case "clipboard":
+      return <g transform="translate(66 72) rotate(8)"><rect width="18" height="24" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" /><rect x="4" y="-2" width="10" height="5" rx="1.5" fill={accent} /><path d="M4 8h10M4 13h8M4 18h10" stroke={jacket} strokeWidth="1.4" /></g>;
+    case "ledger":
+      return <g transform="translate(63 70) rotate(-14)"><rect width="22" height="28" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" /><path d="M5 8h12M5 13h10M5 18h12M5 23h8" stroke={jacket} strokeWidth="1.5" /></g>;
+    case "seal":
+      return <g transform="translate(76 82)"><circle r="8" fill="none" stroke={accent} strokeWidth="3" /><circle r="3" fill={accent} /><path d="M-8 8 Q-12 16 -6 18" stroke={accent} strokeWidth="2" fill="none" /></g>;
+    case "ruler":
+      return <g transform="translate(64 74) rotate(24)"><rect width="30" height="7" rx="1.5" fill="#C9CDD3" stroke={accent} strokeWidth="1.4" /><path d="M5 0v4M10 0v3M15 0v4M20 0v3M25 0v4" stroke={jacket} strokeWidth="1.2" /></g>;
+    case "tally":
+      return <g transform="translate(74 70) rotate(8)"><rect x="-2" width="5" height="30" rx="2" fill="#C9CDD3" stroke={accent} strokeWidth="1.4" /><path d="M-2 8h5M-2 14h5M-2 20h5" stroke={jacket} strokeWidth="1.4" /></g>;
+    case "quill":
+      return <g transform="translate(70 66) rotate(30)"><path d="M0 26 Q6 10 26 0 Q18 16 8 24 Z" fill="#FFFDF7" stroke={accent} strokeWidth="1.6" /><path d="M2 24 L14 8" stroke={accent} strokeWidth="1.2" /></g>;
+    case "oar":
+      return <g transform="translate(72 60) rotate(18)"><path d="M2 0 v44" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" /><ellipse cx="2" cy="48" rx="7" ry="10" fill="none" stroke="#8A6D1B" strokeWidth="2.6" /></g>;
+    case "ladle":
+      return <g transform="translate(72 68) rotate(12)"><path d="M0 0 v26" stroke={accent} strokeWidth="3" strokeLinecap="round" /><circle cx="0" cy="32" r="7" fill="none" stroke={accent} strokeWidth="2.6" /></g>;
+    case "key":
+      return <g transform="translate(76 76)"><circle r="7" fill="none" stroke={accent} strokeWidth="2.6" /><path d="M0 7 v10 M0 13 h5 M0 17 h4" stroke={accent} strokeWidth="2.2" /></g>;
+    case "mask":
+      return <g transform="translate(72 78)"><circle cx="-6" r="6" fill="none" stroke={accent} strokeWidth="2.4" /><circle cx="6" r="6" fill="none" stroke={accent} strokeWidth="2.4" /><path d="M0 -5 v-6 M-11 -3 Q-16 -8 -14 -12 M11 -3 Q16 -8 14 -12" stroke={accent} strokeWidth="1.6" fill="none" /></g>;
+    case "balance":
+      return <g transform="translate(74 72)"><path d="M0 0 v18 M-10 18 h20" stroke={accent} strokeWidth="2.4" /><path d="M-14 2 h28" stroke={accent} strokeWidth="2.2" /><path d="M-14 2 l-4 8 h8 Z M14 2 l-4 8 h8 Z" fill="none" stroke={accent} strokeWidth="1.8" /></g>;
+    case "astrolabe":
+      return <g transform="translate(76 82)"><circle r="10" fill="none" stroke={accent} strokeWidth="2.4" /><circle r="5" fill="none" stroke={accent} strokeWidth="1.4" /><path d="M0 -10 L4 0 L0 10 L-4 0 Z" fill="none" stroke={accent} strokeWidth="1.4" /></g>;
+    default: return null;
+  }
+}
+
+function SupportCharacter({ id, size }) {
+  const c = SUPPORTING[id];
+  if (!c) return null;
+  const s = size || 48;
+  const H = c.boy ? 112 : 120;
+  const payload = (STORY && STORY.supporting || []).find((p) => p.id === id);
+  const label = payload ? payload.name + ", " + payload.role : c.label;
+  const scarfCol = c.scarf || c.accent;
+  return (
+    <svg className="story-character story-support" style={{ width: s + "px", height: (s * H / 100) + "px" }}
+      viewBox={"0 0 100 " + H} role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy={H - 7} rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d={c.boy ? "M31 103 L34 64 Q50 55 66 64 L70 103 Z" : "M28 110 L33 60 Q50 50 67 60 L72 110 Z"} fill={c.jacket} />
+      <path d={c.boy ? "M38 66 Q50 76 62 66" : "M37 63 Q50 74 63 63"} fill="none" stroke={c.accent} strokeWidth="3" />
+      <rect x="43" y="46" width="14" height="15" rx="6" fill={c.skin} />
+      <circle cx="50" cy="33" r="21" fill={c.skin} />
+      {c.head === "scarf" && <path d="M27 30 Q28 9 50 8 Q72 9 73 30 Q73 42 66 44 L66 26 Q50 18 34 26 L34 44 Q27 42 27 30 Z M66 42 Q74 52 68 60 L62 50 Z" fill={scarfCol} />}
+      {c.head === "hair" && <path d="M30 29 Q34 9 51 10 Q69 10 71 30 Q61 19 49 21 Q38 23 30 29 Z" fill={c.hair} />}
+      {c.head === "cap" && <><path d="M28 28 Q32 10 50 10 Q68 10 72 28 Q50 20 28 28 Z" fill={c.cap} /><path d="M26 28 h48" stroke={c.cap} strokeWidth="4" strokeLinecap="round" /></>}
+      {c.head === "helmet" && <><path d="M28 30 Q30 8 50 8 Q70 8 72 30 Q50 22 28 30 Z" fill={c.helmet} /><path d="M25 30 h50" stroke={c.helmet} strokeWidth="4" strokeLinecap="round" /></>}
+      {c.head === "band" && <><path d="M30 29 Q34 9 51 10 Q69 10 71 30 Q61 19 49 21 Q38 23 30 29 Z" fill={c.hair} /><path d="M28 27 Q50 16 72 27" stroke={c.band} strokeWidth="4" fill="none" strokeLinecap="round" /></>}
+      <circle cx="42" cy="34" r="2.2" fill="#10242B" /><circle cx="58" cy="34" r="2.2" fill="#10242B" />
+      {c.glasses && <><circle cx="42" cy="34" r="6" fill="none" stroke="#10242B" strokeWidth="1.4" /><circle cx="58" cy="34" r="6" fill="none" stroke="#10242B" strokeWidth="1.4" /><path d="M48 34h4" stroke="#10242B" strokeWidth="1.4" /></>}
+      <path d="M43 43 Q50 48 58 42" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      <path d={c.boy ? "M33 70 Q24 82 26 94" : "M32 66 Q22 82 24 98"} fill="none" stroke={c.skin} strokeWidth="8" strokeLinecap="round" />
+      <path d={c.boy ? "M67 70 Q76 80 74 90" : "M68 66 Q78 78 76 88"} fill="none" stroke={c.skin} strokeWidth="8" strokeLinecap="round" />
+      <circle cx={c.boy ? 74 : 76} cy={c.boy ? 91 : 90} r="5" fill={c.skin} />
+      <SupportProp kind={c.prop} accent={c.accent} jacket={c.jacket} />
+    </svg>
+  );
+}
+
+
+function UnitShapeMotif({ topic }) {
+  if (topic !== 1) return <Star8 className="story-motif" />;
+  return (
+    <svg className="story-motif" viewBox="0 0 180 100" aria-hidden="true">
+      <path d="M8 85 Q28 52 48 85 Q68 52 88 85 Q108 52 128 85 Q148 52 172 85" fill="none" stroke="currentColor" strokeWidth="3" />
+      {[14, 42, 70, 98, 126, 154].map((x, i) => <rect key={x} x={x} y={18 + (i % 2) * 10} width="20" height="28" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />)}
+      <path d="M18 58h140" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" />
+    </svg>
+  );
+}
+
+/* Pips light from the class's stamped folio state when this computer has it
+   (daf.folio.v1); otherwise they fall back to position in the unit. The state
+   is class-level only — never student data — and non-critical: a cleared
+   browser changes nothing else in the deck. */
+function FolioProgress({ label }) {
+  if (!STORY) return null;
+  const n = STORY.lesson.numberInUnit, total = STORY.unit.lessonCount;
+  const codes = (STORY.unit && STORY.unit.lessonCodes) || [];
+  const stamped = (window.DAF_FOLIO && window.DAF_FOLIO.lessons) || null;
+  const done = (i) => stamped ? !!stamped[codes[i]] : i < n;
+  return (
+    <div className="folio-progress" aria-label={`Folio progress ${n} of ${total}`}>
+      <div className="folio-label"><b>Folio {STORY.unit.topic}</b><span>{label || STORY.unit.chapter}</span></div>
+      <div className="folio-pips">
+        {Array.from({ length: total }, (_, i) => <i key={i} className={done(i) ? "restored" : ""} />)}
+      </div>
+      <em>{n}/{total}</em>
+    </div>
+  );
+}
+
+const STORY_LANES = {
+  fiction: { label: "Our story", icon: "fa-book-open", cls: "fiction" },
+  stem: { label: "History of useful knowledge", icon: "fa-compass-drafting", cls: "stem" },
+  amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
+};
+
+function StoryShell({ lane, character, pose, support, title, text, clue, children, compact }) {
+  const info = STORY_LANES[lane || "fiction"];
+  const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  return (
+    <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
+      <div className="story-ribbon">
+        <UnitShapeMotif topic={topic} />
+        <div className="story-cast">
+          {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
+            : character === "lantern" ? <StoryLantern size={58} />
+            : character ? <StoryCharacter id={character} pose={pose} size={60} />
+            : <StoryLantern size={54} />}
+          {support ? <SupportCharacter id={support} size={46} /> : null}
+        </div>
+        <div className="story-ribbon-copy">
+          <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
+          <b>{title}</b>
+          <p>{text}</p>
+          {clue && <small><Icon name="fa-key" /> {clue}</small>}
+        </div>
+        <FolioProgress />
+      </div>
+      <div className="story-content">{children}</div>
+    </div>
+  );
+}
+
+function STEMWindow({ window: item, children }) {
+  if (!item) return <>{children}</>;
+  return (
+    <StoryShell lane="stem" title={item.title} text={item.studentText} clue={item.inquiry} compact>
+      <div className="stem-layout">
+        <div className="stem-source-card">
+          <div className="stem-status"><Icon name="fa-circle-check" /> {item.status}</div>
+          <h3>Why this matters now</h3>
+          <p>{item.modernConnection}</p>
+          <details>
+            <summary>Teacher source notes</summary>
+            <p>{item.teacherNote}</p>
+            {(item.sources || []).map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+
+function StoryHandoff({ title, text, artifact, next, support, children }) {
+  const code = (typeof LESSON !== "undefined" && LESSON.code) || "";
+  const [stamped, setStamped] = useState(false);
+  const [saved, setSaved] = useState(true);
+  useEffect(() => {
+    setStamped(!!(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  }, [code]);
+  const stamp = () => {
+    const cls = window.DAF_CURRENT_CLASS;
+    if (!cls || !code) return;
+    const on = !(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]);
+    setSaved(folioStamp(cls, code, on));
+    window.DAF_FOLIO = folioFor(cls);
+    setStamped(!!(window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  };
+  return (
+    <StoryShell lane="fiction" character="both" pose="present" support={support} title={title} text={text}
+      clue={next ? "Next folio clue · " + next : null}>
+      <div className="handoff-artifact">
+        <span><Icon name="fa-stamp" /></span>
+        <div><b>Artifact updated</b><p>{artifact}</p></div>
+        <button className={"btn btn-ghost btn-sm folio-stamp" + (stamped ? " on" : "")} onClick={stamp}
+          title="Class record on this computer — no points involved">
+          <Icon name={stamped ? "fa-rotate-left" : "fa-stamp"} />
+          {stamped ? "Folio page restored · tap to undo" : "Restore this folio page"}
+        </button>
+        {!saved && <small className="folio-save-note">Folio change could not be saved on this computer — export the class folio from the dojo before you leave.</small>}
+      </div>
+      {children}
+    </StoryShell>
+  );
+}
+
+/* ===========================================================================
+   AMANAH WINDOW · sacred-history lane (PR 02). Reverent, chronological,
+   non-gamified: no XP, no clue mechanics, no invented dialogue or quantities.
+   Only registry windows in `approved` state with the complete six-field audit
+   record (studentText, source, translation, reviewer, reviewDate) ever render
+   here; the payload embeds approved windows only, so an unapproved window is
+   invisible to the deck entirely.
+   =========================================================================== */
+const AMANAH_LANE = "amanah";
+
+function AmanahWindow({ window: item, children }) {
+  const approved = !!(item
+    && item.status === "approved"
+    && item.studentText && item.reviewer && item.reviewDate && item.source && item.translation);
+  if (!approved) return <>{children}</>;
+  return (
+    <StoryShell lane={AMANAH_LANE} title={item.title || "Amanah Window"} text={item.studentText} compact>
+      <div className="amanah-layout">
+        <div className="amanah-card">
+          <div className="amanah-status"><Icon name="fa-book" /> Reviewed · {item.reviewer} · {item.reviewDate}</div>
+          <h3>Values reflection</h3>
+          <p>The reflection follows the mathematics of this lesson; sacred history is never the game mechanic.</p>
+          <details>
+            <summary>Teacher review record</summary>
+            <p>Source: {item.source}</p>
+            <p>Translation used: {item.translation}</p>
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+/* ===========================================================================
    ROUTINE LIBRARY
    The Amplify Desmos instructional routines as prop-driven components, so a
    lesson file only supplies content and its own canvas drawings.
@@ -3493,9 +4191,9 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
   return (
     <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
       <Sketch draw={draw} height={height || 250} />
-      <div className="glass-card" style={{ cursor: "default" }}>
-        <div style={{ fontWeight: 900, fontSize: "12px", color: "var(--c)", marginBottom: "9px" }}>{label}</div>
-        <div style={{ display: "flex", gap: "7px", flexWrap: "wrap" }}>
+      <div className="chip-bar">
+        <div className="chip-label">{label}</div>
+        <div className="chip-row">
           {chips.map((c) => (
             <button key={c.v} onClick={() => onPick(c.v)}
               className={"btn btn-sm " + (value === c.v ? "btn-primary" : "btn-ghost")}>
@@ -3505,7 +4203,7 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
         </div>
       </div>
       {caption && (
-        <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
+        <div className="stage-line">
           {caption}
           {footnote && <div style={{ fontSize: "11px", color: "var(--daf-ink-2)", marginTop: "6px" }}>{footnote}</div>}
         </div>
@@ -3637,10 +4335,10 @@ function CompareConnect({ left, right, same, diff, award }) {
 /* ---- Synthesis · the board ---------------------------------------------- */
 function BoardScreen({ draw, height, caption }) {
   return (
-    <div className="glass-panel" style={{ padding: "12px" }}>
-      <Sketch draw={draw} height={height || 430} />
-      <div style={{ textAlign: "center", fontSize: "11.5px", color: "var(--daf-ink-2)", marginTop: "9px" }}>
-        {caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}
+    <div className="glass-panel board-panel" style={{ padding: 0 }}>
+      <div className="board-stage">
+        <Sketch draw={draw} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", borderRadius: "12px" }} />
+        <div className="stage-caption">{caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}</div>
       </div>
     </div>
   );
@@ -3990,6 +4688,41 @@ const drawSupport54 = (ctx, W, H) => {
     { size: 12, col: "#C9A227", font: "marker" });
 };
 
+
+/* the passengers left at the gate: one division, three honest endings */
+const makeGate54 = (step, onStep) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14); ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onStep((step + 1) % 4) });
+  D.txt(ctx, "38 students · the cars seat 4", W / 2, 30, { size: 13.5, col: "rgba(234,244,242,.75)", font: "marker" });
+  /* nine full cars of four, plus two waiting */
+  for (let c = 0; c < 9; c++) {
+    const x = 52 + (c % 9) * ((W - 104) / 9) + 6;
+    const on = step >= 1;
+    ctx.save();
+    ctx.globalAlpha = on ? 1 : 0.3;
+    D.rr(ctx, x, 66, (W - 104) / 9 - 12, 40, 6);
+    ctx.strokeStyle = "#2D70B3"; ctx.lineWidth = 1.8; ctx.stroke();
+    ctx.restore();
+    D.txt(ctx, "4", x + (W - 104) / 18 - 6, 86, { size: 13, col: "#EAF4F2", font: "marker", alpha: on ? 1 : 0.3 });
+  }
+  /* the two who cannot be shared */
+  const waitX = W / 2 - 14;
+  for (let p = 0; p < 2; p++) {
+    ctx.save();
+    ctx.globalAlpha = step >= 1 ? 1 : 0.35;
+    ctx.beginPath(); ctx.arc(waitX + p * 26, 140, 9, 0, Math.PI * 2);
+    ctx.fillStyle = "#FA7E19"; ctx.fill();
+    ctx.restore();
+  }
+  const endings = [
+    { t: "the gate asks: what happens to the last two?", col: "rgba(234,244,242,.6)" },
+    { t: "drop: 9 full cars — the answer to 'how many full cars?'", col: "#EAF4F2" },
+    { t: "round up: 10 cars — the answer to 'so everyone rides?'", col: "#34D399" },
+    { t: "report: 2 left over — the remainder, named and kept", col: "#C9A227" }
+  ];
+  D.txt(ctx, endings[step].t, W / 2, H - 20, { size: 13.5, col: endings[step].col, font: "marker" });
+};
+
 const LESSON = {
   code: "5-4",
   storageKey: "daf-g4-t5-l4",
@@ -3999,92 +4732,102 @@ const LESSON = {
   ixl: ["7BS", "PYQ", "5WV"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Thirty-eight students, and teams of four. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Two of them are a different colour. That is not decoration.",
-      rail: { launch: "I am not asking how many teams. Just look at the picture.",
-        monitor: ["Counting in fours", "Spotting the two gold figures", "Estimating the teams"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Assuming everything must divide evenly." } },
+    { phase: "warmup", title: "The division that <em>won't close</em>",
+      lead: "38 students, teams of 4. Nine teams fill, and two are still standing — a different colour, because they do not fit.",
+      goal: "Notice a remainder is a number with a job to do.",
+      pull: "The division will not come out exactly. That is the whole lesson.",
+      rail: { launch: "Fictional frame. Look at the deal — no working yet.",
+        monitor: ["Counting the full teams", "Noticing the two left over", "Wonding what happens to them"],
+        connect: "What are the last two for?",
+        misconception: "Thinking a remainder means the division was done wrong." } },
 
-    { phase: "launch", title: "What about the <em>last two</em>?",
-      lead: "38 students, teams of 4. The division does not come out exactly.",
-      goal: "Create the need — the leftover needs a decision, not just a number.",
-      pull: "Estimate the teams, then we will deal with the leftovers.",
-      rail: { launch: "How many teams? And then — what about the two left standing?",
-        monitor: ["Saying 9 remainder 2", "Saying 9 and a half", "Arguing about the last two"],
-        connect: "Does the maths tell you what to do with them?",
-        misconception: "Writing 9.5 teams." } },
+    { phase: "launch", title: "How many <em>full teams</em> of 4?",
+      lead: "38 ÷ 4. Lock the number of complete teams before the leftovers are decided.",
+      goal: "Create the need — the quotient and the remainder answer different questions.",
+      pull: "Nine in each group, and two that cannot be shared.",
+      rail: { launch: "Give the full-team count and say what you are ignoring.",
+        monitor: ["Counting full groups", "Estimating first", "Asking about the leftovers"],
+        connect: "What does 9 r 2 actually tell you?",
+        misconception: "Reading the remainder as an error to erase." } },
 
-    { phase: "monitor", title: "Deal them <em>out</em>",
-      lead: "One at a time, into four groups. Watch what is left at the end.",
-      goal: "See the remainder physically before naming it.",
-      pull: "The same 9 remainder 2 can mean three different things.",
-      rail: { launch: "Predict how many each group will get.",
-        monitor: ["Dealing evenly", "Counting each group", "Noticing the two that cannot go"],
-        connect: "Why can the last two not be shared?",
-        misconception: "Putting the last two in one group to make it fair-ish." } },
+    { phase: "monitor", title: "Zayd deals them <em>out</em>",
+      lead: "Twelve, twenty-four, thirty-six, all 38 — the deal shows the nine in each group and the two that stop.",
+      goal: "See the quotient and the remainder in the same picture.",
+      pull: "Nine in each group, and two that cannot be shared.",
+      rail: { launch: "Predict the leftovers before the deal finishes.",
+        monitor: ["Counting full groups", "Naming the remainder", "Checking 9 × 4 + 2"],
+        connect: "Why do exactly two stop?",
+        misconception: "Dealing the last two into a tenth group of four." } },
 
-    { phase: "monitor", title: "Three <em>questions</em>, three answers",
-      lead: "Same numbers. Same division. The question decides the answer.",
-      goal: "Drop it, round up, or report it — the story chooses.",
-      pull: "Now sort some questions by what they need.",
-      rail: { launch: "Read each question out loud before you tap.",
-        monitor: ["Matching question to action", "Always answering 9", "Explaining the car question"],
-        connect: "Which question needed the answer to go UP?",
-        misconception: "Giving the same answer to all three questions." } },
+    { phase: "monitor", title: "The numbers never changed — <em>the question did</em>",
+      lead: "Full teams? Cars needed? Left over? The same 38 ÷ 4 answers all three — differently.",
+      goal: "Change the question and the remainder's meaning changes with it.",
+      pull: "The numbers never changed. Only the question did.",
+      rail: { launch: "Before you tap: what is the question asking for?",
+        monitor: ["Dropping the remainder", "Rounding the quotient up", "Reporting the remainder"],
+        connect: "How did the answer change without the numbers changing?",
+        misconception: "Believing one division has only one answer." } },
 
-    { phase: "monitor", title: "What does the <em>remainder</em> mean here?",
-      lead: "Sort each question. No grading until the class commits.",
-      goal: "Apply the decision to unfamiliar stories.",
-      pull: "Two students answered the same problem differently — and both were right.",
-      rail: { launch: "Ask: does everyone still need to be carried?",
-        monitor: ["Reading the question carefully", "Answering by habit", "Explaining their choice"],
-        connect: "Which word in the question gave it away?",
-        misconception: "Deciding by the numbers instead of by the story." } },
+    { phase: "monitor", title: "What is the remainder <em>for</em>?",
+      lead: "Three honest endings for one division: drop it, round up, or report it. The story decides.",
+      goal: "Interpret the remainder as another group, leftovers, or an incomplete group.",
+      pull: "The story decides what to do with the remainder.",
+      rail: { launch: "Before you tap: which question is the gate asking?",
+        monitor: ["Naming the ending", "Justifying it with the story", "Checking the arithmetic"],
+        connect: "Which ending would be wrong for this story, and why?",
+        misconception: "Always rounding the quotient up, whatever the story." } },
 
-    { phase: "connect", title: "Two <em>right</em> answers",
-      lead: "Sana said 9. Ibrahim said 10. Neither made a mistake.",
+    { phase: "monitor", title: "Sort the <em>questions</em>",
+      lead: "Three box questions. Each one needs a different ending for its remainder.",
+      goal: "Match questions to remainder interpretations.",
+      pull: "Do I already know what the leftover is for?",
+      rail: { launch: "Say the ending before you place the question.",
+        monitor: ["Spotting the full-box question", "Spotting the hold-them-all question", "Spotting the leftovers question"],
+        connect: "What made each question different?",
+        misconception: "Counting the numbers in the question instead of the unknowns." } },
+
+    { phase: "connect", title: "Bashir said <em>9</em>. Ibrahim said <em>10</em>",
+      lead: "Bashir dropped the remainder. Ibrahim rounded up. They answered different questions — neither is wrong.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Defending 9", "Defending 10", "Noticing they answered different questions"],
-        connect: "What question was each of them answering?",
-        misconception: "Believing one of them must be wrong." } },
+        monitor: ["Naming the question each answered", "Checking both divided 38 by 4", "Saying which story needs which"],
+        connect: "Which question did the gate actually ask?",
+        misconception: "Believing the longer answer is the better one." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "One division. Three questions. Drop it, round up, or report it.",
+    { phase: "synth", title: "On the <em>board</em>: the story decides",
+      lead: "Divide. Then read the question again. Drop the remainder, round up, or report it — on purpose.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next row", "Naming the action", "Restating it in their own words"],
+        monitor: ["Re-reading the question", "Naming the ending", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Learning three rules instead of one habit — read the question." } },
+        misconception: "Answering 9 r 2 as if it were a final answer." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "One division, three honest endings. The question chooses.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the three actions", "Testing on a new story", "Checking with 9 × 4 + 2"],
-        connect: "How can you check a division with a remainder?",
-        misconception: "Forgetting the remainder when checking by multiplying back." } },
+        monitor: ["Naming the ending", "Checking with the story", "Testing on a new problem"],
+        connect: "Which ending is the hardest to get right?",
+        misconception: "Rounding up when the story asks for full groups." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Divide, then read the question again.",
-        monitor: ["Getting 8 r 2", "Rounding up to 9", "Answering 8"],
+      lead: "50 guests, tables of 6. How many tables so everyone has a seat?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Say the question before the arithmetic.",
+        monitor: ["Dividing 50 by 6", "Naming the ending", "Rounding up on purpose"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Answering 8 and leaving two guests standing." } },
+        misconception: "Answering 8 — the two standing guests have no seat." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The gate is <em>explained</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: dividing bigger numbers, one chunk at a time.",
-      rail: { launch: "Ask three students what they do with a remainder.",
-        monitor: ["Able to explain all three actions", "Still answers by habit", "Ready for partial quotients"],
+      pull: "Tomorrow: unload a useful chunk — take out the groups you can see.",
+      rail: { launch: "Ask three students to say which ending they chose and why.",
+        monitor: ["Able to explain the interpretation", "Still erases the remainder", "Ready for partial quotients"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -4092,90 +4835,179 @@ const LESSON = {
   Visual: function ({ i, award, game }) {
     const [dealt, setDealt] = useState(12);
     const [kind, setKind] = useState("drop");
+    const [gate, setGate] = useState(0);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawSportsDay} height={256} award={award}
-          notices={["There are 38 students", "Teams of 4", "Two are a different colour", "It will not come out evenly"]}
-          wonders={["How many teams?", "What happens to the last two?", "Can a team have 5?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The division that won't close"
+            text="38 students, teams of 4. Nine teams fill, and two are still standing at the gate — a different colour, because they do not fit."
+            clue="A remainder is a number with a job to do.">
+            <NoticeWonder draw={drawSportsDay} height={256} award={award}
+              notices={["There are 38 students", "Teams of 4", "Two are a different colour", "It will not come out evenly"]}
+              wonders={["How many teams?", "What happens to the last two?", "Can a team have 5?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawSportsDay} height={256} award={award}
-          label="How many full teams of 4?" min={4} max={16} start={9} unit="teams"
-          after="Locked. Now let us deal them out and see."
-          note="The division will not come out exactly. That is the whole lesson." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The full teams, before the leftovers"
+            text="Omar asks the gate's first question: 38 ÷ 4 — how many complete teams, exactly?"
+            clue="Nine in each group, and two that cannot be shared.">
+            <LaunchEstimate draw={drawSportsDay} height={256} award={award}
+              label="How many full teams of 4?" min={4} max={16} start={9} unit="teams"
+              after="Locked. Now let us deal them out and see."
+              note="The student count is simulated — the remainder idea works on any division." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeShare54(dealt)} height={256}
-          label="Deal the students out"
-          value={dealt}
-          onPick={(v) => setDealt(v)}
-          chips={[{ v: 12, label: "12 dealt" }, { v: 24, label: "24 dealt" }, { v: 36, label: "36 dealt" }, { v: 38, label: "all 38" }]}
-          caption={<MathEl omml={M.problem} size="xl" display="block" />}
-          footnote="Nine in each group, and two that cannot be shared." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd deals them out"
+            text="He can stop the deal anywhere — the class must see the full groups and the leftovers in the same picture."
+            clue="The quotient and the remainder live in the same deal.">
+            <ExploreChips draw={makeShare54(dealt)} height={256}
+              label="Deal the students out"
+              value={dealt}
+              onPick={(v) => setDealt(v)}
+              chips={[{ v: 12, label: "12 dealt" }, { v: 24, label: "24 dealt" }, { v: 36, label: "36 dealt" }, { v: 38, label: "all 38" }]}
+              caption={<MathEl omml={M.problem} size="xl" display="block" />}
+              footnote="Nine in each group, and two that cannot be shared." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeInterpret(kind)} height={258}
-          label="Change the question"
-          value={kind}
-          onPick={(v) => setKind(v)}
-          chips={[{ v: "drop", label: "full teams?" }, { v: "up", label: "cars needed?" }, { v: "rem", label: "left over?" }]}
-          caption={<MathEl omml={kind === "drop" ? M.quotient : kind === "up" ? M.roundUp : M.remainder} size="lg" display="block" />}
-          footnote="The numbers never changed. Only the question did." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The numbers never changed — the question did"
+            text="Omar changes the question at the gate, not the numbers: full teams? cars for everyone? what is left?"
+            clue="One division answers three questions — differently.">
+            <ExploreChips draw={makeInterpret(kind)} height={258}
+              label="Change the question"
+              value={kind}
+              onPick={(v) => setKind(v)}
+              chips={[{ v: "drop", label: "full teams?" }, { v: "up", label: "cars needed?" }, { v: "rem", label: "left over?" }]}
+              caption={<MathEl omml={kind === "drop" ? M.quotient : kind === "up" ? M.roundUp : M.remainder} size="lg" display="block" />}
+              footnote="The numbers never changed. Only the question did." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "k1", text: "How many full boxes of 4?", target: "drop" },
-            { id: "k2", text: "How many boxes to hold them all?", target: "up" },
-            { id: "k3", text: "How many will not fit in a full box?", target: "rem" }
-          ]}
-          targets={[
-            { id: "drop", label: "drop the remainder" },
-            { id: "up", label: "round the quotient up" },
-            { id: "rem", label: "the remainder is the answer" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The passengers left at the gate"
+            text="Zayd builds the gate scene: nine full cars, two waiting. Each honest ending is a different answer to a different question."
+            clue="The story decides what to do with the remainder.">
+            <ExploreChips draw={makeGate54(gate)} height={258}
+              label="What happens at the gate?"
+              value={gate}
+              onPick={(v) => setGate(v)}
+              chips={[{ v: 0, label: "the question" }, { v: 1, label: "drop" }, { v: 2, label: "round up" }, { v: 3, label: "report" }]}
+              caption={<MathEl omml={M.rule} size="lg" display="block" />}
+              footnote="Drop it, round up, or report it — on purpose, never by accident." />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Sana said 9", omml: M.quotient, h: 92,
-                  quote: "Only 9 teams are complete, so the answer is 9." }}
-          right={{ name: "Ibrahim said 10", omml: M.roundUp, h: 92,
-                   quote: "Every student needs a car, so we need 10." }}
-          same={["Both divided 38 by 4", "Both got 9 remainder 2", "Both used the remainder"]}
-          diff={["Sana dropped it, Ibrahim rounded up",
-                 "They answered different questions",
-                 "Neither of them is wrong"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Sort the questions"
+            text="Omar and Zayd lay three box questions on the table. Each one needs a different ending for its remainder."
+            clue="Do I already know what the leftover is for?">
+            <CardSort award={award} columns={3}
+              items={[
+                { id: "k1", text: "How many full boxes of 4?", target: "drop" },
+                { id: "k2", text: "How many boxes to hold them all?", target: "up" },
+                { id: "k3", text: "How many will not fit in a full box?", target: "rem" }
+              ]}
+              targets={[
+                { id: "drop", label: "drop the remainder" },
+                { id: "up", label: "round the quotient up" },
+                { id: "rem", label: "the remainder is the answer" }
+              ]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard54} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, two right answers"
+            text="Bashir said 9 — full teams. Ibrahim said 10 — cars for everyone. Different questions, different endings."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Bashir said 9", omml: M.quotient, h: 92,
+                      quote: "Only 9 teams are complete, so the answer is 9." }}
+              right={{ name: "Ibrahim said 10", omml: M.roundUp, h: 92,
+                       quote: "Every student needs a car, so we need 10." }}
+              same={["Both divided 38 by 4", "Both got 9 remainder 2", "Both used the remainder"]}
+              diff={["Bashir dropped it, Ibrahim rounded up",
+                     "They answered different questions",
+                     "Neither of them is wrong"]} />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "the story decides what to do with the remainder" }]}
-          hand={"divide \u00b7 then read the question again \u00b7 drop it, round up, or report it"}
-          cards={[
-            { title: "The division we did", omml: M.problem, note: "9 in each group, 2 left over" },
-            { title: "Tap to check it", omml: M.remainder, revealOmml: M.check, reveal: true,
-              note: "multiply back and add the remainder" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The story decides — on the board"
+            text="Zayd builds only what the class can justify: the division, the re-read question, the chosen ending."
+            clue="Divide · then read the question again · drop it, round up, or report it.">
+            <BoardScreen draw={drawBoard54} height={430}
+              caption="The story decides what to do with the remainder." />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="50 guests are seated at tables of 6. How many tables are needed so everyone has a seat?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "8" }, { v: "b", text: "9" }, { v: "c", text: "2" }, { v: "d", text: "8 r 2" }]}
-          right="b"
-          support={{
-            yes: "Yes — 8 full tables and 2 guests left, so a 9th table is needed.",
-            notYet: "Not yet — where do the last two guests sit?",
-            draw: drawSupport54, h: 92,
-            hint: "8 tables seat 48. Two guests are still standing."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="One division, three honest endings. The question chooses; the arithmetic obeys."
+            clue="The remainder is never an error — it is a number waiting for its job.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "the story decides what to do with the remainder" }]}
+              hand={"divide · then read the question again · drop it, round up, or report it"}
+              cards={[
+                { title: "The division we did", omml: M.problem, note: "9 in each group, 2 left over" },
+                { title: "Tap to check it", omml: M.remainder, revealOmml: M.check, reveal: true,
+                  note: "multiply back and add the remainder" }
+              ]} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Share something at home that does not divide evenly, and say out loud what you did with the leftovers." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the gate report"
+            text="50 guests, tables of 6. Say the question — then the ending."
+            clue="The two standing guests still need a seat.">
+            <ShowWhatYouKnow award={award}
+              prompt="50 guests are seated at tables of 6. How many tables are needed so everyone has a seat?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "8" }, { v: "b", text: "9" }, { v: "c", text: "2" }, { v: "d", text: "8 r 2" }]}
+              right="b"
+              support={{
+                yes: "Yes — 8 full tables and 2 guests left, so a 9th table is needed.",
+                notYet: "Not yet — where do the last two guests sit?",
+                draw: drawSupport54, h: 92,
+                hint: "8 tables seat 48. Two guests are still standing."
+              }} />
+          </StoryShell>
+        );
+
+      case 10:
+        return (
+          <StoryHandoff
+            title="The gate is explained"
+            text="Omar signs the gate report: every remainder interpreted, every ending justified. The next manifest is long — the plan is to unload in useful chunks, the groups you can see straight away."
+            artifact="Caravan schedule · remainders interpreted"
+            next="Unload a useful chunk — take out the groups you can see, instead of one group at a time.">
+            <Closing game={game} omml={M.rule}
+              action="Share something at home that does not divide evenly, and say out loud what you did with the leftovers." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }
@@ -4335,6 +5167,31 @@ function TeacherRail({ meta, onClose }) {
       <p>{r.connect}</p>
       <h4>ANTICIPATED MISCONCEPTION</h4>
       <p style={{ color: "#f2c9c7" }}>{r.misconception}</p>
+      {STORY && (STORY.stemWindows || []).length > 0 && (
+        <div>
+          <h4>SOURCES · HISTORY OF USEFUL KNOWLEDGE</h4>
+          {STORY.stemWindows.map((w) => (
+            <div key={w.id} style={{
+              marginBottom: "8px", background: "rgba(255,255,255,.05)",
+              borderRadius: "8px", padding: "8px 10px"
+            }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: "#cfe6e2" }}>
+                {w.title}{" "}
+                <span className="mono" style={{ fontSize: "10px", color: "var(--daf-gold)" }}>{w.status}</span>
+              </div>
+              <p style={{ fontSize: "11.5px", color: "#cfe6e2", margin: "5px 0 0", lineHeight: 1.5 }}>
+                {w.teacherNote}
+              </p>
+              {(w.sources || []).map((s) => (
+                <a key={s.url} href={s.url} target="_blank" rel="noreferrer"
+                  style={{ display: "block", fontSize: "11px", color: "#9cc0ba", marginTop: "4px" }}>
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
       {LESSON.ixl && LESSON.ixl.length > 0 && (
         <div>
           <h4>IXL PRACTICE TO ASSIGN</h4>
@@ -4836,6 +5693,16 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => {
+            if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
+              folioReset(game.section);
+              window.DAF_FOLIO = folioFor(game.section);
+            }
+          }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
+        </span>
+        <span className="dj-note">
+          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>
@@ -4931,6 +5798,15 @@ function App() {
     document.documentElement.style.setProperty("--c", ph.c);
     document.documentElement.style.setProperty("--c-2", ph.c2);
   }, [i]);
+
+  /* Durable story state (PR 02): the class's folio cache is class-level only
+     (lesson stamps, no student data), lives on this computer and refreshes
+     when a class is picked. Missing or cleared storage degrades silently to
+     position-based folio pips. */
+  useEffect(() => {
+    window.DAF_CURRENT_CLASS = (game && game.section) || null;
+    window.DAF_FOLIO = folioFor(window.DAF_CURRENT_CLASS);
+  }, [game && game.section]);
 
   useEffect(() => setReplay((r) => r + 1), [i]);
 

@@ -111,92 +111,84 @@ const LESSON = {
   ixl: ["AH8", "9GX"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Two bars, one longer than the other. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "The shorter bar fits into the longer one a whole number of times.",
-      rail: { launch: "I am not asking for an answer yet. Just look at the two bars.",
-        monitor: ["Comparing the lengths", "Counting the equal parts", "Reading the labels"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Reading the longer bar as an amount rather than a comparison." } },
+    { phase: "warmup", title: "The claim <em>changes direction</em>",
+      lead: "90 bottles in 6 equal crates. This time the whole is known — and one crate is the question.",
+      goal: "Notice the unknown has moved: the whole is given, one part is missing.",
+      pull: "When the total is the known number, division is coming.",
+      rail: { launch: "Fictional frame. Look at the bar — no working yet.",
+        monitor: ["Seeing the known whole", "Counting the equal parts", "Finding the question mark"],
+        connect: "Where is the unknown this time?",
+        misconception: "Multiplying 90 × 6 — the operation followed the numbers, not the question." } },
 
-    { phase: "launch", title: "Ninety bottles, <em>six equal crates</em>",
-      lead: "The total is known this time, not the small bar. Estimate first.",
-      goal: "Create the need — the words decide the operation.",
-      pull: "Estimate first, then we will draw it.",
-      rail: { launch: "Read the sentence twice. Does it say MORE, or TIMES AS MANY?",
-        monitor: ["Adding when it says times", "Multiplying correctly", "Asking what the words mean"],
-        connect: "Which two words changed everything?",
-        misconception: "Multiplying 90 by 6 because the words say times as many." } },
+    { phase: "launch", title: "How many bottles in <em>one crate</em>?",
+      lead: "90 bottles, 6 equal crates. Lock the per-crate number before the bar is drawn.",
+      goal: "Create the need — a known whole and equal parts ask for division.",
+      pull: "The crate count is simulated — the comparison works on any fair share.",
+      rail: { launch: "Give a per-crate number and say why the operation is division.",
+        monitor: ["Dividing 90 by 6", "Estimating first", "Checking by multiplying back"],
+        connect: "Why does a known whole point to division?",
+        misconception: "Answering 540 — the whole was multiplied by the parts." } },
 
-    { phase: "monitor", title: "Two kinds of <em>comparison</em>",
-      lead: "Same crates. Change what is missing and the operation flips.",
-      goal: "Additive and multiplicative comparison look different on a bar.",
-      pull: "Some problems need a second step.",
-      rail: { launch: "Predict how long the second bar will be before you tap.",
-        monitor: ["Drawing equal parts for times", "Drawing an extra piece for more", "Mixing the two up"],
-        connect: "How can you tell the two bars apart at a glance?",
-        misconception: "Drawing the same bar for both kinds of comparison." } },
+    { phase: "monitor", title: "Zayd draws <em>which comparison it is</em>",
+      lead: "Six times as many repeats the bar. Fifteen more adds a piece. The drawing decides the operation.",
+      goal: "Represent the comparison precisely, with the unknown where the question puts it.",
+      pull: "Times as many repeats the bar. More adds a piece to it.",
+      rail: { launch: "Before you tap: which comparison are the words making?",
+        monitor: ["Copying the bar six times", "Placing the unknown part", "Comparing the two bars"],
+        connect: "How do the two comparisons differ, on the same bar?",
+        misconception: "Drawing the bar the same way for both comparisons." } },
 
-    { phase: "monitor", title: "A problem in <em>two steps</em>",
-      lead: "How many bottles in two crates? Find one crate first.",
-      goal: "Multi-step problems chain two diagrams together.",
-      pull: "Sort some questions by how many steps they need.",
-      rail: { launch: "What must you work out before you can answer?",
-        monitor: ["Finding the middle number first", "Trying one step", "Working backwards"],
-        connect: "Why can the second step not come first?",
-        misconception: "Dividing 90 by 2 to find two crates." } },
+    { phase: "monitor", title: "The <em>two-step</em> crate question",
+      lead: "How many bottles in two crates? Step 1: one crate. Step 2: twice as many.",
+      goal: "Model a two-step comparison from a known whole.",
+      pull: "The answer to step 1 becomes a number you need in step 2.",
+      rail: { launch: "What do you have to work out before you can answer?",
+        monitor: ["Finding 90 ÷ 6 first", "Multiplying 15 × 2", "Naming the middle answer"],
+        connect: "Why can't the two-crate total come first?",
+        misconception: "Dividing 90 by 2 — two crates are not half the city." } },
 
     { phase: "monitor", title: "One step or <em>two</em>?",
-      lead: "Sort each question. No grading until the class commits.",
-      goal: "Recognise a hidden middle step.",
-      pull: "Two students wrote different equations for the same problem.",
-      rail: { launch: "Ask: do I already know every number I need?",
-        monitor: ["Counting the unknowns", "Checking what is given", "Solving first, sorting after"],
+      lead: "Four crate questions from the warehouse. Each one needs one step — or two.",
+      goal: "Recognise the hidden middle step in a moved unknown.",
+      pull: "Do I already know every number I need?",
+      rail: { launch: "Say the middle answer before you place the question.",
+        monitor: ["Checking what is given", "Counting the unknowns", "Solving first, sorting after"],
         connect: "What made the two-step ones different?",
-        misconception: "Counting the numbers rather than the unknowns." } },
+        misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Two <em>ways</em> to write it",
-      lead: "Reem divided 90 by 6. Ziad kept adding 15 until he reached 90. Both found 15.",
+    { phase: "connect", title: "Anees <em>divides</em>. Ziad <em>builds up</em>",
+      lead: "Anees: 90 shared into 6. Ziad: adds 15 six times until it reaches 90. Both find 15.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Writing one equation", "Writing two", "Using a letter for the unknown"],
-        connect: "What is the letter standing for in each one?",
-        misconception: "Using the same letter for two different unknowns." } },
+        monitor: ["Following the division", "Counting Ziad's builds", "Checking both reach 15"],
+        connect: "Which direction checks the other?",
+        misconception: "Believing building up is guessing, not checking." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Draw the whole. Split it into six equal bars. One bar is the answer.",
+    { phase: "synth", title: "On the <em>board</em>: the unknown goes where the question is",
+      lead: "Whole known, parts equal — divide. One part known, multiplier given — multiply. The bar shows which.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next bar", "Naming the unknown", "Restating it in their own words"],
+        monitor: ["Placing the unknown", "Choosing the operation", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Hunting for key words instead of drawing the relationship." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the comparison type", "Testing on a new problem", "Checking the answer against the question"],
-        connect: "What if you knew one crate and the total, but not how many crates?",
-        misconception: "Treating the bar as decoration rather than a decision tool." } },
+        misconception: "Picking the operation from the biggest number in the sentence." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Draw the bar before you calculate.",
-        monitor: ["Drawing first", "Finding the middle step", "Answering the actual question"],
+      lead: "84 pens, 7 equal boxes. How many in one box?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Say where the unknown sits before dividing.",
+        monitor: ["Placing the unknown part", "Dividing 84 by 7", "Checking by multiplying back"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Multiplying 84 by 7." } },
+        misconception: "Answering 588 — the whole was multiplied by the boxes." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The direction is <em>drawn</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: drawing problems that need more than one bar.",
-      rail: { launch: "Ask three students how they decide which operation to use.",
-        monitor: ["Able to explain it to someone else", "Still needs the bar", "Ready for the next step"],
+      pull: "Tomorrow: a plan with three steps — costs, capacity and remaining resources in one scenario.",
+      rail: { launch: "Ask three students to say where the unknown sits.",
+        monitor: ["Able to explain the placement", "Still follows the biggest number", "Ready for multi-step plans"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -207,78 +199,133 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeCompareBar62("times")} height={256} award={award}
-          notices={["One bar is longer", "The short bar repeats", "They start in the same place", "The long one has equal parts"]}
-          wonders={["How many times longer?", "What is the total?", "Do I add or multiply?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The claim changes direction"
+            text="90 bottles in 6 equal crates. This time the whole is known — and one crate is the question. The unknown has moved."
+            clue="When the total is the known number, division is coming.">
+            <NoticeWonder draw={makeCompareBar62("times")} height={256} award={award}
+              notices={["One bar is longer", "The short bar repeats", "They start in the same place", "The long one has equal parts"]}
+              wonders={["How many times longer?", "What is the total?", "Do I add or multiply?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStory62} height={256} award={award}
-          label="How many bottles in one crate?" min={5} max={40} start={15} unit="bottles"
-          after="Locked. Now let us draw what the words actually say."
-          note="When the total is the known number, division is coming." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The crate, before the bar"
+            text="Omar sets the warehouse's question: 90 bottles, 6 equal crates — about how many per crate, and why is the operation division?"
+            clue="A known whole and equal parts ask for division.">
+            <LaunchEstimate draw={drawStory62} height={256} award={award}
+              label="How many bottles in one crate?" min={5} max={40} start={15} unit="bottles"
+              after="Locked. Now let us draw what the words actually say."
+              note="The crate count is simulated — the comparison works on any fair share." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeCompareBar62(kind)} height={256}
-          label="Which comparison is it?"
-          value={kind}
-          onPick={(v) => setKind(v)}
-          chips={[{ v: "times", label: "6 times as many" }, { v: "more", label: "15 more" }]}
-          caption={<MathEl omml={kind === "times" ? M.compare : M.addCompare} size="xl" display="block" />}
-          footnote="Times as many repeats the bar. More adds a piece to it." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd draws the moved unknown"
+            text="He can draw either comparison — the class must place the unknown where the question puts it."
+            clue="The unknown goes where the question is.">
+            <ExploreChips draw={makeCompareBar62(kind)} height={256}
+              label="Which comparison is it?"
+              value={kind}
+              onPick={(v) => setKind(v)}
+              chips={[{ v: "times", label: "6 times as many" }, { v: "more", label: "15 more" }]}
+              caption={<MathEl omml={kind === "times" ? M.compare : M.addCompare} size="xl" display="block" />}
+              footnote="Times as many repeats the bar. More adds a piece to it." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeSteps62(step)} height={266}
-          label="How many bottles in two crates?"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "the question" }, { v: 1, label: "step 1" }, { v: 2, label: "step 2" }]}
-          caption={<MathEl omml={M.answer} size="lg" display="block" />}
-          footnote="The answer to step 1 becomes a number you need in step 2." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The two-step crate question"
+            text="How many bottles in two crates? Omar builds the answer one step at a time — the middle answer shown."
+            clue="One crate first — then twice as many.">
+            <ExploreChips draw={makeSteps62(step)} height={266}
+              label="How many bottles in two crates?"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "the question" }, { v: 1, label: "step 1" }, { v: 2, label: "step 2" }]}
+              caption={<MathEl omml={M.answer} size="lg" display="block" />}
+              footnote="The answer to step 1 becomes a number you need in step 2." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[{ id: "r1", text: "How many in one crate?", target: "one" }, { id: "r2", text: "How many in two crates?", target: "two" }, { id: "r3", text: "How many more in 4 crates than 1?", target: "two" }, { id: "r4", text: "90 shared into 6 equal crates", target: "one" }]}
-          targets={[
-            { id: "one", label: "one step" },
-            { id: "two", label: "two steps — something must be found first" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="One step or two?"
+            text="Omar and Zayd lay four warehouse questions on the board. Each one needs one step — or two."
+            clue="Do I already know every number I need?">
+            <CardSort award={award} columns={2}
+              items={[{ id: "r1", text: "How many in one crate?", target: "one" }, { id: "r2", text: "How many in two crates?", target: "two" }, { id: "r3", text: "How many more in 4 crates than 1?", target: "two" }, { id: "r4", text: "90 shared into 6 equal crates", target: "one" }]}
+              targets={[
+                { id: "one", label: "one step" },
+                { id: "two", label: "two steps — something must be found first" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Reem's way — divide", omml: M.step1, h: 92, quote: "Ninety shared into six equal parts." }}
-          right={{ name: "Ziad's way — build up", omml: M.answer, h: 92, quote: "I added 15 six times to check it reached 90." }}
-          same={["Both find 15", "Both use six equal parts", "Both can check the other"]}
-          diff={["Reem divides, Ziad multiplies up", "Ziad needed a good first guess", "Reem's works straight away"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 15"
+            text="Anees divides the whole. Ziad builds 15 up six times until it reaches 90. Both find the crate."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Anees's way — divide", omml: M.step1, h: 92, quote: "Ninety shared into six equal parts." }}
+              right={{ name: "Ziad's way — build up", omml: M.answer, h: 92, quote: "I added 15 six times to check it reached 90." }}
+              same={["Both find 15", "Both use six equal parts", "Both can check the other"]}
+              diff={["Anees divides, Ziad multiplies up", "Ziad needed a good first guess", "Anees's works straight away"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard62} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The direction is drawn, not declared"
+            text="Zayd builds only what the class can justify: the whole known, the parts equal, the unknown placed."
+            clue="If the whole is known, divide · if a part is known, multiply.">
+            <BoardScreen draw={drawBoard62} height={430}
+              caption="If the whole is known, divide · if a part is known, multiply." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "if the whole is known, divide · if a part is known, multiply" }]}
-          hand={"whole known → divide · one part known → multiply · draw it first either way"}
-          cards={[
-            { title: "The comparison we solved", omml: M.compare, note: "90 split into 6 equal bars" },
-            { title: "Tap to see the other kind", omml: M.addCompare, revealOmml: M.answer, reveal: true,
-              note: "a different unknown, a different operation" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the crate report"
+            text="84 pens, 7 equal boxes. Say where the unknown sits — then divide."
+            clue="7 × 12 = 84 checks the answer.">
+            <ShowWhatYouKnow award={award}
+              prompt="A shop has 84 pens in 7 equal boxes. How many pens are in one box?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "77" }, { v: "b", text: "12" }, { v: "c", text: "588" }, { v: "d", text: "91" }]}
+              right="b"
+              support={{
+                yes: "Yes — 84 shared into 7 equal boxes is 12 each.",
+                notYet: "Not yet — draw the bars and look at what is missing.",
+                draw: drawSupport62, h: 82,
+                hint: "The total is known and the boxes are equal, so divide."
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="A shop has 84 pens in 7 equal boxes. How many pens are in one box?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "77" }, { v: "b", text: "12" }, { v: "c", text: "588" }, { v: "d", text: "91" }]}
-          right="b"
-          support={{
-            yes: "Yes — 84 shared into 7 equal boxes is 12 each.",
-            notYet: "Not yet — draw the bars and look at what is missing.",
-            draw: drawSupport62, h: 82,
-            hint: "The total is known and the boxes are equal, so divide."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Find a total at home that splits into equal groups and work out one group." />;
+        return (
+          <StoryHandoff
+            title="The direction is drawn"
+            text="Omar signs the crate report: the unknown placed, the operation chosen, the check shown. The next scenario is bigger: three steps in one plan — costs, capacity, and what is left."
+            artifact="Council board · moved unknowns drawn"
+            next="A plan with three steps — costs, capacity and remaining resources in one scenario.">
+            <Closing game={game} omml={M.rule}
+              action="Find a total at home that splits into equal groups and work out one group." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

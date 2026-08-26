@@ -152,7 +152,7 @@ const LESSON = {
         connect: "Which pair suited the landmark method best?",
         misconception: "Using one strategy for every pair." } },
 
-    { phase: "connect", title: "Two ways to <em>be certain</em>", lead: "Reem used the half landmark. Karim rewrote both as twenty-fourths. Both say five sixths is greater.",
+    { phase: "connect", title: "Two ways to <em>be certain</em>", lead: "Anees used the half landmark. Karim rewrote both as twenty-fourths. Both say five sixths is greater.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -234,9 +234,9 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — the half landmark", omml: M.bench, h: 92, quote: "One is under a half, one is over. Done." }}
+          left={{ name: "Anees's way — the half landmark", omml: M.bench, h: 92, quote: "One is under a half, one is over. Done." }}
           right={{ name: "Karim's way — same denominator", omml: M.common, h: 92, quote: "I made both into twenty-fourths and counted." }}
-          same={["Both say 5/6 is greater", "Both are convincing", "Both use the size of the pieces"]} diff={["Reem needs no calculation", "Karim's works even when both are over a half", "Reem is faster here"]} />;
+          same={["Both say 5/6 is greater", "Both are convincing", "Both use the size of the pieces"]} diff={["Anees needs no calculation", "Karim's works even when both are over a half", "Anees is faster here"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard85} height={430} />;

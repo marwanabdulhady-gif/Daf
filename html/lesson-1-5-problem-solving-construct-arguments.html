@@ -135,6 +135,49 @@
         from { opacity: 0; transform: scale(1.014); filter: blur(6px); }
         to { opacity: 1; transform: none; filter: none; }
       }
+      /* THE STAGE (light paper scheme) — the slide IS the stage: the school's
+         light paper, teal + gold accents. Panels are borderless so the canvas
+         and the controls float directly on the stage (the canvas paints the
+         same paper via the light-stage remap in draw.js — no board, no box).
+         Interactive controls span the full stage width, not a bordered box. */
+      .visual > .glass-panel,
+      .visual > .story-shell .glass-panel {
+        background: transparent; border: none; box-shadow: none;
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+      }
+      .visual > .glass-panel:has(canvas),
+      .visual > .story-shell .glass-panel:has(canvas) { padding: 6px; }
+      .chip-bar { width: 100%; padding: 2px 2px 4px; }
+      .chip-label { font-weight: 900; font-size: 12px; color: var(--c); margin: 0 2px 9px; }
+      .chip-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+      .chip-row .btn { flex: 1 1 auto; min-width: 110px; }
+      .stage-line { text-align: center; font-size: 12.5px; color: var(--daf-ink-2); padding: 2px 8px 8px; }
+
+      /* THE STAGE — board screens are full-stage: the drawing owns the whole
+         visual area at full height (no framed box), Dar Al Fikr deep-teal
+         surface with the logo-gold breathing frame drawn by D.stage itself. */
+      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; }
+      .board-stage { position: relative; flex: 1; min-height: 300px; }
+      .stage-caption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 11.5px; color: rgba(16,36,43,.62); padding: 0 18px; pointer-events: none; }
+      .screen:has(.board-stage) { grid-template-columns: minmax(270px, 29%) 1fr; }
+
+      /* Staggered element reveals (Syntax-Academy revealUp, English edition):
+         every element on the screen enters with a .08s offset. Disabled under
+         prefers-reduced-motion (static state, per the accessibility policy). */
+      @keyframes revealUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+      }
+      .screen .copy > *, .screen .visual > * { animation: revealUp .5s var(--ease) both; }
+      .screen .copy > :nth-child(1), .screen .visual > :nth-child(1) { animation-delay: .06s; }
+      .screen .copy > :nth-child(2), .screen .visual > :nth-child(2) { animation-delay: .14s; }
+      .screen .copy > :nth-child(3), .screen .visual > :nth-child(3) { animation-delay: .22s; }
+      .screen .copy > :nth-child(4), .screen .visual > :nth-child(4) { animation-delay: .30s; }
+      .screen .copy > :nth-child(5), .screen .visual > :nth-child(5) { animation-delay: .38s; }
+      .screen .copy > :nth-child(6), .screen .visual > :nth-child(6) { animation-delay: .46s; }
+      @media (prefers-reduced-motion: reduce) {
+        .screen .copy > *, .screen .visual > * { animation: none; }
+      }
 
       .copy {
         position: relative; z-index: 5;
@@ -246,6 +289,59 @@
         box-shadow: 0 16px 36px color-mix(in srgb, var(--c) 18%, transparent);
       }
       .glass-card.chosen { border-color: var(--c); border-width: 2px; background: #fff; }
+
+      /* ---------------- story layer: three truth-status lanes ------------ */
+      .visual > .story-shell {
+        width: 100%; max-height: 100%; overflow-y: auto; padding: 1px 5px 5px;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.24) transparent;
+      }
+      .story-shell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+      .story-ribbon {
+        position: relative; min-height: 76px; overflow: hidden;
+        display: grid; grid-template-columns: auto minmax(0,1fr) minmax(145px,210px);
+        gap: 12px; align-items: center; padding: 8px 13px;
+        border-radius: 16px; border: 1px solid rgba(96,66,166,.24);
+        background: linear-gradient(112deg,#fff 0%,#f8f4ff 68%,#f0e9fa 100%);
+        box-shadow: 0 9px 24px rgba(7,30,39,.07);
+      }
+      .lane-stem .story-ribbon { border-color: rgba(45,112,179,.28); background: linear-gradient(112deg,#fff,#eef7ff); }
+      .lane-amanah .story-ribbon { border-color: rgba(56,140,70,.3); background: linear-gradient(112deg,#fff,#eff8ef); }
+      .story-motif { position: absolute; inset-inline-end: 0; bottom: -18px; width: 210px; height: 115px; color: #6042A6; opacity: .075; pointer-events: none; }
+      .lane-stem .story-motif { color: #2D70B3; }.lane-amanah .story-motif { color: #388C46; }
+      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; }
+      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); }
+      .story-ribbon-copy { position: relative; z-index: 2; min-width: 0; }
+      .story-lane { display: inline-flex; gap: 6px; align-items: center; font-size: 8.5px; font-weight: 950; letter-spacing: .13em; text-transform: uppercase; color: #6042A6; }
+      .lane-stem .story-lane { color: #2D70B3; }.lane-amanah .story-lane { color: #388C46; }
+      .story-ribbon-copy>b { display: block; margin-top: 2px; color: var(--daf-ink); font-size: 13px; line-height: 1.25; }
+      .story-ribbon-copy p { margin: 2px 0 0; color: var(--daf-ink-2); font-size: 10.5px; line-height: 1.38; }
+      .story-ribbon-copy small { display: block; margin-top: 4px; color: #6042A6; font-size: 9.5px; font-weight: 850; }
+      .lane-stem .story-ribbon-copy small { color: #2D70B3; }
+      .folio-progress { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 5px 8px; align-items: center; padding: 8px 9px; border-radius: 11px; background: rgba(255,255,255,.78); border: 1px solid rgba(96,66,166,.16); }
+      .folio-label { min-width: 0; }.folio-label b { display:block; font-size: 9px; color:#6042A6; text-transform:uppercase; letter-spacing:.1em; }.folio-label span { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:8.5px; color:var(--daf-ink-2); }
+      .folio-progress em { grid-row: 1 / span 2; grid-column: 2; font: 800 10px "JetBrains Mono",monospace; color:#6042A6; font-style:normal; }
+      .folio-pips { display:flex; gap:3px; }.folio-pips i { display:block; width:12px; height:4px; border-radius:5px; background:#ddd5ed; }.folio-pips i.restored { background:linear-gradient(90deg,#6042A6,#C9A227); }
+      .story-content { display:flex; flex-direction:column; gap:10px; min-width:0; }
+      .story-content>.glass-panel { flex: 1; }
+      .story-shell.compact .story-ribbon { min-height: 84px; }
+      .stem-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .stem-source-card { border:1px solid rgba(45,112,179,.25); border-radius:15px; background:#F2F8FD; padding:14px; }
+      .stem-source-card h3 { margin:8px 0 4px; font-size:13px; color:#1D5C91; }.stem-source-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .stem-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#2D70B3; text-transform:uppercase; }
+      .stem-source-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.stem-source-card summary { cursor:pointer; font-weight:900; color:#2D70B3; }.stem-source-card a { display:block; color:#1D5C91; margin-top:5px; }
+      .stem-math { min-width:0; display:flex; }.stem-math>.glass-panel { flex:1; }
+      .handoff-artifact { display:flex; gap:11px; align-items:center; padding:10px 14px; border-radius:13px; color:#fff; background:linear-gradient(100deg,#0B1F24,#12857C); border:1px solid rgba(201,162,39,.55); }
+      .handoff-artifact>span { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--daf-gold); color:#10242B; }.handoff-artifact b { display:block; color:var(--daf-gold-2); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }.handoff-artifact p { margin:2px 0 0; font-size:11px; color:#EAF4F2; }
+      .handoff-artifact .folio-stamp { margin-left:auto; align-self:center; }
+      .handoff-artifact .folio-stamp.on { color:#0B1F24; background:var(--daf-gold); }
+      .folio-save-note { flex-basis:100%; margin:0; font-size:9.5px; color:#F2C9C7; }
+      .amanah-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .amanah-card { border:1px solid rgba(56,140,70,.3); border-radius:15px; background:#F0F8F0; padding:14px; }
+      .amanah-card h3 { margin:8px 0 4px; font-size:13px; color:#2C6E38; }.amanah-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .amanah-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#388C46; text-transform:uppercase; }
+      .amanah-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.amanah-card summary { cursor:pointer; font-weight:900; color:#388C46; }
+      @media(max-width:900px){.amanah-layout{grid-template-columns:1fr}}
+      @media(max-width:900px){.story-ribbon{grid-template-columns:auto minmax(0,1fr)}.folio-progress{display:none}.stem-layout{grid-template-columns:1fr}.story-ribbon-copy p{font-size:9.5px}}
 
       .btn { border: none; cursor: pointer; font-weight: 800; border-radius: 10px; transition: all 0.25s var(--ease); font-size: 12px; padding: 10px 18px; font-family: inherit; }
       .btn-primary { background: var(--c-grad); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--c) 32%, transparent); }
@@ -387,7 +483,8 @@
       .dj-last{flex:1;min-width:200px}
       .dj-last em{font-style:normal;font:800 12px "JetBrains Mono",monospace}
       .dj-last em.pos{color:#7ED08C} .dj-last em.neg{color:#F2938F}
-      .dj-exports{display:flex;gap:14px}
+      .dj-exports{display:flex;gap:14px;flex-wrap:wrap}
+      .dj-note{flex-basis:100%;font-size:9px;color:rgba(217,237,235,.45);margin-top:2px}
       .dj-exports a{color:#9fc4bd;cursor:pointer;display:inline-flex;gap:6px;align-items:center;
         font-size:11px;letter-spacing:.06em;text-decoration:none}
       .dj-exports a:hover{color:var(--daf-gold)}
@@ -501,6 +598,8 @@
         border: 1px solid var(--daf-line); border-bottom-width: 2px; border-radius: 5px;
         font: 700 10px "JetBrains Mono", monospace; color: var(--daf-deep); background: #fff;
       }
+
+      
     </style>
   </head>
   <body>
@@ -962,8 +1061,53 @@
 (function (global) {
   "use strict";
 
+  /* LIGHT STAGE (Dar Al Fikr paper scheme) — the stage is the school's
+     light paper, so canvas colours are remapped from dark-board "chalk"
+     to ink-on-paper. The board colour itself becomes transparent, so the
+     drawing sits directly on the stage: no blackboard box can exist. */
+  var LIGHT_MAP = {
+    "#0b1f24": "transparent",
+    "#eaf4f2": "#10242b",
+    "#34d399": "#12857c",
+    "#f2938f": "#c75440",
+    "#e0665f": "#c75440",
+    "#ffa94d": "#fa7e19",
+    "#4a9be0": "#2d70b3",
+    "#fff": "#10242b"
+  };
+  function remapStyle(v) {
+    if (typeof v !== "string") return v;
+    var l = v.toLowerCase();
+    if (LIGHT_MAP[l]) return LIGHT_MAP[l];
+    var m = l.match(/^rgba\((234,244,242|52,211,153|74,155,224|255,255,255|160,190,200|120,150,160),([\d.]+)\)$/);
+    if (m) {
+      var rgb = m[1] === "234,244,242" ? "16,36,43"
+        : m[1] === "52,211,153" ? "18,133,124"
+        : m[1] === "74,155,224" ? "45,112,179"
+        : "16,36,43";
+      return "rgba(" + rgb + "," + m[2] + ")";
+    }
+    return v;
+  }
+
   function fit(canvas) {
-    var ctx = canvas.getContext("2d");
+    var raw = canvas.getContext("2d");
+    /* Canvas 2D methods are brand-checked: they must be called with the real
+       context as `this`. The remap proxy therefore binds every method to the
+       target context in a get trap (a set trap alone makes every native call
+       throw "Illegal invocation" and blank the whole page). */
+    var ctx = new Proxy(raw, {
+      get: function (target, prop) {
+        var val = Reflect.get(target, prop, target);
+        if (typeof val === "function") return val.bind(target);
+        return val;
+      },
+      set: function (target, prop, val) {
+        if (prop === "fillStyle" || prop === "strokeStyle") val = remapStyle(val);
+        Reflect.set(target, prop, val);
+        return true;
+      }
+    });
     var state = { ctx: ctx, W: 0, H: 0 };
     function resize() {
       var dpr = Math.min(global.devicePixelRatio || 1, 2);
@@ -1052,6 +1196,7 @@
     o = o || {};
     ctx.save();
     var size = o.size || 15;
+    var microAlpha = size < 10 ? 0.7 : 1;   /* stage: keep the canvas airy */
     var fam = o.font === "marker" ? '"Lemonada", cursive'
             : o.font === "mono" ? '"JetBrains Mono", monospace'
             : '"Cabinet Grotesk", sans-serif';
@@ -1059,39 +1204,50 @@
     ctx.fillStyle = o.col || "#EAF4F2";
     ctx.textAlign = o.align || "center";
     ctx.textBaseline = o.baseline || "middle";
-    ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.globalAlpha = (o.alpha == null ? 1 : o.alpha) * microAlpha;
     ctx.fillText(s, x, y);
     ctx.restore();
   }
 
-  /* THE BOARD — dark surface, dot grid, breathing gold frame */
-  function board(ctx, W, H, o) {
+  /* THE STAGE — the whole canvas is the slide: Dar Al Fikr deep-teal surface
+     (the brand canvas colour, not a black presentation deck), dot grid, and a
+     breathing frame in the logo gold. No inner board frame — the drawing has
+     the full area. English edition: labels stay LTR with western digits
+     (guardrails G5a/G5b). */
+  function accentCSS(name, fallback) {
+    try {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    } catch (e) { return fallback; }
+  }
+  function accent() { return accentCSS("--c", "#C9A227"); }
+  function accent2() { return accentCSS("--c-2", "#C9A227"); }
+
+  var GOLD = "#C9A227"; /* Dar Al Fikr logo gold */
+
+  function stage(ctx, W, H, o) {
     o = o || {};
     var t = o.t || 0;
-    var pad = o.pad == null ? 6 : o.pad;
     ctx.save();
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.fillStyle = "#0B1F24";
-    ctx.fill();
-    ctx.clip();
-    ctx.fillStyle = "rgba(234,244,242,.07)";
-    for (var x = pad + 14; x < W - pad; x += 26) {
-      for (var y = pad + 14; y < H - pad; y += 26) {
+    ctx.fillStyle = "rgba(234,244,242,.07)"
+    for (var x = 16; x < W; x += 26) {
+      for (var y = 16; y < H; y += 26) {
         ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill();
       }
     }
     ctx.restore();
-    /* breathing gold frame */
-    var breathe = 1 + Math.sin(t / 42) * 0.012;
+    /* breathing frame in the logo gold — the school's own colour scheme */
     ctx.save();
-    ctx.translate(W / 2, H / 2); ctx.scale(breathe, breathe); ctx.translate(-W / 2, -H / 2);
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.strokeStyle = "rgba(201,162,39," + (0.55 + Math.sin(t / 42) * 0.2) + ")";
-    ctx.lineWidth = 2;
-    ctx.stroke();
+    ctx.globalAlpha = 0.4 + Math.sin(t / 42) * 0.2;
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 2.5;
+    ctx.strokeRect(3, 3, W - 6, H - 6);
     ctx.restore();
-    if (o.title) txt(ctx, o.title, W / 2, pad + 24, { size: 13, col: "#C9A227", font: "mono", weight: 700 });
+    if (o.title) txt(ctx, o.title, W / 2, 26, { size: 13, col: GOLD, font: "mono", weight: 700 });
   }
+
+  /* THE BOARD — kept as the stage surface (synthesis screens) */
+  function board(ctx, W, H, o) { stage(ctx, W, H, o); }
 
   /* TAPE / BAR MODEL — the default fraction manipulative */
   function bar(ctx, o) {
@@ -1372,9 +1528,6 @@
       var cx = x + i * cw;
       var a2 = at(prog, 0.25 + (i / slots) * 0.5, 0.25 + (i / slots) * 0.5 + 0.3);
       if (a2 <= 0) continue;
-      var place = ["hundreds", "tens", "ones"][i % 3];
-      txt(ctx, place, cx + cw / 2, yPlace + 10,
-        { size: 8.5, col: "rgba(234,244,242,.45)", font: "mono", weight: 500, alpha: a2 });
       ctx.save();
       ctx.globalAlpha = a2;
       rr(ctx, cx + 3, yDigit - 2, cw - 6, hRow * 1.05, 6);
@@ -1385,6 +1538,9 @@
       ctx.stroke();
       ctx.restore();
       var d = i >= pad ? digits.charAt(i - pad) : "";
+      if (d !== "" && o.onTap) {
+        tap(ctx, { x: cx + 3, y: yDigit - 2, w: cw - 6, h: hRow * 1.05, value: i - pad, on: o.onTap });
+      }
       if (d !== "") {
         var isHi = o.highlight != null && (i - pad) === o.highlight;
         txt(ctx, d, cx + cw / 2, yDigit + hRow * 0.52,
@@ -2989,9 +3145,30 @@
     return { shown: Math.min(shown, total), total: total };
   }
 
+/* Tappable canvas regions — the drawing IS the control. Drawing code
+     registers hit regions each frame via D.tap(ctx, region); the Sketch
+     component clears them per frame and dispatches pointer taps to them. */
+  function clearTaps(canvas) { canvas.__taps = []; }
+  function tap(ctx, region) {
+    var canvas = ctx && ctx.canvas;
+    if (!canvas) return;
+    canvas.__taps = canvas.__taps || [];
+    canvas.__taps.push(region);
+  }
+  function hit(canvas, x, y) {
+    var taps = (canvas && canvas.__taps) || [];
+    for (var i = taps.length - 1; i >= 0; i--) {
+      var t = taps[i];
+      if (x >= t.x && x <= t.x + t.w && y >= t.y && y <= t.y + t.h) return t;
+    }
+    return null;
+  }
+
   global.DAFDraw = {
     fit: fit, loop: loop, at: at, ease: ease, easeOut: easeOut,
-    marker: marker, rr: rr, txt: txt, board: board,
+    tap: tap, clearTaps: clearTaps, hit: hit,
+    marker: marker, rr: rr, txt: txt, board: board, stage: stage,
+    accent: accent, accent2: accent2,
     bar: bar, numberLine: numberLine, areaGrid: areaGrid, star8: star8, fig: fig,
     axes: axes, plotLine: plotLine, plotPoints: plotPoints, table: table,
     pvChart: pvChart, digitBlocks: digitBlocks, roundLine: roundLine,
@@ -3006,6 +3183,95 @@
     decChart: decChart, cubePrism: cubePrism
   };
 })(window);
+/* ===========================================================================
+   DURABLE STORY STATE · class folio stamps (PR 02)
+
+   What this is: a per-class record of which lesson folio pages the class has
+   restored, kept in localStorage on this computer only. It is class-level
+   data — class name, lesson code and timestamps — and never stores student
+   names, scores or anything personal (student records stay in the dojo
+   session log, which is exported on demand).
+
+   Design follows the research gate (docs/research/pr-02-source-review-infrastructure.md,
+   S1/S2): the state is tiny, best-effort and NON-CRITICAL — when storage is
+   missing, cleared or evicted every deck behaves exactly as before (folio
+   pips fall back to position-based), and one tap can export a JSON backup.
+   There is no server, no sync and no cross-machine state.
+   =========================================================================== */
+const FOLIO_KEY = "daf.folio.v1";
+
+function folioStorage() {
+  /* test hook (node): an in-memory store object, mirroring __DAF_XML_PARSER__ */
+  if (typeof globalThis !== "undefined" && globalThis.__DAF_FOLIO_LS__) return globalThis.__DAF_FOLIO_LS__;
+  try { return (typeof window !== "undefined" && window.localStorage) || null; }
+  catch (e) { return null; }
+}
+
+function folioLoad() {
+  const ls = folioStorage();
+  if (!ls) return { version: 1, classes: {} };
+  try {
+    const st = JSON.parse(ls.getItem(FOLIO_KEY) || "{}") || {};
+    if (!st.classes) st.classes = {};
+    return st;
+  } catch (e) { return { version: 1, classes: {} }; }
+}
+
+function folioSave(st) {
+  const ls = folioStorage();
+  if (!ls) return false;
+  try {
+    st.version = 1;
+    ls.setItem(FOLIO_KEY, JSON.stringify(st));
+    return true;
+  } catch (e) { return false; } /* quota or disabled storage: degrade silently */
+}
+
+/* Stamped lessons for one class: { "1-1": "2026-08-24T09:00:00.000Z", ... } */
+function folioFor(className) {
+  if (!className) return { lessons: {} };
+  const c = folioLoad().classes[className];
+  return { lessons: (c && c.lessons) || {} };
+}
+
+/* Stamp (on !== false) or unstamp (on === false) one lesson for a class.
+   Returns true when the change was saved to this computer. */
+function folioStamp(className, code, on) {
+  if (!className || !code) return false;
+  const st = folioLoad();
+  const c = st.classes[className] || (st.classes[className] = { lessons: {} });
+  if (!c.lessons) c.lessons = {};
+  if (on === false) delete c.lessons[code];
+  else c.lessons[code] = new Date().toISOString();
+  c.updatedAt = new Date().toISOString();
+  return folioSave(st);
+}
+
+/* Clear the whole class folio on this computer. */
+function folioReset(className) {
+  if (!className) return true;
+  const st = folioLoad();
+  delete st.classes[className];
+  return folioSave(st);
+}
+
+/* Export the class folio as a JSON file the school can keep. */
+function folioExport(className) {
+  const data = JSON.stringify({
+    app: "Dar Al Fikr Grade 4 Mathematics",
+    key: FOLIO_KEY,
+    exportedAt: new Date().toISOString(),
+    class: className,
+    state: folioFor(className)
+  }, null, 2);
+  const blob = new Blob([data], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "daf-" + String(className).replace(/[^\w.-]+/g, "-") + "-folio.json";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
     </script>
     <script>window.DAF_ROSTER = {
   "school": "Dar Al Fikr Schools",
@@ -3013,57 +3279,165 @@
   "year": "2025-2026",
   "note": "Edit this file, then run ./rebuild-all.sh to update all 114 lesson decks.",
   "markTiers": [
-    { "xp": 400, "marks": 1 },
-    { "xp": 800, "marks": 2 },
-    { "xp": 1200, "marks": 3 }
+    {
+      "xp": 400,
+      "marks": 1
+    },
+    {
+      "xp": 800,
+      "marks": 2
+    },
+    {
+      "xp": 1200,
+      "marks": 3
+    }
   ],
   "markCap": 3,
   "markFloor": 50,
   "behaviours": {
     "note": "Reason buttons in the points panel (press P). Edit freely, then run ./rebuild-all.sh",
-    "steps": [1, 5, 10],
+    "steps": [
+      1,
+      5,
+      10
+    ],
     "positive": [
-      { "label": "Explained a method", "xp": 5, "icon": "fa-comment-dots" },
-      { "label": "Helped a partner", "xp": 5, "icon": "fa-handshake-angle" },
-      { "label": "Answered on the board", "xp": 10, "icon": "fa-chalkboard" },
-      { "label": "Took the harder question", "xp": 15, "icon": "fa-mountain-sun", "metric": "hard" },
-      { "label": "Right first try", "xp": 15, "icon": "fa-circle-check", "metric": "correct" },
-      { "label": "Method into the Sijill", "xp": 30, "icon": "fa-feather", "metric": "sijill" }
+      {
+        "label": "Explained a method",
+        "xp": 5,
+        "icon": "fa-comment-dots"
+      },
+      {
+        "label": "Helped a partner",
+        "xp": 5,
+        "icon": "fa-handshake-angle"
+      },
+      {
+        "label": "Answered on the board",
+        "xp": 10,
+        "icon": "fa-chalkboard"
+      },
+      {
+        "label": "Took the harder question",
+        "xp": 15,
+        "icon": "fa-mountain-sun",
+        "metric": "hard"
+      },
+      {
+        "label": "Right first try",
+        "xp": 15,
+        "icon": "fa-circle-check",
+        "metric": "correct"
+      },
+      {
+        "label": "Method into the Sijill",
+        "xp": 30,
+        "icon": "fa-feather",
+        "metric": "sijill"
+      }
     ],
     "needsWork": [
-      { "label": "Off task", "xp": -5, "icon": "fa-hourglass-half" },
-      { "label": "Talking over others", "xp": -5, "icon": "fa-volume-xmark" },
-      { "label": "Would not start", "xp": -10, "icon": "fa-circle-xmark" },
-      { "label": "Unkind to a classmate", "xp": -10, "icon": "fa-face-frown" }
+      {
+        "label": "Off task",
+        "xp": -5,
+        "icon": "fa-hourglass-half"
+      },
+      {
+        "label": "Talking over others",
+        "xp": -5,
+        "icon": "fa-volume-xmark"
+      },
+      {
+        "label": "Would not start",
+        "xp": -10,
+        "icon": "fa-circle-xmark"
+      },
+      {
+        "label": "Unkind to a classmate",
+        "xp": -10,
+        "icon": "fa-face-frown"
+      }
     ]
   },
   "privileges": [
-    { "xp": 100, "name": "Choose your table for the week" },
-    { "xp": 200, "name": "Choose the context for next lesson's problems" },
-    { "xp": 300, "name": "Enter a method into the Sijill yourself" },
-    { "xp": 500, "name": "Run the opener for the class" },
-    { "xp": 800, "name": "Choose your table's exhibition problem" }
+    {
+      "xp": 100,
+      "name": "Choose your table for the week"
+    },
+    {
+      "xp": 200,
+      "name": "Choose the context for next lesson's problems"
+    },
+    {
+      "xp": 300,
+      "name": "Enter a method into the Sijill yourself"
+    },
+    {
+      "xp": 500,
+      "name": "Run the opener for the class"
+    },
+    {
+      "xp": 800,
+      "name": "Choose your table's exhibition problem"
+    }
   ],
   "sections": {
     "4A": [
-      "Layla Al-Harbi", "Yousef Bakr", "Salma Al-Ghamdi", "Omar Baeshen",
-      "Reem Al-Sudairi", "Faisal Nassief", "Sana Al-Amoudi", "Ibrahim Zahid",
-      "Noura Al-Qahtani", "Hala Bin Mahfouz", "Ziad Al-Turki", "Jana Al-Shaikh",
-      "Rakan Al-Dossari", "Maryam Al-Juffali", "Tariq Al-Otaibi", "Dana Al-Rashid",
-      "Khalid Al-Anzi", "Lina Al-Sabban", "Sultan Al-Mutairi", "Aseel Al-Barrak",
-      "Majed Al-Suwailem", "Rana Al-Fadl", "Bader Al-Khereiji", "Talia Al-Hazmi"
+      "Abdullah Al-Harbi",
+      "Yousef Bakr",
+      "Bandar Al-Ghamdi",
+      "Omar Baeshen",
+      "Fares Al-Sudairi",
+      "Faisal Nassief",
+      "Ghazi Al-Amoudi",
+      "Ibrahim Zahid",
+      "Hisham Al-Qahtani",
+      "Hudayfair Bin Mahfouz",
+      "Ziad Al-Turki",
+      "Jareer Al-Shaikh",
+      "Rakan Al-Dossari",
+      "Laith Al-Juffali",
+      "Tariq Al-Otaibi",
+      "Majid Al-Rashid",
+      "Khalid Al-Anzi",
+      "Manan Al-Sabban",
+      "Sultan Al-Mutairi",
+      "Musab Al-Barrak",
+      "Majed Al-Suwailem",
+      "Nizar Al-Fadl",
+      "Bader Al-Khereiji",
+      "Obaid Al-Hazmi"
     ],
     "4B": [
-      "Ahmed Al-Mansouri", "Joud Al-Sheikh", "Turki Al-Rajhi", "Shahd Al-Nemer",
-      "Fahad Al-Sanea", "Ghala Al-Aqeel", "Nawaf Al-Habib", "Rimas Al-Zamil",
-      "Saud Al-Muhaidib", "Yara Al-Bassam", "Abdulaziz Al-Naimi", "Leen Al-Shammari",
-      "Mishal Al-Duraibi", "Haya Al-Faraj", "Waleed Al-Hokair", "Retaj Al-Ghurair",
-      "Nayef Al-Sulaiman", "Deem Al-Marzouq", "Rayan Al-Qassabi", "Sadeem Al-Wabel",
-      "Hassan Al-Jasser", "Alia Al-Rowais", "Meshari Al-Tamimi", "Basma Al-Nafisi"
+      "Ahmed Al-Mansouri",
+      "Joud Al-Sheikh",
+      "Turki Al-Rajhi",
+      "Sami Al-Nemer",
+      "Fahad Al-Sanea",
+      "Sattam Al-Aqeel",
+      "Nawaf Al-Habib",
+      "Shuraym Al-Zamil",
+      "Saud Al-Muhaidib",
+      "Tawfiq Al-Bassam",
+      "Abdulaziz Al-Naimi",
+      "Ubaid Al-Shammari",
+      "Mishal Al-Duraibi",
+      "Yazan Al-Faraj",
+      "Waleed Al-Hokair",
+      "Zaher Al-Ghurair",
+      "Nayef Al-Sulaiman",
+      "Hanzala Al-Marzouq",
+      "Rayan Al-Qassabi",
+      "Sadeem Al-Wabel",
+      "Hassan Al-Jasser",
+      "Khalifa Al-Rowais",
+      "Meshari Al-Tamimi",
+      "Sayer Al-Nafisi"
     ]
   }
 }
 ;</script>
+    <script>window.DAF_STORY = {"title":"The Lantern of Numeria — The Tale of the Seventeen Doors","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"supporting":[{"id":"hafizah","name":"Hafizah","role":"the Lantern Keeper","doors":[1,17],"prop":"lantern"},{"id":"zafir","name":"Ustadh Zafir","role":"the traveling scholar","doors":[2,5,6,7,13,17],"prop":"compass"},{"id":"rashed","name":"Rashed","role":"the Rival's Report","doors":[2,5,6,7,13,17],"prop":"clipboard"},{"id":"abulaila","name":"Abu Laila","role":"the merchant of the souq","doors":[2],"prop":"ledger"},{"id":"ihsan","name":"Ihsan","role":"the auditor","doors":[2,6],"prop":"seal"},{"id":"khalida","name":"Khalida","role":"the foreman","doors":[3,4],"prop":"ruler"},{"id":"mansur","name":"Mansur","role":"the caravan master","doors":[5],"prop":"tally"},{"id":"salma","name":"Salma","role":"the council scribe","doors":[6],"prop":"quill"},{"id":"mariam","name":"Mariam","role":"the architect","doors":[7,14,16],"prop":"compass"},{"id":"munira","name":"Munira","role":"the ferrywoman of the Fraction Isles","doors":[8],"prop":"oar"},{"id":"farida","name":"Farida","role":"the head cook","doors":[9],"prop":"ladle"},{"id":"zaynab","name":"Zaynab","role":"the clockmaker","doors":[10],"prop":"key"},{"id":"rashid","name":"Rashid","role":"the pearl diver","doors":[11],"prop":"mask"},{"id":"amina","name":"Amina","role":"the dockmaster","doors":[12],"prop":"clipboard"},{"id":"yusuf","name":"Yusuf","role":"the market warden","doors":[13],"prop":"balance"},{"id":"farid","name":"Farid","role":"the astronomer","doors":[15],"prop":"astrolabe"}],"unit":{"topic":1,"chapter":"The census in the brass lantern","question":"Can the class recover a damaged city census without changing what any digit means?","artifact":"A restored census folio and place-value key","pbl":"Teams prepare a one-page population and services brief for the fictional city of Numeria.","bridge":"The recovered population is much larger than expected. The council cannot plan services until the damaged budget ledger is audited.","lessonCount":5,"lessonCodes":["1-1","1-2","1-3","1-4","1-5"]},"lesson":{"code":"1-5","curriculumTitle":"Problem Solving: Construct Arguments","standard":"MP.3","storyBeat":"The seal of the first folio","technique":"Nested STEM story","storyMove":"Two teams defend different population statements before the council. A sound argument earns the seal.","studentMission":"Construct an evidence-based argument; the seal reveals the budget ledger for Chapter 2.","implementationStatus":"story-built","handoff":"The recovered population is much larger than expected. The council cannot plan services until the damaged budget ledger is audited.","screenPlan":{"shape":"reasoning-studio","shapeLabel":"Reasoning studio","recommended":14,"planningBand":"12–16","reason":"Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."},"index":4,"numberInUnit":5},"stemWindows":[],"amanahWindows":[]};</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
 const D = window.DAFDraw;
@@ -3170,13 +3544,28 @@ function Sketch({ draw, height, style }) {
     const stop = D.loop((frame) => {
       if (!st.W || !st.H) return;
       st.ctx.clearRect(0, 0, st.W, st.H);
+      D.clearTaps(cv);
       draw(st.ctx, st.W, st.H, frame);
     });
     return () => { stop(); if (st.destroy) st.destroy(); };
   }, [draw]);
+  /* The canvas itself is interactive: drawings register tappable regions
+     (D.tap) and pointer taps are dispatched to them — the drawing IS the
+     control. Chips stay as the accessible fallback. */
+  const pointer = (e, down) => {
+    const cv = ref.current;
+    if (!cv) return;
+    const r = cv.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    const hit = D.hit(cv, x, y);
+    cv.style.cursor = hit ? "pointer" : "default";
+    if (down && hit && hit.on) hit.on(hit.value, x, y);
+  };
   return (
     <canvas
       ref={ref}
+      onClick={(e) => pointer(e, true)}
+      onMouseMove={(e) => pointer(e, false)}
       style={Object.assign({ width: "100%", height: (height || 300) + "px", display: "block" }, style || {})}
     />
   );
@@ -3370,6 +3759,315 @@ function gameReducer(g, a) {
   }
 }
 /* ===========================================================================
+   STORY LAYER · fictional boys, truth-status lanes, folio progress and STEM
+   Reusable by every lesson. Sacred history never enters these fictional parts.
+   =========================================================================== */
+const STORY = window.DAF_STORY || null;
+
+function StoryCharacter({ id, pose, size }) {
+  const who = id === "zayd" ? "zayd" : "omar";
+  const zayd = who === "zayd";
+  const s = size || 76;
+  const wave = pose === "present" || pose === "question";
+  const build = pose === "build";
+  const skin = zayd ? "#B9784B" : "#9C633F";
+  const shirt = zayd ? "#2D70B3" : "#12857C";
+  const accent = zayd ? "#FA7E19" : "#C9A227";
+  const label = zayd ? "Zayd, the model builder" : "Omar, the evidence keeper";
+  return (
+    <svg className="story-character" style={{ width: s + "px", height: (s * 1.12) + "px" }}
+      viewBox="0 0 100 112" role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy="106" rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d="M29 103 L33 61 Q50 51 67 61 L72 103 Z" fill={shirt} />
+      <path d="M37 63 Q50 74 63 63" fill="none" stroke={accent} strokeWidth="3" />
+      <rect x="43" y="48" width="14" height="15" rx="6" fill={skin} />
+      <circle cx="50" cy="34" r="21" fill={skin} />
+      <path d={zayd ? "M30 31 Q33 8 51 11 Q70 11 72 34 Q62 22 52 22 Q39 25 30 31" : "M30 29 Q35 9 51 11 Q69 10 71 31 Q60 20 48 22 Q38 24 30 29"} fill="#172E35" />
+      <circle cx="42" cy="35" r="2.2" fill="#10242B" /><circle cx="58" cy="35" r="2.2" fill="#10242B" />
+      <path d="M43 44 Q50 49 58 43" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      {wave ? (
+        <g><path d="M32 68 Q17 58 19 40" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <circle cx="20" cy="37" r="5" fill={skin} /></g>
+      ) : (
+        <path d="M33 69 Q23 82 25 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {build ? (
+        <g><path d="M67 69 Q79 76 76 91" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <rect x="68" y="86" width="21" height="11" rx="2" fill={accent} />
+          <path d="M72 90h13M76 87v10M82 87v10" stroke="#fff" strokeWidth="1" /></g>
+      ) : (
+        <path d="M67 69 Q78 82 75 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {!zayd && (
+        <g transform="translate(63 72) rotate(-14)"><rect width="21" height="27" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" />
+          <path d="M5 7h11M5 12h9M5 17h11" stroke={shirt} strokeWidth="1.5" /></g>
+      )}
+    </svg>
+  );
+}
+
+function StoryLantern({ size }) {
+  const s = size || 64;
+  return (
+    <svg className="story-lantern" style={{ width: s + "px", height: s + "px" }} viewBox="0 0 80 80" role="img" aria-label="The brass lantern">
+      <title>The brass lantern</title>
+      <path d="M31 8h18M35 8v8h10V8" fill="none" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+      <path d="M26 22 Q40 12 54 22 L59 57 Q40 69 21 57 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="3" />
+      <path d="M30 25h20l4 28H26z" fill="#FFF8D8" stroke="#C9A227" strokeWidth="2" />
+      <path d="M40 27v24M28 40h24" stroke="#C9A227" strokeWidth="2" opacity=".8" />
+      <circle cx="40" cy="40" r="7" fill="#C9A227" opacity=".42" />
+      <path d="M26 61h28M31 67h18" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/* ===========================================================================
+   SUPPORTING CAST · fictional quest givers, the guide and the rival
+   (docs/plans/narrative/03-supporting-cast.md). Original fictional people of
+   present-day Jeddah — flat vector, modest contemporary clothing. Sacred
+   history never enters these fictional parts; labels come from the payload.
+   =========================================================================== */
+const SUPPORTING = {
+  hafizah:  { label: "Hafizah, the Lantern Keeper", jacket: "#6B5B73", accent: "#C9CDD3", skin: "#A06B45", head: "scarf", glasses: true, prop: "lantern" },
+  zafir:    { label: "Ustadh Zafir, the traveling scholar", jacket: "#4A6B8A", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#3A2E28", prop: "compass" },
+  rashed:   { label: "Rashed, the Rival's Report", boy: true, jacket: "#7A5CA8", accent: "#F2938F", skin: "#9C633F", head: "hair", hair: "#172E35", prop: "clipboard" },
+  abulaila: { label: "Abu Laila, the merchant of the souq", jacket: "#7A4E2D", accent: "#C9A227", skin: "#9C633F", head: "cap", cap: "#C9CDD3", prop: "ledger" },
+  ihsan:    { label: "Ihsan, the auditor", jacket: "#3A4A5A", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", glasses: true, prop: "seal" },
+  khalida:  { label: "Khalida, the foreman", jacket: "#5A6B7A", accent: "#FA7E19", skin: "#A06B45", head: "helmet", helmet: "#FA7E19", prop: "ruler" },
+  mansur:   { label: "Mansur, the caravan master", jacket: "#5A7A6B", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", prop: "tally" },
+  salma:    { label: "Salma, the council scribe", jacket: "#5A6B7A", accent: "#F2938F", skin: "#A06B45", head: "scarf", scarf: "#F2938F", prop: "quill" },
+  mariam:   { label: "Mariam, the architect", jacket: "#5A4A6B", accent: "#C9A227", skin: "#A06B45", head: "band", band: "#C9A227", hair: "#2A2E33", prop: "compass" },
+  munira:   { label: "Munira, the ferrywoman of the Fraction Isles", jacket: "#2D70B3", accent: "#C9A227", skin: "#A06B45", head: "scarf", scarf: "#2D70B3", prop: "oar" },
+  farida:   { label: "Farida, the head cook", jacket: "#7A4E5A", accent: "#F2938F", skin: "#A06B45", head: "scarf", scarf: "#F2938F", prop: "ladle" },
+  zaynab:   { label: "Zaynab, the clockmaker", jacket: "#4A6B8A", accent: "#C9A227", skin: "#A06B45", head: "band", band: "#C9A227", hair: "#2A2E33", prop: "key" },
+  rashid:   { label: "Rashid, the pearl diver", jacket: "#3A6B7A", accent: "#C9CDD3", skin: "#9C633F", head: "hair", hair: "#2A2E33", prop: "mask" },
+  amina:    { label: "Amina, the dockmaster", jacket: "#5A6B7A", accent: "#2D70B3", skin: "#A06B45", head: "cap", cap: "#2D70B3", prop: "clipboard" },
+  yusuf:    { label: "Yusuf, the market warden", jacket: "#5A4A3A", accent: "#C75440", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", prop: "balance" },
+  farid:    { label: "Farid, the astronomer", jacket: "#4A4A6B", accent: "#6042A6", skin: "#8A5A3B", head: "band", band: "#6042A6", hair: "#2A2E33", prop: "astrolabe" }
+};
+
+function SupportProp({ kind, accent, jacket }) {
+  switch (kind) {
+    case "lantern":
+      return <g transform="translate(64 66) scale(0.62)"><path d="M11 0h8M13 0v4h4V0" fill="none" stroke="#8A6D1B" strokeWidth="2.4" strokeLinecap="round" /><path d="M7 9 Q15 4 23 9 L25 26 Q15 31 5 26 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="2" /><path d="M9 28h12M11 31h8" stroke="#8A6D1B" strokeWidth="2" strokeLinecap="round" /></g>;
+    case "compass":
+      return <g transform="translate(74 84)"><circle r="9" fill="none" stroke={accent} strokeWidth="2.4" /><path d="M0 -6 L3 3 L-3 3 Z" fill={accent} /><path d="M0 9 v6 M-4 15 h8" stroke={accent} strokeWidth="1.6" fill="none" /></g>;
+    case "clipboard":
+      return <g transform="translate(66 72) rotate(8)"><rect width="18" height="24" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" /><rect x="4" y="-2" width="10" height="5" rx="1.5" fill={accent} /><path d="M4 8h10M4 13h8M4 18h10" stroke={jacket} strokeWidth="1.4" /></g>;
+    case "ledger":
+      return <g transform="translate(63 70) rotate(-14)"><rect width="22" height="28" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" /><path d="M5 8h12M5 13h10M5 18h12M5 23h8" stroke={jacket} strokeWidth="1.5" /></g>;
+    case "seal":
+      return <g transform="translate(76 82)"><circle r="8" fill="none" stroke={accent} strokeWidth="3" /><circle r="3" fill={accent} /><path d="M-8 8 Q-12 16 -6 18" stroke={accent} strokeWidth="2" fill="none" /></g>;
+    case "ruler":
+      return <g transform="translate(64 74) rotate(24)"><rect width="30" height="7" rx="1.5" fill="#C9CDD3" stroke={accent} strokeWidth="1.4" /><path d="M5 0v4M10 0v3M15 0v4M20 0v3M25 0v4" stroke={jacket} strokeWidth="1.2" /></g>;
+    case "tally":
+      return <g transform="translate(74 70) rotate(8)"><rect x="-2" width="5" height="30" rx="2" fill="#C9CDD3" stroke={accent} strokeWidth="1.4" /><path d="M-2 8h5M-2 14h5M-2 20h5" stroke={jacket} strokeWidth="1.4" /></g>;
+    case "quill":
+      return <g transform="translate(70 66) rotate(30)"><path d="M0 26 Q6 10 26 0 Q18 16 8 24 Z" fill="#FFFDF7" stroke={accent} strokeWidth="1.6" /><path d="M2 24 L14 8" stroke={accent} strokeWidth="1.2" /></g>;
+    case "oar":
+      return <g transform="translate(72 60) rotate(18)"><path d="M2 0 v44" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" /><ellipse cx="2" cy="48" rx="7" ry="10" fill="none" stroke="#8A6D1B" strokeWidth="2.6" /></g>;
+    case "ladle":
+      return <g transform="translate(72 68) rotate(12)"><path d="M0 0 v26" stroke={accent} strokeWidth="3" strokeLinecap="round" /><circle cx="0" cy="32" r="7" fill="none" stroke={accent} strokeWidth="2.6" /></g>;
+    case "key":
+      return <g transform="translate(76 76)"><circle r="7" fill="none" stroke={accent} strokeWidth="2.6" /><path d="M0 7 v10 M0 13 h5 M0 17 h4" stroke={accent} strokeWidth="2.2" /></g>;
+    case "mask":
+      return <g transform="translate(72 78)"><circle cx="-6" r="6" fill="none" stroke={accent} strokeWidth="2.4" /><circle cx="6" r="6" fill="none" stroke={accent} strokeWidth="2.4" /><path d="M0 -5 v-6 M-11 -3 Q-16 -8 -14 -12 M11 -3 Q16 -8 14 -12" stroke={accent} strokeWidth="1.6" fill="none" /></g>;
+    case "balance":
+      return <g transform="translate(74 72)"><path d="M0 0 v18 M-10 18 h20" stroke={accent} strokeWidth="2.4" /><path d="M-14 2 h28" stroke={accent} strokeWidth="2.2" /><path d="M-14 2 l-4 8 h8 Z M14 2 l-4 8 h8 Z" fill="none" stroke={accent} strokeWidth="1.8" /></g>;
+    case "astrolabe":
+      return <g transform="translate(76 82)"><circle r="10" fill="none" stroke={accent} strokeWidth="2.4" /><circle r="5" fill="none" stroke={accent} strokeWidth="1.4" /><path d="M0 -10 L4 0 L0 10 L-4 0 Z" fill="none" stroke={accent} strokeWidth="1.4" /></g>;
+    default: return null;
+  }
+}
+
+function SupportCharacter({ id, size }) {
+  const c = SUPPORTING[id];
+  if (!c) return null;
+  const s = size || 48;
+  const H = c.boy ? 112 : 120;
+  const payload = (STORY && STORY.supporting || []).find((p) => p.id === id);
+  const label = payload ? payload.name + ", " + payload.role : c.label;
+  const scarfCol = c.scarf || c.accent;
+  return (
+    <svg className="story-character story-support" style={{ width: s + "px", height: (s * H / 100) + "px" }}
+      viewBox={"0 0 100 " + H} role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy={H - 7} rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d={c.boy ? "M31 103 L34 64 Q50 55 66 64 L70 103 Z" : "M28 110 L33 60 Q50 50 67 60 L72 110 Z"} fill={c.jacket} />
+      <path d={c.boy ? "M38 66 Q50 76 62 66" : "M37 63 Q50 74 63 63"} fill="none" stroke={c.accent} strokeWidth="3" />
+      <rect x="43" y="46" width="14" height="15" rx="6" fill={c.skin} />
+      <circle cx="50" cy="33" r="21" fill={c.skin} />
+      {c.head === "scarf" && <path d="M27 30 Q28 9 50 8 Q72 9 73 30 Q73 42 66 44 L66 26 Q50 18 34 26 L34 44 Q27 42 27 30 Z M66 42 Q74 52 68 60 L62 50 Z" fill={scarfCol} />}
+      {c.head === "hair" && <path d="M30 29 Q34 9 51 10 Q69 10 71 30 Q61 19 49 21 Q38 23 30 29 Z" fill={c.hair} />}
+      {c.head === "cap" && <><path d="M28 28 Q32 10 50 10 Q68 10 72 28 Q50 20 28 28 Z" fill={c.cap} /><path d="M26 28 h48" stroke={c.cap} strokeWidth="4" strokeLinecap="round" /></>}
+      {c.head === "helmet" && <><path d="M28 30 Q30 8 50 8 Q70 8 72 30 Q50 22 28 30 Z" fill={c.helmet} /><path d="M25 30 h50" stroke={c.helmet} strokeWidth="4" strokeLinecap="round" /></>}
+      {c.head === "band" && <><path d="M30 29 Q34 9 51 10 Q69 10 71 30 Q61 19 49 21 Q38 23 30 29 Z" fill={c.hair} /><path d="M28 27 Q50 16 72 27" stroke={c.band} strokeWidth="4" fill="none" strokeLinecap="round" /></>}
+      <circle cx="42" cy="34" r="2.2" fill="#10242B" /><circle cx="58" cy="34" r="2.2" fill="#10242B" />
+      {c.glasses && <><circle cx="42" cy="34" r="6" fill="none" stroke="#10242B" strokeWidth="1.4" /><circle cx="58" cy="34" r="6" fill="none" stroke="#10242B" strokeWidth="1.4" /><path d="M48 34h4" stroke="#10242B" strokeWidth="1.4" /></>}
+      <path d="M43 43 Q50 48 58 42" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      <path d={c.boy ? "M33 70 Q24 82 26 94" : "M32 66 Q22 82 24 98"} fill="none" stroke={c.skin} strokeWidth="8" strokeLinecap="round" />
+      <path d={c.boy ? "M67 70 Q76 80 74 90" : "M68 66 Q78 78 76 88"} fill="none" stroke={c.skin} strokeWidth="8" strokeLinecap="round" />
+      <circle cx={c.boy ? 74 : 76} cy={c.boy ? 91 : 90} r="5" fill={c.skin} />
+      <SupportProp kind={c.prop} accent={c.accent} jacket={c.jacket} />
+    </svg>
+  );
+}
+
+
+function UnitShapeMotif({ topic }) {
+  if (topic !== 1) return <Star8 className="story-motif" />;
+  return (
+    <svg className="story-motif" viewBox="0 0 180 100" aria-hidden="true">
+      <path d="M8 85 Q28 52 48 85 Q68 52 88 85 Q108 52 128 85 Q148 52 172 85" fill="none" stroke="currentColor" strokeWidth="3" />
+      {[14, 42, 70, 98, 126, 154].map((x, i) => <rect key={x} x={x} y={18 + (i % 2) * 10} width="20" height="28" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />)}
+      <path d="M18 58h140" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" />
+    </svg>
+  );
+}
+
+/* Pips light from the class's stamped folio state when this computer has it
+   (daf.folio.v1); otherwise they fall back to position in the unit. The state
+   is class-level only — never student data — and non-critical: a cleared
+   browser changes nothing else in the deck. */
+function FolioProgress({ label }) {
+  if (!STORY) return null;
+  const n = STORY.lesson.numberInUnit, total = STORY.unit.lessonCount;
+  const codes = (STORY.unit && STORY.unit.lessonCodes) || [];
+  const stamped = (window.DAF_FOLIO && window.DAF_FOLIO.lessons) || null;
+  const done = (i) => stamped ? !!stamped[codes[i]] : i < n;
+  return (
+    <div className="folio-progress" aria-label={`Folio progress ${n} of ${total}`}>
+      <div className="folio-label"><b>Folio {STORY.unit.topic}</b><span>{label || STORY.unit.chapter}</span></div>
+      <div className="folio-pips">
+        {Array.from({ length: total }, (_, i) => <i key={i} className={done(i) ? "restored" : ""} />)}
+      </div>
+      <em>{n}/{total}</em>
+    </div>
+  );
+}
+
+const STORY_LANES = {
+  fiction: { label: "Our story", icon: "fa-book-open", cls: "fiction" },
+  stem: { label: "History of useful knowledge", icon: "fa-compass-drafting", cls: "stem" },
+  amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
+};
+
+function StoryShell({ lane, character, pose, support, title, text, clue, children, compact }) {
+  const info = STORY_LANES[lane || "fiction"];
+  const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  return (
+    <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
+      <div className="story-ribbon">
+        <UnitShapeMotif topic={topic} />
+        <div className="story-cast">
+          {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
+            : character === "lantern" ? <StoryLantern size={58} />
+            : character ? <StoryCharacter id={character} pose={pose} size={60} />
+            : <StoryLantern size={54} />}
+          {support ? <SupportCharacter id={support} size={46} /> : null}
+        </div>
+        <div className="story-ribbon-copy">
+          <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
+          <b>{title}</b>
+          <p>{text}</p>
+          {clue && <small><Icon name="fa-key" /> {clue}</small>}
+        </div>
+        <FolioProgress />
+      </div>
+      <div className="story-content">{children}</div>
+    </div>
+  );
+}
+
+function STEMWindow({ window: item, children }) {
+  if (!item) return <>{children}</>;
+  return (
+    <StoryShell lane="stem" title={item.title} text={item.studentText} clue={item.inquiry} compact>
+      <div className="stem-layout">
+        <div className="stem-source-card">
+          <div className="stem-status"><Icon name="fa-circle-check" /> {item.status}</div>
+          <h3>Why this matters now</h3>
+          <p>{item.modernConnection}</p>
+          <details>
+            <summary>Teacher source notes</summary>
+            <p>{item.teacherNote}</p>
+            {(item.sources || []).map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+
+function StoryHandoff({ title, text, artifact, next, support, children }) {
+  const code = (typeof LESSON !== "undefined" && LESSON.code) || "";
+  const [stamped, setStamped] = useState(false);
+  const [saved, setSaved] = useState(true);
+  useEffect(() => {
+    setStamped(!!(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  }, [code]);
+  const stamp = () => {
+    const cls = window.DAF_CURRENT_CLASS;
+    if (!cls || !code) return;
+    const on = !(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]);
+    setSaved(folioStamp(cls, code, on));
+    window.DAF_FOLIO = folioFor(cls);
+    setStamped(!!(window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  };
+  return (
+    <StoryShell lane="fiction" character="both" pose="present" support={support} title={title} text={text}
+      clue={next ? "Next folio clue · " + next : null}>
+      <div className="handoff-artifact">
+        <span><Icon name="fa-stamp" /></span>
+        <div><b>Artifact updated</b><p>{artifact}</p></div>
+        <button className={"btn btn-ghost btn-sm folio-stamp" + (stamped ? " on" : "")} onClick={stamp}
+          title="Class record on this computer — no points involved">
+          <Icon name={stamped ? "fa-rotate-left" : "fa-stamp"} />
+          {stamped ? "Folio page restored · tap to undo" : "Restore this folio page"}
+        </button>
+        {!saved && <small className="folio-save-note">Folio change could not be saved on this computer — export the class folio from the dojo before you leave.</small>}
+      </div>
+      {children}
+    </StoryShell>
+  );
+}
+
+/* ===========================================================================
+   AMANAH WINDOW · sacred-history lane (PR 02). Reverent, chronological,
+   non-gamified: no XP, no clue mechanics, no invented dialogue or quantities.
+   Only registry windows in `approved` state with the complete six-field audit
+   record (studentText, source, translation, reviewer, reviewDate) ever render
+   here; the payload embeds approved windows only, so an unapproved window is
+   invisible to the deck entirely.
+   =========================================================================== */
+const AMANAH_LANE = "amanah";
+
+function AmanahWindow({ window: item, children }) {
+  const approved = !!(item
+    && item.status === "approved"
+    && item.studentText && item.reviewer && item.reviewDate && item.source && item.translation);
+  if (!approved) return <>{children}</>;
+  return (
+    <StoryShell lane={AMANAH_LANE} title={item.title || "Amanah Window"} text={item.studentText} compact>
+      <div className="amanah-layout">
+        <div className="amanah-card">
+          <div className="amanah-status"><Icon name="fa-book" /> Reviewed · {item.reviewer} · {item.reviewDate}</div>
+          <h3>Values reflection</h3>
+          <p>The reflection follows the mathematics of this lesson; sacred history is never the game mechanic.</p>
+          <details>
+            <summary>Teacher review record</summary>
+            <p>Source: {item.source}</p>
+            <p>Translation used: {item.translation}</p>
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+/* ===========================================================================
    ROUTINE LIBRARY
    The Amplify Desmos instructional routines as prop-driven components, so a
    lesson file only supplies content and its own canvas drawings.
@@ -3493,9 +4191,9 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
   return (
     <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
       <Sketch draw={draw} height={height || 250} />
-      <div className="glass-card" style={{ cursor: "default" }}>
-        <div style={{ fontWeight: 900, fontSize: "12px", color: "var(--c)", marginBottom: "9px" }}>{label}</div>
-        <div style={{ display: "flex", gap: "7px", flexWrap: "wrap" }}>
+      <div className="chip-bar">
+        <div className="chip-label">{label}</div>
+        <div className="chip-row">
           {chips.map((c) => (
             <button key={c.v} onClick={() => onPick(c.v)}
               className={"btn btn-sm " + (value === c.v ? "btn-primary" : "btn-ghost")}>
@@ -3505,7 +4203,7 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
         </div>
       </div>
       {caption && (
-        <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
+        <div className="stage-line">
           {caption}
           {footnote && <div style={{ fontSize: "11px", color: "var(--daf-ink-2)", marginTop: "6px" }}>{footnote}</div>}
         </div>
@@ -3637,10 +4335,10 @@ function CompareConnect({ left, right, same, diff, award }) {
 /* ---- Synthesis · the board ---------------------------------------------- */
 function BoardScreen({ draw, height, caption }) {
   return (
-    <div className="glass-panel" style={{ padding: "12px" }}>
-      <Sketch draw={draw} height={height || 430} />
-      <div style={{ textAlign: "center", fontSize: "11.5px", color: "var(--daf-ink-2)", marginTop: "9px" }}>
-        {caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}
+    <div className="glass-panel board-panel" style={{ padding: 0 }}>
+      <div className="board-stage">
+        <Sketch draw={draw} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", borderRadius: "12px" }} />
+        <div className="stage-caption">{caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}</div>
       </div>
     </div>
   );
@@ -3863,77 +4561,132 @@ function Closing({ game, action, omml }) {
 }
 /* ===========================================================================
    SAVVAS enVision Mathematics · Grade 4 · Topic 1
-   LESSON 1-5 · Problem Solving: Construct Arguments     Standard: MP.3
+   LESSON 1-5 · Problem Solving: Construct Arguments   Standard: MP.3
    I can ... construct a math argument about place value, and critique the
             reasoning of others.
+   Story beat: "The seal of the first folio" — both teams at the council table.
    =========================================================================== */
 
 const M = {
-  claim: om(mt("13,637"), mnor(" and "), mt("13,533")),
-  evidence: om(mt("600>500")),
-  conclusion: om(mt("13,637>13,533")),
-  weakClaim: om(mnor("it just looks bigger")),
-  digitCount: om(mnor("both have "), mt("5"), mnor(" digits")),
-  swykPair: om(mt("28,405"), mnor(" and "), mt("28,450")),
-  swykAnswer: om(mt("28,405<28,450")),
-  tensPlace: om(mt("0<5")),
+  pair: om(mt("4,697,000"), mnor(" and "), mt("4,679,000")),
+  diff: om(mt("4,697,000−4,679,000=18,000")),
+  decide: om(mt("90,000>70,000")),
+  conclusion: om(mt("4,697,000>4,679,000")),
+  sameStart: om(mnor("both have "), mt("7"), mnor(" digits")),
   goodArgument: om(mnor("claim"), mt("+"), mnor("evidence"), mt("+"), mnor("conclusion"))
 };
 
-/* ---- drawings ------------------------------------------------------------ */
+/* ---- lesson-specific drawings ------------------------------------------- */
 
-/* Warm-Up: two speech bubbles, one with numbers and one without */
-const drawTwoClaims = (ctx, W, H, frame) => {
-  const CYCLE = 560, f = frame % CYCLE;
-  const p1 = D.at(f, 0, 120), p2 = D.at(f, 120, 260), p3 = D.at(f, 270, 380);
+/* Council table: two statement cards and the seal of Folio 1 */
+const drawCouncil = (ctx, W, H, frame) => {
+  const f = frame % 1100;
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  /* the table */
+  const pT = D.at(f, 0, 140);
+  ctx.save();
+  ctx.globalAlpha = pT;
+  D.rr(ctx, W / 2 - 110, H - 52, 220, 26, 6);
+  ctx.fillStyle = "rgba(201,162,39,.25)"; ctx.fill();
+  ctx.strokeStyle = "rgba(201,162,39,.6)"; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.restore();
+  D.txt(ctx, "THE COUNCIL TABLE", W / 2, H - 37, { size: 10, col: "#C9A227", font: "mono", weight: 700, alpha: pT });
 
-  const bubble = (x, y, w, h, col, a) => {
+  const cards = [
+    { who: "TEAM A", num: "4,697,000", col: "#388C46", x: 16, a: D.at(f, 120, 340) },
+    { who: "TEAM B", num: "4,679,000", col: "#2D70B3", x: W / 2 + 8, a: D.at(f, 240, 460) }
+  ];
+  const cw = W / 2 - 30;
+  cards.forEach((c) => {
+    if (c.a <= 0) return;
     ctx.save();
-    ctx.globalAlpha = a;
-    D.rr(ctx, x, y, w, h, 12);
-    ctx.fillStyle = "rgba(234,244,242,.05)";
-    ctx.fill();
-    ctx.strokeStyle = col; ctx.lineWidth = 1.8; ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(x + 24, y + h); ctx.lineTo(x + 38, y + h + 14); ctx.lineTo(x + 46, y + h);
-    ctx.fillStyle = "rgba(234,244,242,.05)"; ctx.fill(); ctx.stroke();
+    ctx.globalAlpha = c.a;
+    D.rr(ctx, c.x, 36, cw, 118, 12);
+    ctx.fillStyle = "rgba(255,255,255,.05)"; ctx.fill();
+    ctx.strokeStyle = c.col; ctx.lineWidth = 2; ctx.stroke();
     ctx.restore();
-  };
-
-  const bw = W / 2 - 34;
-  bubble(22, 34, bw, 96, "#C74440", p1);
-  D.fig(ctx, 60, H - 34, "#C74440", p1);
-  D.txt(ctx, "Gerald", 60, H - 10, { size: 11, col: "#C74440", font: "marker", alpha: p1 });
-  if (p2 > 0) {
-    D.txt(ctx, "My city is bigger.", 22 + bw / 2, 66, { size: 15, col: "#EAF4F2", font: "marker", alpha: p2 });
-    D.txt(ctx, "The number just looks bigger.", 22 + bw / 2, 96,
-      { size: 12.5, col: "rgba(234,244,242,.6)", font: "marker", alpha: p2 });
-  }
-
-  bubble(W / 2 + 12, 34, bw, 96, "#388C46", p1);
-  D.fig(ctx, W / 2 + 50, H - 34, "#388C46", p1);
-  D.txt(ctx, "Emily", W / 2 + 50, H - 10, { size: 11, col: "#388C46", font: "marker", alpha: p1 });
-  if (p3 > 0) {
-    D.txt(ctx, "My city is bigger.", W / 2 + 12 + bw / 2, 60, { size: 15, col: "#EAF4F2", font: "marker", alpha: p3 });
-    D.txt(ctx, "13,637 and 13,533 match until", W / 2 + 12 + bw / 2, 86,
-      { size: 12, col: "#C9A227", font: "marker", alpha: p3 });
-    D.txt(ctx, "the hundreds, and 600 beats 500.", W / 2 + 12 + bw / 2, 106,
-      { size: 12, col: "#C9A227", font: "marker", alpha: p3 });
+    D.txt(ctx, c.who + " defends", c.x + cw / 2, 60, { size: 11, col: c.col, font: "mono", weight: 700, alpha: c.a });
+    D.txt(ctx, c.num, c.x + cw / 2, 100, { size: 27, col: "#EAF4F2", font: "marker", alpha: c.a });
+    D.txt(ctx, "“this is the restored line”", c.x + cw / 2, 136, { size: 11, col: "rgba(234,244,242,.6)", font: "marker", alpha: c.a });
+  });
+  /* the seal waits at the top */
+  const pS = D.at(f, 520, 760);
+  if (pS > 0) {
+    D.star8(ctx, W / 2, 186, 15 + pS * 2, pS, "rgba(201,162,39," + (0.35 + pS * 0.5) + ")", 1.8);
+    D.txt(ctx, "the seal of Folio 1 waits for an argument — not a volume", W / 2, H - 12,
+      { size: 12, col: "#C9A227", font: "marker", alpha: pS });
   }
 };
 
-/* Monitor A: an argument assembling from the pieces the student picks */
+/* Scan the two census lines place by place */
+const makeCensusScan = (step, onScan) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  const a = "4697000", b = "4679000";
+  const cw = Math.min(50, (W - 80) / 7), x0 = W / 2 - (7 * cw) / 2;
+  const yA = 74, yB = 130;
+  const names = ["millions", "hundred\\nthousands", "ten\\nthousands", "thousands", "hundreds", "tens", "ones"];
+  for (let i = 0; i < 7; i++) {
+    const cx = x0 + i * cw + cw / 2;
+    if (onScan) D.tap(ctx, { x: x0 + i * cw, y: yA - 24, w: cw, h: (yB - yA) + 48, value: i, on: onScan });
+    const scanned = i < step;
+    const active = i === step;
+    const dim = i > step;
+    const col = dim ? "rgba(234,244,242,.28)" : scanned ? "rgba(234,244,242,.62)" : "#EAF4F2";
+    if (active) {
+      ctx.save();
+      ctx.globalAlpha = 0.55 + Math.sin(frame / 12) * 0.3;
+      D.rr(ctx, cx - cw / 2 + 2, yA - 24, cw - 4, (yB - yA) + 48, 8);
+      ctx.strokeStyle = "#C9A227"; ctx.lineWidth = 2; ctx.stroke();
+      ctx.restore();
+    }
+    D.txt(ctx, a[i], cx, yA, { size: 26, col: active ? "#C9A227" : col, font: "marker" });
+    D.txt(ctx, b[i], cx, yB, { size: 26, col: active ? "#C9A227" : col, font: "marker" });
+    if (scanned && a[i] === b[i]) D.txt(ctx, "same", cx, yB + 30, { size: 9, col: "rgba(52,211,153,.75)", font: "mono", weight: 700 });
+  }
+  if (step === 2) {
+    D.txt(ctx, "9 beats 7 — the argument stops here", W / 2, yB + 66, { size: 15, col: "#C9A227", font: "marker" });
+    D.txt(ctx, "4,697,000 is the greater reading", W / 2, H - 20, { size: 14, col: "#34D399", font: "marker" });
+  } else if (step === 1) {
+    D.txt(ctx, "the hundred thousands match — keep going", W / 2, yB + 66, { size: 14, col: "#EAF4F2", font: "marker" });
+  } else if (step === 0) {
+    D.txt(ctx, "start at the greatest place", W / 2, yB + 66, { size: 14, col: "#EAF4F2", font: "marker" });
+  } else {
+    D.txt(ctx, "we already knew it at the ten thousands place", W / 2, yB + 66,
+      { size: 12, col: "rgba(234,244,242,.55)", font: "marker" });
+  }
+};
+
+/* The two readings subtracted — the gap the argument must account for */
+const makeDiff = (pick) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  const p1 = D.at(frame % 500, 0, 160), p2 = D.at(frame % 500, 200, 360);
+  D.txt(ctx, "4,697,000", W / 2, 66, { size: 30, col: "#EAF4F2", font: "marker", alpha: p1 });
+  D.txt(ctx, "− 4,679,000", W / 2, 108, { size: 30, col: "#EAF4F2", font: "marker", alpha: D.at(frame % 500, 100, 240) });
+  if (p2 > 0) {
+    D.marker(ctx, [[W / 2 - 90, 128], [W / 2 + 90, 128]], p2, "rgba(201,162,39,.5)", 1.8);
+    D.txt(ctx, "the gap between the readings", W / 2, 152, { size: 12, col: "rgba(234,244,242,.6)", font: "marker", alpha: p2 });
+  }
+  const right = pick === 2;
+  D.txt(ctx, right ? "18,000" : "the gap is " + ["180", "1,800", "18,000", "180,000"][pick],
+    W / 2, 186, { size: 20, col: right ? "#34D399" : "#C9A227", font: "marker", alpha: D.at(frame % 500, 300, 420) });
+  D.txt(ctx, right ? "the difference is exactly 18,000 — the argument must account for it"
+                   : "which gap is the right size?", W / 2, H - 16,
+    { size: 12, col: right ? "#34D399" : "#C9A227", font: "marker" });
+};
+
+/* an argument assembling from the pieces the student picks */
 const makeArgument = (picked) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   const rows = [
-    { key: "claim", label: "Claim", text: "Gerald's city has more people.", col: "#6042A6" },
-    { key: "numbers", label: "Numbers", text: "13,637 and 13,533", col: "#2D70B3" },
-    { key: "place", label: "Place value", text: "They match until the hundreds place.", col: "#FA7E19" },
-    { key: "compare", label: "Compare", text: "600 is greater than 500.", col: "#C9A227" },
-    { key: "conclusion", label: "So", text: "13,637 is greater than 13,533.", col: "#388C46" }
+    { key: "claim", label: "Claim", text: "Team A's reading is the restored line.", col: "#6042A6" },
+    { key: "numbers", label: "Numbers", text: "4,697,000 and 4,679,000", col: "#2D70B3" },
+    { key: "place", label: "Place value", text: "They match until the ten-thousands place.", col: "#FA7E19" },
+    { key: "compare", label: "Compare", text: "90,000 is greater than 70,000.", col: "#C9A227" },
+    { key: "conclusion", label: "So", text: "4,697,000 is the greater reading.", col: "#388C46" }
   ];
   let y = 34;
   rows.forEach((r) => {
@@ -3957,19 +4710,19 @@ const makeArgument = (picked) => (ctx, W, H, frame) => {
     W / 2, H - 16, { size: 13, col: done ? "#34D399" : "rgba(234,244,242,.55)", font: "marker" });
 };
 
-/* Monitor B: spot the gap in a flawed argument */
+/* spot the gap in a flawed argument */
 const makeCritique = (found) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
-  D.txt(ctx, "Gerald's argument", W / 2, 28, { size: 13, col: "#C74440", font: "marker" });
+  D.txt(ctx, "Team B's argument", W / 2, 28, { size: 13, col: "#2D70B3", font: "marker" });
   const lines = [
-    { t: "Both numbers have 5 digits.", ok: true },
+    { t: "Both readings have 7 digits.", ok: true },
     { t: "So they are about the same size.", ok: true },
-    { t: "Mine starts with 1 and so does hers.", ok: true },
-    { t: "So my city must be bigger.", ok: false }
+    { t: "Ours came first in the ledger.", ok: true },
+    { t: "So ours must be the original.", ok: false }
   ];
   let y = 66;
-  lines.forEach((l, n) => {
+  lines.forEach((l) => {
     const flagged = found && !l.ok;
     ctx.save();
     ctx.globalAlpha = 1;
@@ -3983,7 +4736,7 @@ const makeCritique = (found) => (ctx, W, H, frame) => {
     D.txt(ctx, l.t, W / 2, y + 2, { size: 13.5, col: "#EAF4F2", font: "marker" });
     y += 42;
   });
-  D.txt(ctx, found ? "the last step has no evidence behind it"
+  D.txt(ctx, found ? "the last step has no place-value evidence behind it"
                    : "which step does not follow from the one before?",
     W / 2, H - 18, { size: 13, col: found ? "#C74440" : "#C9A227", font: "marker" });
 };
@@ -3993,10 +4746,10 @@ const drawBoard15 = (ctx, W, H, frame) => {
   const CYCLE = 780, f = frame % CYCLE;
   D.board(ctx, W, H, { t: frame, title: "What makes an argument, not a guess?" });
   const stages = [
-    { p: [20, 150], label: "Claim", text: "Gerald's city has more people.", col: "#6042A6" },
-    { p: [140, 290], label: "Evidence", text: "13,637 and 13,533 — hundreds place: 600 and 500", col: "#2D70B3" },
+    { p: [20, 150], label: "Claim", text: "Team A's reading is the restored census line.", col: "#6042A6" },
+    { p: [140, 290], label: "Evidence", text: "4,697,000 vs 4,679,000 — ten-thousands: 90,000 and 70,000", col: "#2D70B3" },
     { p: [280, 430], label: "Reason", text: "The first place that differs decides it.", col: "#FA7E19" },
-    { p: [420, 570], label: "Conclusion", text: "So 13,637 is greater than 13,533.", col: "#388C46" }
+    { p: [420, 570], label: "Conclusion", text: "So 4,697,000 is the greater reading (by 18,000).", col: "#388C46" }
   ];
   let y = 96;
   stages.forEach((s) => {
@@ -4027,15 +4780,15 @@ const drawSupport15 = (ctx, W, H) => {
   ctx.clearRect(0, 0, W, H);
   D.rr(ctx, 0, 0, W, H, 10);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
-  const a = "28405", b = "28450";
-  const cw = Math.min(40, (W - 40) / 5), x0 = W / 2 - (5 * cw) / 2;
-  for (let i = 0; i < 5; i++) {
+  const a = "4697000", b = "4679000";
+  const cw = Math.min(38, (W - 40) / 7), x0 = W / 2 - (7 * cw) / 2;
+  for (let i = 0; i < 7; i++) {
     const cx = x0 + i * cw + cw / 2;
     const same = a[i] === b[i];
-    D.txt(ctx, a[i], cx, 26, { size: 21, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
-    D.txt(ctx, b[i], cx, 58, { size: 21, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
+    D.txt(ctx, a[i], cx, 24, { size: 17, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
+    D.txt(ctx, b[i], cx, 52, { size: 17, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
   }
-  D.txt(ctx, "tens place", x0 + 3.5 * cw, 80, { size: 10, col: "#C9A227", font: "mono", weight: 700 });
+  D.txt(ctx, "ten-thousands", x0 + 2.5 * cw, 74, { size: 9.5, col: "#C9A227", font: "mono", weight: 700 });
 };
 
 /* ---- the lesson ---------------------------------------------------------- */
@@ -4048,246 +4801,464 @@ const LESSON = {
   ixl: ["EFV", "XVJ"],
 
   metas: [
-    { phase: "warmup",
-      title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Two students say the same thing. One of them shows their thinking.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Both said the same words. Only one of them said why.",
-      rail: { launch: "I am not asking who is right. Just tell me what you see.",
-        monitor: ["Noticing one has numbers", "Noticing both make the same claim", "Noticing the word because is missing"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Deciding who is right before reading the reasoning." } },
-
-    { phase: "launch",
-      title: "Is <em>it looks bigger</em> a reason?",
-      lead: "Gerald says his city is bigger because the number looks bigger. Is that enough?",
-      goal: "Create the need — a claim without evidence convinces nobody.",
-      pull: "Let us build an argument that would convince Gerald.",
-      rail: { launch: "Would that convince you? Turn and tell your partner.",
-        monitor: ["Accepting it", "Rejecting it without saying why", "Asking to see the numbers"],
-        connect: "What would Gerald have to add to convince you?",
-        misconception: "A confident voice counts as evidence. Do not correct it — ask what would change their mind." } },
-
-    { phase: "monitor",
-      title: "Build the <em>argument</em>",
-      lead: "Add one piece at a time. Watch when it starts to convince you.",
-      goal: "An argument has parts, and each one does a job.",
-      pull: "Now let us look at an argument that is missing a part.",
-      rail: { launch: "Add the pieces in any order. Say out loud when it becomes convincing.",
-        monitor: ["Starting with the claim", "Starting with the numbers", "Leaving out the conclusion"],
-        connect: "Which piece made the biggest difference?",
-        misconception: "Thinking more sentences means a stronger argument." } },
-
-    { phase: "monitor",
-      title: "Find the <em>gap</em>",
-      lead: "Every line here is true. One of them still does not follow.",
-      goal: "Critique the reasoning of others — the other half of MP.3.",
-      pull: "True sentences are not the same as a proof.",
-      rail: { launch: "Read it line by line. Where does it stop making sense?",
-        monitor: ["Checking each line is true", "Looking for the jump", "Rewriting the last line"],
-        connect: "What evidence is missing from the last line?",
-        misconception: "If every sentence is true the argument must be valid." } },
-
-    { phase: "monitor",
-      title: "Argument or <em>guess</em>?",
-      lead: "Sort each statement. No grading until the class commits.",
-      goal: "Tell evidence apart from opinion.",
-      pull: "Two students wrote the same argument different lengths.",
-      rail: { launch: "Read each card out loud before you place it.",
-        monitor: ["Looking for numbers", "Looking for the word because", "Checking it answers the question"],
-        connect: "What did every good one have in common?",
-        misconception: "Counting length as quality." } },
-
-    { phase: "connect",
-      title: "Two ways to <em>convince</em>",
-      lead: "Rana wrote three sentences. Adel wrote one. Both are complete.",
-      goal: "The comparison produces the rule — not the teacher.",
-      pull: "Now we put it on the board.",
-      rail: { launch: "Show both without judging either.",
-        monitor: ["Finding the evidence in both", "Preferring the longer one", "Noticing the short one still names the place"],
-        connect: "What does the short argument still contain?",
-        misconception: "Longer is always better." } },
-
-    { phase: "synth",
-      title: "On the <em>board</em>",
-      lead: "Claim. Evidence. Reason. Conclusion. Each one earns its place.",
-      goal: "The moment the lesson is taught — not displayed.",
-      pull: "Say it in one sentence.",
-      rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next box", "Naming the missing piece", "Restating it in their own words"],
-        connect: "Who can say what makes an argument in one sentence?",
-        misconception: "Treating the four boxes as a form to fill in rather than a way to think." } },
-
-    { phase: "synth",
-      title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming all three parts", "Testing it on their own writing", "Asking about arguments with pictures"],
-        connect: "Can a drawing be evidence?",
-        misconception: "Believing only words count as an argument." } },
-
-    { phase: "swyk",
-      title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.",
-      pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Choose the argument, then say why the others fail.",
-        monitor: ["Checking for numbers", "Checking the place value reason", "Checking the conclusion"],
-        connect: "Collect responses to open tomorrow.",
-        misconception: "Choosing the longest option." } },
-
-    { phase: "connect",
-      title: "What you <em>collected</em> today",
-      lead: "Points are for thinking, not for speed.",
-      goal: "Close on one action a student can actually do tonight.",
-      pull: "Next topic: adding and subtracting multi-digit numbers.",
-      rail: { launch: "Ask three students to say what makes an argument.",
-        monitor: ["Able to explain it to someone else", "Still needs the four boxes", "Ready for Topic 2"],
-        connect: "Who is teaching it at home tonight?",
-        misconception: "Chasing points instead of understanding." } }
+    {
+      phase: "warmup",
+      title: "The seal of the <em>first folio</em>",
+      lead: "Two teams stand at the council table, each defending a reading of the restored census line. The seal of Folio 1 waits.",
+      goal: "Notice that the two statements differ by only 18,000 — and that the seal asks for an argument.",
+      pull: "Volume is not evidence.",
+      rail: {
+        launch: "Fictional frame. Ask only: what do the two teams claim, and what is different?",
+        monitor: ["Noticing both readings are close", "Comparing digit by digit", "Asking what wins the seal"],
+        connect: "What would settle a dispute this close?",
+        misconception: "Thinking the louder or first team wins by default."
+      }
+    },
+    {
+      phase: "launch",
+      title: "The seal needs <em>evidence, not volume</em>",
+      lead: "Both readings are simulated census figures. Lock a prediction: how many places must an argument check before it decides?",
+      goal: "Predict where the first difference lands before the scan.",
+      pull: "A claim is the beginning of an argument, never the end.",
+      rail: {
+        launch: "State that both readings are simulated census data.",
+        monitor: ["Predicting the deciding place", "Checking the shared 4 and 6", "Arguing from the left"],
+        connect: "Why can't the council just average the two readings?",
+        misconception: "Saying 'mine looks bigger' with no place-value evidence."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Zayd builds the argument <em>piece by piece</em>",
+      lead: "A claim alone is not an argument. Add the pieces until the structure is complete.",
+      goal: "Assemble claim, numbers, place value, comparison and conclusion.",
+      pull: "Each piece earns its place.",
+      rail: {
+        launch: "Ask which piece is missing before the next one appears.",
+        monitor: ["Ordering the pieces", "Separating claim from evidence", "Naming the comparison"],
+        connect: "Which piece would an argument fail without?",
+        misconception: "Treating the conclusion as the whole argument."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Omar scans for the <em>first difference</em>",
+      lead: "Two seven-digit readings line up. Highlight the place where they first differ.",
+      goal: "Find the deciding place in a close comparison.",
+      pull: "Same is evidence too — it tells the argument to keep going.",
+      rail: {
+        launch: "Predict the deciding place before the scan confirms it.",
+        monitor: ["Checking places left to right", "Saying 'same' for equal places", "Stopping at the ten thousands"],
+        connect: "Why does the argument stop at the ten-thousands place?",
+        misconception: "Checking the ones place first because the numbers are 'close there'."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "The class critiques <em>Team B's case</em>",
+      lead: "Team B's argument has a gap. Find the step that does not follow from the one before.",
+      goal: "Critique reasoning by locating the step with no evidence.",
+      pull: "A critique names the gap — it does not just say 'no'.",
+      rail: {
+        launch: "Ask the class to quote the gap before flagging it.",
+        monitor: ["Reading each step in order", "Testing 'came first in the ledger'", "Naming the missing evidence"],
+        connect: "What would make Team B's argument complete?",
+        misconception: "Rejecting the whole argument because its conclusion is wrong."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Four statements need <em>labels</em>",
+      lead: "The council clerk mixes up the pieces. Sort each statement into its role in an argument.",
+      goal: "Identify claims, evidence and conclusions in written arguments.",
+      pull: "A start is not yet evidence.",
+      rail: {
+        launch: "Do not grade until the class commits to all four labels.",
+        monitor: ["Separating claim from conclusion", "Spotting the weak 'start'", "Quoting the evidence line"],
+        connect: "Which label is hardest to spot in real life?",
+        misconception: "Calling 'both have 7 digits' evidence when it only sets up the comparison."
+      }
+    },
+    {
+      phase: "connect",
+      title: "The class brings <em>two methods</em>",
+      lead: "The boys step back. Real student strategies for arguing from numbers take the board.",
+      goal: "Compare construct-first and critique-first strategies; name one in the Sijill.",
+      pull: "Building and checking are two sides of the same discipline.",
+      rail: {
+        launch: "Replace the sample names with students from this room when possible.",
+        monitor: ["Ordering the build", "Hunting the gap", "Explaining when each method helps"],
+        connect: "When is critique-first the better opening move?",
+        misconception: "Believing critique means being negative rather than precise."
+      }
+    },
+    {
+      phase: "synth",
+      title: "The anatomy of an argument <em>enters the folio</em>",
+      lead: "Claim. Evidence. Reason. Conclusion — in that order, every time.",
+      goal: "Build the argument structure publicly from the strategies just compared.",
+      pull: "This is the same structure the council will sign.",
+      rail: {
+        launch: "Draw with the class rather than presenting a finished rule.",
+        monitor: ["Restating the four parts", "Applying it to the census pair", "Checking the conclusion answers the claim"],
+        connect: "Which part fails most often when people argue about numbers?",
+        misconception: "Writing a conclusion that answers a different question than the claim."
+      }
+    },
+    {
+      phase: "swyk",
+      title: "The council hears <em>both teams</em>",
+      lead: "Team A defends 4,697,000; Team B defends 4,679,000. Which reading is supported — and what decides it?",
+      goal: "Use place-value evidence to choose between two close readings.",
+      pull: "A correct reading needs the deciding place, not just the answer.",
+      rail: {
+        launch: "Two minutes. Require the deciding place, not only an option letter.",
+        monitor: ["Scanning from the greatest place", "Naming the ten-thousands place", "Saying 9 beats 7"],
+        connect: "Which place decided it — and what are the values there?",
+        misconception: "Choosing the reading with the 'nicer' digits instead of comparing places."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "The argument must account for <em>the gap</em>",
+      lead: "How big is the difference between the two readings? The council wants the argument to account for it.",
+      goal: "Compute and state the difference between two close large numbers.",
+      pull: "A complete argument names what the winner beats the other by.",
+      rail: {
+        launch: "Ask for the gap before the subtraction reveals it.",
+        monitor: ["Subtracting place by place", "Keeping the zeros", "Saying 18,000, not 1,800"],
+        connect: "Why does the gap belong in the argument at all?",
+        misconception: "Dropping a zero and reporting 1,800 as the difference."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Team B's <em>last move</em>",
+      lead: "Team B says: 'Our reading came first in the ledger, so it must be the original.' Find the gap.",
+      goal: "Critique a reasoning error: order of appearance is not place-value evidence.",
+      pull: "The gap is the difference between a statement and its evidence.",
+      rail: {
+        launch: "Ask the class to quote the gap in one sentence.",
+        monitor: ["Testing the 'came first' step", "Distinguishing order from evidence", "Naming what the step would need"],
+        connect: "What evidence would make 'came first' into a real argument?",
+        misconception: "Answering the conclusion instead of examining the step that leads to it."
+      }
+    },
+    {
+      phase: "synth",
+      title: "The seal is ready to <em>land</em>",
+      lead: "Claim plus evidence plus conclusion — the class's argument is complete and checkable.",
+      goal: "State the full argument for the restored census line before the seal lands.",
+      pull: "The Sijill names the structure, not the students.",
+      rail: {
+        launch: "Have one student state the claim, one the evidence, one the conclusion.",
+        monitor: ["Holding the four-part structure", "Quoting the deciding place", "Stating the 18,000 gap"],
+        connect: "What makes this an argument rather than an opinion?",
+        misconception: "Skipping the evidence and jumping from claim to conclusion."
+      }
+    },
+    {
+      phase: "swyk",
+      title: "The class delivers the <em>defence</em>",
+      lead: "The council asks the room, not the teams: which statement is supported, and what is the deciding evidence?",
+      goal: "Construct the complete argument independently: statement, place, values, gap.",
+      pull: "A defended statement earns the seal of Folio 1.",
+      rail: {
+        launch: "Two minutes. Require claim, evidence and conclusion in one breath.",
+        monitor: ["Stating the deciding place", "Saying 90,000 beats 70,000", "Naming the 18,000 difference"],
+        connect: "Which part of the argument would survive the council's toughest question?",
+        misconception: "Giving only the winning number with no place-value evidence."
+      }
+    },
+    {
+      phase: "connect",
+      title: "Folio one is <em>sealed</em>",
+      lead: "The seal lands on a record the council can re-check. Then the council opens the budget ledger — and it is damaged.",
+      goal: "Close the unit artifact and open Chapter 2 with its mathematical need.",
+      pull: "Next chapter: the budget ledger audit — and the workshop that will multiply it.",
+      rail: {
+        launch: "Name the completed artifact, then reveal only the next chapter's need.",
+        monitor: ["Explaining the argument structure", "Using the difference as evidence", "Ready for multi-digit operations"],
+        connect: "Where have you had to defend a number with evidence before?",
+        misconception: "Remembering the seal but not the argument structure that earned it."
+      }
+    }
   ],
 
   Visual: function ({ i, award, game }) {
-    const [picked, setPicked] = useState([]);
-    const [found, setFound] = useState(false);
-    const order = ["claim", "numbers", "place", "compare", "conclusion"];
+    const [pieces, setPieces] = useState(0);
+    const [scan, setScan] = useState(0);
+    const [gap, setGap] = useState(0);
+    const [critique, setCritique] = useState(0);
+    const allKeys = ["claim", "numbers", "place", "compare", "conclusion"];
 
     switch (i) {
       case 0:
         return (
-          <NoticeWonder draw={drawTwoClaims} height={262} award={award}
-            notices={["They say the same thing", "Only one shows numbers", "One says because", "One mentions the hundreds place"]}
-            wonders={["Which one would convince a friend?", "Is a loud claim enough?", "What is missing on the left?"]}
-            footnote="Both students may be right. Only one of them has shown it." />
+          <StoryShell lane="fiction" character="lantern"
+            title="The seal of the first folio"
+            text="Two teams stand at the council table. Each defends a reading of the restored census line. The seal of Folio 1 waits — it lands on an argument, not on volume."
+            clue="The two readings differ by only 18,000">
+            <NoticeWonder draw={drawCouncil} height={238} award={award}
+              notices={["Two teams, one table", "Two different readings", "The numbers are very close", "The seal is still unlanded"]}
+              wonders={["What settles a dispute this close?", "Is a claim enough to win?", "What would the council demand?"]}
+              footnote="The story sets the stakes. The argument is the mathematics." />
+          </StoryShell>
         );
 
       case 1:
         return (
-          <LaunchEstimate draw={drawTwoClaims} height={262} award={award}
-            label="How convincing is it looks bigger, out of 10?"
-            min={0} max={10} start={5} unit="/ 10"
-            after="Locked. Now let us build something that would score a 10."
-            note="A claim tells you what someone thinks. An argument tells you why." />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The seal needs evidence, not volume"
+            text="Omar marks both readings as simulated census data — then asks how far an argument must scan before it decides."
+            clue="Lock a prediction before the scan moves">
+            <LaunchEstimate draw={drawCouncil} height={235} award={award}
+              label="How many places must we check before 4,697,000 and 4,679,000 settle?"
+              min={1} max={7} start={3} unit="places"
+              after="Locked. Now build the argument and see where the evidence lands."
+              note="Both readings are simulated census data — the argument works on any close pair." />
+          </StoryShell>
         );
 
       case 2:
         return (
-          <ExploreChips draw={makeArgument(picked)} height={270}
-            label="Add a piece to the argument"
-            value={null}
-            onPick={(v) => {
-              if (picked.indexOf(v) !== -1) return;
-              const next = picked.concat([v]);
-              setPicked(next);
-            }}
-            chips={order.map((k) => ({
-              v: k,
-              label: (picked.indexOf(k) !== -1 ? "✓ " : "+ ") +
-                     ({ claim: "Claim", numbers: "Numbers", place: "Place value", compare: "Compare", conclusion: "Conclusion" })[k]
-            }))}
-            caption={<MathEl omml={M.conclusion} size="xl" display="block" />}
-            footnote="Evidence is what turns a claim into an argument." />
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd builds the argument piece by piece"
+            text="A claim alone is not an argument. Add the pieces until the structure is complete — the folio shows what is still missing."
+            clue="Each piece earns its place">
+            <ExploreChips draw={makeArgument(allKeys.slice(0, pieces))} height={225}
+              label="How many pieces does the argument have so far?"
+              value={pieces}
+              onPick={(v) => setPieces(v)}
+              chips={[
+                { v: 1, label: "claim only" },
+                { v: 2, label: "+ the numbers" },
+                { v: 3, label: "+ the place" },
+                { v: 4, label: "+ the comparison" },
+                { v: 5, label: "+ the conclusion" }
+              ]}
+              caption={<MathEl omml={M.goodArgument} size="lg" display="block" />}
+              footnote="A claim on its own is not an argument." />
+          </StoryShell>
         );
 
       case 3:
         return (
-          <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
-            <Sketch draw={makeCritique(found)} height={258} />
-            <div style={{ textAlign: "center" }}>
-              <button className="btn btn-primary" disabled={found}
-                style={{ opacity: found ? 0.5 : 1 }}
-                onClick={() => { setFound(true); }}>
-                <Icon name="fa-magnifying-glass" /> Show the step that does not follow
-              </button>
-            </div>
-            <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
-              <MathEl omml={M.digitCount} size="lg" display="block" />
-              <div style={{ fontSize: "11px", color: "var(--daf-ink-2)", marginTop: "6px" }}>
-                Same number of digits tells you they are close. It does not tell you which is greater.
-              </div>
-            </div>
-          </div>
+          <StoryShell lane="fiction" character="omar"
+            title="Omar scans for the first difference"
+            text="Two seven-digit readings line up. He highlights one place at a time — the class chooses where they first differ."
+            clue="Same is evidence too — it says keep going">
+            <ExploreChips draw={makeCensusScan(scan, setScan)} height={225}
+              label="Where do the two readings first differ?"
+              value={scan}
+              onPick={(v) => setScan(v)}
+              chips={[{ v: 0, label: "millions" }, { v: 1, label: "hundred thousands" }, { v: 2, label: "ten thousands" }, { v: 3, label: "thousands" }]}
+              caption={<MathEl omml={M.decide} size="lg" display="block" />}
+              footnote="The first differing place decides the comparison." />
+          </StoryShell>
         );
 
       case 4:
         return (
-          <CardSort award={award} columns={2} commitLabel="The class is ready — check"
-            items={[
-              { id: "a1", text: "600 is greater than 500, so 13,637 wins", target: "arg" },
-              { id: "a2", text: "It just looks bigger to me", target: "guess" },
-              { id: "a3", text: "I counted the digits and guessed", target: "guess" },
-              { id: "a4", text: "They match until the hundreds place", target: "arg" }
-            ]}
-            targets={[
-              { id: "arg", label: "an argument — it uses numbers and place value" },
-              { id: "guess", label: "a guess — no evidence behind it" }
-            ]} />
+          <StoryShell lane="fiction" character="both" pose="question"
+            title="Team B's case has a gap"
+            text="Omar reads Team B's argument line by line. Zayd waits for the class to find the step that does not follow."
+            clue="A critique names the gap — it does not just say no">
+            <ExploreChips draw={makeCritique(critique === 1)} height={225}
+              label="Which step has no evidence behind it?"
+              value={critique}
+              onPick={(v) => setCritique(v)}
+              chips={[{ v: 0, label: "reading the steps…" }, { v: 1, label: "the last step — 'came first' " }]}
+              caption={<MathEl omml={M.sameStart} size="md" display="block" />}
+              footnote="Both readings have 7 digits — that sets up the comparison; it does not win it." />
+          </StoryShell>
         );
 
       case 5:
         return (
+          <StoryShell lane="fiction" character="both" pose="question"
+            title="The clerk mixed up the pieces"
+            text="Four statements from the hearing, shuffled. Sort each into its role before the folio checks."
+            clue="A start is not yet evidence">
+            <CardSort award={award} columns={2} commitLabel="Label the four statements"
+              items={[
+                { id: "s1", text: "My city is bigger.", target: "t1" },
+                { id: "s2", text: "13,637 and 13,533 match until the hundreds, and 600 beats 500.", target: "t2" },
+                { id: "s3", text: "So 13,637 is the greater number.", target: "t3" },
+                { id: "s4", text: "Both numbers have 5 digits.", target: "t4" }
+              ]}
+              targets={[
+                { id: "t1", label: "Claim" },
+                { id: "t2", label: "Evidence" },
+                { id: "t3", label: "Conclusion" },
+                { id: "t4", label: "A start (not evidence)" }
+              ]} />
+          </StoryShell>
+        );
+
+      case 6:
+        return (
+          <StoryShell lane="fiction" character="both" pose="present"
+            title="Omar and Zayd step out of the way"
+            text="The strongest argument strategies now come from students in this room. Compare them, then preserve one in the Sijill."
+            clue="Building and checking are two sides of the same discipline">
           <CompareConnect award={award}
-            left={{ name: "Rana's way — three sentences", h: 96,
+            left={{
+              name: "Hassan's way — build in order", h: 88,
               draw: (ctx, W, H, frame) => {
                 ctx.clearRect(0, 0, W, H);
                 D.rr(ctx, 0, 0, W, H, 9);
                 ctx.fillStyle = "#0B1F24"; ctx.fill();
-                const p = D.at(frame % 420, 0, 180);
-                const lines = ["Both start with 13,", "then 6 hundreds beats 5 hundreds,", "so 13,637 is greater."];
-                lines.forEach((t, n) => {
-                  const a = D.at(p, n / 3, n / 3 + 0.4);
-                  D.txt(ctx, t, W / 2, 26 + n * 26, { size: 12.5, col: "#EAF4F2", font: "marker", alpha: a });
-                });
+                const p = D.at(frame % 500, 0, 160);
+                D.txt(ctx, "claim → numbers → place", W / 2, H / 2 - 22, { size: 15, col: "#EAF4F2", font: "marker", alpha: p });
+                D.txt(ctx, "→ compare → conclusion", W / 2, H / 2 + 6, { size: 15, col: "#EAF4F2", font: "marker", alpha: D.at(frame % 500, 120, 260) });
+                D.txt(ctx, "every piece before the seal", W / 2, H / 2 + 34, { size: 12, col: "#C9A227", font: "marker", alpha: D.at(frame % 500, 240, 360) });
               },
-              quote: "I walked through it step by step." }}
-            right={{ name: "Adel's way — one sentence", omml: M.evidence, h: 96,
-              quote: "The hundreds place decides it: 600 beats 500." }}
-            same={["Both name the hundreds place", "Both use real numbers", "Both reach the same conclusion"]}
-            diff={["Rana shows every step", "Adel trusts the reader to know the rule",
-                   "Rana's is easier to follow the first time"]} />
+              quote: "I build it in order, so nothing is missing when I speak."
+            }}
+            right={{
+              name: "Musa's way — hunt the gap first", h: 88,
+              draw: (ctx, W, H, frame) => {
+                ctx.clearRect(0, 0, W, H);
+                D.rr(ctx, 0, 0, W, H, 9);
+                ctx.fillStyle = "#0B1F24"; ctx.fill();
+                const p = D.at(frame % 500, 0, 160);
+                D.txt(ctx, "read every step in order", W / 2, H / 2 - 22, { size: 15, col: "#EAF4F2", font: "marker", alpha: p });
+                D.txt(ctx, "ask: what evidence backs this step?", W / 2, H / 2 + 6, { size: 13, col: "#2D70B3", font: "marker", alpha: D.at(frame % 500, 140, 280) });
+                D.txt(ctx, "flag the step with none", W / 2, H / 2 + 34, { size: 12, col: "#C9A227", font: "marker", alpha: D.at(frame % 500, 260, 380) });
+              },
+              quote: "I check the opponent's case first — the gap tells me what my argument must include."
+            }}
+            same={["Both use claim, evidence, conclusion",
+                   "Both rely on place-value evidence",
+                   "Both can be checked by a third person"]}
+            diff={["Hassan opens by building, Musa opens by testing",
+                   "Musa needs a case to examine first",
+                   "Hassan's order is the one the council signs"]} />
+          </StoryShell>
         );
-
-      case 6:
-        return <BoardScreen draw={drawBoard15} height={430} />;
 
       case 7:
         return (
-          <RuleScreen award={award}
-            ommls={[{ omml: M.goodArgument, alt: "claim plus evidence plus conclusion" }]}
-            hand={"say what you think · show the numbers and the place value · finish with a conclusion that answers the question"}
-            cards={[
-              { title: "The argument we built", omml: M.conclusion, note: "decided at the hundreds place" },
-              { title: "Tap to see the evidence", omml: M.claim, revealOmml: M.evidence, reveal: true,
-                note: "the numbers are the evidence" }
-            ]} />
+          <StoryShell lane="fiction" character="zayd" pose="build" support="hafizah"
+            title="The argument's anatomy is drawn into the Evidence Folio"
+            text="Zayd builds only what the class can justify from the two student methods."
+            clue="Claim · Evidence · Reason · Conclusion">
+            <BoardScreen draw={drawBoard15} height={380}
+              caption="The argument structure — not a louder voice — earns the seal." />
+          </StoryShell>
         );
 
       case 8:
         return (
-          <ShowWhatYouKnow award={award}
-            prompt="Which is the complete argument that 28,450 is greater than 28,405?"
-            omml={M.swykPair}
-            options={[
-              { v: "a", text: "It is bigger" },
-              { v: "b", text: "5 tens beats 0 tens" },
-              { v: "c", text: "Both have 5 digits" },
-              { v: "d", text: "I checked twice" }
-            ]}
-            right="b"
-            support={{
-              yes: "Yes — it names the deciding place and compares the values there.",
-              notYet: "Not yet — which place is the first one that differs?",
-              draw: drawSupport15, h: 92,
-              hint: "The gold digits are the first ones that differ. What are they worth?"
-            }} />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The council hears both teams"
+            text="Team A defends 4,697,000; Team B defends 4,679,000. Name the supported reading — and the place that decides it."
+            clue="The deciding place is the ten-thousands">
+            <ShowWhatYouKnow award={award}
+              prompt="Which reading of the census line is supported by the place-value evidence?"
+              options={[{ v: "a", text: "4,697,000" }, { v: "b", text: "4,679,000" }, { v: "c", text: "They are equal" }, { v: "d", text: "Cannot be compared" }]}
+              right="a"
+              support={{
+                yes: "Yes — the ten-thousands places differ first: 90,000 beats 70,000, so 4,697,000 is greater.",
+                notYet: "Not yet — scan from the greatest place and find the first place that differs.",
+                draw: drawSupport15, h: 84,
+                hint: "The millions and hundred-thousands match. Keep going."
+              }} />
+          </StoryShell>
         );
 
       case 9:
         return (
-          <Closing game={game} omml={M.goodArgument}
-            action="Make a claim about two numbers at home, then give one piece of evidence for it." />
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The argument must account for the gap"
+            text="The council asks how much larger the winning reading is. The gap must belong in the argument."
+            clue="Subtract place by place — the zeros matter">
+            <ExploreChips draw={makeDiff(gap)} height={225}
+              label="How big is the gap between the two readings?"
+              value={gap}
+              onPick={(v) => setGap(v)}
+              chips={[{ v: 0, label: "180" }, { v: 1, label: "1,800" }, { v: 2, label: "18,000" }, { v: 3, label: "180,000" }]}
+              caption={<MathEl omml={M.diff} size="lg" display="block" />}
+              footnote="A complete argument names what the winner beats the other by." />
+          </StoryShell>
+        );
+
+      case 10:
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Team B's last move"
+            text="Team B: “Our reading came first in the ledger, so it must be the original.” Omar asks the class to find the gap."
+            clue="Order in a ledger is not place-value evidence">
+            <ShowWhatYouKnow award={award}
+              prompt="What is the gap in Team B's argument?"
+              options={[
+                { v: "a", text: "Ledger order is not evidence about which number is greater" },
+                { v: "b", text: "The ledger is too old to trust" },
+                { v: "c", text: "7 is actually bigger than 9" },
+                { v: "d", text: "Both readings are equal" }
+              ]}
+              right="a"
+              support={{
+                yes: "Yes — 'came first' says nothing about place value. The argument skips the evidence step.",
+                notYet: "Not yet — read each step and ask what evidence backs it.",
+                draw: makeCritique(true), h: 84,
+                hint: "The last step has no place-value evidence behind it."
+              }} />
+          </StoryShell>
+        );
+
+      case 11:
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The seal is ready to land"
+            text="Claim plus evidence plus conclusion — the class's argument is complete and checkable. State it before the seal lands."
+            clue="The Sijill names the structure, not the students">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.conclusion, alt: "4,697,000 is greater than 4,679,000" },
+                      { omml: M.diff, alt: "the difference is 18,000" }]}
+              hand={"claim + evidence + conclusion — in that order"}
+              cards={[
+                { title: "The deciding place", omml: M.decide, note: "ten-thousands: 9 beats 7" },
+                { title: "The gap", omml: M.diff, note: "the argument accounts for 18,000" }
+              ]} />
+          </StoryShell>
+        );
+
+      case 12:
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The class delivers the defence"
+            text="The council asks the room: which statement is supported, and what is the deciding evidence?"
+            clue="One breath: statement, place, values, gap">
+            <ShowWhatYouKnow award={award}
+              prompt="Deliver the defence: which statement is supported — and with what deciding evidence?"
+              options={[
+                { v: "a", text: "4,697,000 — ten-thousands: 90,000 beats 70,000, a gap of 18,000" },
+                { v: "b", text: "4,679,000 — it has a 7 in the ten-thousands" },
+                { v: "c", text: "Both — the difference is too small to matter" },
+                { v: "d", text: "Neither — seven-digit numbers cannot be compared" }
+              ]}
+              right="a"
+              support={{
+                yes: "Yes — claim, evidence (the first differing place), conclusion, and the gap. That is an argument.",
+                notYet: "Not yet — a complete defence states the place, the values there, and the gap.",
+                draw: drawSupport15, h: 84,
+                hint: "Same structure the folio just drew: claim, evidence, conclusion."
+              }} />
+          </StoryShell>
+        );
+
+      case 13:
+        return (
+          <StoryHandoff support="hafizah"
+            title="Folio one is sealed"
+            text="The seal lands on a record the council can re-check. Then the council opens the budget ledger — and it is damaged. The recovered population is much larger than expected, and services cannot be planned until the ledger is audited."
+            artifact="Population and services brief · completed census folio with place-value key"
+            next="The damaged budget ledger — audit it, or the council cannot plan a single service.">
+            <Closing game={game} omml={M.conclusion}
+              action="Write your own argument about a comparison from this unit: claim, evidence, conclusion — and the place that decided it." />
+          </StoryHandoff>
         );
 
       default:
@@ -4449,6 +5420,31 @@ function TeacherRail({ meta, onClose }) {
       <p>{r.connect}</p>
       <h4>ANTICIPATED MISCONCEPTION</h4>
       <p style={{ color: "#f2c9c7" }}>{r.misconception}</p>
+      {STORY && (STORY.stemWindows || []).length > 0 && (
+        <div>
+          <h4>SOURCES · HISTORY OF USEFUL KNOWLEDGE</h4>
+          {STORY.stemWindows.map((w) => (
+            <div key={w.id} style={{
+              marginBottom: "8px", background: "rgba(255,255,255,.05)",
+              borderRadius: "8px", padding: "8px 10px"
+            }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: "#cfe6e2" }}>
+                {w.title}{" "}
+                <span className="mono" style={{ fontSize: "10px", color: "var(--daf-gold)" }}>{w.status}</span>
+              </div>
+              <p style={{ fontSize: "11.5px", color: "#cfe6e2", margin: "5px 0 0", lineHeight: 1.5 }}>
+                {w.teacherNote}
+              </p>
+              {(w.sources || []).map((s) => (
+                <a key={s.url} href={s.url} target="_blank" rel="noreferrer"
+                  style={{ display: "block", fontSize: "11px", color: "#9cc0ba", marginTop: "4px" }}>
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
       {LESSON.ixl && LESSON.ixl.length > 0 && (
         <div>
           <h4>IXL PRACTICE TO ASSIGN</h4>
@@ -4950,6 +5946,16 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => {
+            if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
+              folioReset(game.section);
+              window.DAF_FOLIO = folioFor(game.section);
+            }
+          }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
+        </span>
+        <span className="dj-note">
+          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>
@@ -5045,6 +6051,15 @@ function App() {
     document.documentElement.style.setProperty("--c", ph.c);
     document.documentElement.style.setProperty("--c-2", ph.c2);
   }, [i]);
+
+  /* Durable story state (PR 02): the class's folio cache is class-level only
+     (lesson stamps, no student data), lives on this computer and refreshes
+     when a class is picked. Missing or cleared storage degrades silently to
+     position-based folio pips. */
+  useEffect(() => {
+    window.DAF_CURRENT_CLASS = (game && game.section) || null;
+    window.DAF_FOLIO = folioFor(window.DAF_CURRENT_CLASS);
+  }, [game && game.section]);
 
   useEffect(() => setReplay((r) => r + 1), [i]);
 

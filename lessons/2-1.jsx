@@ -65,13 +65,15 @@ const drawCanteen = (ctx, W, H, frame) => {
 };
 
 /* Monitor A: the compensation slider */
-const makeCompensate = (k) => (ctx, W, H, frame) => {
+const makeCompensate = (k, onK) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   const a = 199 + k, b = 46 - k;
   const x = 50, w = W - 100, y = H / 2 + 6;
   const total = 245;
   const aw = (a / total) * w;
+  if (onK) D.tap(ctx, { x: x, y: y - 30, w: w, h: 58, value: 0, on: (v, tx) =>
+    onK(Math.max(0, Math.min(46, Math.round((tx - x) / w * 46)))) });
   D.strip(ctx, {
     x: x, y: y - 26, w: w, h: 50, prog: 1, total: 245,
     parts: [
@@ -80,12 +82,12 @@ const makeCompensate = (k) => (ctx, W, H, frame) => {
     ]
   });
   D.txt(ctx, a + " + " + b + " = 245", W / 2, y + 60, { size: 19, col: "#EAF4F2", font: "marker" });
-  D.txt(ctx, k === 1 ? "now it is easy in your head" : "the total never moves",
+  D.txt(ctx, k === 1 ? "now it is easy in your head" : "the total never moves — tap the bar to move one across",
     W / 2, H - 18, { size: 13, col: k === 1 ? "#34D399" : "#C9A227", font: "marker" });
 };
 
 /* Monitor B: breaking the second addend apart by place value */
-const makeBreakApart = (step) => (ctx, W, H, frame) => {
+const makeBreakApart = (step, onStep) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   const stops = [199, 239, 245];
@@ -93,6 +95,11 @@ const makeBreakApart = (step) => (ctx, W, H, frame) => {
   const x = 54, w = W - 108, y = H / 2 + 14;
   const lo = 190, hi = 250;
   const px = (n) => x + ((n - lo) / (hi - lo)) * w;
+  if (onStep) D.tap(ctx, { x: x, y: y - 64, w: w, h: 110, value: 0, on: (v, tx) => {
+    let best = 0, bd = Infinity;
+    stops.forEach((s, i) => { const d = Math.abs(px(s) - tx); if (d < bd) { bd = d; best = i; } });
+    onStep(best);
+  }});
   D.marker(ctx, [[x, y], [x + w, y]], 1, "rgba(234,244,242,.7)", 2.2);
   [190, 200, 210, 220, 230, 240, 250].forEach((n) => {
     ctx.save(); ctx.strokeStyle = "rgba(234,244,242,.4)"; ctx.lineWidth = 1.4;
@@ -169,52 +176,44 @@ const LESSON = {
   ixl: ["D7B", "D9R", "Q8M"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Two prices at the canteen. No question yet.", goal: "An invitation — every student has something to say.",
-      pull: "One of those numbers is almost a friendly number.",
-      rail: { launch: "I am not asking for a total yet. Just look at the two prices.",
-        monitor: ["Noticing 199 is nearly 200", "Adding straight away", "Noticing the 46 is small"],
-        connect: "Who noticed something nobody else did?",
+    { phase: "warmup", title: "The pen <em>hovers</em> over 199 + 46",
+      lead: "Fresh ink at the canteen counter: 199 and 46. The merchant's pen hovers — one slip and the line is inked for good.",
+      goal: "Notice near-round numbers before any calculating.",
+      pull: "How do you check a total before it becomes permanent?",
+      rail: { launch: "Fictional frame. I am not asking for the total yet — just look at the two prices and the hovering pen.",
+        monitor: ["Noticing 199 is nearly 200", "Seeing the pen hover", "Wonding how to check before committing"],
+        connect: "What makes 199 nearly a friendly number?",
         misconception: "Reaching for paper before looking at the numbers." } },
 
-    { phase: "launch", title: "Can you do it <em>in your head</em>?",
-      lead: "199 + 46. No pencil. What did your brain do first?",
-      goal: "Create the need — some numbers are easier to add than others.",
-      pull: "Estimate first, then we will make it friendly.",
-      rail: { launch: "Hands down, eyes on the board. What is the total? How did you get it?",
-        monitor: ["Counting on by ones", "Rounding 199 to 200 and adjusting", "Splitting the 46"],
-        connect: "Who changed the numbers before adding them?",
+    { phase: "launch", title: "Sixty seconds <em>before the ink dries</em>",
+      lead: "199 + 46. No pencil. What is your checked prediction?",
+      goal: "Lock a prediction, then check it the way the merchant does.",
+      pull: "The canteen prices are simulated — the move works on any two numbers.",
+      rail: { launch: "Hands down, eyes on the counter. Give a prediction and say what you are checking.",
+        monitor: ["Rounding 199 to 200", "Splitting the 46", "Adding straight away"],
+        connect: "Who changed a number before adding?",
         misconception: "Believing mental maths means the written method done silently." } },
 
-    { phase: "monitor", title: "Move <em>one</em> across",
-      lead: "Take from one part, give to the other. Watch the total.",
+    { phase: "monitor", title: "Zayd moves <em>one</em> across",
+      lead: "Take from the sandwich, give to the juice. Watch the total bar.",
       goal: "Compensation: the total is protected when you move an amount across.",
-      pull: "There is another way to make it easy. Let us jump instead.",
+      pull: "Whatever you take from one part, you must give to the other.",
       rail: { launch: "Predict the total before you move anything.",
-        monitor: ["Watching the total bar", "Checking both new numbers", "Explaining why the total holds"],
+        monitor: ["Watching the total bar", "Taking from the 46 as well as giving to the 199", "Explaining why the total holds"],
         connect: "Why does the total not change?",
         misconception: "Adding 1 to one part without taking it from the other." } },
 
-    { phase: "monitor", title: "Break it into <em>friendly jumps</em>",
-      lead: "Split the 46 by place value and hop along the line.",
-      goal: "Decomposition: add the tens, then the ones.",
-      pull: "Two students, two strategies. Which is which?",
-      rail: { launch: "Predict where each jump will land.",
-        monitor: ["Jumping tens then ones", "Jumping to the next ten first", "Counting in ones"],
-        connect: "Which jump did the heavy lifting?",
-        misconception: "Splitting the wrong addend and losing track." } },
-
-    { phase: "monitor", title: "Which <em>strategy</em> is it?",
-      lead: "Match each piece of working to the strategy behind it.",
-      goal: "Name the strategies so students can choose one on purpose.",
-      pull: "Now let us watch two students explain the same problem.",
-      rail: { launch: "Read each one out loud before you place it.",
-        monitor: ["Looking for a changed number", "Looking for a split", "Checking the total"],
-        connect: "How could you tell them apart?",
+    { phase: "monitor", title: "Ink only the <em>checked</em> lines",
+      lead: "Four lines from the counter: some protect the total, some take a different route.",
+      goal: "Sort working into compensation and break-apart & associate.",
+      pull: "A checked line is one you can defend.",
+      rail: { launch: "Read each line out loud before you place it.",
+        monitor: ["Looking for a changed number", "Looking for a split", "Checking the total is kept"],
+        connect: "How could you tell the two kinds apart?",
         misconception: "Thinking any mental method is compensation." } },
 
-    { phase: "connect", title: "Two ways to <em>make it easy</em>",
-      lead: "Salma compensated. Rayan broke it apart. Both got 245.",
+    { phase: "connect", title: "Hassan <em>rounds</em>. Musa <em>splits</em>",
+      lead: "Hassan rounds to friendly and adjusts back. Musa breaks into hundreds, tens, ones. Both get 245.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -222,7 +221,7 @@ const LESSON = {
         connect: "Which strategy would you choose for 402 minus 199?",
         misconception: "Believing one strategy must always be used." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
+    { phase: "synth", title: "On the <em>board</em>: check, then commit",
       lead: "Draw the two parts. Move one across. The total bar never changes length.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
@@ -231,27 +230,19 @@ const LESSON = {
         connect: "Who can say the rule in one sentence?",
         misconception: "Treating the bar as a picture rather than a promise about the total." } },
 
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Linking to the bar", "Testing on a subtraction", "Asking whether it works both ways"],
-        connect: "Does compensation work for subtraction too?",
-        misconception: "Using addition compensation rules on a subtraction without adjusting." } },
-
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
+      lead: "The ink is still wet: 298 + 57. What is the checked total?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
       rail: { launch: "Two minutes. Show the friendly numbers you used.",
         monitor: ["Making 300", "Splitting the 57", "Adding straight down"],
         connect: "Collect responses to open tomorrow.",
         misconception: "Adding 2 to 298 and forgetting to take 2 from 57." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The ledger line is <em>inked</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: is my answer even reasonable?",
+      pull: "Tomorrow: three bids sit under sealed covers.",
       rail: { launch: "Ask three students to say the rule in their own words.",
         monitor: ["Able to explain it to someone else", "Still needs the bar", "Ready to estimate"],
         connect: "Who is teaching it at home tonight?",
@@ -260,89 +251,127 @@ const LESSON = {
 
   Visual: function ({ i, award, game }) {
     const [k, setK] = useState(0);
-    const [step, setStep] = useState(0);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawCanteen} height={256} award={award}
-          notices={["199 is nearly 200", "One price is much bigger", "They are both under 250", "46 is small"]}
-          wonders={["What is the total?", "Could I round the 199?", "Is there a quick way?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern" support="abulaila"
+            title="The merchant's pen hovers over 199 + 46"
+            text="Two prices at the canteen counter, fresh ink beside them. Abu Laila, the merchant, checks before the ink dries — an error written down becomes permanent."
+            clue="One of those numbers is almost a friendly number">
+            <NoticeWonder draw={drawCanteen} height={256} award={award}
+              notices={["199 is nearly 200", "The pen is still hovering", "Both prices are under 250", "An error becomes ink"]}
+              wonders={["How do you check before you commit?", "What sits next to 199 + 46?", "What does move one across mean?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawCanteen} height={256} award={award}
-          label="What is 199 + 46?" min={200} max={300} start={250} unit="riyals"
-          after="Locked. Now let us see what your brain did to make it easy."
-          note="Adding 200 is easy. Adding 199 is not. That difference is the whole lesson." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Sixty seconds before the ink dries"
+            text="Omar holds the counter receipt up to the light. The class has one estimate to lock before the merchant commits the total to the ledger."
+            clue="Estimate first — then make it friendly">
+            <LaunchEstimate draw={drawCanteen} height={256} award={award}
+              label="What is 199 + 46?" min={200} max={320} start={240} unit="total"
+              after="Locked. Now check it the way the merchant does."
+              note="The canteen prices are simulated — the move works on any two prices." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeCompensate(k)} height={250}
-          label="Move riyals from the sandwich to the juice"
-          value={k}
-          onPick={(v) => setK(v)}
-          chips={[{ v: 0, label: "move 0" }, { v: 1, label: "move 1" }, { v: 2, label: "move 2" }, { v: 6, label: "move 6" }]}
-          caption={<MathEl omml={M.compensated} size="xl" display="block" />}
-          footnote="Whatever you take from one part you must give to the other." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd moves one riyal across the bar"
+            text="He can move any amount from one price to the other — but the class must predict the total before the bar moves."
+            clue="Whatever you take, you must give">
+            <ExploreChips draw={makeCompensate(k, setK)} height={250}
+              label="Move riyals from the sandwich to the juice"
+              value={k}
+              onPick={(v) => setK(v)}
+              chips={[{ v: 0, label: "199 + 46 as is" }, { v: 1, label: "move 1 across" }, { v: 2, label: "move 2 across" }, { v: 6, label: "move 6 across" }]}
+              caption={<MathEl omml={M.compensated} size="xl" display="block" />}
+              footnote="Move one across — the total does not change." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeBreakApart(step)} height={252}
-          label="Add the 46 in friendly jumps"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "start" }, { v: 1, label: "+ 40" }, { v: 2, label: "+ 6" }]}
-          caption={<MathEl omml={M.breakApart} size="xl" display="block" />}
-          footnote="Tens first, then ones — the same order as the place-value chart." />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Only checked lines get inked"
+            text="Omar and Zayd lay four counter lines on the table. The ledger only accepts working the class can defend."
+            clue="A changed number is compensation — a split number is break-apart">
+            <CardSort award={award} columns={2} commitLabel="Ink the checked lines"
+              items={[
+                { id: "w1", text: "199 + 46 → 200 + 45", target: "comp" },
+                { id: "w2", text: "245 − 99 → 246 − 100", target: "comp" },
+                { id: "w3", text: "199 + 40 + 6", target: "split" },
+                { id: "w4", text: "(199 + 1) + 45", target: "split" }
+              ]}
+              targets={[
+                { id: "comp", label: "compensation — a number was changed to make it friendly" },
+                { id: "split", label: "break apart & associate — a number was split by place value" }
+              ]} />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "w1", text: "200 + 45", target: "comp" },
-            { id: "w2", text: "199 + 40 + 6", target: "split" },
-            { id: "w3", text: "246 − 100", target: "comp" },
-            { id: "w4", text: "245 − 45 − 54", target: "split" }
-          ]}
-          targets={[
-            { id: "comp", label: "compensation — a number was changed to make it friendly" },
-            { id: "split", label: "breaking apart — a number was split by place value" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, the same total"
+            text="Hassan rounds to a friendly number and adjusts back. Musa breaks the number into hundreds, tens and ones. Both reach 245."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Hassan's way — round to friendly, adjust back", omml: M.compensated, h: 92,
+                      quote: "I gave the 199 one riyal from the 46." }}
+              right={{ name: "Musa's way — break into hundreds, tens, ones", omml: M.breakApart, h: 92,
+                       quote: "I added the forty first, then the six." }}
+              same={["Both get 245", "Both avoid writing it down", "Both make a friendly number on the way"]}
+              diff={["Hassan changes a number, Musa splits one", "Musa takes two steps", "Hassan's is faster when a number is near a ten"]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Salma's way — compensate", omml: M.compensated, h: 92,
-                  quote: "I gave the 199 one riyal from the 46." }}
-          right={{ name: "Rayan's way — break apart", omml: M.breakApart, h: 92,
-                   quote: "I added the forty first, then the six." }}
-          same={["Both get 245", "Both avoid writing it down", "Both make a friendly number on the way"]}
-          diff={["Salma changes a number, Rayan splits one", "Rayan takes two steps", "Salma's is faster when a number is near a ten"]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The shared rule is drawn into the ledger"
+            text="Zayd builds only what the class can justify from the two merchant methods."
+            clue="The total bar never changes length">
+            <BoardScreen draw={drawBoard21} height={430}
+              caption="Mental math before the ink: check, then commit." />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard21} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs only a total he can defend"
+            text="The ink is still wet on the next line. Give the friendly pair before the teacher reveals the check."
+            clue="Whatever you give, you must take">
+            <ShowWhatYouKnow award={award}
+              prompt="The ink is still wet: 298 + 57. What is the checked total?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "355" }, { v: "b", text: "345" }, { v: "c", text: "353" }, { v: "d", text: "365" }]}
+              right="a"
+              support={{
+                yes: "Yes — 300 + 55 = 355: move two across; the total does not change.",
+                notYet: "Not yet — whatever you give, you must take.",
+                draw: drawSupport21, h: 82,
+                hint: "Move two across to make 300."
+              }} />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.moveOne, alt: "move one across, the total does not change" }]}
-          hand={"take from one part · give the same to the other · the total is safe"}
-          cards={[
-            { title: "The sum we built", omml: M.compensated, note: "199 became 200, 46 became 45" },
-            { title: "Tap to test it on a subtraction", omml: M.sub, revealOmml: M.subComp, reveal: true,
-              note: "for subtraction, add the same amount to both numbers" }
-          ]} />;
-
-      case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Add 298 + 57 in your head. Which friendly pair did you use?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "300 + 55" }, { v: "b", text: "300 + 57" }, { v: "c", text: "290 + 57" }, { v: "d", text: "298 + 60" }]}
-          right="a"
-          support={{
-            yes: "Yes — give 2 to the 298 and take 2 from the 57. Total 355.",
-            notYet: "Not yet — whatever you give, you must take.",
-            draw: drawSupport21, h: 82,
-            hint: "You added 2 to make 300. Where did those 2 riyals have to come from?"
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.moveOne}
-          action="Add two prices in your head at the shop tonight, and tell someone which number you made friendly." />;
+        return (
+          <StoryHandoff support="abulaila"
+            title="The ledger line is inked"
+            text="Omar signs the checked line into the souq ledger. Zayd lifts three sealed bid cards from the counter — and only one of those totals is even possible."
+            artifact="Souq ledger · mental-math checked lines"
+            next="Three bids sit under sealed covers — which total is even possible?">
+            <Closing game={game} omml={M.moveOne}
+              action="Pick a near-round sum from real life, check it in your head, and say what you moved." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

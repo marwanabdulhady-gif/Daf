@@ -206,7 +206,7 @@ const LESSON = {
         misconception: "Multiplying only the denominator." } },
 
     { phase: "connect", title: "Two common <em>denominators</em>",
-      lead: "Sana used twelve. Ibrahim used twenty four. Both work.",
+      lead: "Bashir used twelve. Ibrahim used twenty four. Both work.",
       goal: "The smallest is tidiest but any common denominator is valid.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one they would rather write.",
@@ -296,12 +296,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Sana's way — the smallest", omml: M.common, h: 92,
+          left={{ name: "Bashir's way — the smallest", omml: M.common, h: 92,
             quote: "Twelve is the smallest number both four and six divide into." }}
           right={{ name: "Ibrahim's way — multiply them", omml: M.product, h: 92,
             quote: "Four times six is twenty four, and that always works." }}
           same={["Both give a common denominator", "Both keep the values", "Both allow adding"]}
-          diff={["Sana's numbers stay small", "Ibrahim never has to think", "Ibrahim may need to simplify"]} />;
+          diff={["Bashir's numbers stay small", "Ibrahim never has to think", "Ibrahim may need to simplify"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard175} height={430} />;

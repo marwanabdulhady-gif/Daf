@@ -121,7 +121,7 @@ const drawStory178 = (ctx, W, H, frame) => {
     ctx.restore();
   }
   if (p3 > 0) {
-    D.txt(ctx, "Salma eats three quarters of them. how many is that?",
+    D.txt(ctx, "Khalil eats three quarters of them. how many is that?",
       W / 2, H - 12, { size: 13.5, col: "#C9A227", font: "marker", alpha: p3 });
   }
 };
@@ -195,7 +195,7 @@ const LESSON = {
         misconception: "Counting the arrangement rather than the total." } },
 
     { phase: "launch", title: "Twelve dates in the <em>lunchbox</em>",
-      lead: "Salma eats three quarters of the twelve dates. Estimate how many that is.",
+      lead: "Khalil eats three quarters of the twelve dates. Estimate how many that is.",
       goal: "Create the need for finding a fraction of a whole number.",
       pull: "Now let us group them.",
       rail: { launch: "More or fewer than six? Commit before you calculate.",
@@ -231,7 +231,7 @@ const LESSON = {
         misconception: "Giving an answer bigger than the whole number." } },
 
     { phase: "connect", title: "Two ways to <em>get nine</em>",
-      lead: "Hala divided then multiplied. Ibrahim multiplied then divided.",
+      lead: "Qais divided then multiplied. Ibrahim multiplied then divided.",
       goal: "Both routes are correct; one is friendlier mentally.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one they would do without paper.",
@@ -288,7 +288,7 @@ const LESSON = {
 
       case 1:
         return <LaunchEstimate draw={drawStory178} height={256} award={award}
-          label="How many dates does Salma eat?" min={1} max={12} start={6} unit="dates"
+          label="How many dates does Khalil eat?" min={1} max={12} start={6} unit="dates"
           after="Locked. Now let us group them properly."
           note="Three quarters is more than a half, and less than all of them." />;
 
@@ -321,12 +321,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — divide then multiply", omml: M.divideFirst, h: 92,
+          left={{ name: "Qais's way — divide then multiply", omml: M.divideFirst, h: 92,
             quote: "A quarter of twelve is three, and three of those is nine." }}
           right={{ name: "Ibrahim's way — multiply then divide", omml: M.multiplyFirst, h: 92,
             quote: "Three twelves is thirty six, and a quarter of that is nine." }}
           same={["Both give 9", "Both use the same two numbers", "Both are correct"]}
-          diff={["Hala's numbers stay small", "Ibrahim's grow first", "Hala's is easier in your head"]} />;
+          diff={["Qais's numbers stay small", "Ibrahim's grow first", "Qais's is easier in your head"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard178} height={430} />;

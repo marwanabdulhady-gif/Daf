@@ -153,7 +153,7 @@ const LESSON = {
         connect: "What went wrong in the ones you rejected?",
         misconception: "Leaving the fraction part greater than one." } },
 
-    { phase: "connect", title: "Two ways to <em>set it out</em>", lead: "Dana added and then regrouped. Faris turned everything into fifths first. Both got four and two fifths.",
+    { phase: "connect", title: "Two ways to <em>set it out</em>", lead: "Bandar added and then regrouped. Faris turned everything into fifths first. Both got four and two fifths.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -236,9 +236,9 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Dana's way — add then regroup", omml: M.answer, h: 92, quote: "Three and seven fifths, then I tidied it." }}
+          left={{ name: "Bandar's way — add then regroup", omml: M.answer, h: 92, quote: "Three and seven fifths, then I tidied it." }}
           right={{ name: "Faris's way — all in fifths", omml: M.other, h: 92, quote: "Thirteen fifths plus nine fifths is twenty-two fifths." }}
-          same={["Both get 4 2/5", "Both keep the fifth as the unit", "Both need a tidy-up at the end"]} diff={["Dana regroups at the end", "Faris converts twice", "Dana's wholes are visible all the way"]} />;
+          same={["Both get 4 2/5", "Both keep the fifth as the unit", "Both need a tidy-up at the end"]} diff={["Bandar regroups at the end", "Faris converts twice", "Bandar's wholes are visible all the way"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard98} height={430} />;

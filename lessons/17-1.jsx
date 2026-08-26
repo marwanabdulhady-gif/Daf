@@ -83,7 +83,7 @@ const drawStory171 = (ctx, W, H, frame) => {
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   D.txt(ctx, "the 100 metre sprint at sports day", W / 2, 22,
     { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
-  const names = [["Layla", "13.402"], ["Reem", "13.42"], ["Sana", "13.4"]];
+  const names = [["Layth", "13.402"], ["Anees", "13.42"], ["Bashir", "13.4"]];
   names.forEach((r, k) => {
     const a = D.at(f, 60 + k * 90, 190 + k * 90);
     D.txt(ctx, r[0], W / 2 - 96, 74 + k * 40, { size: 16, col: "#EAF4F2", font: "marker", alpha: a });
@@ -179,7 +179,7 @@ const LESSON = {
         misconception: "Calling the third place after the point 'hundredths'." } },
 
     { phase: "connect", title: "Two ways to <em>say it</em>",
-      lead: "Noura read it digit by digit. Ziad named the last place.",
+      lead: "Joud read it digit by digit. Ziad named the last place.",
       goal: "The proper reading names the final place.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one tells you the size.",
@@ -270,12 +270,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Noura's way — digit by digit", omml: M.places, h: 92,
+          left={{ name: "Joud's way — digit by digit", omml: M.places, h: 92,
             quote: "Three point zero four five." }}
           right={{ name: "Ziad's way — name the last place", omml: M.wordForm, h: 92,
             quote: "Three and forty five thousandths." }}
           same={["Both describe 3.045", "Both are understood", "Both keep the zero"]}
-          diff={["Noura reads symbols", "Ziad reads the value", "Only Ziad's tells you the size"]} />;
+          diff={["Joud reads symbols", "Ziad reads the value", "Only Ziad's tells you the size"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard171} height={430} />;

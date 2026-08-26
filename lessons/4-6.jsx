@@ -134,92 +134,93 @@ const LESSON = {
   ixl: ["XLZ", "MLC", "GZG"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "A rectangle on the left, a written record on the right. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Four regions. Four lines. That is not a coincidence.",
-      rail: { launch: "I am not asking for a total. Just look at both sides.",
-        monitor: ["Matching a region to a line", "Counting four of each", "Reading the numbers"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Treating the written record as a different method." } },
+    { phase: "warmup", title: "The final <em>production schedule</em>",
+      lead: "47 × 28, but written as a column: four lines, four colours, each line matched to a region of the model.",
+      goal: "Notice the record can be shorter — the rectangle becomes a column of four.",
+      pull: "Do I still need the rectangle?",
+      rail: { launch: "Fictional frame. Look at the link between model and lines — no total yet.",
+        monitor: ["Matching colours to regions", "Reading the four lines", "Wonding if the rectangle is needed"],
+        connect: "What does the column save, and what must it keep?",
+        misconception: "Dropping the model and the lines with it." } },
 
-    { phase: "launch", title: "Forty-seven by <em>twenty-eight</em>",
-      lead: "The garden needs tiles. Drawing the rectangle every time is slow.",
-      goal: "Create the need — keep the mathematics, drop the drawing.",
-      pull: "Estimate first, then we will shorten the record.",
-      rail: { launch: "Roughly how many tiles? Round both.",
-        monitor: ["Rounding to 50 x 30", "Drawing the grid", "Going straight to a written method"],
-        connect: "What is the drawing actually doing for you?",
-        misconception: "Believing the rectangle is the mathematics rather than a picture of it." } },
+    { phase: "launch", title: "About how many <em>tiles</em>?",
+      lead: "47 × 28. Lock the estimate before the schedule is shortened.",
+      goal: "Estimate the product before the column form.",
+      pull: "Drawing a rectangle for every product would take all lesson.",
+      rail: { launch: "Give the estimate and what you rounded.",
+        monitor: ["Rounding 47 to 50", "Rounding 28 to 30", "Multiplying 50 × 30"],
+        connect: "What will the first line of the column be near?",
+        misconception: "Estimating by the two smallest regions." } },
 
-    { phase: "monitor", title: "Each region becomes a <em>line</em>",
-      lead: "Fill a region and watch it appear in the column on the right.",
-      goal: "Connect the model to the written record, one piece at a time.",
-      pull: "What happens if a line goes missing?",
-      rail: { launch: "Predict which line will appear next.",
-        monitor: ["Matching region to line", "Working in a fixed order", "Losing track of which is done"],
-        connect: "Why is it worth always working in the same order?",
-        misconception: "Writing the lines in a random order and losing one." } },
+    { phase: "monitor", title: "Zayd links the <em>model and the lines</em>",
+      lead: "Each line is a region, in colour. Ones first, then tens — the same order every time.",
+      goal: "Write the four partial products in a column that matches the model.",
+      pull: "Ones first, then tens — the same order every time.",
+      rail: { launch: "Before each line: which region is it?",
+        monitor: ["Writing the ones × ones line", "Writing the cross lines", "Writing the tens × tens line"],
+        connect: "Why can the order never be random?",
+        misconception: "Writing the lines in any order and losing track." } },
 
-    { phase: "monitor", title: "Find the <em>missing part</em>",
-      lead: "This record gives 516. The real answer is 1,316. What went wrong?",
-      goal: "The biggest region is the easiest to forget and the most costly.",
-      pull: "Now sort some records as complete or not.",
-      rail: { launch: "Do not recalculate. Look at what is written.",
-        monitor: ["Comparing against an estimate", "Counting the lines", "Recalculating everything"],
-        connect: "How would an estimate have caught this?",
-        misconception: "Trusting a written answer that is nowhere near the estimate." } },
+    { phase: "monitor", title: "What if a line is <em>missing</em>?",
+      lead: "The schedule has a gap. Find the missing region and repair the total.",
+      goal: "A missing line changes the total by a whole region — find it and fix it.",
+      pull: "Count your lines. There should be four.",
+      rail: { launch: "Before you tap: which region is missing?",
+        monitor: ["Counting the lines", "Finding the missing colour", "Repairing the total"],
+        connect: "How much was the total short by?",
+        misconception: "Adding the three lines and calling the total done." } },
 
-    { phase: "monitor", title: "Complete or <em>not</em>?",
-      lead: "Sort each record. No grading until the class commits.",
-      goal: "Check a record by counting its parts.",
-      pull: "Two students ordered their lines differently.",
-      rail: { launch: "Count the lines before you add anything.",
-        monitor: ["Counting to four", "Estimating first", "Adding it all up"],
-        connect: "What is the quickest check?",
-        misconception: "Assuming a neat record is a complete one." } },
+    { phase: "monitor", title: "Complete or <em>incomplete</em>?",
+      lead: "Four sums from the schedule. Some are complete — all four regions; some have a gap.",
+      goal: "Check a partial-product list for missing regions.",
+      pull: "Complete means four regions, all of them.",
+      rail: { launch: "Count the parts in each sum before you place it.",
+        monitor: ["Counting four parts", "Spotting a dropped corner", "Comparing to the model"],
+        connect: "Which missing part hurts the total most?",
+        misconception: "Treating any three-part sum as complete." } },
 
-    { phase: "connect", title: "Two <em>orders</em>, one answer",
-      lead: "Salem started with the ones. Dana started with the tens. Both got 1,316.",
+    { phase: "connect", title: "Salem starts with the <em>ones</em>. Bandar starts with the <em>tens</em>",
+      lead: "Salem: ones first, like column addition. Bandar: biggest region first, so she can check early. Both get 1,316.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Starting from the ones", "Starting from the tens", "Keeping a fixed habit"],
-        connect: "Does the order change the answer? Does it change the risk?",
-        misconception: "Believing one order is mathematically required." } },
+        monitor: ["Comparing the starting regions", "Checking both add to 1,316", "Saying which order feels safer"],
+        connect: "Which starting region would you check against your estimate first?",
+        misconception: "Believing the order changes the total." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Four regions become four lines. Add them once, at the end.",
+    { phase: "synth", title: "On the <em>board</em>: four products, one column, added once",
+      lead: "Write the four lines. Add them once. The rectangle is the check behind the column.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next line", "Matching to the region", "Restating it in their own words"],
+        monitor: ["Predicting the next line", "Matching lines to regions", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Adding as you go and losing a partial product." } },
+        misconception: "Adding the lines twice, or adding digits instead of lines." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "Four products. Written in a column. Added once.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the four products", "Testing on a new pair", "Checking against an estimate"],
-        connect: "How many lines would a three-digit factor need?",
-        misconception: "Thinking there are always exactly four lines." } },
+        monitor: ["Naming the four lines", "Checking the add-back", "Testing on a new product"],
+        connect: "Which line is easiest to write wrong?",
+        misconception: "Writing 4 × 8 as 32 in the hundreds place." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Write all four lines, then add once.",
-        monitor: ["Writing four lines", "Estimating first", "Adding correctly"],
+      lead: "52 × 34 — the column, four lines, added once.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Write all four lines.",
+        monitor: ["Writing 50 × 30", "Writing the cross lines", "Adding 1,500 + 60 + 800 + 32"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Leaving out the 50 x 30 line." } },
+        misconception: "Answering 1,568 — the 200 was dropped." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The schedule is <em>final</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: problems that need more than one calculation.",
+      pull: "Tomorrow: the lift is jammed, and the obvious plan fails midway.",
       rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the grid", "Ready for multi-step problems"],
+        monitor: ["Able to explain the column", "Still drops a line", "Ready for problem solving"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -230,87 +231,159 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeLink(4)} height={262} award={award}
-          notices={["Four regions and four lines", "The colours match", "The biggest number is 800", "They add to 1,316"]}
-          wonders={["Do I still need the rectangle?", "Does the order matter?", "What if I miss one?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The final production schedule"
+            text="47 × 28, written as a column: four lines, four colours, each line matched to a region of the model."
+            clue="Do I still need the rectangle?">
+            <NoticeWonder draw={makeLink(4)} height={262} award={award}
+              notices={["Four regions and four lines", "The colours match", "The biggest number is 800", "They add to 1,316"]}
+              wonders={["Do I still need the rectangle?", "Does the order matter?", "What if I miss one?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawGarden46} height={256} award={award}
-          label="About how many tiles?" min={800} max={2200} start={1500} unit="tiles"
-          after="Locked. Now let us shorten the record."
-          note="Drawing a rectangle for every product would take all lesson." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The estimate before the shortening"
+            text="Omar asks for the estimate before the schedule is shortened — the column must stay near it."
+            clue="Drawing a rectangle for every product would take all lesson.">
+            <LaunchEstimate draw={drawGarden46} height={256} award={award}
+              label="About how many tiles?" min={800} max={2200} start={1500} unit="tiles"
+              after="Locked. Now let us shorten the record."
+              note="The schedule counts are simulated — the column works on any two-digit by two-digit." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeLink(step)} height={262}
-          label="Turn each region into a line"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 1, label: "7 × 8" }, { v: 2, label: "7 × 20" }, { v: 3, label: "40 × 8" }, { v: 4, label: "40 × 20" }]}
-          caption={<MathEl omml={M.parts} size="lg" display="block" />}
-          footnote="Ones first, then tens — a fixed order is what stops you losing one." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd links the model and the lines"
+            text="He can write one line at a time — the class must name the region each line stands for."
+            clue="Ones first, then tens — the same order every time.">
+            <ExploreChips draw={makeLink(step)} height={262}
+              label="Write one line at a time"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 1, label: "line 1" }, { v: 2, label: "+ line 2" }, { v: 3, label: "+ line 3" }, { v: 4, label: "+ line 4" }]}
+              caption={<MathEl omml={M.parts} size="lg" display="block" />}
+              footnote="Each line is a region, in colour — the rectangle is the check behind the column." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeMissing(fixed)} height={262}
-          label="This record gives 516. Fix it."
-          value={fixed ? 1 : 0}
-          onPick={(v) => setFixed(v === 1)}
-          chips={[{ v: 0, label: "as written" }, { v: 1, label: "add the missing line" }]}
-          caption={<MathEl omml={fixed ? M.answer : M.estimate} size="xl" display="block" />}
-          footnote="An estimate of 1,500 would have caught this instantly." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="What if a line is missing?"
+            text="The schedule has a gap. Omar finds the missing region and repairs the total."
+            clue="Count your lines. There should be four.">
+            <ExploreChips draw={makeMissing(fixed)} height={262}
+              label="Find the missing line"
+              value={fixed ? 1 : 0}
+              onPick={(v) => setFixed(v === 1)}
+              chips={[{ v: 0, label: "the gap" }, { v: 1, label: "repair it" }]}
+              caption={<MathEl omml={M.answer} size="xl" display="block" />}
+              footnote="A missing line changes the total by a whole region." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "r1", text: "800 + 320 + 140 + 56", target: "ok" },
-            { id: "r2", text: "320 + 140 + 56", target: "no" },
-            { id: "r3", text: "600 + 240 + 120 + 48", target: "ok" },
-            { id: "r4", text: "600 + 48", target: "no" }
-          ]}
-          targets={[
-            { id: "ok", label: "complete — four partial products" },
-            { id: "no", label: "incomplete — a region is missing" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Complete or incomplete?"
+            text="Omar and Zayd lay four sums from the schedule on the table. Some are complete; some have a gap."
+            clue="Complete means four regions, all of them">
+            <CardSort award={award} columns={2} commitLabel="Check the schedule"
+              items={[
+                { id: "r1", text: "800 + 320 + 140 + 56", target: "ok" },
+                { id: "r2", text: "320 + 140 + 56", target: "no" },
+                { id: "r3", text: "600 + 240 + 120 + 48", target: "ok" },
+                { id: "r4", text: "600 + 48", target: "no" }
+              ]}
+              targets={[
+                { id: "ok", label: "complete — four partial products" },
+                { id: "no", label: "incomplete — a region is missing" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Salem's way — ones first", omml: M.parts, h: 92,
-                  quote: "I always start with the ones, like column addition." }}
-          right={{ name: "Dana's way — tens first", omml: M.answer, h: 92,
-                   quote: "I start with the biggest region so I can check it early." }}
-          same={["Both write four lines", "Both add once at the end", "Both get 1,316"]}
-          diff={["Salem starts small, Dana starts big",
-                 "Dana can compare her first line with her estimate",
-                 "Salem's order matches the algorithm he already knows"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 1,316"
+            text="Salem starts with the ones. Bandar starts with the biggest region. Both get 1,316."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Salem's way — ones first", omml: M.parts, h: 92,
+                      quote: "I always start with the ones, like column addition." }}
+              right={{ name: "Bandar's way — tens first", omml: M.answer, h: 92,
+                       quote: "I start with the biggest region so I can check it early." }}
+              same={["Both write four lines", "Both add once at the end", "Both get 1,316"]}
+              diff={["Salem starts small, Bandar starts big",
+                     "Bandar can compare her first line with her estimate",
+                     "Salem's order matches the algorithm he already knows"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard46} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The schedule is drawn, not declared"
+            text="Zayd builds only what the class can justify: the four lines written, the regions matched, the single add."
+            clue="Four products · written in a column · added once">
+            <BoardScreen draw={drawBoard46} height={430}
+              caption="Four products · written in a column · added once." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "four products, written in a column, added once" }]}
-          hand={"split both factors \u00b7 write four products in a fixed order \u00b7 add once at the end"}
-          cards={[
-            { title: "The product we recorded", omml: M.answer, note: "our estimate was 1,500" },
-            { title: "Tap to see the order", omml: M.parts, revealOmml: M.order, reveal: true,
-              note: "a fixed order is what protects you" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The rule goes into the tower's plan with its reason, not alone."
+            clue="The rectangle is the check behind the column">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "four products written in a column, added once" }]}
+              hand={"write the four products in a column · match each line to a region · add once"}
+              cards={[
+                { title: "The schedule we built", omml: M.answer, note: "our estimate was 1,500" },
+                { title: "Tap to see the order", omml: M.parts, revealOmml: M.order, reveal: true,
+                  note: "ones first, then tens — the same order every time" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Use partial products to work out 52 × 34."
-          omml={M.swyk}
-          options={[{ v: "a", text: "1,668" }, { v: "b", text: "1,768" }, { v: "c", text: "268" }, { v: "d", text: "1,560" }]}
-          right="b"
-          support={{
-            yes: "Yes — 1,500 + 60 + 800 + 32 = 1,768, and 50 × 30 = 1,500 says that is reasonable.",
-            notYet: "Not yet — count your lines. There should be four.",
-            draw: drawSupport46, h: 92,
-            hint: "The four regions are 50×30, 50×4, 2×30 and 2×4."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs only a schedule with four lines"
+            text="52 × 34. Write the column — and all four lines."
+            clue="1,500 + 60 + 800 + 32 = 1,768">
+            <ShowWhatYouKnow award={award}
+              prompt="Use partial products to work out 52 × 34."
+              omml={M.swyk}
+              options={[{ v: "a", text: "1,668" }, { v: "b", text: "1,768" }, { v: "c", text: "268" }, { v: "d", text: "1,560" }]}
+              right="b"
+              support={{
+                yes: "Yes — 1,500 + 60 + 800 + 32 = 1,768, and 50 × 30 = 1,500 says that is reasonable.",
+                notYet: "Not yet — count your lines. There should be four.",
+                draw: drawSupport46, h: 92,
+                hint: "The four regions are 50×30, 50×4, 2×30 and 2×4."
+              }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Multiply two two-digit numbers tonight using four lines, and check against an estimate first." />;
+        return (
+          <StoryHandoff
+            title="The schedule is final"
+            text="Omar signs the schedule with the model behind it. Then the lift shudders and stops — the depot's plan for the morning fails midway, and the team must persevere."
+            artifact="Tower plan · final production schedule"
+            next="The lift is jammed and the obvious plan fails midway — the team must persist and revise without guessing.">
+            <Closing game={game} omml={M.rule}
+              action="Write a two-digit by two-digit product as a column of four tonight and match each line to its region." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

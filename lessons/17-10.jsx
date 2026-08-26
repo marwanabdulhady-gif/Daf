@@ -189,7 +189,7 @@ const LESSON = {
         misconception: "Giving a volume in square units." } },
 
     { phase: "connect", title: "Two ways to reach <em>24</em>",
-      lead: "Layla multiplied the layer by the height. Faisal multiplied all three at once.",
+      lead: "Layth multiplied the layer by the height. Faisal multiplied all three at once.",
       goal: "Layer-then-height and l × w × h are the same calculation.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask where the layer went in Faisal's version.",
@@ -279,12 +279,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Layla's way — layer then height", omml: M.stack, h: 92,
+          left={{ name: "Layth's way — layer then height", omml: M.stack, h: 92,
             quote: "One layer is twelve, and there are two layers." }}
           right={{ name: "Faisal's way — all three at once", omml: M.formula, h: 92,
             quote: "Four times three times two. Twenty four." }}
           same={["Both give 24 cubic units", "Both use all three dimensions", "Both count every cube"]}
-          diff={["Layla builds it up", "Faisal uses the formula", "Faisal's hides where the layer went"]} />;
+          diff={["Layth builds it up", "Faisal uses the formula", "Faisal's hides where the layer went"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard1710} height={430} />;

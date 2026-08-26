@@ -222,7 +222,7 @@ const LESSON = {
         misconception: "Leaving out ticks that have no data on them." } },
 
     { phase: "connect", title: "Two ways to <em>build it</em>",
-      lead: "Salma tallied first, then drew the stacks. Ibrahim marked each ribbon as he read it.",
+      lead: "Khalil tallied first, then drew the stacks. Ibrahim marked each ribbon as he read it.",
       goal: "Compare a tally-first route with a mark-as-you-go route.",
       pull: "Let us build it on the board.",
       rail: { launch: "Show both. Ask which one is easier to check.",
@@ -317,12 +317,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Salma's way — tally first", omml: M.tally, h: 92,
+          left={{ name: "Khalil's way — tally first", omml: M.tally, h: 92,
             quote: "I counted how many of each length, then drew the stacks." }}
           right={{ name: "Ibrahim's way — mark as you read", draw: drawSupport112, h: 92,
             quote: "I put a cross for each ribbon and crossed it off my list." }}
           same={["Both give the same plot", "Both use every measurement once", "Both need the scale drawn first"]}
-          diff={["Salma counts before drawing", "Ibrahim draws as he goes", "Ibrahim's list proves nothing was missed"]} />;
+          diff={["Khalil counts before drawing", "Ibrahim draws as he goes", "Ibrahim's list proves nothing was missed"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard112} height={430} />;

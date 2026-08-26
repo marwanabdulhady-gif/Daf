@@ -203,7 +203,7 @@ const LESSON = {
         misconception: "Writing 4.75 + 2.6 as 4.75 + 2.06." } },
 
     { phase: "connect", title: "Two ways to find the <em>change</em>",
-      lead: "Reem subtracted the total from ten. Ibrahim counted up from 7.35 to 10.00.",
+      lead: "Anees subtracted the total from ten. Ibrahim counted up from 7.35 to 10.00.",
       goal: "Counting up is the shopkeeper's method and it is legitimate.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one they would use at a till.",
@@ -293,12 +293,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — subtract", omml: M.change, h: 92,
+          left={{ name: "Anees's way — subtract", omml: M.change, h: 92,
             quote: "Ten take away seven riyals thirty five. I did it in columns." }}
           right={{ name: "Ibrahim's way — count up", omml: M.lineUp, h: 92,
             quote: "From 7.35 to 8 is 65 halalas, then two more riyals. 2.65." }}
           same={["Both give 2.65 SR", "Both respect a hundred halalas to a riyal", "Both can be checked by adding back"]}
-          diff={["Reem subtracts", "Ibrahim counts on", "Ibrahim's is what a shopkeeper does"]} />;
+          diff={["Anees subtracts", "Ibrahim counts on", "Ibrahim's is what a shopkeeper does"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard125} height={430} />;
@@ -313,7 +313,7 @@ const LESSON = {
 
       case 8:
         return <ShowWhatYouKnow award={award}
-          prompt="Salma buys dates for 3.40 SR and juice for 1.85 SR. What does she pay?"
+          prompt="Khalil buys dates for 3.40 SR and juice for 1.85 SR. What does she pay?"
           omml={M.swyk}
           options={[{ v: "a", text: "4.125 SR" }, { v: "b", text: "5.25 SR" }, { v: "c", text: "4.25 SR" }, { v: "d", text: "5.125 SR" }]}
           right="b"

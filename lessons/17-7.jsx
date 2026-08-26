@@ -213,7 +213,7 @@ const LESSON = {
         misconception: "Writing 3/4 − 1/3 = 2/1." } },
 
     { phase: "connect", title: "Subtracting and <em>comparing</em>",
-      lead: "Noura subtracted to find the difference. Ziad used the same renaming to say which was bigger.",
+      lead: "Joud subtracted to find the difference. Ziad used the same renaming to say which was bigger.",
       goal: "One renaming answers two questions.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask what they have in common.",
@@ -303,12 +303,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Noura's way — find the difference", omml: M.renamed, h: 92,
+          left={{ name: "Joud's way — find the difference", omml: M.renamed, h: 92,
             quote: "Nine twelfths take four twelfths leaves five twelfths." }}
           right={{ name: "Ziad's way — compare them", omml: M.compareUse, h: 92,
             quote: "Nine twelfths beats four twelfths, so three quarters is the bigger one." }}
           same={["Both rename to twelfths", "Both use the same two bars", "Both need matching pieces"]}
-          diff={["Noura subtracts", "Ziad compares", "One renaming answered both questions"]} />;
+          diff={["Joud subtracts", "Ziad compares", "One renaming answered both questions"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard177} height={430} />;

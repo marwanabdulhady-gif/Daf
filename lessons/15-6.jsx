@@ -240,7 +240,7 @@ const LESSON = {
         misconception: "Choosing a tool because it is the one on the desk." } },
 
     { phase: "connect", title: "Two reasonable <em>choices</em>",
-      lead: "Layla used a protractor to check the corner. Omar used the corner of his exercise book.",
+      lead: "Layth used a protractor to check the corner. Omar used the corner of his exercise book.",
       goal: "Both work; one is faster and enough.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask whether either one is wrong.",
@@ -336,12 +336,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Layla's way — measure it", omml: M.matchAngle, h: 92,
+          left={{ name: "Layth's way — measure it", omml: M.matchAngle, h: 92,
             quote: "I put the protractor on and read 90 exactly." }}
           right={{ name: "Omar's way — compare it", omml: M.benchmark, h: 92,
             quote: "I held my book corner against it. It matched, so it is square." }}
           same={["Both answer the question", "Both are correct", "Both check the same corner"]}
-          diff={["Layla gets a number", "Omar gets yes or no", "Omar's is faster and enough here"]} />;
+          diff={["Layth gets a number", "Omar gets yes or no", "Omar's is faster and enough here"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard156} height={430} />;

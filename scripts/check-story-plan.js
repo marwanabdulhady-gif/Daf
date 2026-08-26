@@ -19,6 +19,12 @@ if (story.schemaVersion < 2) errors.push("story schema must support flexible scr
 const mainCharacters = (story.characters && story.characters.main) || [];
 if (mainCharacters.length !== 2) errors.push("the frame must have exactly two main characters");
 if (mainCharacters.some((character) => character.gender !== "boy")) errors.push("all main characters must be boys");
+/* The class is boys only: every student character (the ensemble and the
+   rival) must be a boy. Adult quest givers are community adults, not students. */
+const ensemble = (story.characters && story.characters.ensemble) || [];
+ensemble.forEach((member) => {
+  if (member.gender !== "boy") errors.push("ensemble student " + member.name + " must be a boy (the class is boys only)");
+});
 if (expected.length !== actual.length) errors.push(`coverage differs: curriculum ${expected.length}, story ${actual.length}`);
 
 expected.forEach((item, index) => {
@@ -37,6 +43,10 @@ expected.forEach((item, index) => {
   else if (plan.recommended < limits[0] || plan.recommended > limits[1]) errors.push(`${item.code}: target outside planning band`);
   for (const key of ["storyBeat", "technique", "storyMove", "studentMission", "handoff"])
     if (!got.lesson[key]) errors.push(`${item.code}: missing ${key}`);
+  /* A lesson that has been implemented ships its handoff text in the deck; the
+     map record must then carry the real handoff, not the authoring instruction. */
+  if (got.lesson.implementationStatus && /^end on the object/i.test(got.lesson.handoff || ""))
+    errors.push(`${item.code}: implemented lesson still has a generic author-instruction handoff`);
 });
 
 const usedShapes = new Set(actual.map((entry) => entry.lesson.screenPlan && entry.lesson.screenPlan.shape));

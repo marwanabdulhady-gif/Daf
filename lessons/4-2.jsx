@@ -93,92 +93,93 @@ const LESSON = {
   ixl: ["YJH"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "A rectangle cut into two pieces. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "One side is friendly. The other has been made friendly.",
-      rail: { launch: "I am not asking for a total. Just describe the rectangle.",
-        monitor: ["Naming the two widths", "Noticing 40 down the side", "Adding 20 and 3"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Reading the two regions as two separate problems." } },
+    { phase: "warmup", title: "The long <em>order card</em>",
+      lead: "The long order card: 23 panels for each of 40 customers. The model is already cut into two — one piece much bigger than the other.",
+      goal: "Notice the split: 23 is 20 and 3, and the 40 waits down the side.",
+      pull: "Both pieces are multiples of ten — the rule from yesterday still works.",
+      rail: { launch: "Fictional frame. Look at the cut model — no total yet.",
+        monitor: ["Seeing the 20 and the 3", "Noticing the 40 down the side", "Wonding why it was cut there"],
+        connect: "Why cut the 23 at the ten?",
+        misconception: "Thinking the model must be cut into equal pieces." } },
 
-    { phase: "launch", title: "Forty rows of <em>twenty-three</em>",
-      lead: "A stadium block has 40 rows with 23 seats in each. Estimate first.",
-      goal: "Create the need — 23 is awkward, 20 is not.",
-      pull: "Cut the 23 and both pieces become easy.",
-      rail: { launch: "Roughly how many seats? Round in your head.",
-        monitor: ["Using 20 x 40", "Adding 23 forty times", "Guessing"],
-        connect: "Which number is worth breaking apart?",
-        misconception: "Splitting the 40 instead of the 23." } },
+    { phase: "launch", title: "About how many <em>seats</em>?",
+      lead: "23 × 40. Lock the estimate before the regions are built.",
+      goal: "Estimate the product before the model is filled.",
+      pull: "20 × 40 is easy. 23 × 40 becomes easy once it is cut up.",
+      rail: { launch: "Give the estimate and what you rounded.",
+        monitor: ["Rounding 23 to 20", "Multiplying 20 × 40", "Saying the exact answer is a bit more"],
+        connect: "Why is the exact answer bigger than 800?",
+        misconception: "Estimating the rows instead of the row length." } },
 
-    { phase: "monitor", title: "Build the <em>model</em>",
-      lead: "Add one region at a time. Each is a multiple-of-ten fact you already know.",
-      goal: "Both partial products are multiples of ten.",
-      pull: "Write those two pieces in a list.",
-      rail: { launch: "Predict each region's product before you tap.",
-        monitor: ["Using yesterday's zero rule", "Multiplying by 4 then adding a zero", "Losing a region"],
-        connect: "How is 20 × 40 like 2 × 4?",
-        misconception: "Writing 20 × 40 as 80." } },
+    { phase: "monitor", title: "Zayd fills the <em>regions</em>",
+      lead: "20 × 40 first, then 3 × 40 — every piece is a multiple-of-ten product.",
+      goal: "Multiply each region by the ten; the old rule does the work.",
+      pull: "Both pieces are multiples of ten — the rule from yesterday still works.",
+      rail: { launch: "Predict each region before it is filled.",
+        monitor: ["Multiplying 20 × 40", "Multiplying 3 × 40", "Naming the place each zero belongs to"],
+        connect: "Which region is bigger, and by how many hundreds?",
+        misconception: "Dropping the 3 × 40 region from the total." } },
 
-    { phase: "monitor", title: "Add the <em>partial products</em>",
-      lead: "Two pieces. Both must be counted.",
-      goal: "Record and total the parts.",
-      pull: "Match some models to their expressions.",
-      rail: { launch: "Predict each line before you reveal it.",
-        monitor: ["Listing both parts", "Adding as they go", "Dropping the smaller part"],
-        connect: "What happens if you forget the 3 × 40?",
-        misconception: "Stopping after the largest partial product." } },
+    { phase: "monitor", title: "The <em>partial products</em>",
+      lead: "800 and 120 — every region has to appear in the list.",
+      goal: "Write the partial products and add them once.",
+      pull: "Every region has to appear in the list.",
+      rail: { launch: "Which region first?",
+        monitor: ["Writing 20 × 40 = 800", "Writing 3 × 40 = 120", "Adding 920"],
+        connect: "What would the total be if a region was missing?",
+        misconception: "Answering 800 and forgetting the ones part." } },
 
     { phase: "monitor", title: "Match the <em>model</em>",
-      lead: "Which pair of partial products belongs to that model? No grading until the class commits.",
-      goal: "Read a model backwards.",
-      pull: "Two students split the same product differently.",
-      rail: { launch: "Look at the bigger region first.",
-        monitor: ["Checking the tens part", "Checking the ones part", "Adding to test"],
-        connect: "How did you know which belonged?",
-        misconception: "Matching by the total instead of the parts." } },
+      lead: "Three partial-product sums. Each one belongs to one order card.",
+      goal: "Read two-part models back to their products.",
+      pull: "The parts always match the digits.",
+      rail: { launch: "Name the digits each sum's parts describe.",
+        monitor: ["Reading 800 + 120 as 23 × 40", "Reading 600 + 80 as 34 × 20", "Checking the parts match"],
+        connect: "How do you know which product a model belongs to?",
+        misconception: "Matching by the bigger part only." } },
 
-    { phase: "connect", title: "Two ways to <em>split it</em>",
-      lead: "Reem cut 23 into 20 and 3. Ammar cut the 40 into 4 tens. Both give 920.",
+    { phase: "connect", title: "Anees splits the <em>23</em>. Ammar splits the <em>40</em>",
+      lead: "Anees: 20 forties and 3 forties. Ammar: 23 × 4, then multiply by ten. Both get 920.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Splitting by place value", "Splitting the multiple of ten", "Checking both totals"],
-        connect: "Which split gives fewer pieces to add?",
-        misconception: "Believing only one number may be split." } },
+        monitor: ["Comparing which factor was split", "Checking both reach 920", "Saying which is quicker"],
+        connect: "Which split would you use for 27 × 50?",
+        misconception: "Believing only the tidy factor may be split." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Cut the 23. Multiply each piece by 40. Add the pieces back.",
+    { phase: "synth", title: "On the <em>board</em>: split the two-digit number",
+      lead: "Split at the ten. Multiply each part by the ten. Add the parts.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the cut", "Naming each product", "Restating it in their own words"],
+        monitor: ["Predicting the next stroke", "Naming each region", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Forgetting to add the parts at the end." } },
+        misconception: "Splitting the 40 into 4 and 0 and losing the ten." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "Split the two-digit number. Multiply each part by the ten.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the split", "Testing on a new product", "Checking against an estimate"],
-        connect: "What if BOTH numbers were awkward?",
-        misconception: "Assuming one factor must always be a multiple of ten." } },
+        monitor: ["Naming the split", "Multiplying each part", "Testing on a new order"],
+        connect: "Which part is easier to forget?",
+        misconception: "Multiplying only the tens part." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Write both partial products.",
-        monitor: ["Splitting 34 into 30 and 4", "Writing both parts", "Adding correctly"],
+      lead: "34 × 20 — split the 34, multiply each part by the ten.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Show both parts.",
+        monitor: ["Splitting 34 at 30", "Multiplying each part by 20", "Adding 600 + 80"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Writing 30 × 20 as 60." } },
+        misconception: "Answering 680 with only 600 + 20 shown." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The long order is <em>modelled</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: estimating when both numbers are awkward.",
+      pull: "Tomorrow: before any cutting, the beams must be estimated.",
       rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the rectangle", "Ready for two awkward factors"],
+        monitor: ["Able to explain the split", "Still multiplies only one part", "Ready for estimation"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -189,84 +190,156 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeModel(2)} height={252} award={award}
-          notices={["It is cut into two", "One piece is much bigger", "40 is down the side", "20 and 3 make 23"]}
-          wonders={["What is the total?", "Why cut it there?", "Do I add the pieces?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The long order card"
+            text="The long order card: 23 panels for each of 40 customers. The model is already cut into two — one piece much bigger than the other."
+            clue="23 is 20 and 3 — and the 40 waits down the side.">
+            <NoticeWonder draw={makeModel(2)} height={252} award={award}
+              notices={["It is cut into two", "One piece is much bigger", "40 is down the side", "20 and 3 make 23"]}
+              wonders={["What is the total?", "Why cut it there?", "Do I add the pieces?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawSeats42} height={252} award={award}
-          label="About how many seats?" min={400} max={1600} start={920} unit="seats"
-          after="Locked. Now let us build it region by region."
-          note="20 × 40 is easy. 23 × 40 becomes easy once it is cut up." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The estimate before the model"
+            text="Omar asks for the estimate before the regions are filled — the order card needs a number the workshop can trust."
+            clue="20 × 40 is easy. 23 × 40 becomes easy once it is cut up.">
+            <LaunchEstimate draw={drawSeats42} height={252} award={award}
+              label="About how many seats?" min={400} max={1600} start={920} unit="seats"
+              after="Locked. Now let us build it region by region."
+              note="The order counts are simulated — the model works on any two-digit by ten." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeModel(n)} height={252}
-          label="Add one region at a time"
-          value={n}
-          onPick={(v) => setN(v)}
-          chips={[{ v: 1, label: "+ 20" }, { v: 2, label: "+ 3" }]}
-          caption={<MathEl omml={M.split} size="lg" display="block" />}
-          footnote="Both pieces are multiples of ten — the rule from yesterday still works." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd fills the regions"
+            text="He can fill one region at a time — the class must predict each product before it appears."
+            clue="Both pieces are multiples of ten">
+            <ExploreChips draw={makeModel(n)} height={252}
+              label="Add one region at a time"
+              value={n}
+              onPick={(v) => setN(v)}
+              chips={[{ v: 1, label: "+ 20" }, { v: 2, label: "+ 3" }]}
+              caption={<MathEl omml={M.split} size="lg" display="block" />}
+              footnote="Both pieces are multiples of ten — the rule from yesterday still works." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeLadder42(shown)} height={252}
-          label="Write the partial products"
-          value={shown}
-          onPick={(v) => setShown(v)}
-          chips={[{ v: 1, label: "the tens part" }, { v: 2, label: "add the ones part" }]}
-          caption={<MathEl omml={M.answer} size="xl" display="block" />}
-          footnote="Every region has to appear in the list." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The partial products"
+            text="He can reveal each partial — the class must see that every region appears in the list."
+            clue="Every region has to appear in the list">
+            <ExploreChips draw={makeLadder42(shown)} height={252}
+              label="Write the partial products"
+              value={shown}
+              onPick={(v) => setShown(v)}
+              chips={[{ v: 1, label: "the tens part" }, { v: 2, label: "add the ones part" }]}
+              caption={<MathEl omml={M.answer} size="xl" display="block" />}
+              footnote="Every region has to appear in the list." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "q1", text: "800 + 120", target: "m1" },
-            { id: "q2", text: "600 + 80", target: "m2" },
-            { id: "q3", text: "1,500 + 150", target: "m3" }
-          ]}
-          targets={[
-            { id: "m1", label: "23 × 40" }, { id: "m2", label: "34 × 20" }, { id: "m3", label: "55 × 30" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Match the model"
+            text="Omar and Zayd lay three partial-product sums on the table. Each one belongs to one order card."
+            clue="The parts always match the digits">
+            <CardSort award={award} columns={3}
+              items={[
+                { id: "q1", text: "800 + 120", target: "m1" },
+                { id: "q2", text: "600 + 80", target: "m2" },
+                { id: "q3", text: "1,500 + 150", target: "m3" }
+              ]}
+              targets={[
+                { id: "m1", label: "23 × 40" }, { id: "m2", label: "34 × 20" }, { id: "m3", label: "55 × 30" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Reem's way — split the 23", omml: M.split, h: 92,
-                  quote: "20 forties and 3 forties." }}
-          right={{ name: "Ammar's way — split the 40", omml: M.partA, h: 92,
-                   quote: "I did 23 × 4 first, then multiplied by ten." }}
-          same={["Both get 920", "Both make the numbers friendlier", "Both use place value"]}
-          diff={["Reem splits the awkward one, Ammar the tidy one",
-                 "Ammar only does one multiplication", "Reem's shows both parts on the model"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 920"
+            text="Anees splits the 23. Ammar splits the 40 and does one multiplication. Both get 920."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Anees's way — split the 23", omml: M.split, h: 92,
+                      quote: "20 forties and 3 forties." }}
+              right={{ name: "Ammar's way — split the 40", omml: M.partA, h: 92,
+                       quote: "I did 23 × 4 first, then multiplied by ten." }}
+              same={["Both get 920", "Both make the numbers friendlier", "Both use place value"]}
+              diff={["Anees splits the awkward one, Ammar the tidy one",
+                     "Ammar only does one multiplication", "Anees's shows both parts on the model"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard42} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The model is drawn, not declared"
+            text="Zayd builds only what the class can justify: the split at the ten, each part multiplied by the ten, the parts added."
+            clue="Split the two-digit number · multiply each part by the ten">
+            <BoardScreen draw={drawBoard42} height={430}
+              caption="Split the two-digit number · multiply each part by the ten." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "split the two-digit number, multiply each part by the ten" }]}
-          hand={"cut the awkward factor at its tens \u00b7 multiply each piece \u00b7 add the pieces back"}
-          cards={[
-            { title: "The seats we counted", omml: M.answer, note: "our estimate was 800" },
-            { title: "Tap to see both parts", omml: M.partA, revealOmml: M.partB, reveal: true,
-              note: "the small part still matters" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The rule goes into the tower's plan with its reason, not alone."
+            clue="Both parts, both times the ten">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "split the two-digit number · multiply each part by the ten" }]}
+              hand={"split the two-digit number at its ten · multiply each part by the ten · add the parts"}
+              cards={[
+                { title: "The model we built", omml: M.answer, note: "800 from the 20, 120 from the 3" },
+                { title: "Tap to see the split", omml: M.problem, revealOmml: M.split, reveal: true,
+                  note: "the 23 becomes 20 and 3" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Use a model to work out 34 × 20."
-          omml={M.swyk}
-          options={[{ v: "a", text: "608" }, { v: "b", text: "680" }, { v: "c", text: "68" }, { v: "d", text: "6,800" }]}
-          right="b"
-          support={{
-            yes: "Yes — 30 × 20 = 600 and 4 × 20 = 80, and 600 + 80 = 680.",
-            notYet: "Not yet — check that you added both regions.",
-            draw: drawSupport42, h: 84,
-            hint: "The two regions are 30 × 20 and 4 × 20."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs only an order with both parts"
+            text="34 × 20. Show the split — and both partial products."
+            clue="600 + 80 = 680">
+            <ShowWhatYouKnow award={award}
+              prompt="Use a model to work out 34 × 20."
+              omml={M.swyk}
+              options={[{ v: "a", text: "680" }, { v: "b", text: "600" }, { v: "c", text: "640" }, { v: "d", text: "6,800" }]}
+              right="a"
+              support={{
+                yes: "Yes — 30 × 20 = 600 and 4 × 20 = 80, so 680.",
+                notYet: "Not yet — did you multiply both parts by the ten?",
+                draw: drawSupport42, h: 84,
+                hint: "The 34 splits into 30 and 4. Both parts meet the 20."
+              }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Find a two-digit number at home and multiply it by 20 using two partial products." />;
+        return (
+          <StoryHandoff
+            title="The long order is modelled"
+            text="Omar signs the order with both parts beside it. The foreman spreads the next plan: a run of beams, and a warning — before any cutting, the estimate must say whether they fit."
+            artifact="Tower plan · long order modelled"
+            next="Before any cutting, the class must choose rounding or compatible numbers for a safe estimate. Will the beams fit?">
+            <Closing game={game} omml={M.rule}
+              action="Split a two-digit number by a multiple of ten tonight and show both partial products." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

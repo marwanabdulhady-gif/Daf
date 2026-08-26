@@ -143,6 +143,75 @@ const drawSupport47 = (ctx, W, H) => {
     parts: [{ v: 390, label: "26 \u00d7 15 = 390", col: "#12857C" }, { v: 110, label: "?", col: "#C9A227" }] });
 };
 
+
+/* Critique: the depot manager's polished plan, with a hidden gap */
+const makeJammed = (found, onFound) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onFound) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onFound(!found) });
+  D.txt(ctx, "the depot manager's plan for the lift", W / 2, 26, { size: 13, col: "#2D70B3", font: "marker" });
+  const lines = [
+    { t: "the lift moves crates of 24 bottles", ok: true },
+    { t: "18 crates × 24 = 432 bottles", ok: true },
+    { t: "350 sold = 14 full crates, so 432 − 336 = 96 left", ok: false }
+  ];
+  let y = 62;
+  lines.forEach((l) => {
+    const flagged = found && !l.ok;
+    ctx.save();
+    D.rr(ctx, 30, y - 15, W - 60, 34, 7);
+    ctx.fillStyle = flagged ? "rgba(199,68,64,.18)" : "rgba(234,244,242,.04)";
+    ctx.fill();
+    if (flagged) { ctx.strokeStyle = "#C74440"; ctx.lineWidth = 2; ctx.stroke(); }
+    ctx.restore();
+    D.txt(ctx, l.t, W / 2, y + 2, { size: 12.5, col: flagged ? "#C74440" : "#EAF4F2", font: "marker" });
+    y += 42;
+  });
+  D.txt(ctx, found ? "350 bottles is not a whole number of crates — count bottles, not crates"
+                   : "polished — but which line has no evidence behind it?",
+    W / 2, H - 18, { size: 12.5, col: found ? "#C74440" : "#C9A227", font: "marker" });
+};
+
+/* Revision: choose the step that unjams the plan */
+const makeUnjam = (pick, onPick) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onPick) D.tap(ctx, { x: 56, y: 40, w: W - 112, h: 110, value: 0, on: (v, tx) => {
+    const opts = [W / 2 - 150, W / 2, W / 2 + 150];
+    let best = 0, bd = Infinity;
+    opts.forEach((x, i) => { const d = Math.abs(x - tx); if (d < bd) { bd = d; best = i; } });
+    onPick(best);
+  }});
+  const opts = ["432 − 350", "432 − 336", "350 − 336"];
+  opts.forEach((o, i) => {
+    const x = W / 2 + (i - 1) * 150;
+    const chosen = pick === i;
+    ctx.save();
+    D.rr(ctx, x - 62, 44, 124, 34, 8);
+    ctx.fillStyle = chosen ? (i === 0 ? "rgba(18,133,124,.25)" : "rgba(199,68,64,.18)") : "rgba(234,244,242,.05)";
+    ctx.fill();
+    ctx.strokeStyle = chosen ? (i === 0 ? "#12857C" : "#C74440") : "rgba(234,244,242,.3)";
+    ctx.lineWidth = chosen ? 2 : 1; ctx.stroke();
+    ctx.restore();
+    D.txt(ctx, o, x, 61, { size: 13, col: chosen ? (i === 0 ? "#34D399" : "#C74440") : "#EAF4F2", font: "mono", weight: 700 });
+  });
+  D.txt(ctx, "step 1 held: 18 × 24 = 432 bottles", W / 2, 108, { size: 13.5, col: "#34D399", font: "marker" });
+  if (pick === 0) {
+    D.txt(ctx, "step 2: 432 − 350 = 82 bottles left", W / 2, 146, { size: 15, col: "#34D399", font: "marker" });
+    D.txt(ctx, "the unjammed plan — bottles, not crates", W / 2, H - 18,
+      { size: 13, col: "#C9A227", font: "marker" });
+  } else if (pick > 0) {
+    D.txt(ctx, pick === 1 ? "that subtracts 14 crates' worth — but 350 is not 14 crates"
+                          : "that is only the extra bottles in the last crate",
+      W / 2, 150, { size: 13.5, col: "#C74440", font: "marker" });
+    D.txt(ctx, "which step takes all 350 bottles from the 432?", W / 2, H - 18,
+      { size: 13, col: "#C9A227", font: "marker" });
+  } else {
+    D.txt(ctx, "the second step is still jammed — choose it", W / 2, 150,
+      { size: 13.5, col: "rgba(234,244,242,.6)", font: "marker" });
+  }
+};
+
 const LESSON = {
   code: "4-7",
   storageKey: "daf-g4-t4-l7",
@@ -152,92 +221,120 @@ const LESSON = {
   ixl: ["RM5"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Crates of bottles, and a number that has already been sold. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "There are three numbers here. Not all of them go in the first step.",
-      rail: { launch: "I am not asking you to solve anything. What do you see?",
-        monitor: ["Counting the crates", "Noticing the 350", "Asking what the question is"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Assuming all three numbers belong in one calculation." } },
+    { phase: "warmup", title: "The <em>jammed lift</em>",
+      lead: "The water depot: 18 crates of 24 bottles, 350 sold — and the lift, jammed midway, holding the morning's plan. It is Khalida's lift, and the repair is hers to sign.",
+      goal: "Notice the three numbers — and that only two of them belong in the first step.",
+      pull: "Three numbers, and only two of them belong in the first step.",
+      rail: { launch: "Fictional frame. Read the depot — no working yet.",
+        monitor: ["Counting the crates", "Reading the 350 sold", "Wonding which number comes first"],
+        connect: "Which two numbers meet in the first step?",
+        misconception: "Subtracting 350 from 24 by reflex." } },
 
-    { phase: "launch", title: "What could you <em>ask</em>?",
-      lead: "18 crates. 24 bottles in each. 350 already sold.",
-      goal: "Create the need — the numbers do not name the question.",
-      pull: "Estimate an answer to your own question first.",
-      rail: { launch: "Do not solve. Just give me a question these numbers could answer.",
-        monitor: ["Asking for the total", "Asking how many are left", "Asking how many crates were sold"],
-        connect: "Which question needs two steps?",
-        misconception: "Assuming there is only one possible question." } },
+    { phase: "launch", title: "About how many <em>bottles</em> altogether?",
+      lead: "18 × 24. Lock the estimate before the plan is written.",
+      goal: "Estimate before planning — the estimate carries the decision.",
+      pull: "The depot counts are simulated — the planning works on any numbers.",
+      rail: { launch: "Give the estimate and what you rounded.",
+        monitor: ["Rounding 18 to 20", "Rounding 24 to 20", "Multiplying the rounds"],
+        connect: "What will the middle answer be near?",
+        misconception: "Estimating the final answer before the middle step." } },
 
-    { phase: "monitor", title: "Make a <em>plan</em> first",
-      lead: "What do I know, what am I asked, what must I find first.",
-      goal: "Planning is a step, not a delay.",
-      pull: "Now try the plan — and notice where it stalls.",
-      rail: { launch: "Fill the frame in any order. Say when it feels complete.",
-        monitor: ["Starting with what they know", "Jumping to the calculation", "Naming the middle step"],
-        connect: "Which line was hardest to fill?",
-        misconception: "Treating the plan as writing out the question again." } },
+    { phase: "monitor", title: "Zayd writes the <em>plan</em> before the calculation",
+      lead: "I know · I am asked · I must find first · then. A plan before a calculation.",
+      goal: "Plan the two steps before touching a number.",
+      pull: "A plan before a calculation.",
+      rail: { launch: "Before each line: is it a fact, a question, or a step?",
+        monitor: ["Naming what is known", "Naming what is asked", "Naming the middle step"],
+        connect: "Why must the total come before the subtraction?",
+        misconception: "Starting to calculate before the plan is complete." } },
 
-    { phase: "monitor", title: "Get <em>stuck</em>, then keep going",
-      lead: "Try to subtract first. You cannot — yet. That is the lesson.",
-      goal: "Persevering means finding the middle step, not trying harder.",
-      pull: "Sort some problems by where the sticking point is.",
-      rail: { launch: "Try the subtraction first, on purpose. What stops you?",
-        monitor: ["Noticing the whole is unknown", "Subtracting 350 from 24", "Finding the total first"],
-        connect: "What did being stuck actually tell you?",
-        misconception: "Reading being stuck as being wrong." } },
+    { phase: "monitor", title: "The first idea <em>does not finish</em> the job",
+      lead: "350 sold — but I cannot subtract yet: I do not know the whole. That is not failure; that is the middle step talking.",
+      goal: "Persevere: a first answer that is not the answer is progress, not a mistake.",
+      pull: "That is not failure — that is the middle step talking.",
+      rail: { launch: "Name the number that is missing before the subtraction.",
+        monitor: ["Seeing the gap", "Finding the middle step", "Returning to the total"],
+        connect: "What unlocked the question?",
+        misconception: "Guessing the total because the first step felt stuck." } },
 
     { phase: "monitor", title: "One step or <em>two</em>?",
-      lead: "Sort each question. No grading until the class commits.",
-      goal: "Recognise a hidden middle step.",
-      pull: "Two students planned the same problem differently.",
-      rail: { launch: "Ask: do I already know every number I need?",
-        monitor: ["Counting the unknowns", "Checking what is given", "Solving first, sorting after"],
+      lead: "Four questions from the depot. Each one needs one step — or two.",
+      goal: "Recognise the hidden middle step before modelling.",
+      pull: "Do I already know every number I need?",
+      rail: { launch: "Say the middle answer before you place the question.",
+        monitor: ["Checking what is given", "Counting the unknowns", "Solving first, sorting after"],
         connect: "What made the two-step ones different?",
-        misconception: "Counting the numbers rather than the unknowns." } },
+        misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Two <em>plans</em>, one answer",
-      lead: "Noura found the total first. Yasir worked out how many crates were sold. Both reach 82.",
+    { phase: "connect", title: "Joud works in <em>bottles</em>. Yasir works in <em>crates</em>",
+      lead: "Joud: total first, then take away 350. Yasir: how many crates is 350 first. Both reach 82.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Multiplying then subtracting", "Working in crates", "Checking both give 82"],
-        connect: "Why do both routes work?",
-        misconception: "Believing there is only one correct order." } },
+        monitor: ["Following the bottle route", "Following the crate route", "Checking both reach 82"],
+        connect: "Which plan is simpler to write down?",
+        misconception: "Believing one route is the only route." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Know. Asked. Find first. Then. Four lines, and the problem opens.",
+    { phase: "monitor", title: "The plan's <em>hidden gap</em>",
+      lead: "The depot manager's polished plan: 350 sold is 14 full crates, so 432 − 336 = 96 left. One line has no evidence.",
+      goal: "Critique a polished plan: find the step that does not follow.",
+      pull: "350 bottles is not a whole number of crates.",
+      rail: { launch: "Each line must follow from the line before it.",
+        monitor: ["Checking the total line", "Checking the crate conversion", "Flagging the 96 claim"],
+        connect: "What did the plan pretend 350 bottles were?",
+        misconception: "Accepting the final line because the plan is polished." } },
+
+    { phase: "monitor", title: "Unjam the <em>plan</em>",
+      lead: "The total held: 432 bottles. Now choose the step that takes all 350 bottles from it.",
+      goal: "Revise the plan by supplying the correct step.",
+      pull: "Count bottles, not crates.",
+      rail: { launch: "What does each candidate step actually subtract?",
+        monitor: ["Reading 432 − 350", "Discarding 432 − 336", "Discarding 350 − 336"],
+        connect: "How do you know the unjammed plan now holds?",
+        misconception: "Choosing the step that uses the most familiar numbers." } },
+
+    { phase: "synth", title: "On the <em>board</em>: when the first step is not the answer",
+      lead: "I know · I am asked · First · Then. A first answer that is not the answer is progress, not a mistake.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next line", "Naming the middle step", "Restating it in their own words"],
+        monitor: ["Predicting the next stage", "Naming the middle answer", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Filling the frame in without using it." } },
+        misconception: "Stopping at the first calculable number." } },
 
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the middle step", "Testing on a new problem", "Checking the answer against the question"],
-        connect: "What do you do when your first answer is not what was asked?",
-        misconception: "Stopping at the first number you can calculate." } },
+    { phase: "synth", title: "Small actions make <em>machines</em>",
+      lead: "The rule goes into the plan — and the window reminds the class how big systems are built from small, understood actions.",
+      goal: "Connect the lesson to the history of useful knowledge behind the lift.",
+      pull: "A plan you can re-check is a plan people can trust.",
+      rail: { launch: "Read the window as history of a method, not a story about people's faith.",
+        monitor: ["Connecting partial products to small actions", "Asking about the sources", "Testing the rule on their own work"],
+        connect: "Where in your own life do small understood parts combine?",
+        misconception: "Reading the window as an invention claim." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Write your plan before you calculate.",
-        monitor: ["Multiplying first", "Finding the middle step", "Answering the actual question"],
+      lead: "26 boxes of 15 pens, an order for 500. How many more are needed?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Write the plan before the calculation.",
+        monitor: ["Naming the middle step", "Multiplying 26 × 15", "Subtracting from 500"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Answering 390 — the middle step, not the question." } },
+        misconception: "Answering 390 — the middle step instead of what was asked." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "monitor", title: "The lift asks for <em>perseverance</em>",
+      lead: "Before the morning plan is signed, the class says what the jam taught it.",
+      goal: "Close the chapter on the standard, not the score.",
+      pull: "A first answer that is not the answer is progress, not a mistake.",
+      rail: { launch: "Ask for the rule in students' own words before the plan is signed.",
+        monitor: ["Naming the middle step", "Naming the revision", "Saying 'progress' unprompted"],
+        connect: "What would you refuse to sign, and why?",
+        misconception: "Treating a stuck step as a failure." } },
+
+    { phase: "connect", title: "The morning is <em>planned</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Next topic: dividing by one-digit numbers.",
-      rail: { launch: "Ask three students what they do when they get stuck.",
-        monitor: ["Able to explain the plan", "Still needs the frame", "Ready for Topic 5"],
+      pull: "Next chapter: production is complete — the crates now need equal delivery loads and leftovers.",
+      rail: { launch: "Ask three students how they would unjam a plan.",
+        monitor: ["Able to explain the plan", "Still stops at the stuck step", "Ready for division"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -245,99 +342,211 @@ const LESSON = {
   Visual: function ({ i, award, game }) {
     const [picked, setPicked] = useState([]);
     const [step, setStep] = useState(0);
-    const order = ["know", "ask", "first", "then"];
+    const [gap, setGap] = useState(false);
+    const [pick, setPick] = useState(-1);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawDepot} height={256} award={award}
-          notices={["There are 18 crates", "Each holds 24", "350 have been sold", "There are three numbers"]}
-          wonders={["How many are left?", "Do I multiply or subtract?", "Which number comes first?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern" support="khalida"
+            title="The jammed lift"
+            text="The water depot: 18 crates of 24 bottles, 350 sold — and the lift, jammed midway, holding the morning's plan."
+            clue="Three numbers, and only two belong in the first step.">
+            <NoticeWonder draw={drawDepot} height={256} award={award}
+              notices={["There are 18 crates", "Each holds 24", "350 have been sold", "There are three numbers"]}
+              wonders={["How many are left?", "Do I multiply or subtract?", "Which number comes first?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawDepot} height={256} award={award}
-          label="About how many bottles altogether?" min={200} max={700} start={430} unit="bottles"
-          after="Locked. Now let us plan before we calculate."
-          note="Three numbers, and only two of them belong in the first step." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The estimate before the plan"
+            text="Omar asks for the estimate before the plan is written — 18 × 24, rounded at a friendly place."
+            clue="Three numbers, and only two of them belong in the first step.">
+            <LaunchEstimate draw={drawDepot} height={256} award={award}
+              label="About how many bottles altogether?" min={200} max={700} start={430} unit="bottles"
+              after="Locked. Now let us plan before we calculate."
+              note="The depot counts are simulated — the planning works on any numbers." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makePlan(picked)} height={258}
-          label="Fill in the plan"
-          value={null}
-          onPick={(v) => {
-            if (picked.indexOf(v) !== -1) return;
-            const next = picked.concat([v]);
-            setPicked(next);
-          }}
-          chips={order.map((k) => ({
-            v: k,
-            label: (picked.indexOf(k) !== -1 ? "\u2713 " : "+ ") +
-              ({ know: "I know", ask: "I am asked", first: "Find first", then: "Then" })[k]
-          }))}
-          caption={<MathEl omml={M.plan} size="lg" display="block" />}
-          footnote="The plan is where you decide the order — not while you are calculating." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd writes the plan first"
+            text="He can light each line of the plan — the class must name what each line is before it lights."
+            clue="A plan before a calculation">
+            <ExploreChips draw={makePlan(picked)} height={258}
+              label="Complete the plan"
+              value={picked.length}
+              onPick={(v) => {
+                const keys = ["know", "ask", "first", "then"];
+                setPicked(keys.slice(0, v));
+              }}
+              chips={[{ v: 0, label: "start" }, { v: 1, label: "I know" }, { v: 2, label: "I am asked" }, { v: 3, label: "find first" }, { v: 4, label: "then" }]}
+              caption={<MathEl omml={M.plan} size="lg" display="block" />}
+              footnote="Now the plan is complete — and only now do you calculate." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makePersevere(step)} height={256}
-          label="Try it, get stuck, keep going"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "subtract first" }, { v: 1, label: "find the total" }, { v: 2, label: "now subtract" }]}
-          caption={<MathEl omml={step === 0 ? M.wrong : step === 1 ? M.step1 : M.step2} size="lg" display="block" />}
-          footnote="Being stuck is information. It tells you which step is missing." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The first idea does not finish the job"
+            text="350 sold — but the subtraction is stuck: the whole is not known yet. Zayd steps through the middle answer."
+            clue="That is not failure — that is the middle step talking">
+            <ExploreChips draw={makePersevere(step)} height={256}
+              label="Step through the stuck plan"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "stuck" }, { v: 1, label: "the middle answer" }, { v: 2, label: "the question" }]}
+              caption={<MathEl omml={M.step1} size="lg" display="block" />}
+              footnote="The middle answer unlocked the question." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "p1", text: "How many bottles altogether?", target: "one" },
-            { id: "p2", text: "How many are left after 350 are sold?", target: "two" },
-            { id: "p3", text: "How many bottles in 5 crates?", target: "one" },
-            { id: "p4", text: "How many full crates were sold?", target: "two" }
-          ]}
-          targets={[
-            { id: "one", label: "one step" },
-            { id: "two", label: "two steps — something must be found first" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="One step or two?"
+            text="Omar and Zayd lay four questions from the depot on the table. Each one needs one step — or two."
+            clue="Do I already know every number I need?">
+            <CardSort award={award} columns={2} commitLabel="Sort the questions"
+              items={[
+                { id: "p1", text: "How many bottles altogether?", target: "one" },
+                { id: "p2", text: "How many are left after 350 are sold?", target: "two" },
+                { id: "p3", text: "How many bottles in 5 crates?", target: "one" },
+                { id: "p4", text: "How many full crates were sold?", target: "two" }
+              ]}
+              targets={[
+                { id: "one", label: "one step" },
+                { id: "two", label: "two steps — something must be found first" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Noura's plan — bottles", omml: M.step2, h: 92,
-                  quote: "Total first, then take away the 350." }}
-          right={{ name: "Yasir's plan — crates", omml: M.compare, h: 92,
-                   quote: "I worked out how many crates 350 bottles is first." }}
-          same={["Both reach 82", "Both need two steps", "Both use all three numbers"]}
-          diff={["Noura works in bottles, Yasir in crates",
-                 "Yasir's first step has a remainder to think about",
-                 "Noura's plan is simpler to write down"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 82"
+            text="Joud works in bottles. Yasir works in crates. Both reach 82 — Yasir's first step has a remainder to think about."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Joud's plan — bottles", omml: M.step2, h: 92,
+                      quote: "Total first, then take away the 350." }}
+              right={{ name: "Yasir's plan — crates", omml: M.compare, h: 92,
+                       quote: "I worked out how many crates 350 bottles is first." }}
+              same={["Both reach 82", "Both need two steps", "Both use all three numbers"]}
+              diff={["Joud works in bottles, Yasir in crates",
+                     "Yasir's first step has a remainder to think about",
+                     "Joud's plan is simpler to write down"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard47} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The plan's hidden gap"
+            text="The depot manager presents: 350 sold is 14 full crates, so 432 − 336 = 96 left. Omar reads it line by line — one step has no evidence."
+            clue="350 bottles is not a whole number of crates">
+            <ExploreChips draw={makeJammed(gap, setGap)} height={252}
+              label="Does the polished plan hold?"
+              value={gap ? 1 : 0}
+              onPick={(v) => setGap(v === 1)}
+              chips={[{ v: 0, label: "no gap — it is polished" }, { v: 1, label: "the gap is the crate count" }]}
+              caption={<MathEl omml={M.step1} size="lg" display="block" />}
+              footnote="A polished plan can still hide a faulty step." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.plan, alt: "what do I know, what am I asked, what must I find first" }]}
-          hand={"write what you know \u00b7 write what is asked \u00b7 name the middle step \u00b7 only then calculate"}
-          cards={[
-            { title: "The middle step", omml: M.step1, note: "not the answer, but the key to it" },
-            { title: "Tap for the real answer", omml: M.wrong, revealOmml: M.step2, reveal: true,
-              note: "the question asked how many are LEFT" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar unjams the plan"
+            text="The total held: 432 bottles. Now choose the step that takes all 350 bottles from it — and the unjammed plan appears."
+            clue="Count bottles, not crates">
+            <ExploreChips draw={makeUnjam(pick, setPick)} height={252}
+              label="Choose the missing second step"
+              value={pick}
+              onPick={(v) => setPick(v)}
+              chips={[{ v: 0, label: "432 − 350" }, { v: 1, label: "432 − 336" }, { v: 2, label: "350 − 336" }]}
+              caption={<MathEl omml={M.step2} size="lg" display="block" />}
+              footnote="The unjammed plan holds when every step follows from the one before." />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="A shop has 26 boxes of 15 pens. It needs 500 pens for an order. How many more are needed?"
-          omml={M.swykStep}
-          options={[{ v: "a", text: "390" }, { v: "b", text: "110" }, { v: "c", text: "890" }, { v: "d", text: "474" }]}
-          right="b"
-          support={{
-            yes: "Yes \u2014 26 \u00d7 15 = 390, then 500 \u2212 390 = 110.",
-            notYet: "Not yet \u2014 390 is the middle step. What was actually asked?",
-            draw: drawSupport47, h: 82,
-            hint: "The question asks how many MORE are needed, not how many there are."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The plan is drawn, not declared"
+            text="Zayd builds only what the class can justify: the stages in order, the middle answer named, the question answered."
+            clue="A first answer that is not the answer is progress, not a mistake">
+            <BoardScreen draw={drawBoard47} height={430}
+              caption="When the first step is not the answer." />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.plan}
-          action="Find a two-step problem at home tonight and write the plan before you solve it." />;
+        return (
+          <STEMWindow window={STORY && STORY.stemWindows && STORY.stemWindows[0]}>
+            <RuleScreen award={award}
+              ommls={[{ omml: M.plan, alt: "what do I know · what am I asked · what must I find first" }]}
+              hand={"name what you know · name what you are asked · find the middle step · then calculate"}
+              cards={[
+                { title: "The plan we defended", omml: M.step2, note: "432 − 350 = 82" },
+                { title: "Tap to see the middle step", omml: M.compare, revealOmml: M.step1, reveal: true,
+                  note: "the middle answer is part of the argument" }
+              ]} />
+          </STEMWindow>
+        );
+
+      case 10:
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs a two-step he can defend"
+            text="26 boxes of 15 pens, an order for 500. Write the plan — then both steps, in order."
+            clue="390 is the middle step — 110 is the answer">
+            <ShowWhatYouKnow award={award}
+              prompt="A shop has 26 boxes of 15 pens. It needs 500 pens for an order. How many more are needed?"
+              omml={M.swykStep}
+              options={[{ v: "a", text: "390" }, { v: "b", text: "110" }, { v: "c", text: "890" }, { v: "d", text: "474" }]}
+              right="b"
+              support={{
+                yes: "Yes — 26 × 15 = 390, then 500 − 390 = 110.",
+                notYet: "Not yet — 390 is the middle step. What was actually asked?",
+                draw: drawSupport47, h: 82,
+                hint: "The question asks how many MORE are needed, not how many there are."
+              }} />
+          </StoryShell>
+        );
+
+      case 11:
+        return (
+          <AmanahWindow window={STORY && STORY.amanahWindows && STORY.amanahWindows[0]}>
+            <div style={{ textAlign: "center", padding: "30px 20px" }}>
+              <div style={{ fontSize: "20px", fontWeight: 800, color: "#10242B", marginBottom: "14px" }}>Perseverance</div>
+              <p style={{ fontSize: "15px", lineHeight: 1.7, color: "#10242B", maxWidth: "520px", margin: "0 auto 10px" }}>
+                The jammed lift taught the class that a stuck step is not a stopped plan. The early believers were known for their perseverance through difficulty, and Bilal ibn Rabah's steady service is remembered among them.
+              </p>
+              <p style={{ fontSize: "13px", lineHeight: 1.6, color: "#5B6B70", maxWidth: "520px", margin: "0 auto" }}>
+                Perseverance means staying with the question until every step of the answer has evidence behind it.
+              </p>
+            </div>
+          </AmanahWindow>
+        );
+
+      case 12:
+        return (
+          <StoryHandoff support="khalida"
+            title="The morning is planned"
+            text="Omar signs the unjammed plan. Production is complete — but equal delivery loads and leftover pieces must now be planned. The crates lead directly to division."
+            artifact="Depot plan · unjammed and signed"
+            next="Production is complete, but equal delivery loads and leftover pieces must now be planned. The crates lead directly to division.">
+            <Closing game={game} omml={M.plan}
+              action="Plan a real two-step problem tonight: write what you know, what you are asked, and the middle step." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

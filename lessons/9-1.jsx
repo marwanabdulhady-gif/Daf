@@ -159,7 +159,7 @@ const LESSON = {
         connect: "What went wrong in the ones you rejected?",
         misconception: "Adding the denominators as well as the numerators." } },
 
-    { phase: "connect", title: "Two ways to <em>say it</em>", lead: "Salma counted eighths out loud. Rami wrote the numbers. Both got five eighths.",
+    { phase: "connect", title: "Two ways to <em>say it</em>", lead: "Khalil counted eighths out loud. Rami wrote the numbers. Both got five eighths.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -242,9 +242,9 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Salma's way — count the eighths", omml: M.unitCount, h: 92, quote: "One eighth, two, three ... five eighths." }}
+          left={{ name: "Khalil's way — count the eighths", omml: M.unitCount, h: 92, quote: "One eighth, two, three ... five eighths." }}
           right={{ name: "Rami's way — add the tops", omml: M.answer, h: 92, quote: "Three plus two is five, and they are still eighths." }}
-          same={["Both get 5/8", "Both keep the denominator", "Both treat an eighth as one thing"]} diff={["Salma counts, Rami adds", "Rami is faster", "Salma can see why the bottom stays"]} />;
+          same={["Both get 5/8", "Both keep the denominator", "Both treat an eighth as one thing"]} diff={["Khalil counts, Rami adds", "Rami is faster", "Khalil can see why the bottom stays"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard91} height={430} />;

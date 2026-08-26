@@ -210,7 +210,7 @@ const LESSON = {
         misconception: "Multiplying numerator and denominator by the whole number." } },
 
     { phase: "connect", title: "Two ways to <em>get there</em>",
-      lead: "Hala added three fifths four times. Ziad counted twelve fifth-pieces at once. Same answer.",
+      lead: "Qais added three fifths four times. Ziad counted twelve fifth-pieces at once. Same answer.",
       goal: "Repeated addition and grouping are the same move.",
       pull: "Let us build it on the board.",
       rail: { launch: "Show both without hinting at a favourite.",
@@ -305,12 +305,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — add it four times", omml: M.repeated, h: 92,
+          left={{ name: "Qais's way — add it four times", omml: M.repeated, h: 92,
             quote: "Three fifths, three fifths, three fifths, three fifths. Twelve fifths." }}
           right={{ name: "Ziad's way — count every piece", omml: M.unitChain, h: 92,
             quote: "Each group has 3 fifth-pieces. Four groups is 12 of them." }}
           same={["Both end at 12/5", "Both keep fifths as the piece", "Both can be renamed to 2 and 2/5"]}
-          diff={["Hala writes four terms", "Ziad counts unit fractions", "Ziad's method survives twenty groups"]} />;
+          diff={["Qais writes four terms", "Ziad counts unit fractions", "Ziad's method survives twenty groups"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard102} height={430} />;

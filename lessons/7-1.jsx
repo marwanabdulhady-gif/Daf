@@ -109,92 +109,93 @@ const LESSON = {
   ixl: ["8ZV"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Twelve tiles, arranged three different ways. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Every arrangement uses all twelve tiles.",
-      rail: { launch: "I am not asking how many arrangements. Just look.",
-        monitor: ["Counting the tiles in one rectangle", "Noticing all three have 12", "Reading the labels"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Thinking the rectangles hold different numbers of tiles." } },
+    { phase: "warmup", title: "A tile with more than <em>one shape</em>",
+      lead: "12 reef tiles make three different rectangles: 1×12, 2×6, 3×4. The same pieces, the different shapes. Mariam, the architect, will sign only a certificate with no missing pair.",
+      goal: "Notice a factor: each rectangle hands you two numbers that multiply to the tile count.",
+      pull: "Each rectangle hands you two factors at once.",
+      rail: { launch: "Fictional frame. Look at the rectangles — no working yet.",
+        monitor: ["Counting the rectangles", "Reading the side labels", "Wonding why those numbers"],
+        connect: "What do the side labels of each rectangle multiply to?",
+        misconception: "Thinking a number has only one rectangular shape." } },
 
-    { phase: "launch", title: "How many <em>rectangles</em> from twelve tiles?",
-      lead: "Every tile must be used, and the rectangle must be full. Estimate first.",
-      goal: "Create the need — arrangements and factors are the same thing.",
-      pull: "Each rectangle is going to give you two numbers.",
-      rail: { launch: "Try to make one on your desk. Then another.",
-        monitor: ["Finding 3 x 4", "Finding 2 x 6", "Forgetting 1 x 12"],
-        connect: "Does a single row of 12 count as a rectangle?",
-        misconception: "Counting 3 x 4 and 4 x 3 as different rectangles." } },
+    { phase: "launch", title: "How many rectangles <em>from 12 tiles</em>?",
+      lead: "The architect will cast the module in whatever shapes 12 tiles allow. How many are there?",
+      goal: "Create the need — turning a rectangle sideways does not make a new one.",
+      pull: "Turning a rectangle sideways does not make a new one.",
+      rail: { launch: "Give a rectangle count and say how you are keeping them straight.",
+        monitor: ["Counting 1×12, 2×6, 3×4", "Not counting 6×2 again", "Estimating first"],
+        connect: "Why is 6×2 the same rectangle as 2×6?",
+        misconception: "Counting a sideways rectangle as a new one." } },
 
-    { phase: "monitor", title: "Reveal each <em>rectangle</em>",
-      lead: "One at a time. Read the two numbers off the sides.",
-      goal: "A factor pair is the two side lengths of a rectangle.",
-      pull: "What about a number that will not make a rectangle?",
-      rail: { launch: "Predict the next rectangle before you tap.",
-        monitor: ["Finding all three", "Missing 1 x 12", "Naming the pairs"],
-        connect: "How do you know you have found them all?",
-        misconception: "Stopping before 1 x 12." } },
+    { phase: "monitor", title: "Zayd reveals <em>each rectangle</em>",
+      lead: "1×12, 2×6, 3×4 — each reveal hands the class two factors at once.",
+      goal: "Build every full rectangle and read both sides.",
+      pull: "Each rectangle hands you two factors at once.",
+      rail: { launch: "Before each reveal: what two numbers does the side carry?",
+        monitor: ["Reading 1 and 12", "Reading 2 and 6", "Reading 3 and 4"],
+        connect: "Which side-pair have we not seen yet?",
+        misconception: "Staying at the first rectangle found." } },
 
-    { phase: "monitor", title: "Test a number — <em>factor or not</em>?",
-      lead: "Try to build rows of 5. Watch the last row.",
-      goal: "A non-factor leaves gaps — that is what a remainder looks like.",
-      pull: "Now list every factor of 12.",
-      rail: { launch: "Predict whether the rectangle will come out full.",
-        monitor: ["Spotting the gaps", "Counting the leftovers", "Dividing to check"],
-        connect: "What do the gaps tell you about 12 ÷ 5?",
-        misconception: "Calling 5 a factor because 12 tiles can be arranged near enough." } },
+    { phase: "monitor", title: "Try rows of <em>three, four, five, six</em>",
+      lead: "Rows of 3 and 4 close with no gap; rows of 5 leave a hole. A gap means not a factor.",
+      goal: "Test a candidate by trying it: nothing left over means factor.",
+      pull: "A gap in the last row means it is not a factor.",
+      rail: { launch: "Before each try: will the last row close?",
+        monitor: ["Trying rows of 5", "Seeing the gap", "Naming 5 a non-factor"],
+        connect: "How do you know 5 is not a factor of 12?",
+        misconception: "Calling every smaller number a factor." } },
 
     { phase: "monitor", title: "Factor or <em>not</em>?",
-      lead: "Sort each number. No grading until the class commits.",
-      goal: "Apply the test to unfamiliar numbers.",
-      pull: "Two students listed the factors differently.",
-      rail: { launch: "Ask: does it divide 12 with nothing left?",
-        monitor: ["Dividing to test", "Building rectangles", "Guessing"],
-        connect: "Which was hardest to decide, and why?",
-        misconception: "Assuming any smaller number is a factor." } },
+      lead: "Four candidates from the reef crew. Each one must pass the no-remainder test.",
+      goal: "Sort candidates into factors and non-factors of 12.",
+      pull: "Divides with nothing left over — that is the test.",
+      rail: { launch: "Before each placement: what is the remainder?",
+        monitor: ["Testing 3 with no remainder", "Testing 5 with a remainder", "Naming 6 and its partner"],
+        connect: "What does the remainder tell you?",
+        misconception: "Sorting by size instead of by the test." } },
 
-    { phase: "connect", title: "Two ways to <em>find them all</em>",
-      lead: "Yara built rectangles. Fahad divided 12 by 1, 2, 3 in order. Both found six factors.",
+    { phase: "connect", title: "Firas <em>builds</em>. Fahad <em>divides in order</em>",
+      lead: "Firas builds every rectangle. Fahad tries 1, then 2, then 3, and writes down what worked. Both find 1, 2, 3, 4, 6, 12.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Building shapes", "Dividing in order", "Pairing them up"],
-        connect: "Whose method proves nothing was missed?",
-        misconception: "Believing a random search finds them all." } },
+        monitor: ["Following the rectangles", "Following the ordered tests", "Comparing the factor lists"],
+        connect: "Which method proves none are missed?",
+        misconception: "Believing one found pair is the whole list." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Each rectangle gives two factors. Collect them and you have the whole list.",
+    { phase: "synth", title: "On the <em>board</em>: the factor list",
+      lead: "Build every full rectangle. Read both sides. That is the factor list: 1, 2, 3, 4, 6, 12.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next rectangle", "Reading both sides", "Restating it in their own words"],
-        connect: "Who can say what a factor is in one sentence?",
-        misconception: "Listing a factor twice from the same rectangle." } },
+        monitor: ["Building the rectangles", "Reading the pairs", "Restating it in their own words"],
+        connect: "Who can say the rule in one sentence?",
+        misconception: "Listing only the pairs' smaller numbers." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "A factor divides the number with nothing left over — and it always arrives with a partner.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the no-remainder test", "Testing on a new number", "Pairing factors up"],
-        connect: "Does every number have 1 and itself as factors?",
+        monitor: ["Naming the test", "Pairing the factors", "Testing on a new number"],
+        connect: "Which two numbers does every number have for certain?",
         misconception: "Forgetting 1 and the number itself." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. List them in order, smallest first.",
-        monitor: ["Working in order", "Pairing them", "Missing 16 itself"],
+      lead: "Which list gives every factor of 16?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Test in order, stop when the pairs meet.",
+        monitor: ["Testing 1, 2, 4", "Noting 4 × 4", "Including 1 and 16"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Listing 1, 2, 4, 8 and forgetting 16." } },
+        misconception: "Answering 1, 2, 4, 8 — the 16 was dropped." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The module's <em>first shape</em> is found",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: finding factors without drawing anything.",
-      rail: { launch: "Ask three students to say what a factor is.",
-        monitor: ["Able to explain it to someone else", "Still needs the tiles", "Ready to work in pairs"],
+      pull: "Tomorrow: the architect accepts the module only when no factor pair is missing.",
+      rail: { launch: "Ask three students to give a number's factor list.",
+        monitor: ["Able to explain the test", "Still stops at the first pair", "Ready for the full pair list"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -205,84 +206,156 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeRects(2)} height={256} award={award}
-          notices={["They all use 12 tiles", "The shapes are different", "One is a single row", "The sides are labelled"]}
-          wonders={["How many rectangles are there?", "Why those numbers?", "Would 5 work?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern" support="mariam"
+            title="A tile with more than one shape"
+            text="12 reef tiles make three different rectangles: 1×12, 2×6, 3×4. The same pieces, the different shapes."
+            clue="Each rectangle hands you two factors at once.">
+            <NoticeWonder draw={makeRects(2)} height={256} award={award}
+              notices={["They all use 12 tiles", "The shapes are different", "One is a single row", "The sides are labelled"]}
+              wonders={["How many rectangles are there?", "Why those numbers?", "Would 5 work?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawTiles71} height={256} award={award}
-          label="How many different rectangles from 12 tiles?" min={1} max={8} start={3} unit="rectangles"
-          after="Locked. Now let us build them one at a time."
-          note="Turning a rectangle sideways does not make a new one." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The module's possible shapes"
+            text="Omar asks the architect's question: 12 tiles — how many different rectangles, and how do we keep the sideways ones from double-counting?"
+            clue="Turning a rectangle sideways does not make a new one.">
+            <LaunchEstimate draw={drawTiles71} height={256} award={award}
+              label="How many different rectangles from 12 tiles?" min={1} max={8} start={3} unit="rectangles"
+              after="Locked. Now let us build them one at a time."
+              note="The tile counts are simulated — the factor idea works on any number." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeRects(active)} height={256}
-          label="Reveal each rectangle"
-          value={active}
-          onPick={(v) => setActive(v)}
-          chips={PAIRS12.map((p, k) => ({ v: k, label: p[0] + " × " + p[1] }))}
-          caption={<MathEl omml={active === 0 ? M.pair1 : active === 1 ? M.pair2 : M.pair3} size="xl" display="block" />}
-          footnote="Each rectangle hands you two factors at once." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd reveals each rectangle"
+            text="He can reveal any rectangle — the class must read both sides before the next appears."
+            clue="Each rectangle hands you two factors at once.">
+            <ExploreChips draw={makeRects(active)} height={256}
+              label="Reveal each rectangle"
+              value={active}
+              onPick={(v) => setActive(v)}
+              chips={PAIRS12.map((p, k) => ({ v: k, label: p[0] + " × " + p[1] }))}
+              caption={<MathEl omml={active === 0 ? M.pair1 : active === 1 ? M.pair2 : M.pair3} size="xl" display="block" />}
+              footnote="Each rectangle hands you two factors at once." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeTest(n)} height={256}
-          label="Try rows of ..."
-          value={n}
-          onPick={(v) => setN(v)}
-          chips={[{ v: 3, label: "3" }, { v: 4, label: "4" }, { v: 5, label: "5" }, { v: 6, label: "6" }]}
-          caption={<MathEl omml={12 % n === 0 ? M.all : M.notFactor} size="lg" display="block" />}
-          footnote="A gap in the last row means it is not a factor." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar tests the candidates"
+            text="Rows of 3 and 4 close with no gap; rows of 5 leave a hole. Omar runs the no-remainder test."
+            clue="A gap in the last row means it is not a factor.">
+            <ExploreChips draw={makeTest(n)} height={256}
+              label="Try rows of ..."
+              value={n}
+              onPick={(v) => setN(v)}
+              chips={[{ v: 3, label: "3" }, { v: 4, label: "4" }, { v: 5, label: "5" }, { v: 6, label: "6" }]}
+              caption={<MathEl omml={12 % n === 0 ? M.all : M.notFactor} size="lg" display="block" />}
+              footnote="A gap in the last row means it is not a factor." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "f1", text: "3", target: "yes" }, { id: "f2", text: "5", target: "no" },
-            { id: "f3", text: "6", target: "yes" }, { id: "f4", text: "8", target: "no" }
-          ]}
-          targets={[
-            { id: "yes", label: "a factor of 12" },
-            { id: "no", label: "not a factor of 12" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Factor or not?"
+            text="Omar and Zayd lay four candidates from the reef crew on the board. Each one must pass the no-remainder test."
+            clue="Divides with nothing left over — that is the test.">
+            <CardSort award={award} columns={2}
+              items={[
+                { id: "f1", text: "3", target: "yes" }, { id: "f2", text: "5", target: "no" },
+                { id: "f3", text: "6", target: "yes" }, { id: "f4", text: "8", target: "no" }
+              ]}
+              targets={[
+                { id: "yes", label: "a factor of 12" },
+                { id: "no", label: "not a factor of 12" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Yara's way — build rectangles", omml: M.pair3, h: 92,
-                  quote: "Every rectangle I can build gives me two factors." }}
-          right={{ name: "Fahad's way — divide in order", omml: M.all, h: 92,
-                   quote: "I tried 1, then 2, then 3, and wrote down what worked." }}
-          same={["Both find 1, 2, 3, 4, 6 and 12", "Both use the no-remainder test", "Both pair the factors up"]}
-          diff={["Yara draws, Fahad divides", "Fahad's order proves none are missed",
-                 "Yara can see why they come in pairs"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one factor list"
+            text="Firas builds every rectangle. Fahad divides in order. Both lists read 1, 2, 3, 4, 6, 12."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Firas's way — build rectangles", omml: M.pair3, h: 92,
+                      quote: "Every rectangle I can build gives me two factors." }}
+              right={{ name: "Fahad's way — divide in order", omml: M.all, h: 92,
+                       quote: "I tried 1, then 2, then 3, and wrote down what worked." }}
+              same={["Both find 1, 2, 3, 4, 6 and 12", "Both use the no-remainder test", "Both pair the factors up"]}
+              diff={["Firas draws, Fahad divides", "Fahad's order proves none are missed",
+                     "Firas can see why they come in pairs"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard71} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The factor list is drawn, not declared"
+            text="Zayd builds only what the class can justify: the rectangles, the tests, the pairs."
+            clue="A factor divides the number with nothing left over.">
+            <BoardScreen draw={drawBoard71} height={430}
+              caption="A factor divides the number with nothing left over." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "a factor divides the number with nothing left over" }]}
-          hand={"build every full rectangle \u00b7 read both sides \u00b7 that is the factor list"}
-          cards={[
-            { title: "The factors we found", omml: M.all, note: "three rectangles, six factors" },
-            { title: "Tap to see a non-factor", omml: M.pair2, revealOmml: M.notFactor, reveal: true,
-              note: "5 leaves gaps in the rectangle" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="A factor divides the number with nothing left over — and it always arrives with a partner."
+            clue="Factors come in pairs.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "a factor divides the number with nothing left over" }]}
+              hand={"build every full rectangle · read both sides · that is the factor list"}
+              cards={[
+                { title: "The factors we found", omml: M.all, note: "three rectangles, six factors" },
+                { title: "Tap to see a non-factor", omml: M.pair2, revealOmml: M.notFactor, reveal: true,
+                  note: "5 leaves gaps in the rectangle" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Which list gives every factor of 16?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "1,2,4,8" }, { v: "b", text: "1,2,4,8,16" }, { v: "c", text: "2,4,8" }, { v: "d", text: "1,2,3,4,8,16" }]}
-          right="b"
-          support={{
-            yes: "Yes — 1×16, 2×8 and 4×4. The 4 only counts once.",
-            notYet: "Not yet — check the very smallest and the very largest.",
-            draw: drawSupport71, h: 82,
-            hint: "Every number has 1 and itself as factors."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the first shape"
+            text="Which list gives every factor of 16?"
+            clue="1 and 16 are certain. 4 × 4 means 4 counts once.">
+            <ShowWhatYouKnow award={award}
+              prompt="Which list gives every factor of 16?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "1,2,4,8" }, { v: "b", text: "1,2,4,8,16" }, { v: "c", text: "2,4,8" }, { v: "d", text: "1,2,3,4,8,16" }]}
+              right="b"
+              support={{
+                yes: "Yes — 1×16, 2×8 and 4×4. The 4 only counts once.",
+                notYet: "Not yet — check the very smallest and the very largest.",
+                draw: drawSupport71, h: 82,
+                hint: "Every number has 1 and itself as factors."
+              }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Find a number of things at home and arrange them into every rectangle you can." />;
+        return (
+          <StoryHandoff support="mariam"
+            title="The module's first shape is found"
+            text="Omar signs the first shape: 12 tiles, three rectangles, six factors. But the architect's certificate is stricter — she will accept the module only when no factor pair is missing."
+            artifact="Reef kit · first factor list"
+            next="Every possible rectangle — the architect accepts the module only when no factor pair is missing.">
+            <Closing game={game} omml={M.rule}
+              action="Find a number of things at home and arrange them into every rectangle you can." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

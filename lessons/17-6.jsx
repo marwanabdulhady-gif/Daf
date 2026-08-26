@@ -97,7 +97,7 @@ const drawStory176 = (ctx, W, H, frame) => {
     { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
   D.fracBar(ctx, { x: 66, y: 62, w: W - 132, h: 40, den: 2, num: 1,
     prog: D.at(f, 50, 260), col: "#FA7E19", label: false });
-  D.txt(ctx, "Layla painted 1/2", W / 2, 118,
+  D.txt(ctx, "Layth painted 1/2", W / 2, 118,
     { size: 12.5, col: "rgba(234,244,242,.7)", font: "marker", alpha: D.at(f, 180, 280) });
   D.fracBar(ctx, { x: 66, y: 138, w: W - 132, h: 40, den: 3, num: 1,
     prog: D.at(f, 220, 420), col: "#2D70B3", label: false });
@@ -164,13 +164,13 @@ const LESSON = {
         misconception: "Adding tops and bottoms to get 2/5." } },
 
     { phase: "launch", title: "Painting the <em>mural</em>",
-      lead: "Layla painted half the mural and Omar painted a third of it. Estimate how much is done.",
+      lead: "Layth painted half the mural and Omar painted a third of it. Estimate how much is done.",
       goal: "Create the need for renaming before adding.",
       pull: "Now let us make the pieces match.",
       rail: { launch: "More or less than the whole mural? Commit first.",
         monitor: ["Estimating just over three quarters", "Answering 2/5", "Reasoning from the bars"],
         connect: "Can the answer be smaller than a half?",
-        misconception: "Answering 2/5, which is less than the half Layla painted." } },
+        misconception: "Answering 2/5, which is less than the half Layth painted." } },
 
     { phase: "monitor", title: "Rename, then <em>join</em>",
       lead: "Cut both bars into sixths, then count the shaded pieces.",
@@ -200,7 +200,7 @@ const LESSON = {
         misconception: "Writing 1/2 + 1/3 = 2/5." } },
 
     { phase: "connect", title: "Two common <em>denominators</em>",
-      lead: "Reem used sixths. Faisal multiplied and used sixths too, by a different route.",
+      lead: "Anees used sixths. Faisal multiplied and used sixths too, by a different route.",
       goal: "Different routes, same renaming.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask whether the answers agree.",
@@ -290,12 +290,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — smallest common denominator", omml: M.renamed, h: 92,
+          left={{ name: "Anees's way — smallest common denominator", omml: M.renamed, h: 92,
             quote: "Six is the smallest number two and three both divide into." }}
           right={{ name: "Faisal's way — multiply the denominators", omml: M.why, h: 92,
             quote: "Two times three is six, so I used sixths as well." }}
           same={["Both give 5/6", "Both rename both fractions", "Both keep the values"]}
-          diff={["Reem searches for the smallest", "Faisal multiplies", "Faisal may need to simplify later"]} />;
+          diff={["Anees searches for the smallest", "Faisal multiplies", "Faisal may need to simplify later"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard176} height={430} />;

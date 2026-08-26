@@ -237,7 +237,7 @@ const LESSON = {
         misconception: "Accepting an estimate that is ten times out." } },
 
     { phase: "connect", title: "Two useful <em>estimates</em>",
-      lead: "Layla rounded to the nearest whole. Yousef rounded to the nearest tenth.",
+      lead: "Layth rounded to the nearest whole. Yousef rounded to the nearest tenth.",
       goal: "A closer rounding gives a closer estimate, for more work.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which is closer and which is quicker.",
@@ -332,12 +332,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Layla's way — nearest whole", omml: M.roundUp, h: 92,
+          left={{ name: "Layth's way — nearest whole", omml: M.roundUp, h: 92,
             quote: "Four riyals each, six bottles, about twenty four." }}
           right={{ name: "Yousef's way — nearest tenth", omml: M.roundDown, h: 92,
             quote: "3.9 each, so about 23.4 — much closer." }}
           same={["Both are estimates", "Both round up", "Both are a little too high"]}
-          diff={["Layla's is quicker", "Yousef's is closer", "Both beat guessing"]} />;
+          diff={["Layth's is quicker", "Yousef's is closer", "Both beat guessing"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard174} height={430} />;

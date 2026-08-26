@@ -118,92 +118,84 @@ const LESSON = {
   ixl: ["2TR", "WGL", "KLA"],
 
   metas: [
-    { phase: "warmup", title: "Which estimate <em>doesn't belong</em>?",
-      lead: "Four estimates for 38 × 52. Every one has a reason.",
-      goal: "Reasoning before answers — no card is wrong.",
-      pull: "Rounding both the same way has a cost.",
-      rail: { launch: "Choose a card, then convince your partner.",
-        monitor: ["Reasoning from the rounding", "Reasoning from closeness", "Reasoning from ease"],
-        connect: "Can every card be the odd one out?",
-        misconception: "Assuming the closest estimate is always the best." } },
+    { phase: "warmup", title: "Will the <em>beams</em> fit?",
+      lead: "The beam run for the tower roof: 38 lengths, 52 books per bundle. Before any cutting, the estimate must say whether they fit.",
+      goal: "Notice the numbers hide a friendly pair — and a near pair.",
+      pull: "38 rounds up, 52 rounds down — the two errors work against each other.",
+      rail: { launch: "Fictional frame. Read the order — no exact work yet.",
+        monitor: ["Noticing 38 is near 40", "Noticing 52 is near 50", "Wonding which estimate is safe"],
+        connect: "Which way should each number round for this decision?",
+        misconception: "Rounding both numbers the same way by habit." } },
 
-    { phase: "launch", title: "Thirty-eight classes, <em>fifty-two books</em>",
-      lead: "The school must order books. Nobody needs the exact number yet.",
-      goal: "Create the need — an estimate is enough to place an order.",
-      pull: "Estimate first, then we will see how you rounded.",
-      rail: { launch: "No pencils. About how many books?",
-        monitor: ["Rounding both", "Rounding one", "Multiplying exactly"],
-        connect: "Which numbers did you change, and why those?",
-        misconception: "Believing an estimate is only for when you cannot do the real sum." } },
+    { phase: "launch", title: "About how many <em>books</em> to order?",
+      lead: "38 × 52. Lock the estimate before the bundles are cut.",
+      goal: "Estimate the product by rounding both factors.",
+      pull: "The order counts are simulated — the estimate works on any run.",
+      rail: { launch: "Give the estimate and what you rounded each factor to.",
+        monitor: ["Rounding 38 to 40", "Rounding 52 to 50", "Multiplying the rounds"],
+        connect: "Why do the two rounding errors partly cancel?",
+        misconception: "Rounding only one factor and multiplying by the other exactly." } },
 
-    { phase: "monitor", title: "Round <em>both</em> factors",
-      lead: "Each number gets its own line. Then multiply the friendly pair.",
-      goal: "Estimating a product means rounding both factors.",
-      pull: "How far off does that leave you?",
-      rail: { launch: "Predict each rounded factor before you tap.",
-        monitor: ["Rounding both to tens", "Rounding only one", "Rounding to hundreds"],
-        connect: "Why round both rather than just one?",
-        misconception: "Rounding after multiplying." } },
+    { phase: "monitor", title: "Zayd rounds <em>both</em>, then checks the drift",
+      lead: "Round both factors — then see how far the estimate sits from the exact answer.",
+      goal: "Rounding both ways: the estimate is a range, not a guess.",
+      pull: "Both rounded up would make the estimate too big — here one goes up and one goes down.",
+      rail: { launch: "Before you tap: which way did each factor round?",
+        monitor: ["Rounding 38 up", "Rounding 52 down", "Reading the drift"],
+        connect: "Why is 2,000 safe for this decision?",
+        misconception: "Reporting an estimate without its direction." } },
 
-    { phase: "monitor", title: "Which way did it <em>drift</em>?",
-      lead: "Compare each estimate with the exact answer.",
-      goal: "Know the direction and size of your error.",
-      pull: "There is another way to find a friendly pair.",
-      rail: { launch: "Predict above or below before you tap.",
-        monitor: ["Linking both up to too big", "Noticing one up one down cancels", "Measuring the gap"],
-        connect: "Why is 40 × 50 closer than 40 × 52?",
-        misconception: "Thinking an over-estimate is a mistake." } },
+    { phase: "monitor", title: "Omar looks for a <em>friendly pair</em>",
+      lead: "Compatible numbers are picked because they are easy — not because they are nearest.",
+      goal: "Use a compatible pair when the factors invite one.",
+      pull: "Compatible numbers are picked because they are easy, not because they are nearest.",
+      rail: { launch: "Before you tap: which pair do you already know by heart?",
+        monitor: ["Spotting 40 and 50", "Multiplying the pair", "Saying why it is compatible"],
+        connect: "How is a compatible pair different from just rounding?",
+        misconception: "Believing compatible numbers must be the nearest round numbers." } },
 
-    { phase: "monitor", title: "Find the <em>compatible pair</em>",
-      lead: "Sometimes a friendly pair is hiding that is not the nearest ten.",
-      goal: "Compatible numbers are chosen for ease, not for nearness.",
-      pull: "Now judge some answers for reasonableness.",
-      rail: { launch: "Which pairs do you know instantly?",
-        monitor: ["Spotting 25 and 4", "Spotting doubles", "Rounding to tens anyway"],
-        connect: "When is a compatible pair better than rounding?",
-        misconception: "Believing compatible numbers must be the nearest ten." } },
+    { phase: "monitor", title: "Which answers could be <em>real</em>?",
+      lead: "Four claimed products for the run. The estimate catches the impossible ones.",
+      goal: "Use the estimate to flag an answer that cannot be right.",
+      pull: "Close to my estimate — or nowhere near.",
+      rail: { launch: "Compare each claim to your estimate before you sort.",
+        monitor: ["Comparing claims to 2,000", "Spotting 197 as too small", "Spotting 13,630 as too big"],
+        connect: "What made the impossible claims impossible?",
+        misconception: "Accepting any tidy-looking product." } },
 
-    { phase: "connect", title: "Two ways to <em>get friendly</em>",
-      lead: "Areej rounded to tens. Bader used a compatible pair. Both estimates work.",
+    { phase: "connect", title: "Areej <em>rounds</em>. Bader finds <em>compatible pairs</em>",
+      lead: "Areej: round both to tens. Bader: pick a pair he knows by heart. Both land near 1,976.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Rounding to tens", "Choosing compatible numbers", "Choosing for a purpose"],
-        connect: "Which estimate would you use to place an order, and why?",
-        misconception: "Believing only rounding to the nearest ten is allowed." } },
+        monitor: ["Comparing rounding and compatible pairs", "Checking both are near 1,976", "Saying when each helps"],
+        connect: "Which method would you use for 35 × 42?",
+        misconception: "Believing rounding is the only estimation strategy." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "One line each. Round both. Multiply the friendly pair.",
+    { phase: "synth", title: "On the <em>board</em>: round both factors",
+      lead: "Round both factors to numbers you can multiply in your head. The estimate carries its direction.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Finding halfway first", "Restating it in their own words"],
+        monitor: ["Naming each round", "Naming the direction", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Rounding the answer instead of the factors." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming both rounded factors", "Predicting over or under", "Testing on a new product"],
-        connect: "If both factors round up, what do you know about your estimate?",
-        misconception: "Forgetting that rounding both up always over-estimates." } },
+        misconception: "Rounding both factors up and calling the estimate safe." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Show both rounded factors.",
-        monitor: ["Rounding 47 to 50", "Rounding 29 to 30", "Multiplying exactly"],
+      lead: "47 × 29 — round both factors to the nearest ten. What is the estimate?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Round each factor on its own line.",
+        monitor: ["Rounding 47 to 50", "Rounding 29 to 30", "Multiplying 50 × 30"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Rounding 29 down to 20." } },
+        misconception: "Answering 1,200 — only one factor was rounded." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The beams are <em>estimated</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: the exact answer, in four pieces.",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the line", "Ready for four regions"],
+      pull: "Tomorrow: the production frame becomes an array — rows and columns as parts of one product.",
+      rail: { launch: "Ask three students to say their estimate and its direction.",
+        monitor: ["Able to explain the rounding", "Still rounds one factor only", "Ready for arrays"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -214,91 +206,141 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <WODB award={award}
-          prompt="Four estimates for 38 × 52. Which one doesn't belong?"
-          cards={[
-            { id: "a", text: "2,000", why: "One factor up, one down — the errors partly cancel" },
-            { id: "b", text: "2,080", why: "Only the 38 was rounded, so it is closer but more work" },
-            { id: "c", text: "1,976", why: "The only one that is not an estimate — it is exact" },
-            { id: "d", text: "2,400", why: "Both rounded up hard — the only estimate that is far too big" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Will the beams fit?"
+            text="The beam run for the tower roof: 38 lengths, 52 books per bundle. Before any cutting, the estimate must say whether they fit."
+            clue="The two rounding errors work against each other">
+            <NoticeWonder draw={drawSouq} height={254} award={award}
+              notices={["38 is near 40", "52 is near 50", "The product is near 2,000", "One rounds up, one rounds down"]}
+              wonders={["About how many books altogether?", "Is 2,000 a safe estimate?", "What if both numbers rounded up?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawSouq} height={254} award={award}
-          label="About how many books to order?" min={1000} max={3000} start={2000} unit="books"
-          after="Locked. Now let us see which numbers you changed."
-          note="The order goes in today. Exact can wait." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The estimate before the cut"
+            text="Omar asks for the estimate before the bundles are cut — the roof run needs a number that says the beams fit."
+            clue="Round both factors to numbers you can multiply in your head.">
+            <LaunchEstimate draw={drawSouq} height={254} award={award}
+              label="About how many books to order?" min={1000} max={3000} start={2000} unit="books"
+              after="Locked. Now let us see which numbers you changed."
+              note="The order counts are simulated — the estimate works on any run." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeRoundBoth43(which)} height={256}
-          label="Round, then compare"
-          value={which}
-          onPick={(v) => setWhich(v)}
-          chips={[{ v: "both", label: "round both" }, { v: "drift", label: "how far off?" }]}
-          caption={<MathEl omml={which === "both" ? M.rounded : M.exact} size="xl" display="block" />}
-          footnote="38 rounds up, 52 rounds down — the two errors work against each other." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd rounds both, then checks the drift"
+            text="He can round both factors or show the drift — the class must say which way each factor went."
+            clue="38 rounds up, 52 rounds down">
+            <ExploreChips draw={makeRoundBoth43(which)} height={256}
+              label="Round, then compare"
+              value={which}
+              onPick={(v) => setWhich(v)}
+              chips={[{ v: "both", label: "round both" }, { v: "drift", label: "how far off?" }]}
+              caption={<MathEl omml={which === "both" ? M.rounded : M.exact} size="xl" display="block" />}
+              footnote="38 rounds up, 52 rounds down — the two errors work against each other." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeCompatible(on)} height={252}
-          label="Look for a friendly pair"
-          value={on ? 1 : 0}
-          onPick={(v) => setOn(v === 1)}
-          chips={[{ v: 0, label: "the products" }, { v: 1, label: "reveal the pairs" }]}
-          caption={<MathEl omml={M.compatible} size="xl" display="block" />}
-          footnote="Compatible numbers are picked because they are easy, not because they are nearest." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar looks for a friendly pair"
+            text="His pairs are picked because they are easy — 40 and 50 — not because they are nearest."
+            clue="Compatible numbers are picked because they are easy, not because they are nearest.">
+            <ExploreChips draw={makeCompatible(on)} height={252}
+              label="Look for a friendly pair"
+              value={on ? 1 : 0}
+              onPick={(v) => setOn(v === 1)}
+              chips={[{ v: 0, label: "the products" }, { v: 1, label: "reveal the pairs" }]}
+              caption={<MathEl omml={M.compatible} size="xl" display="block" />}
+              footnote="Compatible numbers are picked because they are easy, not because they are nearest." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "a1", text: "38 × 52 = 1,976", target: "ok" },
-            { id: "a2", text: "38 × 52 = 197", target: "no" },
-            { id: "a3", text: "47 × 29 = 1,363", target: "ok" },
-            { id: "a4", text: "47 × 29 = 13,630", target: "no" }
-          ]}
-          targets={[
-            { id: "ok", label: "reasonable — close to my estimate" },
-            { id: "no", label: "not reasonable — nowhere near" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Which answers could be real?"
+            text="Omar and Zayd lay four claimed products on the table. The estimate catches the ones that cannot be right."
+            clue="Close to my estimate — or nowhere near">
+            <CardSort award={award} columns={2} commitLabel="Check the claims"
+              items={[
+                { id: "a1", text: "38 × 52 = 1,976", target: "ok" },
+                { id: "a2", text: "38 × 52 = 197", target: "no" },
+                { id: "a3", text: "47 × 29 = 1,363", target: "ok" },
+                { id: "a4", text: "47 × 29 = 13,630", target: "no" }
+              ]}
+              targets={[
+                { id: "ok", label: "reasonable — close to my estimate" },
+                { id: "no", label: "not reasonable — nowhere near" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Areej's way — round to tens", omml: M.rounded, h: 92,
-                  quote: "40 times 50 is 2,000, and that is easy." }}
-          right={{ name: "Bader's way — compatible pair", omml: M.compatible, h: 92,
-                   quote: "I look for a pair I already know by heart." }}
-          same={["Both give a friendly product", "Both are close to 1,976", "Both can be done in the head"]}
-          diff={["Areej always rounds to tens", "Bader picks whatever is easiest",
-                 "Bader's works well with 25s and 50s"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one safe estimate"
+            text="Areej rounds both to tens. Bader picks a compatible pair he knows by heart. Both land near 1,976."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Areej's way — round to tens", omml: M.rounded, h: 92,
+                      quote: "40 times 50 is 2,000, and that is easy." }}
+              right={{ name: "Bader's way — compatible pair", omml: M.compatible, h: 92,
+                       quote: "I look for a pair I already know by heart." }}
+              same={["Both give a friendly product", "Both are close to 1,976", "Both can be done in the head"]}
+              diff={["Areej always rounds to tens", "Bader picks whatever is easiest",
+                     "Bader's works well with 25s and 50s"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard43} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The estimate is drawn with its direction"
+            text="Zayd builds only what the class can justify: both factors rounded, the direction named, the decision made."
+            clue="Round both factors to numbers you can multiply in your head.">
+            <BoardScreen draw={drawBoard43} height={430}
+              caption="Round both factors to numbers you can multiply in your head." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "round both factors to numbers you can multiply in your head" }]}
-          hand={"round both factors \u00b7 multiply the friendly pair \u00b7 then check the real answer against it"}
-          cards={[
-            { title: "The estimate we made", omml: M.rounded, note: "the exact answer is 1,976" },
-            { title: "Tap to see the danger", omml: M.exact, revealOmml: M.bothUp, reveal: true,
-              note: "rounding both up always over-estimates" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the checked estimate"
+            text="47 × 29, rounded to the nearest ten. Show the estimate — and what it protects."
+            clue="50 × 30 = 1,500">
+            <ShowWhatYouKnow award={award}
+              prompt="Estimate 47 × 29 by rounding both factors to the nearest ten."
+              omml={M.swyk}
+              options={[{ v: "a", text: "1,200" }, { v: "b", text: "1,500" }, { v: "c", text: "800" }, { v: "d", text: "15,000" }]}
+              right="b"
+              support={{
+                yes: "Yes — 50 × 30 = 1,500. The exact answer, 1,363, is close.",
+                notYet: "Not yet — round each factor on its own line first.",
+                draw: drawSupport43, h: 82,
+                hint: "Is 47 nearer to 40 or 50? Now do the same for 29."
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Estimate 47 × 29 by rounding both factors to the nearest ten."
-          omml={M.swyk}
-          options={[{ v: "a", text: "1,200" }, { v: "b", text: "1,500" }, { v: "c", text: "800" }, { v: "d", text: "15,000" }]}
-          right="b"
-          support={{
-            yes: "Yes — 50 × 30 = 1,500. The exact answer, 1,363, is close.",
-            notYet: "Not yet — round each factor on its own line first.",
-            draw: drawSupport43, h: 82,
-            hint: "Is 47 nearer to 40 or 50? Now do the same for 29."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Estimate the cost of about 20 of something at the shop, then check the real total." />;
+        return (
+          <StoryHandoff
+            title="The beams are estimated"
+            text="Omar signs the estimate with its direction — the beams fit. Zayd spreads the production frame: rows and columns, waiting to be read as parts of one product."
+            artifact="Tower plan · beams estimated"
+            next="The production frame reveals rows and columns as parts of one product.">
+            <Closing game={game} omml={M.rule}
+              action="Estimate a real two-factor product tonight two ways — rounding and a compatible pair — and say which was safer." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

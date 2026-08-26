@@ -185,7 +185,7 @@ const LESSON = {
         misconception: "Believing a segment and a line are the same thing drawn differently." } },
 
     { phase: "connect", title: "Two ways to <em>describe it</em>",
-      lead: "Noura described the corner by its rays. Ziad described it by how far it opens.",
+      lead: "Joud described the corner by its rays. Ziad described it by how far it opens.",
       goal: "A figure has both a structure and a size.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one would let you draw it.",
@@ -276,12 +276,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Noura's way — describe the parts", omml: M.angle, h: 92,
+          left={{ name: "Joud's way — describe the parts", omml: M.angle, h: 92,
             quote: "Two rays, and they share their endpoint. That endpoint is the vertex." }}
           right={{ name: "Ziad's way — describe the opening", omml: M.vertex, h: 92,
             quote: "It opens less than a square corner, so it is an acute angle." }}
           same={["Both describe the same figure", "Both mention the vertex", "Both are correct"]}
-          diff={["Noura names the parts", "Ziad names the size", "Only Ziad's tells you how wide it is"]} />;
+          diff={["Joud names the parts", "Ziad names the size", "Only Ziad's tells you how wide it is"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard151} height={430} />;

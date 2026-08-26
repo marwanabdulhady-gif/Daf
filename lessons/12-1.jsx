@@ -192,7 +192,7 @@ const LESSON = {
         misconception: "Writing 9/100 as 0.9." } },
 
     { phase: "connect", title: "Two ways to <em>write it</em>",
-      lead: "Sana wrote seven tenths. Ziad wrote seventy hundredths. Both shaded the same square.",
+      lead: "Bashir wrote seven tenths. Ziad wrote seventy hundredths. Both shaded the same square.",
       goal: "Equivalent fractions become equivalent decimals.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which is easier to add to a hundredths number.",
@@ -282,12 +282,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Sana's way — tenths", omml: M.seven, h: 92,
+          left={{ name: "Bashir's way — tenths", omml: M.seven, h: 92,
             quote: "Seven strips out of ten. One place after the point." }}
           right={{ name: "Ziad's way — hundredths", omml: M.sameThing, h: 92,
             quote: "I cut every strip into ten. Seventy out of a hundred." }}
           same={["Both shade the same amount", "Both are 0.7", "Both are less than one whole"]}
-          diff={["Sana uses tenths", "Ziad uses hundredths", "Ziad's is easier to add to 0.35"]} />;
+          diff={["Bashir uses tenths", "Ziad uses hundredths", "Ziad's is easier to add to 0.35"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard121} height={430} />;

@@ -218,7 +218,7 @@ const LESSON = {
         misconception: "Calling any crossing pair perpendicular." } },
 
     { phase: "connect", title: "Two true <em>descriptions</em>",
-      lead: "Hala said the window corner is perpendicular. Ziad said those lines intersect.",
+      lead: "Qais said the window corner is perpendicular. Ziad said those lines intersect.",
       goal: "Perpendicular is a special case of intersecting.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask whether either is wrong.",
@@ -309,12 +309,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — perpendicular", omml: M.perpendicular, h: 92,
+          left={{ name: "Qais's way — perpendicular", omml: M.perpendicular, h: 92,
             quote: "They cross and the corner is square, so they are perpendicular." }}
           right={{ name: "Ziad's way — intersecting", omml: M.intersecting, h: 92,
             quote: "They cross at a point, so they intersect." }}
           same={["Both describe the same pair", "Both are true", "Both say the lines meet"]}
-          diff={["Hala names the corner", "Ziad only says they cross", "Hala's tells you more"]} />;
+          diff={["Qais names the corner", "Ziad only says they cross", "Qais's tells you more"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard161} height={430} />;

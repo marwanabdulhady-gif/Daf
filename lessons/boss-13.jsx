@@ -204,7 +204,7 @@ const drawMajlis = (ctx, W, H, frame) => {
 const drawJugs = (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14); ctx.fillStyle = "#0B1F24"; ctx.fill();
   const bx = W * 0.14, bw = W * 0.72;
-  D.txt(ctx, "what Sara HAS \u00b7 two 3 L jugs", bx + bw / 2, 22, { size: 11.5, col: "#4A9BE0" });
+  D.txt(ctx, "what Hani HAS \u00b7 two 3 L jugs", bx + bw / 2, 22, { size: 11.5, col: "#4A9BE0" });
   D.rr(ctx, bx, 32, bw, 26, 8); ctx.fillStyle = "rgba(74,155,224,.3)"; ctx.fill();
   const have = bw * (6000 / 6250);
   D.rr(ctx, bx, 32, have, 26, 8); ctx.fillStyle = "#2D70B3"; ctx.fill();
@@ -354,7 +354,7 @@ const LESSON = {
         misconception: "Using 12\u00d78 for both jobs because it is the only multiplication in sight." } },
 
     { phase: "swyk", title: "Phase 5 \u00b7 The <em>final</em> strike",
-      lead: "Sara's Corniche stand: two 3-litre jugs of laban. A school group orders 25 cups of 250 mL. Does she have enough? Prove it either way.",
+      lead: "Hani's Corniche stand: two 3-litre jugs of laban. A school group orders 25 cups of 250 mL. Does she have enough? Prove it either way.",
       goal: "Transfer: convert, compare, and defend a yes-or-no with numbers.",
       pull: "The muddle is broken.",
       rail: { launch: "Take a stand first \u2014 enough or not enough \u2014 then earn your answer.",
@@ -527,7 +527,7 @@ function FinalScreen() {
       <HpStrip tick={tick} />
       <Sketch draw={drawJugs} height={165} />
       <StrikeCard id="p5" dmg={20} tick={tick} bump={bump} omml={M.cups} ommlAlt="25 times 250 = 6,250"
-        title="FINAL STRIKE \u00b7 does Sara have enough laban? Prove it."
+        title="FINAL STRIKE \u00b7 does Hani have enough laban? Prove it."
         answer="NOT enough. She has 6,000 mL; the order needs 6,250 mL \u2014 short by 250 mL, exactly one cup."
         why="Both sides must wear the same unit before they can be compared. 2 \u00d7 3 L = 6,000 mL against 25 \u00d7 250 = 6,250 mL." />
       <div style={{ fontSize: "11.5px", color: "var(--daf-ink-2)", textAlign: "center" }}>

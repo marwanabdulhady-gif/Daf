@@ -258,7 +258,7 @@ const LESSON = {
         misconception: "Applying the rule an extra time." } },
 
     { phase: "connect", title: "Two ways to reach <em>term six</em>",
-      lead: "Sana added six five times. Ziad worked out five jumps of six and added it to four.",
+      lead: "Bashir added six five times. Ziad worked out five jumps of six and added it to four.",
       goal: "Repeated addition and a single multiplication agree.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask why five jumps and not six.",
@@ -347,12 +347,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Sana's way — add it five times", omml: M.seq, h: 92,
+          left={{ name: "Bashir's way — add it five times", omml: M.seq, h: 92,
             quote: "Four, ten, sixteen, twenty two, twenty eight, thirty four." }}
           right={{ name: "Ziad's way — five jumps at once", omml: M.rule, h: 92,
             quote: "Five jumps of six is thirty, and four plus thirty is thirty four." }}
           same={["Both give 34", "Both use five jumps", "Both start at four"]}
-          diff={["Sana writes every term", "Ziad multiplies", "Ziad's works for the hundredth term"]} />;
+          diff={["Bashir writes every term", "Ziad multiplies", "Ziad's works for the hundredth term"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard141} height={430} />;

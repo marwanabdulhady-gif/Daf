@@ -153,7 +153,7 @@ const LESSON = {
         connect: "What went wrong in the ones you rejected?",
         misconception: "Subtracting the smaller fraction from the larger regardless of position." } },
 
-    { phase: "connect", title: "Two ways to <em>set it out</em>", lead: "Hala broke a whole into quarters. Ziad turned both into quarters first. Both got one and two quarters.",
+    { phase: "connect", title: "Two ways to <em>set it out</em>", lead: "Qais broke a whole into quarters. Ziad turned both into quarters first. Both got one and two quarters.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -236,9 +236,9 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — break a whole", omml: M.answer, h: 92, quote: "I turned one whole into four quarters first." }}
+          left={{ name: "Qais's way — break a whole", omml: M.answer, h: 92, quote: "I turned one whole into four quarters first." }}
           right={{ name: "Ziad's way — all in quarters", omml: M.other, h: 92, quote: "Thirteen quarters take seven quarters is six quarters." }}
-          same={["Both get 1 2/4", "Both keep the quarter as the unit", "Both need the same trade"]} diff={["Hala trades one whole", "Ziad converts everything", "Hala's wholes stay visible"]} />;
+          same={["Both get 1 2/4", "Both keep the quarter as the unit", "Both need the same trade"]} diff={["Qais trades one whole", "Ziad converts everything", "Qais's wholes stay visible"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard99} height={430} />;

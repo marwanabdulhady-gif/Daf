@@ -155,7 +155,7 @@ const LESSON = {
         misconception: "Counting the numbers rather than the unknowns." } },
 
     { phase: "connect", title: "Two <em>equations</em>, one problem",
-      lead: "Amira wrote 3/8 + 2/8 = b. Khalid wrote 8/8 − (3/8 + 2/8) = b. Both are right.",
+      lead: "Sultan wrote 3/8 + 2/8 = b. Khalid wrote 8/8 − (3/8 + 2/8) = b. Both are right.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -253,13 +253,13 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Amira's way — one step at a time", omml: M.equal, h: 92,
+          left={{ name: "Sultan's way — one step at a time", omml: M.equal, h: 92,
                   quote: "First I add what was eaten, then I take it away." }}
           right={{ name: "Khalid's way — one equation", omml: M.twoStep, h: 92,
                    quote: "I put the whole thing in one line with brackets." }}
           same={["Both reach 3/8", "Both add then subtract", "Both use a letter for the unknown"]}
-          diff={["Amira writes two equations", "Khalid's is shorter but harder to read",
-                 "Amira's shows the middle answer"]} />;
+          diff={["Sultan writes two equations", "Khalid's is shorter but harder to read",
+                 "Sultan's shows the middle answer"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard910} height={430} />;

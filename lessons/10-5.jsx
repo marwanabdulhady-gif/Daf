@@ -243,12 +243,12 @@ const LESSON = {
         misconception: "Accepting an answer that contradicts the estimate." } },
 
     { phase: "connect", title: "Two ways to <em>model it</em>",
-      lead: "Omar drew every mat. Salma wrote one equation straight away. Both must survive the check.",
+      lead: "Omar drew every mat. Khalil wrote one equation straight away. Both must survive the check.",
       goal: "A drawing and an equation are two models of the same situation.",
       pull: "On the board.",
       rail: { launch: "Show both. Ask which one is easier to explain to a parent.",
         monitor: ["Drawing all eight", "Writing the equation first", "Checking both against the story"],
-        connect: "What does Omar's drawing show that Salma's equation hides?",
+        connect: "What does Omar's drawing show that Khalil's equation hides?",
         misconception: "Believing the equation is 'proper maths' and the drawing is not." } },
 
     { phase: "synth", title: "On the <em>board</em>",
@@ -340,10 +340,10 @@ const LESSON = {
         return <CompareConnect award={award}
           left={{ name: "Omar's way — draw every mat", draw: drawSupport105, h: 92,
             quote: "I drew all eight, then counted the sixth-pieces." }}
-          right={{ name: "Salma's way — one equation", omml: M.answer, h: 92,
+          right={{ name: "Khalil's way — one equation", omml: M.answer, h: 92,
             quote: "Eight copies, so eight times five sixths. Then I checked it was about seven metres." }}
           same={["Both give 6 and 4/6 metres", "Both keep sixths as the piece", "Both check against the hall"]}
-          diff={["Omar counts, Salma calculates", "Salma's works for eighty mats", "Omar's shows the repeat"]} />;
+          diff={["Omar counts, Khalil calculates", "Khalil's works for eighty mats", "Omar's shows the repeat"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard105} height={430} />;

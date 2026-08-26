@@ -47,9 +47,10 @@ const drawReceipt = (ctx, W, H, frame) => {
 };
 
 /* Monitor A: round both addends on their own line */
-const makeRoundBoth = (place) => (ctx, W, H, frame) => {
+const makeRoundBoth = (place, onPlace) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onPlace) D.tap(ctx, { x: 62, y: 56, w: W - 124, h: 190, value: 0, on: () => onPlace(place === 1000 ? 100 : 1000) });
   const cfg = place === 1000
     ? [{ v: 4285, lo: 4000, hi: 5000 }, { v: 3671, lo: 3000, hi: 4000 }]
     : [{ v: 4285, lo: 4200, hi: 4300 }, { v: 3671, lo: 3600, hi: 3700 }];
@@ -61,9 +62,10 @@ const makeRoundBoth = (place) => (ctx, W, H, frame) => {
 };
 
 /* Monitor B: how close is the estimate to the exact answer? */
-const makeCloseness = (place) => (ctx, W, H, frame) => {
+const makeCloseness = (place, onPlace) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onPlace) { const order = [1000, 100, 10]; D.tap(ctx, { x: 56, y: H / 2 - 40, w: W - 112, h: 80, value: 0, on: () => { const i = order.indexOf(place); onPlace(order[(i + 1) % order.length]); } }); }
   const exact = 7956;
   const est = place === 1000 ? 8000 : place === 100 ? 8000 : 7960;
   const x = 56, w = W - 112, y = H / 2 + 6;
@@ -130,187 +132,227 @@ const LESSON = {
   ixl: ["DU5", "5TQ", "5F9", "GWS"],
 
   metas: [
-    { phase: "warmup", title: "Which estimate <em>doesn't belong</em>?",
-      lead: "Four estimates for the same sum. Every one of them has a reason.",
-      goal: "Reasoning before answers — no card is wrong.",
-      pull: "Some estimates are closer than others. Does that always matter?",
-      rail: { launch: "Choose a card, then convince your partner.",
-        monitor: ["Reasoning from the rounding place", "Reasoning from how close it is", "Reasoning from ease"],
-        connect: "Can every card be the odd one out?",
+    { phase: "warmup", title: "Two days of the fair <em>under sealed covers</em>",
+      lead: "Monday 4,285 books. Tuesday 3,671. The totals sit under sealed covers — the council wants a number for the newsletter before lunch.",
+      goal: "Notice that an estimate can answer a real question before the exact sum.",
+      pull: "The fair's book counts are simulated — the rounding works on any pair.",
+      rail: { launch: "Fictional frame. I am not asking for the exact total yet — just look at the two sealed lines.",
+        monitor: ["Noticing both are near 4,000 and 3,000", "Guessing wildly", "Wonding how close must be close enough"],
+        connect: "When is about good enough, and when is it not?",
         misconception: "Assuming the closest estimate is always the best one." } },
 
-    { phase: "launch", title: "About how many <em>books</em>?",
-      lead: "The book fair sold 4,285 on Monday and 3,671 on Tuesday. Nobody needs the exact number yet.",
-      goal: "Create the need — an estimate answers a different question than an exact sum.",
-      pull: "Estimate first. Then we will see how close you were.",
-      rail: { launch: "The head teacher wants a number for the newsletter by lunchtime. Exact, or about?",
-        monitor: ["Adding exactly", "Rounding both to thousands", "Rounding only one number"],
-        connect: "When is about good enough, and when is it not?",
-        misconception: "Estimating is what you do when you cannot do the real thing." } },
+    { phase: "launch", title: "Before the covers open",
+      lead: "4,285 + 3,671. What total do you trust for the newsletter?",
+      goal: "Lock an estimate to the nearest hundred or thousand.",
+      pull: "An estimate is a decision with a reason.",
+      rail: { launch: "The head teacher needs a number by lunch. Exact, or about?",
+        monitor: ["Rounding both to thousands", "Rounding both to hundreds", "Adding exactly before estimating"],
+        connect: "Which precision does this decision actually need?",
+        misconception: "Estimating only one number and adding it to the other exactly." } },
 
-    { phase: "monitor", title: "Round <em>both</em> numbers",
-      lead: "Put each number on its own line and find the nearer end.",
-      goal: "Estimating a sum means rounding each addend first.",
-      pull: "Different rounding places give different estimates. Which is better?",
-      rail: { launch: "Predict each rounded number before you tap.",
-        monitor: ["Rounding both to the same place", "Rounding to different places", "Rounding only the bigger number"],
-        connect: "Why round both to the same place?",
-        misconception: "Rounding after adding instead of before." } },
+    { phase: "monitor", title: "Zayd rounds <em>both</em> addends",
+      lead: "Thousands, or hundreds — round both numbers, then add the rounds.",
+      goal: "Round both addends to the same place before adding.",
+      pull: "Both rounds give 8,000 — the decision is which place to round to.",
+      rail: { launch: "Predict the estimate before the line shows it.",
+        monitor: ["Rounding both numbers", "Adding the rounds", "Choosing the place on purpose"],
+        connect: "Why do both places give 8,000 here?",
+        misconception: "Rounding one addend and leaving the other exact." } },
 
-    { phase: "monitor", title: "How <em>close</em> is close enough?",
-      lead: "Compare each estimate against the exact answer.",
-      goal: "A smaller rounding place gives a closer estimate — and more work.",
-      pull: "Sort some estimates and decide which place each used.",
-      rail: { launch: "Predict whether the estimate will land above or below the exact answer.",
-        monitor: ["Measuring the gap", "Noticing both rounded up", "Judging good enough for the purpose"],
-        connect: "What would make an estimate too rough to be useful?",
-        misconception: "Believing an estimate is wrong because it is not exact." } },
+    { phase: "monitor", title: "Which bid could be <em>real</em>?",
+      lead: "Three merchants bid totals for the two days. The ledger catches the impossible one.",
+      goal: "Use the estimate to flag an answer that cannot be right.",
+      pull: "The first caught error of the unit.",
+      rail: { launch: "Compare each bid to your 8,000 before you sort.",
+        monitor: ["Comparing bids to the estimate", "Sorting by digits", "Checking 11,956 is too far"],
+        connect: "What made the impossible bid impossible?",
+        misconception: "Accepting any total that looks tidy." } },
 
-    { phase: "monitor", title: "Sort the <em>estimates</em>",
-      lead: "Which rounding place produced each estimate? No grading until the class commits.",
-      goal: "Read an estimate backwards to find the strategy.",
-      pull: "Two students estimated the same difference differently.",
-      rail: { launch: "Look at the zeros. What do they tell you?",
-        monitor: ["Counting zeros", "Checking against the original numbers", "Rounding again to test"],
-        connect: "How did you know which place was used?",
-        misconception: "Matching by the leading digit only." } },
+    { phase: "monitor", title: "How close is <em>close enough</em>?",
+      lead: "Slide the rounding place and watch the estimate land against the exact answer.",
+      goal: "Closer rounding is not free — it costs work; choose the place the decision needs.",
+      pull: "A smaller place gets you closer.",
+      rail: { launch: "How far off is each estimate — and does the difference matter here?",
+        monitor: ["Reading the gap", "Choosing thousands for speed", "Choosing tens for precision"],
+        connect: "When would you round to tens instead of thousands?",
+        misconception: "Believing only the exact answer is ever useful." } },
 
-    { phase: "connect", title: "Over or <em>under</em>?",
-      lead: "Dana rounded both up. Bilal rounded one up and one down.",
+    { phase: "connect", title: "Hassan rounds <em>coarse</em>. Musa rounds <em>fine</em>",
+      lead: "Hassan rounds to thousands, Musa to hundreds. Both reach 8,000 for a different reason.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Predicting over or under", "Explaining why both up means too big", "Choosing for a purpose"],
-        connect: "If you must not run out of chairs, do you want an over-estimate or an under-estimate?",
-        misconception: "Thinking an over-estimate is a mistake." } },
+        monitor: ["Comparing the rounding places", "Comparing the work each takes", "Checking both reach 8,000"],
+        connect: "Which rounding would you use for a budget of ten thousand?",
+        misconception: "Thinking finer rounding is always better." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "One line for each number. Round each to the nearer end. Then add the friendly numbers.",
+    { phase: "synth", title: "On the <em>board</em>: an estimate with a reason",
+      lead: "Round both addends. Add the rounds. The answer should sit near the estimate.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Finding halfway first", "Restating it in their own words"],
+        monitor: ["Predicting the next line", "Naming the rounding place", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Rounding the answer instead of the addends." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Linking to rounding", "Testing on a difference", "Asking which place to choose"],
-        connect: "Does the same rule work for subtraction?",
-        misconception: "Rounding both numbers up in a subtraction and expecting the same accuracy." } },
+        misconception: "Estimating without naming the place rounded to." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Show your two rounded numbers.",
-        monitor: ["Rounding both to thousands", "Adding exactly then rounding", "Rounding to hundreds"],
+      lead: "The council opens the final cover: 5,218 + 2,874. Which total is reasonable?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Round both addends first.",
+        monitor: ["Rounding to thousands", "Adding the rounds", "Checking against 8,000"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Rounding 2,874 down to 2,000." } },
+        misconception: "Reporting the exact sum when an estimate was asked for." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The reasonable bid is <em>unsealed</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: the exact answer, column by column.",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the line", "Ready for the algorithm"],
+      pull: "Tomorrow: the first market row — exact, with a check beside it.",
+      rail: { launch: "Ask three students to say their estimate and its reason.",
+        monitor: ["Able to explain the place choice", "Still rounds only one number", "Ready to check answers"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
 
   Visual: function ({ i, award, game }) {
     const [place, setPlace] = useState(1000);
-    const [closeness, setCloseness] = useState(1000);
+    const [close, setClose] = useState(1000);
 
     switch (i) {
       case 0:
-        return <WODB award={award}
-          prompt="Four estimates for 4,285 + 3,671. Which one doesn't belong?"
-          cards={[
-            { id: "a", text: "8,000", why: "Both rounded to the nearest thousand — the quickest estimate" },
-            { id: "b", text: "7,960", why: "Rounded to the nearest ten — the closest, and the most work" },
-            { id: "c", text: "7,956", why: "The only one that is not an estimate at all — it is exact" },
-            { id: "d", text: "7,900", why: "Both rounded down — the only estimate below the exact answer" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Two days of the fair under sealed covers"
+            text="The council table holds the book fair's sealed totals — 4,285 for Monday, 3,671 for Tuesday. The newsletter goes out before lunch."
+            clue="A number the council can act on, not a number that is exact">
+            <NoticeWonder draw={drawReceipt} height={256} award={award}
+              notices={["Both days are near a thousand", "Monday is closer to 4,000", "The covers are still sealed", "The newsletter is waiting"]}
+              wonders={["About how many books altogether?", "Does the council need the exact number?", "How close must close be?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawReceipt} height={262} award={award}
-          label="About how many books were sold in total?"
-          min={6000} max={10000} start={8000} unit="books"
-          after="Locked. Now let us see how you would defend that number."
-          note="The newsletter needs a number by lunchtime, not a perfect one." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar locks the estimate before the covers open"
+            text="Before anyone breaks a seal, the class commits one total it trusts. The council needs it by lunch — exact or about?"
+            clue="Round to a place the decision can live with">
+            <LaunchEstimate draw={drawReceipt} height={256} award={award}
+              label="What total do you trust for 4,285 + 3,671?" min={6000} max={10000} start={8000} unit="books"
+              after="Locked. Now round both addends and see if the line holds."
+              note="The fair's book counts are simulated — the rounding works on any pair." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeRoundBoth(place)} height={262}
-          label="Round both numbers to the ..."
-          value={place}
-          onPick={(v) => setPlace(v)}
-          chips={[{ v: 1000, label: "nearest thousand" }, { v: 100, label: "nearest hundred" }]}
-          caption={<MathEl omml={place === 1000 ? M.roundThousand : M.roundHundred} size="xl" display="block" />}
-          footnote="Round each addend first, then add the friendly numbers." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd rounds both addends on the line"
+            text="He can round both numbers to thousands or to hundreds — the class must say which estimate each place gives."
+            clue="Round BOTH numbers to the same place, then add the rounds">
+            <ExploreChips draw={makeRoundBoth(place, setPlace)} height={252}
+              label="Round both addends, then add the rounds"
+              value={place}
+              onPick={(v) => setPlace(v)}
+              chips={[{ v: 1000, label: "round both to thousands" }, { v: 100, label: "round both to hundreds" }]}
+              caption={<MathEl omml={place === 1000 ? M.roundThousand : M.roundHundred} size="xl" display="block" />}
+              footnote="Both places give 8,000 here — the decision is which place the decision needs." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeCloseness(closeness)} height={252}
-          label="Compare each estimate with the exact answer"
-          value={closeness}
-          onPick={(v) => setCloseness(v)}
-          chips={[{ v: 1000, label: "to thousands" }, { v: 100, label: "to hundreds" }, { v: 10, label: "to tens" }]}
-          caption={<MathEl omml={M.exact} size="lg" display="block" />}
-          footnote="Closer costs more effort. Choose the estimate that fits the job." />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Which bid could be real?"
+            text="Three merchants bid totals for the two days. The ledger catches the one that cannot be right."
+            clue="Compare each bid to the 8,000 estimate">
+            <CardSort award={award} columns={2} commitLabel="Mark the ledger"
+              items={[
+                { id: "bA", text: "Bid A · 7,956", target: "possible" },
+                { id: "bB", text: "Bid B · 11,956", target: "impossible" },
+                { id: "bC", text: "Bid C · 8,056", target: "possible" }
+              ]}
+              targets={[
+                { id: "possible", label: "reasonable — near the estimate" },
+                { id: "impossible", label: "impossible — too far from the estimate" }
+              ]} />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "e1", text: "8,000", target: "th" },
-            { id: "e2", text: "7,960", target: "te" },
-            { id: "e3", text: "7,900", target: "hu" }
-          ]}
-          targets={[
-            { id: "th", label: "rounded to the nearest thousand" },
-            { id: "hu", label: "rounded to the nearest hundred, both down" },
-            { id: "te", label: "rounded to the nearest ten" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar asks how close is close enough"
+            text="He slides the rounding place and watches the estimate land against the exact answer — 7,956."
+            clue="A smaller place gets you closer — at the cost of more work">
+            <ExploreChips draw={makeCloseness(close, setClose)} height={252}
+              label="How close is the estimate to the exact 7,956?"
+              value={close}
+              onPick={(v) => setClose(v)}
+              chips={[{ v: 1000, label: "round to thousands" }, { v: 100, label: "round to hundreds" }, { v: 10, label: "round to tens" }]}
+              caption={<MathEl omml={M.reasonable} size="lg" display="block" />}
+              footnote="Close enough to check whether an answer makes sense." />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Dana's way — round both up", omml: M.roundThousand, h: 92,
-                  quote: "I rounded both up, so I know the real answer is smaller." }}
-          right={{ name: "Bilal's way — one up, one down", omml: M.roundHundred, h: 92,
-                   quote: "One went up and one went down, so they cancel out a bit." }}
-          same={["Both land near 8,000", "Both round before adding", "Both are useful for the newsletter"]}
-          diff={["Dana knows hers is too big", "Bilal's is closer to the exact answer", "Dana's is faster to do in her head"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 8,000"
+            text="Hassan rounds coarse to thousands. Musa rounds fine to hundreds. Both reach 8,000 — for different reasons."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Hassan's way — round both, add the rounds", omml: M.roundThousand, h: 92,
+                      quote: "I rounded both to 4,000 — the total is about 8,000." }}
+              right={{ name: "Musa's way — a finer place", omml: M.roundHundred, h: 92,
+                       quote: "I rounded to hundreds — 4,300 + 3,700 is still 8,000." }}
+              same={["Both reach 8,000", "Both round both addends", "Both defend the number to the council"]}
+              diff={["Hassan's place is coarser and faster", "Musa's place is finer and nearer", "Hassan's is enough for a newsletter; Musa's for a tighter budget"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard22} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The estimate is drawn with its reason"
+            text="Zayd builds only what the class can justify: both addends rounded, the rounds added, the exact answer near."
+            clue="The estimate carries its rounding place">
+            <BoardScreen draw={drawBoard22} height={430}
+              caption="An estimate is a decision with a reason." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.reasonable, alt: "close enough to check the answer" }]}
-          hand={"round each number first · add or subtract the friendly numbers · use it to check the exact answer"}
-          cards={[
-            { title: "The sum we estimated", omml: M.roundThousand, note: "the exact answer is 7,956" },
-            { title: "Tap to test it on a difference", omml: M.diffProblem, revealOmml: M.diffEstimate, reveal: true,
-              note: "the same rule works for subtraction" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The council opens the final cover"
+            text="5,218 + 2,874. Which total do you report — and with what rounding place?"
+            clue="Round both addends, then add the rounds">
+            <ShowWhatYouKnow award={award}
+              prompt="The council opens the final cover: 5,218 + 2,874. Which total is reasonable?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "8,000" }, { v: "b", text: "7,000" }, { v: "c", text: "9,000" }, { v: "d", text: "8,092" }]}
+              right="a"
+              support={{
+                yes: "Yes — 5,000 + 3,000 = 8,000, close enough to check the answer.",
+                notYet: "Not yet — round both addends first, then add the rounds.",
+                draw: drawSupport22, h: 82,
+                hint: "5,218 rounds to 5,000. What does 2,874 round to?"
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Estimate 5,218 + 2,874 by rounding both to the nearest thousand."
-          omml={M.swyk}
-          options={[{ v: "a", text: "7,000" }, { v: "b", text: "8,000" }, { v: "c", text: "8,100" }, { v: "d", text: "9,000" }]}
-          right="b"
-          support={{
-            yes: "Yes — 5,000 + 3,000 = 8,000. The exact answer, 8,092, is close.",
-            notYet: "Not yet — round each number on its own line first.",
-            draw: drawSupport22, h: 82,
-            hint: "Is 5,218 nearer to 5,000 or 6,000? Now do the same for 2,874."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.roundThousand}
-          action="Estimate the total of two prices at the shop before you reach the till, then check the receipt." />;
+        return (
+          <StoryHandoff
+            title="The reasonable bid is unsealed"
+            text="Omar files the estimate with its reason. Zayd carries the first market row to the ledger — this time the total must be exact, with a check beside it."
+            artifact="Souq ledger · reasonable bid unsealed"
+            next="The first market row must be combined exactly — with a check beside the total.">
+            <Closing game={game} omml={M.reasonable}
+              action="Estimate a real sum two ways tonight — a different rounding place each time — and say which precision the decision needed." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

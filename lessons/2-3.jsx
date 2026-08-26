@@ -45,22 +45,24 @@ const drawLibrary = (ctx, W, H, frame) => {
     { size: 14, col: "#C9A227", font: "marker", alpha: p3 });
 };
 
-const makeColumnAdd = (step) => (ctx, W, H, frame) => {
+const makeColumnAdd = (step, onStep) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: W / 2 - 90, y: 30, w: 180, h: H - 70, value: 0, on: () => onStep((step + 1) % 4) });
   D.columnOp(ctx, { x: W / 2 - 90, y: 30, w: 180, a: 268, b: 154, op: "+", prog: step / 3, t: frame, cw: 42 });
-  const notes = ["start with the ones", "8 + 4 = 12 — write 2, carry 1 ten",
+  const notes = ["start with the ones — tap to step", "8 + 4 = 12 — write 2, carry 1 ten",
                  "1 + 6 + 5 = 12 tens — write 2, carry 1 hundred", "1 + 2 + 1 = 4 hundreds"];
   D.txt(ctx, notes[step], W / 2, H - 18, { size: 14, col: step === 3 ? "#34D399" : "#C9A227", font: "marker" });
 };
 
-const makeExpandedAdd = (shown) => (ctx, W, H, frame) => {
+const makeExpandedAdd = (shown, onShown) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   const rows = [["hundreds", 200, 100, 300, "#6042A6"], ["tens", 60, 50, 110, "#2D70B3"], ["ones", 8, 4, 12, "#FA7E19"]];
   rows.forEach((r, n) => {
     const a = n < shown ? 1 : 0.2;
     const y = 52 + n * 46;
+    if (onShown) D.tap(ctx, { x: 40, y: y - 20, w: W - 80, h: 40, value: n + 1, on: (v) => onShown(v) });
     D.txt(ctx, r[0], 64, y, { size: 12, col: r[4], font: "mono", weight: 700, align: "left", alpha: a });
     D.txt(ctx, r[1] + " + " + r[2] + " = " + r[3], W / 2 + 30, y,
       { size: 17, col: "#EAF4F2", font: "marker", alpha: a });
@@ -113,180 +115,228 @@ const LESSON = {
   ixl: ["DWQ", "M8W"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Two shelves of books. No question yet.", goal: "An invitation — every student has something to say.",
-      pull: "Adding them will need a trade.",
-      rail: { launch: "I am not asking for the total yet. Just look.",
-        monitor: ["Estimating by eye", "Noticing one shelf is fuller", "Reading the numbers"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Reading 268 and 154 as separate facts rather than a sum." } },
+    { phase: "warmup", title: "The first market row <em>under the awning</em>",
+      lead: "268 books on one shelf, 154 on the other. The first row of the souq ledger waits for its total.",
+      goal: "Notice that adding these will need a trade — and a check.",
+      pull: "The row's counts are simulated — the regrouping works on any pair.",
+      rail: { launch: "Fictional frame. Just look at the two shelves — no adding yet.",
+        monitor: ["Noticing the ones column will pass ten", "Estimating first", "Wonding where the carried 1 comes from"],
+        connect: "Which column will be the first to trade?",
+        misconception: "Believing a carry is a mark to copy, not a trade." } },
 
-    { phase: "launch", title: "How many books <em>altogether</em>?",
-      lead: "268 Arabic titles and 154 English titles. Estimate before you calculate.",
-      goal: "Create the need — and an estimate to check the answer against.",
-      pull: "Now let us find the exact number, one place at a time.",
-      rail: { launch: "Round both first. Roughly how many?",
-        monitor: ["Rounding to 270 and 150", "Adding hundreds only", "Going straight to the algorithm"],
-        connect: "What should the exact answer be close to?",
-        misconception: "Skipping the estimate and losing the check." } },
+    { phase: "launch", title: "The row's total <em>before the ledger</em>",
+      lead: "268 + 154. Lock the estimate before the exact total is written.",
+      goal: "Create the need — the ledger wants a total the class can check.",
+      pull: "Regroup, then adjust — check both columns.",
+      rail: { launch: "Give a total, and say what it is close to.",
+        monitor: ["Rounding 268 to 270", "Rounding 154 to 150", "Adding the rounds"],
+        connect: "What should the exact total be near?",
+        misconception: "Skipping the estimate and going straight to the algorithm." } },
 
-    { phase: "monitor", title: "One <em>column</em> at a time",
-      lead: "Start with the ones. Step through and watch the carry appear.",
-      goal: "The algorithm as a sequence of place-value trades.",
-      pull: "Where did that little 1 actually come from?",
-      rail: { launch: "Predict each column before you step.",
-        monitor: ["Starting from the ones", "Starting from the left", "Forgetting to add the carry"],
-        connect: "What does the carried 1 stand for?",
-        misconception: "Writing 12 in the ones column." } },
+    { phase: "monitor", title: "Zayd steps the <em>columns</em>",
+      lead: "Ones, tens, hundreds — each step trades before it moves on.",
+      goal: "Add by place, carrying the ten that is traded.",
+      pull: "Regroup, then adjust — check both columns.",
+      rail: { launch: "Predict each column before Zayd steps it.",
+        monitor: ["Trading ten ones for one ten", "Adding the carried ten", "Checking the tens after the carry"],
+        connect: "Why must the tens column change after the trade?",
+        misconception: "Regrouping without adjusting — the carried ten vanishes." } },
 
-    { phase: "monitor", title: "The <em>same sum</em>, written open",
-      lead: "Add each place separately, then put the parts back together.",
-      goal: "Expanded addition explains the carry.",
-      pull: "Which sums will need a trade at all?",
-      rail: { launch: "Predict each place total before you reveal it.",
-        monitor: ["Adding place by place", "Noticing 110 is more than one hundred", "Recombining the parts"],
-        connect: "Where is the carried ten in this version?",
-        misconception: "Losing the zeros when writing the place values." } },
+    { phase: "monitor", title: "Omar adds the <em>places</em> apart",
+      lead: "Hundreds, tens, ones — the expanded form is the check beside the total.",
+      goal: "See the same sum place by place, with no carries to hide.",
+      pull: "The expanded form is the check beside the total.",
+      rail: { launch: "Add one place at a time — which is easiest first?",
+        monitor: ["Adding the hundreds row", "Adding the tens row", "Seeing 12 ones become part of the total"],
+        connect: "How does 110 + 12 stay 422 with the 300?",
+        misconception: "Adding the ones row and forgetting it changed the tens." } },
 
-    { phase: "monitor", title: "Will it need <em>regrouping</em>?",
-      lead: "Sort each sum before you calculate it. No grading until the class commits.",
-      goal: "Predict regrouping from the digits.",
-      pull: "Two students explained the carry differently.",
-      rail: { launch: "Look only at the ones column first.",
-        monitor: ["Checking the ones", "Checking every column", "Calculating fully first"],
-        connect: "Which column did you check, and why that one?",
-        misconception: "Assuming bigger numbers always need regrouping." } },
+    { phase: "monitor", title: "Record the <em>check</em>",
+      lead: "Four lines from the row: some are regroupings, some are checks.",
+      goal: "Sort the working so the ledger shows the regrouping and the check.",
+      pull: "A total without a check is a guess.",
+      rail: { launch: "Name what each line is doing before you place it.",
+        monitor: ["Spotting the trades", "Spotting the estimate", "Comparing 422 with 420"],
+        connect: "Which line proves the total?",
+        misconception: "Treating the estimate 270 + 150 as the answer." } },
 
-    { phase: "connect", title: "Two ways to <em>explain the carry</em>",
-      lead: "Noor used the open method. Kareem used the columns. Same 422.",
+    { phase: "connect", title: "Hassan carries. <em>Musa expands.</em>",
+      lead: "Hassan's columns show the trades; Musa's rows show the places. Both reach 422.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Finding 110 inside the carry", "Preferring the columns", "Using the open method to check"],
-        connect: "Where is the 110 hiding in Kareem's method?",
-        misconception: "Believing the algorithm is a different kind of maths." } },
+        monitor: ["Following the carry in Hassan's work", "Following the rows in Musa's", "Seeing both end at 422"],
+        connect: "Which work makes the carried ten easier to find?",
+        misconception: "Believing the expanded form is only for checking, never for solving." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Ten ones become one ten. The one moves left because it is worth ten.",
+    { phase: "synth", title: "On the <em>board</em>: add by place, check by place",
+      lead: "Draw the columns. Trade the ten. The equals sign means same value — not an answer coming.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Naming the trade", "Restating it in their own words"],
-        connect: "Who can say what carrying means in one sentence?",
-        misconception: "Saying carry the one without saying one what." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the trade", "Testing on a bigger sum", "Checking against the estimate"],
-        connect: "Does the same trade happen in the tens column?",
-        misconception: "Thinking regrouping only happens in the ones." } },
+        monitor: ["Naming the trade as it is drawn", "Reading the equals sign as same value", "Restating it in their own words"],
+        connect: "Who can say the rule in one sentence?",
+        misconception: "Reading equals as 'the answer is coming' in long equation strings." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Estimate first, then calculate.",
-        monitor: ["Estimating first", "Working right to left", "Adding the carry in"],
+      lead: "376 + 248 — the checked total?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Show the trades you made.",
+        monitor: ["Trading in the ones", "Adding the carried ten", "Checking both columns"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Forgetting to add the carried ten into the tens column." } },
+        misconception: "Writing 614 — the carried ten was lost." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The first row is <em>inked</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: the same method, with much bigger numbers.",
-      rail: { launch: "Ask three students to say what the carried 1 means.",
-        monitor: ["Able to explain it to someone else", "Still needs the open method", "Ready for greater numbers"],
+      pull: "Tomorrow: a second bundle — city-sized, and bigger than the old columns.",
+      rail: { launch: "Ask three students to say where their trade happened.",
+        monitor: ["Able to explain the carry", "Still needs the expanded rows", "Ready for four-place numbers"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
 
   Visual: function ({ i, award, game }) {
     const [step, setStep] = useState(0);
-    const [shown, setShown] = useState(1);
+    const [shown, setShown] = useState(0);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawLibrary} height={258} award={award}
-          notices={["One shelf has more", "Both are under 300", "268 is nearly 270", "They are different languages"]}
-          wonders={["How many altogether?", "Will it pass 400?", "Do I need to trade?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The first market row under the awning"
+            text="The first row of the souq ledger: 268 books on one shelf, 154 on the other. The merchant's pen waits for a total — and a check beside it."
+            clue="Adding these will need a trade">
+            <NoticeWonder draw={drawLibrary} height={256} award={award}
+              notices={["Both rows are under 300", "The ones column will pass ten", "The totals are near 270 and 150", "No check is written yet"]}
+              wonders={["What will the row total be?", "Where does the carried 1 come from?", "How is the total checked?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawLibrary} height={258} award={award}
-          label="About how many books in total?" min={300} max={600} start={420} unit="books"
-          after="Locked. Keep that number — you will check your exact answer against it."
-          note="An estimate is not a guess. It is your safety net." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The row's total before the ledger"
+            text="Omar asks for an estimate before any column is stepped — the ledger only accepts a total the class can check."
+            clue="Regroup, then adjust — check both columns">
+            <LaunchEstimate draw={drawLibrary} height={256} award={award}
+              label="The row's total before the ledger: 268 + 154" min={350} max={500} start={420} unit="books"
+              after="Locked. Now step the columns and see where the trade happens."
+              note="The row's counts are simulated — the regrouping works on any pair." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeColumnAdd(step)} height={262}
-          label="Step through the columns"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "set it up" }, { v: 1, label: "ones" }, { v: 2, label: "tens" }, { v: 3, label: "hundreds" }]}
-          caption={<MathEl omml={M.answer} size="xl" display="block" />}
-          footnote="Always start on the right. The carry travels left." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd steps the columns, one trade at a time"
+            text="He can step any column, but the class must predict the trade before the column changes."
+            clue="Regroup, then adjust — check both columns">
+            <ExploreChips draw={makeColumnAdd(step, setStep)} height={252}
+              label="Step the columns of 268 + 154"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "start with the ones" }, { v: 1, label: "the ones trade" }, { v: 2, label: "the tens" }, { v: 3, label: "the hundreds" }]}
+              caption={<MathEl omml={M.regroupOnes} size="lg" display="block" />}
+              footnote="Write the 2, carry the 1 ten — then check the tens column." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeExpandedAdd(shown)} height={252}
-          label="Reveal each place"
-          value={shown}
-          onPick={(v) => setShown(v)}
-          chips={[{ v: 1, label: "hundreds" }, { v: 2, label: "+ tens" }, { v: 3, label: "+ ones" }]}
-          caption={<MathEl omml={M.regroupTens} size="lg" display="block" />}
-          footnote="110 tens is more than a hundred — that extra hundred is the second carry." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar adds the places apart"
+            text="Hundreds, tens, ones — his expanded rows are the check that sits beside the column total."
+            clue="The expanded form is the check beside the total">
+            <ExploreChips draw={makeExpandedAdd(shown, setShown)} height={252}
+              label="Add one place at a time"
+              value={shown}
+              onPick={(v) => setShown(v)}
+              chips={[{ v: 0, label: "start" }, { v: 1, label: "hundreds" }, { v: 2, label: "tens" }, { v: 3, label: "ones + total" }]}
+              caption={<MathEl omml={M.expanded} size="lg" display="block" />}
+              footnote="The expanded form is the check beside the total." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "s1", text: "268 + 154", target: "yes" },
-            { id: "s2", text: "241 + 137", target: "no" },
-            { id: "s3", text: "455 + 329", target: "yes" },
-            { id: "s4", text: "512 + 236", target: "no" }
-          ]}
-          targets={[
-            { id: "yes", label: "needs regrouping" },
-            { id: "no", label: "no regrouping needed" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Record the check"
+            text="Omar and Zayd lay four lines from the row on the table. The ledger wants the regrouping shown — and the check beside the total."
+            clue="A trade changes a column; a check proves the total">
+            <CardSort award={award} columns={2} commitLabel="Record the check"
+              items={[
+                { id: "r1", text: "8 + 4 = 12 → 1 ten 2 ones", target: "regroup" },
+                { id: "r2", text: "1 + 6 + 5 = 12 tens", target: "regroup" },
+                { id: "r3", text: "270 + 150 = 420", target: "check" },
+                { id: "r4", text: "268 + 154 = 422", target: "check" }
+              ]}
+              targets={[
+                { id: "regroup", label: "a regrouping — a trade happened" },
+                { id: "check", label: "a check — it proves the total" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Noor's way — open method", omml: M.expanded, h: 92,
-                  quote: "I added each place, then put them together." }}
-          right={{ name: "Kareem's way — columns", omml: M.answer, h: 92,
-                   quote: "Ones, then tens, then hundreds, carrying as I go." }}
-          same={["Both get 422", "Both start from the ones", "Both trade ten ones for a ten"]}
-          diff={["Noor writes every part", "Kareem's carry is a small 1", "Noor's shows why, Kareem's is faster"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 422"
+            text="Hassan's columns show the trades; Musa's expanded rows show the places. Both reach 422."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Hassan's way — columns with carries", omml: M.answer, h: 92,
+                      quote: "I added the columns and wrote each carry as a trade." }}
+              right={{ name: "Musa's way — expanded by place", omml: M.expanded, h: 92,
+                       quote: "I added the hundreds, then the tens, then the ones." }}
+              same={["Both reach 422", "Both add place by place", "Both can be checked"]}
+              diff={["Hassan's carries are hidden in the columns", "Musa's rows show every place", "Musa's form is the check beside the total"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard23} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The trade is drawn, not declared"
+            text="Zayd builds only what the class can justify: the ten traded, the columns adjusted, the total checked."
+            clue="Carrying is not a trick — it is a trade">
+            <BoardScreen draw={drawBoard23} height={430}
+              caption="Add by place, check by place." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.regroupOnes, alt: "eight plus four is twelve, one ten and two ones" }]}
-          hand={"start on the right · ten of anything becomes one of the next place · the carry moves left"}
-          cards={[
-            { title: "The sum we built", omml: M.answer, note: "our estimate was 420 — close" },
-            { title: "Tap to see the tens trade", omml: M.estimate, revealOmml: M.regroupTens, reveal: true,
-              note: "the tens column regroups too" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the row only with its check"
+            text="376 + 248. Show the total — and the trade that made it."
+            clue="The carried ten must appear in both columns">
+            <ShowWhatYouKnow award={award}
+              prompt="376 + 248 — the checked total?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "624" }, { v: "b", text: "614" }, { v: "c", text: "634" }, { v: "d", text: "622" }]}
+              right="a"
+              support={{
+                yes: "Yes — 6 + 8 = 14 ones: one ten and 4 ones; 624 is the checked total.",
+                notYet: "Not yet — where did the carried ten go?",
+                draw: drawSupport23, h: 82,
+                hint: "6 ones + 8 ones is 14 ones — one ten and 4 ones."
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Add 376 + 248."
-          omml={M.swyk}
-          options={[{ v: "a", text: "514" }, { v: "b", text: "614" }, { v: "c", text: "624" }, { v: "d", text: "5,114" }]}
-          right="c"
-          support={{
-            yes: "Yes — 6 + 8 = 14, carry 1; 1 + 7 + 4 = 12, carry 1; 1 + 3 + 2 = 6.",
-            notYet: "Not yet — check whether you added each carry in.",
-            draw: drawSupport23, h: 96,
-            hint: "The ones made 14 and the tens made 12. Both need a trade."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.answer}
-          action="Add two three-digit numbers from a receipt at home, and say out loud what each carry is worth." />;
+        return (
+          <StoryHandoff
+            title="The first row is inked"
+            text="Omar signs the row with its check beside the total. Zayd lifts a second bundle from under the awning — city-sized, and bigger than the old columns."
+            artifact="Souq ledger · first market row (total + check)"
+            next="A second bundle arrives — city-sized, and bigger than the old columns.">
+            <Closing game={game} omml={M.answer}
+              action="Add two real receipts tonight and write the check beside the total." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

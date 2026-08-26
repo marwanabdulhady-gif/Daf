@@ -219,7 +219,7 @@ const LESSON = {
         misconception: "Believing 'every rectangle is a square'." } },
 
     { phase: "connect", title: "Two <em>true</em> names",
-      lead: "Reem called the tile a rectangle. Ibrahim called it a parallelogram.",
+      lead: "Anees called the tile a rectangle. Ibrahim called it a parallelogram.",
       goal: "A shape can carry several correct names at once.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask whether either is wrong.",
@@ -310,12 +310,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — the specific name", omml: M.rectangle, h: 92,
+          left={{ name: "Anees's way — the specific name", omml: M.rectangle, h: 92,
             quote: "Four right angles and two pairs of parallel sides. It is a rectangle." }}
           right={{ name: "Ibrahim's way — the wider family", omml: M.parallelogram, h: 92,
             quote: "Both pairs of opposite sides are parallel, so it is a parallelogram." }}
           same={["Both describe the same tile", "Both are true", "Both check parallel sides"]}
-          diff={["Reem names the smallest family", "Ibrahim names a wider one", "Reem's tells you more"]} />;
+          diff={["Anees names the smallest family", "Ibrahim names a wider one", "Anees's tells you more"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard163} height={430} />;

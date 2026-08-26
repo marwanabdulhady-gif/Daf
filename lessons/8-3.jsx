@@ -162,7 +162,7 @@ const LESSON = {
         connect: "Which pair was hardest, and why?",
         misconception: "Adding the same number instead of multiplying." } },
 
-    { phase: "connect", title: "Two <em>different</em> answers, both right", lead: "Dana multiplied by 3. Yusuf multiplied by 4. Both made a fraction equal to two thirds.",
+    { phase: "connect", title: "Two <em>different</em> answers, both right", lead: "Bandar multiplied by 3. Yusuf multiplied by 4. Both made a fraction equal to two thirds.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -246,9 +246,9 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Dana's way — times 3", omml: M.equation, h: 92, quote: "Two thirds becomes six ninths." }}
+          left={{ name: "Bandar's way — times 3", omml: M.equation, h: 92, quote: "Two thirds becomes six ninths." }}
           right={{ name: "Yusuf's way — times 4", omml: M.other, h: 92, quote: "Two thirds becomes eight twelfths." }}
-          same={["Both multiply top and bottom", "Both keep the same amount", "Both are equal to two thirds"]} diff={["Dana uses 3, Yusuf uses 4", "Yusuf gets smaller pieces", "There are infinitely many more"]} />;
+          same={["Both multiply top and bottom", "Both keep the same amount", "Both are equal to two thirds"]} diff={["Bandar uses 3, Yusuf uses 4", "Yusuf gets smaller pieces", "There are infinitely many more"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard83} height={430} />;

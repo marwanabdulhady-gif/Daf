@@ -193,7 +193,7 @@ const LESSON = {
         misconception: "Trusting a reading that contradicts the picture." } },
 
     { phase: "connect", title: "Measuring and <em>drawing</em>",
-      lead: "Reem measured an angle. Yousef drew one of exactly 130 degrees.",
+      lead: "Anees measured an angle. Yousef drew one of exactly 130 degrees.",
       goal: "Drawing is measuring run backwards.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask what is the same about the two jobs.",
@@ -283,12 +283,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's job — measure it", omml: M.read, h: 92,
+          left={{ name: "Anees's job — measure it", omml: M.read, h: 92,
             quote: "I lined up the vertex and the zero line, then read 55." }}
           right={{ name: "Yousef's job — draw it", omml: M.draw, h: 92,
             quote: "I marked 130 on the scale first, then joined it to the vertex." }}
           same={["Both start at the vertex", "Both use the zero line", "Both check against 90"]}
-          diff={["Reem reads the scale", "Yousef marks it", "Drawing is measuring run backwards"]} />;
+          diff={["Anees reads the scale", "Yousef marks it", "Drawing is measuring run backwards"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard154} height={430} />;
