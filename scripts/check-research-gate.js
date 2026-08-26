@@ -20,6 +20,10 @@ const required = [
 const failures = required.filter((heading) => !text.includes(heading));
 const sourceLinks = (text.match(/https:\/\//g) || []).length;
 if (sourceLinks < 2) failures.push("fewer than two linked sources");
+/* docs/research/README.md template: every report records student-facing
+   wording and reviewer status, so the structure check enforces both. */
+if (!/student-facing/i.test(text)) failures.push("no student-facing wording recorded");
+if (!/reviewer|religious scope/i.test(text)) failures.push("no reviewer or religious-scope statement");
 if (!/\*\*PASS[^\n]*\*\*/.test(text)) failures.push("no explicit bold PASS gate verdict");
 if (/\bTBD\b|TODO|INSERT SOURCE/i.test(text)) failures.push("unresolved placeholder text");
 if (failures.length) {

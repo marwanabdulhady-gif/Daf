@@ -1,42 +1,19 @@
 #!/usr/bin/env node
-/* Emit the small, classroom-safe story payload embedded in one standalone deck. */
+/* Emit the small, classroom-safe story payload embedded in one standalone deck.
+   Payload shape and the publishability/approval rules live in ./story-payload.js,
+   which the foundation check uses as well — the deck can never embed a stale,
+   unpublished or unapproved window without the check failing. */
 const fs = require("fs");
 const path = require("path");
+const { buildPayload, serializePayload } = require("./story-payload.js");
+
 const ROOT = path.resolve(__dirname, "..");
 const code = process.argv[2];
 const map = JSON.parse(fs.readFileSync(path.join(ROOT, "story", "story-map.json"), "utf8"));
-const sourceFile = path.join(ROOT, "story", "stem-sources.json");
-const sourceData = fs.existsSync(sourceFile)
-  ? JSON.parse(fs.readFileSync(sourceFile, "utf8"))
-  : { windows: [] };
-
-let unit = null, lesson = null, lessonIndex = -1;
-for (const candidate of map.units) {
-  const index = candidate.lessons.findIndex((item) => item.code === code);
-  if (index >= 0) { unit = candidate; lesson = candidate.lessons[index]; lessonIndex = index; break; }
-}
-
-if (!unit || !lesson) {
-  process.stdout.write("null");
-  process.exit(0);
-}
-
-const payload = {
-  title: map.title,
-  characters: map.characters.main.map(({ id, name, gender, role, functions }) =>
-    ({ id, name, gender, role, functions })),
-  unit: {
-    topic: unit.topic,
-    chapter: unit.chapter,
-    question: unit.question,
-    artifact: unit.artifact,
-    pbl: unit.pbl,
-    bridge: unit.bridge,
-    lessonCount: unit.lessons.length
-  },
-  lesson: Object.assign({}, lesson, { index: lessonIndex, numberInUnit: lessonIndex + 1 }),
-  stemWindows: sourceData.windows.filter((window) =>
-    (window.lessonCodes || []).includes(code)
-  )
+const load = (name) => {
+  const p = path.join(ROOT, "story", name);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : { windows: [] };
 };
-process.stdout.write(JSON.stringify(payload).replace(/</g, "\\u003c"));
+const registries = { stem: load("stem-sources.json"), amanah: load("amanah-sources.json") };
+
+process.stdout.write(serializePayload(buildPayload(map, registries, code)));

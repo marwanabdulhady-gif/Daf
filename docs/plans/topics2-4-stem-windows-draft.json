@@ -1,0 +1,95 @@
+{
+  "_status": "DRAFT — merge into story/stem-sources.json when PR 04 opens (gate H1-H4, docs/research/pr-04-topics-2-4.md)",
+  "windows": [
+    {
+      "id": "t2-ledgers-that-paper-made",
+      "topic": 2,
+      "lessonCodes": ["2-8"],
+      "title": "Ledgers that paper made",
+      "studentText": "Paper made reliable records possible. In the Islamic world, paper spread from Samarkand and Baghdad through the markets of the medieval world, and accounts, ledgers and bills were written on it. Positional numerals made those accounts easy to check: move a digit and the record changes, so an error shows itself.",
+      "inquiry": "Why does a written record with place value make a budget easier to audit?",
+      "modernConnection": "Every budget, invoice and statement you will ever check is a paper's descendant: digits in fixed places, totals you can re-check.",
+      "teacherNote": "The Talas 751 account is as recorded by the 11th-century historian al-Tha'alibi, who called paper a specialty of Samarkand. Documented-practices framing: accounts, ledgers and bills of exchange are recorded in medieval Islamic market practice. No single-inventor claims; no image of any manuscript ships (PR 04 imagery rule I1).",
+      "sources": [
+        {
+          "label": "Aramco World · Revolution by the Ream: A History of Paper",
+          "url": "https://archive.aramcoworld.com/issue/199903/revolution.by.the.ream-a.history-of-paper.htm",
+          "accessed": "2026-08-25"
+        },
+        {
+          "label": "Columbia Islamic books · history of paper",
+          "url": "https://blogs.cuit.columbia.edu/islamicbooks/tag/history-of-paper/",
+          "accessed": "2026-08-25"
+        }
+      ],
+      "status": "source-checked",
+      "image": {
+        "kind": "original-illustration",
+        "rights": "school-created vector illustration",
+        "credit": "Dar Al Fikr · schematic of a documented ledger practice (no scanned manuscript imagery)",
+        "source": "n/a — original illustration",
+        "date": "2026-08-25"
+      }
+    },
+    {
+      "id": "t3-rows-that-raise-water",
+      "topic": 3,
+      "lessonCodes": ["3-3"],
+      "title": "Rows that raise water",
+      "studentText": "In a treatise completed in 1206, the engineer al-Jazari described machines that raised water by repeating one simple action: pot after pot, row after row. His designs built on earlier ones, including the work of the Banu Musa brothers. Repetition, arranged well, does the work of many.",
+      "inquiry": "How does describing one repeated row let you find hundreds of objects without counting each one?",
+      "modernConnection": "Arrays, seating plans and crop rows all use the same idea: one repeated row, multiplied.",
+      "teacherNote": "Al-Jazari served the Artuqid court at Amid (Diyarbakir); his treatise (completed 1206) describes 50 devices, five chapters on water-raising machines; he states some fountain ideas came from the Banu Musa — a documented cumulative pattern. English translation of record: Donald R. Hill, The Book of Knowledge of Ingenious Mechanical Devices by al-Jazari (D. Reidel, 1974). No irrigation-invention claims (unit anchor).",
+      "sources": [
+        {
+          "label": "Muslim Heritage · Overview on al-Jazari and his mechanical devices",
+          "url": "http://muslimheritage.com/overview-on-al-jazari-and-his-mechanical-devices/",
+          "accessed": "2026-08-25"
+        },
+        {
+          "label": "Muslim Heritage · Islamic automation: al-Jazari's book",
+          "url": "https://muslimheritage.com/islamic-automation-al-jazaris-book-of-knowledge-of-ingenious-mechanical-devices/",
+          "accessed": "2026-08-25"
+        }
+      ],
+      "status": "source-checked",
+      "image": {
+        "kind": "original-illustration",
+        "rights": "school-created vector illustration",
+        "credit": "Dar Al Fikr · schematic of a documented chain-of-pots water-raising design",
+        "source": "n/a — original illustration",
+        "date": "2026-08-25"
+      }
+    },
+    {
+      "id": "t4-small-actions-make-machines",
+      "topic": 4,
+      "lessonCodes": ["4-7"],
+      "title": "Small actions make machines",
+      "studentText": "The Banu Musa brothers described about a hundred devices in their Book of Ingenious Devices, around 850 — fountains, lamps and lifting machines, some with controls that acted by themselves. Centuries later, al-Jazari described workshop machines that turned and lifted with gears and cranks. Big machines are built from small, understood actions — just as a big product is built from smaller multiplications.",
+      "inquiry": "How does a machine built from small actions compare with a product built from smaller multiplications?",
+      "modernConnection": "Any compound calculation — or any compound machine — works because the small parts are understood and combined.",
+      "teacherNote": "Banu Musa: Kitab al-Hiyal (ca. 850, al-Ma'mun's court), ~100 devices incl. automatic controls; translation of record: Donald R. Hill, The Book of Ingenious Devices by the Banu Musa bin Shakir (D. Reidel, 1979). Some designs show Greek (Hero, Philo) influence — credit it plainly; the cumulative pattern is the lesson. Placed on 4-7 (the jammed lift): a lift is a documented water-raising/lifting device.",
+      "sources": [
+        {
+          "label": "Muslim Heritage · Pioneers of automatic control systems",
+          "url": "https://muslimheritage.com/pioneers-of-automatic-control-systems/",
+          "accessed": "2026-08-25"
+        },
+        {
+          "label": "Muslim Heritage · Islamic automation: al-Jazari's book",
+          "url": "https://muslimheritage.com/islamic-automation-al-jazaris-book-of-knowledge-of-ingenious-mechanical-devices/",
+          "accessed": "2026-08-25"
+        }
+      ],
+      "status": "source-checked",
+      "image": {
+        "kind": "original-illustration",
+        "rights": "school-created vector illustration",
+        "credit": "Dar Al Fikr · schematic of a documented crank-and-gear lift",
+        "source": "n/a — original illustration",
+        "date": "2026-08-25"
+      }
+    }
+  ]
+}

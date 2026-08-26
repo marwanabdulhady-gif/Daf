@@ -152,6 +152,31 @@ function TeacherRail({ meta, onClose }) {
       <p>{r.connect}</p>
       <h4>ANTICIPATED MISCONCEPTION</h4>
       <p style={{ color: "#f2c9c7" }}>{r.misconception}</p>
+      {STORY && (STORY.stemWindows || []).length > 0 && (
+        <div>
+          <h4>SOURCES · HISTORY OF USEFUL KNOWLEDGE</h4>
+          {STORY.stemWindows.map((w) => (
+            <div key={w.id} style={{
+              marginBottom: "8px", background: "rgba(255,255,255,.05)",
+              borderRadius: "8px", padding: "8px 10px"
+            }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: "#cfe6e2" }}>
+                {w.title}{" "}
+                <span className="mono" style={{ fontSize: "10px", color: "var(--daf-gold)" }}>{w.status}</span>
+              </div>
+              <p style={{ fontSize: "11.5px", color: "#cfe6e2", margin: "5px 0 0", lineHeight: 1.5 }}>
+                {w.teacherNote}
+              </p>
+              {(w.sources || []).map((s) => (
+                <a key={s.url} href={s.url} target="_blank" rel="noreferrer"
+                  style={{ display: "block", fontSize: "11px", color: "#9cc0ba", marginTop: "4px" }}>
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
       {LESSON.ixl && LESSON.ixl.length > 0 && (
         <div>
           <h4>IXL PRACTICE TO ASSIGN</h4>
@@ -653,6 +678,16 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => {
+            if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
+              folioReset(game.section);
+              window.DAF_FOLIO = folioFor(game.section);
+            }
+          }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
+        </span>
+        <span className="dj-note">
+          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>
@@ -748,6 +783,15 @@ function App() {
     document.documentElement.style.setProperty("--c", ph.c);
     document.documentElement.style.setProperty("--c-2", ph.c2);
   }, [i]);
+
+  /* Durable story state (PR 02): the class's folio cache is class-level only
+     (lesson stamps, no student data), lives on this computer and refreshes
+     when a class is picked. Missing or cleared storage degrades silently to
+     position-based folio pips. */
+  useEffect(() => {
+    window.DAF_CURRENT_CLASS = (game && game.section) || null;
+    window.DAF_FOLIO = folioFor(window.DAF_CURRENT_CLASS);
+  }, [game && game.section]);
 
   useEffect(() => setReplay((r) => r + 1), [i]);
 

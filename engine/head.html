@@ -135,6 +135,49 @@
         from { opacity: 0; transform: scale(1.014); filter: blur(6px); }
         to { opacity: 1; transform: none; filter: none; }
       }
+      /* THE STAGE (light paper scheme) — the slide IS the stage: the school's
+         light paper, teal + gold accents. Panels are borderless so the canvas
+         and the controls float directly on the stage (the canvas paints the
+         same paper via the light-stage remap in draw.js — no board, no box).
+         Interactive controls span the full stage width, not a bordered box. */
+      .visual > .glass-panel,
+      .visual > .story-shell .glass-panel {
+        background: transparent; border: none; box-shadow: none;
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+      }
+      .visual > .glass-panel:has(canvas),
+      .visual > .story-shell .glass-panel:has(canvas) { padding: 6px; }
+      .chip-bar { width: 100%; padding: 2px 2px 4px; }
+      .chip-label { font-weight: 900; font-size: 12px; color: var(--c); margin: 0 2px 9px; }
+      .chip-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+      .chip-row .btn { flex: 1 1 auto; min-width: 110px; }
+      .stage-line { text-align: center; font-size: 12.5px; color: var(--daf-ink-2); padding: 2px 8px 8px; }
+
+      /* THE STAGE — board screens are full-stage: the drawing owns the whole
+         visual area at full height (no framed box), Dar Al Fikr deep-teal
+         surface with the logo-gold breathing frame drawn by D.stage itself. */
+      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; }
+      .board-stage { position: relative; flex: 1; min-height: 300px; }
+      .stage-caption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 11.5px; color: rgba(16,36,43,.62); padding: 0 18px; pointer-events: none; }
+      .screen:has(.board-stage) { grid-template-columns: minmax(270px, 29%) 1fr; }
+
+      /* Staggered element reveals (Syntax-Academy revealUp, English edition):
+         every element on the screen enters with a .08s offset. Disabled under
+         prefers-reduced-motion (static state, per the accessibility policy). */
+      @keyframes revealUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+      }
+      .screen .copy > *, .screen .visual > * { animation: revealUp .5s var(--ease) both; }
+      .screen .copy > :nth-child(1), .screen .visual > :nth-child(1) { animation-delay: .06s; }
+      .screen .copy > :nth-child(2), .screen .visual > :nth-child(2) { animation-delay: .14s; }
+      .screen .copy > :nth-child(3), .screen .visual > :nth-child(3) { animation-delay: .22s; }
+      .screen .copy > :nth-child(4), .screen .visual > :nth-child(4) { animation-delay: .30s; }
+      .screen .copy > :nth-child(5), .screen .visual > :nth-child(5) { animation-delay: .38s; }
+      .screen .copy > :nth-child(6), .screen .visual > :nth-child(6) { animation-delay: .46s; }
+      @media (prefers-reduced-motion: reduce) {
+        .screen .copy > *, .screen .visual > * { animation: none; }
+      }
 
       .copy {
         position: relative; z-index: 5;
@@ -289,6 +332,15 @@
       .stem-math { min-width:0; display:flex; }.stem-math>.glass-panel { flex:1; }
       .handoff-artifact { display:flex; gap:11px; align-items:center; padding:10px 14px; border-radius:13px; color:#fff; background:linear-gradient(100deg,#0B1F24,#12857C); border:1px solid rgba(201,162,39,.55); }
       .handoff-artifact>span { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--daf-gold); color:#10242B; }.handoff-artifact b { display:block; color:var(--daf-gold-2); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }.handoff-artifact p { margin:2px 0 0; font-size:11px; color:#EAF4F2; }
+      .handoff-artifact .folio-stamp { margin-left:auto; align-self:center; }
+      .handoff-artifact .folio-stamp.on { color:#0B1F24; background:var(--daf-gold); }
+      .folio-save-note { flex-basis:100%; margin:0; font-size:9.5px; color:#F2C9C7; }
+      .amanah-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .amanah-card { border:1px solid rgba(56,140,70,.3); border-radius:15px; background:#F0F8F0; padding:14px; }
+      .amanah-card h3 { margin:8px 0 4px; font-size:13px; color:#2C6E38; }.amanah-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .amanah-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#388C46; text-transform:uppercase; }
+      .amanah-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.amanah-card summary { cursor:pointer; font-weight:900; color:#388C46; }
+      @media(max-width:900px){.amanah-layout{grid-template-columns:1fr}}
       @media(max-width:900px){.story-ribbon{grid-template-columns:auto minmax(0,1fr)}.folio-progress{display:none}.stem-layout{grid-template-columns:1fr}.story-ribbon-copy p{font-size:9.5px}}
 
       .btn { border: none; cursor: pointer; font-weight: 800; border-radius: 10px; transition: all 0.25s var(--ease); font-size: 12px; padding: 10px 18px; font-family: inherit; }
@@ -431,7 +483,8 @@
       .dj-last{flex:1;min-width:200px}
       .dj-last em{font-style:normal;font:800 12px "JetBrains Mono",monospace}
       .dj-last em.pos{color:#7ED08C} .dj-last em.neg{color:#F2938F}
-      .dj-exports{display:flex;gap:14px}
+      .dj-exports{display:flex;gap:14px;flex-wrap:wrap}
+      .dj-note{flex-basis:100%;font-size:9px;color:rgba(217,237,235,.45);margin-top:2px}
       .dj-exports a{color:#9fc4bd;cursor:pointer;display:inline-flex;gap:6px;align-items:center;
         font-size:11px;letter-spacing:.06em;text-decoration:none}
       .dj-exports a:hover{color:var(--daf-gold)}
@@ -545,6 +598,8 @@
         border: 1px solid var(--daf-line); border-bottom-width: 2px; border-radius: 5px;
         font: 700 10px "JetBrains Mono", monospace; color: var(--daf-deep); background: #fff;
       }
+
+      
     </style>
   </head>
   <body>
