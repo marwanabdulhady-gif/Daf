@@ -1,0 +1,386 @@
+{
+ "topic": 2,
+ "title": "Fluently Add and Subtract Multi-Digit Whole Numbers",
+ "arc": "The market ledger — sealed bids, combined receipts, the council reserve, the warehouse expansion, water damage, and the audit seal.",
+ "sources": [
+  "NGSS Science and Engineering Practice 4 (Analyzing and Interpreting Data), grades 3–5 progression: quantitative approaches to collecting data, multiple trials, tables and graphical displays, and analysis of data with mathematics — nextgenscience.org, Appendix F",
+  "Data Nuggets (MSU KBS LTER, NSF DRK-12 funded): free K–16 activities built on authentic data from real scientific research; students follow the process of science — prediction, visualizing, interpreting, evidence-based claims, new questions — datanuggets.org",
+  "Playground Architect PBL (Magicore Learning): grade-4 STEM project-based learning explicitly aligned to CCSS 4.NBT.B.4 — model making, measurement, and cost totals with multi-digit addition and subtraction",
+  "Schoolyard SITES (UNH Cooperative Extension): real schoolyard science investigations for grades 2–5 that generate measurement data for classroom analysis"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>ledger briefing</em> was already at home",
+   "lead": "Before class, the class met the addition-and-subtraction briefing — the market numbers and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the ledger work begins with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about adding and subtracting?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the ledger office",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the bids are opened.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then with it closed, on the market lines. Every answer is met in the moment, not after a delayed correction.",
+   "goal": "Guided, then independent — learning happens at the moment of doing.",
+   "pull": "Now a genuinely new situation from the market. The critic arrives — as a critic, never as an author."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the market",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "2-1": {
+   "prep": {
+    "home": [
+     "Take 298 + 57 in your head. Move the same small amount from one number to the other — what friendly pair do you make?",
+     "Why does 300 + 55 give the same total as 298 + 57? What moved, and where did it go?",
+     "Make your own line: pick a number one step from a round number and add a two-digit number. What is the checked total?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can add and subtract numbers within 1,000 with confidence.",
+     "I can round a number to the nearest ten or hundred quickly.",
+     "I can hold two steps in my head: move an amount, then take it back.",
+     "I can use the written column method as a check for a mental total."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The next wet line: 404 + 39. What is the checked total?",
+     "options": [
+      { "v": "a", "text": "441" },
+      { "v": "b", "text": "443" },
+      { "v": "c", "text": "453" },
+      { "v": "d", "text": "433" }
+     ],
+     "right": "b",
+     "yes": "Yes — give 4 to the 39 to make 43, take the 4 from the 404: 400 + 43 = 443.",
+     "notYet": "Not yet — move the same amount to make a friendly number, then take it back."
+    },
+    "harder": {
+     "prompt": "A ledger line reads 997 + 165. Show the mental check: what friendly pair do you make, and what is the total?",
+     "answer": "Take 3 from the 165 to make the 997 a 1,000: 1,000 + 162 = 1,162.",
+     "hint": "The 997 is one step from a friendly number."
+    }
+   },
+   "critic": {
+    "production": {
+     "kind": "presentation",
+     "task": "A 60-second mental-check presentation: your team picks the mental strategy (round both, adjust by the same amount), proves it live on three sealed ledger lines, and explains why the flagged line cannot stand.",
+     "stem": "ask which line is off → plan the mental check → build the 60-second script → test it on three sealed lines before presenting → share it at the ledger desk"
+    }
+   }
+  },
+  "2-2": {
+   "prep": {
+    "home": [
+     "5,218 + 2,874 — what is a reasonable total? Round each number to a friendly thousand and add the rounds.",
+     "Which total could never be right for 4,000 + 3,900: 7,900, 8,000 or 13,000? What catches the impossible one?",
+     "Estimate the cost of three things from the canteen menu before you add them. How close was your range?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can round numbers to the nearest ten, hundred and thousand.",
+     "I can add and subtract with friendly numbers in my head.",
+     "I can say which side of a rounded value a number sits on.",
+     "I can use an estimate to check whether an exact total is reasonable."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The next cover lifts: 4,182 + 3,946. Which total is reasonable?",
+     "options": [
+      { "v": "a", "text": "8,000" },
+      { "v": "b", "text": "7,000" },
+      { "v": "c", "text": "9,000" },
+      { "v": "d", "text": "8,128" }
+     ],
+     "right": "a",
+     "yes": "Yes — about 4,000 plus about 4,000 is about 8,000; the exact total must land near it.",
+     "notYet": "Not yet — round each number to a friendly thousand and add the rounds."
+    },
+    "harder": {
+     "prompt": "A bid of 9,996 + 1,204. Estimate it, then find the exact total. How close was the estimate?",
+     "answer": "The estimate is 10,000 + 1,200 = 11,200 — and the exact total is 11,200, so the estimate landed exactly.",
+     "hint": "Round each number, add the rounds, then prove it."
+    }
+   },
+   "critic": {
+    "production": {
+     "kind": "poster",
+     "task": "An impossible-bid poster: take three sealed market bids, estimate each with a friendly-number range, and display the one impossible total with the range that catches it.",
+     "stem": "ask which bid is impossible → plan the range (round to the thousand) → build the poster with all three estimates → test the range against the real totals → share it on the market wall"
+    }
+   }
+  },
+  "2-3": {
+   "prep": {
+    "home": [
+     "376 + 248 — estimate first, then add the columns. Does the exact total sit where the estimate predicted?",
+     "When do you have to trade in an addition — and where does the trade go?",
+     "Collect two real prices from home (a price tag, a receipt). Add them in columns and write the check beside the total."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can round numbers to a friendly value and use them to estimate.",
+     "I can add two-digit numbers with a trade.",
+     "I can line up columns by place value.",
+     "I can use addition to check an addition."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The next receipt: 584 + 379. What is the checked total?",
+     "options": [
+      { "v": "a", "text": "963" },
+      { "v": "b", "text": "953" },
+      { "v": "c", "text": "961" },
+      { "v": "d", "text": "863" }
+     ],
+     "right": "a",
+     "yes": "Yes — about 600 plus about 400 is about 1,000, and 963 sits just under it; the ones give 13, the tens 16, the hundreds 9.",
+     "notYet": "Not yet — estimate first, then add the columns and check the trades."
+    },
+    "harder": {
+     "prompt": "Three receipts: 1,236 + 2,948 + 1,817. Add them, and write the check that proves the total.",
+     "answer": "6,001 — the check: about 1,000 + 3,000 + 2,000 is about 6,000, and 6,001 sits right there.",
+     "hint": "Estimate all three first; add two, then the third."
+    }
+   },
+   "critic": {
+    "production": {
+     "kind": "model",
+     "task": "A receipt-stack model: collect three real prices from the canteen menu, stack them in columns on paper strips, and build the desk model with the total and the check written beside it.",
+     "stem": "ask what the class's own order really costs → collect three real prices (real data) → build the column stack → test it with the addition check → share the model at the ledger desk"
+    }
+   }
+  },
+  "2-4": {
+   "prep": {
+    "home": [
+     "205,368 + 47,915 — estimate to the ten-thousand before adding. Where must the exact total land?",
+     "How many columns does the ledger need now, and how many did it need last week?",
+     "Add 138,427 + 69,584 in columns, then estimate first to see whether the total is reasonable."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can add multi-digit numbers with trades and check the total.",
+     "I can estimate a sum to the nearest thousand or ten-thousand.",
+     "I can line up numbers of different lengths by place value.",
+     "I can explain where an estimate must land before I compute."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The next bundle: 138,427 + 69,584. What is the audited total?",
+     "options": [
+      { "v": "a", "text": "208,011" },
+      { "v": "b", "text": "208,111" },
+      { "v": "c", "text": "198,011" },
+      { "v": "d", "text": "218,011" }
+     ],
+     "right": "a",
+     "yes": "Yes — about 140,000 plus about 70,000 is about 210,000, and 208,011 sits just under it.",
+     "notYet": "Not yet — estimate to the ten-thousand first, then add the columns from the right."
+    },
+    "harder": {
+     "prompt": "The biggest bundle yet: 498,762 + 301,238. What is the total — and what is strange about it?",
+     "answer": "800,000 — the two bundles make a round number, and the estimate proves it: about 500,000 + about 300,000 = 800,000.",
+     "hint": "Round each number — the estimate tells you the whole answer."
+    }
+   },
+   "critic": {
+    "production": {
+     "kind": "design",
+     "task": "The ledger redesign: the old columns only hold four digits — design the new ledger page that carries seven-digit bundles without losing place value, and justify every column.",
+     "stem": "ask what breaks in the old ledger → plan the new column layout → build the redesigned page → test it with the two biggest bundle totals → share the layout with the council"
+    }
+   }
+  },
+  "2-5": {
+   "prep": {
+    "home": [
+     "725 − 348 — estimate first: about 700 minus about 350. Where must the exact difference land?",
+     "When the top digit is smaller than the bottom one, what must happen before you subtract?",
+     "Take 1,000 and subtract a three-digit number. Trade where you need to, and write the difference."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can add multi-digit numbers with trades and check them.",
+     "I can round a number and use it to estimate a difference.",
+     "I can subtract two-digit numbers with a trade.",
+     "I can use addition to check a subtraction."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The reserve line: 903 − 457. What is the proven difference?",
+     "options": [
+      { "v": "a", "text": "446" },
+      { "v": "b", "text": "448" },
+      { "v": "c", "text": "546" },
+      { "v": "d", "text": "456" }
+     ],
+     "right": "a",
+     "yes": "Yes — about 900 minus about 500 is about 400, and 446 sits just past it.",
+     "notYet": "Not yet — estimate first, then subtract the columns, trading where the top digit is smaller."
+    },
+    "harder": {
+     "prompt": "The council spent 2,845 of a 5,000 reserve. Find the difference, then prove it with addition.",
+     "answer": "2,155 — proved: 2,155 + 2,845 = 5,000, the whole reserve.",
+     "hint": "Add the difference back — if you land on the reserve, it is proved."
+    }
+   },
+   "critic": {
+    "production": {
+     "kind": "map",
+     "task": "A reserve map: draw the council's money — the spend, the reserve, and the difference labelled on each segment — with the subtraction written beside the map.",
+     "stem": "ask what is left after the spend → plan the map's segments → build the map with labelled values → test it: does spend + reserve equal the budget? → share it with the council"
+    }
+   }
+  },
+  "2-6": {
+   "prep": {
+    "home": [
+     "310,254 − 87,169 — estimate first. Where must the verified difference land?",
+     "Why is adding the difference back the strongest check on a subtraction?",
+     "Subtract 502,316 − 148,972 in columns, then prove the difference with addition."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can subtract multi-digit numbers with trades.",
+     "I can estimate a difference to the nearest thousand.",
+     "I can use addition to verify a subtraction.",
+     "I can keep the columns aligned when the numbers grow to six digits."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The warehouse line: 502,316 − 148,972. What is the verified difference?",
+     "options": [
+      { "v": "a", "text": "353,344" },
+      { "v": "b", "text": "353,444" },
+      { "v": "c", "text": "343,344" },
+      { "v": "d", "text": "363,344" }
+     ],
+     "right": "a",
+     "yes": "Yes — about 500,000 minus about 150,000 is about 350,000, and 353,344 sits just past it.",
+     "notYet": "Not yet — estimate first, then verify by adding the difference back."
+    },
+    "harder": {
+     "prompt": "A ledger line shows 700,000 − 296,541 = 403,459. Is it verified? Show the check.",
+     "answer": "Verified: 403,459 + 296,541 = 700,000 exactly — the difference lands back on the reserve.",
+     "hint": "Add the difference to the spent — you must land on 700,000."
+    }
+   },
+   "critic": {
+    "production": {
+     "kind": "video",
+     "task": "A 90-second verify-it video: film the warehouse subtraction, then the addition check that proves the difference — every trade visible on camera.",
+     "stem": "ask how to prove a big difference → plan the two takes (subtract, then add to check) → build the clip → test it against the class's own copy → share it on the evidence wall"
+    }
+   }
+  },
+  "2-7": {
+   "prep": {
+    "home": [
+     "6,000 − 2,475 — the ones column must borrow, but the tens and hundreds are zeros. Where must the trade chain start?",
+     "What does 9,000 have to become before it can give to the ones?",
+     "Try 4,000 − 1,846 on paper. Draw an arrow for every trade you make."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can subtract multi-digit numbers with a single trade.",
+     "I can rename a number using place value (1 thousand = 10 hundreds).",
+     "I can use addition to verify a difference.",
+     "I can follow a trade chain across more than one place."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The next damaged line: 9,000 − 3,268. What is the difference across the zeros?",
+     "options": [
+      { "v": "a", "text": "5,732" },
+      { "v": "b", "text": "5,738" },
+      { "v": "c", "text": "6,732" },
+      { "v": "d", "text": "5,632" }
+     ],
+     "right": "a",
+     "yes": "Yes — the chain starts in the ones: 9,000 becomes 8,999 + 1, and 5,732 adds back exactly.",
+     "notYet": "Not yet — start the trade chain in the ones; the zeros must borrow from the left."
+    },
+    "harder": {
+     "prompt": "Two lines crossed by zeros: 4,000 − 1,846 and 10,000 − 2,375. Find both differences and describe the chain each one needed.",
+     "answer": "2,154 (one trade hop: thousands down to the ones) and 7,625 (a chain across three silent zeros).",
+     "hint": "Count the silent zeros between the place that can give and the one that must borrow."
+    }
+   },
+   "critic": {
+    "production": {
+     "kind": "drawing",
+     "task": "An annotated trade drawing: redraw a water-damaged line crossed by zeros, and show every regrouping chain with labelled arrows — the silent zeros included.",
+     "stem": "ask where the trade must start → plan the chain from the ones → build the drawing with arrows on every trade → test it by adding the difference back → share the annotated line"
+    }
+   }
+  },
+  "2-8": {
+   "prep": {
+    "home": [
+     "A polished answer can still hide a faulty step. What check catches the mistake even when the writing looks clean?",
+     "Budget 5,000; rows 2,340 and 1,875. Find the remainder, then prove it with addition.",
+     "Spot the error: a report claims 5,000 − 2,340 − 1,875 = 895. Run the check — what does it say?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can add and subtract multi-digit numbers and check both ways.",
+     "I can estimate a result before computing it.",
+     "I can explain each step of a computation in words.",
+     "I can separate a correct answer from the steps that produced it."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A second budget card: 8,000; rows 3,412 and 2,968. What is the remainder?",
+     "options": [
+      { "v": "a", "text": "1,620" },
+      { "v": "b", "text": "1,610" },
+      { "v": "c", "text": "2,620" },
+      { "v": "d", "text": "1,520" }
+     ],
+     "right": "a",
+     "yes": "Yes — 8,000 − 3,412 = 4,588, and 4,588 − 2,968 = 1,620; the check is 3,412 + 2,968 + 1,620 = 8,000.",
+     "notYet": "Not yet — take the rows off one at a time, then add all three back to the budget."
+    },
+    "harder": {
+     "prompt": "The auditor's polished solution says the remainder is 1,720. Where does the faulty step hide, and what is the true remainder?",
+     "answer": "The true remainder is 1,620 — the polished 1,720 fails the addition check: 3,412 + 2,968 + 1,720 = 8,100, a hundred over the budget.",
+     "hint": "Run the check: rows + remainder must land exactly on 8,000."
+    }
+   },
+   "wall": {
+    "artifact": "The sealed audit ledger and the class's one-page audit reports"
+   },
+   "critic": {
+    "production": {
+     "kind": "mini-project",
+     "task": "The one-page audit report: the class receives a polished (but faulty) solution — produce the report with the finding, the faulty step, the corrected result, and the seal decision. This is the unit's final artifact.",
+     "stem": "ask whether the polished answer stands → plan the audit (recompute, locate the faulty step) → build the one-page report → test the correction with the addition check → share it and issue the seal"
+    }
+   }
+  }
+ }
+}

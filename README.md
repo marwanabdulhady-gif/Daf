@@ -42,9 +42,11 @@ Three movements: **Content at home** (Preparation) → **Thinking in class**
   an independent item (the model opens only after a miss), and the harder lane where the lesson
   supplies one. Feedback arrives in seconds, not days.
 - **5 · Production / B — Proof-Mastery Gate** — a genuinely new situation from the story map, with
-  a mission. The class first names the method its work rests on, then defends the production
-  against a scripted critic that raises three challenges: the trap, the reasoning, the transfer.
-  The critic never corrects — it makes the class check its own evidence.
+  a mission, and a **STEM production the students build**: a presentation, model, design, map,
+  song, video, poster, drawing or mini-project, each run through the STEM cycle
+  (ask → plan → build → test → share). The class first names the method its work rests on, then
+  defends the production against a scripted critic that raises three challenges: the trap, the
+  reasoning, the transfer. The critic never corrects — it makes the class check its own evidence.
   **AI enters here — as a critic, never as an author.**
 - **6 · Mastery Gate** — one individual task that routes each student: **forward** (mastered) or
   **reteach** (revisit the model — deep-linked to the lesson's board screen), with the lesson's IXL
@@ -65,12 +67,17 @@ into [`stage/stage-plan.json`](stage/stage-plan.json) and stamped into each deck
 topic in [`stage/topics/`](stage/topics/): home questions that genuinely work as first exposure
 (stage 1), gap-map claims that probe what the class *actually knows* rather than the lesson's own
 goals (stage 2), an independent practice item that is truly new — not the guided item re-shown
-(stage 4), the harder lane, and stage-screen copy in the unit's own story voice. The generated
-plan is the floor; the topic files are the authored layer on top, merged in by
-`scripts/make-stage-plan.js`. Progress is tracked by `npm run check:stages` — **Topic 1 is
-deepened (5 lessons); 17 topics are in scope.** To deepen a topic: add `stage/topics/<n>.json`,
-run `npm run build:stages`, then `npm run check:stages` and `node scripts/smoke-stage.js` over the
-topic's lessons.
+(stage 4), the harder lane, and stage-screen copy in the unit's own story voice. **Research
+first:** before a topic's productions are written, approved STEM activities and real-experiment
+projects for that grade are researched, and the topic file must carry its `sources` — the
+checker fails a deepened topic without them. Each lesson's production phase gets a concrete
+artifact (presentation, model, design, map, song, video, poster, drawing, mini-project …) built
+through the STEM cycle. The generated plan is the floor — including a floor production so no
+deck's production phase is empty; the topic files are the authored layer on top, merged in by
+`scripts/make-stage-plan.js`. Progress is tracked by `npm run check:stages` — **Topics 1–2 are
+deepened (13 lessons); 17 topics are in scope.** To deepen a topic: research first, add
+`stage/topics/<n>.json` with `sources`, run `npm run build:stages`, then `npm run check:stages`
+and `node scripts/smoke-stage.js` over the topic's lessons.
 
 ## Storytelling curriculum proposal
 

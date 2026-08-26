@@ -989,6 +989,17 @@ function CriticBoard({ award }) {
         <div className="critic-mission"><b>The mission: </b>{C.mission}</div>
       </div>
 
+      {C.production && (
+        <div className="critic-production gsap-auto">
+          <div className="critic-production-tag"><Icon name="fa-flask" /> The production — the students build it, the critic examines it</div>
+          <div className="critic-production-body">
+            <span className="critic-production-kind">{C.production.kind}</span>
+            <div>{C.production.task}</div>
+          </div>
+          <div className="critic-production-stem"><Icon name="fa-arrows-spin" /> STEM cycle: {C.production.stem}</div>
+        </div>
+      )}
+
       {stage === "method" && (
         <div className="critic-step gsap-auto">
           <div className="critic-q">Before the critique, the critic asks: which method does your work rest on?</div>

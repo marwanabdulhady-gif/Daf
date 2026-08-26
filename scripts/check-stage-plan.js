@@ -50,6 +50,11 @@ if (fs.existsSync(topicsDir)) {
   for (const f of fs.readdirSync(topicsDir).filter((x) => x.endsWith(".json")).sort()) {
     const t = JSON.parse(fs.readFileSync(path.join(topicsDir, f), "utf8"));
     authoredTopics++;
+    /* the deepening pass is research-first: the topic file must carry the
+       approved sources its STEM productions are grounded in */
+    if (!Array.isArray(t.sources) || t.sources.length === 0 ||
+        t.sources.some((s) => typeof s !== "string" || !s))
+      push("topic " + t.topic + ": missing research sources for the STEM productions");
     for (const code of Object.keys(t.lessons || {})) overrides[code] = t;
   }
 }
@@ -139,6 +144,11 @@ for (const code of codes) {
   const C = L.critic || {};
   if (typeof C.situation !== "string" || !C.situation) push(where + "critic.situation missing");
   if (typeof C.mission !== "string" || !C.mission) push(where + "critic.mission missing");
+  /* the production phase must always carry a buildable STEM production */
+  const P5 = C.production || {};
+  if (typeof P5.kind !== "string" || !P5.kind || typeof P5.task !== "string" || !P5.task ||
+      typeof P5.stem !== "string" || !P5.stem)
+    push(where + "critic.production incomplete (needs kind + task + STEM cycle)");
   if (!C.method || !Array.isArray(C.method.options) || C.method.options.length !== 3 ||
       !C.method.options.every((o) => typeof o === "string" && o.length > 0))
     push(where + "critic.method must offer 3 non-empty string options");

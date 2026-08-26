@@ -246,6 +246,18 @@ function planFor(code, lessonTitle, standard) {
     ]
   };
 
+  /* the STEM production the students build in response to the situation:
+     ask → plan → build → test → share. Deepened topics author a specific
+     artifact per lesson (stage/topics/<n>.json: presentation, model, design,
+     map, song, video, poster, drawing, mini-project …); the floor names the
+     unit artifact so no deck's production phase is empty. */
+  critic.production = {
+    kind: "mini-project",
+    task: "Produce your own version of the unit artifact — " + (L.artifact || unit.artifact) +
+      " — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+    stem: "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+  };
+
   /* ---- stage 6 · Mastery Gate ---------------------------------------------- */
   const gate = { ixl: L.ixl, revisitOld: L.boardOld };
 
@@ -372,6 +384,7 @@ function applyOverrides(code, entry) {
       entry.practice.items.push(Object.assign({ mode: "harder" }, o.practice.harder));
     }
   }
+  if (o.critic && o.critic.production) entry.critic.production = o.critic.production;
   if (o.wall) Object.assign(entry.wall, o.wall);
   return entry;
 }

@@ -60,6 +60,7 @@ for (const file of files) {
         && Array.isArray(l.diagnose.claims) && l.diagnose.claims.length === 4
         && Array.isArray(l.practice.items) && l.practice.items.length >= 2
         && l.critic && l.critic.situation && l.critic.mission && Array.isArray(l.critic.challenges) && l.critic.challenges.length === 3
+        && l.critic.production && l.critic.production.kind && l.critic.production.task && l.critic.production.stem
         && l.gate && Array.isArray(l.gate.ixl) && l.gate.ixl.length > 0
         && l.wall && l.wall.artifact && l.wall.next;
       ok(okShape, file + " · G20d all seven stages have content");

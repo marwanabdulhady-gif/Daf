@@ -244,8 +244,12 @@ seconds, not days:
 Right on the first try earns the sprint award through the dojo.
 
 **5 · Production / B — the Proof-Mastery Gate, 10–15 min.** A genuinely new situation — the
-lesson's story move and student mission from the story map — defended against a scripted critic
-(*Hafizah · the proof critic*, tagged **critic — never author**). The order is fixed:
+lesson's story move and student mission from the story map — with a **STEM production the
+students build**: a presentation, model, design, map, song, video, poster, drawing or
+mini-project, each run through the STEM cycle (*ask → plan → build → test → share*). The
+production is shown on the stage-5 screen as the production card, and it is what the critic
+examines. The class then defends it against a scripted critic (*Hafizah · the proof critic*,
+tagged **critic — never author**). The order is fixed:
 
 1. *Which method does your work rest on?* — three options; the right one is the lesson's own rule
    (its RuleScreen hand — or, where the lesson has none, the rule the board built publicly).
@@ -259,6 +263,16 @@ A wrong pick never reveals the correction: *the critic does not correct. It make
 the evidence — defend it again.* **AI enters here — as a critic, never as an author.** The critic
 raises and questions; it does not write the production, complete the work, or name which card is
 right.
+
+**STEM productions — research first.** The production the students build must be grounded in
+approved, real-world STEM activity: data collection and display (NGSS Science and Engineering
+Practice 4, grades 3–5), authentic data from real research (Data Nuggets, MSU KBS LTER),
+standards-aligned project-based learning for the topic (e.g. Playground Architect PBL, aligned to
+4.NBT.B.4), or real schoolyard investigations (Schoolyard SITES, UNH Extension). Before a topic's
+productions are written, those sources are researched and listed in the topic file's `sources`
+array — `npm run check:stages` fails a deepened topic that ships without them. Every deck also
+carries a floor production (the unit artifact as a mini-project through the STEM cycle), so the
+production phase is never empty.
 
 **6 · Mastery Gate — 5–8 min.** The lesson's formative check (Show What You Know), now **routing**:
 right → **forward — mastered**; a miss → **reteach — revisit the model**, deep-linked to the
@@ -287,10 +301,14 @@ posts what it made — a final product the student is willing to put their name 
   spec: stage 1 home questions that work as *first exposure at home*; stage 2 claims that probe
   what the class **actually knows** (prerequisites and entry skills — not the lesson's own goals);
   a stage 4 independent item that is genuinely new (new numbers, new context — never the guided
-  item re-shown); the harder lane; and stage-screen copy in the unit's story voice. The generated
-  plan is the floor; the topic file is the authored layer on top. `npm run check:stages` reports
-  how many of the 17 topics are deepened, and asserts that wherever a topic file exists, the
-  independent item differs from the guided one and the harder lane is complete.
+  item re-shown); the harder lane; **a stage 5 STEM production per lesson** (a concrete artifact —
+  presentation, model, design, map, song, video, poster, drawing, mini-project — run through the
+  STEM cycle, grounded in the topic's researched `sources`); and stage-screen copy in the unit's
+  story voice. The generated plan is the floor (including a floor production); the topic file is
+  the authored layer on top. `npm run check:stages` reports how many of the 17 topics are
+  deepened, and asserts that wherever a topic file exists, the independent item differs from the
+  guided one, the harder lane is complete, the research sources are present, and every lesson's
+  production carries kind + task + STEM cycle.
 - Every screen's header carries its **stage chip**: *Stage N · name · timing*.
 - Decks without a stage plan (the topic bosses) run the classic lesson format: no stage chips, no
   stamp.

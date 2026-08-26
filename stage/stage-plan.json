@@ -256,7 +256,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "drawing",
+          "task": "An annotated place-value chart: read a surviving census number seat by seat, drawing the chart with every zero labelled as a place held open.",
+          "stem": "ask what each digit is worth → plan the chart's seats → build the drawing → test it by rewriting the number in expanded form → share it at the census desk"
+        }
       },
       "gate": {
         "ixl": [
@@ -476,7 +481,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "model",
+          "task": "A movable ten-times staircase: build a physical model where each step left is worth ten times the step below, and slide a single digit up and down it.",
+          "stem": "ask what moving changes → plan the staircase steps → build the model → test it by sliding a digit one seat each way → share it at the census desk"
+        }
       },
       "gate": {
         "ixl": [
@@ -696,7 +706,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "poster",
+          "task": "A first-difference poster: take two close numbers, display the scan from the greatest place, and mark the single seat that decides which is greater.",
+          "stem": "ask where the comparison will be decided → plan the scan from the left → build the poster → test it with a pair that has embedded zeros → share it on the market wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -914,7 +929,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "map",
+          "task": "A halfway map: draw the line between two rounded values, mark the halfway point, and place a real number on the right side of it with the rounding written beside it.",
+          "stem": "ask which side of halfway a number sits on → plan the line and the halfway mark → build the map → test it with a number exactly on halfway → share it with the council"
+        }
       },
       "gate": {
         "ixl": [
@@ -1131,7 +1151,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "presentation",
+          "task": "A 60-second argument presentation: state the claim, name the deciding place, give the two values, and land the gap — defending one census reading out loud.",
+          "stem": "ask which reading the evidence supports → plan the claim-place-values-gap order → build the argument → test it on a partner's reading → share it and ask for the seal"
+        }
       },
       "gate": {
         "ixl": [
@@ -1152,10 +1177,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>ledger briefing</em> was already at home",
+          "lead": "Before class, the class met the addition-and-subtraction briefing — the market numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the ledger work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about adding and subtracting?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -1169,9 +1194,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the ledger office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bids are opened.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -1187,9 +1212,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the market lines. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the market. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -1203,9 +1228,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the market",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -1225,17 +1250,17 @@
           "compensated"
         ],
         "home": [
-          "How do you check before you commit?",
-          "What sits next to 199 + 46?",
-          "What does move one across mean?"
+          "Take 298 + 57 in your head. Move the same small amount from one number to the other — what friendly pair do you make?",
+          "Why does 300 + 55 give the same total as 298 + 57? What moved, and where did it go?",
+          "Make your own line: pick a number one step from a round number and add a two-digit number. What is the checked total?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can compensation: the total is protected when you move an amount across.",
-          "I can sort working into compensation and break-apart & associate.",
-          "The comparison produces the rule — not the teacher.",
-          "The moment the lesson is taught — not displayed."
+          "I can add and subtract numbers within 1,000 with confidence.",
+          "I can round a number to the nearest ten or hundred quickly.",
+          "I can hold two steps in my head: move an amount, then take it back.",
+          "I can use the written column method as a check for a mental total."
         ]
       },
       "practice": {
@@ -1272,28 +1297,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "The ink is still wet: 298 + 57. What is the checked total?",
+            "prompt": "The next wet line: 404 + 39. What is the checked total?",
             "options": [
               {
                 "v": "a",
-                "text": "355"
+                "text": "441"
               },
               {
                 "v": "b",
-                "text": "345"
+                "text": "443"
               },
               {
                 "v": "c",
-                "text": "353"
+                "text": "453"
               },
               {
                 "v": "d",
-                "text": "365"
+                "text": "433"
               }
             ],
-            "right": "a",
-            "yes": "Yes — 300 + 55 = 355: move two across; the total does not change.",
-            "notYet": "Not yet — whatever you give, you must take."
+            "right": "b",
+            "yes": "Yes — give 4 to the 39 to make 43, take the 4 from the 404: 400 + 43 = 443.",
+            "notYet": "Not yet — move the same amount to make a friendly number, then take it back."
+          },
+          {
+            "mode": "harder",
+            "prompt": "A ledger line reads 997 + 165. Show the mental check: what friendly pair do you make, and what is the total?",
+            "answer": "Take 3 from the 165 to make the 997 a 1,000: 1,000 + 162 = 1,162.",
+            "hint": "The 997 is one step from a friendly number."
           }
         ]
       },
@@ -1342,7 +1373,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "presentation",
+          "task": "A 60-second mental-check presentation: your team picks the mental strategy (round both, adjust by the same amount), proves it live on three sealed ledger lines, and explains why the flagged line cannot stand.",
+          "stem": "ask which line is off → plan the mental check → build the 60-second script → test it on three sealed lines before presenting → share it at the ledger desk"
+        }
       },
       "gate": {
         "ixl": [
@@ -1364,10 +1400,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>ledger briefing</em> was already at home",
+          "lead": "Before class, the class met the addition-and-subtraction briefing — the market numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the ledger work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about adding and subtracting?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -1381,9 +1417,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the ledger office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bids are opened.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -1399,9 +1435,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the market lines. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the market. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -1415,9 +1451,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the market",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -1437,17 +1473,17 @@
           "roundThousand"
         ],
         "home": [
-          "About how many books altogether?",
-          "Does the council need the exact number?",
-          "How close must close be?"
+          "5,218 + 2,874 — what is a reasonable total? Round each number to a friendly thousand and add the rounds.",
+          "Which total could never be right for 4,000 + 3,900: 7,900, 8,000 or 13,000? What catches the impossible one?",
+          "Estimate the cost of three things from the canteen menu before you add them. How close was your range?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can round both addends to the same place before adding.",
-          "I can use the estimate to flag an answer that cannot be right.",
-          "I can closer rounding is not free — it costs work; choose the place the decision needs.",
-          "The comparison produces the rule — not the teacher."
+          "I can round numbers to the nearest ten, hundred and thousand.",
+          "I can add and subtract with friendly numbers in my head.",
+          "I can say which side of a rounded value a number sits on.",
+          "I can use an estimate to check whether an exact total is reasonable."
         ]
       },
       "practice": {
@@ -1484,7 +1520,7 @@
           },
           {
             "mode": "independent",
-            "prompt": "The council opens the final cover: 5,218 + 2,874. Which total is reasonable?",
+            "prompt": "The next cover lifts: 4,182 + 3,946. Which total is reasonable?",
             "options": [
               {
                 "v": "a",
@@ -1500,12 +1536,18 @@
               },
               {
                 "v": "d",
-                "text": "8,092"
+                "text": "8,128"
               }
             ],
             "right": "a",
-            "yes": "Yes — 5,000 + 3,000 = 8,000, close enough to check the answer.",
-            "notYet": "Not yet — round both addends first, then add the rounds."
+            "yes": "Yes — about 4,000 plus about 4,000 is about 8,000; the exact total must land near it.",
+            "notYet": "Not yet — round each number to a friendly thousand and add the rounds."
+          },
+          {
+            "mode": "harder",
+            "prompt": "A bid of 9,996 + 1,204. Estimate it, then find the exact total. How close was the estimate?",
+            "answer": "The estimate is 10,000 + 1,200 = 11,200 — and the exact total is 11,200, so the estimate landed exactly.",
+            "hint": "Round each number, add the rounds, then prove it."
           }
         ]
       },
@@ -1554,7 +1596,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "poster",
+          "task": "An impossible-bid poster: take three sealed market bids, estimate each with a friendly-number range, and display the one impossible total with the range that catches it.",
+          "stem": "ask which bid is impossible → plan the range (round to the thousand) → build the poster with all three estimates → test the range against the real totals → share it on the market wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -1577,10 +1624,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>ledger briefing</em> was already at home",
+          "lead": "Before class, the class met the addition-and-subtraction briefing — the market numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the ledger work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about adding and subtracting?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -1594,9 +1641,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the ledger office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bids are opened.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -1612,9 +1659,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the market lines. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the market. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -1628,9 +1675,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the market",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -1650,17 +1697,17 @@
           "expanded"
         ],
         "home": [
-          "What will the row total be?",
-          "Where does the carried 1 come from?",
-          "How is the total checked?"
+          "376 + 248 — estimate first, then add the columns. Does the exact total sit where the estimate predicted?",
+          "When do you have to trade in an addition — and where does the trade go?",
+          "Collect two real prices from home (a price tag, a receipt). Add them in columns and write the check beside the total."
         ]
       },
       "diagnose": {
         "claims": [
-          "I can add by place, carrying the ten that is traded.",
-          "I can see the same sum place by place, with no carries to hide.",
-          "I can sort the working so the ledger shows the regrouping and the check.",
-          "The comparison produces the rule — not the teacher."
+          "I can round numbers to a friendly value and use them to estimate.",
+          "I can add two-digit numbers with a trade.",
+          "I can line up columns by place value.",
+          "I can use addition to check an addition."
         ]
       },
       "practice": {
@@ -1697,28 +1744,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "376 + 248 — the checked total?",
+            "prompt": "The next receipt: 584 + 379. What is the checked total?",
             "options": [
               {
                 "v": "a",
-                "text": "624"
+                "text": "963"
               },
               {
                 "v": "b",
-                "text": "614"
+                "text": "953"
               },
               {
                 "v": "c",
-                "text": "634"
+                "text": "961"
               },
               {
                 "v": "d",
-                "text": "622"
+                "text": "863"
               }
             ],
             "right": "a",
-            "yes": "Yes — 6 + 8 = 14 ones: one ten and 4 ones; 624 is the checked total.",
-            "notYet": "Not yet — where did the carried ten go?"
+            "yes": "Yes — about 600 plus about 400 is about 1,000, and 963 sits just under it; the ones give 13, the tens 16, the hundreds 9.",
+            "notYet": "Not yet — estimate first, then add the columns and check the trades."
+          },
+          {
+            "mode": "harder",
+            "prompt": "Three receipts: 1,236 + 2,948 + 1,817. Add them, and write the check that proves the total.",
+            "answer": "6,001 — the check: about 1,000 + 3,000 + 2,000 is about 6,000, and 6,001 sits right there.",
+            "hint": "Estimate all three first; add two, then the third."
           }
         ]
       },
@@ -1767,7 +1820,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "model",
+          "task": "A receipt-stack model: collect three real prices from the canteen menu, stack them in columns on paper strips, and build the desk model with the total and the check written beside it.",
+          "stem": "ask what the class's own order really costs → collect three real prices (real data) → build the column stack → test it with the addition check → share the model at the ledger desk"
+        }
       },
       "gate": {
         "ixl": [
@@ -1788,10 +1846,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>ledger briefing</em> was already at home",
+          "lead": "Before class, the class met the addition-and-subtraction briefing — the market numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the ledger work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about adding and subtracting?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -1805,9 +1863,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the ledger office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bids are opened.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -1823,9 +1881,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the market lines. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the market. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -1839,9 +1897,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the market",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -1861,17 +1919,17 @@
           "answer"
         ],
         "home": [
-          "About how many visitors altogether?",
-          "How will the columns line up?",
-          "What estimate should the exact total be near?"
+          "205,368 + 47,915 — estimate to the ten-thousand before adding. Where must the exact total land?",
+          "How many columns does the ledger need now, and how many did it need last week?",
+          "Add 138,427 + 69,584 in columns, then estimate first to see whether the total is reasonable."
         ]
       },
       "diagnose": {
         "claims": [
-          "I can add six places with the carries chaining correctly.",
-          "I can line up places for three addends — one extra digit to add, not a new method.",
-          "I can recognise each column event in the chain.",
-          "The comparison produces the rule — not the teacher."
+          "I can add multi-digit numbers with trades and check the total.",
+          "I can estimate a sum to the nearest thousand or ten-thousand.",
+          "I can line up numbers of different lengths by place value.",
+          "I can explain where an estimate must land before I compute."
         ]
       },
       "practice": {
@@ -1908,28 +1966,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "205,368 + 47,915 — the audited total?",
+            "prompt": "The next bundle: 138,427 + 69,584. What is the audited total?",
             "options": [
               {
                 "v": "a",
-                "text": "253,283"
+                "text": "208,011"
               },
               {
                 "v": "b",
-                "text": "252,283"
+                "text": "208,111"
               },
               {
                 "v": "c",
-                "text": "253,183"
+                "text": "198,011"
               },
               {
                 "v": "d",
-                "text": "263,283"
+                "text": "218,011"
               }
             ],
             "right": "a",
-            "yes": "Yes — the chain runs left and the total is 253,283.",
-            "notYet": "Not yet — which column lost its carry?"
+            "yes": "Yes — about 140,000 plus about 70,000 is about 210,000, and 208,011 sits just under it.",
+            "notYet": "Not yet — estimate to the ten-thousand first, then add the columns from the right."
+          },
+          {
+            "mode": "harder",
+            "prompt": "The biggest bundle yet: 498,762 + 301,238. What is the total — and what is strange about it?",
+            "answer": "800,000 — the two bundles make a round number, and the estimate proves it: about 500,000 + about 300,000 = 800,000.",
+            "hint": "Round each number — the estimate tells you the whole answer."
           }
         ]
       },
@@ -1978,7 +2042,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "design",
+          "task": "The ledger redesign: the old columns only hold four digits — design the new ledger page that carries seven-digit bundles without losing place value, and justify every column.",
+          "stem": "ask what breaks in the old ledger → plan the new column layout → build the redesigned page → test it with the two biggest bundle totals → share the layout with the council"
+        }
       },
       "gate": {
         "ixl": [
@@ -2001,10 +2070,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>ledger briefing</em> was already at home",
+          "lead": "Before class, the class met the addition-and-subtraction briefing — the market numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the ledger work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about adding and subtracting?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -2018,9 +2087,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the ledger office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bids are opened.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -2036,9 +2105,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the market lines. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the market. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -2052,9 +2121,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the market",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -2074,17 +2143,17 @@
           "answer"
         ],
         "home": [
-          "How many cartons are left?",
-          "Which column will need a trade?",
-          "How is the difference checked?"
+          "725 − 348 — estimate first: about 700 minus about 350. Where must the exact difference land?",
+          "When the top digit is smaller than the bottom one, what must happen before you subtract?",
+          "Take 1,000 and subtract a three-digit number. Trade where you need to, and write the difference."
         ]
       },
       "diagnose": {
         "claims": [
-          "I can subtract by place, trading a ten or a hundred when a column cannot give.",
-          "I can see ungrouping as a rename, not a change of value.",
-          "I can verify a difference by adding it back to the subtrahend.",
-          "The comparison produces the rule — not the teacher."
+          "I can add multi-digit numbers with trades and check them.",
+          "I can round a number and use it to estimate a difference.",
+          "I can subtract two-digit numbers with a trade.",
+          "I can use addition to check a subtraction."
         ]
       },
       "practice": {
@@ -2121,28 +2190,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "725 − 348 — the proven difference?",
+            "prompt": "The reserve line: 903 − 457. What is the proven difference?",
             "options": [
               {
                 "v": "a",
-                "text": "377"
+                "text": "446"
               },
               {
                 "v": "b",
-                "text": "387"
+                "text": "448"
               },
               {
                 "v": "c",
-                "text": "375"
+                "text": "546"
               },
               {
                 "v": "d",
-                "text": "477"
+                "text": "456"
               }
             ],
             "right": "a",
-            "yes": "Yes — the trades run left and 377 adds back to 725.",
-            "notYet": "Not yet — add it back: 377 + 348 must be 725."
+            "yes": "Yes — about 900 minus about 500 is about 400, and 446 sits just past it.",
+            "notYet": "Not yet — estimate first, then subtract the columns, trading where the top digit is smaller."
+          },
+          {
+            "mode": "harder",
+            "prompt": "The council spent 2,845 of a 5,000 reserve. Find the difference, then prove it with addition.",
+            "answer": "2,155 — proved: 2,155 + 2,845 = 5,000, the whole reserve.",
+            "hint": "Add the difference back — if you land on the reserve, it is proved."
           }
         ]
       },
@@ -2191,7 +2266,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "map",
+          "task": "A reserve map: draw the council's money — the spend, the reserve, and the difference labelled on each segment — with the subtraction written beside the map.",
+          "stem": "ask what is left after the spend → plan the map's segments → build the map with labelled values → test it: does spend + reserve equal the budget? → share it with the council"
+        }
       },
       "gate": {
         "ixl": [
@@ -2212,10 +2292,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>ledger briefing</em> was already at home",
+          "lead": "Before class, the class met the addition-and-subtraction briefing — the market numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the ledger work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about adding and subtracting?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -2229,9 +2309,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the ledger office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bids are opened.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -2247,9 +2327,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the market lines. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the market. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -2263,9 +2343,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the market",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -2285,17 +2365,17 @@
           "answer"
         ],
         "home": [
-          "How many more people in the larger town?",
-          "Where should the 9 of 96,348 sit?",
-          "What estimate should the difference be near?"
+          "310,254 − 87,169 — estimate first. Where must the verified difference land?",
+          "Why is adding the difference back the strongest check on a subtraction?",
+          "Subtract 502,316 − 148,972 in columns, then prove the difference with addition."
         ]
       },
       "diagnose": {
         "claims": [
-          "I can line up the places, not the edges — the wrong column misreads.",
-          "I can subtract six places with every trade shown.",
-          "I can verify the big difference by adding it back.",
-          "The comparison produces the rule — not the teacher."
+          "I can subtract multi-digit numbers with trades.",
+          "I can estimate a difference to the nearest thousand.",
+          "I can use addition to verify a subtraction.",
+          "I can keep the columns aligned when the numbers grow to six digits."
         ]
       },
       "practice": {
@@ -2332,28 +2412,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "310,254 − 87,169 — the verified difference?",
+            "prompt": "The warehouse line: 502,316 − 148,972. What is the verified difference?",
             "options": [
               {
                 "v": "a",
-                "text": "223,085"
+                "text": "353,344"
               },
               {
                 "v": "b",
-                "text": "223,185"
+                "text": "353,444"
               },
               {
                 "v": "c",
-                "text": "213,085"
+                "text": "343,344"
               },
               {
                 "v": "d",
-                "text": "233,085"
+                "text": "363,344"
               }
             ],
             "right": "a",
-            "yes": "Yes — the trades run left and 223,085 adds back to 310,254.",
-            "notYet": "Not yet — add it back: 223,085 + 87,169 must be 310,254."
+            "yes": "Yes — about 500,000 minus about 150,000 is about 350,000, and 353,344 sits just past it.",
+            "notYet": "Not yet — estimate first, then verify by adding the difference back."
+          },
+          {
+            "mode": "harder",
+            "prompt": "A ledger line shows 700,000 − 296,541 = 403,459. Is it verified? Show the check.",
+            "answer": "Verified: 403,459 + 296,541 = 700,000 exactly — the difference lands back on the reserve.",
+            "hint": "Add the difference to the spent — you must land on 700,000."
           }
         ]
       },
@@ -2402,7 +2488,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "video",
+          "task": "A 90-second verify-it video: film the warehouse subtraction, then the addition check that proves the difference — every trade visible on camera.",
+          "stem": "ask how to prove a big difference → plan the two takes (subtract, then add to check) → build the clip → test it against the class's own copy → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -2424,10 +2515,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>ledger briefing</em> was already at home",
+          "lead": "Before class, the class met the addition-and-subtraction briefing — the market numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the ledger work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about adding and subtracting?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -2441,9 +2532,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the ledger office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bids are opened.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -2459,9 +2550,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the market lines. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the market. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -2475,9 +2566,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the market",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -2497,17 +2588,17 @@
           "answer"
         ],
         "home": [
-          "Where can the first trade begin?",
-          "What is 4,000 renamed as?",
-          "How do you check across the zeros?"
+          "6,000 − 2,475 — the ones column must borrow, but the tens and hundreds are zeros. Where must the trade chain start?",
+          "What does 9,000 have to become before it can give to the ones?",
+          "Try 4,000 − 1,846 on paper. Draw an arrow for every trade you make."
         ]
       },
       "diagnose": {
         "claims": [
-          "I can rename 4,000 as 3 thousands, 9 hundreds, 9 tens, 10 ones — one hop at a time.",
-          "I can subtract after the chain has done its work.",
-          "I can sort the renamed row by place value.",
-          "The comparison produces the rule — not the teacher."
+          "I can subtract multi-digit numbers with a single trade.",
+          "I can rename a number using place value (1 thousand = 10 hundreds).",
+          "I can use addition to verify a difference.",
+          "I can follow a trade chain across more than one place."
         ]
       },
       "practice": {
@@ -2544,28 +2635,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "6,000 − 2,475 — the difference across the zeros?",
+            "prompt": "The next damaged line: 9,000 − 3,268. What is the difference across the zeros?",
             "options": [
               {
                 "v": "a",
-                "text": "3,525"
+                "text": "5,732"
               },
               {
                 "v": "b",
-                "text": "3,575"
+                "text": "5,738"
               },
               {
                 "v": "c",
-                "text": "3,425"
+                "text": "6,732"
               },
               {
                 "v": "d",
-                "text": "4,525"
+                "text": "5,632"
               }
             ],
             "right": "a",
-            "yes": "Yes — the chain runs across both zeros and 3,525 adds back to 6,000.",
-            "notYet": "Not yet — add it back: the difference plus 2,475 must be 6,000."
+            "yes": "Yes — the chain starts in the ones: 9,000 becomes 8,999 + 1, and 5,732 adds back exactly.",
+            "notYet": "Not yet — start the trade chain in the ones; the zeros must borrow from the left."
+          },
+          {
+            "mode": "harder",
+            "prompt": "Two lines crossed by zeros: 4,000 − 1,846 and 10,000 − 2,375. Find both differences and describe the chain each one needed.",
+            "answer": "2,154 (one trade hop: thousands down to the ones) and 7,625 (a chain across three silent zeros).",
+            "hint": "Count the silent zeros between the place that can give and the one that must borrow."
           }
         ]
       },
@@ -2614,7 +2711,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "drawing",
+          "task": "An annotated trade drawing: redraw a water-damaged line crossed by zeros, and show every regrouping chain with labelled arrows — the silent zeros included.",
+          "stem": "ask where the trade must start → plan the chain from the ones → build the drawing with arrows on every trade → test it by adding the difference back → share the annotated line"
+        }
       },
       "gate": {
         "ixl": [
@@ -2634,10 +2736,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>ledger briefing</em> was already at home",
+          "lead": "Before class, the class met the addition-and-subtraction briefing — the market numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the ledger work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about adding and subtracting?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -2651,9 +2753,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the ledger office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bids are opened.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -2669,9 +2771,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the market lines. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the market. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -2685,9 +2787,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the market",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -2707,17 +2809,17 @@
           "partPart"
         ],
         "home": [
-          "What question could these numbers answer?",
-          "Does the sealed solution hold?",
-          "How would you check a polished answer?"
+          "A polished answer can still hide a faulty step. What check catches the mistake even when the writing looks clean?",
+          "Budget 5,000; rows 2,340 and 1,875. Find the remainder, then prove it with addition.",
+          "Spot the error: a report claims 5,000 − 2,340 − 1,875 = 895. Run the check — what does it say?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can part-part-whole and comparison are different shapes.",
-          "I can name the missing piece before choosing the operation.",
-          "I can classify equations by the relationship they show.",
-          "I can multi-step problems chain two diagrams together."
+          "I can add and subtract multi-digit numbers and check both ways.",
+          "I can estimate a result before computing it.",
+          "I can explain each step of a computation in words.",
+          "I can separate a correct answer from the steps that produced it."
         ]
       },
       "practice": {
@@ -2754,28 +2856,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "Budget 5,000; rows 2,340 and 1,875. The remainder?",
+            "prompt": "A second budget card: 8,000; rows 3,412 and 2,968. What is the remainder?",
             "options": [
               {
                 "v": "a",
-                "text": "785"
+                "text": "1,620"
               },
               {
                 "v": "b",
-                "text": "1,145"
+                "text": "1,610"
               },
               {
                 "v": "c",
-                "text": "2,151"
+                "text": "2,620"
               },
               {
                 "v": "d",
-                "text": "784"
+                "text": "1,520"
               }
             ],
             "right": "a",
-            "yes": "Yes — 2,340 + 1,875 = 4,215, then 5,000 − 4,215 = 785: both steps, in order.",
-            "notYet": "Not yet — what do you have to work out before you can answer?"
+            "yes": "Yes — 8,000 − 3,412 = 4,588, and 4,588 − 2,968 = 1,620; the check is 3,412 + 2,968 + 1,620 = 8,000.",
+            "notYet": "Not yet — take the rows off one at a time, then add all three back to the budget."
+          },
+          {
+            "mode": "harder",
+            "prompt": "The auditor's polished solution says the remainder is 1,720. Where does the faulty step hide, and what is the true remainder?",
+            "answer": "The true remainder is 1,620 — the polished 1,720 fails the addition check: 3,412 + 2,968 + 1,720 = 8,100, a hundred over the budget.",
+            "hint": "Run the check: rows + remainder must land exactly on 8,000."
           }
         ]
       },
@@ -2824,7 +2932,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "The one-page audit report: the class receives a polished (but faulty) solution — produce the report with the finding, the faulty step, the corrected result, and the seal decision. This is the unit's final artifact.",
+          "stem": "ask whether the polished answer stands → plan the audit (recompute, locate the faulty step) → build the one-page report → test the correction with the addition check → share it and issue the seal"
+        }
       },
       "gate": {
         "ixl": [
@@ -2835,7 +2948,7 @@
         "revisitOld": 9
       },
       "wall": {
-        "artifact": "Audited ledger · signed",
+        "artifact": "The sealed audit ledger and the class's one-page audit reports",
         "next": "An order card slips from under the cover — every item listed in repeated batches. The workshop needs multiplication, not repeated addition."
       }
     },
@@ -3036,7 +3149,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Grove plan · bundles of tens counted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -3247,7 +3365,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Grove plan · product estimated — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -3457,7 +3580,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Grove plan · array total by partials — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -3668,7 +3796,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Grove plan · roof priced by regions — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -3881,7 +4014,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Grove plan · courtyard priced by four regions — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -4094,7 +4232,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Grove plan · order updated mentally — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -4306,7 +4449,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Grove plan · strategies chosen by the numbers — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -4517,7 +4665,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Grove model · defended before the council — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -4727,7 +4880,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Tower log · first floors counted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -4937,7 +5095,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Tower plan · long order modelled — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -5147,7 +5310,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Tower plan · beams estimated — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -5359,7 +5527,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Tower plan · frame read as an array — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -5569,7 +5742,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Tower plan · rooms priced — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -5780,7 +5958,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Tower plan · final production schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -5992,7 +6175,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Depot plan · unjammed and signed — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -6202,7 +6390,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Caravan schedule · first loads shared — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -6414,7 +6607,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Caravan schedule · quotient range agreed — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -6624,7 +6822,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Caravan schedule · large manifest ranged — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -6835,7 +7038,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Caravan schedule · remainders interpreted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -7047,7 +7255,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Caravan schedule · partial quotients — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -7258,7 +7471,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Caravan schedule · greater dividends — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -7469,7 +7687,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Caravan schedule · sharing by place — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -7680,7 +7903,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Caravan schedule · three-place shares — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -7892,7 +8120,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Caravan schedule · strategies chosen — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -8104,7 +8337,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Dispatch board · signed allocation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -8314,7 +8552,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Council board · comparison claims drawn — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -8525,7 +8768,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Council board · moved unknowns drawn — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -8736,7 +8984,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Council board · three-step plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -8946,7 +9199,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Council board · revised multi-step plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -9156,7 +9414,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Council board · defensible recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -9368,7 +9631,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Council board · persevered plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -9578,7 +9846,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Reef kit · first factor list — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -9788,7 +10061,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Reef kit · certified factor pairs — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -9999,7 +10277,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Reef kit · certified repeated method — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -10209,7 +10492,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Reef kit · certified prime border — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -10419,7 +10707,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — Reef kit · certified multiple calendar — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -10629,7 +10922,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -10839,7 +11137,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -11050,7 +11353,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -11261,7 +11569,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -11472,7 +11785,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -11684,7 +12002,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -11897,7 +12220,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -12107,7 +12435,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -12320,7 +12653,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -12532,7 +12870,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -12742,7 +13085,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -12955,7 +13303,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -13165,7 +13518,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -13376,7 +13734,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -13586,7 +13949,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -13796,7 +14164,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -14008,7 +14381,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -14220,7 +14598,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -14434,7 +14817,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -14646,7 +15034,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -14857,7 +15250,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -15069,7 +15467,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -15281,7 +15684,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -15492,7 +15900,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -15702,7 +16115,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -15912,7 +16330,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -16123,7 +16546,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -16335,7 +16763,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -16547,7 +16980,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -16760,7 +17198,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -16971,7 +17414,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -17183,7 +17631,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -17401,7 +17854,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -17619,7 +18077,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -17837,7 +18300,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -18056,7 +18524,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -18275,7 +18748,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -18495,7 +18973,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -18713,7 +19196,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -18925,7 +19413,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -19137,7 +19630,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -19348,7 +19846,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -19561,7 +20064,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -19771,7 +20279,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -19982,7 +20495,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -20193,7 +20711,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -20404,7 +20927,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -20615,7 +21143,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -20827,7 +21360,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -21037,7 +21575,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -21248,7 +21791,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -21460,7 +22008,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -21673,7 +22226,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -21884,7 +22442,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -22094,7 +22657,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -22305,7 +22873,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -22516,7 +23089,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -22726,7 +23304,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -22938,7 +23521,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -23148,7 +23736,12 @@
             "right": 0,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -23358,7 +23951,12 @@
             "right": 1,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -23569,7 +24167,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -23780,7 +24383,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -23990,7 +24598,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [
@@ -24201,7 +24814,12 @@
             "right": 2,
             "explain": "Transfer is the first move, not the answer. The critic stops there — the work is the students'."
           }
-        ]
+        ],
+        "production": {
+          "kind": "mini-project",
+          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+        }
       },
       "gate": {
         "ixl": [

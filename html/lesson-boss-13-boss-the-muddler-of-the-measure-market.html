@@ -717,6 +717,24 @@
       }
       .critic-rule-note { font-size: 11.5px; color: var(--daf-ink-2); margin-bottom: 11px; line-height: 1.5; }
 
+      /* the STEM production card — the artifact the students build (stage 5) */
+      .critic-production {
+        border: 1.5px dashed var(--daf-gold); border-radius: 12px; padding: 11px 13px;
+        background: var(--daf-mint); display: flex; flex-direction: column; gap: 7px;
+      }
+      .critic-production-tag { font-size: 10px; font-weight: 900; letter-spacing: .08em; color: var(--daf-deep); }
+      .critic-production-body {
+        display: flex; gap: 10px; align-items: baseline;
+        font-size: 12.5px; font-weight: 700; color: var(--daf-ink); line-height: 1.5;
+      }
+      .critic-production-kind {
+        flex: none; font-family: "JetBrains Mono", monospace; font-size: 10.5px; font-weight: 800;
+        color: var(--daf-gold); text-transform: uppercase; letter-spacing: .06em;
+        background: rgba(201,162,39,.12); border: 1px solid rgba(201,162,39,.4);
+        border-radius: 6px; padding: 2px 8px;
+      }
+      .critic-production-stem { font-size: 11px; color: var(--daf-ink-2); line-height: 1.5; }
+
       .gate-lanes { border-top: 2px solid var(--daf-line); margin-top: 12px; padding-top: 11px; }
       .gate-lanes-head {
         display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 900; font-size: 13px; color: var(--daf-deep);
@@ -5261,6 +5279,17 @@ function CriticBoard({ award }) {
         <div>{C.situation}</div>
         <div className="critic-mission"><b>The mission: </b>{C.mission}</div>
       </div>
+
+      {C.production && (
+        <div className="critic-production gsap-auto">
+          <div className="critic-production-tag"><Icon name="fa-flask" /> The production — the students build it, the critic examines it</div>
+          <div className="critic-production-body">
+            <span className="critic-production-kind">{C.production.kind}</span>
+            <div>{C.production.task}</div>
+          </div>
+          <div className="critic-production-stem"><Icon name="fa-arrows-spin" /> STEM cycle: {C.production.stem}</div>
+        </div>
+      )}
 
       {stage === "method" && (
         <div className="critic-step gsap-auto">
