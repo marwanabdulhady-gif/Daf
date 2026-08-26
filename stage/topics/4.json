@@ -1,0 +1,545 @@
+{
+ "topic": 4,
+ "title": "Use Strategies and Properties to Multiply by 2-Digit Numbers",
+ "arc": "The workshop tower — ten floors begin at once, the long order card arrives, the beams must be estimated before any cutting, the frame becomes an array, rooms fill the rectangle, the final schedule runs in column form, and the lift jams until the class perseveres — until the production plan is signed.",
+ "sources": [
+  "CCSS 4.NBT.B.5 (thecorestandards.org): 'Multiply a whole number of up to four digits by a one-digit whole number, and multiply two two-digit numbers, using strategies based on place value and the properties of operations. Illustrate and explain the calculation by using equations, rectangular arrays, and/or area models.'",
+  "Math Learning Center, 4-5 math skills assessment (mathlearningcenter.org BOBCF56): the grade-band standard for 'multiply a 2-digit number by a 2-digit number (25 × 13)' with work shown — the exact skill this unit's productions must demonstrate",
+  "BetterLesson 4th-grade task 'Multiplication: Arrays and an Expanded Algorithm' (teaching.betterlesson.com lesson 519571): a real per-event × events two-digit × two-digit task (16 games × 21 and 37 bottles) solved with the expanded algorithm and area models on grid paper",
+  "New Jersey Agricultural Society, math-in-agriculture lessons (njagsociety.org): real seed experiments — counting the seeds in vegetables, computing how many plants grow each subsequent year (year-on-year multiplication), and germination rate (seedlings ÷ planted × 100) from measured data",
+  "Ask a Biologist (Arizona State University), 'Virtual Pocket Seed Experiment' (askabiologist.asu.edu): a real treatment-based experiment producing data cards and spreadsheets — students chart seed counts across bags and treatments, and compare their own runs with the real data",
+  "Data Nuggets (MSU KBS L-TER, NSF DRK-12 funded; datanuggets.org; ERIC EJ1048999): free K-16 activities on authentic research data; students follow the process of science — prediction, visualizing, interpreting, evidence-based claims — and totals across equal trials are two-digit multiplications",
+  "NGSS Science and Engineering Practice 4 (Analyzing and Interpreting Data), grades 3–5: quantitative data collected across multiple trials — totals computed as equal groups of equal groups"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>workshop briefing</em> was already at home",
+   "lead": "Before class, the class met the two-digit multiplication briefing — the batch math and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the tower work begins with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about multiplying two-digit numbers?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the workshop tower",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the first floor is scheduled.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the workshop."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the workshop",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "4-1": {
+   "prep": {
+    "home": [
+     "The ground floor packs forty beams a batch, and today runs five batches. What is the floor's output — and which basic fact is carrying it?",
+     "60 × 50: both factors end in zero. How many zeros sit in the product, and why — not as a rule, but by place?",
+     "Write a batch line of your own: a multiple of ten times a multiple of ten. Where does the answer land, and what would change if you dropped one zero?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can read a multiple of ten as a basic fact with a bundle of tens.",
+     "I can combine two bundle factors and count the zeros the places demand — not by rule.",
+     "I can estimate a multiple-of-ten product before computing it.",
+     "I can check a product by reversing the factors and expecting the same total."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The second floor's line: 70 × 80. What is the day's output?",
+     "options": [
+      {
+       "v": "a",
+       "text": "5,600"
+      },
+      {
+       "v": "b",
+       "text": "560"
+      },
+      {
+       "v": "c",
+       "text": "56,000"
+      },
+      {
+       "v": "d",
+       "text": "1,500"
+      }
+     ],
+     "right": "a",
+     "yes": "Yes — 7 × 8 is 56, and the two bundles of tens add two zeros: 5,600. Each zero comes from a place, not from a rule.",
+     "notYet": "Not yet — take the basic fact first, then count the zeros the two places demand."
+    },
+    "harder": {
+     "prompt": "A foreman's card reads 40 × 90, and he claims the answer is 3,600. Run the check two different ways, and say whether his card holds.",
+     "answer": "40 × 90: 4 × 9 = 36 with two bundle zeros → 3,600 — his card holds. Check one: 40 × 100 = 4,000, take away 40 × 10 = 400 → 3,600. Check two: regroup — (2 × 20) × 90 = 2 × 1,800 = 3,600. Same total, three routes."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "map",
+       "task": "A batch map for the tower's first day: plot each floor's batch line (batches × beams per batch) as a point on a line from 100 to 6,000, with the basic fact written under each point.",
+       "stem": "ask which floors to plot → plan the line → compute each batch product → test the points against the basic facts → share it at the tower gate",
+       "ai": false
+      },
+      {
+       "kind": "model",
+       "task": "A bundle-block model: build two stacks of blocks — one per factor's bundle — so a classmate can read the product's zeros straight off the model.",
+       "stem": "ask what the model must show → plan the blocks → build the two bundle stacks → test it on a classmate → share it on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A 45-second AI-proofed zeros clip: ask the AI to propose five multiple-of-ten products, verify every one on camera yourself, and close with the one it got wrong — if there was one — and the place-value reason.",
+       "stem": "ask what the zeros must explain → plan the clip → request five products from the AI (verify each) → test the corrections on camera → share it on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The first-day batch map — every floor's line plotted, with the class's zero-reasons"
+   }
+  },
+  "4-2": {
+   "prep": {
+    "home": [
+     "The order card reads 34 beams for each of twenty customers. Model it: 34 × 20 — what is the total before any box is filled?",
+     "Why is 34 × 20 the same total as 20 × 34? Which way does the workshop read its order cards?",
+     "Estimate 26 × 30 first, then find the exact product. Which way was your estimate off — high or low?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can estimate a product by rounding the factors before the model.",
+     "I can draw a model — an array or an area model — for a two-digit × multiple-of-ten product.",
+     "I can keep every place-value part of the two-digit factor inside the model.",
+     "I can compare my estimate and my exact product and say which way the estimate sat."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The next order card: 47 panels for each of 30 customers. What is the total?",
+     "options": [
+      {
+       "v": "a",
+       "text": "1,410"
+      },
+      {
+       "v": "b",
+       "text": "1,470"
+      },
+      {
+       "v": "c",
+       "text": "740"
+      },
+      {
+       "v": "d",
+       "text": "14,10"
+      }
+     ],
+     "right": "a",
+     "yes": "Yes — 47 × 30: 47 × 3 = 141, and the bundle of tens moves it to 1,410. Every customer's 47 panels is inside the model.",
+     "notYet": "Not yet — model the 47 × 3 part first, then move the product into the tens place."
+    },
+    "harder": {
+     "prompt": "The card is now 58 panels for 40 customers. Estimate first, find the exact product, and say how far the estimate came.",
+     "answer": "58 × 40: estimate 60 × 40 = 2,400. Exact: 58 × 4 = 232, moved by the bundle of tens → 2,320. The estimate ran 80 high — a little more than one customer's full order of 58. The estimate sat above, which is what the workshop wants before any cutting."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "An order-card redesign: redraw the workshop's order card as a model — customers × panels per customer — with the partial regions labelled, so a new worker could read the total from the card alone.",
+       "stem": "ask what a card must show → plan the layout → draw the model with the regions → test it on a classmate → share it at the tower gate",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A 60-second estimate-first-cut-second clip: take the day's order card, estimate on camera, build the model, and close with the sentence that compares the two.",
+       "stem": "ask which card to show → plan the clip → estimate, then model → test the comparison → share it on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A 60-second order-defence presentation with an AI check: ask the AI to verify your card's total before the presentation, then deliver the model — and if the AI's number differs, the presentation ends with you correcting it.",
+       "stem": "ask what the workers must see → plan the defence → request the AI's check → test the model against it → deliver it at the tower gate",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "4-3": {
+   "prep": {
+    "home": [
+     "47 × 29 — round both factors to the nearest ten and estimate. What do you tell the beam crew?",
+     "Why can rounding both factors be the right call here, while rounding only one was the trap on the order card?",
+     "Find a compatible pair near 24 × 39 that makes the estimate easy. What makes the pair compatible?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can round both factors to friendly tens and estimate the product.",
+     "I can find compatible numbers that make a product easy to hold.",
+     "I can explain which estimate method fits the numbers I have.",
+     "I can say which side of the exact product my estimate sits on."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The beam cut list: 53 × 28. Round both factors to the nearest ten — what is the estimate the crew should use?",
+     "options": [
+      {
+       "v": "a",
+       "text": "1,200 — 50 × 20"
+      },
+      {
+       "v": "b",
+       "text": "1,500 — 50 × 30"
+      },
+      {
+       "v": "c",
+       "text": "1,400 — 70 × 20"
+      },
+      {
+       "v": "d",
+       "text": "1,060 — 53 × 20, only one factor rounded"
+      }
+     ],
+     "right": "b",
+     "yes": "Yes — 53 rounds to 50 and 28 rounds to 30: 50 × 30 = 1,500. Both factors rounded, one easy basic fact.",
+     "notYet": "Not yet — round each factor to the nearest ten, then multiply the friendly pair."
+    },
+    "harder": {
+     "prompt": "The crew asks for a compatible-number estimate of 32 × 49. Give it, say why compatible beats rounding here, and say whether your estimate sits above or below the exact 1,568.",
+     "answer": "30 × 50 = 1,500 — compatible beats rounding here because both lands are round, and the 50 keeps the nearly-fifty part of the 49. The estimate sits 68 below the exact 1,568: the safe side for a cut list, because the crew would rather re-cut than run short."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "drawing",
+       "task": "A fit-or-cut line drawing: the day's cut list drawn as a line, each estimate marked with its exact product beside it, and every pair labelled high-side or low-side — with the method written under the estimate.",
+       "stem": "ask which cuts to test → plan the line → plot estimate and exact for each → test every label → share it at the beam table",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A method-choice map: the day's cut list pinned on a map of the workshop, each cut labelled with the estimate method the class chose — rounding or compatible — and one sentence for why that method fits those numbers.",
+       "stem": "ask which method fits each cut → plan the map → pin each cut with its method → test the reasons against the numbers → share it at the tower gate",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "An AI-estimator duel poster: ask the AI to estimate three of the day's cuts, write your own estimate beside each, and show on the poster where the two estimators disagree — with the exact product as the judge.",
+       "stem": "ask what a fair duel looks like → plan the poster → request three AI estimates → test each against the exact product → share it on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "4-4": {
+   "prep": {
+    "home": [
+     "23 × 15 as an array: split the 23 into 20 + 3 and the 15 into 10 + 5. How many partial regions do you get, and what are their products?",
+     "Why is 23 × 15 far bigger than 23 + 15? What does the array do that adding the two numbers cannot?",
+     "Estimate 23 × 15 first — round the 23, keep the 15, or split it two ways? Which estimate would you trust, and why?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can read a production frame as rows × columns and name the product region.",
+     "I can split both factors into place-value parts and draw the partial regions.",
+     "I can add the four partial products into the total.",
+     "I can estimate a two-digit × two-digit product and tell which way it sits."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The next production frame: 27 × 16. Split both factors into tens and ones — what is the total?",
+     "options": [
+      {
+       "v": "a",
+       "text": "432"
+      },
+      {
+       "v": "b",
+       "text": "422"
+      },
+      {
+       "v": "c",
+       "text": "442"
+      },
+      {
+       "v": "d",
+       "text": "4,320"
+      }
+     ],
+     "right": "a",
+     "yes": "Yes — 200 + 120 + 70 + 42 = 432. Four regions, one product — no counting, and certainly not adding the two factors.",
+     "notYet": "Not yet — split both factors, find all four partial regions, then add them."
+    },
+    "harder": {
+     "prompt": "The same frame: 27 × 16. Show the same total two ways — split the 16 as 10 + 6, and split the 27 as 20 + 7 — and say what never changes when the partition lines move.",
+     "answer": "Split A: 27 × 10 = 270 and 27 × 6 = 162 → 432. Split B: 20 × 16 = 320 and 7 × 16 = 112 → 432. The side lengths never move, so the total never moves — only the partition lines do."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A tile-grid array model: paper strips for the rows and columns, partitioned at the tens-ones lines, so the four partial regions can be lifted out and counted one by one.",
+       "stem": "ask what the model must hold → plan the strips → build the partitioned grid → test it by lifting a region → share it on the wall",
+       "ai": false
+      },
+      {
+       "kind": "song",
+       "task": "A four-region chant for the frame: one verse per partial region, a chorus that adds them into the total, and a spoken tag that names the trap the array defeats — adding the two factors.",
+       "stem": "ask what the frame's regions are → plan the verses → write the chant → test it on a classmate (they total the regions) → share it at the tower gate",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A 60-second four-regions clip: ask the AI to name the four partial regions of the frame's product, verify each one on camera yourself, and close with the total — catching the AI if it names a region wrong.",
+       "stem": "ask what a region must show → plan the clip → request the four regions from the AI → test each on camera → share it on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "4-5": {
+   "prep": {
+    "home": [
+     "36 × 24 on an area model: split the 36 into 30 + 6 and the 24 into 20 + 4. What are the four room areas, and the total?",
+     "The crew's habit is to round 36 down to 30 and 24 down to 20 and call 600 the answer. What does that rounding throw away?",
+     "Draw the room one way: 36 × 24 split as 30 + 6 over 20 + 4. Is there another split that gives the same total? Show it."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can partition both factors and draw every room of the area model.",
+     "I can find each room's area and add the rooms into the total.",
+     "I can see what a rounding habit throws away — the regions it drops.",
+     "I can compare two partitions and prove they give one total."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The tower's east wall: 42 × 26. Split both factors into tens and ones — what is the total area?",
+     "options": [
+      {
+       "v": "a",
+       "text": "1,092"
+      },
+      {
+       "v": "b",
+       "text": "840"
+      },
+      {
+       "v": "c",
+       "text": "1,080"
+      },
+      {
+       "v": "d",
+       "text": "10,92"
+      }
+     ],
+     "right": "a",
+     "yes": "Yes — 800 + 240 + 40 + 12 = 1,092. The small room (2 × 6 = 12) is part of the wall — rounding habits are how walls go missing.",
+     "notYet": "Not yet — draw all four rooms, find each area, and add them — the smallest room included."
+    },
+    "harder": {
+     "prompt": "The same wall: 42 × 26. The crew's rounding habit says 40 × 20 = 800. Show what the habit dropped, and recover the exact total from the missing regions.",
+     "answer": "The habit kept the 800 room and dropped three: 40 × 6 = 240, 2 × 20 = 40, and 2 × 6 = 12. 800 + 240 + 40 + 12 = 1,092. Rounding both down is not an estimate with a sign — it is three rooms quietly removed."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "A wall area-model design: draw the east wall as a rectangle, partition it the class's way, label every room's area, and total the panels — with the rounding habit (40 × 20) shown crossed out and the missing rooms shaded.",
+       "stem": "ask how the wall should be partitioned → plan the model → draw and label the rooms → test the total a second way → share it at the beam table",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A rooms-and-habits drawing: the wall in two layers — the habit's 800-room rectangle underneath, the three dropped rooms shaded above — with each dropped room's area written in its corner.",
+       "stem": "ask what the drawing must reveal → plan the layers → draw the habit, then the rooms → test the recovery (800 + 292) → share it on the wall",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A partition map from a real wall: research one real wall or floor panel count with the AI, verify it, and map every room of the class's area model to a part of the real measurement.",
+       "stem": "ask what real wall to model → plan the map → research a real panel count with the AI (verify it) → test the model with a second split → share it on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "4-6": {
+   "prep": {
+    "home": [
+     "52 × 34 in column form: 52 × 4, then 52 × 30. What are the two partial products, and the total?",
+     "Why does the 52 × 30 line sit one place to the left of the 52 × 4 line in the column form?",
+     "Estimate 52 × 34 by the two biggest regions only. What is missing from that estimate?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can write a two-digit × two-digit product in column partial-product form.",
+     "I can keep the tens line shifted one place — the bundle that shifts it.",
+     "I can add the partial lines into the exact total.",
+     "I can estimate by the big regions and say what the estimate drops."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The final schedule line: 63 × 47. Write the two partial products in column form — what is the total?",
+     "options": [
+      {
+       "v": "a",
+       "text": "2,961"
+      },
+      {
+       "v": "b",
+       "text": "2,861"
+      },
+      {
+       "v": "c",
+       "text": "2,971"
+      },
+      {
+       "v": "d",
+       "text": "29,61"
+      }
+     ],
+     "right": "a",
+     "yes": "Yes — 63 × 7 = 441 and 63 × 40 = 2,520; 441 + 2,520 = 2,961. The tens line sits one place left, and the total lands.",
+     "notYet": "Not yet — ones line first, then the shifted tens line, then add both."
+    },
+    "harder": {
+     "prompt": "A worker's schedule shows 63 × 47 with the tens line unshifted: 441 + 252 = 693. Find the faulty line, correct it, and say what the unshifted line actually computed.",
+     "answer": "The tens line was written as 63 × 4 = 252 instead of 63 × 40 = 2,520 — unshifted, it computed the 4-tens as if they were 4-ones. Corrected: 441 + 2,520 = 2,961. The shift is the bundle of tens; drop it and the schedule is 2,268 short."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "poster",
+       "task": "A schedule poster that teaches the shift: the day's final schedule line in column form, the two partial lines coloured differently, an arrow showing the tens line's one-place shift, and the total — with the unshifted trap in a red box, labelled.",
+       "stem": "ask which line to teach → plan the layout → build the column form → test the shift with a second product → share it on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A 60-second the-shift presentation: take the day's schedule line, narrate the ones line, the shifted tens line, and the total — and close with the one sentence that explains the shift in place-value terms.",
+       "stem": "ask which line to narrate → plan the talk → build the column form → test it against an area model → deliver it at the tower gate",
+       "ai": false
+      },
+      {
+       "kind": "model",
+       "task": "An AI-audited column model: ask the AI to audit the class's schedule line — its two partial lines and the total — then build the class's own column model beside it, marking where the auditors agreed or the AI missed the shift.",
+       "stem": "ask what an audit must check → plan the model → request the AI's audit → test it line by line against the class's model → share it on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "4-7": {
+   "prep": {
+    "home": [
+     "The lift must carry 26 crates of 15 beams each. How many beams in total — and if the order needs 400, how many are still to load?",
+     "The obvious plan failed midway: what do you do before you guess — check what you have, or start over?",
+     "Draw two representations of 26 × 15 (an array and a column form) and check they agree. When two pictures disagree, which do you trust?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can solve a two-step situation with a two-digit product in the middle.",
+     "I can switch representation — array, area model, column form — when one fails.",
+     "I can check a product with a second representation before I trust it.",
+     "I can defend a revised plan with the evidence that forced the revision."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The lift's second run: 32 crates of 18 beams each, and the floor needs 650 beams. How many more must be loaded?",
+     "options": [
+      {
+       "v": "a",
+       "text": "74"
+      },
+      {
+       "v": "b",
+       "text": "76"
+      },
+      {
+       "v": "c",
+       "text": "576"
+      },
+      {
+       "v": "d",
+       "text": "66"
+      }
+     ],
+     "right": "a",
+     "yes": "Yes — 32 × 18 = 576 loaded; 650 − 576 = 74 more. Two steps, one product in the middle — and the answer is the gap, not the product.",
+     "notYet": "Not yet — find the product first, then compare it to the floor's need."
+    },
+    "harder": {
+     "prompt": "The lift jammed with 32 crates of 18 beams on deck and the floor short by 74. A second lift can carry 25 crates. Can one full second lift finish the job — or will it over-deliver? Show the numbers.",
+     "answer": "25 crates × 18 beams = 450 — one full lift over-delivers: 450 − 74 = 376 too many. Send four crates instead: 4 × 18 = 72, which leaves 2 beams short of the 74 — exactly the kind of leftover that leads straight to division: 74 ÷ 18 is 4 with 2 left over."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "mini-project",
+       "task": "The production plan: the unit's own artifact — the tower's full production plan, every two-digit product in column form, every total checked with a second representation, and the lift schedule with its leftover beams made explicit. Signed by its maker.",
+       "stem": "ask what the plan must hold → plan the pages → build every product in two forms → test each total → present it to the council",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "The jam retrospective, 90 seconds: walk the camera through where the obvious plan failed, the representation that saved it, and the final plan's numbers — the story of the fix is the evidence.",
+       "stem": "ask what the camera must catch → plan the order → build the story around the fix → test it once alone → share it on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A 90-second lift Q&A with the AI as inspector: you defend the final plan on camera while the AI poses three challenges, you answer each on camera yourself, and you close with the leftover that hands the unit to division.",
+       "stem": "ask what the inspector will challenge → plan the defence → record it → let the AI challenge (answer every question yourself) → test the answers → share it on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The workshop's production plan — every product checked two ways, the lift schedule, and the class's council defences"
+   }
+  }
+ }
+}
