@@ -258,9 +258,26 @@
           }
         ],
         "production": {
-          "kind": "drawing",
-          "task": "An annotated place-value chart: read a surviving census number seat by seat, drawing the chart with every zero labelled as a place held open.",
-          "stem": "ask what each digit is worth → plan the chart's seats → build the drawing → test it by rewriting the number in expanded form → share it at the census desk"
+          "options": [
+            {
+              "kind": "drawing",
+              "task": "An annotated place-value chart: read a surviving census number seat by seat, drawing the chart with every zero labelled as a place held open.",
+              "stem": "ask what each digit is worth → plan the chart's seats → build the drawing → test it by rewriting the number in expanded form → share it at the census desk",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A 45-second read-the-torn-page recording: point at each digit of the restored number and say its place value as you read it. Record it once; the critic will replay it.",
+              "stem": "ask how to read the surviving number → plan the recording → read each digit by its place → test it against the place-value chart → share the clip at the archive desk",
+              "ai": false
+            },
+            {
+              "kind": "presentation",
+              "task": "A 60-second presentation backed by a real census fact: ask the AI to name one real district population, verify the figure against a trusted source, and present it with your place-value reading. You verify and you speak — the AI only supplies candidates.",
+              "stem": "ask what a real population looks like → plan the claim → research it with the AI (verify against the trusted source) → build the argument → test it against the place-value rules → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -483,9 +500,26 @@
           }
         ],
         "production": {
-          "kind": "model",
-          "task": "A movable ten-times staircase: build a physical model where each step left is worth ten times the step below, and slide a single digit up and down it.",
-          "stem": "ask what moving changes → plan the staircase steps → build the model → test it by sliding a digit one seat each way → share it at the census desk"
+          "options": [
+            {
+              "kind": "model",
+              "task": "A movable ten-times staircase: build a physical model where each step left is worth ten times the step below, and slide a single digit up and down it.",
+              "stem": "ask what moving changes → plan the staircase steps → build the model → test it by sliding a digit one seat each way → share it at the census desk",
+              "ai": false
+            },
+            {
+              "kind": "song",
+              "task": "A ten-times chant the class can clap to: each verse sings one digit's trip one place to the right (ten-times) and one place to the left (one-tenth). Write the words and teach the class the chorus.",
+              "stem": "ask what moving a digit does → plan the verses → write the chant → test it on a classmate (they must rebuild the number) → share it at the census desk",
+              "ai": false
+            },
+            {
+              "kind": "design",
+              "task": "Redesign the place-value key card with the AI as a number supplier: ask it to propose five new example numbers for each place, check every single one yourself, and lay out the finished card. The AI suggests, you verify, and the card is yours.",
+              "stem": "ask what the key card must show → plan the layout → request example numbers from the AI (verify every one) → build the card → test a classmate with it → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -708,9 +742,26 @@
           }
         ],
         "production": {
-          "kind": "poster",
-          "task": "A first-difference poster: take two close numbers, display the scan from the greatest place, and mark the single seat that decides which is greater.",
-          "stem": "ask where the comparison will be decided → plan the scan from the left → build the poster → test it with a pair that has embedded zeros → share it on the market wall"
+          "options": [
+            {
+              "kind": "poster",
+              "task": "A first-difference poster: take two close numbers, display the scan from the greatest place, and mark the single seat that decides which is greater.",
+              "stem": "ask where the comparison will be decided → plan the scan from the left → build the poster → test it with a pair that has embedded zeros → share it on the market wall",
+              "ai": false
+            },
+            {
+              "kind": "map",
+              "task": "A district map that settles the claim: place both populations on the map, mark where the difference first appears, and draw the evidence so the council can see which clinic location wins.",
+              "stem": "ask which district is really larger → plan the map → compare the digits in order → test the first-difference mark against the numbers → share it at the council table",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A comparison model from a real pair: ask the AI to name two real populations of the same order, verify both figures yourself, build the bar comparison, and label the difference.",
+              "stem": "ask what to compare → plan the model → research a real pair with the AI (verify both figures) → build the bars → test the difference → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -931,9 +982,26 @@
           }
         ],
         "production": {
-          "kind": "map",
-          "task": "A halfway map: draw the line between two rounded values, mark the halfway point, and place a real number on the right side of it with the rounding written beside it.",
-          "stem": "ask which side of halfway a number sits on → plan the line and the halfway mark → build the map → test it with a number exactly on halfway → share it with the council"
+          "options": [
+            {
+              "kind": "map",
+              "task": "A halfway map: draw the line between two rounded values, mark the halfway point, and place a real number on the right side of it with the rounding written beside it.",
+              "stem": "ask which side of halfway a number sits on → plan the line and the halfway mark → build the map → test it with a number exactly on halfway → share it with the council",
+              "ai": false
+            },
+            {
+              "kind": "presentation",
+              "task": "A 60-second 'why this precision is enough' talk: round the district populations to the requested place, defend why that precision is enough for the council's decision, and show the halfway line behind the call.",
+              "stem": "ask how precise the estimate must be → plan the argument → round to the requested place → test it against the halfway line → share it at the council table",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "A one-page estimation report on a real number: research one real budget or population figure with the AI, verify it, round it the lesson way, and write the report. The AI challenges your rounding once and you defend it.",
+              "stem": "ask what the council actually needs → plan the report → research a real figure with the AI (verify it) → round and explain → test against the halfway line → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -1153,9 +1221,26 @@
           }
         ],
         "production": {
-          "kind": "presentation",
-          "task": "A 60-second argument presentation: state the claim, name the deciding place, give the two values, and land the gap — defending one census reading out loud.",
-          "stem": "ask which reading the evidence supports → plan the claim-place-values-gap order → build the argument → test it on a partner's reading → share it and ask for the seal"
+          "options": [
+            {
+              "kind": "presentation",
+              "task": "A 60-second argument presentation: state the claim, name the deciding place, give the two values, and land the gap — defending one census reading out loud.",
+              "stem": "ask which reading the evidence supports → plan the claim-place-values-gap order → build the argument → test it on a partner's reading → share it and ask for the seal",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "An argument diagram a stranger could follow: the claim at the top, the place-value evidence on each branch, the gap your team closed, and the verdict at the bottom. Annotate every step.",
+              "stem": "ask what the argument must show → plan the branches → draft the evidence → test it on a classmate (they must repeat the claim) → share it at the seal desk",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A 90-second debate clip: record your argument, then ask the AI to pose three hard questions and answer each one on camera, yourself. The clip is your argument — never the AI's.",
+              "stem": "ask what the argument is → plan the clip → record the argument → let the AI challenge it (answer every question yourself) → test the answers → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -1375,9 +1460,26 @@
           }
         ],
         "production": {
-          "kind": "presentation",
-          "task": "A 60-second mental-check presentation: your team picks the mental strategy (round both, adjust by the same amount), proves it live on three sealed ledger lines, and explains why the flagged line cannot stand.",
-          "stem": "ask which line is off → plan the mental check → build the 60-second script → test it on three sealed lines before presenting → share it at the ledger desk"
+          "options": [
+            {
+              "kind": "presentation",
+              "task": "A 60-second mental-check presentation: your team picks the mental strategy (round both, adjust by the same amount), proves it live on three sealed ledger lines, and explains why the flagged line cannot stand.",
+              "stem": "ask which line is off → plan the mental check → build the 60-second script → test it on three sealed lines before presenting → share it at the ledger desk",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A catch-it sketch: the wet line, the mental check you ran, and the flag on the suspicious number. Draw the thinking arrow, not just the answer.",
+              "stem": "ask which line to suspect → plan the sketch → run the mental check → test the flag against the exact sum → share it at the ledger desk",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "An AI-checked error hunt: build a ten-line mental-math worksheet for the class, then have the AI re-check every line. Where you and the AI disagree, settle it yourself and log the outcome.",
+              "stem": "ask what a good error hunt looks like → plan the ten lines → build the worksheet → test it against the AI (settle every difference yourself) → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -1598,9 +1700,26 @@
           }
         ],
         "production": {
-          "kind": "poster",
-          "task": "An impossible-bid poster: take three sealed market bids, estimate each with a friendly-number range, and display the one impossible total with the range that catches it.",
-          "stem": "ask which bid is impossible → plan the range (round to the thousand) → build the poster with all three estimates → test the range against the real totals → share it on the market wall"
+          "options": [
+            {
+              "kind": "poster",
+              "task": "An impossible-bid poster: take three sealed market bids, estimate each with a friendly-number range, and display the one impossible total with the range that catches it.",
+              "stem": "ask which bid is impossible → plan the range (round to the thousand) → build the poster with all three estimates → test the range against the real totals → share it on the market wall",
+              "ai": false
+            },
+            {
+              "kind": "map",
+              "task": "A bid map: place each sealed bid on a friendly-number line, show which bids land inside the possible range, and mark the impossible ones with the reason for rejection.",
+              "stem": "ask where each bid could land → plan the range → estimate the totals → test each bid against the range → share it at the bid counter",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A 60-second impossible-or-not verdict clip: ask the AI to propose three candidate bids, then judge each on camera — possible or impossible, with your estimate as the evidence. The AI supplies the bids; your verdicts are the work.",
+              "stem": "ask what a possible bid looks like → plan the verdicts → request candidate bids from the AI (judge each one yourself) → test with friendly-number estimates → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -1822,9 +1941,26 @@
           }
         ],
         "production": {
-          "kind": "model",
-          "task": "A receipt-stack model: collect three real prices from the canteen menu, stack them in columns on paper strips, and build the desk model with the total and the check written beside it.",
-          "stem": "ask what the class's own order really costs → collect three real prices (real data) → build the column stack → test it with the addition check → share the model at the ledger desk"
+          "options": [
+            {
+              "kind": "model",
+              "task": "A receipt-stack model: collect three real prices from the canteen menu, stack them in columns on paper strips, and build the desk model with the total and the check written beside it.",
+              "stem": "ask what the class's own order really costs → collect three real prices (real data) → build the column stack → test it with the addition check → share the model at the ledger desk",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A 90-second column-addition demo: add the market row on camera, then write the check beside the total. If the check fails, the video ends with you catching it yourself.",
+              "stem": "ask what the row adds to → plan the demo → add column by column → test it with the addition check on camera → share the clip at the ledger desk",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A 'we asked, we verified' poster from real canteen data: collect three real prices, add them yourself, then let the AI re-add independently — and show on the poster where you agreed, and whether the AI ever needed correcting.",
+              "stem": "ask what the class's order costs → collect three real prices → add them yourself → test against the AI's independent re-add (correct it if it errs) → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -2044,9 +2180,26 @@
           }
         ],
         "production": {
-          "kind": "design",
-          "task": "The ledger redesign: the old columns only hold four digits — design the new ledger page that carries seven-digit bundles without losing place value, and justify every column.",
-          "stem": "ask what breaks in the old ledger → plan the new column layout → build the redesigned page → test it with the two biggest bundle totals → share the layout with the council"
+          "options": [
+            {
+              "kind": "design",
+              "task": "The ledger redesign: the old columns only hold four digits — design the new ledger page that carries seven-digit bundles without losing place value, and justify every column.",
+              "stem": "ask what breaks in the old ledger → plan the new column layout → build the redesigned page → test it with the two biggest bundle totals → share the layout with the council",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A before-and-after column sketch: the old page that could not hold the bundle, the redesigned page that can, with arrows on every new place and why it belongs there.",
+              "stem": "ask why the old columns fail → plan the redesign → add the new places → test the bundle on the new page → share it at the ledger desk",
+              "ai": false
+            },
+            {
+              "kind": "presentation",
+              "task": "A 60-second 'why the columns had to grow' talk: research one real seven-digit quantity with the AI — a city's population, a bridge's span in feet, your choice — verify it, and use it to show why the old page could not hold it.",
+              "stem": "ask why the columns had to grow → plan the argument → research a real seven-digit quantity with the AI (verify it) → build the argument → test it against the redesigned page → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -2268,9 +2421,26 @@
           }
         ],
         "production": {
-          "kind": "map",
-          "task": "A reserve map: draw the council's money — the spend, the reserve, and the difference labelled on each segment — with the subtraction written beside the map.",
-          "stem": "ask what is left after the spend → plan the map's segments → build the map with labelled values → test it: does spend + reserve equal the budget? → share it with the council"
+          "options": [
+            {
+              "kind": "map",
+              "task": "A reserve map: draw the council's money — the spend, the reserve, and the difference labelled on each segment — with the subtraction written beside the map.",
+              "stem": "ask what is left after the spend → plan the map's segments → build the map with labelled values → test it: does spend + reserve equal the budget? → share it with the council",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A 60-second 'the reserve, told honestly' recording: subtract the spend from the reserve on camera, then read the difference in the council's own words — what the reserve can and cannot cover.",
+              "stem": "ask what is left → plan the recording → subtract → test the difference against the spend → share it at the council table",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A paper reserve model with a real number: research one real council or school budget figure with the AI, verify it, then build the spend-reserve-difference model from your own paper strips.",
+              "stem": "ask what the reserve must show → plan the model → research a real budget figure with the AI (verify it) → build the strips → test the subtraction → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -2490,9 +2660,26 @@
           }
         ],
         "production": {
-          "kind": "video",
-          "task": "A 90-second verify-it video: film the warehouse subtraction, then the addition check that proves the difference — every trade visible on camera.",
-          "stem": "ask how to prove a big difference → plan the two takes (subtract, then add to check) → build the clip → test it against the class's own copy → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "video",
+              "task": "A 90-second verify-it video: film the warehouse subtraction, then the addition check that proves the difference — every trade visible on camera.",
+              "stem": "ask how to prove a big difference → plan the two takes (subtract, then add to check) → build the clip → test it against the class's own copy → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A subtract-then-check diagram: the subtraction on the left, the addition check on the right, and equal bars showing the two routes meet at the same number.",
+              "stem": "ask how to prove the difference → plan the diagram → subtract → test it with the addition check → share it at the warehouse desk",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "A verification log: pick two subtractions from the ledger, solve them yourself, then let the AI check both independently. Record where you agreed, where you disagreed, and how you settled it.",
+              "stem": "ask how to verify honestly → pick the two subtractions → solve them yourself → test against the AI's independent checks → share the log on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -2713,9 +2900,26 @@
           }
         ],
         "production": {
-          "kind": "drawing",
-          "task": "An annotated trade drawing: redraw a water-damaged line crossed by zeros, and show every regrouping chain with labelled arrows — the silent zeros included.",
-          "stem": "ask where the trade must start → plan the chain from the ones → build the drawing with arrows on every trade → test it by adding the difference back → share the annotated line"
+          "options": [
+            {
+              "kind": "drawing",
+              "task": "An annotated trade drawing: redraw a water-damaged line crossed by zeros, and show every regrouping chain with labelled arrows — the silent zeros included.",
+              "stem": "ask where the trade must start → plan the chain from the ones → build the drawing with arrows on every trade → test it by adding the difference back → share the annotated line",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A cross-the-zero poster: the borrow chain from 6,000 − 2,475, every arrow labelled with what was borrowed and from where, so any reader can follow the chain.",
+              "stem": "ask how the borrows travel → plan the chain → trace every regroup → test the chain against the difference → share it at the water-damaged page",
+              "ai": false
+            },
+            {
+              "kind": "map",
+              "task": "A regrouping-path map for one subtraction from the real ledger: trace the borrows yourself, then let the AI challenge your path — if it finds an error, fix it yourself and show both routes on the map.",
+              "stem": "ask where the borrows travel → plan the map → trace the path yourself → test it against the AI's challenge (fix it yourself) → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -2934,9 +3138,26 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "The one-page audit report: the class receives a polished (but faulty) solution — produce the report with the finding, the faulty step, the corrected result, and the seal decision. This is the unit's final artifact.",
-          "stem": "ask whether the polished answer stands → plan the audit (recompute, locate the faulty step) → build the one-page report → test the correction with the addition check → share it and issue the seal"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "The one-page audit report: the class receives a polished (but faulty) solution — produce the report with the finding, the faulty step, the corrected result, and the seal decision. This is the unit's final artifact.",
+              "stem": "ask whether the polished answer stands → plan the audit (recompute, locate the faulty step) → build the one-page report → test the correction with the addition check → share it and issue the seal",
+              "ai": false
+            },
+            {
+              "kind": "presentation",
+              "task": "The audit verdict read at the seal desk: 60 seconds to state the finding, the faulty step, the corrected result, and why the seal is issued or withheld. No notes after the first run.",
+              "stem": "ask whether to sign → plan the verdict → critique the reasoning → test the correction against the check → share it at the seal desk",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A 90-second auditor-versus-machine clip: you defend the polished solution on camera while the AI plays the critic — ask it to challenge, answer every challenge on camera yourself, and close with your seal decision.",
+              "stem": "ask whether the reasoning survives → plan the clip → record the defence → let the AI challenge (answer every one yourself) → test the correction → share it on the wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -3151,9 +3372,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Grove plan · bundles of tens counted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Grove plan · bundles of tens counted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -3367,9 +3599,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Grove plan · product estimated — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Grove plan · product estimated — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -3582,9 +3825,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Grove plan · array total by partials — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Grove plan · array total by partials — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -3798,9 +4052,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Grove plan · roof priced by regions — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Grove plan · roof priced by regions — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -4016,9 +4281,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Grove plan · courtyard priced by four regions — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Grove plan · courtyard priced by four regions — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -4234,9 +4510,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Grove plan · order updated mentally — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Grove plan · order updated mentally — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -4451,9 +4738,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Grove plan · strategies chosen by the numbers — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Grove plan · strategies chosen by the numbers — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -4667,9 +4965,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Grove model · defended before the council — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Grove model · defended before the council — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -4882,9 +5191,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Tower log · first floors counted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Tower log · first floors counted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -5097,9 +5417,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Tower plan · long order modelled — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Tower plan · long order modelled — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -5312,9 +5643,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Tower plan · beams estimated — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Tower plan · beams estimated — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -5529,9 +5871,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Tower plan · frame read as an array — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Tower plan · frame read as an array — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -5744,9 +6097,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Tower plan · rooms priced — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Tower plan · rooms priced — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -5960,9 +6324,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Tower plan · final production schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Tower plan · final production schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -6177,9 +6552,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Depot plan · unjammed and signed — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Depot plan · unjammed and signed — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -6392,9 +6778,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Caravan schedule · first loads shared — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Caravan schedule · first loads shared — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -6609,9 +7006,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Caravan schedule · quotient range agreed — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Caravan schedule · quotient range agreed — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -6824,9 +7232,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Caravan schedule · large manifest ranged — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Caravan schedule · large manifest ranged — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -7040,9 +7459,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Caravan schedule · remainders interpreted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Caravan schedule · remainders interpreted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -7257,9 +7687,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Caravan schedule · partial quotients — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Caravan schedule · partial quotients — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -7473,9 +7914,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Caravan schedule · greater dividends — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Caravan schedule · greater dividends — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -7689,9 +8141,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Caravan schedule · sharing by place — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Caravan schedule · sharing by place — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -7905,9 +8368,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Caravan schedule · three-place shares — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Caravan schedule · three-place shares — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -8122,9 +8596,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Caravan schedule · strategies chosen — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Caravan schedule · strategies chosen — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -8339,9 +8824,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Dispatch board · signed allocation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Dispatch board · signed allocation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -8554,9 +9050,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Council board · comparison claims drawn — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Council board · comparison claims drawn — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -8770,9 +9277,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Council board · moved unknowns drawn — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Council board · moved unknowns drawn — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -8986,9 +9504,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Council board · three-step plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Council board · three-step plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -9201,9 +9730,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Council board · revised multi-step plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Council board · revised multi-step plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -9416,9 +9956,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Council board · defensible recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Council board · defensible recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -9633,9 +10184,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Council board · persevered plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Council board · persevered plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -9848,9 +10410,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Reef kit · first factor list — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Reef kit · first factor list — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -10063,9 +10636,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Reef kit · certified factor pairs — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Reef kit · certified factor pairs — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -10279,9 +10863,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Reef kit · certified repeated method — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Reef kit · certified repeated method — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -10494,9 +11089,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Reef kit · certified prime border — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Reef kit · certified prime border — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -10709,9 +11315,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — Reef kit · certified multiple calendar — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — Reef kit · certified multiple calendar — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -10924,9 +11541,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -11139,9 +11767,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -11355,9 +11994,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -11571,9 +12221,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -11787,9 +12448,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -12004,9 +12676,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -12222,9 +12905,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An equivalence map for irrigation plots — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -12437,9 +13131,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -12655,9 +13360,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -12872,9 +13588,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -13087,9 +13814,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -13305,9 +14043,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -13520,9 +14269,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -13736,9 +14496,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -13951,9 +14722,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -14166,9 +14948,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -14383,9 +15176,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A community-kitchen tray and leftovers plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -14600,9 +15404,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -14819,9 +15634,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -15036,9 +15862,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -15252,9 +16089,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -15469,9 +16317,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A scaled production and time schedule — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -15686,9 +16545,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -15902,9 +16772,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -16117,9 +16998,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -16332,9 +17224,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A line-plot evidence board and recommendation — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -16548,9 +17451,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -16765,9 +17679,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -16982,9 +17907,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -17200,9 +18136,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -17416,9 +18363,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -17633,9 +18591,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A decimal gauge and transparent procurement sheet — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -17856,9 +18825,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -18079,9 +19059,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -18302,9 +19293,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -18526,9 +19528,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -18750,9 +19763,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -18975,9 +19999,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -19198,9 +20233,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A calibrated field kit and perimeter/area site plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -19415,9 +20461,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -19632,9 +20689,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -19848,9 +20916,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -20066,9 +21145,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A programmable repeating façade pattern — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -20281,9 +21371,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -20497,9 +21598,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -20713,9 +21825,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -20929,9 +22052,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -21145,9 +22279,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -21362,9 +22507,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — An angle-controlled shade or light-tracker prototype — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -21577,9 +22733,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -21793,9 +22960,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -22010,9 +23188,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -22228,9 +23417,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -22444,9 +23644,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -22659,9 +23870,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A classified, symmetric pavilion plan — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -22875,9 +24097,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -23091,9 +24324,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -23306,9 +24550,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -23523,9 +24778,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -23738,9 +25004,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -23953,9 +25230,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -24169,9 +25457,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -24385,9 +25684,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -24600,9 +25910,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {
@@ -24816,9 +26137,20 @@
           }
         ],
         "production": {
-          "kind": "mini-project",
-          "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-          "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "Produce your own version of the unit artifact — A three-dimensional exhibition model, evidence portfolio and sealed letter to the next class — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "ai": true
+            }
+          ]
         }
       },
       "gate": {

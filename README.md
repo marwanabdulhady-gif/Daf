@@ -42,12 +42,14 @@ Three movements: **Content at home** (Preparation) → **Thinking in class**
   an independent item (the model opens only after a miss), and the harder lane where the lesson
   supplies one. Feedback arrives in seconds, not days.
 - **5 · Production / B — Proof-Mastery Gate** — a genuinely new situation from the story map, with
-  a mission, and a **STEM production the students build**: a presentation, model, design, map,
-  song, video, poster, drawing or mini-project, each run through the STEM cycle
-  (ask → plan → build → test → share). The class first names the method its work rests on, then
-  defends the production against a scripted critic that raises three challenges: the trap, the
-  reasoning, the transfer. The critic never corrects — it makes the class check its own evidence.
-  **AI enters here — as a critic, never as an author.**
+  a mission, and **2–3 STEM production options the students choose between and build**: a
+  presentation, model, design, map, song, video, poster, drawing or mini-project, each run through
+  the STEM cycle (ask → plan → build → test → share). One option always runs **AI in the loop** —
+  the student uses the AI to research or to challenge the build and writes every line themselves.
+  The class first names the method its work rests on, then defends the production against a
+  scripted critic that raises three challenges: the trap, the reasoning, the transfer. The critic
+  never corrects — it makes the class check its own evidence. **AI enters here — as a critic,
+  never as an author.**
 - **6 · Mastery Gate** — one individual task that routes each student: **forward** (mastered) or
   **reteach** (revisit the model — deep-linked to the lesson's board screen), with the lesson's IXL
   prescription. The gate pays no XP; it is a judgement that routes, not a reward.
@@ -70,10 +72,13 @@ goals (stage 2), an independent practice item that is truly new — not the guid
 (stage 4), the harder lane, and stage-screen copy in the unit's own story voice. **Research
 first:** before a topic's productions are written, approved STEM activities and real-experiment
 projects for that grade are researched, and the topic file must carry its `sources` — the
-checker fails a deepened topic without them. Each lesson's production phase gets a concrete
-artifact (presentation, model, design, map, song, video, poster, drawing, mini-project …) built
-through the STEM cycle. The generated plan is the floor — including a floor production so no
-deck's production phase is empty; the topic files are the authored layer on top, merged in by
+checker fails a deepened topic without them. Each lesson's production phase offers **2–3
+concrete artifacts to build** (presentation, model, design, map, song, video, poster, drawing,
+mini-project …) run through the STEM cycle, and **one of them always runs AI in the loop** —
+the student uses the AI to research or to challenge the build, then writes every line
+themselves (AI critic, never author). The generated plan is the floor — including a floor
+production (two options, one AI-integrated) so no deck's production phase is empty; the topic
+files are the authored layer on top, merged in by
 `scripts/make-stage-plan.js`. Progress is tracked by `npm run check:stages` — **Topics 1–2 are
 deepened (13 lessons); 17 topics are in scope.** To deepen a topic: research first, add
 `stage/topics/<n>.json` with `sources`, run `npm run build:stages`, then `npm run check:stages`

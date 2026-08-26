@@ -966,6 +966,7 @@ function CriticBoard({ award }) {
   const C = plan.critic;
   const [stage, setStage] = useState("method");       /* method | 0..2 | done */
   const [pick, setPick] = useState(null);
+  const [prodPick, setProdPick] = useState(null);     /* which production option the class will build — a choice, never XP */
   const [misses, setMisses] = useState(0);
   const [chDone, setChDone] = useState(0);
   const [given, setGiven] = useState({});
@@ -991,12 +992,22 @@ function CriticBoard({ award }) {
 
       {C.production && (
         <div className="critic-production gsap-auto">
-          <div className="critic-production-tag"><Icon name="fa-flask" /> The production — the students build it, the critic examines it</div>
-          <div className="critic-production-body">
-            <span className="critic-production-kind">{C.production.kind}</span>
-            <div>{C.production.task}</div>
-          </div>
-          <div className="critic-production-stem"><Icon name="fa-arrows-spin" /> STEM cycle: {C.production.stem}</div>
+          <div className="critic-production-tag"><Icon name="fa-flask" /> The production — choose one and build it; the critic examines it</div>
+          {C.production.options.map((o, i) => (
+            <div key={i} className={"critic-production-option" + (prodPick === i ? " chosen" : "")}
+              onClick={() => setProdPick(i)}>
+              <div className="critic-production-opt-head">
+                <span className="critic-production-kind">{o.kind}</span>
+                {o.ai === true && <span className="critic-production-ai"><Icon name="fa-robot" /> AI in the loop</span>}
+                <span className="critic-production-pick">{prodPick === i ? "chosen" : "choose"}</span>
+              </div>
+              <div className="critic-production-task">{o.task}</div>
+              <div className="critic-production-stem"><Icon name="fa-arrows-spin" /> {o.stem}</div>
+              {o.ai === true && (
+                <div className="critic-production-ai-rule"><Icon name="fa-shield-halved" /> The AI researches, checks and challenges — it never writes or builds the work.</div>
+              )}
+            </div>
+          ))}
         </div>
       )}
 
@@ -1073,6 +1084,10 @@ function CriticBoard({ award }) {
       {accepted && (
         <div className="critic-done gsap-auto">
           <div className="critic-stamp"><Icon name="fa-stamp" /> Production accepted</div>
+          {prodPick !== null && C.production.options[prodPick] && (
+            <div className="critic-chosen-note"><Icon name="fa-feather" /> Chosen build: {C.production.options[prodPick].kind}
+              {C.production.options[prodPick].ai === true ? " (AI in the loop — the student wrote every line)" : ""}</div>
+          )}
           <div className="critic-rule-note">
             The critic examined, challenged and critiqued. It never generated the work — the production is the students'.
           </div>

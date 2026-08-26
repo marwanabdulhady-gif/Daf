@@ -144,11 +144,21 @@ for (const code of codes) {
   const C = L.critic || {};
   if (typeof C.situation !== "string" || !C.situation) push(where + "critic.situation missing");
   if (typeof C.mission !== "string" || !C.mission) push(where + "critic.mission missing");
-  /* the production phase must always carry a buildable STEM production */
+  /* the production phase must offer 2–3 buildable STEM options, one of which
+     runs AI in the loop (the student uses the AI to research/challenge and
+     writes every line themselves — AI critic, never author) */
   const P5 = C.production || {};
-  if (typeof P5.kind !== "string" || !P5.kind || typeof P5.task !== "string" || !P5.task ||
-      typeof P5.stem !== "string" || !P5.stem)
-    push(where + "critic.production incomplete (needs kind + task + STEM cycle)");
+  if (!Array.isArray(P5.options) || P5.options.length < 2 || P5.options.length > 3)
+    push(where + "critic.production must offer 2–3 options");
+  else {
+    P5.options.forEach((o, i) => {
+      if (typeof o.kind !== "string" || !o.kind || typeof o.task !== "string" || !o.task ||
+          typeof o.stem !== "string" || !o.stem)
+        push(where + "critic.production.option[" + i + "] incomplete (needs kind + task + STEM cycle)");
+    });
+    if (!P5.options.some((o) => o.ai === true))
+      push(where + "critic.production must include one AI-integrated option (ai: true)");
+  }
   if (!C.method || !Array.isArray(C.method.options) || C.method.options.length !== 3 ||
       !C.method.options.every((o) => typeof o === "string" && o.length > 0))
     push(where + "critic.method must offer 3 non-empty string options");

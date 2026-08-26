@@ -247,15 +247,29 @@ function planFor(code, lessonTitle, standard) {
   };
 
   /* the STEM production the students build in response to the situation:
-     ask → plan → build → test → share. Deepened topics author a specific
-     artifact per lesson (stage/topics/<n>.json: presentation, model, design,
-     map, song, video, poster, drawing, mini-project …); the floor names the
-     unit artifact so no deck's production phase is empty. */
+     ask → plan → build → test → share. Every lesson offers 2–3 options to
+     build (presentation, model, design, map, song, video, poster, drawing,
+     mini-project …) and one of them runs AI in the loop — the student uses
+     the AI to research or to challenge the build, and writes every line
+     themselves (AI critic, never author). Deepened topics author specific
+     artifacts per lesson (stage/topics/<n>.json); the floor names the unit
+     artifact so no deck's production phase is empty. */
   critic.production = {
-    kind: "mini-project",
-    task: "Produce your own version of the unit artifact — " + (L.artifact || unit.artifact) +
-      " — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-    stem: "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall"
+    options: [
+      {
+        kind: "mini-project",
+        task: "Produce your own version of the unit artifact — " + (L.artifact || unit.artifact) +
+          " — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
+        stem: "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+        ai: false
+      },
+      {
+        kind: "poster",
+        task: "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
+        stem: "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+        ai: true
+      }
+    ]
   };
 
   /* ---- stage 6 · Mastery Gate ---------------------------------------------- */
