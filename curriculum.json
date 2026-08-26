@@ -3,6 +3,57 @@
  "grade": 4,
  "school": "Dar Al Fikr Schools",
  "note": "IXL skill codes are from the IXL skill alignment for enVision Mathematics (2024) Grade 4. IXL is not affiliated with or endorsed by Savvas.",
+ "sevenStages": [
+  {
+   "n": 1,
+   "key": "prep",
+   "name": "Preparation",
+   "timing": "Before class",
+   "aim": "Compress the material and send it. First exposure happens at home, at the student's own pace."
+  },
+  {
+   "n": 2,
+   "key": "diagnose",
+   "name": "Intelligent Diagnose",
+   "timing": "5–8 min",
+   "aim": "Build a gap map, not a grade. What do they actually know?"
+  },
+  {
+   "n": 3,
+   "key": "build",
+   "name": "Knowledge Building",
+   "timing": "15–20 min",
+   "aim": "Close the flagged gaps, then model one richer example, thinking out loud."
+  },
+  {
+   "n": 4,
+   "key": "practice",
+   "name": "Practice",
+   "timing": "10–15 min",
+   "aim": "Guided, then independent — with feedback that arrives in seconds, not days."
+  },
+  {
+   "n": 5,
+   "key": "produce",
+   "name": "Production / B — Proof-Mastery Gate",
+   "timing": "10–15 min",
+   "aim": "A genuinely new situation. AI enters here — as a critic, never as an author."
+  },
+  {
+   "n": 6,
+   "key": "gate",
+   "name": "Mastery Gate",
+   "timing": "5–8 min",
+   "aim": "One individual task that decides the next path for each student."
+  },
+  {
+   "n": 7,
+   "key": "wall",
+   "name": "Smart Production",
+   "timing": "5–8 min",
+   "aim": "A final product the student is willing to put their name on."
+  }
+ ],
  "topics": [
   {
    "n": 1,

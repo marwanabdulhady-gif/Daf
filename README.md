@@ -4,6 +4,63 @@ Single-file, interactive, gamified HTML lessons for **Savvas enVision Mathematic
 
 **Open [`index.html`](index.html)** for the topic hub, or go straight to a lesson in `html/`.
 
+## The Seven Stages
+
+> **Content at home. Thinking in class. Evidence on the wall.**
+
+Every lesson in this repo is rebuilt around seven stages. The lesson files own the mathematics —
+untouched — and the engine owns the stage structure around them.
+
+| # | Stage | Timing | What it has to achieve |
+|---|---|---|---|
+| 1 | **Preparation** | Before class | Compress the material and send it. First exposure happens at home, at the student's own pace. |
+| 2 | **Intelligent Diagnose** | 5–8 min | Build a gap map, not a grade. What do they actually know? |
+| 3 | **Knowledge Building** | 15–20 min | Close the flagged gaps, then model one richer example, thinking out loud. |
+| 4 | **Practice** | 10–15 min | Guided, then independent — with feedback that arrives in seconds, not days. |
+| 5 | **Production / B** *(Proof-Mastery Gate)* | 10–15 min | A genuinely new situation. **AI enters here — as a critic, never as an author.** |
+| 6 | **Mastery Gate** | 5–8 min | One individual task that decides the next path for each student. |
+| 7 | **Smart Production** | 5–8 min | A final product the student is willing to put their name on. |
+
+Three movements: **Content at home** (Preparation) → **Thinking in class**
+(Diagnose → Build → Practice → Produce) → **Evidence on the wall**
+(Mastery Gate + Smart Production).
+
+> A learning unit is not measured by what was taught. It is measured by what the student can show
+> they made from it.
+
+**How each stage is built in the decks**
+
+- **1 · Preparation** — a compressed briefing is sent before class: the lesson's headline objects
+  (the first two math strings) plus three home questions drawn from the lesson's own
+  Notice-and-Wonder / WODB prompts. First exposure happens at home, at the student's own pace.
+- **2 · Intelligent Diagnose** — four checkpoint claims (generated from the lesson's build-screen
+  goals) go on a gap map. The class votes *We can* / *Not yet* on each; the verdict names the gaps
+  to close. An instrument for catching gaps — not for scoring students.
+- **3 · Knowledge Building** — the lesson's own screens: cold open → launch → the exploration
+  screens → connect → the board, where one richer example is modelled, thinking out loud.
+- **4 · Practice** — the lesson's own check, run as a sprint: a guided item (the model stays open),
+  an independent item (the model opens only after a miss), and the harder lane where the lesson
+  supplies one. Feedback arrives in seconds, not days.
+- **5 · Production / B — Proof-Mastery Gate** — a genuinely new situation from the story map, with
+  a mission. The class first names the method its work rests on, then defends the production
+  against a scripted critic that raises three challenges: the trap, the reasoning, the transfer.
+  The critic never corrects — it makes the class check its own evidence.
+  **AI enters here — as a critic, never as an author.**
+- **6 · Mastery Gate** — one individual task that routes each student: **forward** (mastered) or
+  **reteach** (revisit the model — deep-linked to the lesson's board screen), with the lesson's IXL
+  prescription. The gate pays no XP; it is a judgement that routes, not a reward.
+- **7 · Smart Production** — the evidence wall: the unit's artifact card and a slot grid for what
+  the class made. A final product the student is willing to put their name on.
+
+**How the structure maps to the deck.** Every deck runs four engine stage screens (stages 1, 2, 4
+and 5) around the lesson's 8–14 screens; stages 3, 6 and 7 are the lesson's own screens wrapped by
+stage boundaries — the explore → connect → board arc is Knowledge Building, the formative check is
+the Mastery Gate, and the closing is Smart Production. Every screen carries a stage chip
+(*Stage N · name · timing*) in the header. The per-lesson stage data is generated deterministically
+into [`stage/stage-plan.json`](stage/stage-plan.json) and stamped into each deck as
+`window.DAF_STAGE` at build time. The full specification lives in
+[§3 of the reference](docs/reference/daf_math_slides_en.md#3-the-seven-stages).
+
 ## Storytelling curriculum proposal
 
 The proposed year-long story frame is **[The Lantern of Numeria](docs/plans/storytelling-curriculum-plan.html)**. It connects all 17 topics and maps a story purpose, student mission and handoff for every one of the 114 lessons. Its machine-readable source is [`story/story-map.json`](story/story-map.json).
@@ -216,16 +273,17 @@ IXL skill codes for every lesson. `index.html` renders it with build status.
 | 17-9 | Divide Whole Numbers by Unit Fractions | 5.NF.B.7b | QXJ · EY2 |
 | 17-10 | Model Volume | 5.MD.C.3 | YD2 |
 
-The currently built decks use a **10-screen baseline**, but the engine itself is dynamic: navigation,
-progress, overview and deep links all read `LESSON.metas.length`. New and revised lessons use a
-**flexible screen architecture** based on mathematical demand rather than a fixed quota:
+The currently built decks run the **Seven Stages** ([above](#the-seven-stages)): four engine stage
+screens (Preparation, Intelligent Diagnose, Practice, Production / B) interleaved around each
+lesson's 8–14 screens — a typical lesson is 14 screens. Navigation, progress, overview and deep
+links all read the sequenced screen count, and every screen carries its stage chip in the header.
 
-`Recall/cold open (optional) → Need → Explore ×2–7 → Connect ×1–3 → Meaning ×1–2 → Transfer ×1–2 → Handoff`
-
-Typical planning shapes range from a compact 7–9-screen fluency lesson to a 12–16-screen reasoning
-studio. These are planning bands, not hard limits. Every screen must earn its place through a distinct
-question, representation, student action, evidence set, misconception, decision or accessibility scaffold.
-The individual recommendation for all 114 lessons lives in [`story/story-map.json`](story/story-map.json).
+The lesson's own screens keep the flexible shape based on mathematical demand rather than a fixed
+quota — `Cold open → Launch → Explore ×2–7 → Connect → Board ×1–3 → Mastery check →
+Transfer/Handoff` — and they form stages 3, 6 and 7 of the sequence. Every screen must earn its
+place through a distinct question, representation, student action, evidence set, misconception,
+decision or accessibility scaffold. The individual recommendation for all 114 lessons lives in
+[`story/story-map.json`](story/story-map.json).
 
 
 ## Board mode, the XP economy and the tracking sheet
@@ -238,16 +296,20 @@ The decks run **on the projector, one class at a time**. Nothing is earned by cl
 |---|---|---|
 | Lock an estimate | 5 | whole class, once per lesson |
 | The class commits on the card sort | 5 | whole class, once per lesson |
+| **Sprint item, right first try** | **10** | stage 4 — feedback in seconds |
 | Standard question, right first time | 15 | teacher taps the students |
 | **Took the harder question** | **15** | **paid for trying, right or wrong** |
 | Harder question, right | +25 | teacher taps the students |
+| **Defended the production** | **15** | stage 5 — the critic accepted it |
 | Method named into the Sijill | 30 | teacher taps one student |
 | Exhibition contribution | 50 | teacher issued, once per topic |
+| Gate lanes (forward / reteach, stage 6) | **0** | routing is a judgement that sends students on — not a reward |
 | Clicking chips, tabs, reveals | **0** | — |
 
-Ceiling is about 65 XP per lesson, 95 with a Sijill entry. Marks and privileges are set in
+Ceiling is about 90 XP per lesson, 120 with a Sijill entry. Marks and privileges are set in
 `roster.json` (`markTiers`, `markCap`, `markFloor`, `privileges`) so the rate can be changed in one
-place and re-stamped into all 114 decks.
+place and re-stamped into all 114 decks. The `markTiers` themselves were not changed by the
+seven-stages rebuild — the pace of marks simply rises with the higher XP ceiling.
 
 **XP is a running score, never spent.** Privileges unlock at thresholds; marks are computed per
 unit. `markFloor` stops XP from rescuing a failing grade.
@@ -257,6 +319,18 @@ Bronze / silver / gold on four tracks — estimates locked, hard lanes taken, Si
 correct-first-time answers. They no longer all unlock in the first ninety seconds.
 
 ### Running a lesson
+
+**Before class** — stage 1, *Preparation*: send the compressed briefing (screen 1 of every deck:
+the headline objects + the three home questions). First exposure happens at home, at the student's
+own pace.
+
+**In class** — the seven stages, in order; every screen's stage chip tells the room where it is:
+*Intelligent Diagnose* (5–8 min — the gap map, not a grade) → *Knowledge Building* (15–20 min — the
+lesson's own screens, ending with the board) → *Practice* (10–15 min — guided, then independent,
+feedback in seconds) → *Production / B* (10–15 min — the genuinely new situation and the critic) →
+*Mastery Gate* (5–8 min — one task that routes each student) → *Smart Production* (5–8 min — the
+evidence wall).
+
 1. Open the deck. **Every lesson asks which class is in the room.** Two ways in:
    * **My classes** — the sections stamped in from `roster.json` (4A / 4B) plus any class you
      have pasted before on this computer.
@@ -341,7 +415,9 @@ teacher lands it. Wrong answers cost nothing: the Muddler simply waits (no publi
 If HP is above zero on the victory screen, the boss "limps off" and the class goes back for the
 strikes it dodged — it cannot heal. The victory screen pays the reasoning through the dojo
 (three award rows). Bosses are registered in `curriculum.json` under `bosses` and rebuilt by
-`rebuild-all.sh` like any lesson; they pass the same 19 guardrail checks.
+`rebuild-all.sh` like any lesson; they pass the same 19 guardrail checks. Bosses run the classic
+10-screen format **without** the stage screens — a unit review is not a stage lesson, so they have
+no stage chips and no `window.DAF_STAGE` stamp.
 
 ### Guardrail 14 — the math is the mechanic
 Before any new screen, game, or boss phase ships, it must pass this audit:
@@ -375,12 +451,16 @@ engine/              shared across every lesson — edit once, rebuild all
   omml.js              OMML → MathML renderer
   draw.js              canvas toolkit: marker, board, number lines, area models,
                        fractions, decimals, measurement, geometry and volume
-  primitives.jsx       PHASES, OMML helpers, MathEl, Sketch, XP and badges
-  routines.jsx         shared routines for flexible-length lesson sequences
+  primitives.jsx       STAGES, PHASES, OMML helpers, MathEl, Sketch, XP and badges
+  routines.jsx         shared routines for flexible-length lesson sequences, plus the
+                       four engine stage screens (briefing, gap map, sprint, critic, gate lanes, wall)
   folio-state.js       durable class folio state (localStorage, class-level only, export/reset)
-  app.jsx              generic shell, driven entirely by the LESSON object
-lessons/             one JSX source file per lesson, plus topic bosses
+  app.jsx              generic shell + the stage sequencer, driven by LESSON + window.DAF_STAGE
+lessons/             one JSX source file per lesson, plus topic bosses (untouched by the stages)
 html/                generated deliverables — one self-contained HTML file per lesson
+stage/               per-lesson data for the seven-stage structure (generated, committed)
+  stage-plan.json      all 114 plans: stage screens, home questions, gap-map claims,
+                       sprint items, the critic, the gate, the wall
 story/               approved/planned narrative data, separate from core curriculum data
   story-map.json       17 connected unit arcs and all 114 lesson story beats
   stem-sources.json    reviewed STEM windows (schema v2: re-verification dates, image provenance)
@@ -389,9 +469,9 @@ docs/
   plans/               implementation and storytelling plans
   audits/              curriculum and gamification reviews
   reference/           lesson-authoring specification
-scripts/             index generation, verification and browser sweeps
+scripts/             index generation, stage-plan generation, verification and browser sweeps
 tests/               OMML unit tests
-curriculum.json      17 topics, 114 lessons, standards and IXL codes
+curriculum.json      17 topics, 114 lessons, the seven-stage definitions, standards and IXL codes
 roster.json          sections, marks, privileges and behaviour reasons
 index.html           generated topic hub
 build.sh             builds one lesson
@@ -406,6 +486,9 @@ npm install                                            # test-time only
 npm test                                               # OMML renderer unit tests
 npm run build:index                                    # regenerate the topic hub
 npm run build:story-plan                               # regenerate the storytelling plan
+npm run build:stages                                   # regenerate stage/stage-plan.json (all 114)
+npm run check:stages                                   # validate the stage plan independently
+node scripts/smoke-stage.js 1-1 1-2                    # jsdom render + full stage-walk pass
 npm run check:research -- docs/research/pr-01-foundation-and-lesson-1-1.md
 npm run check:story                                    # validate 114 screen plans, source registry, embedded payloads
 npm run verify                                         # guardrail checks across built lessons
@@ -422,6 +505,13 @@ Copy a file in `lessons/`, replace the `LESSON` object (code, title, unit, `math
 the lesson-sized `metas` sequence, and matching `Visual` cases), add any lesson-specific canvas
 drawings, then `./build.sh <code> "<Title>"`. The engine, routines and guardrails read the resulting
 screen count dynamically.
+
+The stage pipeline picks the new lesson up on its own: `rebuild-all.sh` regenerates
+[`stage/stage-plan.json`](stage/stage-plan.json) from the lesson's existing content — the home
+questions come from its Notice-and-Wonder / WODB prompts, the gap-map claims from its build-screen
+goals, the sprint from its formative check, the critic from its story-map beat, the gate from its
+IXL codes and its board screen, and the wall from its unit artifact. Then run
+`npm run check:stages` and `node scripts/smoke-stage.js <code>`.
 
 Two lessons that differ only in the size of the numbers (2-3 / 2-4, 2-5 / 2-6) were generated by
 transforming the sibling file, then hand-edited — the pedagogy stays identical and only the numbers,

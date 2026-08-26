@@ -1,6 +1,6 @@
 # Dar Al Fikr · Interactive Math Slides Skill — English edition (`daf_math_slides_en.md`)
 
-> **What this is.** The master specification for generating **single-file, highly interactive, gamified HTML math lessons** in the Dar Al Fikr Schools visual identity, **written and rendered entirely in English (LTR)**, structured on the **Amplify Desmos Math** lesson architecture (Warm-Up → Launch → Monitor → Connect → Synthesis → Show What You Know).
+> **What this is.** The master specification for generating **single-file, highly interactive, gamified HTML math lessons** in the Dar Al Fikr Schools visual identity, **written and rendered entirely in English (LTR)**, structured on **The Seven Stages** (Preparation at home → Intelligent Diagnose → Knowledge Building → Practice → Production / B → Mastery Gate → Smart Production), with the Amplify Desmos Math routines as the component library inside those stages.
 >
 > It merges three parents:
 > - **`html_slides_replicator`** — the single-file React + GSAP + Three.js engine, glassmorphism system, error boundaries, overview mini-map, and the Babel guardrails.
@@ -85,14 +85,23 @@ The Dar Al Fikr mark is a **teal eight-point Islamic star** beside a bilingual w
 
 Every screen sets `--c` / `--c-2` from its phase. **Nothing inside a screen may hard-code a colour** — it reads `var(--c)`.
 
+The four **stage screens** (Preparation, Intelligent Diagnose, Practice, Production) have their own
+phases; the working screens inside Knowledge Building and Smart Production keep the lesson phases
+below. "Show What You Know" is now the **Mastery Gate** — same phase colour, new name, and it now
+routes students.
+
 | Lesson phase | Meaning | `--c` → `--c-2` |
 |---|---|---|
-| **Warm-Up** | Invitation. Everyone can contribute. | `#6042A6` → `#8B6FD4` |
+| **Preparation** | Stage 1 — the compressed briefing, sent before class. | `#4A6FA5` → `#7292BE` |
+| **Intelligent Diagnose** | Stage 2 — the gap map, not a grade. | `#6042A6` → `#8B6FD4` |
+| **Warm-Up** | Invitation. Everyone can contribute. (Stage 3 cold open.) | `#6042A6` → `#8B6FD4` |
 | **Launch** | Create the need. Build curiosity. | `#FA7E19` → `#FFA94D` |
 | **Monitor / Explore** | Students work; thinking becomes visible. | `#2D70B3` → `#4A9BE0` |
 | **Connect** | Strategies compared side by side. | `#12857C` → `#1AA79B` |
-| **Synthesis** | The math gets named and boxed. | `#388C46` → `#5CB863` |
-| **Show What You Know** | Daily formative check. | `#C74440` → `#E0665F` |
+| **Synthesis** | The math gets named and boxed — the modelled example. | `#388C46` → `#5CB863` |
+| **Practice** | Stage 4 — guided, then independent; feedback in seconds. | `#B3488F` → `#D87BB4` |
+| **Production** | Stage 5 — the new situation and the critic. | `#C9A227` → `#E3C05A` |
+| **Mastery Gate** | Stage 6 — one task that decides the next path. | `#C74440` → `#E0665F` |
 
 ### 1.3 Surfaces
 
@@ -177,22 +186,123 @@ Dar Al Fikr is a bilingual school, so English decks still carry **local context*
 
 **Student names in worked strategies are local**: Layla, Yousef, Salma, Omar, Reem, Faisal. Naming the strategy after the student who used it is the Amplify Desmos *Connect* move.
 
-## 3) Amplify-Desmos lesson architecture
+## 3) The Seven Stages
 
-Every deck is a **lesson**, not a slideshow. Screens are grouped into the ADM structure.
+> **Content at home. Thinking in class. Evidence on the wall.**
+>
+> *A learning unit is not finished when the content has been covered. It is finished when the
+> student can show what they made from it.*
 
-| # | Phase | What happens on screen | Screens |
+Every deck is a **lesson run as seven stages**, not a slideshow of screens. The lesson file owns
+the mathematical content (its `metas`, `Visual` cases, OMML and canvas drawings) — the stage
+rebuild does not touch it. The **engine owns the stage structure**: it interleaves four stage
+screens around each lesson's existing screens, and stamps the per-lesson stage data into the deck.
+
+| # | Stage | Timing | What it has to achieve |
 |---|---|---|---|
-| 1 | **Warm-Up** | An invitational routine — low floor, every student has something to say. No new vocabulary yet. | 1–2 |
-| 2 | **Launch** | A short whole-class moment that creates the *need* for the math. Curiosity, a puzzle, something broken. | 1 |
-| 3 | **Monitor / Explore** | Students work. The screen supports *their* strategies — sliders, card sorts, drag models. The answer is not shown. | 3–5 |
-| 4 | **Connect** | Two or three student strategies side by side. "How are these the same? How are they different?" | 1–2 |
-| 5 | **Synthesis** | The math is named and boxed on the **board**. One sentence worth memorising. | 1–2 |
-| 6 | **Show What You Know** | One short formative item. Fast to answer, high information for the teacher. | 1 |
+| 1 | **Preparation** | Before class | Compress the material and send it. First exposure happens at home, at the student's own pace. |
+| 2 | **Intelligent Diagnose** | 5–8 min | Build a gap map, not a grade. What do they actually know? |
+| 3 | **Knowledge Building** | 15–20 min | Close the flagged gaps, then model one richer example, thinking out loud. |
+| 4 | **Practice** | 10–15 min | Guided, then independent — with feedback that arrives in seconds, not days. |
+| 5 | **Production / B** *(Proof-Mastery Gate)* | 10–15 min | A genuinely new situation. **AI enters here — as a critic, never as an author.** |
+| 6 | **Mastery Gate** | 5–8 min | One individual task that decides the next path for each student. |
+| 7 | **Smart Production** | 5–8 min | A final product the student is willing to put their name on. |
 
-### 3.1 The invitational routines (pick one for the Warm-Up)
+**Three movements.** **Content at home** (stage 1) → **Thinking in class** (stages 2–5:
+Diagnose → Build → Practice → Produce) → **Evidence on the wall** (stages 6–7: Mastery Gate +
+Smart Production).
 
-Each is a ready-made interactive component — see §7 for the component contracts.
+**The core principle:** *A learning unit is not measured by what was taught. It is measured by
+what the student can show they made from it.*
+
+### 3.1 Stage by stage
+
+**1 · Preparation — before class.** The deck opens on the compressed briefing: the lesson's
+headline objects (its first two OMML strings) and three home questions drawn from the lesson's own
+Notice-and-Wonder or WODB prompts. The teacher sends it before class; first exposure happens at
+home, at the student's own pace. The briefing is a *compression of what the lesson already says* —
+not an extra lecture.
+
+**2 · Intelligent Diagnose — 5–8 min.** Four checkpoint claims — generated from the lesson's
+build-screen goals, action goals phrased as "I can …" — go on the **gap map**. The class votes
+*We can* / *Not yet* on each, the canvas bars the votes, and the verdict names the gaps to close.
+The deliverable is a **gap map, not a grade**: *an instrument for catching gaps, not for scoring
+students.*
+
+**3 · Knowledge Building — 15–20 min.** The lesson's own screens, in their original order — cold
+open, launch, the exploration screens, the connects, and the **board**, where the teacher closes
+the flagged gaps and models **one richer example, thinking out loud**. No new engine screen: the
+engine draws the stage boundary around the lesson's arc.
+
+**4 · Practice — 10–15 min.** The lesson's own formative check, run as a sprint with feedback in
+seconds, not days:
+
+- a **guided** item — the model stays open beside the question (headline objects + the hint);
+- an **independent** item — the model opens only after a miss;
+- the **harder lane**, where the lesson supplies one — paid for trying, right or wrong.
+
+Right on the first try earns the sprint award through the dojo.
+
+**5 · Production / B — the Proof-Mastery Gate, 10–15 min.** A genuinely new situation — the
+lesson's story move and student mission from the story map — defended against a scripted critic
+(*Hafizah · the proof critic*, tagged **critic — never author**). The order is fixed:
+
+1. *Which method does your work rest on?* — three options; the right one is the lesson's own rule
+   (its RuleScreen hand — or, where the lesson has none, the rule the board built publicly).
+2. *The trap* — the critic names the lesson's anticipated misconception inside the new work; the
+   class shows how its production dodges it.
+3. *The reasoning* — the lesson's connect question, answered with a reason tied to structure, not
+   to one answer.
+4. *The transfer* — the mission's first move. The critic stops there — the work is the students'.
+
+A wrong pick never reveals the correction: *the critic does not correct. It makes the class check
+the evidence — defend it again.* **AI enters here — as a critic, never as an author.** The critic
+raises and questions; it does not write the production, complete the work, or name which card is
+right.
+
+**6 · Mastery Gate — 5–8 min.** The lesson's formative check (Show What You Know), now **routing**:
+right → **forward — mastered**; a miss → **reteach — revisit the model**, deep-linked to the
+lesson's board screen. The teacher issues the lesson's IXL codes as the individual prescription.
+**The gate lanes pay no XP** — routing is a judgement that sends students on, not a reward.
+
+**7 · Smart Production — 5–8 min.** The **evidence wall**: the unit's artifact (the story map's
+unit artifact, or the lesson's handoff artifact) as the card, and a slot grid where the class
+posts what it made — a final product the student is willing to put their name on. Footnote:
+*evidence on the wall — not what was taught, but what the class made from it.*
+
+### 3.2 How the stages map onto the deck
+
+- Four engine screens — the briefing, the gap map, the practice sprint and the critic board — are
+  interleaved around the lesson's own screens. The engine finds the lesson's **last** formative
+  check (Show What You Know): everything before it is Knowledge Building, the practice sprint and
+  the critic land immediately before it, the check itself is the Mastery Gate (the gate lanes ride
+  on it), and the lesson's closing screens after it form Smart Production (the evidence wall
+  mounts on the final screen).
+- The per-lesson data (stage screen copy, home questions, claims, sprint items, the critic, the
+  gate, the wall) is generated **deterministically** into `stage/stage-plan.json` by
+  `scripts/make-stage-plan.js` — same inputs, same bytes — and stamped into each built deck as
+  `window.DAF_STAGE` at build time. Nothing stage-specific is authored by hand.
+- Every screen's header carries its **stage chip**: *Stage N · name · timing*.
+- Decks without a stage plan (the topic bosses) run the classic lesson format: no stage chips, no
+  stamp.
+
+**The old architecture → the stages.** The Amplify Desmos routines survive as the *component
+library inside the stages* — not as the lesson structure:
+
+| Amplify-Desmos phase | Where it lives now |
+|---|---|
+| Warm-Up (invitational routines) | Stage 3 cold open — and the home questions of stage 1 |
+| Launch | Stage 3 — the need is still created in class |
+| Monitor / Explore | Stages 3 and 4 — exploration in the build; the practice sprint |
+| Connect | Stage 3 — strategies compared side by side |
+| Synthesis / the board | Stage 3 — the modelled example, thinking out loud |
+| Show What You Know | Stage 6 — the Mastery Gate that routes |
+| Handoff / close | Stage 7 — the evidence wall |
+
+### 3.3 The invitational routines (the component library)
+
+Each is a ready-made interactive component — see §7 for the component contracts. In the staged
+decks they run inside Knowledge Building (and their prompts feed the stage-1 home questions).
 
 | Routine | Component | The move |
 |---|---|---|
@@ -205,7 +315,7 @@ Each is a ready-made interactive component — see §7 for the component contrac
 | **Compare and Connect** | `<CompareConnect>` | Two strategies side by side, with a "same / different" collector. |
 | **Frayer Model** | `<Frayer>` | Definition · characteristics · examples · non-examples. |
 
-### 3.2 Launch–Monitor–Connect facilitator rail
+### 3.4 Launch–Monitor–Connect facilitator rail
 
 Every Monitor screen carries a collapsible teacher rail (toggle key `T`) with:
 - **Launch line** — the exact sentence to say out loud.
@@ -351,9 +461,9 @@ Light, honourable, never humiliating. It rewards **thinking**, not speed alone.
 
 | Element | Rule |
 |---|---|
-| **XP** | +10 contribute to a Warm-Up · +25 finish an exploration · +40 explain a strategy on Connect · +50 Show What You Know |
+| **XP** | Published rate, visible to the students: estimate locked 5 · class commit 5 · sprint item right first try 10 · standard question right first time 15 · harder lane 15 (paid for trying) + 25 if right · production defended 15 · method named into the Sijill 30 (teacher-tapped) · exhibition 50 (teacher-issued). **Nothing is earned by clicking; the Mastery Gate lanes pay nothing.** Ceiling ≈ 90 XP per lesson, 120 with a Sijill entry. |
 | **Streak** | Consecutive screens with a contribution. Breaks silently — **never** a red "you lost it" |
-| **Badges** | Gold eight-point star frames. `Estimator` · `Model Builder` · `Strategy Spotter` · `Precise Notation` · `Helped a Peer` |
+| **Badges** | Gold eight-point star frames on a year-long ladder. `Estimator` · `Model Builder` · `Strategy Spotter` · `Precise Notation` |
 | **Team mode** | 2–6 named teams; the teacher awards XP with number keys `1`–`6` |
 | **Progress ring** | Teal ring in the header fills across the lesson phases |
 
@@ -504,13 +614,18 @@ Always guard: `if (window.gsap && !matchMedia("(prefers-reduced-motion: reduce)"
 
 | File | What |
 |---|---|
-| `lesson-<grade>-<topic>.html` | **The deliverable.** One self-contained interactive lesson. |
+| `lesson-<grade>-<topic>.html` | **The deliverable.** One self-contained interactive lesson — stage screens included. |
 | `reference/lesson-g7-proportional-relationships.html` | A complete, verified worked example — Grade 7, finding the constant of proportionality, 11 screens, English only. **Start here: copy it and replace the content model.** |
 | `reference/omml.js` | The OMML → MathML renderer (~330 lines, no dependencies). Inline it into the deck; keep the standalone copy for tests. |
 | `reference/_b_draw.js` | The canvas toolkit (`DAFDraw`). Inline it too. |
 | `reference/omml.test.js` | 21 OMML conversion tests. `node omml.test.js` |
 | `reference/verify.js` | 18 automated guardrail checks against a built deck. `node verify.js` |
-| `reference/build.sh` | Concatenates the `_a`/`_b`/`_c*` source parts into the single-file deck. |
+| `reference/build.sh` | Concatenates the `_a`/`_b`/`_c*` source parts into the single-file deck, and stamps the lesson's `window.DAF_STAGE` plan. |
+| `stage/stage-plan.json` | The per-lesson seven-stage data for every lesson — generated, committed, stamped into the decks. |
+| `scripts/make-stage-plan.js` | The stage-plan generator. Reads each lesson's own content (prompts, goals, formative check, board, IXL codes) plus the story map; deterministic (FNV-seeded shuffles). |
+| `scripts/lib-parse.js` | The restricted JS-literal parser the generator uses to read lesson sources without executing them. |
+| `scripts/check-stage-plan.js` | Independent validator for the stage plan (`npm run check:stages`) — 7 stages per lesson, every critic/challenge option a non-empty string. |
+| `scripts/smoke-stage.js` | jsdom render + full stage-walk pass: every screen paints, every stage is played (gap map → sprint → critic → gate lane → wall post). |
 
 Working on the parts (`_a_head.html`, `_b_draw.js`, `_c1_content.jsx`, `_c2_primitives.jsx`, `_c3_visuals.jsx`, `_c4_app.jsx`) and running `./build.sh` keeps a 2,500-line deck editable. The shipped artefact is still **one file**.
 
@@ -524,7 +639,8 @@ Working on the parts (`_a_head.html`, `_b_draw.js`, `_c1_content.jsx`, `_c2_prim
 4. Build the **interaction components** for the routines you chose.
 5. Build the **canvas drawings** — one per concept, **at least one on the board**.
 6. Add the **gamification layer** and the **teacher rail**.
-7. **Verify** (§12), then ship one file.
+7. **Generate the stage plan** — `npm run build:stages` (or `rebuild-all.sh`, which regenerates it first). The plan is derived from the lesson's own content — the home questions from its prompts, the claims from its build-screen goals, the sprint from its formative check, the critic from its story-map beat, the gate from its IXL codes and board, the wall from its unit artifact. Nothing stage-specific is authored by hand.
+8. **Verify** (§12), then ship one file.
 
 ---
 
@@ -550,6 +666,13 @@ node reference/verify.js      # 18 guardrail checks against the built deck
 - [ ] No `{ ar:` objects, no `lang` state, no `L` key handler survive from the bilingual edition.
 - [ ] Every button, card and slider clicks without a null-target GSAP error.
 - [ ] At least one board screen exists.
+- [ ] **The seven stages hold**: `npm run check:stages` passes — every lesson plan has all seven
+      stages, and every critic/challenge option is a non-empty string.
+- [ ] **The deck walks the stages**: `node scripts/smoke-stage.js <code>` passes — every screen
+      paints in jsdom and the full walk plays (gap-map verdict → sprint complete → production
+      accepted → gate lane chosen → evidence wall posted).
+- [ ] Every screen's stage chip reads *Stage N · name · timing*; decks without a stage plan
+      (bosses) carry none.
 - [ ] XP/streak/badges award and persist across a reload.
 - [ ] Opening the file with the network off shows the offline notice — and the **math still renders** (MathML is native).
 - [ ] Projector check: legible from the back of the room at 1280×720.
@@ -557,4 +680,4 @@ node reference/verify.js      # 18 guardrail checks against the built deck
 ---
 
 *Dar Al Fikr Schools — The House Of Faith, Righteousness & Wisdom.*
-*English edition. Lesson architecture after Amplify Desmos Math. Engine after `html_slides_replicator`. Drawing style after Syntax Academy.*
+*English edition. Lesson architecture: The Seven Stages, built on the Amplify Desmos Math routines. Engine after `html_slides_replicator`. Drawing style after Syntax Academy.*

@@ -96,8 +96,9 @@ function Overview({ current, onSelect, onClose }) {
         display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(190px, 1fr))",
         gap: "11px", flex: 1, paddingRight: "8px"
       }}>
-        {LESSON.metas.map((m, idx) => {
+        {SEQ.metas.map((m, idx) => {
           const ph = PHASES[m.phase];
+          const stg = SEQ.stages[idx];
           const on = idx === current;
           return (
             <div key={idx} onClick={() => { onSelect(idx); onClose(); }}
@@ -108,7 +109,7 @@ function Overview({ current, onSelect, onClose }) {
               }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px", alignItems: "center" }}>
                 <span className="mono" style={{ fontSize: "10px", color: on ? "#fff" : "var(--daf-gold)" }}>
-                  {String(idx + 1).padStart(2, "0")}
+                  {String(idx + 1).padStart(2, "0")}{stg ? " · S" + stg : ""}
                 </span>
                 <span style={{
                   fontSize: "9px", fontWeight: 900, letterSpacing: ".08em",
@@ -260,7 +261,7 @@ function MathInventory({ onClose }) {
   );
 }
 
-function Frame({ meta, children }) {
+function Frame({ meta, stage, children }) {
   const vref = useRef(null);
   useEffect(() => {
     if (!window.gsap || !vref.current) return;
@@ -276,10 +277,16 @@ function Frame({ meta, children }) {
   }, [meta.title]);
 
   const ph = PHASES[meta.phase];
+  const st = stage && STAGES[stage];
   return (
     <div className="screen">
       <section className="copy">
         <Star8 className="copy-star" />
+        {st && (
+          <div className="stage-chip" title={st.aim}>
+            <span>Stage {stage}</span><em>{st.name}</em><span>{st.timing}</span>
+          </div>
+        )}
         <div className="phase-tag"><Star8 style={{ width: "12px", height: "12px" }} /> {ph.label}</div>
         <h1 dangerouslySetInnerHTML={{ __html: meta.title }} />
         <p className="lead">{meta.lead}</p>
@@ -290,6 +297,63 @@ function Frame({ meta, children }) {
       </section>
     </div>
   );
+}
+
+/* ===========================================================================
+   THE SEVEN STAGES · sequence assembly
+   Content at home. Thinking in class. Evidence on the wall.
+
+   The lesson file keeps its own metas + Visual switch untouched — its
+   mathematical content is stage 3 (knowledge building) from the cold open
+   through the board, stage 6 (the mastery gate) at its formative check, and
+   stage 7 (smart production) at its closing. The engine interleaves the four
+   stage screens around that content:
+
+     0  stage 1  Preparation         (engine — the briefing sent before class)
+     1  stage 2  Intelligent Diagnose (engine — the gap map, not a grade)
+     2… stage 3  Knowledge Building   (lesson screens 0 … swyk-1)
+     …  stage 4  Practice            (engine — guided, then independent)
+     …  stage 5  Production / B       (engine — the critic, never an author)
+     …  stage 6  Mastery Gate         (the lesson's formative check + lanes)
+     …  stage 7  Smart Production     (the lesson's closing + the wall)
+
+   Review decks (bosses) carry no stage plan and keep their original
+   sequence — stageSequence() degrades to the identity mapping for them.
+   =========================================================================== */
+function stageSequence() {
+  const metas = LESSON.metas;
+  const plan = (window.DAF_STAGE && window.DAF_STAGE.lessons &&
+    window.DAF_STAGE.lessons[LESSON.code]) || null;
+  let swykIdx = -1;
+  metas.forEach((m, i) => { if (m.phase === "swyk") swykIdx = i; });
+  const out = { metas: metas.slice(), stages: metas.map(() => 0),
+                visuals: metas.map((m, i) => i), plan: plan, offset: 0 };
+  if (!plan || !plan.screens || swykIdx < 1 || swykIdx >= metas.length - 1) return out;
+  const S = plan.screens;
+  /* the LAST swyk case is the stage-6 gate; earlier formative checks in the
+     same lesson keep their plain check UI (GateLanes reads this) */
+  window.__DAF_FINAL_GATE_CASE = swykIdx;
+  out.offset = 2;
+  out.metas = [S.prep, S.diagnose];
+  out.stages = [1, 2];
+  out.visuals = ["stage:prep", "stage:diagnose"];
+  for (let i = 0; i < swykIdx; i++) { out.metas.push(metas[i]); out.stages.push(3); out.visuals.push(i); }
+  out.metas.push(S.practice, S.critic, metas[swykIdx]);
+  out.stages.push(4, 5, 6);
+  out.visuals.push("stage:practice", "stage:critic", swykIdx);
+  for (let i = swykIdx + 1; i < metas.length; i++) { out.metas.push(metas[i]); out.stages.push(7); out.visuals.push(i); }
+  return out;
+}
+const SEQ = stageSequence();
+
+function StageScreens({ k, award, game }) {
+  switch (k) {
+    case "prep": return <StagePrep />;
+    case "diagnose": return <GapMap />;
+    case "practice": return <PracticeSprint award={award} />;
+    case "critic": return <CriticBoard award={award} />;
+    default: return null;
+  }
 }
 
 /* ===========================================================================
@@ -507,9 +571,12 @@ function Dojo({ game, dispatch, job, onClose }) {
   const last = game.log.length ? game.log[game.log.length - 1] : null;
 
   const fire = (names, amount, reason, metric) => {
-    if (!names.length || !amount) return;
+    /* amount 0 with a metric is a RECORDED lane (the mastery gate): it logs
+       who was tapped without paying points — a judgement, not a reward. */
+    if (!names.length || (amount === 0 && !metric)) return;
     dispatch({ type: "grant", names: names, amount: amount, metric: metric || null, reason: reason });
     (amount >= 0 ? sndPlus : sndMinus)();
+    if (amount === 0) return;
     setBursts((b) => {
       const nb = Object.assign({}, b);
       names.forEach((n) => { nb[n] = { k: ((b[n] && b[n].k) || 0) + 1, amt: amount }; });
@@ -600,7 +667,9 @@ function Dojo({ game, dispatch, job, onClose }) {
           <div className="dj-job">
             <Icon name="fa-bullseye" />
             <span>{job.text}</span>
-            <em>{job.amount > 0 ? "+" + job.amount : job.amount} each — tap students</em>
+            <em>{job.amount === 0 ? "record only — tap students"
+              : job.amount > 0 ? "+" + job.amount + " each — tap students"
+              : job.amount + " each — tap students"}</em>
           </div>
         ) : (
           <div className="dj-tools">
@@ -744,7 +813,7 @@ function App() {
   const url = (() => { try { return new URL(location.href); } catch (e) { return null; } })();
   const init = (() => {
     const s = parseInt((url && url.searchParams.get("slide")) || "0", 10);
-    return isNaN(s) ? 0 : Math.max(0, Math.min(LESSON.metas.length - 1, s));
+    return isNaN(s) ? 0 : Math.max(0, Math.min(SEQ.metas.length - 1, s));
   })();
 
   const [i, setI] = useState(init);
@@ -777,7 +846,10 @@ function App() {
   SIJILL.fn = sijill;
   SIJILL.named = game.sijillNames || {};
 
-  const meta = LESSON.metas[i];
+  const meta = SEQ.metas[i];
+  /* which lesson case the engine is currently rendering — GateLanes uses it
+     to know whether this check is the stage-6 gate or a mid-build check */
+  window.__DAF_ACTIVE_CASE = typeof SEQ.visuals[i] === "number" ? SEQ.visuals[i] : null;
   useEffect(() => {
     const ph = PHASES[meta.phase];
     document.documentElement.style.setProperty("--c", ph.c);
@@ -797,7 +869,7 @@ function App() {
 
   /* keyboard — plain LTR: right advances, left goes back */
   useEffect(() => {
-    const go = (d) => setI((x) => Math.max(0, Math.min(LESSON.metas.length - 1, x + d)));
+    const go = (d) => setI((x) => Math.max(0, Math.min(SEQ.metas.length - 1, x + d)));
     const fn = (e) => {
       const k = e.key;
       if (k === "Escape") { setOverview(false); setMathList(false); setRail(false); return; }
@@ -812,7 +884,7 @@ function App() {
       if (k === "ArrowRight" || k === " " || k === "PageDown" || k === "ArrowDown") { e.preventDefault(); go(1); }
       else if (k === "ArrowLeft" || k === "PageUp" || k === "ArrowUp") { e.preventDefault(); go(-1); }
       else if (k === "Home") setI(0);
-      else if (k === "End") setI(LESSON.metas.length - 1);
+      else if (k === "End") setI(SEQ.metas.length - 1);
       else if (k.toLowerCase() === "r") setReplay((r) => r + 1);
       else if (k.toLowerCase() === "o") setOverview(true);
       else if (k.toLowerCase() === "t") setRail((v) => !v);
@@ -825,7 +897,7 @@ function App() {
   useEffect(() => {
     const mh = (e) => {
       if (e && e.data && e.data.type === "set-slide" && typeof e.data.step === "number") {
-        setI(Math.max(0, Math.min(LESSON.metas.length - 1, e.data.step)));
+        setI(Math.max(0, Math.min(SEQ.metas.length - 1, e.data.step)));
       }
     };
     addEventListener("message", mh);
@@ -842,20 +914,24 @@ function App() {
         onOverview={() => setOverview(true)}
         onRail={() => setRail((v) => !v)}
         onMath={() => setMathList(true)} />
-      <div className="progress" style={{ width: ((i + 1) / LESSON.metas.length) * 100 + "%" }} />
+      <div className="progress" style={{ width: ((i + 1) / SEQ.metas.length) * 100 + "%" }} />
 
       {game.flash && !dojo && <div className="flash">{game.flash}</div>}
 
       <div className="stage-wrap" key={i + "-" + replay}>
-        <Frame meta={meta}>
-          <LESSON.Visual i={i} award={award} game={game} />
+        <Frame meta={meta} stage={SEQ.stages[i]}>
+          {typeof SEQ.visuals[i] === "string"
+            ? <StageScreens k={SEQ.visuals[i].slice(6)} award={award} game={game} />
+            : <LESSON.Visual i={SEQ.visuals[i]} award={award} game={game} />}
+          {SEQ.stages[i] === 7 && <EvidenceWall game={game} award={award} />}
         </Frame>
       </div>
 
       <div className="dots">
-        {LESSON.metas.map((m, n) => (
+        {SEQ.metas.map((m, n) => (
           <span key={n} onClick={() => setI(n)}
             className={"dot" + (n === i ? " active" : "")}
+            title={"Stage " + SEQ.stages[n] + " · " + PHASES[m.phase].label}
             style={n === i ? { background: PHASES[m.phase].c } : undefined} />
         ))}
       </div>
@@ -863,14 +939,14 @@ function App() {
       <div className="nav">
         <button title="Replay (R)" onClick={() => setReplay((r) => r + 1)}><Icon name="fa-rotate-right" /></button>
         <button disabled={i === 0} onClick={() => setI(i - 1)}><Icon name="fa-chevron-left" /></button>
-        <span className="counter">{String(i + 1).padStart(2, "0")} / {LESSON.metas.length}</span>
-        <button disabled={i === LESSON.metas.length - 1} onClick={() => setI(i + 1)}><Icon name="fa-chevron-right" /></button>
+        <span className="counter">{String(i + 1).padStart(2, "0")} / {SEQ.metas.length}</span>
+        <button disabled={i === SEQ.metas.length - 1} onClick={() => setI(i + 1)}><Icon name="fa-chevron-right" /></button>
       </div>
 
       <footer className="footer">
         <span>Dar Al Fikr Schools · {LESSON.code}</span>
         <span className="pull">{meta.pull}</span>
-        <span className="mono">{String(i + 1).padStart(2, "0")} / {LESSON.metas.length}</span>
+        <span className="mono">{String(i + 1).padStart(2, "0")} / {SEQ.metas.length}</span>
       </footer>
 
       {overview && <Overview current={i} onSelect={setI} onClose={() => setOverview(false)} />}

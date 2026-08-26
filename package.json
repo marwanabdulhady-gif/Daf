@@ -14,6 +14,8 @@
     "sweep:topic": "node scripts/sweep-topic.js",
     "build:index": "node scripts/make-index.js",
     "build:story-plan": "node scripts/make-story-plan.js",
+    "build:stages": "node scripts/make-stage-plan.js",
+    "check:stages": "node scripts/check-stage-plan.js",
     "rebuild": "./rebuild-all.sh"
   },
   "keywords": [

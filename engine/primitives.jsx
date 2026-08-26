@@ -5,14 +5,49 @@ const D = window.DAFDraw;
    PRIMITIVES  ·  shared by every Grade 4 lesson in this topic
    =========================================================================== */
 
-/* Lesson phases — colour tells the room where it is in the lesson */
+/* ===========================================================================
+   THE SEVEN STAGES — the structural spine of every lesson
+   Content at home. Thinking in class. Evidence on the wall.
+
+   A learning unit is not finished when the content has been covered. It is
+   finished when the student can show what they made from it.
+
+   The lesson file owns its mathematical content (metas + Visual cases); the
+   engine wraps that content in the seven-stage sequence (see app.jsx,
+   stageSequence()). Stages 1, 2, 4 and 5 are engine screens fed by the
+   per-lesson stage plan stamped as window.DAF_STAGE at build time.
+   =========================================================================== */
+const STAGES = {
+  1: { key: "prep",     name: "Preparation",           timing: "Before class",
+       aim: "Compress the material and send it. First exposure happens at home, at the student's own pace." },
+  2: { key: "diagnose", name: "Intelligent Diagnose",  timing: "5\u20138 min",
+       aim: "Build a gap map, not a grade. What do they actually know?" },
+  3: { key: "build",    name: "Knowledge Building",    timing: "15\u201320 min",
+       aim: "Close the flagged gaps, then model one richer example, thinking out loud." },
+  4: { key: "practice", name: "Practice",              timing: "10\u201315 min",
+       aim: "Guided, then independent — with feedback that arrives in seconds, not days." },
+  5: { key: "produce",  name: "Production / B",        timing: "10\u201315 min",
+       aim: "A genuinely new situation. AI enters here — as a critic, never as an author." },
+  6: { key: "gate",     name: "Mastery Gate",          timing: "5\u20138 min",
+       aim: "One individual task that decides the next path for each student." },
+  7: { key: "wall",     name: "Smart Production",      timing: "5\u20138 min",
+       aim: "A final product the student is willing to put their name on." }
+};
+
+/* Lesson phases — colour tells the room where it is in the lesson. The six
+   stage-3/6/7 phases below are the working mechanics inside the stages;
+   prep, diagnose, practice and produce are the engine stage screens. */
 const PHASES = {
+  prep:      { c: "#4A6FA5", c2: "#7292BE", label: "Preparation" },
+  diagnose:  { c: "#6042A6", c2: "#8B6FD4", label: "Intelligent Diagnose" },
   warmup:  { c: "#6042A6", c2: "#8B6FD4", label: "Warm-Up" },
   launch:  { c: "#FA7E19", c2: "#FFA94D", label: "Launch" },
   monitor: { c: "#2D70B3", c2: "#4A9BE0", label: "Monitor" },
   connect: { c: "#12857C", c2: "#1AA79B", label: "Connect" },
   synth:   { c: "#388C46", c2: "#5CB863", label: "Synthesis" },
-  swyk:    { c: "#C74440", c2: "#E0665F", label: "Show what you know" }
+  practice:{ c: "#B3488F", c2: "#D87BB4", label: "Practice" },
+  produce: { c: "#C9A227", c2: "#E3C05A", label: "Production" },
+  swyk:    { c: "#C74440", c2: "#E0665F", label: "Mastery Gate" }
 };
 
 /* ---- OMML authoring helpers (every symbol in every lesson goes through these) */
@@ -66,7 +101,8 @@ function MathEl({ omml, display, size, alt, style }) {
     const host = ref.current;
     const id = requestAnimationFrame(() => {
       const m = host.querySelector("math");
-      if (!m) return;
+      /* some DOM implementations (jsdom) give MathML nodes no style object */
+      if (!m || !m.style) return;
       m.style.fontSize = "";
       const avail = host.getBoundingClientRect().width;
       if (!avail) return;
@@ -150,13 +186,18 @@ function XPBar({ xp, max }) {
 const XP = {
   estimate:     5,    /* lock an estimate .............. once per lesson  */
   commit:       5,    /* the class commits on the sort . once per lesson  */
+  sprint:       10,   /* sprint item, right first try .. stage 4          */
   swykStandard: 15,   /* standard question, right ...... first try only   */
   hardAttempt:  15,   /* took the harder question ...... paid for trying  */
   hardCorrect:  25,   /* harder question, right ........ on top of the 15 */
+  production:   15,   /* defended the production ....... stage 5          */
   sijill:       30,   /* method named into the Sijill .. teacher issued   */
   exhibition:   50    /* exhibition contribution ....... teacher issued   */
 };
-/* ceiling without a Sijill entry: 5 + 5 + 15 + 15 + 25 = 65 XP per lesson */
+/* ceiling without a Sijill entry: 5 + 5 + 10 + 15 + 15 + 25 + 15 = 90 XP per
+   lesson (estimate, commit, sprint, gate standard, harder lane both legs,
+   defended production). 120 with a Sijill entry. The Mastery Gate lanes
+   themselves pay nothing — routing is a judgement, not a reward. */
 
 const BADGES = [
   { id: "estimator", icon: "fa-bullseye",             label: "Estimator",

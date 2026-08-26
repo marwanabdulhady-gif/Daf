@@ -599,7 +599,169 @@
         font: 700 10px "JetBrains Mono", monospace; color: var(--daf-deep); background: #fff;
       }
 
-      
+      /* =========================================================================
+         THE SEVEN STAGES · engine screens
+         Content at home. Thinking in class. Evidence on the wall.
+         ========================================================================= */
+      .stage-chip {
+        display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px;
+        font: 900 10px "JetBrains Mono", monospace; letter-spacing: .06em;
+        color: var(--daf-deep);
+      }
+      .stage-chip span:first-child {
+        background: var(--daf-grad); color: #fff; padding: 2px 8px; border-radius: 999px;
+      }
+      .stage-chip em { font-style: normal; font-weight: 800; color: var(--c); }
+      .stage-chip span:last-child { color: var(--daf-ink-2); }
+
+      .prep-sent { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+      .prep-stamp {
+        display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px;
+        border: 2px solid var(--daf-gold); border-radius: 999px; color: var(--daf-deep);
+        font-weight: 900; font-size: 12px; background: #fffdf3; transform: rotate(-1deg);
+      }
+      .prep-sent > span:last-child { font-size: 11.5px; color: var(--daf-ink-2); }
+      .prep-label {
+        font: 900 10.5px "JetBrains Mono", monospace; letter-spacing: .1em; text-transform: uppercase;
+        color: var(--c); margin-bottom: 8px;
+      }
+      .prep-objs { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 9px; }
+      .prep-obj {
+        background: #0B1F24; border: 1.5px solid var(--daf-gold); border-radius: 12px;
+        padding: 12px; display: flex; align-items: center; justify-content: center;
+      }
+      .prep-obj .math-inline, .prep-obj .math-block { color: #EAF4F2; }
+      .prep-q {
+        display: inline-flex; align-items: center; gap: 6px; padding: 6px 11px; margin: 0 6px 6px 0;
+        background: var(--daf-mint); border: 1px solid var(--daf-line); border-radius: 999px;
+        font-size: 12px; font-weight: 700; color: var(--daf-deep);
+      }
+      .prep-q i { color: var(--daf-gold); }
+      .prep-foot {
+        text-align: center; font-size: 11px; color: var(--daf-ink-2);
+        border-top: 1px dashed var(--daf-line); padding-top: 9px;
+      }
+
+      .gap-rows { display: flex; flex-direction: column; gap: 7px; }
+      .gap-row {
+        display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        padding: 9px 12px; border: 1.5px solid var(--daf-line); border-radius: 12px;
+        background: #fff;
+      }
+      .gap-row.set { border-color: var(--c); background: var(--daf-mint); }
+      .gap-claim { font-size: 13px; font-weight: 700; color: var(--daf-ink); }
+      .gap-vote { display: flex; gap: 6px; flex-shrink: 0; }
+      .gap-no.on { background: #fff4dd; border-color: var(--warn); color: #8a6410; }
+      .gap-verdict {
+        display: flex; gap: 8px; align-items: flex-start; padding: 11px 13px; border-radius: 12px;
+        font-size: 12.5px; font-weight: 700; line-height: 1.5;
+      }
+      .gap-verdict.gaps { background: #fff8ec; border: 1.5px solid var(--warn); color: #7a5a10; }
+      .gap-verdict.gaps i { color: var(--warn); margin-top: 2px; }
+      .gap-verdict.clear { background: #eff8ef; border: 1.5px solid var(--ok); color: #1e5b2a; }
+      .gap-verdict.clear i { color: var(--ok); margin-top: 2px; }
+
+      .sprint-mode {
+        display: inline-block; font: 900 10.5px "JetBrains Mono", monospace; letter-spacing: .05em;
+        padding: 4px 11px; border-radius: 999px; background: rgba(255,255,255,.6);
+        border: 1.5px solid currentColor;
+      }
+      .sprint-model {
+        width: 168px; flex-shrink: 0; border: 1.5px dashed var(--daf-line); border-radius: 12px;
+        padding: 10px; background: #fbfdfd; display: flex; flex-direction: column; gap: 7px;
+        align-items: center; justify-content: center; text-align: center;
+      }
+      .sprint-model.open { border-style: solid; border-color: var(--c); background: var(--daf-mint); }
+      .sprint-model-tag { font: 900 9.5px "JetBrains Mono", monospace; letter-spacing: .08em; color: var(--c); text-transform: uppercase; }
+      .sprint-model-math { display: flex; justify-content: center; }
+      .sprint-model-empty { font-size: 11px; color: var(--daf-ink-2); font-style: italic; }
+      .sprint-fb { border-top: 1px dashed var(--daf-line); padding-top: 11px; }
+
+      .critic-brief {
+        background: var(--daf-mint); border: 1.5px solid var(--daf-line); border-radius: 13px;
+        padding: 12px 14px; font-size: 13px; line-height: 1.55; color: var(--daf-ink);
+      }
+      .critic-brief-tag {
+        display: inline-flex; align-items: center; gap: 7px; font-weight: 900; font-size: 11px;
+        color: var(--c); letter-spacing: .05em; margin-bottom: 6px;
+      }
+      .critic-mission b { color: var(--daf-deep); }
+      .critic-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+      .critic-who {
+        display: inline-flex; align-items: center; gap: 7px; font-weight: 900; font-size: 12.5px; color: var(--daf-gold);
+      }
+      .critic-rule {
+        font: 900 9.5px "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase;
+        color: var(--stop); background: #fdecea; border: 1px solid #f3c1bd; padding: 3px 9px; border-radius: 999px;
+      }
+      .critic-tag {
+        display: inline-block; margin: 9px 0 6px; font: 900 10.5px "JetBrains Mono", monospace;
+        letter-spacing: .08em; padding: 3px 10px; border-radius: 999px;
+        background: var(--c); color: #fff;
+      }
+      .critic-q { font-size: 13.5px; font-weight: 700; line-height: 1.5; margin-bottom: 9px; }
+      .critic-opt { font-size: 12.5px; font-weight: 700; line-height: 1.45; padding: 10px 13px; }
+      .critic-ok, .critic-no {
+        display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 9px;
+        padding: 10px 13px; border-radius: 11px; font-size: 12.5px; font-weight: 700; line-height: 1.5;
+      }
+      .critic-ok { background: #eff8ef; border: 1.5px solid var(--ok); color: #1e5b2a; }
+      .critic-ok i { color: var(--ok); }
+      .critic-no { background: #fff8ec; border: 1.5px solid var(--warn); color: #7a5a10; }
+      .critic-no i { color: var(--warn); }
+      .critic-done { text-align: center; }
+      .critic-stamp {
+        display: inline-flex; align-items: center; gap: 9px; padding: 8px 20px; margin-bottom: 8px;
+        border: 2.5px solid var(--daf-gold); border-radius: 10px; transform: rotate(-2deg);
+        font-weight: 900; font-size: 15px; color: var(--daf-deep); background: #fffdf3;
+      }
+      .critic-rule-note { font-size: 11.5px; color: var(--daf-ink-2); margin-bottom: 11px; line-height: 1.5; }
+
+      .gate-lanes { border-top: 2px solid var(--daf-line); margin-top: 12px; padding-top: 11px; }
+      .gate-lanes-head {
+        display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 900; font-size: 13px; color: var(--daf-deep);
+      }
+      .gate-lanes-head i { color: var(--stop); }
+      .gate-lanes-head span { font-weight: 600; font-size: 11px; color: var(--daf-ink-2); }
+      .gate-lane-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+      @media (max-width: 820px) { .gate-lane-grid { grid-template-columns: 1fr; } }
+      .gate-lane {
+        border-radius: 13px; padding: 12px; display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
+      }
+      .gate-lane.fwd { background: #eff8ef; border: 1.5px solid var(--ok); }
+      .gate-lane.fwd b { color: #1e5b2a; display: flex; align-items: center; gap: 7px; font-size: 13px; }
+      .gate-lane.ret { background: #fff8ec; border: 1.5px solid var(--warn); }
+      .gate-lane.ret b { color: #7a5a10; display: flex; align-items: center; gap: 7px; font-size: 13px; }
+      .gate-lane span { font-size: 11px; color: var(--daf-ink-2); }
+      .gate-lane-btn { margin-top: 6px; }
+      .gate-recipe {
+        display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+        font-size: 11.5px; color: var(--daf-ink-2);
+      }
+      .gate-recipe i { color: var(--daf-gold); }
+      .gate-recipe em {
+        font-style: normal; background: var(--daf-gold); color: #0B1F24; font-weight: 700;
+        padding: 2px 8px; border-radius: 6px; margin: 0 2px; font-size: 10.5px;
+      }
+
+      .wall-panel { border-top: 3px solid var(--daf-gold); }
+      .wall-head { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--daf-deep); }
+      .wall-head span:last-child { font: 700 10px "JetBrains Mono", monospace; color: var(--daf-ink-2); letter-spacing: .06em; }
+      .wall-artifact { background: #0B1F24; border: 2px solid var(--daf-gold); border-radius: 13px; padding: 13px 15px; }
+      .wall-art-label { font: 900 9.5px "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--daf-gold); margin-bottom: 6px; }
+      .wall-art-name { color: #EAF4F2; font-size: 15px; font-weight: 800; line-height: 1.4; }
+      .wall-art-sub { color: #a9c9c4; font-size: 11px; margin-top: 6px; line-height: 1.5; }
+      .wall-grid { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; }
+      .wall-slot {
+        width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center;
+        border: 1.5px dashed var(--daf-line); color: var(--daf-line); font-size: 13px;
+      }
+      .wall-slot.on {
+        border-style: solid; border-color: var(--daf-gold); background: #fffdf3; color: var(--daf-gold);
+        animation: wallPop .5s var(--bounce);
+      }
+      @keyframes wallPop { 0% { transform: scale(.4); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
+
     </style>
   </head>
   <body>
@@ -3438,6 +3600,7 @@ function folioExport(className) {
 }
 ;</script>
     <script>window.DAF_STORY = {"title":"The Lantern of Numeria — The Tale of the Seventeen Doors","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"supporting":[{"id":"hafizah","name":"Hafizah","role":"the Lantern Keeper","doors":[1,17],"prop":"lantern"},{"id":"zafir","name":"Ustadh Zafir","role":"the traveling scholar","doors":[2,5,6,7,13,17],"prop":"compass"},{"id":"rashed","name":"Rashed","role":"the Rival's Report","doors":[2,5,6,7,13,17],"prop":"clipboard"},{"id":"abulaila","name":"Abu Laila","role":"the merchant of the souq","doors":[2],"prop":"ledger"},{"id":"ihsan","name":"Ihsan","role":"the auditor","doors":[2,6],"prop":"seal"},{"id":"khalida","name":"Khalida","role":"the foreman","doors":[3,4],"prop":"ruler"},{"id":"mansur","name":"Mansur","role":"the caravan master","doors":[5],"prop":"tally"},{"id":"salma","name":"Salma","role":"the council scribe","doors":[6],"prop":"quill"},{"id":"mariam","name":"Mariam","role":"the architect","doors":[7,14,16],"prop":"compass"},{"id":"munira","name":"Munira","role":"the ferrywoman of the Fraction Isles","doors":[8],"prop":"oar"},{"id":"farida","name":"Farida","role":"the head cook","doors":[9],"prop":"ladle"},{"id":"zaynab","name":"Zaynab","role":"the clockmaker","doors":[10],"prop":"key"},{"id":"rashid","name":"Rashid","role":"the pearl diver","doors":[11],"prop":"mask"},{"id":"amina","name":"Amina","role":"the dockmaster","doors":[12],"prop":"clipboard"},{"id":"yusuf","name":"Yusuf","role":"the market warden","doors":[13],"prop":"balance"},{"id":"farid","name":"Farid","role":"the astronomer","doors":[15],"prop":"astrolabe"}],"unit":{"topic":15,"chapter":"The observatory of turning light","question":"How can the class describe, measure and control a turn?","artifact":"An angle-controlled shade or light-tracker prototype","pbl":"Build and test a paper sun-shade arm using lines, rays and measured angles.","bridge":"The tracker moves correctly, but its supports must be classified and mirrored. Angles become the properties of shapes in Geometry Gardens.","lessonCount":6,"lessonCodes":["15-1","15-2","15-3","15-4","15-5","15-6"]},"lesson":{"code":"15-1","curriculumTitle":"Lines, Rays, and Angles","standard":"4.G.A.1","storyBeat":"A beam with a beginning","technique":"Mystery object / cold open","storyMove":"The observatory drawing mixes lines, rays and angles.","studentMission":"Identify and draw lines, rays and angles.","handoff":"End on the object or unanswered need that opens “Understand Angles and Unit Angles”.","screenPlan":{"shape":"concept-discovery","shapeLabel":"Concept discovery","recommended":10,"planningBand":"9–12","reason":"A new relationship, category or structure must be noticed before it is formalized."},"index":0,"numberInUnit":1},"stemWindows":[],"amanahWindows":[]};</script>
+    <script>window.DAF_STAGE = {"lessons":{"15-1":{"code":"15-1","title":"Lines, Rays, and Angles","standard":"4.G.A.1","screens":{"prep":{"phase":"prep","title":"The briefing was <em>sent before class</em>","lead":"First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.","goal":"Recover the first exposure, so class time begins with thinking — not with content delivery.","pull":"Now the probe: what does the class already hold?","rail":{"launch":"Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.","monitor":["Reading the core objects aloud","Recalling the home questions","Comparing notes against the briefing"],"connect":"Which of the home questions does today's work answer?","misconception":"Treating the briefing as a finished lesson. It is first exposure, not mastery."}},"diagnose":{"phase":"diagnose","title":"The <em>gap map</em> — not a grade","lead":"Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.","goal":"Build a gap map: what is known, and what is missing.","pull":"Knowledge building closes exactly what the map flags.","rail":{"launch":"Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.","monitor":["Voting honestly over confident guesses","Naming a gap without blame","Connecting a gap back to the briefing"],"connect":"Which flagged gap is the most expensive one to leave open?","misconception":"Turning the probe into a grade, or letting confident guessing mask a real gap."}},"practice":{"phase":"practice","title":"Practice — feedback in <em>seconds, not days</em>","lead":"First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.","goal":"Guided, then independent — learning happens at the moment of doing.","pull":"Now a genuinely new situation. The critic arrives — as a critic, never as an author.","rail":{"launch":"Item one is supported: the model stays open. Item two is independent: no model until it is missed.","monitor":["Using the model before answering","Self-checking after a miss","Moving on without waiting for the teacher"],"connect":"Where did the seconds-fast feedback change what the class did next?","misconception":"Treating the supported item as the exam and the independent item as a warm-up."}},"critic":{"phase":"produce","title":"A genuinely <em>new situation</em>","lead":"The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.","goal":"Transfer the method into new territory and defend it through critique.","pull":"One individual task now decides each student's next path.","rail":{"launch":"The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.","monitor":["Stating the method before the critique","Defending with evidence from the work","Distinguishing a trap from a method"],"connect":"Which challenge actually changed the work, and which one did it already survive?","misconception":"Letting the critic — or the deck — supply the answer. The production must be the students'."}}},"prep":{"objects":["point","segment"],"home":["Do they have different names?","Does the arrow mean forever?","Which one is a line?"]},"diagnose":{"claims":["The names become a counting exercise, not vocabulary to memorise.","I can introduce acute, right, obtuse and straight as sizes of opening.","I can catch the classic vocabulary confusions as a group.","A figure has both a structure and a size."]},"practice":{"model":["point","segment"],"items":[{"mode":"guided","prompt":"A figure has one endpoint and one arrow. What is it?","options":[{"v":"a","text":"a line"},{"v":"b","text":"a ray"},{"v":"c","text":"a segment"},{"v":"d","text":"an angle"}],"right":"b","yes":"Yes — one end stops, the other goes on forever.","notYet":"Not yet — a line has arrows at both ends.","hint":"One dot and one arrow is exactly a ray."},{"mode":"independent","prompt":"A figure has one endpoint and one arrow. What is it?","options":[{"v":"a","text":"a line"},{"v":"b","text":"a ray"},{"v":"c","text":"a segment"},{"v":"d","text":"an angle"}],"right":"b","yes":"Yes — one end stops, the other goes on forever.","notYet":"Not yet — a line has arrows at both ends."}]},"critic":{"situation":"The observatory drawing mixes lines, rays and angles.","mission":"Identify and draw lines, rays and angles.","method":{"options":["Copy the example and change the labels","Answering 'line' because part of it has an arrow.","count the dots · count the arrows · then say the name"],"right":2},"challenges":[{"tag":"The trap","question":"The critic reads the work and names the most likely trap in it: Answering 'line' because part of it has an arrow. How does your production dodge it?","options":["The numbers look right, so the method must be right","We checked against this: counting one dot","It can't fail — the answer matches the example"],"right":1,"explain":"The critic never corrects — it makes the class check its own evidence."},{"tag":"The reasoning","question":"Collect answers to open tomorrow.","options":["Because it matches the example","Because it worked once","Counting one arrow"],"right":2,"explain":"A reason tied to the structure survives a new situation; a reason tied to one answer does not."},{"tag":"The transfer","question":"Last, the critic asks for transfer — Identify and draw lines, rays and angles. What is the first move?","options":["Find a ray, a segment and an angle somewhere at home and name each one out loud","Copy the lesson's numbers and change the labels","Ask the class what they think first"],"right":0,"explain":"Transfer is the first move, not the answer. The critic stops there — the work is the students'."}]},"gate":{"ixl":["9MK","R5K"],"revisitOld":6},"wall":{"artifact":"An angle-controlled shade or light-tracker prototype","next":"Tomorrow: what an angle actually measures."}}}};</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
 const D = window.DAFDraw;
@@ -3446,14 +3609,49 @@ const D = window.DAFDraw;
    PRIMITIVES  ·  shared by every Grade 4 lesson in this topic
    =========================================================================== */
 
-/* Lesson phases — colour tells the room where it is in the lesson */
+/* ===========================================================================
+   THE SEVEN STAGES — the structural spine of every lesson
+   Content at home. Thinking in class. Evidence on the wall.
+
+   A learning unit is not finished when the content has been covered. It is
+   finished when the student can show what they made from it.
+
+   The lesson file owns its mathematical content (metas + Visual cases); the
+   engine wraps that content in the seven-stage sequence (see app.jsx,
+   stageSequence()). Stages 1, 2, 4 and 5 are engine screens fed by the
+   per-lesson stage plan stamped as window.DAF_STAGE at build time.
+   =========================================================================== */
+const STAGES = {
+  1: { key: "prep",     name: "Preparation",           timing: "Before class",
+       aim: "Compress the material and send it. First exposure happens at home, at the student's own pace." },
+  2: { key: "diagnose", name: "Intelligent Diagnose",  timing: "5\u20138 min",
+       aim: "Build a gap map, not a grade. What do they actually know?" },
+  3: { key: "build",    name: "Knowledge Building",    timing: "15\u201320 min",
+       aim: "Close the flagged gaps, then model one richer example, thinking out loud." },
+  4: { key: "practice", name: "Practice",              timing: "10\u201315 min",
+       aim: "Guided, then independent — with feedback that arrives in seconds, not days." },
+  5: { key: "produce",  name: "Production / B",        timing: "10\u201315 min",
+       aim: "A genuinely new situation. AI enters here — as a critic, never as an author." },
+  6: { key: "gate",     name: "Mastery Gate",          timing: "5\u20138 min",
+       aim: "One individual task that decides the next path for each student." },
+  7: { key: "wall",     name: "Smart Production",      timing: "5\u20138 min",
+       aim: "A final product the student is willing to put their name on." }
+};
+
+/* Lesson phases — colour tells the room where it is in the lesson. The six
+   stage-3/6/7 phases below are the working mechanics inside the stages;
+   prep, diagnose, practice and produce are the engine stage screens. */
 const PHASES = {
+  prep:      { c: "#4A6FA5", c2: "#7292BE", label: "Preparation" },
+  diagnose:  { c: "#6042A6", c2: "#8B6FD4", label: "Intelligent Diagnose" },
   warmup:  { c: "#6042A6", c2: "#8B6FD4", label: "Warm-Up" },
   launch:  { c: "#FA7E19", c2: "#FFA94D", label: "Launch" },
   monitor: { c: "#2D70B3", c2: "#4A9BE0", label: "Monitor" },
   connect: { c: "#12857C", c2: "#1AA79B", label: "Connect" },
   synth:   { c: "#388C46", c2: "#5CB863", label: "Synthesis" },
-  swyk:    { c: "#C74440", c2: "#E0665F", label: "Show what you know" }
+  practice:{ c: "#B3488F", c2: "#D87BB4", label: "Practice" },
+  produce: { c: "#C9A227", c2: "#E3C05A", label: "Production" },
+  swyk:    { c: "#C74440", c2: "#E0665F", label: "Mastery Gate" }
 };
 
 /* ---- OMML authoring helpers (every symbol in every lesson goes through these) */
@@ -3507,7 +3705,8 @@ function MathEl({ omml, display, size, alt, style }) {
     const host = ref.current;
     const id = requestAnimationFrame(() => {
       const m = host.querySelector("math");
-      if (!m) return;
+      /* some DOM implementations (jsdom) give MathML nodes no style object */
+      if (!m || !m.style) return;
       m.style.fontSize = "";
       const avail = host.getBoundingClientRect().width;
       if (!avail) return;
@@ -3591,13 +3790,18 @@ function XPBar({ xp, max }) {
 const XP = {
   estimate:     5,    /* lock an estimate .............. once per lesson  */
   commit:       5,    /* the class commits on the sort . once per lesson  */
+  sprint:       10,   /* sprint item, right first try .. stage 4          */
   swykStandard: 15,   /* standard question, right ...... first try only   */
   hardAttempt:  15,   /* took the harder question ...... paid for trying  */
   hardCorrect:  25,   /* harder question, right ........ on top of the 15 */
+  production:   15,   /* defended the production ....... stage 5          */
   sijill:       30,   /* method named into the Sijill .. teacher issued   */
   exhibition:   50    /* exhibition contribution ....... teacher issued   */
 };
-/* ceiling without a Sijill entry: 5 + 5 + 15 + 15 + 25 = 65 XP per lesson */
+/* ceiling without a Sijill entry: 5 + 5 + 10 + 15 + 15 + 25 + 15 = 90 XP per
+   lesson (estimate, commit, sprint, gate standard, harder lane both legs,
+   defended production). 120 with a Sijill entry. The Mastery Gate lanes
+   themselves pay nothing — routing is a judgement, not a reward. */
 
 const BADGES = [
   { id: "estimator", icon: "fa-bullseye",             label: "Estimator",
@@ -4479,6 +4683,7 @@ function ShowWhatYouKnow({ prompt, draw, height, omml, options, right, support, 
             </div>
           </div>
         )}
+        {pick !== null && <GateLanes award={award} />}
       </div>
     );
   }
@@ -4518,6 +4723,7 @@ function ShowWhatYouKnow({ prompt, draw, height, omml, options, right, support, 
             onPick={() => award(XP.swykStandard, "correct", "Who got it right, first time?", "pick", mark("std"))} />
         </div>
       )}
+      {revealed && <GateLanes award={award} />}
     </div>
   );
 }
@@ -4556,6 +4762,702 @@ function Closing({ game, action, omml }) {
       <div style={{ fontSize: "11px", color: "var(--daf-ink-2)" }}>
         Press <span className="kbd">N</span> for the class ledger, or export the tracking sheet from there.
       </div>
+    </div>
+  );
+}
+
+/* ===========================================================================
+   THE SEVEN STAGES · engine screens
+   Content at home. Thinking in class. Evidence on the wall.
+
+   Stage 1 Preparation · Stage 2 Intelligent Diagnose · Stage 4 Practice ·
+   Stage 5 Production / B (proof-mastery gate) are rendered by the engine
+   from the per-lesson stage plan stamped as window.DAF_STAGE at build time
+   (scripts/make-stage-plan.js → stage/stage-plan.json). Stages 3, 6 and 7
+   wrap the lesson's own screens: its explore → connect → board arc is the
+   knowledge build, its formative check is the mastery gate (routing added
+   by GateLanes below) and its closing becomes the evidence wall.
+   =========================================================================== */
+
+/* The stage plan for this lesson — present in the 114 curriculum decks,
+   absent in review decks (bosses), which keep their original sequence. */
+function stagePlan() {
+  return (window.DAF_STAGE && window.DAF_STAGE.lessons &&
+    window.DAF_STAGE.lessons[LESSON.code]) || null;
+}
+
+/* ---- generic canvas: a briefing paper with the SENT stamp --------------- */
+const drawPrepBrief = (ctx, W, H, frame) => {
+  const CYCLE = 560, f = frame % CYCLE;
+  const p1 = D.at(f, 0, 140), p2 = D.at(f, 130, 300), p3 = D.at(f, 320, 470);
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  const pw = Math.min(W * 0.52, 300), ph = H - 56, px = W / 2 - pw / 2 - 14, py = 28;
+  /* paper */
+  ctx.save();
+  ctx.globalAlpha = p1;
+  D.rr(ctx, px, py, pw, ph, 8);
+  ctx.fillStyle = "#F7FBFA"; ctx.fill();
+  ctx.strokeStyle = "#CDE7E3"; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.restore();
+  if (p1 > 0) {
+    D.txt(ctx, "BRIEFING", px + pw / 2, py + 24, { size: 13, col: "#12857C", font: "marker", alpha: p1 });
+    D.marker(ctx, [[px + 24, py + 38], [px + pw - 24, py + 38]], p1, "rgba(18,133,124,.5)", 1.4);
+  }
+  /* the three home-question lines write themselves */
+  for (let i = 0; i < 3; i++) {
+    const a = D.at(p2, i / 3, i / 3 + 0.55);
+    if (a <= 0) continue;
+    const ly = py + 64 + i * 34;
+    D.rr(ctx, px + 24, ly - 8, 10, 10, 2.5);
+    ctx.fillStyle = "#C9A227"; ctx.globalAlpha = a; ctx.fill(); ctx.globalAlpha = 1;
+    D.marker(ctx, [[px + 44, ly - 2], [px + 44 + (pw - 76) * a, ly - 2]], 1, "rgba(16,36,43,.55)", 2);
+  }
+  /* the envelope flies in and the stamp lands */
+  if (p2 > 0.6) {
+    const t = D.at(f, 300, 470);
+    const ex = px + pw + 30 - t * 46, ey = py + 10 + Math.sin(t * 5) * 4 - t * 8;
+    ctx.save();
+    ctx.globalAlpha = t;
+    ctx.setLineDash([4, 5]);
+    D.marker(ctx, [[px + pw - 160, py + 16], [ex + 8, ey + 6]], t, "rgba(201,162,39,.6)", 1.2);
+    ctx.setLineDash([]);
+    ctx.fillStyle = "#12857C";
+    ctx.beginPath();
+    ctx.moveTo(ex, ey); ctx.lineTo(ex + 22, ey + 8); ctx.lineTo(ex, ey + 16); ctx.lineTo(ex + 6, ey + 8);
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+  if (p3 > 0) {
+    const s = 1 + (1 - p3) * 0.6;
+    ctx.save();
+    ctx.translate(px + pw - 52, py + ph - 44);
+    ctx.rotate(-0.18);
+    ctx.scale(s, s);
+    D.rr(ctx, -34, -17, 68, 34, 6);
+    ctx.strokeStyle = "rgba(201,162,39," + p3 + ")"; ctx.lineWidth = 2; ctx.stroke();
+    D.txt(ctx, "SENT", 0, 4, { size: 13, col: "rgba(201,162,39," + p3 + ")", font: "marker" });
+    ctx.restore();
+  }
+  D.txt(ctx, "first exposure · at home · at their own pace", W / 2, H - 14,
+    { size: 11, col: "#53CDBF", font: "marker", alpha: D.at(f, 440, 540) });
+};
+
+/* ---- generic canvas: the class gap map ----------------------------------- */
+const drawGapMap = (claims, votes) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  const n = claims.length, rowH = Math.min(34, (H - 44) / n), y0 = 22;
+  for (let i = 0; i < n; i++) {
+    const y = y0 + i * rowH;
+    const v = votes[i] || null;
+    D.txt(ctx, String(i + 1), 24, y + rowH / 2 - 6, { size: 11, col: "#53CDBF", font: "marker" });
+    const bx = 42, bw = W - 120;
+    D.rr(ctx, bx, y + 2, bw, rowH - 12, (rowH - 12) / 2);
+    ctx.fillStyle = "rgba(255,255,255,.07)"; ctx.fill();
+    if (v === "can") {
+      const p = D.at(frame % 500, i * 40, i * 40 + 160);
+      D.rr(ctx, bx, y + 2, Math.max(14, bw * p), rowH - 12, (rowH - 12) / 2);
+      ctx.fillStyle = "#12857C"; ctx.fill();
+      D.txt(ctx, "HOLDS", bx + bw + 8, y + rowH / 2 - 6,
+        { size: 9, col: "#34D399", font: "marker", alpha: p });
+    } else if (v === "notYet") {
+      const p = D.at(frame % 500, i * 40, i * 40 + 160);
+      D.rr(ctx, bx, y + 2, Math.max(14, bw * 0.34 * p), rowH - 12, (rowH - 12) / 2);
+      ctx.fillStyle = "#E0A526"; ctx.fill();
+      D.rr(ctx, bx + bw * 0.34, y + 2, bw * 0.66, rowH - 12, (rowH - 12) / 2);
+      ctx.strokeStyle = "rgba(224,165,38,.5)"; ctx.lineWidth = 1.4; ctx.setLineDash([5, 5]);
+      ctx.stroke(); ctx.setLineDash([]);
+      D.txt(ctx, "GAP", bx + bw + 8, y + rowH / 2 - 6,
+        { size: 9, col: "#E0A526", font: "marker", alpha: p });
+    } else {
+      D.txt(ctx, "—", bx + bw / 2, y + rowH / 2 - 6, { size: 10, col: "rgba(255,255,255,.25)", font: "marker" });
+    }
+  }
+  D.txt(ctx, "known", 42, H - 12, { size: 10, col: "#53CDBF", font: "marker" });
+  D.txt(ctx, "missing", W - 76, H - 12, { size: 10, col: "#E0A526", font: "marker" });
+};
+
+/* ---- generic canvas: the practice sprint track ---------------------------- */
+const drawSprint = (total, idx, doneN, finished) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  const n = total, x0 = W * 0.16, x1 = W * 0.84, y = H / 2 - 6;
+  /* the connector */
+  const reach = finished ? 1 : Math.max(0, Math.min(1, (doneN + 0.5) / Math.max(1, n - 1)));
+  D.marker(ctx, [[x0, y], [x0 + (x1 - x0) * reach, y]], 1, "rgba(201,162,39,.5)", 2.4);
+  for (let i = 0; i < n; i++) {
+    const x = x0 + ((x1 - x0) / Math.max(1, n - 1)) * i;
+    const done = i < doneN, cur = i === idx && !finished;
+    if (done) {
+      D.star8(ctx, x, y, 13, 1, "rgba(201,162,39,.9)", 1.6);
+      D.txt(ctx, "\u2713", x, y + 34, { size: 13, col: "#34D399", font: "marker" });
+    } else if (cur) {
+      const pulse = 1 + Math.sin(frame / 14) * 0.16;
+      ctx.beginPath();
+      ctx.arc(x, y, 15 * pulse, 0, Math.PI * 2);
+      ctx.strokeStyle = "rgba(227,192,90,.8)"; ctx.lineWidth = 2; ctx.stroke();
+      D.txt(ctx, String(i + 1), x, y + 4, { size: 12, col: "#E3C05A", font: "marker" });
+    } else {
+      ctx.beginPath();
+      ctx.arc(x, y, 11, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(255,255,255,.1)"; ctx.fill();
+      D.txt(ctx, String(i + 1), x, y + 4, { size: 11, col: "rgba(255,255,255,.4)", font: "marker" });
+    }
+  }
+  /* the seconds dial: feedback arrives in seconds, not days — no pressure,
+     just the pace of the loop */
+  const dx = W - 46, dy = 40, r = 17, ang = ((frame % 300) / 300) * Math.PI * 2 - Math.PI / 2;
+  ctx.beginPath(); ctx.arc(dx, dy, r, 0, Math.PI * 2);
+  ctx.strokeStyle = "rgba(255,255,255,.18)"; ctx.lineWidth = 2; ctx.stroke();
+  ctx.beginPath(); ctx.arc(dx, dy, r, -Math.PI / 2, ang);
+  ctx.strokeStyle = "rgba(227,192,90,.75)"; ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(dx, dy); ctx.lineTo(dx + Math.cos(ang) * (r - 5), dy + Math.sin(ang) * (r - 5));
+  ctx.strokeStyle = "#E3C05A"; ctx.lineWidth = 1.6; ctx.stroke();
+  D.txt(ctx, "seconds", dx, dy + r + 14, { size: 9, col: "#53CDBF", font: "marker" });
+};
+
+/* ---- generic canvas: the critic's inspection lamp -------------------------- */
+const drawCritic = (chDone, accepted, chCount) => (ctx, W, H, frame) => {
+  const CYCLE = 520, f = frame % CYCLE;
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  /* the student's work card */
+  const cw = W * 0.4, chh = H - 58, cx = W * 0.1, cy = 29;
+  D.rr(ctx, cx, cy, cw, chh, 9);
+  ctx.fillStyle = "#F7FBFA"; ctx.fill();
+  for (let i = 0; i < 4; i++) {
+    D.marker(ctx, [[cx + 20, cy + 34 + i * 26], [cx + 20 + (cw - 56) * (0.5 + 0.5 * Math.sin(i * 2.1)), cy + 34 + i * 26]], 1,
+      "rgba(16,36,43,.4)", 2);
+  }
+  D.txt(ctx, "THE STUDENTS' WORK", cx + cw / 2, cy + 14, { size: 10, col: "#12857C", font: "marker" });
+  /* the lamp swings over it — it examines, it never writes */
+  const swing = Math.sin(frame / 26) * 0.5;
+  const ax = W * 0.62, ay = 12;
+  const lx = ax + Math.sin(swing) * (W * 0.16), ly = ay + Math.cos(swing) * (W * 0.16) * 0.9;
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(lx, ly);
+  ctx.lineTo(lx - 26, ly + chh * 0.62);
+  ctx.lineTo(lx + 26, ly + chh * 0.62);
+  ctx.closePath();
+  ctx.fillStyle = "rgba(227,192,90,.13)"; ctx.fill();
+  ctx.restore();
+  D.marker(ctx, [[ax, ay], [lx, ly]], 1, "rgba(255,255,255,.4)", 2);
+  D.star8(ctx, lx, ly, 9, 1, "rgba(227,192,90,.95)", 1.5);
+  /* the checkpoint dial */
+  for (let i = 0; i < chCount; i++) {
+    const x = W - 78, y = 52 + i * 34;
+    const done = i < chDone, cur = i === chDone && !accepted;
+    if (done) {
+      D.star8(ctx, x, y, 11, 1, "rgba(201,162,39,.9)", 1.5);
+    } else if (cur) {
+      const p = 1 + Math.sin(frame / 14) * 0.18;
+      ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI / 4); ctx.scale(p, p);
+      D.rr(ctx, -9, -9, 18, 18, 3);
+      ctx.strokeStyle = "rgba(227,192,90,.85)"; ctx.lineWidth = 2; ctx.stroke();
+      ctx.restore();
+    } else {
+      ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI / 4);
+      D.rr(ctx, -8, -8, 16, 16, 3);
+      ctx.strokeStyle = "rgba(255,255,255,.2)"; ctx.lineWidth = 1.6; ctx.stroke();
+      ctx.restore();
+    }
+  }
+  if (accepted) {
+    const a = D.at(f, 0, 140);
+    ctx.save();
+    ctx.translate(W / 2, H / 2 + 8);
+    ctx.rotate(-0.14);
+    D.rr(ctx, -92, -24, 184, 48, 8);
+    ctx.strokeStyle = "rgba(201,162,39," + a + ")"; ctx.lineWidth = 2.5; ctx.stroke();
+    D.txt(ctx, "PRODUCTION ACCEPTED", 0, 5, { size: 14, col: "rgba(201,162,39," + a + ")", font: "marker" });
+    ctx.restore();
+  }
+  D.txt(ctx, "critic \u00b7 never author", W * 0.3, H - 12, { size: 10, col: "#53CDBF", font: "marker", alpha: D.at(f, 120, 240) });
+};
+
+/* ---- stage 1 · Preparation ------------------------------------------------ */
+/* The compressed briefing, sent before class. First exposure happened at
+   home, at each student's own pace — this screen recovers it and states the
+   deal: content lives at home, the classroom is reserved for thinking. */
+function StagePrep() {
+  const plan = stagePlan();
+  if (!plan) return null;
+  const P = plan.prep;
+  return (
+    <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+      <Sketch draw={drawPrepBrief} height={168} />
+      <div className="prep-sent">
+        <span className="prep-stamp"><Icon name="fa-paper-plane" /> Sent before class</span>
+        <span>first exposure at home · at each student's own pace</span>
+      </div>
+      <div>
+        <div className="prep-label">The compressed material</div>
+        <div className="prep-objs">
+          {P.objects.map((k) => (
+            <div key={k} className="prep-obj"><MathEl omml={LESSON.math[k]} size="lg" display="block" /></div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div className="prep-label">Asked at home</div>
+        <div className="chip-row">
+          {P.home.map((q) => (
+            <span key={q} className="prep-q"><Icon name="fa-lightbulb" /> {q}</span>
+          ))}
+        </div>
+      </div>
+      <div className="prep-foot">Content lives at home. The classroom is reserved for thinking.</div>
+    </div>
+  );
+}
+
+/* ---- stage 2 · Intelligent Diagnose ---------------------------------------- */
+/* A quick, low-stakes probe. The class votes each checkpoint — we are
+   building a gap map (what is known, what is missing), not a grade. Nothing
+   on this screen is scored, named or stored. */
+function GapMap() {
+  const plan = stagePlan();
+  if (!plan) return null;
+  const claims = plan.diagnose.claims;
+  const [votes, setVotes] = useState({});
+  const vote = (i, v) => setVotes((p) => Object.assign({}, p, { [i]: p[i] === v ? null : v }));
+  const allVoted = claims.every((_, i) => votes[i]);
+  const gaps = claims.filter((c, i) => votes[i] === "notYet");
+  return (
+    <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "11px" }}>
+      <Sketch draw={drawGapMap(claims, votes)} height={132} />
+      <div className="gap-rows">
+        {claims.map((c, i) => (
+          <div key={i} className={"gap-row" + (votes[i] ? " set" : "")}>
+            <span className="gap-claim">{c}</span>
+            <span className="gap-vote">
+              <button className={"btn btn-sm " + (votes[i] === "can" ? "btn-primary" : "btn-ghost")}
+                onClick={() => vote(i, "can")}>
+                <Icon name="fa-check" /> We can
+              </button>
+              <button className={"btn btn-sm gap-no" + (votes[i] === "notYet" ? " on" : "")}
+                onClick={() => vote(i, "notYet")}>
+                <Icon name="fa-circle-question" /> Not yet
+              </button>
+            </span>
+          </div>
+        ))}
+      </div>
+      {allVoted && (
+        <div className={"gap-verdict" + (gaps.length ? " gaps" : " clear")}>
+          {gaps.length
+            ? <span><Icon name="fa-map-pin" /> The gap map flags: <b>{gaps.join(" · ")}</b> — knowledge building closes exactly these.</span>
+            : <span><Icon name="fa-map-pin" /> No gaps flagged — the build goes straight to the richer example.</span>}
+        </div>
+      )}
+      <div className="prep-foot">An instrument for catching gaps, not for scoring students. No names, no marks, no pressure.</div>
+    </div>
+  );
+}
+
+/* ---- stage 4 · Practice ------------------------------------------------------ */
+/* Guided, then independent — with feedback that arrives in seconds, not days.
+   Item one runs with the model open; item two runs with it closed. The
+   lesson's own check question is the material, so practice is the same math
+   the gate will judge. Right first try is paid (XP.sprint). */
+function PracticeSprint({ award }) {
+  const plan = stagePlan();
+  if (!plan) return null;
+  const items = plan.practice.items;
+  const model = plan.practice.model;
+  const [idx, setIdx] = useState(0);
+  const [pick, setPick] = useState(null);
+  const [misses, setMisses] = useState(0);
+  const [doneN, setDoneN] = useState(0);
+  const [given, setGiven] = useState({});
+  const [hardRevealed, setHardRevealed] = useState(false);
+  const mark = (k) => (n) => setGiven((g) => Object.assign({}, g, { [k]: n }));
+
+  const finished = idx >= items.length;
+  const item = finished ? null : items[idx];
+  const isRight = pick !== null && pick === item.right;
+  const okFirst = isRight && misses === 0;
+  const optOmml = (o) => o.math ? LESSON.math[o.math] : null;
+
+  const advance = () => {
+    if (item.mode === "harder") {
+      setIdx(idx + 1); setPick(null); setMisses(0); setDoneN(doneN + 1);
+      return;
+    }
+    setIdx(idx + 1); setPick(null); setMisses(0);
+    if (idx + 1 < items.length) setDoneN(doneN + 1);
+  };
+
+  if (finished) {
+    return (
+      <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px", textAlign: "center" }}>
+        <Sketch draw={drawSprint(items.length, -1, items.length, true)} height={130} />
+        <div style={{ fontSize: 15, fontWeight: 900, color: "var(--daf-deep)" }}>
+          Sprint complete — {items.length} items, every answer met in the moment.
+        </div>
+        <div style={{ fontSize: 12, color: "var(--daf-ink-2)" }}>
+          Feedback arrived in seconds, not days. That is what practice is for.
+        </div>
+      </div>
+    );
+  }
+
+  const modeTag = item.mode === "guided"
+    ? { t: "Item " + (idx + 1) + " of " + items.length + " · guided — the model stays open", col: "var(--m-blue)" }
+    : item.mode === "harder"
+      ? { t: "Item " + (idx + 1) + " of " + items.length + " · the harder lane", col: "var(--daf-gold)" }
+      : { t: "Item " + (idx + 1) + " of " + items.length + " · independent — no model until it is missed", col: "var(--c)" };
+
+  /* ---- the harder lane: reveal, then the teacher checks the class -------- */
+  if (item.mode === "harder") {
+    const revealed = hardRevealed;
+    return (
+      <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "12px", textAlign: "center" }}>
+        <Sketch draw={drawSprint(items.length, idx, doneN, false)} height={110} />
+        <div className="sprint-mode" style={{ color: modeTag.col }}>{modeTag.t}</div>
+        <div style={{ fontSize: 13.5, fontWeight: 800, lineHeight: 1.5 }}>{item.prompt}</div>
+        {item.math && LESSON.math[item.math] && (
+          <div><MathEl omml={LESSON.math[item.math]} size="lg" display="block" /></div>
+        )}
+        {item.hint && !revealed && (
+          <div style={{ fontSize: 11.5, color: "var(--daf-ink-2)" }}><Icon name="fa-lightbulb" /> {item.hint}</div>
+        )}
+        {!revealed ? (
+          <button className="btn btn-primary" style={{ alignSelf: "center", minWidth: 240 }}
+            onClick={() => setHardRevealed(true)}>
+            <Icon name="fa-eye" /> The class answers — reveal
+          </button>
+        ) : (
+          <div className="award-stack gsap-auto">
+            <div style={{ fontSize: 13, fontWeight: 900, color: "var(--daf-gold)" }}>{item.answer}</div>
+            <AwardRow label="Took the harder question" sub="tap everyone who chose it — right or wrong"
+              amount={XP.hardAttempt} count={given.hard} col="var(--daf-gold)"
+              onPick={() => award(XP.hardAttempt, "hard", "Who took the harder question?", "pick", mark("hard"))} />
+            <AwardRow label="Harder question, correct" sub="of those, who got it right"
+              amount={XP.hardCorrect} count={given.hardOk} col="var(--ok)"
+              onPick={() => award(XP.hardCorrect, "hardOk", "Who got the harder one right?", "pick", mark("hardOk"))} />
+            <button className="btn btn-ghost" style={{ alignSelf: "center" }} onClick={advance}>
+              Sprint complete <Icon name="fa-arrow-right" />
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  /* ---- guided and independent: pick, get feedback in seconds ------------- */
+  return (
+    <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+      <Sketch draw={drawSprint(items.length, idx, doneN, false)} height={104} />
+      <div className="sprint-mode" style={{ color: modeTag.col }}>{modeTag.t}</div>
+      <div style={{ display: "flex", gap: "12px", alignItems: "stretch" }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 13.5, fontWeight: 800, lineHeight: 1.5, marginBottom: "9px" }}>{item.prompt}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(" + item.options.length + ", 1fr)", gap: "8px" }}>
+            {item.options.map((o) => {
+              const chosen = pick === o.v, rightOpt = o.v === item.right;
+              return (
+                <div key={o.v} className={"glass-card" + (chosen ? " chosen" : "")}
+                  onClick={() => { if (pick === null) { setPick(o.v); if (o.v !== item.right) setMisses((m) => m + 1); } }}
+                  style={{
+                    padding: "13px 8px", fontWeight: 900, fontSize: 17,
+                    fontFamily: "'JetBrains Mono', monospace", minHeight: "56px",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    borderColor: pick !== null && chosen ? (rightOpt ? "var(--ok)" : "var(--warn)") : undefined,
+                    borderWidth: pick !== null && chosen ? "2px" : "1px",
+                    color: pick !== null && chosen ? (rightOpt ? "var(--ok)" : "var(--warn)") : "var(--daf-ink)"
+                  }}>
+                  {optOmml(o) ? <MathEl omml={optOmml(o)} size="md" /> : o.text}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className={"sprint-model" + (item.mode === "guided" ? " open" : pick !== null && !isRight ? " open" : "")}>
+          <div className="sprint-model-tag">
+            <Icon name="fa-chalkboard" /> {item.mode === "guided" ? "The model — open" : "The model — closed"}
+          </div>
+          {item.mode === "guided" ? (
+            model.map((k) => (
+              <div key={k} className="sprint-model-math"><MathEl omml={LESSON.math[k]} size="md" /></div>
+            ))
+          ) : pick !== null && !isRight ? (
+            model.map((k) => (
+              <div key={k} className="sprint-model-math"><MathEl omml={LESSON.math[k]} size="md" /></div>
+            ))
+          ) : (
+            <div className="sprint-model-empty">Open only after a miss.</div>
+          )}
+        </div>
+      </div>
+      {pick !== null && (
+        <div className="gsap-auto sprint-fb">
+          {isRight ? (
+            <div style={{ color: "var(--ok)", fontWeight: 900, fontSize: 13, marginBottom: "8px" }}>{item.yes}</div>
+          ) : (
+            <div>
+              <div style={{ color: "var(--warn)", fontWeight: 900, fontSize: 13, marginBottom: "5px" }}>{item.notYet}</div>
+              {item.hint && <div style={{ fontSize: 11.5, color: "var(--daf-ink-2)" }}><Icon name="fa-lightbulb" /> {item.hint}</div>}
+              <button className="btn btn-sm btn-ghost" style={{ marginTop: "7px" }}
+                onClick={() => { setPick(null); }}>
+                <Icon name="fa-rotate-left" /> Try again
+              </button>
+            </div>
+          )}
+          {isRight && (
+            <div>
+              {okFirst
+                ? <AwardRow label="Right, first try" sub="tap the students who had it first time"
+                    amount={XP.sprint} count={given.s} col="var(--ok)"
+                    onPick={() => award(XP.sprint, "correct", "Sprint — right first try", "pick", mark("s"))} />
+                : <div style={{ fontSize: 11.5, color: "var(--daf-ink-2)" }}>
+                    <Icon name="fa-medal" /> The class had it — the first-try award went to the ones who had it clean.
+                  </div>}
+              <button className="btn btn-primary" style={{ marginTop: "9px", alignSelf: "center", minWidth: 200 }}
+                onClick={advance}>
+                {idx + 1 < items.length ? "Next item" : "Sprint complete"} <Icon name="fa-arrow-right" />
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---- stage 5 · Production / B — the Proof-Mastery Gate ------------------------ */
+/* A genuinely new situation: the class commits to the method its work rests
+   on, then the critic examines it — three challenges, each defended with
+   evidence. The critic examines, challenges and critiques. It never writes
+   the work. AI enters here — as a critic, never as an author. */
+function CriticBoard({ award }) {
+  const plan = stagePlan();
+  if (!plan) return null;
+  const C = plan.critic;
+  const [stage, setStage] = useState("method");       /* method | 0..2 | done */
+  const [pick, setPick] = useState(null);
+  const [misses, setMisses] = useState(0);
+  const [chDone, setChDone] = useState(0);
+  const [given, setGiven] = useState({});
+  const mark = (k) => (n) => setGiven((g) => Object.assign({}, g, { [k]: n }));
+  const accepted = stage === "done";
+  const ch = typeof stage === "number" ? C.challenges[stage] : null;
+  const optText = (o) => o; /* options are plain strings in the plan */
+
+  const methodRight = pick !== null && stage === "method" && pick === C.method.right;
+  const chRight = pick !== null && ch && pick === ch.right;
+
+  const reset = () => { setPick(null); setMisses(0); };
+
+  return (
+    <div className="glass-panel critic-panel" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+      <Sketch draw={drawCritic(chDone, accepted, C.challenges.length)} height={148} />
+
+      <div className="critic-brief">
+        <div className="critic-brief-tag"><Icon name="fa-location-crosshairs" /> A genuinely new situation</div>
+        <div>{C.situation}</div>
+        <div className="critic-mission"><b>The mission: </b>{C.mission}</div>
+      </div>
+
+      {stage === "method" && (
+        <div className="critic-step gsap-auto">
+          <div className="critic-q">Before the critique, the critic asks: which method does your work rest on?</div>
+          <div className="chip-row" style={{ flexDirection: "column", alignItems: "stretch" }}>
+            {C.method.options.map((o, i) => (
+              <div key={i} className={"glass-card critic-opt" + (pick === i ? " chosen" : "")}
+                onClick={() => { if (pick === null) { setPick(i); if (i !== C.method.right) setMisses((m) => m + 1); } }}
+                style={{
+                  borderColor: pick !== null && pick === i
+                    ? (i === C.method.right ? "var(--ok)" : "var(--warn)") : undefined,
+                  borderWidth: pick !== null && pick === i ? "2px" : "1px"
+                }}>
+                {optText(o)}
+              </div>
+            ))}
+          </div>
+          {pick !== null && (methodRight
+            ? <div className="critic-ok gsap-auto"><Icon name="fa-shield-halved" /> Safe to defend. The critic begins.</div>
+            : <div className="critic-no gsap-auto"><Icon name="fa-triangle-exclamation" /> The critic raises an eyebrow — that wobbles under questioning. Choose the method your evidence supports.
+                <button className="btn btn-sm btn-ghost" style={{ marginLeft: 10 }} onClick={reset}><Icon name="fa-rotate-left" /> Choose again</button>
+              </div>)}
+          {methodRight && (
+            <button className="btn btn-primary" style={{ marginTop: 9 }} onClick={() => { setStage(0); setPick(null); setMisses(0); }}>
+              <Icon name="fa-magnifying-glass" /> Begin the critique
+            </button>
+          )}
+        </div>
+      )}
+
+      {ch && (
+        <div className="critic-step gsap-auto">
+          <div className="critic-head">
+            <span className="critic-who"><Icon name="fa-lightbulb" /> Hafizah · the proof critic</span>
+            <span className="critic-rule">critic — never author</span>
+          </div>
+          <div className={"critic-tag t" + chDone}>{ch.tag}</div>
+          <div className="critic-q">{ch.question}</div>
+          <div className="chip-row" style={{ flexDirection: "column", alignItems: "stretch" }}>
+            {ch.options.map((o, i) => (
+              <div key={i} className={"glass-card critic-opt" + (pick === i ? " chosen" : "")}
+                onClick={() => { if (pick === null) { setPick(i); if (i !== ch.right) setMisses((m) => m + 1); } }}
+                style={{
+                  borderColor: pick !== null && pick === i
+                    ? (i === ch.right ? "var(--ok)" : "var(--warn)") : undefined,
+                  borderWidth: pick !== null && pick === i ? "2px" : "1px"
+                }}>
+                {optText(o)}
+              </div>
+            ))}
+          </div>
+          {pick !== null && (chRight ? (
+            <div className="critic-ok gsap-auto">
+              <Icon name="fa-shield-halved" /> {ch.explain}
+              <button className="btn btn-primary" style={{ marginTop: 9, marginLeft: 10 }}
+                onClick={() => {
+                  if (stage + 1 < C.challenges.length) { setStage(stage + 1); setPick(null); setMisses(0); setChDone(chDone + 1); }
+                  else { setStage("done"); setPick(null); setChDone(C.challenges.length); }
+                }}>
+                {stage + 1 < C.challenges.length ? "Next challenge" : "Accept the production"} <Icon name="fa-arrow-right" />
+              </button>
+            </div>
+          ) : (
+            <div className="critic-no gsap-auto">
+              <Icon name="fa-magnifying-glass" /> The critic does not correct. It makes the class check the evidence — defend it again.
+              <button className="btn btn-sm btn-ghost" style={{ marginLeft: 10 }} onClick={reset}><Icon name="fa-rotate-left" /> Defend again</button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {accepted && (
+        <div className="critic-done gsap-auto">
+          <div className="critic-stamp"><Icon name="fa-stamp" /> Production accepted</div>
+          <div className="critic-rule-note">
+            The critic examined, challenged and critiqued. It never generated the work — the production is the students'.
+          </div>
+          <AwardRow label="Defended the production" sub="tap the students who led the defence"
+            amount={XP.production} count={given.prod} col="var(--daf-gold)"
+            onPick={() => award(XP.production, null, "Defended the production through the critic", "pick", mark("prod"))} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---- stage 6 · the gate lanes (inside ShowWhatYouKnow) ---------------------- */
+/* The formative check now routes: one individual task decides the next path
+   for each student. Two lanes — forward, or reteach — the teacher taps. The
+   gate pays nothing; it is a judgement, not a reward. The reteach lane
+   carries the prescription: IXL codes plus a reopen of the model. */
+function GateLanes({ award }) {
+  const plan = stagePlan();
+  if (!plan) return null;
+  /* lessons with formative checks mid-build keep those plain — only the
+     stage-6 gate (the lesson's last check) carries the routing lanes */
+  if (window.__DAF_FINAL_GATE_CASE != null &&
+      window.__DAF_FINAL_GATE_CASE !== window.__DAF_ACTIVE_CASE) return null;
+  const G = plan.gate;
+  const [fwd, setFwd] = useState(null);
+  const [ret, setRet] = useState(null);
+  const revisit = (G.revisitOld != null) ? G.revisitOld + 2 : null;
+  const reopen = () => {
+    try { window.postMessage({ type: "set-slide", step: revisit }, "*"); } catch (e) {}
+  };
+  return (
+    <div className="gate-lanes gsap-auto">
+      <div className="gate-lanes-head">
+        <Icon name="fa-signs-post" /> The gate decides the next path
+        <span>one individual task · forward, or into reteaching</span>
+      </div>
+      <div className="gate-lane-grid">
+        <div className="gate-lane fwd">
+          <b><Icon name="fa-arrow-trend-up" /> Forward — mastered</b>
+          <span>on to the next lesson</span>
+          <button className="btn btn-sm btn-primary gate-lane-btn"
+            onClick={() => award(0, "gate", "Who cleared the gate to the forward lane?", "pick", (n) => setFwd(n))}>
+            <Icon name="fa-hand-pointer" /> {fwd != null ? fwd + " tapped" : "Tap the students"}
+          </button>
+        </div>
+        <div className="gate-lane ret">
+          <b><Icon name="fa-rotate-left" /> Reteach — revisit the model</b>
+          <span>same math, second pass</span>
+          <button className="btn btn-sm btn-ghost gate-lane-btn"
+            onClick={() => award(0, "reteach", "Who takes the reteach lane?", "pick", (n) => setRet(n))}>
+            <Icon name="fa-hand-pointer" /> {ret != null ? ret + " tapped" : "Tap the students"}
+          </button>
+        </div>
+      </div>
+      <div className="gate-recipe">
+        <span>
+          <Icon name="fa-book" /> Reteach: IXL{" "}
+          {(G.ixl || []).map((c) => <em key={c} className="mono">{c}</em>)}
+        </span>
+        {revisit != null && (
+          <button className="btn btn-sm btn-ghost" onClick={reopen}>
+            <Icon name="fa-chalkboard" /> Reopen the model (slide {String(revisit + 1).padStart(2, "0")})
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ---- stage 7 · the evidence wall (rendered by the app on the final screen) -- */
+/* The unit closes with a tangible artifact the student is willing to put
+   their name on. The teacher posts each student's version to the wall —
+   evidence on the wall that learning truly happened. First post stamps the
+   class folio, like the story handoff. */
+function EvidenceWall({ game, award }) {
+  const plan = stagePlan();
+  if (!plan) return null;
+  const present = Object.keys(game.s || {}).filter((n) => game.present[n]);
+  const slots = Math.max(6, Math.min(24, present.length || 8));
+  const [posted, setPosted] = useState(0);
+  const [given, setGiven] = useState({});
+  const mark = (n) => setGiven((g) => Object.assign({}, g, { wall: n }));
+  const date = new Date().toISOString().slice(0, 10);
+  const post = () => {
+    if (posted >= slots) return;
+    if (posted === 0) { try { folioStamp(game.section, LESSON.code); } catch (e) {} }
+    setPosted(posted + 1);
+  };
+  return (
+    <div className="glass-panel wall-panel" style={{ display: "flex", flexDirection: "column", gap: "11px" }}>
+      <div className="wall-head">
+        <Star8 style={{ width: 15, height: 15, color: "var(--daf-gold)" }} />
+        <b>The evidence wall</b>
+        <span>stage 7 · smart production</span>
+      </div>
+      <div className="wall-artifact">
+        <div className="wall-art-label">The artifact this class is willing to stand behind</div>
+        <div className="wall-art-name">{plan.wall.artifact}</div>
+        <div className="wall-art-sub">made by {game.section} · {date} · a unit is finished when the student can show what they made from it</div>
+      </div>
+      <div className="wall-grid">
+        {Array.from({ length: slots }, (_, i) => (
+          <span key={i} className={"wall-slot" + (i < posted ? " on" : "")}>
+            {i < posted ? <Icon name="fa-star" /> : <Star8 style={{ width: 11, height: 11, opacity: 0.3 }} />}
+          </span>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
+        <button className="btn btn-primary" disabled={posted >= slots}
+          style={{ opacity: posted >= slots ? 0.45 : 1 }} onClick={post}>
+          <Icon name="fa-image" /> Post a student's version
+        </button>
+        {posted > 0 && (
+          <button className="btn btn-ghost" onClick={() => setPosted(0)}>
+            <Icon name="fa-eraser" /> Clear the wall
+          </button>
+        )}
+      </div>
+      <AwardRow label="Posted the artifact to the wall" sub="teacher issued — once for this unit's evidence"
+        amount={XP.exhibition} count={given.wall} col="var(--daf-gold)"
+        onPick={() => award(XP.exhibition, null, "Posted the artifact to the evidence wall", "pick", mark)} />
+      <div className="prep-foot">Evidence on the wall: not what was taught, but what the class made from it.</div>
     </div>
   );
 }
@@ -4970,8 +5872,9 @@ function Overview({ current, onSelect, onClose }) {
         display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(190px, 1fr))",
         gap: "11px", flex: 1, paddingRight: "8px"
       }}>
-        {LESSON.metas.map((m, idx) => {
+        {SEQ.metas.map((m, idx) => {
           const ph = PHASES[m.phase];
+          const stg = SEQ.stages[idx];
           const on = idx === current;
           return (
             <div key={idx} onClick={() => { onSelect(idx); onClose(); }}
@@ -4982,7 +5885,7 @@ function Overview({ current, onSelect, onClose }) {
               }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px", alignItems: "center" }}>
                 <span className="mono" style={{ fontSize: "10px", color: on ? "#fff" : "var(--daf-gold)" }}>
-                  {String(idx + 1).padStart(2, "0")}
+                  {String(idx + 1).padStart(2, "0")}{stg ? " · S" + stg : ""}
                 </span>
                 <span style={{
                   fontSize: "9px", fontWeight: 900, letterSpacing: ".08em",
@@ -5134,7 +6037,7 @@ function MathInventory({ onClose }) {
   );
 }
 
-function Frame({ meta, children }) {
+function Frame({ meta, stage, children }) {
   const vref = useRef(null);
   useEffect(() => {
     if (!window.gsap || !vref.current) return;
@@ -5150,10 +6053,16 @@ function Frame({ meta, children }) {
   }, [meta.title]);
 
   const ph = PHASES[meta.phase];
+  const st = stage && STAGES[stage];
   return (
     <div className="screen">
       <section className="copy">
         <Star8 className="copy-star" />
+        {st && (
+          <div className="stage-chip" title={st.aim}>
+            <span>Stage {stage}</span><em>{st.name}</em><span>{st.timing}</span>
+          </div>
+        )}
         <div className="phase-tag"><Star8 style={{ width: "12px", height: "12px" }} /> {ph.label}</div>
         <h1 dangerouslySetInnerHTML={{ __html: meta.title }} />
         <p className="lead">{meta.lead}</p>
@@ -5164,6 +6073,63 @@ function Frame({ meta, children }) {
       </section>
     </div>
   );
+}
+
+/* ===========================================================================
+   THE SEVEN STAGES · sequence assembly
+   Content at home. Thinking in class. Evidence on the wall.
+
+   The lesson file keeps its own metas + Visual switch untouched — its
+   mathematical content is stage 3 (knowledge building) from the cold open
+   through the board, stage 6 (the mastery gate) at its formative check, and
+   stage 7 (smart production) at its closing. The engine interleaves the four
+   stage screens around that content:
+
+     0  stage 1  Preparation         (engine — the briefing sent before class)
+     1  stage 2  Intelligent Diagnose (engine — the gap map, not a grade)
+     2… stage 3  Knowledge Building   (lesson screens 0 … swyk-1)
+     …  stage 4  Practice            (engine — guided, then independent)
+     …  stage 5  Production / B       (engine — the critic, never an author)
+     …  stage 6  Mastery Gate         (the lesson's formative check + lanes)
+     …  stage 7  Smart Production     (the lesson's closing + the wall)
+
+   Review decks (bosses) carry no stage plan and keep their original
+   sequence — stageSequence() degrades to the identity mapping for them.
+   =========================================================================== */
+function stageSequence() {
+  const metas = LESSON.metas;
+  const plan = (window.DAF_STAGE && window.DAF_STAGE.lessons &&
+    window.DAF_STAGE.lessons[LESSON.code]) || null;
+  let swykIdx = -1;
+  metas.forEach((m, i) => { if (m.phase === "swyk") swykIdx = i; });
+  const out = { metas: metas.slice(), stages: metas.map(() => 0),
+                visuals: metas.map((m, i) => i), plan: plan, offset: 0 };
+  if (!plan || !plan.screens || swykIdx < 1 || swykIdx >= metas.length - 1) return out;
+  const S = plan.screens;
+  /* the LAST swyk case is the stage-6 gate; earlier formative checks in the
+     same lesson keep their plain check UI (GateLanes reads this) */
+  window.__DAF_FINAL_GATE_CASE = swykIdx;
+  out.offset = 2;
+  out.metas = [S.prep, S.diagnose];
+  out.stages = [1, 2];
+  out.visuals = ["stage:prep", "stage:diagnose"];
+  for (let i = 0; i < swykIdx; i++) { out.metas.push(metas[i]); out.stages.push(3); out.visuals.push(i); }
+  out.metas.push(S.practice, S.critic, metas[swykIdx]);
+  out.stages.push(4, 5, 6);
+  out.visuals.push("stage:practice", "stage:critic", swykIdx);
+  for (let i = swykIdx + 1; i < metas.length; i++) { out.metas.push(metas[i]); out.stages.push(7); out.visuals.push(i); }
+  return out;
+}
+const SEQ = stageSequence();
+
+function StageScreens({ k, award, game }) {
+  switch (k) {
+    case "prep": return <StagePrep />;
+    case "diagnose": return <GapMap />;
+    case "practice": return <PracticeSprint award={award} />;
+    case "critic": return <CriticBoard award={award} />;
+    default: return null;
+  }
 }
 
 /* ===========================================================================
@@ -5381,9 +6347,12 @@ function Dojo({ game, dispatch, job, onClose }) {
   const last = game.log.length ? game.log[game.log.length - 1] : null;
 
   const fire = (names, amount, reason, metric) => {
-    if (!names.length || !amount) return;
+    /* amount 0 with a metric is a RECORDED lane (the mastery gate): it logs
+       who was tapped without paying points — a judgement, not a reward. */
+    if (!names.length || (amount === 0 && !metric)) return;
     dispatch({ type: "grant", names: names, amount: amount, metric: metric || null, reason: reason });
     (amount >= 0 ? sndPlus : sndMinus)();
+    if (amount === 0) return;
     setBursts((b) => {
       const nb = Object.assign({}, b);
       names.forEach((n) => { nb[n] = { k: ((b[n] && b[n].k) || 0) + 1, amt: amount }; });
@@ -5474,7 +6443,9 @@ function Dojo({ game, dispatch, job, onClose }) {
           <div className="dj-job">
             <Icon name="fa-bullseye" />
             <span>{job.text}</span>
-            <em>{job.amount > 0 ? "+" + job.amount : job.amount} each — tap students</em>
+            <em>{job.amount === 0 ? "record only — tap students"
+              : job.amount > 0 ? "+" + job.amount + " each — tap students"
+              : job.amount + " each — tap students"}</em>
           </div>
         ) : (
           <div className="dj-tools">
@@ -5618,7 +6589,7 @@ function App() {
   const url = (() => { try { return new URL(location.href); } catch (e) { return null; } })();
   const init = (() => {
     const s = parseInt((url && url.searchParams.get("slide")) || "0", 10);
-    return isNaN(s) ? 0 : Math.max(0, Math.min(LESSON.metas.length - 1, s));
+    return isNaN(s) ? 0 : Math.max(0, Math.min(SEQ.metas.length - 1, s));
   })();
 
   const [i, setI] = useState(init);
@@ -5651,7 +6622,10 @@ function App() {
   SIJILL.fn = sijill;
   SIJILL.named = game.sijillNames || {};
 
-  const meta = LESSON.metas[i];
+  const meta = SEQ.metas[i];
+  /* which lesson case the engine is currently rendering — GateLanes uses it
+     to know whether this check is the stage-6 gate or a mid-build check */
+  window.__DAF_ACTIVE_CASE = typeof SEQ.visuals[i] === "number" ? SEQ.visuals[i] : null;
   useEffect(() => {
     const ph = PHASES[meta.phase];
     document.documentElement.style.setProperty("--c", ph.c);
@@ -5671,7 +6645,7 @@ function App() {
 
   /* keyboard — plain LTR: right advances, left goes back */
   useEffect(() => {
-    const go = (d) => setI((x) => Math.max(0, Math.min(LESSON.metas.length - 1, x + d)));
+    const go = (d) => setI((x) => Math.max(0, Math.min(SEQ.metas.length - 1, x + d)));
     const fn = (e) => {
       const k = e.key;
       if (k === "Escape") { setOverview(false); setMathList(false); setRail(false); return; }
@@ -5686,7 +6660,7 @@ function App() {
       if (k === "ArrowRight" || k === " " || k === "PageDown" || k === "ArrowDown") { e.preventDefault(); go(1); }
       else if (k === "ArrowLeft" || k === "PageUp" || k === "ArrowUp") { e.preventDefault(); go(-1); }
       else if (k === "Home") setI(0);
-      else if (k === "End") setI(LESSON.metas.length - 1);
+      else if (k === "End") setI(SEQ.metas.length - 1);
       else if (k.toLowerCase() === "r") setReplay((r) => r + 1);
       else if (k.toLowerCase() === "o") setOverview(true);
       else if (k.toLowerCase() === "t") setRail((v) => !v);
@@ -5699,7 +6673,7 @@ function App() {
   useEffect(() => {
     const mh = (e) => {
       if (e && e.data && e.data.type === "set-slide" && typeof e.data.step === "number") {
-        setI(Math.max(0, Math.min(LESSON.metas.length - 1, e.data.step)));
+        setI(Math.max(0, Math.min(SEQ.metas.length - 1, e.data.step)));
       }
     };
     addEventListener("message", mh);
@@ -5716,20 +6690,24 @@ function App() {
         onOverview={() => setOverview(true)}
         onRail={() => setRail((v) => !v)}
         onMath={() => setMathList(true)} />
-      <div className="progress" style={{ width: ((i + 1) / LESSON.metas.length) * 100 + "%" }} />
+      <div className="progress" style={{ width: ((i + 1) / SEQ.metas.length) * 100 + "%" }} />
 
       {game.flash && !dojo && <div className="flash">{game.flash}</div>}
 
       <div className="stage-wrap" key={i + "-" + replay}>
-        <Frame meta={meta}>
-          <LESSON.Visual i={i} award={award} game={game} />
+        <Frame meta={meta} stage={SEQ.stages[i]}>
+          {typeof SEQ.visuals[i] === "string"
+            ? <StageScreens k={SEQ.visuals[i].slice(6)} award={award} game={game} />
+            : <LESSON.Visual i={SEQ.visuals[i]} award={award} game={game} />}
+          {SEQ.stages[i] === 7 && <EvidenceWall game={game} award={award} />}
         </Frame>
       </div>
 
       <div className="dots">
-        {LESSON.metas.map((m, n) => (
+        {SEQ.metas.map((m, n) => (
           <span key={n} onClick={() => setI(n)}
             className={"dot" + (n === i ? " active" : "")}
+            title={"Stage " + SEQ.stages[n] + " · " + PHASES[m.phase].label}
             style={n === i ? { background: PHASES[m.phase].c } : undefined} />
         ))}
       </div>
@@ -5737,14 +6715,14 @@ function App() {
       <div className="nav">
         <button title="Replay (R)" onClick={() => setReplay((r) => r + 1)}><Icon name="fa-rotate-right" /></button>
         <button disabled={i === 0} onClick={() => setI(i - 1)}><Icon name="fa-chevron-left" /></button>
-        <span className="counter">{String(i + 1).padStart(2, "0")} / {LESSON.metas.length}</span>
-        <button disabled={i === LESSON.metas.length - 1} onClick={() => setI(i + 1)}><Icon name="fa-chevron-right" /></button>
+        <span className="counter">{String(i + 1).padStart(2, "0")} / {SEQ.metas.length}</span>
+        <button disabled={i === SEQ.metas.length - 1} onClick={() => setI(i + 1)}><Icon name="fa-chevron-right" /></button>
       </div>
 
       <footer className="footer">
         <span>Dar Al Fikr Schools · {LESSON.code}</span>
         <span className="pull">{meta.pull}</span>
-        <span className="mono">{String(i + 1).padStart(2, "0")} / {LESSON.metas.length}</span>
+        <span className="mono">{String(i + 1).padStart(2, "0")} / {SEQ.metas.length}</span>
       </footer>
 
       {overview && <Overview current={i} onSelect={setI} onClose={() => setOverview(false)} />}
