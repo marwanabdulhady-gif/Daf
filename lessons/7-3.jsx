@@ -221,12 +221,12 @@ const LESSON = {
         connect: "What would have caught the missing pairs?",
         misconception: "Accepting a list because it looks neat." } },
 
-    { phase: "connect", title: "Ola <em>re-checks every tile</em>. Ziad <em>trusts the meeting</em>",
-      lead: "Ola re-runs the whole order on every tile. Ziad runs it once and checks the meeting point. Both lists hold.",
+    { phase: "connect", title: "Numan <em>re-checks every tile</em>. Ziad <em>trusts the meeting</em>",
+      lead: "Numan re-runs the whole order on every tile. Ziad runs it once and checks the meeting point. Both lists hold.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Counting Ola's re-checks", "Finding Ziad's meeting check", "Comparing the lists"],
+        monitor: ["Counting Numan's re-checks", "Finding Ziad's meeting check", "Comparing the lists"],
         connect: "What does the meeting point save?",
         misconception: "Believing the first tile's method must be redone from scratch each time." } },
 
@@ -376,13 +376,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one repeated method"
-            text="Ola re-checks every tile from scratch. Ziad runs the method once and checks the meeting point. Both lists hold."
+            text="Numan re-checks every tile from scratch. Ziad runs the method once and checks the meeting point. Both lists hold."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Ola's way — test everything", omml: M.left, h: 92, quote: "I re-run the whole order on every tile, to be safe." }}
+              left={{ name: "Numan's way — test everything", omml: M.left, h: 92, quote: "I re-run the whole order on every tile, to be safe." }}
               right={{ name: "Ziad's way — trust the meeting", omml: M.reveal, h: 92, quote: "I run the order once and check the pairs meet." }}
               same={["Both find the full list", "Both use the same four moves", "Both can re-check on demand"]}
-              diff={["Ola re-runs everything", "Ziad checks the stopping point", "Ziad's check is what the method guarantees"]} />
+              diff={["Numan re-runs everything", "Ziad checks the stopping point", "Ziad's check is what the method guarantees"]} />
           </StoryShell>
         );
 

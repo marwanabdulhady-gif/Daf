@@ -10,6 +10,16 @@ No companion or historical name (Bilal, Khadijah, Banu Musa, al-Jazari, al-Idris
 al-Kharizmi…) is used as a fictional character name; documented history lives only
 in the STEM windows' "documented account" treatment. Sacred content is never a
 quest, a boss, a reward or a role-play.
+**The class is boys only** (school policy, enforced by `check:story`): every
+*student* character — the two protagonists, the rival Rashed and the whole class
+ensemble (listed in the story map as `characters.ensemble`, all gender "boy") —
+is a boy. The adult quest givers in `characters.supporting` are community adults,
+not students, and are outside that rule. (Ensemble names that read as girls were
+renamed to boys in 2026-08 across all 114 lessons: Aya→Hassan, Sara→Hani,
+Huda→Samer, Rana→Karam, Layla→Layth, Ola→Numan, Reem→Anees, Noura→Joud,
+Dina→Lamees, Maya→Mazin, Yara→Firas, Zahra→Marwan, Hala→Qais, Aisha→Nidal,
+Amira→Sultan, Hana→Ghassan, Rima→Hadeel, Lama→Lutfi, Lina→Iyad, Dalia→Anas,
+Sana→Bashir, student Salma→Khalil, Dana→Bandar, Jana→Shuraym.)
 
 ---
 

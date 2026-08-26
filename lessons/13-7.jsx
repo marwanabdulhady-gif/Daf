@@ -210,7 +210,7 @@ const LESSON = {
         misconception: "Checking only the arithmetic." } },
 
     { phase: "connect", title: "Two precise <em>answers</em>",
-      lead: "Hala wrote 260 cm. Omar wrote 2 m 60 cm. Both are precise.",
+      lead: "Qais wrote 260 cm. Omar wrote 2 m 60 cm. Both are precise.",
       goal: "Precision does not mean one single acceptable form.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask whether either is wrong.",
@@ -306,12 +306,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — one unit", omml: M.common, h: 92,
+          left={{ name: "Qais's way — one unit", omml: M.common, h: 92,
             quote: "I turned everything into centimetres and wrote 260 cm." }}
           right={{ name: "Omar's way — mixed units", omml: M.labelled, h: 92,
             quote: "Two whole metres and sixty centimetres left over." }}
           same={["Both are the same length", "Both carry a unit", "Both pass all three checks"]}
-          diff={["Hala uses one unit", "Omar uses two", "Hala's is easier to add again"]} />;
+          diff={["Qais uses one unit", "Omar uses two", "Qais's is easier to add again"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard137} height={430} />;

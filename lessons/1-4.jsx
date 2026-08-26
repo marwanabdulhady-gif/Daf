@@ -396,7 +396,7 @@ const LESSON = {
             clue="One method draws the rule; one reads the digit">
           <CompareConnect award={award}
             left={{
-              name: "Sara's way — draw the halfway", h: 88,
+              name: "Hani's way — draw the halfway", h: 88,
               draw: (ctx, W, H, frame) => {
                 ctx.clearRect(0, 0, W, H);
                 D.rr(ctx, 0, 0, W, H, 9);
@@ -426,8 +426,8 @@ const LESSON = {
             same={["Both find the halfway of the requested place",
                    "Both round up at or past halfway",
                    "Both give 4,000 for 4,382 to the nearest thousand"]}
-            diff={["Sara draws it, Musa reads it",
-                   "Sara's method shows the reason visually",
+            diff={["Hani draws it, Musa reads it",
+                   "Hani's method shows the reason visually",
                    "Musa's method is faster for long numbers"]} />
           </StoryShell>
         );

@@ -212,8 +212,8 @@ const LESSON = {
         connect: "How could you tell the two kinds apart?",
         misconception: "Thinking any mental method is compensation." } },
 
-    { phase: "connect", title: "Aya <em>rounds</em>. Musa <em>splits</em>",
-      lead: "Aya rounds to friendly and adjusts back. Musa breaks into hundreds, tens, ones. Both get 245.",
+    { phase: "connect", title: "Hassan <em>rounds</em>. Musa <em>splits</em>",
+      lead: "Hassan rounds to friendly and adjusts back. Musa breaks into hundreds, tens, ones. Both get 245.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -318,15 +318,15 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, the same total"
-            text="Aya rounds to a friendly number and adjusts back. Musa breaks the number into hundreds, tens and ones. Both reach 245."
+            text="Hassan rounds to a friendly number and adjusts back. Musa breaks the number into hundreds, tens and ones. Both reach 245."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Aya's way — round to friendly, adjust back", omml: M.compensated, h: 92,
+              left={{ name: "Hassan's way — round to friendly, adjust back", omml: M.compensated, h: 92,
                       quote: "I gave the 199 one riyal from the 46." }}
               right={{ name: "Musa's way — break into hundreds, tens, ones", omml: M.breakApart, h: 92,
                        quote: "I added the forty first, then the six." }}
               same={["Both get 245", "Both avoid writing it down", "Both make a friendly number on the way"]}
-              diff={["Aya changes a number, Musa splits one", "Musa takes two steps", "Aya's is faster when a number is near a ten"]} />
+              diff={["Hassan changes a number, Musa splits one", "Musa takes two steps", "Hassan's is faster when a number is near a ten"]} />
           </StoryShell>
         );
 

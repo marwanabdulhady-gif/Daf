@@ -3279,53 +3279,160 @@ function folioExport(className) {
   "year": "2025-2026",
   "note": "Edit this file, then run ./rebuild-all.sh to update all 114 lesson decks.",
   "markTiers": [
-    { "xp": 400, "marks": 1 },
-    { "xp": 800, "marks": 2 },
-    { "xp": 1200, "marks": 3 }
+    {
+      "xp": 400,
+      "marks": 1
+    },
+    {
+      "xp": 800,
+      "marks": 2
+    },
+    {
+      "xp": 1200,
+      "marks": 3
+    }
   ],
   "markCap": 3,
   "markFloor": 50,
   "behaviours": {
     "note": "Reason buttons in the points panel (press P). Edit freely, then run ./rebuild-all.sh",
-    "steps": [1, 5, 10],
+    "steps": [
+      1,
+      5,
+      10
+    ],
     "positive": [
-      { "label": "Explained a method", "xp": 5, "icon": "fa-comment-dots" },
-      { "label": "Helped a partner", "xp": 5, "icon": "fa-handshake-angle" },
-      { "label": "Answered on the board", "xp": 10, "icon": "fa-chalkboard" },
-      { "label": "Took the harder question", "xp": 15, "icon": "fa-mountain-sun", "metric": "hard" },
-      { "label": "Right first try", "xp": 15, "icon": "fa-circle-check", "metric": "correct" },
-      { "label": "Method into the Sijill", "xp": 30, "icon": "fa-feather", "metric": "sijill" }
+      {
+        "label": "Explained a method",
+        "xp": 5,
+        "icon": "fa-comment-dots"
+      },
+      {
+        "label": "Helped a partner",
+        "xp": 5,
+        "icon": "fa-handshake-angle"
+      },
+      {
+        "label": "Answered on the board",
+        "xp": 10,
+        "icon": "fa-chalkboard"
+      },
+      {
+        "label": "Took the harder question",
+        "xp": 15,
+        "icon": "fa-mountain-sun",
+        "metric": "hard"
+      },
+      {
+        "label": "Right first try",
+        "xp": 15,
+        "icon": "fa-circle-check",
+        "metric": "correct"
+      },
+      {
+        "label": "Method into the Sijill",
+        "xp": 30,
+        "icon": "fa-feather",
+        "metric": "sijill"
+      }
     ],
     "needsWork": [
-      { "label": "Off task", "xp": -5, "icon": "fa-hourglass-half" },
-      { "label": "Talking over others", "xp": -5, "icon": "fa-volume-xmark" },
-      { "label": "Would not start", "xp": -10, "icon": "fa-circle-xmark" },
-      { "label": "Unkind to a classmate", "xp": -10, "icon": "fa-face-frown" }
+      {
+        "label": "Off task",
+        "xp": -5,
+        "icon": "fa-hourglass-half"
+      },
+      {
+        "label": "Talking over others",
+        "xp": -5,
+        "icon": "fa-volume-xmark"
+      },
+      {
+        "label": "Would not start",
+        "xp": -10,
+        "icon": "fa-circle-xmark"
+      },
+      {
+        "label": "Unkind to a classmate",
+        "xp": -10,
+        "icon": "fa-face-frown"
+      }
     ]
   },
   "privileges": [
-    { "xp": 100, "name": "Choose your table for the week" },
-    { "xp": 200, "name": "Choose the context for next lesson's problems" },
-    { "xp": 300, "name": "Enter a method into the Sijill yourself" },
-    { "xp": 500, "name": "Run the opener for the class" },
-    { "xp": 800, "name": "Choose your table's exhibition problem" }
+    {
+      "xp": 100,
+      "name": "Choose your table for the week"
+    },
+    {
+      "xp": 200,
+      "name": "Choose the context for next lesson's problems"
+    },
+    {
+      "xp": 300,
+      "name": "Enter a method into the Sijill yourself"
+    },
+    {
+      "xp": 500,
+      "name": "Run the opener for the class"
+    },
+    {
+      "xp": 800,
+      "name": "Choose your table's exhibition problem"
+    }
   ],
   "sections": {
     "4A": [
-      "Layla Al-Harbi", "Yousef Bakr", "Salma Al-Ghamdi", "Omar Baeshen",
-      "Reem Al-Sudairi", "Faisal Nassief", "Sana Al-Amoudi", "Ibrahim Zahid",
-      "Noura Al-Qahtani", "Hala Bin Mahfouz", "Ziad Al-Turki", "Jana Al-Shaikh",
-      "Rakan Al-Dossari", "Maryam Al-Juffali", "Tariq Al-Otaibi", "Dana Al-Rashid",
-      "Khalid Al-Anzi", "Lina Al-Sabban", "Sultan Al-Mutairi", "Aseel Al-Barrak",
-      "Majed Al-Suwailem", "Rana Al-Fadl", "Bader Al-Khereiji", "Talia Al-Hazmi"
+      "Abdullah Al-Harbi",
+      "Yousef Bakr",
+      "Bandar Al-Ghamdi",
+      "Omar Baeshen",
+      "Fares Al-Sudairi",
+      "Faisal Nassief",
+      "Ghazi Al-Amoudi",
+      "Ibrahim Zahid",
+      "Hisham Al-Qahtani",
+      "Hudayfair Bin Mahfouz",
+      "Ziad Al-Turki",
+      "Jareer Al-Shaikh",
+      "Rakan Al-Dossari",
+      "Laith Al-Juffali",
+      "Tariq Al-Otaibi",
+      "Majid Al-Rashid",
+      "Khalid Al-Anzi",
+      "Manan Al-Sabban",
+      "Sultan Al-Mutairi",
+      "Musab Al-Barrak",
+      "Majed Al-Suwailem",
+      "Nizar Al-Fadl",
+      "Bader Al-Khereiji",
+      "Obaid Al-Hazmi"
     ],
     "4B": [
-      "Ahmed Al-Mansouri", "Joud Al-Sheikh", "Turki Al-Rajhi", "Shahd Al-Nemer",
-      "Fahad Al-Sanea", "Ghala Al-Aqeel", "Nawaf Al-Habib", "Rimas Al-Zamil",
-      "Saud Al-Muhaidib", "Yara Al-Bassam", "Abdulaziz Al-Naimi", "Leen Al-Shammari",
-      "Mishal Al-Duraibi", "Haya Al-Faraj", "Waleed Al-Hokair", "Retaj Al-Ghurair",
-      "Nayef Al-Sulaiman", "Deem Al-Marzouq", "Rayan Al-Qassabi", "Sadeem Al-Wabel",
-      "Hassan Al-Jasser", "Alia Al-Rowais", "Meshari Al-Tamimi", "Basma Al-Nafisi"
+      "Ahmed Al-Mansouri",
+      "Joud Al-Sheikh",
+      "Turki Al-Rajhi",
+      "Sami Al-Nemer",
+      "Fahad Al-Sanea",
+      "Sattam Al-Aqeel",
+      "Nawaf Al-Habib",
+      "Shuraym Al-Zamil",
+      "Saud Al-Muhaidib",
+      "Tawfiq Al-Bassam",
+      "Abdulaziz Al-Naimi",
+      "Ubaid Al-Shammari",
+      "Mishal Al-Duraibi",
+      "Yazan Al-Faraj",
+      "Waleed Al-Hokair",
+      "Zaher Al-Ghurair",
+      "Nayef Al-Sulaiman",
+      "Hanzala Al-Marzouq",
+      "Rayan Al-Qassabi",
+      "Sadeem Al-Wabel",
+      "Hassan Al-Jasser",
+      "Khalifa Al-Rowais",
+      "Meshari Al-Tamimi",
+      "Sayer Al-Nafisi"
     ]
   }
 }
@@ -4567,9 +4674,9 @@ const drawStory122 = (ctx, W, H, frame) => {
     { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
   D.fracLine(ctx, { x: 70, y: H / 2 + 14, w: W - 140, den: 10, whole: 1,
     prog: D.at(f, 60, 340), labelAll: true,
-    marks: [{ n: 6, den: 10, col: "#FA7E19", label: "Layla" }] });
+    marks: [{ n: 6, den: 10, col: "#FA7E19", label: "Layth" }] });
   if (p3 > 0) {
-    D.txt(ctx, "Layla has run 0.64 of the way. where exactly is that?",
+    D.txt(ctx, "Layth has run 0.64 of the way. where exactly is that?",
       W / 2, H - 14, { size: 13.5, col: "#C9A227", font: "marker", alpha: p3 });
   }
 };
@@ -4635,8 +4742,8 @@ const LESSON = {
         connect: "How many ticks are between zero and one?",
         misconception: "Counting the ticks rather than the gaps." } },
 
-    { phase: "launch", title: "How far has Layla <em>run</em>?",
-      lead: "Layla has run 0.64 of the hundred metre track. Estimate where that is on the line.",
+    { phase: "launch", title: "How far has Layth <em>run</em>?",
+      lead: "Layth has run 0.64 of the hundred metre track. Estimate where that is on the line.",
       goal: "Create the need for a scale finer than tenths.",
       pull: "Now zoom in.",
       rail: { launch: "Between which two tenths does it fall? Commit.",
@@ -4672,7 +4779,7 @@ const LESSON = {
         misconception: "Placing 0.64 to the right of 0.7." } },
 
     { phase: "connect", title: "Two ways to <em>find it</em>",
-      lead: "Reem counted tenths then hundredths. Ibrahim renamed 0.64 as 64 hundredths and counted from zero.",
+      lead: "Anees counted tenths then hundredths. Ibrahim renamed 0.64 as 64 hundredths and counted from zero.",
       goal: "Two routes to the same point, both defensible.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which is faster with a hundred ticks.",
@@ -4729,7 +4836,7 @@ const LESSON = {
 
       case 1:
         return <LaunchEstimate draw={drawStory122} height={256} award={award}
-          label="Which tenth is Layla nearest to?" min={0} max={10} start={5} unit="/ 10"
+          label="Which tenth is Layth nearest to?" min={0} max={10} start={5} unit="/ 10"
           after="Locked. Now we need a finer scale."
           note="0.64 is more than six tenths but less than seven tenths." />;
 
@@ -4761,12 +4868,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — two stages", omml: M.between, h: 92,
+          left={{ name: "Anees's way — two stages", omml: M.between, h: 92,
             quote: "Six tenths first, then four more hundredths." }}
           right={{ name: "Ibrahim's way — all hundredths", omml: M.zoom, h: 92,
             quote: "0.64 is sixty four hundredths. I counted from zero." }}
           same={["Both land on the same point", "Both use hundredths", "Both agree it is under 0.7"]}
-          diff={["Reem counts in two stages", "Ibrahim counts in one", "Reem's is faster to say out loud"]} />;
+          diff={["Anees counts in two stages", "Ibrahim counts in one", "Anees's is faster to say out loud"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard122} height={430} />;

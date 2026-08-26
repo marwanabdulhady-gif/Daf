@@ -150,8 +150,8 @@ const LESSON = {
         connect: "Which claim failed its check?",
         misconception: "Matching by the number of digits." } },
 
-    { phase: "connect", title: "Zahra takes <em>big chunks</em>. Omar takes <em>small ones</em>",
-      lead: "Zahra: 10, then 6. Omar: five at a time until it ran out. Both get 16.",
+    { phase: "connect", title: "Marwan takes <em>big chunks</em>. Omar takes <em>small ones</em>",
+      lead: "Marwan: 10, then 6. Omar: five at a time until it ran out. Both get 16.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -274,13 +274,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 16"
-            text="Zahra takes big chunks. Omar takes small ones until they ran out. Both chunks add to 16."
+            text="Marwan takes big chunks. Omar takes small ones until they ran out. Both chunks add to 16."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Zahra's way — big chunks", omml: M.bigChunk, h: 92, quote: "I took 10 rows out at once, then the last 6." }}
+              left={{ name: "Marwan's way — big chunks", omml: M.bigChunk, h: 92, quote: "I took 10 rows out at once, then the last 6." }}
               right={{ name: "Omar's way — smaller chunks", omml: M.chunks, h: 92, quote: "I took 5 at a time until I ran out." }}
               same={["Both get 16", "Both subtract multiples of 6", "Both add their chunks at the end"]}
-              diff={["Zahra took two steps, Omar took three", "Omar's chunks were easier to see", "Zahra finished faster"]} />
+              diff={["Marwan took two steps, Omar took three", "Omar's chunks were easier to see", "Marwan finished faster"]} />
           </StoryShell>
         );
 

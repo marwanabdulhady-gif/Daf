@@ -3279,53 +3279,160 @@ function folioExport(className) {
   "year": "2025-2026",
   "note": "Edit this file, then run ./rebuild-all.sh to update all 114 lesson decks.",
   "markTiers": [
-    { "xp": 400, "marks": 1 },
-    { "xp": 800, "marks": 2 },
-    { "xp": 1200, "marks": 3 }
+    {
+      "xp": 400,
+      "marks": 1
+    },
+    {
+      "xp": 800,
+      "marks": 2
+    },
+    {
+      "xp": 1200,
+      "marks": 3
+    }
   ],
   "markCap": 3,
   "markFloor": 50,
   "behaviours": {
     "note": "Reason buttons in the points panel (press P). Edit freely, then run ./rebuild-all.sh",
-    "steps": [1, 5, 10],
+    "steps": [
+      1,
+      5,
+      10
+    ],
     "positive": [
-      { "label": "Explained a method", "xp": 5, "icon": "fa-comment-dots" },
-      { "label": "Helped a partner", "xp": 5, "icon": "fa-handshake-angle" },
-      { "label": "Answered on the board", "xp": 10, "icon": "fa-chalkboard" },
-      { "label": "Took the harder question", "xp": 15, "icon": "fa-mountain-sun", "metric": "hard" },
-      { "label": "Right first try", "xp": 15, "icon": "fa-circle-check", "metric": "correct" },
-      { "label": "Method into the Sijill", "xp": 30, "icon": "fa-feather", "metric": "sijill" }
+      {
+        "label": "Explained a method",
+        "xp": 5,
+        "icon": "fa-comment-dots"
+      },
+      {
+        "label": "Helped a partner",
+        "xp": 5,
+        "icon": "fa-handshake-angle"
+      },
+      {
+        "label": "Answered on the board",
+        "xp": 10,
+        "icon": "fa-chalkboard"
+      },
+      {
+        "label": "Took the harder question",
+        "xp": 15,
+        "icon": "fa-mountain-sun",
+        "metric": "hard"
+      },
+      {
+        "label": "Right first try",
+        "xp": 15,
+        "icon": "fa-circle-check",
+        "metric": "correct"
+      },
+      {
+        "label": "Method into the Sijill",
+        "xp": 30,
+        "icon": "fa-feather",
+        "metric": "sijill"
+      }
     ],
     "needsWork": [
-      { "label": "Off task", "xp": -5, "icon": "fa-hourglass-half" },
-      { "label": "Talking over others", "xp": -5, "icon": "fa-volume-xmark" },
-      { "label": "Would not start", "xp": -10, "icon": "fa-circle-xmark" },
-      { "label": "Unkind to a classmate", "xp": -10, "icon": "fa-face-frown" }
+      {
+        "label": "Off task",
+        "xp": -5,
+        "icon": "fa-hourglass-half"
+      },
+      {
+        "label": "Talking over others",
+        "xp": -5,
+        "icon": "fa-volume-xmark"
+      },
+      {
+        "label": "Would not start",
+        "xp": -10,
+        "icon": "fa-circle-xmark"
+      },
+      {
+        "label": "Unkind to a classmate",
+        "xp": -10,
+        "icon": "fa-face-frown"
+      }
     ]
   },
   "privileges": [
-    { "xp": 100, "name": "Choose your table for the week" },
-    { "xp": 200, "name": "Choose the context for next lesson's problems" },
-    { "xp": 300, "name": "Enter a method into the Sijill yourself" },
-    { "xp": 500, "name": "Run the opener for the class" },
-    { "xp": 800, "name": "Choose your table's exhibition problem" }
+    {
+      "xp": 100,
+      "name": "Choose your table for the week"
+    },
+    {
+      "xp": 200,
+      "name": "Choose the context for next lesson's problems"
+    },
+    {
+      "xp": 300,
+      "name": "Enter a method into the Sijill yourself"
+    },
+    {
+      "xp": 500,
+      "name": "Run the opener for the class"
+    },
+    {
+      "xp": 800,
+      "name": "Choose your table's exhibition problem"
+    }
   ],
   "sections": {
     "4A": [
-      "Layla Al-Harbi", "Yousef Bakr", "Salma Al-Ghamdi", "Omar Baeshen",
-      "Reem Al-Sudairi", "Faisal Nassief", "Sana Al-Amoudi", "Ibrahim Zahid",
-      "Noura Al-Qahtani", "Hala Bin Mahfouz", "Ziad Al-Turki", "Jana Al-Shaikh",
-      "Rakan Al-Dossari", "Maryam Al-Juffali", "Tariq Al-Otaibi", "Dana Al-Rashid",
-      "Khalid Al-Anzi", "Lina Al-Sabban", "Sultan Al-Mutairi", "Aseel Al-Barrak",
-      "Majed Al-Suwailem", "Rana Al-Fadl", "Bader Al-Khereiji", "Talia Al-Hazmi"
+      "Abdullah Al-Harbi",
+      "Yousef Bakr",
+      "Bandar Al-Ghamdi",
+      "Omar Baeshen",
+      "Fares Al-Sudairi",
+      "Faisal Nassief",
+      "Ghazi Al-Amoudi",
+      "Ibrahim Zahid",
+      "Hisham Al-Qahtani",
+      "Hudayfair Bin Mahfouz",
+      "Ziad Al-Turki",
+      "Jareer Al-Shaikh",
+      "Rakan Al-Dossari",
+      "Laith Al-Juffali",
+      "Tariq Al-Otaibi",
+      "Majid Al-Rashid",
+      "Khalid Al-Anzi",
+      "Manan Al-Sabban",
+      "Sultan Al-Mutairi",
+      "Musab Al-Barrak",
+      "Majed Al-Suwailem",
+      "Nizar Al-Fadl",
+      "Bader Al-Khereiji",
+      "Obaid Al-Hazmi"
     ],
     "4B": [
-      "Ahmed Al-Mansouri", "Joud Al-Sheikh", "Turki Al-Rajhi", "Shahd Al-Nemer",
-      "Fahad Al-Sanea", "Ghala Al-Aqeel", "Nawaf Al-Habib", "Rimas Al-Zamil",
-      "Saud Al-Muhaidib", "Yara Al-Bassam", "Abdulaziz Al-Naimi", "Leen Al-Shammari",
-      "Mishal Al-Duraibi", "Haya Al-Faraj", "Waleed Al-Hokair", "Retaj Al-Ghurair",
-      "Nayef Al-Sulaiman", "Deem Al-Marzouq", "Rayan Al-Qassabi", "Sadeem Al-Wabel",
-      "Hassan Al-Jasser", "Alia Al-Rowais", "Meshari Al-Tamimi", "Basma Al-Nafisi"
+      "Ahmed Al-Mansouri",
+      "Joud Al-Sheikh",
+      "Turki Al-Rajhi",
+      "Sami Al-Nemer",
+      "Fahad Al-Sanea",
+      "Sattam Al-Aqeel",
+      "Nawaf Al-Habib",
+      "Shuraym Al-Zamil",
+      "Saud Al-Muhaidib",
+      "Tawfiq Al-Bassam",
+      "Abdulaziz Al-Naimi",
+      "Ubaid Al-Shammari",
+      "Mishal Al-Duraibi",
+      "Yazan Al-Faraj",
+      "Waleed Al-Hokair",
+      "Zaher Al-Ghurair",
+      "Nayef Al-Sulaiman",
+      "Hanzala Al-Marzouq",
+      "Rayan Al-Qassabi",
+      "Sadeem Al-Wabel",
+      "Hassan Al-Jasser",
+      "Khalifa Al-Rowais",
+      "Meshari Al-Tamimi",
+      "Sayer Al-Nafisi"
     ]
   }
 }
@@ -4676,7 +4783,7 @@ const LESSON = {
         misconception: "Claiming a triangle can have two right angles." } },
 
     { phase: "connect", title: "Two <em>true</em> names",
-      lead: "Salma called it right-angled. Yousef called it scalene. Neither is wrong.",
+      lead: "Khalil called it right-angled. Yousef called it scalene. Neither is wrong.",
       goal: "The two lists are independent, not competing.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask whether either is wrong.",
@@ -4766,12 +4873,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Salma's way — by the angles", omml: M.byAngles, h: 92,
+          left={{ name: "Khalil's way — by the angles", omml: M.byAngles, h: 92,
             quote: "It has a square corner, so it is a right triangle." }}
           right={{ name: "Yousef's way — by the sides", omml: M.bySides, h: 92,
             quote: "No two sides are marked equal, so it is scalene." }}
           same={["Both describe the same triangle", "Both are correct", "Both read the markings"]}
-          diff={["Salma looks at corners", "Yousef looks at sides", "Together they give the full name"]} />;
+          diff={["Khalil looks at corners", "Yousef looks at sides", "Together they give the full name"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard162} height={430} />;

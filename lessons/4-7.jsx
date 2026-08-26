@@ -266,8 +266,8 @@ const LESSON = {
         connect: "What made the two-step ones different?",
         misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Noura works in <em>bottles</em>. Yasir works in <em>crates</em>",
-      lead: "Noura: total first, then take away 350. Yasir: how many crates is 350 first. Both reach 82.",
+    { phase: "connect", title: "Joud works in <em>bottles</em>. Yasir works in <em>crates</em>",
+      lead: "Joud: total first, then take away 350. Yasir: how many crates is 350 first. Both reach 82.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -430,17 +430,17 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 82"
-            text="Noura works in bottles. Yasir works in crates. Both reach 82 — Yasir's first step has a remainder to think about."
+            text="Joud works in bottles. Yasir works in crates. Both reach 82 — Yasir's first step has a remainder to think about."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Noura's plan — bottles", omml: M.step2, h: 92,
+              left={{ name: "Joud's plan — bottles", omml: M.step2, h: 92,
                       quote: "Total first, then take away the 350." }}
               right={{ name: "Yasir's plan — crates", omml: M.compare, h: 92,
                        quote: "I worked out how many crates 350 bottles is first." }}
               same={["Both reach 82", "Both need two steps", "Both use all three numbers"]}
-              diff={["Noura works in bottles, Yasir in crates",
+              diff={["Joud works in bottles, Yasir in crates",
                      "Yasir's first step has a remainder to think about",
-                     "Noura's plan is simpler to write down"]} />
+                     "Joud's plan is simpler to write down"]} />
           </StoryShell>
         );
 

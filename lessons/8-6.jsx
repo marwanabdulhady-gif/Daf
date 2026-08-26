@@ -152,7 +152,7 @@ const LESSON = {
         connect: "Which pair suited the landmark method best?",
         misconception: "Using one strategy for every pair." } },
 
-    { phase: "connect", title: "Two ways to <em>be certain</em>", lead: "Hala rewrote both as twenty-fourths. Jamal placed both on one number line. Both say two thirds is greater.",
+    { phase: "connect", title: "Two ways to <em>be certain</em>", lead: "Qais rewrote both as twenty-fourths. Jamal placed both on one number line. Both say two thirds is greater.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -234,9 +234,9 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — common denominator", omml: M.bench, h: 92, quote: "Fifteen twenty-fourths against sixteen." }}
+          left={{ name: "Qais's way — common denominator", omml: M.bench, h: 92, quote: "Fifteen twenty-fourths against sixteen." }}
           right={{ name: "Jamal's way — one number line", omml: M.common, h: 92, quote: "I marked both on the same line and looked." }}
-          same={["Both say 2/3 is greater", "Both make the pieces comparable", "Both are convincing"]} diff={["Hala calculates, Jamal draws", "Jamal needs an accurate line", "Hala's works for any pair"]} />;
+          same={["Both say 2/3 is greater", "Both make the pieces comparable", "Both are convincing"]} diff={["Qais calculates, Jamal draws", "Jamal needs an accurate line", "Qais's works for any pair"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard86} height={430} />;

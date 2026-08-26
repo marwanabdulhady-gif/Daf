@@ -238,7 +238,7 @@ const LESSON = {
         misconception: "Giving an answer smaller than the whole number." } },
 
     { phase: "connect", title: "Two ways to <em>see it</em>",
-      lead: "Reem counted the pieces in one whole and multiplied. Yousef counted all twelve.",
+      lead: "Anees counted the pieces in one whole and multiplied. Yousef counted all twelve.",
       goal: "Counting and multiplying agree, and one scales.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one survives twenty trays.",
@@ -328,12 +328,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — count one whole", omml: M.perWhole, h: 92,
+          left={{ name: "Anees's way — count one whole", omml: M.perWhole, h: 92,
             quote: "Four quarters in one tray, and there are three trays." }}
           right={{ name: "Yousef's way — count them all", omml: M.answer, h: 92,
             quote: "I pointed at every piece: one, two, three ... twelve." }}
           same={["Both give 12", "Both cut into quarters", "Both count real pieces"]}
-          diff={["Reem multiplies", "Yousef counts one by one", "Reem's works for twenty trays"]} />;
+          diff={["Anees multiplies", "Yousef counts one by one", "Anees's works for twenty trays"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard179} height={430} />;

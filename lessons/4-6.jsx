@@ -179,8 +179,8 @@ const LESSON = {
         connect: "Which missing part hurts the total most?",
         misconception: "Treating any three-part sum as complete." } },
 
-    { phase: "connect", title: "Salem starts with the <em>ones</em>. Dana starts with the <em>tens</em>",
-      lead: "Salem: ones first, like column addition. Dana: biggest region first, so she can check early. Both get 1,316.",
+    { phase: "connect", title: "Salem starts with the <em>ones</em>. Bandar starts with the <em>tens</em>",
+      lead: "Salem: ones first, like column addition. Bandar: biggest region first, so she can check early. Both get 1,316.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -311,16 +311,16 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 1,316"
-            text="Salem starts with the ones. Dana starts with the biggest region. Both get 1,316."
+            text="Salem starts with the ones. Bandar starts with the biggest region. Both get 1,316."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
               left={{ name: "Salem's way — ones first", omml: M.parts, h: 92,
                       quote: "I always start with the ones, like column addition." }}
-              right={{ name: "Dana's way — tens first", omml: M.answer, h: 92,
+              right={{ name: "Bandar's way — tens first", omml: M.answer, h: 92,
                        quote: "I start with the biggest region so I can check it early." }}
               same={["Both write four lines", "Both add once at the end", "Both get 1,316"]}
-              diff={["Salem starts small, Dana starts big",
-                     "Dana can compare her first line with her estimate",
+              diff={["Salem starts small, Bandar starts big",
+                     "Bandar can compare her first line with her estimate",
                      "Salem's order matches the algorithm he already knows"]} />
           </StoryShell>
         );

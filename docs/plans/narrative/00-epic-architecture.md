@@ -204,7 +204,7 @@ Full arcs in `01-characters-and-arcs.md`. The engine's rules:
 3. **Growth is visible, not told.** Costume/props shift per act (Omar: quill →
    folio-and-seal; Zayd: blocks → compass and protractor); poses grow from the
    existing three (`question`, `build`, `present`) to the extended set
-   (`doubt`, `decide`, `defend`, `celebrate`); the ensemble (Aya the Rounder,
+   (`doubt`, `decide`, `defend`, `celebrate`); the ensemble (Hassan the Rounder,
    Musa the Splitter, and the named students already in the decks) carries the
    class's point of view, so the protagonists stay two, not twenty.
 4. **The Muddler is the class's mirror.** His minions are the class's own
@@ -238,7 +238,7 @@ stand. Added by this document:
 | PR | Curriculum | Narrative deliverables (this document) |
 |---|---|---|
 | **05** | Topics 5–7 | Story lessons with door/mission headers (payload `quest` object live); Map of the Doors v1 (folio screen + poster); fellowship roles named in quest openers; Muddler-as-stain threads in 5-4 (the passengers left at the gate) and 7-4 (the indivisible border tile). |
-| **06** | Topics 8–10 | Muddler-as-whisper threads (8-6 the close islands, 11-4 the beautiful but false claim); Aya/Musa ensemble beats per `01` §4; small-confrontation template spec frozen for 9-10. |
+| **06** | Topics 8–10 | Muddler-as-whisper threads (8-6 the close islands, 11-4 the beautiful but false claim); Hassan/Musa ensemble beats per `01` §4; small-confrontation template spec frozen for 9-10. |
 | **07** | Topics 11–12 | The whisper sharpens (11-4, 12-3 the longer label); Map of the Doors shows fog density rising toward door 13. |
 | **08** | Topic 13 + boss | **The reveal.** The Muddler's face (boss-13 art already built); his four forms named in the boss's opening; post-boss: the market reopens, the fog thins. |
 | **09** | Topics 14–16 | The rebuilding arc: Omar and Zayd's swapped habits visible in ribbon copy; the architect's confident error (16-6) as the last named minion skirmish. |

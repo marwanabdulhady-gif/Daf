@@ -113,9 +113,9 @@ const drawStory122 = (ctx, W, H, frame) => {
     { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
   D.fracLine(ctx, { x: 70, y: H / 2 + 14, w: W - 140, den: 10, whole: 1,
     prog: D.at(f, 60, 340), labelAll: true,
-    marks: [{ n: 6, den: 10, col: "#FA7E19", label: "Layla" }] });
+    marks: [{ n: 6, den: 10, col: "#FA7E19", label: "Layth" }] });
   if (p3 > 0) {
-    D.txt(ctx, "Layla has run 0.64 of the way. where exactly is that?",
+    D.txt(ctx, "Layth has run 0.64 of the way. where exactly is that?",
       W / 2, H - 14, { size: 13.5, col: "#C9A227", font: "marker", alpha: p3 });
   }
 };
@@ -181,8 +181,8 @@ const LESSON = {
         connect: "How many ticks are between zero and one?",
         misconception: "Counting the ticks rather than the gaps." } },
 
-    { phase: "launch", title: "How far has Layla <em>run</em>?",
-      lead: "Layla has run 0.64 of the hundred metre track. Estimate where that is on the line.",
+    { phase: "launch", title: "How far has Layth <em>run</em>?",
+      lead: "Layth has run 0.64 of the hundred metre track. Estimate where that is on the line.",
       goal: "Create the need for a scale finer than tenths.",
       pull: "Now zoom in.",
       rail: { launch: "Between which two tenths does it fall? Commit.",
@@ -218,7 +218,7 @@ const LESSON = {
         misconception: "Placing 0.64 to the right of 0.7." } },
 
     { phase: "connect", title: "Two ways to <em>find it</em>",
-      lead: "Reem counted tenths then hundredths. Ibrahim renamed 0.64 as 64 hundredths and counted from zero.",
+      lead: "Anees counted tenths then hundredths. Ibrahim renamed 0.64 as 64 hundredths and counted from zero.",
       goal: "Two routes to the same point, both defensible.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which is faster with a hundred ticks.",
@@ -275,7 +275,7 @@ const LESSON = {
 
       case 1:
         return <LaunchEstimate draw={drawStory122} height={256} award={award}
-          label="Which tenth is Layla nearest to?" min={0} max={10} start={5} unit="/ 10"
+          label="Which tenth is Layth nearest to?" min={0} max={10} start={5} unit="/ 10"
           after="Locked. Now we need a finer scale."
           note="0.64 is more than six tenths but less than seven tenths." />;
 
@@ -307,12 +307,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — two stages", omml: M.between, h: 92,
+          left={{ name: "Anees's way — two stages", omml: M.between, h: 92,
             quote: "Six tenths first, then four more hundredths." }}
           right={{ name: "Ibrahim's way — all hundredths", omml: M.zoom, h: 92,
             quote: "0.64 is sixty four hundredths. I counted from zero." }}
           same={["Both land on the same point", "Both use hundredths", "Both agree it is under 0.7"]}
-          diff={["Reem counts in two stages", "Ibrahim counts in one", "Reem's is faster to say out loud"]} />;
+          diff={["Anees counts in two stages", "Ibrahim counts in one", "Anees's is faster to say out loud"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard122} height={430} />;

@@ -150,8 +150,8 @@ const LESSON = {
         connect: "Which claim failed its check?",
         misconception: "Matching by the number of digits." } },
 
-    { phase: "connect", title: "Lina uses <em>place value</em>. Sami repeats the <em>chunk</em>",
-      lead: "Lina: 100, then 20, then 3 — chosen by place value. Sami: keeps taking 100 groups until he could not.",
+    { phase: "connect", title: "Iyad uses <em>place value</em>. Sami repeats the <em>chunk</em>",
+      lead: "Iyad: 100, then 20, then 3 — chosen by place value. Sami: keeps taking 100 groups until he could not.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -274,13 +274,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 123"
-            text="Lina chooses chunks by place value. Sami repeats the hundred-chunk until he could not. Both sum to 123."
+            text="Iyad chooses chunks by place value. Sami repeats the hundred-chunk until he could not. Both sum to 123."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Lina's way — hundreds, tens, ones", omml: M.bigChunk, h: 92, quote: "100 groups, then 20, then 3." }}
+              left={{ name: "Iyad's way — hundreds, tens, ones", omml: M.bigChunk, h: 92, quote: "100 groups, then 20, then 3." }}
               right={{ name: "Sami's way — same chunk repeated", omml: M.chunks, h: 92, quote: "I kept taking 100 groups until I could not." }}
               same={["Both get 123", "Both subtract multiples of 6", "Both add their chunks"]}
-              diff={["Lina took three steps, Sami took more", "Lina used place value to choose", "Sami never had to think about size"]} />
+              diff={["Iyad took three steps, Sami took more", "Iyad used place value to choose", "Sami never had to think about size"]} />
           </StoryShell>
         );
 

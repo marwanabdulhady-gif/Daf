@@ -155,7 +155,7 @@ const LESSON = {
         misconception: "Assuming a bigger denominator means a smaller fraction always." } },
 
     { phase: "connect", title: "Two ways to <em>see it</em>",
-      lead: "Jana watched the shaded edge. Munir counted pieces in each bar. Both say one half equals four eighths.",
+      lead: "Shuraym watched the shaded edge. Munir counted pieces in each bar. Both say one half equals four eighths.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -248,12 +248,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Jana's way — watch the edge", omml: M.sameShade, h: 92,
+          left={{ name: "Shuraym's way — watch the edge", omml: M.sameShade, h: 92,
                   quote: "The shaded part ends in exactly the same place." }}
           right={{ name: "Munir's way — count pieces", omml: M.chain, h: 92,
                    quote: "Four out of eight is the same as one out of two." }}
           same={["Both say the amount is unchanged", "Both use the same bar", "Both get four eighths"]}
-          diff={["Jana looks, Munir counts", "Munir's works without a picture", "Jana's shows why instantly"]} />;
+          diff={["Shuraym looks, Munir counts", "Munir's works without a picture", "Shuraym's shows why instantly"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard81} height={430} />;

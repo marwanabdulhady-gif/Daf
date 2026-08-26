@@ -68,7 +68,7 @@ const makeReason114 = (who) => (ctx, W, H, frame) => {
   const pulse = 0.5 + Math.sin(frame / 14) * 0.3;
 
   D.txt(ctx, "Omar", half / 2, 26, { size: 13, col: who === "omar" ? "#34D399" : "rgba(234,244,242,.4)", font: "marker" });
-  D.txt(ctx, "Sana", half + half / 2, 26, { size: 13, col: who === "sana" ? "#E0665F" : "rgba(234,244,242,.4)", font: "marker" });
+  D.txt(ctx, "Bashir", half + half / 2, 26, { size: 13, col: who === "sana" ? "#E0665F" : "rgba(234,244,242,.4)", font: "marker" });
 
   const lines = {
     omar: ["I counted the crosses to the right", "of half a metre: 5 + 3 + 2 = 10.", "Ten out of sixteen is more than half,", "so the claim is justified."],
@@ -204,11 +204,11 @@ const LESSON = {
         misconception: "Counting the 4/8 jumps as 'over' half a metre." } },
 
     { phase: "monitor", title: "Same answer, <em>different reasoning</em>",
-      lead: "Omar and Sana both say the claim is true. Only one of them has justified it.",
+      lead: "Omar and Bashir both say the claim is true. Only one of them has justified it.",
       goal: "Separate a correct conclusion from a sound argument.",
       pull: "Now sort some reasoning of your own.",
       rail: { launch: "Both got the right verdict. Read the reasons carefully.",
-        monitor: ["Checking Sana's count", "Spotting the majority error", "Accepting both"],
+        monitor: ["Checking Bashir's count", "Spotting the majority error", "Accepting both"],
         connect: "How many people actually jumped 5/8?",
         misconception: "Accepting an argument because the conclusion happens to be right." } },
 
@@ -222,7 +222,7 @@ const LESSON = {
         misconception: "Grading the conclusion rather than the reasoning." } },
 
     { phase: "connect", title: "How to <em>disagree well</em>",
-      lead: "Layla says the claim fails. Yousef says it holds. Both point at the plot.",
+      lead: "Layth says the claim fails. Yousef says it holds. Both point at the plot.",
       goal: "Model the language of a mathematical disagreement.",
       pull: "On the board.",
       rail: { launch: "Notice that both name the marks they are using.",
@@ -295,7 +295,7 @@ const LESSON = {
         return <ExploreChips draw={makeReason114(who)} height={256}
           label="Whose reasoning holds up?" value={who}
           onPick={(v) => setWho(v)}
-          chips={[{ v: "omar", label: "Omar's reason" }, { v: "sana", label: "Sana's reason" }]}
+          chips={[{ v: "omar", label: "Omar's reason" }, { v: "sana", label: "Bashir's reason" }]}
           caption={<MathEl omml={M.verdict} size="lg" display="block" />}
           footnote="Both reached the right verdict. Only one of them proved it." />;
 
@@ -311,12 +311,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Layla — the claim fails", omml: M.under, h: 92,
+          left={{ name: "Layth — the claim fails", omml: M.under, h: 92,
             quote: "Six jumps did not clear it. That is a lot of people." }}
           right={{ name: "Yousef — the claim holds", omml: M.over, h: 92,
             quote: "Ten of sixteen cleared it, and ten is more than half of sixteen." }}
           same={["Both count real marks", "Both use the same boundary", "Both totals add to 16"]}
-          diff={["Layla counts the ones that failed", "Yousef compares 10 with half of 16", "Only Yousef answers the actual claim"]} />;
+          diff={["Layth counts the ones that failed", "Yousef compares 10 with half of 16", "Only Yousef answers the actual claim"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard114} height={430} />;

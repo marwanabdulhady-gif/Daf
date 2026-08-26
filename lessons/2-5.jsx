@@ -154,8 +154,8 @@ const LESSON = {
         connect: "Which line proves 266?",
         misconception: "Treating the estimate 530 − 270 as the answer." } },
 
-    { phase: "connect", title: "Aya trades. <em>Musa adds back.</em>",
-      lead: "Aya trades, then subtracts. Musa adds the difference back to verify. Both defend 266.",
+    { phase: "connect", title: "Hassan trades. <em>Musa adds back.</em>",
+      lead: "Hassan trades, then subtracts. Musa adds the difference back to verify. Both defend 266.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -277,15 +277,15 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 266"
-            text="Aya trades, then subtracts. Musa adds the difference back to verify. Both defend 266."
+            text="Hassan trades, then subtracts. Musa adds the difference back to verify. Both defend 266."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Aya's way — trade, then subtract", omml: M.traded, h: 92,
+              left={{ name: "Hassan's way — trade, then subtract", omml: M.traded, h: 92,
                       quote: "I ungrouped a ten, then 14 − 8 = 6." }}
               right={{ name: "Musa's way — add back to verify", omml: M.check, h: 92,
                        quote: "266 back into 268 gives 534 — the start." }}
               same={["Both defend 266", "Both trade before subtracting", "Both can be checked"]}
-              diff={["Aya's work shows the trades", "Musa's work proves the difference", "Musa's check catches a lost trade"]} />
+              diff={["Hassan's work shows the trades", "Musa's work proves the difference", "Musa's check catches a lost trade"]} />
           </StoryShell>
         );
 

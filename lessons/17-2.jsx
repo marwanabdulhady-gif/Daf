@@ -219,7 +219,7 @@ const LESSON = {
         misconception: "Claiming 0.375 > 0.4 because 375 > 4." } },
 
     { phase: "connect", title: "Two ways to <em>settle it</em>",
-      lead: "Salma padded to three places. Ibrahim used a number line.",
+      lead: "Khalil padded to three places. Ibrahim used a number line.",
       goal: "Symbolic and visual comparisons must agree.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which is faster for ten numbers.",
@@ -309,12 +309,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Salma's way — pad the places", omml: M.pad, h: 92,
+          left={{ name: "Khalil's way — pad the places", omml: M.pad, h: 92,
             quote: "I wrote 0.400 so both had three places, then compared." }}
           right={{ name: "Ibrahim's way — use the line", omml: M.order, h: 92,
             quote: "I marked both on a number line. 0.4 sits further right." }}
           same={["Both give 0.4 > 0.375", "Both use place value", "Both agree with each other"]}
-          diff={["Salma pads and compares", "Ibrahim locates them", "Salma's is faster for a long list"]} />;
+          diff={["Khalil pads and compares", "Ibrahim locates them", "Khalil's is faster for a long list"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard172} height={430} />;

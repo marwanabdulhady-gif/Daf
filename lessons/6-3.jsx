@@ -201,13 +201,13 @@ const LESSON = {
         connect: "What made the two-step ones different?",
         misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Dina <em>multiplies then subtracts</em>. Rayan <em>subtracts three times</em>",
-      lead: "Dina: 3 × 28 = 84, then 140 − 84. Rayan: takes 28 off, then again, then again. Both get 56.",
+    { phase: "connect", title: "Lamees <em>multiplies then subtracts</em>. Rayan <em>subtracts three times</em>",
+      lead: "Lamees: 3 × 28 = 84, then 140 − 84. Rayan: takes 28 off, then again, then again. Both get 56.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Following Dina's total", "Counting Rayan's takes", "Checking both reach 56"],
-        connect: "Why is Dina's total useful for other questions?",
+        monitor: ["Following Lamees's total", "Counting Rayan's takes", "Checking both reach 56"],
+        connect: "Why is Lamees's total useful for other questions?",
         misconception: "Believing the longer method is always more careful." } },
 
     { phase: "monitor", title: "The <em>estimate gate</em>",
@@ -354,13 +354,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 56"
-            text="Dina multiplies then subtracts. Rayan subtracts three times. Both reach 56."
+            text="Lamees multiplies then subtracts. Rayan subtracts three times. Both reach 56."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Dina's way — multiply then subtract", omml: M.step1, h: 92, quote: "Three 28s is 84, then 140 take away 84." }}
+              left={{ name: "Lamees's way — multiply then subtract", omml: M.step1, h: 92, quote: "Three 28s is 84, then 140 take away 84." }}
               right={{ name: "Rayan's way — subtract three times", omml: M.chain, h: 92, quote: "I took 28 off, then again, then again." }}
               same={["Both get 56", "Both use all three numbers", "Both need more than one calculation"]}
-              diff={["Dina takes two steps, Rayan takes three", "Rayan never finds the total", "Dina's total is useful for other questions"]} />
+              diff={["Lamees takes two steps, Rayan takes three", "Rayan never finds the total", "Lamees's total is useful for other questions"]} />
           </StoryShell>
         );
 

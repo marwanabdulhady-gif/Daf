@@ -181,8 +181,8 @@ const LESSON = {
         connect: "What made the impossible estimates impossible?",
         misconception: "Accepting a tidy-looking estimate." } },
 
-    { phase: "connect", title: "Dalia uses <em>240</em>. Majed uses <em>180</em>",
-      lead: "Dalia: 240, nearly exact. Majed: 180, safely low. Both are honest estimates.",
+    { phase: "connect", title: "Anas uses <em>240</em>. Majed uses <em>180</em>",
+      lead: "Anas: 240, nearly exact. Majed: 180, safely low. Both are honest estimates.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -299,13 +299,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, two honest estimates"
-            text="Dalia uses 240 — nearly exact. Majed uses 180 — safely low. Both tell the truth about the range."
+            text="Anas uses 240 — nearly exact. Majed uses 180 — safely low. Both tell the truth about the range."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Dalia's way — use 240", omml: M.compatible, h: 92, quote: "6 goes into 240 exactly 40 times." }}
+              left={{ name: "Anas's way — use 240", omml: M.compatible, h: 92, quote: "6 goes into 240 exactly 40 times." }}
               right={{ name: "Majed's way — use 180", omml: M.other, h: 92, quote: "6 goes into 180 exactly 30 times." }}
               same={["Both use a multiple of 6", "Both are easy to do in the head", "Both give a sensible size"]}
-              diff={["240 is much closer to 245", "Majed knows his answer is too low", "Dalia's estimate is nearly exact"]} />
+              diff={["240 is much closer to 245", "Majed knows his answer is too low", "Anas's estimate is nearly exact"]} />
           </StoryShell>
         );
 

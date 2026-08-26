@@ -154,8 +154,8 @@ const LESSON = {
         connect: "What does the remainder tell you?",
         misconception: "Sorting by size instead of by the test." } },
 
-    { phase: "connect", title: "Yara <em>builds</em>. Fahad <em>divides in order</em>",
-      lead: "Yara builds every rectangle. Fahad tries 1, then 2, then 3, and writes down what worked. Both find 1, 2, 3, 4, 6, 12.",
+    { phase: "connect", title: "Firas <em>builds</em>. Fahad <em>divides in order</em>",
+      lead: "Firas builds every rectangle. Fahad tries 1, then 2, then 3, and writes down what worked. Both find 1, 2, 3, 4, 6, 12.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -284,16 +284,16 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one factor list"
-            text="Yara builds every rectangle. Fahad divides in order. Both lists read 1, 2, 3, 4, 6, 12."
+            text="Firas builds every rectangle. Fahad divides in order. Both lists read 1, 2, 3, 4, 6, 12."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Yara's way — build rectangles", omml: M.pair3, h: 92,
+              left={{ name: "Firas's way — build rectangles", omml: M.pair3, h: 92,
                       quote: "Every rectangle I can build gives me two factors." }}
               right={{ name: "Fahad's way — divide in order", omml: M.all, h: 92,
                        quote: "I tried 1, then 2, then 3, and wrote down what worked." }}
               same={["Both find 1, 2, 3, 4, 6 and 12", "Both use the no-remainder test", "Both pair the factors up"]}
-              diff={["Yara draws, Fahad divides", "Fahad's order proves none are missed",
-                     "Yara can see why they come in pairs"]} />
+              diff={["Firas draws, Fahad divides", "Fahad's order proves none are missed",
+                     "Firas can see why they come in pairs"]} />
           </StoryShell>
         );
 

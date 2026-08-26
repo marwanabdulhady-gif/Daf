@@ -205,7 +205,7 @@ const LESSON = {
         misconception: "Subtracting the whole from the part." } },
 
     { phase: "connect", title: "Two ways to <em>find it</em>",
-      lead: "Sana subtracted from 90. Faisal counted up from 35 to 90.",
+      lead: "Bashir subtracted from 90. Faisal counted up from 35 to 90.",
       goal: "Subtraction and counting on agree.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one they would check with.",
@@ -296,12 +296,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Sana's way — subtract", omml: M.missing, h: 92,
+          left={{ name: "Bashir's way — subtract", omml: M.missing, h: 92,
             quote: "The whole is ninety, one part is thirty five, so ninety take thirty five." }}
           right={{ name: "Faisal's way — count on", omml: M.checkBack, h: 92,
             quote: "From thirty five up to ninety is fifty five." }}
           same={["Both give 55°", "Both use the same whole", "Both can be checked by adding"]}
-          diff={["Sana subtracts", "Faisal counts on", "Faisal's is also the check"]} />;
+          diff={["Bashir subtracts", "Faisal counts on", "Faisal's is also the check"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard155} height={430} />;

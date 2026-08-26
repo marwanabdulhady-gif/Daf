@@ -240,8 +240,8 @@ const LESSON = {
         connect: "What made the two-step ones different?",
         misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Amira <em>writes two</em>. Khalid writes <em>one</em>",
-      lead: "Amira: one step at a time, the middle answer shown. Khalid: one line with brackets. Both reach 48.",
+    { phase: "connect", title: "Sultan <em>writes two</em>. Khalid writes <em>one</em>",
+      lead: "Sultan: one step at a time, the middle answer shown. Khalid: one line with brackets. Both reach 48.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -405,16 +405,16 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 48"
-            text="Amira writes one step at a time, the middle answer shown. Khalid writes one line with brackets. Both reach 48."
+            text="Sultan writes one step at a time, the middle answer shown. Khalid writes one line with brackets. Both reach 48."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Amira's way — one step at a time", omml: M.equal, h: 92,
+              left={{ name: "Sultan's way — one step at a time", omml: M.equal, h: 92,
                       quote: "First I find one class, then I write a second equation." }}
               right={{ name: "Khalid's way — one equation", omml: M.twoStep, h: 92,
                        quote: "I put the whole thing in one line with brackets." }}
               same={["Both reach 48", "Both divide then multiply", "Both use a letter for the unknown"]}
-              diff={["Amira writes two equations", "Khalid's is shorter but harder to read",
-                     "Amira's shows the middle answer"]} />
+              diff={["Sultan writes two equations", "Khalid's is shorter but harder to read",
+                     "Sultan's shows the middle answer"]} />
           </StoryShell>
         );
 

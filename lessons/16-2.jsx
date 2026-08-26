@@ -222,7 +222,7 @@ const LESSON = {
         misconception: "Claiming a triangle can have two right angles." } },
 
     { phase: "connect", title: "Two <em>true</em> names",
-      lead: "Salma called it right-angled. Yousef called it scalene. Neither is wrong.",
+      lead: "Khalil called it right-angled. Yousef called it scalene. Neither is wrong.",
       goal: "The two lists are independent, not competing.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask whether either is wrong.",
@@ -312,12 +312,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Salma's way — by the angles", omml: M.byAngles, h: 92,
+          left={{ name: "Khalil's way — by the angles", omml: M.byAngles, h: 92,
             quote: "It has a square corner, so it is a right triangle." }}
           right={{ name: "Yousef's way — by the sides", omml: M.bySides, h: 92,
             quote: "No two sides are marked equal, so it is scalene." }}
           same={["Both describe the same triangle", "Both are correct", "Both read the markings"]}
-          diff={["Salma looks at corners", "Yousef looks at sides", "Together they give the full name"]} />;
+          diff={["Khalil looks at corners", "Yousef looks at sides", "Together they give the full name"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard162} height={430} />;

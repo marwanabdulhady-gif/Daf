@@ -76,7 +76,7 @@ const drawStory111 = (ctx, W, H, frame) => {
   const p1 = D.at(f, 0, 120), p3 = D.at(f, 400, 540);
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
-  D.txt(ctx, "Noura's science homework", W / 2, 22,
+  D.txt(ctx, "Joud's science homework", W / 2, 22,
     { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
   D.linePlot(ctx, { x: 96, y: H - 94, w: W - 192, den: 4, max: 4, counts: LEAF11,
     prog: D.at(f, 80, 380), col: "#FA7E19", axisLabel: "length in units" });
@@ -138,7 +138,7 @@ const LESSON = {
         misconception: "Reading the height of a stack as a length rather than a count." } },
 
     { phase: "launch", title: "Twelve leaves on the <em>Corniche</em>",
-      lead: "Noura measured every leaf she collected to the nearest quarter of a unit and plotted them. Estimate how many leaves she had.",
+      lead: "Joud measured every leaf she collected to the nearest quarter of a unit and plotted them. Estimate how many leaves she had.",
       goal: "Create the need to count marks rather than read a height.",
       pull: "Now let us see where the marks came from.",
       rail: { launch: "Do not count carefully yet. Give me a number you can defend.",
@@ -174,7 +174,7 @@ const LESSON = {
         misconception: "Reading the number of positions as the number of leaves." } },
 
     { phase: "connect", title: "Two ways to <em>count</em>",
-      lead: "Ziad counted every cross one by one. Hala added the column totals. Both got twelve.",
+      lead: "Ziad counted every cross one by one. Qais added the column totals. Both got twelve.",
       goal: "Adding the column counts is the reliable route on a big plot.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one survives fifty leaves.",
@@ -231,7 +231,7 @@ const LESSON = {
 
       case 1:
         return <LaunchEstimate draw={drawStory111} height={256} award={award}
-          label="How many leaves did Noura measure?" min={4} max={24} start={10} unit="leaves"
+          label="How many leaves did Joud measure?" min={4} max={24} start={10} unit="leaves"
           after="Locked. Now let us see where each cross came from."
           note="One cross on the plot means one leaf was that length." />;
 
@@ -266,10 +266,10 @@ const LESSON = {
         return <CompareConnect award={award}
           left={{ name: "Ziad's way — count every cross", omml: M.howMany, h: 92,
             quote: "One, two, three ... I pointed at every single one." }}
-          right={{ name: "Hala's way — add the columns", omml: M.spread, h: 92,
+          right={{ name: "Qais's way — add the columns", omml: M.spread, h: 92,
             quote: "Two, then one, then four, then three, then two. Twelve." }}
           same={["Both give 12 leaves", "Both use every mark once", "Both read the same plot"]}
-          diff={["Ziad counts singly", "Hala uses column totals", "Hala's is safer with a hundred marks"]} />;
+          diff={["Ziad counts singly", "Qais uses column totals", "Qais's is safer with a hundred marks"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard111} height={430} />;
@@ -284,7 +284,7 @@ const LESSON = {
 
       case 8:
         return <ShowWhatYouKnow award={award}
-          prompt="Using Noura's plot, how many leaves were shorter than half a unit?" omml={M.swyk}
+          prompt="Using Joud's plot, how many leaves were shorter than half a unit?" omml={M.swyk}
           options={[{ v: "a", text: "2" }, { v: "b", text: "3" }, { v: "c", text: "7" }, { v: "d", text: "12" }]}
           right="b"
           support={{ yes: "Yes — 2 leaves at 0 and 1 leaf at 1/4.",

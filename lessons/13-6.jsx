@@ -191,7 +191,7 @@ const LESSON = {
         misconception: "Reporting an area when the question asked for a perimeter." } },
 
     { phase: "connect", title: "Two ways to find the <em>perimeter</em>",
-      lead: "Ziad added all four sides. Noura added one long and one short, then doubled.",
+      lead: "Ziad added all four sides. Joud added one long and one short, then doubled.",
       goal: "The formula is a shortcut for a sum everyone can see.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask where the doubling comes from.",
@@ -283,10 +283,10 @@ const LESSON = {
         return <CompareConnect award={award}
           left={{ name: "Ziad's way — add four sides", omml: M.units, h: 92,
             quote: "Nine plus four plus nine plus four. Twenty six." }}
-          right={{ name: "Noura's way — double the pair", omml: M.perim, h: 92,
+          right={{ name: "Joud's way — double the pair", omml: M.perim, h: 92,
             quote: "One long and one short is thirteen. Then double it." }}
           same={["Both give 26 m", "Both use every side once", "Both answer in metres"]}
-          diff={["Ziad adds four numbers", "Noura adds two then doubles", "Noura's is the formula"]} />;
+          diff={["Ziad adds four numbers", "Joud adds two then doubles", "Joud's is the formula"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard136} height={430} />;

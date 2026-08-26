@@ -141,12 +141,12 @@ const LESSON = {
         connect: "What does the remainder tell you?",
         misconception: "Sorting by how the number looks instead of the test." } },
 
-    { phase: "connect", title: "Ola <em>tests everything</em>. Ziad <em>stops at the meeting</em>",
-      lead: "Ola checks all 24 numbers to be safe. Ziad stops at 4 and 6, because they met. Both find eight factors.",
+    { phase: "connect", title: "Numan <em>tests everything</em>. Ziad <em>stops at the meeting</em>",
+      lead: "Numan checks all 24 numbers to be safe. Ziad stops at 4 and 6, because they met. Both find eight factors.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Counting Ola's tests", "Finding Ziad's stopping point", "Comparing the lists"],
+        monitor: ["Counting Numan's tests", "Finding Ziad's stopping point", "Comparing the lists"],
         connect: "What does Ziad know that saves him nineteen tests?",
         misconception: "Believing stopping early is always careless." } },
 
@@ -263,13 +263,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one list"
-            text="Ola tests all 24 numbers to be safe. Ziad stops when the pairs meet. Both lists hold eight factors."
+            text="Numan tests all 24 numbers to be safe. Ziad stops when the pairs meet. Both lists hold eight factors."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Ola's way — test everything", omml: M.left, h: 92, quote: "I checked all 24 numbers to be safe." }}
+              left={{ name: "Numan's way — test everything", omml: M.left, h: 92, quote: "I checked all 24 numbers to be safe." }}
               right={{ name: "Ziad's way — stop at the meeting", omml: M.right, h: 92, quote: "I stopped at 4 and 6 because they met." }}
               same={["Both find eight factors", "Both test in order", "Both use the no-remainder test"]}
-              diff={["Ola does 24 tests, Ziad does 6", "Ziad needs to know when to stop", "Ola is slower but never doubts it"]} />
+              diff={["Numan does 24 tests, Ziad does 6", "Ziad needs to know when to stop", "Numan is slower but never doubts it"]} />
           </StoryShell>
         );
 

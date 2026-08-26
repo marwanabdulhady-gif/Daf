@@ -27,7 +27,7 @@ const makeBar = (kind, onKind) => (ctx, W, H, frame) => {
     D.txt(ctx, "multiply", W / 2, H - 16, { size: 15, col: "#34D399", font: "marker" });
   } else if (kind === "compare") {
     D.strip(ctx, { x: x, y: 60, w: w * 0.25, h: 38, prog: 1,
-      parts: [{ v: 128, label: "128", col: "#FA7E19", sub: "Layla" }] });
+      parts: [{ v: 128, label: "128", col: "#FA7E19", sub: "Layth" }] });
     D.strip(ctx, { x: x, y: 124, w: w, h: 38, prog: 1,
       parts: [{ v: 128, label: "128", col: "#2D70B3" }, { v: 128, label: "128", col: "#2D70B3" },
               { v: 128, label: "128", col: "#2D70B3" }, { v: 128, label: "?", col: "#2D70B3" }] });
@@ -391,7 +391,7 @@ const LESSON = {
             <CardSort award={award} columns={2} commitLabel="Sort the questions"
               items={[
                 { id: "q1", text: "How many books in 6 boxes?", target: "one" },
-                { id: "q2", text: "Layla read 4 times as many as 128", target: "one" },
+                { id: "q2", text: "Layth read 4 times as many as 128", target: "one" },
                 { id: "q3", text: "How many are still to pack?", target: "two" },
                 { id: "q4", text: "How many more boxes are needed?", target: "two" }
               ]}

@@ -98,7 +98,7 @@ Prophet Muhammad ﷺ, his companions or any historical person** (existing
 ### The partnership (how the two develop together)
 
 - **Act I — opposite poles.** Omar says "show me the record"; Zayd says "watch
-  this." Their CompareConnect-style scenes (the Aya/Musa pattern already in
+  this." Their CompareConnect-style scenes (the Hassan/Musa pattern already in
   the decks) are written so each is right and each is incomplete.
 - **Act II — crossing.** Each steals one habit from the other per act: Omar
   takes *build first, check second* in a controlled way (doors 7–8); Zayd
@@ -136,15 +136,15 @@ frame for student photos — physical, opt-in, never on the fiction screens).
 
 | Name | First door | Standing role | Line (one) |
 |---|---|---|---|
-| **Aya** | 2 (the ledger) | **The Rounder** — estimates, friendly numbers, "close enough for this decision?" | Recurs at every CompareConnect as the estimation voice. |
-| **Musa** | 2 (the ledger) | **The Splitter** — decompositions, place-by-place work, "show me the pieces" | Recurs as the decomposition voice; with Aya, they are the class's two strategies made visible. |
+| **Hassan** | 2 (the ledger) | **The Rounder** — estimates, friendly numbers, "close enough for this decision?" | Recurs at every CompareConnect as the estimation voice. |
+| **Musa** | 2 (the ledger) | **The Splitter** — decompositions, place-by-place work, "show me the pieces" | Recurs as the decomposition voice; with Hassan, they are the class's two strategies made visible. |
 | Amal | 3 | the zero counter ("the zeros are doing the work") | 3-1's way of saying why. |
 | Basil | 3 | the unit namer ("12 hundreds, not 12,00") | 3-1's other way. |
-| Reem | 4 | the two-splitter ("20 forties and 3 forties") | 4-2. |
+| Anees | 4 | the two-splitter ("20 forties and 3 forties") | 4-2. |
 | Ammar | 4 | the tidy-factor splitter ("23 × 4, then ×10") | 4-2. |
 | Areej | 4 | the tens rounder | 4-3. |
 | Bader | 4 | the compatible-pair finder | 4-3. |
-| Huda, Wafa, Jamal, Sara, Noura, Yasir, Fatima, Hamza, Lama, Ziyad, Rana, Faris, Salem, Dana, Nada, Tarek, Layla | their units (3–13) | the second voice of their unit's CompareConnect / boss card | Each appears in exactly the screens already built for them; cameo rights, no new dialogue before PR 05 authoring. |
+| Samer, Wafa, Jamal, Hani, Joud, Yasir, Fatima, Hamza, Lutfi, Ziyad, Karam, Faris, Salem, Dana, Nada, Tarek, Layth | their units (3–13) | the second voice of their unit's CompareConnect / boss card | Each appears in exactly the screens already built for them; cameo rights, no new dialogue before PR 05 authoring. |
 
 **Rules:** ensemble members are fictional students of the class (labelled as
 such); they never speak for a teacher; their lines are always *strategies and

@@ -157,8 +157,8 @@ const LESSON = {
         connect: "Which line proves 386,169?",
         misconception: "Treating the estimate 483,000 − 96,000 as the answer." } },
 
-    { phase: "connect", title: "Aya estimates and <em>adds back</em>. Musa aligns and trades",
-      lead: "Aya: estimate, subtract, add back. Musa: align, trade, verify. Both defend 386,169.",
+    { phase: "connect", title: "Hassan estimates and <em>adds back</em>. Musa aligns and trades",
+      lead: "Hassan: estimate, subtract, add back. Musa: align, trade, verify. Both defend 386,169.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -280,15 +280,15 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 386,169"
-            text="Aya estimates, subtracts and adds back. Musa aligns, trades and verifies. Both defend 386,169."
+            text="Hassan estimates, subtracts and adds back. Musa aligns, trades and verifies. Both defend 386,169."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Aya's way — estimate, subtract, add back", omml: M.estimate, h: 92,
+              left={{ name: "Hassan's way — estimate, subtract, add back", omml: M.estimate, h: 92,
                       quote: "483,000 − 96,000 is 387,000 — the exact difference sits near it." }}
               right={{ name: "Musa's way — align, trade, verify", omml: M.check, h: 92,
                        quote: "The places line up on the ones, and the add-back proves 386,169." }}
               same={["Both defend 386,169", "Both line up by the places", "Both can be verified"]}
-              diff={["Aya's estimate catches a wildly wrong total", "Musa's alignment catches a misplaced digit", "Aya works fast, Musa works sure"]} />
+              diff={["Hassan's estimate catches a wildly wrong total", "Musa's alignment catches a misplaced digit", "Hassan works fast, Musa works sure"]} />
           </StoryShell>
         );
 

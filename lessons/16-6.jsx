@@ -103,7 +103,7 @@ const drawStory166 = (ctx, W, H, frame) => {
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   D.txt(ctx, "an argument in the Grade 4 classroom", W / 2, 22,
     { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
-  D.txt(ctx, "Hala says: \u201call rectangles are squares\u201d", W / 2, 74,
+  D.txt(ctx, "Qais says: \u201call rectangles are squares\u201d", W / 2, 74,
     { size: 16, col: "#FA7E19", font: "marker", alpha: D.at(f, 60, 200) });
   D.txt(ctx, "Ziad says: \u201cno they are not\u201d", W / 2, 112,
     { size: 16, col: "#2D70B3", font: "marker", alpha: D.at(f, 200, 340) });
@@ -172,12 +172,12 @@ const LESSON = {
         misconception: "Reading 'all A are B' as 'all B are A'." } },
 
     { phase: "launch", title: "An argument in <em>class</em>",
-      lead: "Hala claims all rectangles are squares. Ziad disagrees. Estimate how many shapes Ziad must draw to win.",
+      lead: "Qais claims all rectangles are squares. Ziad disagrees. Estimate how many shapes Ziad must draw to win.",
       goal: "Create the need for the counter-example idea.",
       pull: "Now let us find that one shape.",
       rail: { launch: "Commit to a number of shapes before we start.",
         monitor: ["Saying one", "Saying many", "Asking what would count"],
-        connect: "Would drawing lots of rectangles help Hala?",
+        connect: "Would drawing lots of rectangles help Qais?",
         misconception: "Believing you must check every shape to disprove a claim." } },
 
     { phase: "monitor", title: "One shape ends <em>it</em>",
@@ -208,7 +208,7 @@ const LESSON = {
         misconception: "Treating 'it looks like it' as evidence." } },
 
     { phase: "connect", title: "Two ways to <em>settle it</em>",
-      lead: "Reem drew a counter-example. Ibrahim quoted the definition of a square.",
+      lead: "Anees drew a counter-example. Ibrahim quoted the definition of a square.",
       goal: "Breaking a claim and keeping one need different evidence.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one proves and which one disproves.",
@@ -267,7 +267,7 @@ const LESSON = {
         return <LaunchEstimate draw={drawStory166} height={256} award={award}
           label="How many shapes must Ziad draw to win?" min={1} max={20} start={5} unit="shapes"
           after="Locked. Now let us find the shape that settles it."
-          note="Think about what would have to be true for Hala's claim to survive." />;
+          note="Think about what would have to be true for Qais's claim to survive." />;
 
       case 2:
         return <ExploreChips draw={makeCounter166(step)} height={256}
@@ -299,12 +299,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — a counter-example", omml: M.counter, h: 92,
+          left={{ name: "Anees's way — a counter-example", omml: M.counter, h: 92,
             quote: "I drew one rectangle that is not a square. The claim is dead." }}
           right={{ name: "Ibrahim's way — the definition", omml: M.goodClaim, h: 92,
             quote: "A square has four right angles and parallel sides, so it passes the rectangle test." }}
           same={["Both give real evidence", "Both name a specific reason", "Both settle a claim"]}
-          diff={["Reem breaks a claim", "Ibrahim keeps one", "Only a definition can prove 'all'"]} />;
+          diff={["Anees breaks a claim", "Ibrahim keeps one", "Only a definition can prove 'all'"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard166} height={430} />;

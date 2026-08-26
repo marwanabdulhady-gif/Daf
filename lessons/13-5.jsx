@@ -203,7 +203,7 @@ const LESSON = {
         misconception: "Using a hundred for a litre-to-millilitre conversion." } },
 
     { phase: "connect", title: "Two ways to <em>say it</em>",
-      lead: "Layla wrote 2,500 g. Faisal wrote 2 kg 500 g. Both weighed the same rice.",
+      lead: "Layth wrote 2,500 g. Faisal wrote 2 kg 500 g. Both weighed the same rice.",
       goal: "Mixed units and single units both work.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which is easier to add to another weight.",
@@ -294,12 +294,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Layla's way — one unit", omml: M.kilo, h: 92,
+          left={{ name: "Layth's way — one unit", omml: M.kilo, h: 92,
             quote: "I wrote the whole thing in grams: 2,500 g." }}
           right={{ name: "Faisal's way — mixed units", omml: M.half, h: 92,
             quote: "Two kilograms and five hundred grams. That is how the label reads." }}
           same={["Both describe the same rice", "Both use 1,000 g per kg", "Both are correct"]}
-          diff={["Layla uses one unit", "Faisal uses two", "Layla's is easier to add"]} />;
+          diff={["Layth uses one unit", "Faisal uses two", "Layth's is easier to add"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard135} height={430} />;

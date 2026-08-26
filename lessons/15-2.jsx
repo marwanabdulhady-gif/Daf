@@ -222,7 +222,7 @@ const LESSON = {
         misconception: "Saying a half turn is 90 degrees." } },
 
     { phase: "connect", title: "Two ways to <em>say the size</em>",
-      lead: "Salma said a quarter of a turn. Omar said ninety degrees.",
+      lead: "Khalil said a quarter of a turn. Omar said ninety degrees.",
       goal: "Fractions of a turn and degrees are two names for one size.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one you can measure with a tool.",
@@ -313,12 +313,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Salma's way — a fraction of a turn", omml: M.quarter, h: 92,
+          left={{ name: "Khalil's way — a fraction of a turn", omml: M.quarter, h: 92,
             quote: "The door went a quarter of the way round." }}
           right={{ name: "Omar's way — in degrees", omml: M.countUnits, h: 92,
             quote: "That is ninety one-degree angles, so ninety degrees." }}
           same={["Both describe the same opening", "Both come from 360", "Both are correct"]}
-          diff={["Salma uses a fraction", "Omar uses a count", "Only Omar's can be read off a protractor"]} />;
+          diff={["Khalil uses a fraction", "Omar uses a count", "Only Omar's can be read off a protractor"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard152} height={430} />;

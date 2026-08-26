@@ -19,6 +19,12 @@ if (story.schemaVersion < 2) errors.push("story schema must support flexible scr
 const mainCharacters = (story.characters && story.characters.main) || [];
 if (mainCharacters.length !== 2) errors.push("the frame must have exactly two main characters");
 if (mainCharacters.some((character) => character.gender !== "boy")) errors.push("all main characters must be boys");
+/* The class is boys only: every student character (the ensemble and the
+   rival) must be a boy. Adult quest givers are community adults, not students. */
+const ensemble = (story.characters && story.characters.ensemble) || [];
+ensemble.forEach((member) => {
+  if (member.gender !== "boy") errors.push("ensemble student " + member.name + " must be a boy (the class is boys only)");
+});
 if (expected.length !== actual.length) errors.push(`coverage differs: curriculum ${expected.length}, story ${actual.length}`);
 
 expected.forEach((item, index) => {

@@ -194,7 +194,7 @@ const LESSON = {
         misconception: "Adding the whole number to the numerator instead of multiplying." } },
 
     { phase: "connect", title: "Two ways to <em>write it</em>",
-      lead: "Ibrahim wrote the whole number as a fraction over one. Sana multiplied the top straight away.",
+      lead: "Ibrahim wrote the whole number as a fraction over one. Bashir multiplied the top straight away.",
       goal: "Connect the shortcut to the general rule for multiplying fractions.",
       pull: "On the board.",
       rail: { launch: "Show both. Ask which one explains itself.",
@@ -286,10 +286,10 @@ const LESSON = {
         return <CompareConnect award={award}
           left={{ name: "Ibrahim's way — write six as a fraction", omml: M.step1, h: 92,
             quote: "Six is six over one. Then I multiply tops and bottoms." }}
-          right={{ name: "Sana's way — straight to the top", omml: M.answer, h: 92,
+          right={{ name: "Bashir's way — straight to the top", omml: M.answer, h: 92,
             quote: "Six times two is twelve. The thirds do not change." }}
           same={["Both give 12/3", "Both leave the denominator as 3", "Both finish at four wholes"]}
-          diff={["Ibrahim uses the general fraction rule", "Sana uses the shortcut", "Ibrahim's shows why the 3 survives"]} />;
+          diff={["Ibrahim uses the general fraction rule", "Bashir uses the shortcut", "Ibrahim's shows why the 3 survives"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard103} height={430} />;

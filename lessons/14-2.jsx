@@ -236,7 +236,7 @@ const LESSON = {
         misconception: "Accepting 'add 7' because 1 + 7 = 8." } },
 
     { phase: "connect", title: "Two true <em>descriptions</em>",
-      lead: "Reem said each bag adds eight. Faisal said dates equals bags times eight.",
+      lead: "Anees said each bag adds eight. Faisal said dates equals bags times eight.",
       goal: "Both are correct; one is more powerful.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one answers 'bag one hundred'.",
@@ -327,12 +327,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — the step", omml: M.ruleAdd, h: 92,
+          left={{ name: "Anees's way — the step", omml: M.ruleAdd, h: 92,
             quote: "Every new bag puts another eight dates on the table." }}
           right={{ name: "Faisal's way — the relationship", omml: M.ruleMul, h: 92,
             quote: "Whatever the bag number is, times it by eight." }}
           same={["Both fit every row", "Both give 32 for four bags", "Both are correct"]}
-          diff={["Reem needs the row before", "Faisal can jump anywhere", "Faisal's answers bag one hundred"]} />;
+          diff={["Anees needs the row before", "Faisal can jump anywhere", "Faisal's answers bag one hundred"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard142} height={430} />;

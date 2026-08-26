@@ -156,8 +156,8 @@ const LESSON = {
         connect: "What made the two-step ones different?",
         misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Reem <em>divides</em>. Ziad <em>builds up</em>",
-      lead: "Reem: 90 shared into 6. Ziad: adds 15 six times until it reaches 90. Both find 15.",
+    { phase: "connect", title: "Anees <em>divides</em>. Ziad <em>builds up</em>",
+      lead: "Anees: 90 shared into 6. Ziad: adds 15 six times until it reaches 90. Both find 15.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -274,13 +274,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 15"
-            text="Reem divides the whole. Ziad builds 15 up six times until it reaches 90. Both find the crate."
+            text="Anees divides the whole. Ziad builds 15 up six times until it reaches 90. Both find the crate."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Reem's way — divide", omml: M.step1, h: 92, quote: "Ninety shared into six equal parts." }}
+              left={{ name: "Anees's way — divide", omml: M.step1, h: 92, quote: "Ninety shared into six equal parts." }}
               right={{ name: "Ziad's way — build up", omml: M.answer, h: 92, quote: "I added 15 six times to check it reached 90." }}
               same={["Both find 15", "Both use six equal parts", "Both can check the other"]}
-              diff={["Reem divides, Ziad multiplies up", "Ziad needed a good first guess", "Reem's works straight away"]} />
+              diff={["Anees divides, Ziad multiplies up", "Ziad needed a good first guess", "Anees's works straight away"]} />
           </StoryShell>
         );
 

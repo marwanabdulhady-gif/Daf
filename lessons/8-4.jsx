@@ -162,7 +162,7 @@ const LESSON = {
         connect: "Which pair was hardest, and why?",
         misconception: "Subtracting the same number instead of dividing." } },
 
-    { phase: "connect", title: "Two <em>different</em> answers, both right", lead: "Rana divided by 2 and got four sixths. Nabil divided by 4 and got two thirds. Both are equivalent.",
+    { phase: "connect", title: "Two <em>different</em> answers, both right", lead: "Karam divided by 2 and got four sixths. Nabil divided by 4 and got two thirds. Both are equivalent.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -246,9 +246,9 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Rana's way — divide by 2", omml: M.equation, h: 92, quote: "Eight twelfths becomes four sixths." }}
+          left={{ name: "Karam's way — divide by 2", omml: M.equation, h: 92, quote: "Eight twelfths becomes four sixths." }}
           right={{ name: "Nabil's way — divide by 4", omml: M.other, h: 92, quote: "Eight twelfths becomes two thirds in one move." }}
-          same={["Both divide top and bottom", "Both keep the same amount", "Both are equal to 8/12"]} diff={["Rana uses 2, Nabil uses 4", "Nabil reaches simplest form at once", "Rana could divide again"]} />;
+          same={["Both divide top and bottom", "Both keep the same amount", "Both are equal to 8/12"]} diff={["Karam uses 2, Nabil uses 4", "Nabil reaches simplest form at once", "Karam could divide again"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard84} height={430} />;

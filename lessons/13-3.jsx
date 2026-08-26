@@ -194,7 +194,7 @@ const LESSON = {
         misconception: "Comparing 40 ounces with 2 pounds by comparing 40 with 2." } },
 
     { phase: "connect", title: "Two ways to <em>compare</em>",
-      lead: "Omar turned both into ounces. Reem turned both into pounds.",
+      lead: "Omar turned both into ounces. Anees turned both into pounds.",
       goal: "Either common unit works, as long as both are converted.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one avoids fractions.",
@@ -285,10 +285,10 @@ const LESSON = {
         return <CompareConnect award={award}
           left={{ name: "Omar's way — everything in ounces", omml: M.bothWays, h: 92,
             quote: "Two pounds is 32 ounces, and 40 beats 32." }}
-          right={{ name: "Reem's way — everything in pounds", omml: M.compare, h: 92,
+          right={{ name: "Anees's way — everything in pounds", omml: M.compare, h: 92,
             quote: "Forty ounces is two and a half pounds, which beats two." }}
           same={["Both say 40 oz is heavier", "Both convert one of the weights", "Both use 16 oz per pound"]}
-          diff={["Omar converts up", "Reem converts down", "Omar's stays in whole numbers"]} />;
+          diff={["Omar converts up", "Anees converts down", "Omar's stays in whole numbers"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard133} height={430} />;

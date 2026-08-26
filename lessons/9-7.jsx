@@ -153,7 +153,7 @@ const LESSON = {
         connect: "What went wrong in the ones you rejected?",
         misconception: "Adding the whole numbers to the numerators." } },
 
-    { phase: "connect", title: "Two ways to <em>set it out</em>", lead: "Aya kept them as mixed numbers. Sami turned both into quarters first. Both got two and three quarters.",
+    { phase: "connect", title: "Two ways to <em>set it out</em>", lead: "Hassan kept them as mixed numbers. Sami turned both into quarters first. Both got two and three quarters.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -236,9 +236,9 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Aya's way — keep them mixed", omml: M.answer, h: 92, quote: "Wholes with wholes, quarters with quarters." }}
+          left={{ name: "Hassan's way — keep them mixed", omml: M.answer, h: 92, quote: "Wholes with wholes, quarters with quarters." }}
           right={{ name: "Sami's way — all in quarters", omml: M.other, h: 92, quote: "Six quarters plus five quarters is eleven quarters." }}
-          same={["Both get 2 3/4", "Both keep the quarter as the unit", "Both can be checked on the bars"]} diff={["Aya works in two columns", "Sami works in one", "Sami must convert back at the end"]} />;
+          same={["Both get 2 3/4", "Both keep the quarter as the unit", "Both can be checked on the bars"]} diff={["Hassan works in two columns", "Sami works in one", "Sami must convert back at the end"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard97} height={430} />;

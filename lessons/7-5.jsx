@@ -155,8 +155,8 @@ const LESSON = {
         connect: "How are the two directions of the same fact different?",
         misconception: "Sorting factor claims as multiples." } },
 
-    { phase: "connect", title: "Huda <em>skip-counts</em>. Adel <em>multiplies</em>",
-      lead: "Huda keeps adding 6 and writes down where she lands. Adel does 6 times 1, 6 times 2, 6 times 3. Both lists agree.",
+    { phase: "connect", title: "Samer <em>skip-counts</em>. Adel <em>multiplies</em>",
+      lead: "Samer keeps adding 6 and writes down where she lands. Adel does 6 times 1, 6 times 2, 6 times 3. Both lists agree.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -280,13 +280,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one multiple list"
-            text="Huda skip-counts by adding 6. Adel multiplies 6 by 1, 2, 3... Both lists agree."
+            text="Samer skip-counts by adding 6. Adel multiplies 6 by 1, 2, 3... Both lists agree."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Huda's way — skip count", omml: M.left, h: 92, quote: "I keep adding 6 and write down where I land." }}
+              left={{ name: "Samer's way — skip count", omml: M.left, h: 92, quote: "I keep adding 6 and write down where I land." }}
               right={{ name: "Adel's way — multiply", omml: M.right, h: 92, quote: "I do 6 times 1, 6 times 2, 6 times 3." }}
               same={["Both give 6, 12, 18, 24", "Both start at 6", "Both could go on forever"]}
-              diff={["Huda adds, Adel multiplies", "Adel can jump straight to the tenth one", "Huda's is easier to say out loud"]} />
+              diff={["Samer adds, Adel multiplies", "Adel can jump straight to the tenth one", "Samer's is easier to say out loud"]} />
           </StoryShell>
         );
 

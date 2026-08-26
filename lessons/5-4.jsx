@@ -225,8 +225,8 @@ const LESSON = {
         connect: "What made each question different?",
         misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Sana said <em>9</em>. Ibrahim said <em>10</em>",
-      lead: "Sana dropped the remainder. Ibrahim rounded up. They answered different questions — neither is wrong.",
+    { phase: "connect", title: "Bashir said <em>9</em>. Ibrahim said <em>10</em>",
+      lead: "Bashir dropped the remainder. Ibrahim rounded up. They answered different questions — neither is wrong.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -374,15 +374,15 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, two right answers"
-            text="Sana said 9 — full teams. Ibrahim said 10 — cars for everyone. Different questions, different endings."
+            text="Bashir said 9 — full teams. Ibrahim said 10 — cars for everyone. Different questions, different endings."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Sana said 9", omml: M.quotient, h: 92,
+              left={{ name: "Bashir said 9", omml: M.quotient, h: 92,
                       quote: "Only 9 teams are complete, so the answer is 9." }}
               right={{ name: "Ibrahim said 10", omml: M.roundUp, h: 92,
                        quote: "Every student needs a car, so we need 10." }}
               same={["Both divided 38 by 4", "Both got 9 remainder 2", "Both used the remainder"]}
-              diff={["Sana dropped it, Ibrahim rounded up",
+              diff={["Bashir dropped it, Ibrahim rounded up",
                      "They answered different questions",
                      "Neither of them is wrong"]} />
           </StoryShell>

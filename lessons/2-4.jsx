@@ -165,8 +165,8 @@ const LESSON = {
         connect: "Which line is the answer, and which are the trades?",
         misconception: "Treating the carried ten as part of the column below it." } },
 
-    { phase: "connect", title: "Aya estimates first. <em>Musa chains.</em>",
-      lead: "Aya: estimate first, then exact. Musa: carry chain, one column at a time. Both defend 239,201.",
+    { phase: "connect", title: "Hassan estimates first. <em>Musa chains.</em>",
+      lead: "Hassan: estimate first, then exact. Musa: carry chain, one column at a time. Both defend 239,201.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -288,15 +288,15 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one audited total"
-            text="Aya estimates first and then checks the exact. Musa chains the carries column by column. Both defend 239,201."
+            text="Hassan estimates first and then checks the exact. Musa chains the carries column by column. Both defend 239,201."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Aya's way — estimate first, then exact", omml: M.estimate, h: 92,
+              left={{ name: "Hassan's way — estimate first, then exact", omml: M.estimate, h: 92,
                       quote: "143,000 + 96,000 is 239,000 — the exact total must sit near it." }}
               right={{ name: "Musa's way — carry chain, one column at a time", omml: M.carryChain, h: 92,
                        quote: "Each column trades before the next is touched." }}
               same={["Both reach 239,201", "Both line up the places", "Both can defend the total"]}
-              diff={["Aya's estimate catches a wildly wrong total", "Musa's chain catches a lost carry", "Aya works fast, Musa works sure"]} />
+              diff={["Hassan's estimate catches a wildly wrong total", "Musa's chain catches a lost carry", "Hassan works fast, Musa works sure"]} />
           </StoryShell>
         );
 

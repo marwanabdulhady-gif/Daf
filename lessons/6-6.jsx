@@ -156,7 +156,7 @@ const LESSON = {
         connect: "What did the tempting path do wrong?",
         misconception: "Giving up when the first path fails." } },
 
-    { phase: "monitor", title: "Rana's <em>new representation</em>",
+    { phase: "monitor", title: "Karam's <em>new representation</em>",
       lead: "One sitting first: 8 tables × 6 seats = 48. Then the three sittings: 48 × 3 = 144. The new representation saves the plan.",
       goal: "Persist with a new representation when the first path dies.",
       pull: "The answer to step 1 becomes a number you need in step 2.",
@@ -179,12 +179,12 @@ const LESSON = {
       goal: "See that the order of multiplying does not matter — and that both orders are worth writing down.",
       pull: "The multiplication does not care which order you work in.",
       rail: { launch: "Before each step: which grouping is it?",
-        monitor: ["Grouping by table", "Multiplying 18 × 8", "Comparing to Rana's 144"],
+        monitor: ["Grouping by table", "Multiplying 18 × 8", "Comparing to Karam's 144"],
         connect: "Why do both orders reach 144?",
         misconception: "Believing only one grouping is correct." } },
 
     { phase: "connect", title: "Two merchants, one <em>144</em>",
-      lead: "Rana groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check.",
+      lead: "Karam groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -294,8 +294,8 @@ const LESSON = {
       case 3:
         return (
           <StoryShell lane="fiction" character="zayd" pose="build"
-            title="Rana's new representation"
-            text="The dead end named, Rana changes the picture: one sitting first — 8 tables × 6 seats — then the three sittings."
+            title="Karam's new representation"
+            text="The dead end named, Karam changes the picture: one sitting first — 8 tables × 6 seats — then the three sittings."
             clue="One sitting first — the answer to step 1 becomes the number step 2 needs.">
             <ExploreChips draw={makeChain66(step)} height={266}
               label="How many guests altogether?"
@@ -342,13 +342,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 144"
-            text="Rana groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check."
+            text="Karam groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Rana's way — one sitting first", omml: M.step1, h: 92, quote: "8 tables of 6 is 48, then three sittings." }}
+              left={{ name: "Karam's way — one sitting first", omml: M.step1, h: 92, quote: "8 tables of 6 is 48, then three sittings." }}
               right={{ name: "Kareem's way — one table first", omml: M.chain, h: 92, quote: "One table seats 6 three times, so 18 — then eight tables." }}
               same={["Both get 144", "Both use all three numbers", "Both multiply twice"]}
-              diff={["Rana groups by sitting, Kareem by table", "The order of multiplying does not matter", "Both plans are worth writing down"]} />
+              diff={["Karam groups by sitting, Kareem by table", "The order of multiplying does not matter", "Both plans are worth writing down"]} />
           </StoryShell>
         );
 

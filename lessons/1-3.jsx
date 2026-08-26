@@ -394,7 +394,7 @@ const LESSON = {
             clue="One method has a shortcut — and a limit">
           <CompareConnect award={award}
             left={{
-              name: "Sara's way — count digits first", h: 88,
+              name: "Hani's way — count digits first", h: 88,
               draw: (ctx, W, H, frame) => {
                 ctx.clearRect(0, 0, W, H);
                 D.rr(ctx, 0, 0, W, H, 9);
@@ -421,9 +421,9 @@ const LESSON = {
             same={["Both start at the greatest place",
                    "Both use place value, not size of writing",
                    "Both can be checked on the number line"]}
-            diff={["Sara's shortcut needs different digit counts",
+            diff={["Hani's shortcut needs different digit counts",
                    "Khalid's scan works for every pair",
-                   "When the counts match, Sara falls back to Khalid's scan"]} />
+                   "When the counts match, Hani falls back to Khalid's scan"]} />
           </StoryShell>
         );
 

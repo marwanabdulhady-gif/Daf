@@ -23,7 +23,7 @@ const makeCompareBar61 = (kind) => (ctx, W, H, frame) => {
   const x = 62, w = W - 124;
   if (kind === "times") {
     D.strip(ctx, { x: x, y: 60, w: w * 0.25, h: 40, prog: 1,
-      parts: [{ v: 12, label: "12", col: "#FA7E19", sub: "Layla" }] });
+      parts: [{ v: 12, label: "12", col: "#FA7E19", sub: "Layth" }] });
     const parts = [];
     for (let k = 0; k < 4; k++) parts.push({ v: 12, label: "12", col: "#2D70B3" });
     D.strip(ctx, { x: x, y: 128, w: w, h: 40, prog: 1, total: "?", parts: parts });
@@ -32,7 +32,7 @@ const makeCompareBar61 = (kind) => (ctx, W, H, frame) => {
     D.txt(ctx, "4×12=48", W / 2, H - 12, { size: 15, col: "#34D399", font: "marker" });
   } else {
     D.strip(ctx, { x: x, y: 60, w: w * 0.25, h: 40, prog: 1,
-      parts: [{ v: 12, label: "12", col: "#FA7E19", sub: "Layla" }] });
+      parts: [{ v: 12, label: "12", col: "#FA7E19", sub: "Layth" }] });
     D.strip(ctx, { x: x, y: 128, w: w * 0.25 + 90, h: 40, prog: 1,
       parts: [{ v: 12, label: "12", col: "#2D70B3" }, { v: 12, label: "+12", col: "#388C46" }] });
     D.txt(ctx, "12 more \u2014 add", W / 2, H - 34, { size: 14.5, col: "#C9A227", font: "marker" });
@@ -52,7 +52,7 @@ const makeSteps61 = (step) => (ctx, W, H, frame) => {
     D.strip(ctx, { x: x, y: 168, w: w, h: 42, prog: 1, total: 48, parts: [{ v: 12, label: "12", col: "#FA7E19" }, { v: 36, label: "?", col: "#C9A227" }] });
     D.txt(ctx, "step 2: 48-12=36", W / 2, 240, { size: 14.5, col: "#34D399", font: "marker" });
   }
-  D.txt(ctx, step === 2 ? "Omar read 36 more books than Layla" : "one step will not answer it",
+  D.txt(ctx, step === 2 ? "Omar read 36 more books than Layth" : "one step will not answer it",
     W / 2, H - 16, { size: 13.5, col: step === 2 ? "#C9A227" : "rgba(234,244,242,.6)", font: "marker" });
 };
 
@@ -64,12 +64,12 @@ const drawStory61 = (ctx, W, H, frame) => {
   D.txt(ctx, "the reading challenge", W / 2, 22, { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
   const x = 62, w = W - 124;
   D.strip(ctx, { x: x, y: 56, w: w * 0.25, h: 38, prog: p2,
-    parts: [{ v: 12, label: "12", col: "#FA7E19", sub: "Layla" }] });
+    parts: [{ v: 12, label: "12", col: "#FA7E19", sub: "Layth" }] });
   const parts = [];
   for (let k = 0; k < 4; k++) parts.push({ v: 12, label: "?", col: "#2D70B3" });
   D.strip(ctx, { x: x, y: 122, w: w, h: 38, prog: p2, parts: parts });
   if (p3 > 0) {
-    D.txt(ctx, "Layla read 12 books · Omar read 4 times as many", W / 2, 186, { size: 13.5, col: "#EAF4F2", font: "marker", alpha: p3 });
+    D.txt(ctx, "Layth read 12 books · Omar read 4 times as many", W / 2, 186, { size: 13.5, col: "#EAF4F2", font: "marker", alpha: p3 });
     D.txt(ctx, "how many did Omar read?", W / 2, H - 16, { size: 14.5, col: "#C9A227", font: "marker", alpha: p3 });
   }
 };
@@ -80,7 +80,7 @@ const drawBoard61 = (ctx, W, H, frame) => {
   const p1 = D.at(f, 20, 220), p2 = D.at(f, 240, 420), p3 = D.at(f, 440, 610), p4 = D.at(f, 610, 760);
   const x = 96, w = W - 192;
   D.strip(ctx, { x: x, y: 112, w: w * 0.25, h: 44, prog: p1,
-    parts: [{ v: 12, label: "12", col: "#FA7E19", sub: "Layla" }] });
+    parts: [{ v: 12, label: "12", col: "#FA7E19", sub: "Layth" }] });
   if (p2 > 0) {
     const parts = [];
     for (let k = 0; k < 4; k++) parts.push({ v: 12, label: "12", col: "#2D70B3" });
@@ -121,7 +121,7 @@ const LESSON = {
         misconception: "Reading 'times as many' as 'more than'." } },
 
     { phase: "launch", title: "How many books did <em>Omar read</em>?",
-      lead: "Layla read 12 books. Omar read four times as many. Lock the answer before the bar is drawn.",
+      lead: "Layth read 12 books. Omar read four times as many. Lock the answer before the bar is drawn.",
       goal: "Create the need — four times as many is not four more.",
       pull: "Four times as many is not the same as four more.",
       rail: { launch: "Give the answer and say which operation the words invited.",
@@ -139,7 +139,7 @@ const LESSON = {
         misconception: "Drawing one bar for both comparisons." } },
 
     { phase: "monitor", title: "The <em>two-step</em> comparison",
-      lead: "How many more books did Omar read than Layla? Step 1: Omar's total. Step 2: the difference.",
+      lead: "How many more books did Omar read than Layth? Step 1: Omar's total. Step 2: the difference.",
       goal: "Model a two-step comparison with the middle answer shown.",
       pull: "The answer to step 1 becomes a number you need in step 2.",
       rail: { launch: "What do you have to work out before you can find the difference?",
@@ -156,8 +156,8 @@ const LESSON = {
         connect: "What made the two-step ones different?",
         misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Hana <em>writes one equation</em>. Faisal <em>draws four bars</em>",
-      lead: "Hana: 4 × 12, straight down. Faisal: four bars of 12, added. Both get 48.",
+    { phase: "connect", title: "Ghassan <em>writes one equation</em>. Faisal <em>draws four bars</em>",
+      lead: "Ghassan: 4 × 12, straight down. Faisal: four bars of 12, added. Both get 48.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -184,7 +184,7 @@ const LESSON = {
         misconception: "Answering the total when the question asks the difference." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "Sara has 9 stickers. Noura has 7 times as many. How many does Noura have?",
+      lead: "Hani has 9 stickers. Joud has 7 times as many. How many does Joud have?",
       goal: "A daily formative check.",
       pull: "Well done. Let us see what you collected today.",
       rail: { launch: "Two minutes. Say what the words mean before the arithmetic.",
@@ -223,7 +223,7 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="omar" pose="question"
             title="The claim, before the bar"
-            text="Omar sets the council's first rule: draw what the words say before any arithmetic. Layla read 12 — Omar read four times as many."
+            text="Omar sets the council's first rule: draw what the words say before any arithmetic. Layth read 12 — Omar read four times as many."
             clue="Four times as many is not the same as four more.">
             <LaunchEstimate draw={drawStory61} height={256} award={award}
               label="How many books did Omar read?" min={12} max={80} start={48} unit="books"
@@ -271,7 +271,7 @@ const LESSON = {
             text="Omar and Zayd lay four district questions on the table. Each one needs one step — or two."
             clue="Do I already know every number I need?">
             <CardSort award={award} columns={2}
-              items={[{ id: "q1", text: "How many did Omar read?", target: "one" }, { id: "q2", text: "How many more than Layla?", target: "two" }, { id: "q3", text: "How many did they read altogether?", target: "two" }, { id: "q4", text: "How many books is 4 times 12?", target: "one" }]}
+              items={[{ id: "q1", text: "How many did Omar read?", target: "one" }, { id: "q2", text: "How many more than Layth?", target: "two" }, { id: "q3", text: "How many did they read altogether?", target: "two" }, { id: "q4", text: "How many books is 4 times 12?", target: "one" }]}
               targets={[
                 { id: "one", label: "one step" },
                 { id: "two", label: "two steps — something must be found first" }
@@ -283,13 +283,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 48"
-            text="Hana writes one equation. Faisal draws four bars. Both reach 48."
+            text="Ghassan writes one equation. Faisal draws four bars. Both reach 48."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Hana's way — one equation", omml: M.step1, h: 92, quote: "Four times twelve. I wrote it straight down." }}
+              left={{ name: "Ghassan's way — one equation", omml: M.step1, h: 92, quote: "Four times twelve. I wrote it straight down." }}
               right={{ name: "Faisal's way — draw and count", omml: M.answer, h: 92, quote: "I drew four bars of 12 and added them." }}
               same={["Both get 48", "Both use the number 4", "Both treat 12 as one unit"]}
-              diff={["Hana multiplies, Faisal adds", "Faisal's takes longer", "Hana's works for bigger numbers"]} />
+              diff={["Ghassan multiplies, Faisal adds", "Faisal's takes longer", "Ghassan's works for bigger numbers"]} />
           </StoryShell>
         );
 
@@ -314,7 +314,7 @@ const LESSON = {
               ommls={[{ omml: M.rule, alt: "times as many multiplies · how many more adds" }]}
               hand={"times as many → copy the bar · how many more → add a piece to the bar"}
               cards={[
-                { title: "The comparison we drew", omml: M.compare, note: "four copies of Layla's 12" },
+                { title: "The comparison we drew", omml: M.compare, note: "four copies of Layth's 12" },
                 { title: "Tap to see the other kind", omml: M.addCompare, revealOmml: M.answer, reveal: true,
                   note: "how many more is a different question" }
               ]} />
@@ -325,10 +325,10 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="omar" pose="question"
             title="Omar signs the drawn claim"
-            text="Sara has 9 stickers. Noura has 7 times as many. Say what the words mean — then the answer."
+            text="Hani has 9 stickers. Joud has 7 times as many. Say what the words mean — then the answer."
             clue="7 copies of 9, not 7 more.">
             <ShowWhatYouKnow award={award}
-              prompt="Sara has 9 stickers. Noura has 7 times as many. How many does Noura have?"
+              prompt="Hani has 9 stickers. Joud has 7 times as many. How many does Joud have?"
               omml={M.swyk}
               options={[{ v: "a", text: "16" }, { v: "b", text: "63" }, { v: "c", text: "54" }, { v: "d", text: "72" }]}
               right="b"

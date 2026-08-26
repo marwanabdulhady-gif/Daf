@@ -3279,53 +3279,160 @@ function folioExport(className) {
   "year": "2025-2026",
   "note": "Edit this file, then run ./rebuild-all.sh to update all 114 lesson decks.",
   "markTiers": [
-    { "xp": 400, "marks": 1 },
-    { "xp": 800, "marks": 2 },
-    { "xp": 1200, "marks": 3 }
+    {
+      "xp": 400,
+      "marks": 1
+    },
+    {
+      "xp": 800,
+      "marks": 2
+    },
+    {
+      "xp": 1200,
+      "marks": 3
+    }
   ],
   "markCap": 3,
   "markFloor": 50,
   "behaviours": {
     "note": "Reason buttons in the points panel (press P). Edit freely, then run ./rebuild-all.sh",
-    "steps": [1, 5, 10],
+    "steps": [
+      1,
+      5,
+      10
+    ],
     "positive": [
-      { "label": "Explained a method", "xp": 5, "icon": "fa-comment-dots" },
-      { "label": "Helped a partner", "xp": 5, "icon": "fa-handshake-angle" },
-      { "label": "Answered on the board", "xp": 10, "icon": "fa-chalkboard" },
-      { "label": "Took the harder question", "xp": 15, "icon": "fa-mountain-sun", "metric": "hard" },
-      { "label": "Right first try", "xp": 15, "icon": "fa-circle-check", "metric": "correct" },
-      { "label": "Method into the Sijill", "xp": 30, "icon": "fa-feather", "metric": "sijill" }
+      {
+        "label": "Explained a method",
+        "xp": 5,
+        "icon": "fa-comment-dots"
+      },
+      {
+        "label": "Helped a partner",
+        "xp": 5,
+        "icon": "fa-handshake-angle"
+      },
+      {
+        "label": "Answered on the board",
+        "xp": 10,
+        "icon": "fa-chalkboard"
+      },
+      {
+        "label": "Took the harder question",
+        "xp": 15,
+        "icon": "fa-mountain-sun",
+        "metric": "hard"
+      },
+      {
+        "label": "Right first try",
+        "xp": 15,
+        "icon": "fa-circle-check",
+        "metric": "correct"
+      },
+      {
+        "label": "Method into the Sijill",
+        "xp": 30,
+        "icon": "fa-feather",
+        "metric": "sijill"
+      }
     ],
     "needsWork": [
-      { "label": "Off task", "xp": -5, "icon": "fa-hourglass-half" },
-      { "label": "Talking over others", "xp": -5, "icon": "fa-volume-xmark" },
-      { "label": "Would not start", "xp": -10, "icon": "fa-circle-xmark" },
-      { "label": "Unkind to a classmate", "xp": -10, "icon": "fa-face-frown" }
+      {
+        "label": "Off task",
+        "xp": -5,
+        "icon": "fa-hourglass-half"
+      },
+      {
+        "label": "Talking over others",
+        "xp": -5,
+        "icon": "fa-volume-xmark"
+      },
+      {
+        "label": "Would not start",
+        "xp": -10,
+        "icon": "fa-circle-xmark"
+      },
+      {
+        "label": "Unkind to a classmate",
+        "xp": -10,
+        "icon": "fa-face-frown"
+      }
     ]
   },
   "privileges": [
-    { "xp": 100, "name": "Choose your table for the week" },
-    { "xp": 200, "name": "Choose the context for next lesson's problems" },
-    { "xp": 300, "name": "Enter a method into the Sijill yourself" },
-    { "xp": 500, "name": "Run the opener for the class" },
-    { "xp": 800, "name": "Choose your table's exhibition problem" }
+    {
+      "xp": 100,
+      "name": "Choose your table for the week"
+    },
+    {
+      "xp": 200,
+      "name": "Choose the context for next lesson's problems"
+    },
+    {
+      "xp": 300,
+      "name": "Enter a method into the Sijill yourself"
+    },
+    {
+      "xp": 500,
+      "name": "Run the opener for the class"
+    },
+    {
+      "xp": 800,
+      "name": "Choose your table's exhibition problem"
+    }
   ],
   "sections": {
     "4A": [
-      "Layla Al-Harbi", "Yousef Bakr", "Salma Al-Ghamdi", "Omar Baeshen",
-      "Reem Al-Sudairi", "Faisal Nassief", "Sana Al-Amoudi", "Ibrahim Zahid",
-      "Noura Al-Qahtani", "Hala Bin Mahfouz", "Ziad Al-Turki", "Jana Al-Shaikh",
-      "Rakan Al-Dossari", "Maryam Al-Juffali", "Tariq Al-Otaibi", "Dana Al-Rashid",
-      "Khalid Al-Anzi", "Lina Al-Sabban", "Sultan Al-Mutairi", "Aseel Al-Barrak",
-      "Majed Al-Suwailem", "Rana Al-Fadl", "Bader Al-Khereiji", "Talia Al-Hazmi"
+      "Abdullah Al-Harbi",
+      "Yousef Bakr",
+      "Bandar Al-Ghamdi",
+      "Omar Baeshen",
+      "Fares Al-Sudairi",
+      "Faisal Nassief",
+      "Ghazi Al-Amoudi",
+      "Ibrahim Zahid",
+      "Hisham Al-Qahtani",
+      "Hudayfair Bin Mahfouz",
+      "Ziad Al-Turki",
+      "Jareer Al-Shaikh",
+      "Rakan Al-Dossari",
+      "Laith Al-Juffali",
+      "Tariq Al-Otaibi",
+      "Majid Al-Rashid",
+      "Khalid Al-Anzi",
+      "Manan Al-Sabban",
+      "Sultan Al-Mutairi",
+      "Musab Al-Barrak",
+      "Majed Al-Suwailem",
+      "Nizar Al-Fadl",
+      "Bader Al-Khereiji",
+      "Obaid Al-Hazmi"
     ],
     "4B": [
-      "Ahmed Al-Mansouri", "Joud Al-Sheikh", "Turki Al-Rajhi", "Shahd Al-Nemer",
-      "Fahad Al-Sanea", "Ghala Al-Aqeel", "Nawaf Al-Habib", "Rimas Al-Zamil",
-      "Saud Al-Muhaidib", "Yara Al-Bassam", "Abdulaziz Al-Naimi", "Leen Al-Shammari",
-      "Mishal Al-Duraibi", "Haya Al-Faraj", "Waleed Al-Hokair", "Retaj Al-Ghurair",
-      "Nayef Al-Sulaiman", "Deem Al-Marzouq", "Rayan Al-Qassabi", "Sadeem Al-Wabel",
-      "Hassan Al-Jasser", "Alia Al-Rowais", "Meshari Al-Tamimi", "Basma Al-Nafisi"
+      "Ahmed Al-Mansouri",
+      "Joud Al-Sheikh",
+      "Turki Al-Rajhi",
+      "Sami Al-Nemer",
+      "Fahad Al-Sanea",
+      "Sattam Al-Aqeel",
+      "Nawaf Al-Habib",
+      "Shuraym Al-Zamil",
+      "Saud Al-Muhaidib",
+      "Tawfiq Al-Bassam",
+      "Abdulaziz Al-Naimi",
+      "Ubaid Al-Shammari",
+      "Mishal Al-Duraibi",
+      "Yazan Al-Faraj",
+      "Waleed Al-Hokair",
+      "Zaher Al-Ghurair",
+      "Nayef Al-Sulaiman",
+      "Hanzala Al-Marzouq",
+      "Rayan Al-Qassabi",
+      "Sadeem Al-Wabel",
+      "Hassan Al-Jasser",
+      "Khalifa Al-Rowais",
+      "Meshari Al-Tamimi",
+      "Sayer Al-Nafisi"
     ]
   }
 }
@@ -4690,7 +4797,7 @@ const LESSON = {
         misconception: "Accepting 'add 7' because 1 + 7 = 8." } },
 
     { phase: "connect", title: "Two true <em>descriptions</em>",
-      lead: "Reem said each bag adds eight. Faisal said dates equals bags times eight.",
+      lead: "Anees said each bag adds eight. Faisal said dates equals bags times eight.",
       goal: "Both are correct; one is more powerful.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one answers 'bag one hundred'.",
@@ -4781,12 +4888,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — the step", omml: M.ruleAdd, h: 92,
+          left={{ name: "Anees's way — the step", omml: M.ruleAdd, h: 92,
             quote: "Every new bag puts another eight dates on the table." }}
           right={{ name: "Faisal's way — the relationship", omml: M.ruleMul, h: 92,
             quote: "Whatever the bag number is, times it by eight." }}
           same={["Both fit every row", "Both give 32 for four bags", "Both are correct"]}
-          diff={["Reem needs the row before", "Faisal can jump anywhere", "Faisal's answers bag one hundred"]} />;
+          diff={["Anees needs the row before", "Faisal can jump anywhere", "Faisal's answers bag one hundred"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard142} height={430} />;

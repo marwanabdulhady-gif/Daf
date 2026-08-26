@@ -245,7 +245,7 @@ const LESSON = {
         misconception: "Reporting the count as if it were the measure." } },
 
     { phase: "connect", title: "Two <em>wedge sizes</em>",
-      lead: "Hala used four thirty-degree wedges. Ibrahim used twelve ten-degree wedges.",
+      lead: "Qais used four thirty-degree wedges. Ibrahim used twelve ten-degree wedges.",
       goal: "A smaller unit gives a bigger count but the same measure.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one measures a tricky angle better.",
@@ -336,12 +336,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — four big wedges", omml: M.count, h: 92,
+          left={{ name: "Qais's way — four big wedges", omml: M.count, h: 92,
             quote: "Four wedges of thirty degrees. A hundred and twenty." }}
           right={{ name: "Ibrahim's way — twelve small ones", omml: M.tenDeg, h: 92,
             quote: "Twelve wedges of ten degrees. Also a hundred and twenty." }}
           same={["Both measure 120°", "Both count then multiply", "Both fill the same angle"]}
-          diff={["Hala counts four", "Ibrahim counts twelve", "Ibrahim's can measure 125° too"]} />;
+          diff={["Qais counts four", "Ibrahim counts twelve", "Ibrahim's can measure 125° too"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard153} height={430} />;

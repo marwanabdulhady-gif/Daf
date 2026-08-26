@@ -3279,53 +3279,160 @@ function folioExport(className) {
   "year": "2025-2026",
   "note": "Edit this file, then run ./rebuild-all.sh to update all 114 lesson decks.",
   "markTiers": [
-    { "xp": 400, "marks": 1 },
-    { "xp": 800, "marks": 2 },
-    { "xp": 1200, "marks": 3 }
+    {
+      "xp": 400,
+      "marks": 1
+    },
+    {
+      "xp": 800,
+      "marks": 2
+    },
+    {
+      "xp": 1200,
+      "marks": 3
+    }
   ],
   "markCap": 3,
   "markFloor": 50,
   "behaviours": {
     "note": "Reason buttons in the points panel (press P). Edit freely, then run ./rebuild-all.sh",
-    "steps": [1, 5, 10],
+    "steps": [
+      1,
+      5,
+      10
+    ],
     "positive": [
-      { "label": "Explained a method", "xp": 5, "icon": "fa-comment-dots" },
-      { "label": "Helped a partner", "xp": 5, "icon": "fa-handshake-angle" },
-      { "label": "Answered on the board", "xp": 10, "icon": "fa-chalkboard" },
-      { "label": "Took the harder question", "xp": 15, "icon": "fa-mountain-sun", "metric": "hard" },
-      { "label": "Right first try", "xp": 15, "icon": "fa-circle-check", "metric": "correct" },
-      { "label": "Method into the Sijill", "xp": 30, "icon": "fa-feather", "metric": "sijill" }
+      {
+        "label": "Explained a method",
+        "xp": 5,
+        "icon": "fa-comment-dots"
+      },
+      {
+        "label": "Helped a partner",
+        "xp": 5,
+        "icon": "fa-handshake-angle"
+      },
+      {
+        "label": "Answered on the board",
+        "xp": 10,
+        "icon": "fa-chalkboard"
+      },
+      {
+        "label": "Took the harder question",
+        "xp": 15,
+        "icon": "fa-mountain-sun",
+        "metric": "hard"
+      },
+      {
+        "label": "Right first try",
+        "xp": 15,
+        "icon": "fa-circle-check",
+        "metric": "correct"
+      },
+      {
+        "label": "Method into the Sijill",
+        "xp": 30,
+        "icon": "fa-feather",
+        "metric": "sijill"
+      }
     ],
     "needsWork": [
-      { "label": "Off task", "xp": -5, "icon": "fa-hourglass-half" },
-      { "label": "Talking over others", "xp": -5, "icon": "fa-volume-xmark" },
-      { "label": "Would not start", "xp": -10, "icon": "fa-circle-xmark" },
-      { "label": "Unkind to a classmate", "xp": -10, "icon": "fa-face-frown" }
+      {
+        "label": "Off task",
+        "xp": -5,
+        "icon": "fa-hourglass-half"
+      },
+      {
+        "label": "Talking over others",
+        "xp": -5,
+        "icon": "fa-volume-xmark"
+      },
+      {
+        "label": "Would not start",
+        "xp": -10,
+        "icon": "fa-circle-xmark"
+      },
+      {
+        "label": "Unkind to a classmate",
+        "xp": -10,
+        "icon": "fa-face-frown"
+      }
     ]
   },
   "privileges": [
-    { "xp": 100, "name": "Choose your table for the week" },
-    { "xp": 200, "name": "Choose the context for next lesson's problems" },
-    { "xp": 300, "name": "Enter a method into the Sijill yourself" },
-    { "xp": 500, "name": "Run the opener for the class" },
-    { "xp": 800, "name": "Choose your table's exhibition problem" }
+    {
+      "xp": 100,
+      "name": "Choose your table for the week"
+    },
+    {
+      "xp": 200,
+      "name": "Choose the context for next lesson's problems"
+    },
+    {
+      "xp": 300,
+      "name": "Enter a method into the Sijill yourself"
+    },
+    {
+      "xp": 500,
+      "name": "Run the opener for the class"
+    },
+    {
+      "xp": 800,
+      "name": "Choose your table's exhibition problem"
+    }
   ],
   "sections": {
     "4A": [
-      "Layla Al-Harbi", "Yousef Bakr", "Salma Al-Ghamdi", "Omar Baeshen",
-      "Reem Al-Sudairi", "Faisal Nassief", "Sana Al-Amoudi", "Ibrahim Zahid",
-      "Noura Al-Qahtani", "Hala Bin Mahfouz", "Ziad Al-Turki", "Jana Al-Shaikh",
-      "Rakan Al-Dossari", "Maryam Al-Juffali", "Tariq Al-Otaibi", "Dana Al-Rashid",
-      "Khalid Al-Anzi", "Lina Al-Sabban", "Sultan Al-Mutairi", "Aseel Al-Barrak",
-      "Majed Al-Suwailem", "Rana Al-Fadl", "Bader Al-Khereiji", "Talia Al-Hazmi"
+      "Abdullah Al-Harbi",
+      "Yousef Bakr",
+      "Bandar Al-Ghamdi",
+      "Omar Baeshen",
+      "Fares Al-Sudairi",
+      "Faisal Nassief",
+      "Ghazi Al-Amoudi",
+      "Ibrahim Zahid",
+      "Hisham Al-Qahtani",
+      "Hudayfair Bin Mahfouz",
+      "Ziad Al-Turki",
+      "Jareer Al-Shaikh",
+      "Rakan Al-Dossari",
+      "Laith Al-Juffali",
+      "Tariq Al-Otaibi",
+      "Majid Al-Rashid",
+      "Khalid Al-Anzi",
+      "Manan Al-Sabban",
+      "Sultan Al-Mutairi",
+      "Musab Al-Barrak",
+      "Majed Al-Suwailem",
+      "Nizar Al-Fadl",
+      "Bader Al-Khereiji",
+      "Obaid Al-Hazmi"
     ],
     "4B": [
-      "Ahmed Al-Mansouri", "Joud Al-Sheikh", "Turki Al-Rajhi", "Shahd Al-Nemer",
-      "Fahad Al-Sanea", "Ghala Al-Aqeel", "Nawaf Al-Habib", "Rimas Al-Zamil",
-      "Saud Al-Muhaidib", "Yara Al-Bassam", "Abdulaziz Al-Naimi", "Leen Al-Shammari",
-      "Mishal Al-Duraibi", "Haya Al-Faraj", "Waleed Al-Hokair", "Retaj Al-Ghurair",
-      "Nayef Al-Sulaiman", "Deem Al-Marzouq", "Rayan Al-Qassabi", "Sadeem Al-Wabel",
-      "Hassan Al-Jasser", "Alia Al-Rowais", "Meshari Al-Tamimi", "Basma Al-Nafisi"
+      "Ahmed Al-Mansouri",
+      "Joud Al-Sheikh",
+      "Turki Al-Rajhi",
+      "Sami Al-Nemer",
+      "Fahad Al-Sanea",
+      "Sattam Al-Aqeel",
+      "Nawaf Al-Habib",
+      "Shuraym Al-Zamil",
+      "Saud Al-Muhaidib",
+      "Tawfiq Al-Bassam",
+      "Abdulaziz Al-Naimi",
+      "Ubaid Al-Shammari",
+      "Mishal Al-Duraibi",
+      "Yazan Al-Faraj",
+      "Waleed Al-Hokair",
+      "Zaher Al-Ghurair",
+      "Nayef Al-Sulaiman",
+      "Hanzala Al-Marzouq",
+      "Rayan Al-Qassabi",
+      "Sadeem Al-Wabel",
+      "Hassan Al-Jasser",
+      "Khalifa Al-Rowais",
+      "Meshari Al-Tamimi",
+      "Sayer Al-Nafisi"
     ]
   }
 }
@@ -4658,7 +4765,7 @@ const drawMajlis = (ctx, W, H, frame) => {
 const drawJugs = (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14); ctx.fillStyle = "#0B1F24"; ctx.fill();
   const bx = W * 0.14, bw = W * 0.72;
-  D.txt(ctx, "what Sara HAS \u00b7 two 3 L jugs", bx + bw / 2, 22, { size: 11.5, col: "#4A9BE0" });
+  D.txt(ctx, "what Hani HAS \u00b7 two 3 L jugs", bx + bw / 2, 22, { size: 11.5, col: "#4A9BE0" });
   D.rr(ctx, bx, 32, bw, 26, 8); ctx.fillStyle = "rgba(74,155,224,.3)"; ctx.fill();
   const have = bw * (6000 / 6250);
   D.rr(ctx, bx, 32, have, 26, 8); ctx.fillStyle = "#2D70B3"; ctx.fill();
@@ -4808,7 +4915,7 @@ const LESSON = {
         misconception: "Using 12\u00d78 for both jobs because it is the only multiplication in sight." } },
 
     { phase: "swyk", title: "Phase 5 \u00b7 The <em>final</em> strike",
-      lead: "Sara's Corniche stand: two 3-litre jugs of laban. A school group orders 25 cups of 250 mL. Does she have enough? Prove it either way.",
+      lead: "Hani's Corniche stand: two 3-litre jugs of laban. A school group orders 25 cups of 250 mL. Does she have enough? Prove it either way.",
       goal: "Transfer: convert, compare, and defend a yes-or-no with numbers.",
       pull: "The muddle is broken.",
       rail: { launch: "Take a stand first \u2014 enough or not enough \u2014 then earn your answer.",
@@ -4981,7 +5088,7 @@ function FinalScreen() {
       <HpStrip tick={tick} />
       <Sketch draw={drawJugs} height={165} />
       <StrikeCard id="p5" dmg={20} tick={tick} bump={bump} omml={M.cups} ommlAlt="25 times 250 = 6,250"
-        title="FINAL STRIKE \u00b7 does Sara have enough laban? Prove it."
+        title="FINAL STRIKE \u00b7 does Hani have enough laban? Prove it."
         answer="NOT enough. She has 6,000 mL; the order needs 6,250 mL \u2014 short by 250 mL, exactly one cup."
         why="Both sides must wear the same unit before they can be compared. 2 \u00d7 3 L = 6,000 mL against 25 \u00d7 250 = 6,250 mL." />
       <div style={{ fontSize: "11.5px", color: "var(--daf-ink-2)", textAlign: "center" }}>

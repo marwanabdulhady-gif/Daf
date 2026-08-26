@@ -159,7 +159,7 @@ const LESSON = {
         connect: "What went wrong in the ones you rejected?",
         misconception: "Adding the denominators as well as the numerators." } },
 
-    { phase: "connect", title: "Two ways to <em>say it</em>", lead: "Salma joined the pieces. Rami removed some. Both kept the tenth as the unit.",
+    { phase: "connect", title: "Two ways to <em>say it</em>", lead: "Khalil joined the pieces. Rami removed some. Both kept the tenth as the unit.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -242,7 +242,7 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Salma's way — joining", omml: M.unitCount, h: 92, quote: "Four tenths and five tenths gives nine tenths." }}
+          left={{ name: "Khalil's way — joining", omml: M.unitCount, h: 92, quote: "Four tenths and five tenths gives nine tenths." }}
           right={{ name: "Rami's way — removing", omml: M.answer, h: 92, quote: "Nine tenths take four tenths leaves five tenths." }}
           same={["Both keep the denominator", "Both count tenths", "Both are checked the same way"]} diff={["One joins, one removes", "The words decide which", "The rule about the bottom is the same"]} />;
 

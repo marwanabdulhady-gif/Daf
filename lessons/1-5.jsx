@@ -543,7 +543,7 @@ const LESSON = {
             clue="Building and checking are two sides of the same discipline">
           <CompareConnect award={award}
             left={{
-              name: "Aya's way — build in order", h: 88,
+              name: "Hassan's way — build in order", h: 88,
               draw: (ctx, W, H, frame) => {
                 ctx.clearRect(0, 0, W, H);
                 D.rr(ctx, 0, 0, W, H, 9);
@@ -571,9 +571,9 @@ const LESSON = {
             same={["Both use claim, evidence, conclusion",
                    "Both rely on place-value evidence",
                    "Both can be checked by a third person"]}
-            diff={["Aya opens by building, Musa opens by testing",
+            diff={["Hassan opens by building, Musa opens by testing",
                    "Musa needs a case to examine first",
-                   "Aya's order is the one the council signs"]} />
+                   "Hassan's order is the one the council signs"]} />
           </StoryShell>
         );
 

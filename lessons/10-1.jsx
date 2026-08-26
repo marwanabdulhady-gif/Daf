@@ -78,7 +78,7 @@ const drawStory101 = (ctx, W, H, frame) => {
   D.fracBar(ctx, { x: 62, y: 62, w: W - 124, h: 54, den: 6, num: 5, prog: p2,
     col: "#FA7E19", label: false });
   if (p3 > 0) {
-    D.txt(ctx, "Yousef took one piece. So did Layla, Salma, Omar and Reem.",
+    D.txt(ctx, "Yousef took one piece. So did Layth, Khalil, Omar and Anees.",
       W / 2, 152, { size: 13.5, col: "#EAF4F2", font: "marker", alpha: p3 });
     D.txt(ctx, "how much of the tray has gone?", W / 2, H - 18,
       { size: 14.5, col: "#C9A227", font: "marker", alpha: p3 });
@@ -181,7 +181,7 @@ const LESSON = {
         misconception: "Believing 3 × 1/4 = 3/12 because both numbers get multiplied." } },
 
     { phase: "connect", title: "Adding or <em>multiplying</em>?",
-      lead: "Noura wrote it as a long addition. Faisal wrote it as one multiplication. Both are describing the same tray.",
+      lead: "Joud wrote it as a long addition. Faisal wrote it as one multiplication. Both are describing the same tray.",
       goal: "Multiplication is exposed as shorthand for repeated addition of a unit fraction.",
       pull: "Let us draw it on the board.",
       rail: { launch: "Show both. Do not say which one you prefer.",
@@ -271,12 +271,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Noura's way — repeated addition", omml: M.asSum, h: 92,
+          left={{ name: "Joud's way — repeated addition", omml: M.asSum, h: 92,
             quote: "One sixth five times. I wrote every single one." }}
           right={{ name: "Faisal's way — one multiplication", omml: M.asMult, h: 92,
             quote: "Five copies. I just wrote five times one sixth." }}
           same={["Both give 5/6", "Both keep the sixth as the piece", "Both count five things"]}
-          diff={["Noura writes five terms, Faisal writes one", "Faisal's is faster for big counts", "Noura's shows the counting"]} />;
+          diff={["Joud writes five terms, Faisal writes one", "Faisal's is faster for big counts", "Joud's shows the counting"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard101} height={430} />;

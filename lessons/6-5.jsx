@@ -146,12 +146,12 @@ const LESSON = {
         connect: "What made the two-step ones different?",
         misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Huda <em>subtracts</em>. Salem <em>counts up</em>",
-      lead: "Huda: 150 − 108 = 42. Salem: from 108, counts up to 150 — 42. Both reach the recommendation.",
+    { phase: "connect", title: "Samer <em>subtracts</em>. Salem <em>counts up</em>",
+      lead: "Samer: 150 − 108 = 42. Salem: from 108, counts up to 150 — 42. Both reach the recommendation.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Following Huda's subtraction", "Counting Salem's up-count", "Checking both reach 42"],
+        monitor: ["Following Samer's subtraction", "Counting Salem's up-count", "Checking both reach 42"],
         connect: "Which direction is easier to check, and why?",
         misconception: "Believing the shorter method is always the safer one." } },
 
@@ -279,13 +279,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 42"
-            text="Huda subtracts: 150 − 108. Salem counts up from 108 to 150. Both reach 42."
+            text="Samer subtracts: 150 − 108. Salem counts up from 108 to 150. Both reach 42."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Huda's way — multiply then subtract", omml: M.step1, h: 92, quote: "Six 18s is 108, then 150 take away 108." }}
+              left={{ name: "Samer's way — multiply then subtract", omml: M.step1, h: 92, quote: "Six 18s is 108, then 150 take away 108." }}
               right={{ name: "Salem's way — count up", omml: M.chain, h: 92, quote: "From 108 I counted up to 150." }}
               same={["Both get 42", "Both use all three numbers", "Both need more than one calculation"]}
-              diff={["Huda subtracts, Salem counts up", "Salem never subtracts at all", "Both are easy to check"]} />
+              diff={["Samer subtracts, Salem counts up", "Salem never subtracts at all", "Both are easy to check"]} />
           </StoryShell>
         );
 

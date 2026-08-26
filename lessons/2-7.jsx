@@ -181,8 +181,8 @@ const LESSON = {
         connect: "Why is 10 ones not in the ones box forever?",
         misconception: "Leaving 10 ones instead of renaming them." } },
 
-    { phase: "connect", title: "Aya renames <em>at once</em>. Musa trades one place at a time",
-      lead: "Aya writes 3,9,9,10 in one go. Musa hops the chain column by column. Both reach 2,638.",
+    { phase: "connect", title: "Hassan renames <em>at once</em>. Musa trades one place at a time",
+      lead: "Hassan writes 3,9,9,10 in one go. Musa hops the chain column by column. Both reach 2,638.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -306,15 +306,15 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 2,638"
-            text="Aya renames the whole row at once. Musa trades one place at a time. Both reach 2,638."
+            text="Hassan renames the whole row at once. Musa trades one place at a time. Both reach 2,638."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Aya's way — rename the row at once", omml: M.rename, h: 92,
+              left={{ name: "Hassan's way — rename the row at once", omml: M.rename, h: 92,
                       quote: "4,000 is also 3 thousands, 9 hundreds, 9 tens, 10 ones." }}
               right={{ name: "Musa's way — trade one place at a time", omml: M.chain, h: 92,
                        quote: "Keep going left until you find something to trade." }}
               same={["Both reach 2,638", "Both keep the value unchanged", "Both can be checked by adding back"]}
-              diff={["Aya's row is one line", "Musa's chain is four hops", "Musa's hops are easier to verify"]} />
+              diff={["Hassan's row is one line", "Musa's chain is four hops", "Musa's hops are easier to verify"]} />
           </StoryShell>
         );
 

@@ -212,7 +212,7 @@ const LESSON = {
         misconception: "Reporting a count when the question asked for a length." } },
 
     { phase: "connect", title: "Two ways to <em>total it</em>",
-      lead: "Reem added the four fives one at a time. Faisal multiplied four by five eighths.",
+      lead: "Anees added the four fives one at a time. Faisal multiplied four by five eighths.",
       goal: "Connect the topic's fraction multiplication back to data.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one is faster with ten plants.",
@@ -303,12 +303,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Reem's way — add them up", omml: M.totalTwo, h: 92,
+          left={{ name: "Anees's way — add them up", omml: M.totalTwo, h: 92,
             quote: "Five eighths four times. I wrote them all out." }}
           right={{ name: "Faisal's way — multiply by the count", omml: M.mostCommonTotal, h: 92,
             quote: "There are four crosses, so four times five eighths." }}
           same={["Both give 20/8 metres", "Both use the count from the plot", "Both rename to 2 and 4/8"]}
-          diff={["Reem adds, Faisal multiplies", "Faisal's works for ten plants", "Reem's shows the repeat"]} />;
+          diff={["Anees adds, Faisal multiplies", "Faisal's works for ten plants", "Anees's shows the repeat"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard113} height={430} />;

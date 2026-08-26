@@ -404,7 +404,7 @@ const LESSON = {
             clue="Two representations can protect the same value">
           <CompareConnect award={award}
             left={{
-              name: "Sara's way — read by periods", h: 88,
+              name: "Hani's way — read by periods", h: 88,
               draw: (ctx, W, H, frame) => {
                 ctx.clearRect(0, 0, W, H);
                 D.rr(ctx, 0, 0, W, H, 9);
@@ -429,9 +429,9 @@ const LESSON = {
             same={["Both get four million, six hundred ninety-seven thousand",
                    "Both use groups of three",
                    "Both start from the left to say it"]}
-            diff={["Sara chunks, Khalid counts places",
-                   "Khalid needs the chart, Sara does not",
-                   "Sara is faster once she trusts the commas"]} />
+            diff={["Hani chunks, Khalid counts places",
+                   "Khalid needs the chart, Hani does not",
+                   "Hani is faster once she trusts the commas"]} />
           </StoryShell>
         );
 

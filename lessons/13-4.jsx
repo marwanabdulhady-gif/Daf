@@ -189,7 +189,7 @@ const LESSON = {
         misconception: "Using 1,000 where 100 belongs." } },
 
     { phase: "connect", title: "Two ways to reach <em>millimetres</em>",
-      lead: "Sana went metres to centimetres to millimetres. Ibrahim multiplied by a thousand.",
+      lead: "Bashir went metres to centimetres to millimetres. Ibrahim multiplied by a thousand.",
       goal: "A chain of tens and one big power of ten agree.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask where the thousand came from.",
@@ -283,12 +283,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Sana's way — two steps", omml: M.chain, h: 92,
+          left={{ name: "Bashir's way — two steps", omml: M.chain, h: 92,
             quote: "Metres to centimetres, then centimetres to millimetres." }}
           right={{ name: "Ibrahim's way — one jump", omml: M.kmM, h: 92,
             quote: "A metre is a thousand millimetres, so I multiplied once." }}
           same={["Both give the same answer", "Both use powers of ten", "Both make the number bigger"]}
-          diff={["Sana steps twice", "Ibrahim jumps once", "Sana's shows where the thousand comes from"]} />;
+          diff={["Bashir steps twice", "Ibrahim jumps once", "Bashir's shows where the thousand comes from"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard134} height={430} />;

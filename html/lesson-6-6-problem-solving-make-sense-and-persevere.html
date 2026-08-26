@@ -3279,53 +3279,160 @@ function folioExport(className) {
   "year": "2025-2026",
   "note": "Edit this file, then run ./rebuild-all.sh to update all 114 lesson decks.",
   "markTiers": [
-    { "xp": 400, "marks": 1 },
-    { "xp": 800, "marks": 2 },
-    { "xp": 1200, "marks": 3 }
+    {
+      "xp": 400,
+      "marks": 1
+    },
+    {
+      "xp": 800,
+      "marks": 2
+    },
+    {
+      "xp": 1200,
+      "marks": 3
+    }
   ],
   "markCap": 3,
   "markFloor": 50,
   "behaviours": {
     "note": "Reason buttons in the points panel (press P). Edit freely, then run ./rebuild-all.sh",
-    "steps": [1, 5, 10],
+    "steps": [
+      1,
+      5,
+      10
+    ],
     "positive": [
-      { "label": "Explained a method", "xp": 5, "icon": "fa-comment-dots" },
-      { "label": "Helped a partner", "xp": 5, "icon": "fa-handshake-angle" },
-      { "label": "Answered on the board", "xp": 10, "icon": "fa-chalkboard" },
-      { "label": "Took the harder question", "xp": 15, "icon": "fa-mountain-sun", "metric": "hard" },
-      { "label": "Right first try", "xp": 15, "icon": "fa-circle-check", "metric": "correct" },
-      { "label": "Method into the Sijill", "xp": 30, "icon": "fa-feather", "metric": "sijill" }
+      {
+        "label": "Explained a method",
+        "xp": 5,
+        "icon": "fa-comment-dots"
+      },
+      {
+        "label": "Helped a partner",
+        "xp": 5,
+        "icon": "fa-handshake-angle"
+      },
+      {
+        "label": "Answered on the board",
+        "xp": 10,
+        "icon": "fa-chalkboard"
+      },
+      {
+        "label": "Took the harder question",
+        "xp": 15,
+        "icon": "fa-mountain-sun",
+        "metric": "hard"
+      },
+      {
+        "label": "Right first try",
+        "xp": 15,
+        "icon": "fa-circle-check",
+        "metric": "correct"
+      },
+      {
+        "label": "Method into the Sijill",
+        "xp": 30,
+        "icon": "fa-feather",
+        "metric": "sijill"
+      }
     ],
     "needsWork": [
-      { "label": "Off task", "xp": -5, "icon": "fa-hourglass-half" },
-      { "label": "Talking over others", "xp": -5, "icon": "fa-volume-xmark" },
-      { "label": "Would not start", "xp": -10, "icon": "fa-circle-xmark" },
-      { "label": "Unkind to a classmate", "xp": -10, "icon": "fa-face-frown" }
+      {
+        "label": "Off task",
+        "xp": -5,
+        "icon": "fa-hourglass-half"
+      },
+      {
+        "label": "Talking over others",
+        "xp": -5,
+        "icon": "fa-volume-xmark"
+      },
+      {
+        "label": "Would not start",
+        "xp": -10,
+        "icon": "fa-circle-xmark"
+      },
+      {
+        "label": "Unkind to a classmate",
+        "xp": -10,
+        "icon": "fa-face-frown"
+      }
     ]
   },
   "privileges": [
-    { "xp": 100, "name": "Choose your table for the week" },
-    { "xp": 200, "name": "Choose the context for next lesson's problems" },
-    { "xp": 300, "name": "Enter a method into the Sijill yourself" },
-    { "xp": 500, "name": "Run the opener for the class" },
-    { "xp": 800, "name": "Choose your table's exhibition problem" }
+    {
+      "xp": 100,
+      "name": "Choose your table for the week"
+    },
+    {
+      "xp": 200,
+      "name": "Choose the context for next lesson's problems"
+    },
+    {
+      "xp": 300,
+      "name": "Enter a method into the Sijill yourself"
+    },
+    {
+      "xp": 500,
+      "name": "Run the opener for the class"
+    },
+    {
+      "xp": 800,
+      "name": "Choose your table's exhibition problem"
+    }
   ],
   "sections": {
     "4A": [
-      "Layla Al-Harbi", "Yousef Bakr", "Salma Al-Ghamdi", "Omar Baeshen",
-      "Reem Al-Sudairi", "Faisal Nassief", "Sana Al-Amoudi", "Ibrahim Zahid",
-      "Noura Al-Qahtani", "Hala Bin Mahfouz", "Ziad Al-Turki", "Jana Al-Shaikh",
-      "Rakan Al-Dossari", "Maryam Al-Juffali", "Tariq Al-Otaibi", "Dana Al-Rashid",
-      "Khalid Al-Anzi", "Lina Al-Sabban", "Sultan Al-Mutairi", "Aseel Al-Barrak",
-      "Majed Al-Suwailem", "Rana Al-Fadl", "Bader Al-Khereiji", "Talia Al-Hazmi"
+      "Abdullah Al-Harbi",
+      "Yousef Bakr",
+      "Bandar Al-Ghamdi",
+      "Omar Baeshen",
+      "Fares Al-Sudairi",
+      "Faisal Nassief",
+      "Ghazi Al-Amoudi",
+      "Ibrahim Zahid",
+      "Hisham Al-Qahtani",
+      "Hudayfair Bin Mahfouz",
+      "Ziad Al-Turki",
+      "Jareer Al-Shaikh",
+      "Rakan Al-Dossari",
+      "Laith Al-Juffali",
+      "Tariq Al-Otaibi",
+      "Majid Al-Rashid",
+      "Khalid Al-Anzi",
+      "Manan Al-Sabban",
+      "Sultan Al-Mutairi",
+      "Musab Al-Barrak",
+      "Majed Al-Suwailem",
+      "Nizar Al-Fadl",
+      "Bader Al-Khereiji",
+      "Obaid Al-Hazmi"
     ],
     "4B": [
-      "Ahmed Al-Mansouri", "Joud Al-Sheikh", "Turki Al-Rajhi", "Shahd Al-Nemer",
-      "Fahad Al-Sanea", "Ghala Al-Aqeel", "Nawaf Al-Habib", "Rimas Al-Zamil",
-      "Saud Al-Muhaidib", "Yara Al-Bassam", "Abdulaziz Al-Naimi", "Leen Al-Shammari",
-      "Mishal Al-Duraibi", "Haya Al-Faraj", "Waleed Al-Hokair", "Retaj Al-Ghurair",
-      "Nayef Al-Sulaiman", "Deem Al-Marzouq", "Rayan Al-Qassabi", "Sadeem Al-Wabel",
-      "Hassan Al-Jasser", "Alia Al-Rowais", "Meshari Al-Tamimi", "Basma Al-Nafisi"
+      "Ahmed Al-Mansouri",
+      "Joud Al-Sheikh",
+      "Turki Al-Rajhi",
+      "Sami Al-Nemer",
+      "Fahad Al-Sanea",
+      "Sattam Al-Aqeel",
+      "Nawaf Al-Habib",
+      "Shuraym Al-Zamil",
+      "Saud Al-Muhaidib",
+      "Tawfiq Al-Bassam",
+      "Abdulaziz Al-Naimi",
+      "Ubaid Al-Shammari",
+      "Mishal Al-Duraibi",
+      "Yazan Al-Faraj",
+      "Waleed Al-Hokair",
+      "Zaher Al-Ghurair",
+      "Nayef Al-Sulaiman",
+      "Hanzala Al-Marzouq",
+      "Rayan Al-Qassabi",
+      "Sadeem Al-Wabel",
+      "Hassan Al-Jasser",
+      "Khalifa Al-Rowais",
+      "Meshari Al-Tamimi",
+      "Sayer Al-Nafisi"
     ]
   }
 }
@@ -4610,7 +4717,7 @@ const LESSON = {
         connect: "What did the tempting path do wrong?",
         misconception: "Giving up when the first path fails." } },
 
-    { phase: "monitor", title: "Rana's <em>new representation</em>",
+    { phase: "monitor", title: "Karam's <em>new representation</em>",
       lead: "One sitting first: 8 tables × 6 seats = 48. Then the three sittings: 48 × 3 = 144. The new representation saves the plan.",
       goal: "Persist with a new representation when the first path dies.",
       pull: "The answer to step 1 becomes a number you need in step 2.",
@@ -4633,12 +4740,12 @@ const LESSON = {
       goal: "See that the order of multiplying does not matter — and that both orders are worth writing down.",
       pull: "The multiplication does not care which order you work in.",
       rail: { launch: "Before each step: which grouping is it?",
-        monitor: ["Grouping by table", "Multiplying 18 × 8", "Comparing to Rana's 144"],
+        monitor: ["Grouping by table", "Multiplying 18 × 8", "Comparing to Karam's 144"],
         connect: "Why do both orders reach 144?",
         misconception: "Believing only one grouping is correct." } },
 
     { phase: "connect", title: "Two merchants, one <em>144</em>",
-      lead: "Rana groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check.",
+      lead: "Karam groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -4748,8 +4855,8 @@ const LESSON = {
       case 3:
         return (
           <StoryShell lane="fiction" character="zayd" pose="build"
-            title="Rana's new representation"
-            text="The dead end named, Rana changes the picture: one sitting first — 8 tables × 6 seats — then the three sittings."
+            title="Karam's new representation"
+            text="The dead end named, Karam changes the picture: one sitting first — 8 tables × 6 seats — then the three sittings."
             clue="One sitting first — the answer to step 1 becomes the number step 2 needs.">
             <ExploreChips draw={makeChain66(step)} height={266}
               label="How many guests altogether?"
@@ -4796,13 +4903,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 144"
-            text="Rana groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check."
+            text="Karam groups by sitting. Kareem groups by table. Both reach 144 — and both plans survive the re-check."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Rana's way — one sitting first", omml: M.step1, h: 92, quote: "8 tables of 6 is 48, then three sittings." }}
+              left={{ name: "Karam's way — one sitting first", omml: M.step1, h: 92, quote: "8 tables of 6 is 48, then three sittings." }}
               right={{ name: "Kareem's way — one table first", omml: M.chain, h: 92, quote: "One table seats 6 three times, so 18 — then eight tables." }}
               same={["Both get 144", "Both use all three numbers", "Both multiply twice"]}
-              diff={["Rana groups by sitting, Kareem by table", "The order of multiplying does not matter", "Both plans are worth writing down"]} />
+              diff={["Karam groups by sitting, Kareem by table", "The order of multiplying does not matter", "Both plans are worth writing down"]} />
           </StoryShell>
         );
 

@@ -250,7 +250,7 @@ const LESSON = {
         misconception: "Saying a rectangle has four lines because a square does." } },
 
     { phase: "connect", title: "Two ways to <em>test it</em>",
-      lead: "Noura folded the paper. Faisal checked whether each point had a matching partner.",
+      lead: "Joud folded the paper. Faisal checked whether each point had a matching partner.",
       goal: "Folding and matching points are the same test.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which works when you cannot fold the paper.",
@@ -341,12 +341,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Noura's way — fold the paper", omml: M.test, h: 92,
+          left={{ name: "Joud's way — fold the paper", omml: M.test, h: 92,
             quote: "I folded it and the edges lined up exactly." }}
           right={{ name: "Faisal's way — match the points", omml: M.notDiagonal, h: 92,
             quote: "Every corner has to have a partner the same distance from the line." }}
           same={["Both are the same test", "Both reject the diagonal", "Both give 2 for a rectangle"]}
-          diff={["Noura needs paper", "Faisal can do it on the board", "Faisal's works on a drawing"]} />;
+          diff={["Joud needs paper", "Faisal can do it on the board", "Faisal's works on a drawing"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard164} height={430} />;

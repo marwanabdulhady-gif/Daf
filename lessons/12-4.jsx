@@ -102,7 +102,7 @@ const drawStory124 = (ctx, W, H, frame) => {
     { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
   const s = Math.min(104, H - 108);
   D.decGrid(ctx, { x: W / 2 - s - 44, y: 40, s: s, tenths: true, shaded: 30,
-    prog: D.at(f, 60, 280), col: "#FA7E19", label: "Salma: 3/10" });
+    prog: D.at(f, 60, 280), col: "#FA7E19", label: "Khalil: 3/10" });
   D.decGrid(ctx, { x: W / 2 + 44, y: 40, s: s, tenths: false, shaded: 25,
     prog: D.at(f, 200, 400), col: "#FA7E19", label: "Yousef: 25/100" });
   if (p3 > 0) {
@@ -168,7 +168,7 @@ const LESSON = {
         misconception: "Judging size by the numerator alone." } },
 
     { phase: "launch", title: "Two painters, <em>one wall</em>",
-      lead: "Salma painted 3/10 of the display. Yousef painted 25/100 of it. Estimate how much is painted.",
+      lead: "Khalil painted 3/10 of the display. Yousef painted 25/100 of it. Estimate how much is painted.",
       goal: "Create the need to make the pieces match before adding.",
       pull: "Now let us make them the same size.",
       rail: { launch: "More than half or less? Commit before you calculate.",
@@ -204,7 +204,7 @@ const LESSON = {
         misconception: "Writing 3/10 + 25/100 = 28/110." } },
 
     { phase: "connect", title: "Two ways to <em>add it</em>",
-      lead: "Noura rewrote everything as hundredths. Ziad turned both into decimals first.",
+      lead: "Joud rewrote everything as hundredths. Ziad turned both into decimals first.",
       goal: "Decimal addition and fraction addition are the same move.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one is easier to check with a grid.",
@@ -299,12 +299,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Noura's way — all hundredths", omml: M.answer, h: 92,
+          left={{ name: "Joud's way — all hundredths", omml: M.answer, h: 92,
             quote: "I made everything hundredths, then counted them." }}
           right={{ name: "Ziad's way — decimals first", omml: M.asDecimal, h: 92,
             quote: "0.3 plus 0.25. I lined up the points and added." }}
           same={["Both give 0.55", "Both need the places to match", "Both agree with the grid"]}
-          diff={["Noura stays in fractions", "Ziad switches to decimals", "Ziad's needs the point lined up"]} />;
+          diff={["Joud stays in fractions", "Ziad switches to decimals", "Ziad's needs the point lined up"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard124} height={430} />;

@@ -113,9 +113,9 @@ const drawStory123 = (ctx, W, H, frame) => {
   D.fracLine(ctx, { x: 70, y: 92, w: W - 140, den: 10, whole: 1, prog: D.at(f, 60, 300),
     labelAll: true, marks: [{ n: 4, den: 10, col: "#2D70B3", label: "Omar 0.4" }] });
   D.fracLine(ctx, { x: 70, y: 168, w: W - 140, den: 10, whole: 1, prog: D.at(f, 180, 420),
-    labelAll: true, marks: [{ n: 3.8, den: 10, col: "#FA7E19", label: "Reem 0.38", up: true }] });
+    labelAll: true, marks: [{ n: 3.8, den: 10, col: "#FA7E19", label: "Anees 0.38", up: true }] });
   if (p3 > 0) {
-    D.txt(ctx, "who has run further \u2014 Omar or Reem?", W / 2, H - 12,
+    D.txt(ctx, "who has run further \u2014 Omar or Anees?", W / 2, H - 12,
       { size: 13.5, col: "#C9A227", font: "marker", alpha: p3 });
   }
 };
@@ -176,8 +176,8 @@ const LESSON = {
         connect: "Which looks bigger, and does the writing agree?",
         misconception: "Deciding from the number of digits." } },
 
-    { phase: "launch", title: "Omar or <em>Reem</em>?",
-      lead: "Omar has run 0.4 of the track. Reem has run 0.38. Estimate who is ahead.",
+    { phase: "launch", title: "Omar or <em>Anees</em>?",
+      lead: "Omar has run 0.4 of the track. Anees has run 0.38. Estimate who is ahead.",
       goal: "Create the need for a reliable comparison method.",
       pull: "Now let us compare properly.",
       rail: { launch: "Commit to a runner before you calculate anything.",
@@ -213,7 +213,7 @@ const LESSON = {
         misconception: "Claiming 0.38 > 0.4 because 38 > 4." } },
 
     { phase: "connect", title: "Two ways to <em>argue it</em>",
-      lead: "Hala padded to 0.40 and compared hundredths. Faisal stopped at the tenths.",
+      lead: "Qais padded to 0.40 and compared hundredths. Faisal stopped at the tenths.",
       goal: "Both arguments are valid; one is shorter.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask when padding is genuinely needed.",
@@ -303,12 +303,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Hala's way — pad and compare", omml: M.align, h: 92,
+          left={{ name: "Qais's way — pad and compare", omml: M.align, h: 92,
             quote: "I wrote 0.40 so both had two places, then compared 40 with 38." }}
           right={{ name: "Faisal's way — stop at the tenths", omml: M.tenthsFirst, h: 92,
             quote: "Four tenths beats three tenths. I did not need the rest." }}
           same={["Both give 0.4 > 0.38", "Both compare from the left", "Both agree with the grids"]}
-          diff={["Hala pads first", "Faisal stops early", "Hala's method still works when the tenths tie"]} />;
+          diff={["Qais pads first", "Faisal stops early", "Qais's method still works when the tenths tie"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard123} height={430} />;

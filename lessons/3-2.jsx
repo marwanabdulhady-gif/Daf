@@ -163,8 +163,8 @@ const LESSON = {
         connect: "How does the direction help you check the exact product?",
         misconception: "Reporting an estimate without its direction." } },
 
-    { phase: "connect", title: "Huda rounds <em>coarse</em>. Zaid rounds <em>close</em>",
-      lead: "Huda rounds to 200, Zaid to 240. Both estimates defend the order.",
+    { phase: "connect", title: "Samer rounds <em>coarse</em>. Zaid rounds <em>close</em>",
+      lead: "Samer rounds to 200, Zaid to 240. Both estimates defend the order.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -286,15 +286,15 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one defensible order"
-            text="Huda rounds to 200, Zaid to 240. Both estimates sit near the exact 1,880 — for different reasons."
+            text="Samer rounds to 200, Zaid to 240. Both estimates sit near the exact 1,880 — for different reasons."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Huda's way — round to 200", omml: M.estimate, h: 92,
+              left={{ name: "Samer's way — round to 200", omml: M.estimate, h: 92,
                       quote: "8 times 2 is 16, so 8 times 200 is 1,600." }}
               right={{ name: "Zaid's way — round to 240", omml: M.closer, h: 92,
                        quote: "8 times 24 is 192, so 8 times 240 is 1,920." }}
               same={["Both round one factor", "Both use a fact they know", "Both are close to 1,880"]}
-              diff={["Huda's is easier", "Zaid's is closer", "Huda knows hers is too small"]} />
+              diff={["Samer's is easier", "Zaid's is closer", "Samer knows hers is too small"]} />
           </StoryShell>
         );
 

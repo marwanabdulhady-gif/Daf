@@ -149,8 +149,8 @@ const LESSON = {
         connect: "Which count earns which name?",
         misconception: "Sorting by odd/even instead of by factor count." } },
 
-    { phase: "connect", title: "Rima <em>crosses out</em>. Bassel <em>counts factors</em>",
-      lead: "Rima crosses out multiples across the whole grid. Bassel lists each number's factors and counts. Both agree which are prime.",
+    { phase: "connect", title: "Hadeel <em>crosses out</em>. Bassel <em>counts factors</em>",
+      lead: "Hadeel crosses out multiples across the whole grid. Bassel lists each number's factors and counts. Both agree which are prime.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -271,13 +271,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one prime list"
-            text="Rima crosses out multiples across the grid. Bassel counts each number's factors. Both lists agree."
+            text="Hadeel crosses out multiples across the grid. Bassel counts each number's factors. Both lists agree."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Rima's way — cross out multiples", omml: M.left, h: 92, quote: "If it is a multiple of something, it is composite." }}
+              left={{ name: "Hadeel's way — cross out multiples", omml: M.left, h: 92, quote: "If it is a multiple of something, it is composite." }}
               right={{ name: "Bassel's way — count factors", omml: M.right, h: 92, quote: "I list the factors and count them." }}
               same={["Both agree which are prime", "Both use factors", "Both treat 1 as special"]}
-              diff={["Rima works on many numbers at once", "Bassel checks one number deeply", "Rima's is faster for a whole grid"]} />
+              diff={["Hadeel works on many numbers at once", "Bassel checks one number deeply", "Hadeel's is faster for a whole grid"]} />
           </StoryShell>
         );
 

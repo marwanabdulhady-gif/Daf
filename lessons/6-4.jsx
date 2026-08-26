@@ -201,13 +201,13 @@ const LESSON = {
         connect: "What made the two-step ones different?",
         misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Maya <em>gathers first</em>. Nasser <em>shares first</em>",
-      lead: "Maya: 96 chairs, then shared by 3. Nasser: each row of 24 splits into 8 per hall, four times. Both get 32.",
+    { phase: "connect", title: "Mazin <em>gathers first</em>. Nasser <em>shares first</em>",
+      lead: "Mazin: 96 chairs, then shared by 3. Nasser: each row of 24 splits into 8 per hall, four times. Both get 32.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Following Maya's total", "Counting Nasser's shares", "Checking both reach 32"],
-        connect: "Why is Maya's total useful for other questions?",
+        monitor: ["Following Mazin's total", "Counting Nasser's shares", "Checking both reach 32"],
+        connect: "Why is Mazin's total useful for other questions?",
         misconception: "Believing share-first is always faster." } },
 
     { phase: "monitor", title: "The <em>estimate gate</em>",
@@ -354,13 +354,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 32"
-            text="Maya gathers the total first. Nasser shares each row first. Both halls get 32."
+            text="Mazin gathers the total first. Nasser shares each row first. Both halls get 32."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Maya's way — multiply then divide", omml: M.step1, h: 92, quote: "96 chairs altogether, then shared by 3." }}
+              left={{ name: "Mazin's way — multiply then divide", omml: M.step1, h: 92, quote: "96 chairs altogether, then shared by 3." }}
               right={{ name: "Nasser's way — share each row", omml: M.chain, h: 92, quote: "Each row of 24 splits into 8 per hall, four times." }}
               same={["Both get 32", "Both use all the numbers", "Both need two operations"]}
-              diff={["Maya gathers first, Nasser shares first", "Nasser does four small divisions", "Maya's total is useful for other questions"]} />
+              diff={["Mazin gathers first, Nasser shares first", "Nasser does four small divisions", "Mazin's total is useful for other questions"]} />
           </StoryShell>
         );
 

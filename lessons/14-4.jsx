@@ -220,12 +220,12 @@ const LESSON = {
         misconception: "Accepting 'figure × 4' because it fits figure one." } },
 
     { phase: "connect", title: "Two ways to reach figure <em>twenty</em>",
-      lead: "Layla added three, nineteen times. Yousef used three times twenty plus one.",
+      lead: "Layth added three, nineteen times. Yousef used three times twenty plus one.",
       goal: "The structural rule beats the step rule at distance.",
       pull: "Let us put it on the board.",
       rail: { launch: "Show both. Ask which one they would trust.",
         monitor: ["Adding repeatedly", "Using the rule", "Checking they agree"],
-        connect: "How many additions did Layla have to get right?",
+        connect: "How many additions did Layth have to get right?",
         misconception: "Adding three twenty times instead of nineteen." } },
 
     { phase: "synth", title: "On the <em>board</em>",
@@ -309,12 +309,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Layla's way — add three, again and again", omml: M.step, h: 92,
+          left={{ name: "Layth's way — add three, again and again", omml: M.step, h: 92,
             quote: "Four, seven, ten, thirteen ... I kept adding three." }}
           right={{ name: "Yousef's way — use the structure", omml: M.far, h: 92,
             quote: "Three arms of twenty, plus the middle tile. Sixty one." }}
           same={["Both give 61 tiles", "Both fit the picture", "Both use the step of three"]}
-          diff={["Layla adds nineteen times", "Yousef calculates once", "Only Yousef's reaches figure 200"]} />;
+          diff={["Layth adds nineteen times", "Yousef calculates once", "Only Yousef's reaches figure 200"]} />;
 
       case 6:
         return <BoardScreen draw={drawBoard144} height={430} />;

@@ -176,8 +176,8 @@ const LESSON = {
         connect: "Which claim failed its check?",
         misconception: "Matching by the number of digits." } },
 
-    { phase: "connect", title: "Hala shares <em>tens</em>. Nawaf deals <em>ones</em>",
-      lead: "Hala: one ten each, then break the last one. Nawaf: one at a time until they ran out — 52 moves. Both get 13.",
+    { phase: "connect", title: "Qais shares <em>tens</em>. Nawaf deals <em>ones</em>",
+      lead: "Qais: one ten each, then break the last one. Nawaf: one at a time until they ran out — 52 moves. Both get 13.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -300,13 +300,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 13"
-            text="Hala shares tens and regroups. Nawaf deals one at a time — 52 moves. Both plates hold 13."
+            text="Qais shares tens and regroups. Nawaf deals one at a time — 52 moves. Both plates hold 13."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Hala's way — tens first", omml: M.shareTens, h: 92, quote: "One ten each, then I broke the last one up." }}
+              left={{ name: "Qais's way — tens first", omml: M.shareTens, h: 92, quote: "One ten each, then I broke the last one up." }}
               right={{ name: "Nawaf's way — one at a time", omml: M.answer, h: 92, quote: "I dealt them out like cards until they ran out." }}
               same={["Both get 13", "Both share equally", "Both end with nothing left over"]}
-              diff={["Hala shares tens, Nawaf shares ones", "Nawaf takes 52 moves", "Hala's method still works with hundreds"]} />
+              diff={["Qais shares tens, Nawaf shares ones", "Nawaf takes 52 moves", "Qais's method still works with hundreds"]} />
           </StoryShell>
         );
 

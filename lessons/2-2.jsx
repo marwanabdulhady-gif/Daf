@@ -177,8 +177,8 @@ const LESSON = {
         connect: "When would you round to tens instead of thousands?",
         misconception: "Believing only the exact answer is ever useful." } },
 
-    { phase: "connect", title: "Aya rounds <em>coarse</em>. Musa rounds <em>fine</em>",
-      lead: "Aya rounds to thousands, Musa to hundreds. Both reach 8,000 for a different reason.",
+    { phase: "connect", title: "Hassan rounds <em>coarse</em>. Musa rounds <em>fine</em>",
+      lead: "Hassan rounds to thousands, Musa to hundreds. Both reach 8,000 for a different reason.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -299,15 +299,15 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 8,000"
-            text="Aya rounds coarse to thousands. Musa rounds fine to hundreds. Both reach 8,000 — for different reasons."
+            text="Hassan rounds coarse to thousands. Musa rounds fine to hundreds. Both reach 8,000 — for different reasons."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Aya's way — round both, add the rounds", omml: M.roundThousand, h: 92,
+              left={{ name: "Hassan's way — round both, add the rounds", omml: M.roundThousand, h: 92,
                       quote: "I rounded both to 4,000 — the total is about 8,000." }}
               right={{ name: "Musa's way — a finer place", omml: M.roundHundred, h: 92,
                        quote: "I rounded to hundreds — 4,300 + 3,700 is still 8,000." }}
               same={["Both reach 8,000", "Both round both addends", "Both defend the number to the council"]}
-              diff={["Aya's place is coarser and faster", "Musa's place is finer and nearer", "Aya's is enough for a newsletter; Musa's for a tighter budget"]} />
+              diff={["Hassan's place is coarser and faster", "Musa's place is finer and nearer", "Hassan's is enough for a newsletter; Musa's for a tighter budget"]} />
           </StoryShell>
         );
 

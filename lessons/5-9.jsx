@@ -183,8 +183,8 @@ const LESSON = {
         connect: "Which feature decided each choice?",
         misconception: "Sorting by the size of the numbers only." } },
 
-    { phase: "connect", title: "Aisha <em>chunks</em>. Talal <em>shares</em>",
-      lead: "Aisha: 100, then 20, then 3. Talal: hundreds, tens, ones. Both get 123 — and both check against the estimate.",
+    { phase: "connect", title: "Nidal <em>chunks</em>. Talal <em>shares</em>",
+      lead: "Nidal: 100, then 20, then 3. Talal: hundreds, tens, ones. Both get 123 — and both check against the estimate.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -315,16 +315,16 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 123"
-            text="Aisha chooses chunks — 100, then 20, then 3. Talal follows the places. Both check against the estimate."
+            text="Nidal chooses chunks — 100, then 20, then 3. Talal follows the places. Both check against the estimate."
             clue="The comparison produces the rule.">
             <CompareConnect award={award}
-              left={{ name: "Aisha's way — chunks", omml: M.chunk, h: 92,
+              left={{ name: "Nidal's way — chunks", omml: M.chunk, h: 92,
                       quote: "I took out 100 groups, then 20, then 3." }}
               right={{ name: "Talal's way — place by place", omml: M.share, h: 92,
                        quote: "Hundreds, then tens, then ones." }}
               same={["Both get 123", "Both work from the biggest units", "Both check against an estimate"]}
-              diff={["Aisha chooses her chunks", "Talal follows a fixed order",
-                     "Aisha finishes in fewer steps when she spots a big chunk"]} />
+              diff={["Nidal chooses her chunks", "Talal follows a fixed order",
+                     "Nidal finishes in fewer steps when she spots a big chunk"]} />
           </StoryShell>
         );
 

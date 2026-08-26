@@ -168,7 +168,7 @@ const LESSON = {
         misconception: "Accepting a split whose parts do not total the original." } },
 
     { phase: "connect", title: "Two <em>splits</em>, both right",
-      lead: "Lina split it 2 and 3. Basil split it 4 and 1. Both add to five eighths.",
+      lead: "Iyad split it 2 and 3. Basil split it 4 and 1. Both add to five eighths.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -261,12 +261,12 @@ const LESSON = {
 
       case 5:
         return <CompareConnect award={award}
-          left={{ name: "Lina's split — 2 and 3", omml: M.twoPlusThree, h: 92,
+          left={{ name: "Iyad's split — 2 and 3", omml: M.twoPlusThree, h: 92,
                   quote: "I gave two eighths to one and three to the other." }}
           right={{ name: "Basil's split — 4 and 1", omml: M.fourPlusOne, h: 92,
                    quote: "I gave four eighths to one and one to the other." }}
           same={["Both add to 5/8", "Both use eighths", "Both use all five pieces"]}
-          diff={["Lina's split is more even", "Basil's gives one person most of it",
+          diff={["Iyad's split is more even", "Basil's gives one person most of it",
                  "There are other valid splits too"]} />;
 
       case 6:

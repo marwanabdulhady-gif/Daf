@@ -138,8 +138,8 @@ const LESSON = {
         connect: "How do you know which product a model belongs to?",
         misconception: "Matching by the bigger part only." } },
 
-    { phase: "connect", title: "Reem splits the <em>23</em>. Ammar splits the <em>40</em>",
-      lead: "Reem: 20 forties and 3 forties. Ammar: 23 × 4, then multiply by ten. Both get 920.",
+    { phase: "connect", title: "Anees splits the <em>23</em>. Ammar splits the <em>40</em>",
+      lead: "Anees: 20 forties and 3 forties. Ammar: 23 × 4, then multiply by ten. Both get 920.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -268,16 +268,16 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 920"
-            text="Reem splits the 23. Ammar splits the 40 and does one multiplication. Both get 920."
+            text="Anees splits the 23. Ammar splits the 40 and does one multiplication. Both get 920."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Reem's way — split the 23", omml: M.split, h: 92,
+              left={{ name: "Anees's way — split the 23", omml: M.split, h: 92,
                       quote: "20 forties and 3 forties." }}
               right={{ name: "Ammar's way — split the 40", omml: M.partA, h: 92,
                        quote: "I did 23 × 4 first, then multiplied by ten." }}
               same={["Both get 920", "Both make the numbers friendlier", "Both use place value"]}
-              diff={["Reem splits the awkward one, Ammar the tidy one",
-                     "Ammar only does one multiplication", "Reem's shows both parts on the model"]} />
+              diff={["Anees splits the awkward one, Ammar the tidy one",
+                     "Ammar only does one multiplication", "Anees's shows both parts on the model"]} />
           </StoryShell>
         );
 

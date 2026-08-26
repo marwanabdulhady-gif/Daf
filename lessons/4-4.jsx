@@ -151,8 +151,8 @@ const LESSON = {
         connect: "How do you know which product a model belongs to?",
         misconception: "Matching by the two biggest parts only." } },
 
-    { phase: "connect", title: "Lama <em>draws</em>. Ziyad <em>writes</em>",
-      lead: "Lama: the grid, all four pieces at once. Ziyad: a column of four products. Both get 864.",
+    { phase: "connect", title: "Lutfi <em>draws</em>. Ziyad <em>writes</em>",
+      lead: "Lutfi: the grid, all four pieces at once. Ziyad: a column of four products. Both get 864.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -275,13 +275,13 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 864"
-            text="Lama draws the grid. Ziyad writes a column of four. Both get 864."
+            text="Lutfi draws the grid. Ziyad writes a column of four. Both get 864."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Lama's way — the grid", omml: M.parts, h: 92, quote: "I can see all four pieces at once." }}
+              left={{ name: "Lutfi's way — the grid", omml: M.parts, h: 92, quote: "I can see all four pieces at once." }}
               right={{ name: "Ziyad's way — a column of four", omml: M.answer, h: 92, quote: "I list the four products and add them." }}
               same={["Both get 864", "Both have four parts", "Both split each factor by place value"]}
-              diff={["Lama draws, Ziyad writes", "Ziyad is faster once he trusts it", "Lama can see which part is missing"]} />
+              diff={["Lutfi draws, Ziyad writes", "Ziyad is faster once he trusts it", "Lutfi can see which part is missing"]} />
           </StoryShell>
         );
 

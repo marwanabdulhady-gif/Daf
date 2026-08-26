@@ -413,7 +413,7 @@ const LESSON = {
             clue="Two representations, one relationship">
           <CompareConnect award={award}
             left={{
-              name: "Aya's way — climb the staircase", h: 88,
+              name: "Hassan's way — climb the staircase", h: 88,
               draw: (ctx, W, H, frame) => {
                 ctx.clearRect(0, 0, W, H);
                 D.rr(ctx, 0, 0, W, H, 9);
@@ -439,8 +439,8 @@ const LESSON = {
             same={["Both use the ten-times relationship",
                    "Both work for any digit in any place",
                    "Both can check the answer backwards"]}
-            diff={["Aya climbs blocks, Musa writes symbols",
-                   "Aya shows the jump, Musa shows the proof",
+            diff={["Hassan climbs blocks, Musa writes symbols",
+                   "Hassan shows the jump, Musa shows the proof",
                    "Musa's check works when the blocks are too big"]} />
           </StoryShell>
         );

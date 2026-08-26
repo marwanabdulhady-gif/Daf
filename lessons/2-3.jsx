@@ -160,12 +160,12 @@ const LESSON = {
         connect: "Which line proves the total?",
         misconception: "Treating the estimate 270 + 150 as the answer." } },
 
-    { phase: "connect", title: "Aya carries. <em>Musa expands.</em>",
-      lead: "Aya's columns show the trades; Musa's rows show the places. Both reach 422.",
+    { phase: "connect", title: "Hassan carries. <em>Musa expands.</em>",
+      lead: "Hassan's columns show the trades; Musa's rows show the places. Both reach 422.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Following the carry in Aya's work", "Following the rows in Musa's", "Seeing both end at 422"],
+        monitor: ["Following the carry in Hassan's work", "Following the rows in Musa's", "Seeing both end at 422"],
         connect: "Which work makes the carried ten easier to find?",
         misconception: "Believing the expanded form is only for checking, never for solving." } },
 
@@ -283,15 +283,15 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two merchants, one 422"
-            text="Aya's columns show the trades; Musa's expanded rows show the places. Both reach 422."
+            text="Hassan's columns show the trades; Musa's expanded rows show the places. Both reach 422."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Aya's way — columns with carries", omml: M.answer, h: 92,
+              left={{ name: "Hassan's way — columns with carries", omml: M.answer, h: 92,
                       quote: "I added the columns and wrote each carry as a trade." }}
               right={{ name: "Musa's way — expanded by place", omml: M.expanded, h: 92,
                        quote: "I added the hundreds, then the tens, then the ones." }}
               same={["Both reach 422", "Both add place by place", "Both can be checked"]}
-              diff={["Aya's carries are hidden in the columns", "Musa's rows show every place", "Musa's form is the check beside the total"]} />
+              diff={["Hassan's carries are hidden in the columns", "Musa's rows show every place", "Musa's form is the check beside the total"]} />
           </StoryShell>
         );
 

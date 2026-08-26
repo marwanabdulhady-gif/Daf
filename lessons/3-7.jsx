@@ -190,8 +190,8 @@ const LESSON = {
         connect: "Which product could actually use two methods?",
         misconception: "Sorting by the size of the answer." } },
 
-    { phase: "connect", title: "Sara <em>overshoots</em>. Omar <em>splits</em>",
-      lead: "Sara: 7 × 100 − 7. Omar: split the 99 into 90 and 9. Both get 693.",
+    { phase: "connect", title: "Hani <em>overshoots</em>. Omar <em>splits</em>",
+      lead: "Hani: 7 × 100 − 7. Omar: split the 99 into 90 and 9. Both get 693.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
@@ -322,16 +322,16 @@ const LESSON = {
         return (
           <StoryShell lane="fiction" character="both"
             title="Two contractors, one 693"
-            text="Sara overshoots to 100 and takes back. Omar splits the 99 into 90 and 9. Both get 693."
+            text="Hani overshoots to 100 and takes back. Omar splits the 99 into 90 and 9. Both get 693."
             clue="The comparison produces the rule">
             <CompareConnect award={award}
-              left={{ name: "Sara's way — overshoot", omml: M.nearWork, h: 92,
+              left={{ name: "Hani's way — overshoot", omml: M.nearWork, h: 92,
                       quote: "99 is one away from 100, so I did 700 minus 7." }}
               right={{ name: "Omar's way — partial products", omml: M.messyWork, h: 92,
                        quote: "I split 99 into 90 and 9 and multiplied both." }}
               same={["Both get 693", "Both are correct", "Both use place value somewhere"]}
-              diff={["Sara does two steps, Omar does three", "Omar's method always works",
-                     "Sara's only helps when a factor is near a ten"]} />
+              diff={["Hani does two steps, Omar does three", "Omar's method always works",
+                     "Hani's only helps when a factor is near a ten"]} />
           </StoryShell>
         );
 
