@@ -27,8 +27,6 @@ const drawChartIntro = (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   D.pvChart(ctx, { x: 22, y: 34, w: W - 44, digits: "4697000", slots: 9, prog: p, t: frame });
-  D.txt(ctx, "the same three places, over and over", W / 2, H - 20,
-    { size: 12, col: "#C9A227", font: "marker", alpha: D.at(f, 250, 330) });
 };
 
 /* Launch: Jeddah's population arriving digit by digit */
@@ -75,10 +73,10 @@ const drawJeddah = (ctx, W, H, frame) => {
 };
 
 /* Monitor A: pick a period, see it light up in the chart */
-const makeChartFocus = (hi) => (ctx, W, H, frame) => {
+const makeChartFocus = (hi, onTap) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
-  D.pvChart(ctx, { x: 22, y: 30, w: W - 44, digits: "874203", slots: 9, prog: 1, highlight: hi, t: frame });
+  D.pvChart(ctx, { x: 22, y: 30, w: W - 44, digits: "874203", slots: 9, prog: 1, highlight: hi, t: frame, onTap });
   const names = ["hundred thousands", "ten thousands", "thousands", "hundreds", "tens", "ones"];
   const vals = ["800,000", "70,000", "4,000", "200", "0", "3"];
   D.txt(ctx, vals[hi] + "  —  " + names[hi], W / 2, H - 26,
@@ -86,7 +84,7 @@ const makeChartFocus = (hi) => (ctx, W, H, frame) => {
 };
 
 /* Monitor B: expanded form assembling under the number */
-const makeExpanded = (shown) => (ctx, W, H, frame) => {
+const makeExpanded = (shown, onTap) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   const digits = "62415";
@@ -94,6 +92,7 @@ const makeExpanded = (shown) => (ctx, W, H, frame) => {
   const cw = 40, x0 = W / 2 - (digits.length * cw) / 2;
   for (let i = 0; i < digits.length; i++) {
     const on = i < shown;
+    if (onTap) D.tap(ctx, { x: x0 + i * cw, y: 24, w: cw, h: 44, value: i + 1, on: onTap });
     D.txt(ctx, digits[i], x0 + i * cw + cw / 2, 46,
       { size: 30, col: on ? "#C9A227" : "#EAF4F2", font: "marker" });
     if (on) {
@@ -147,8 +146,6 @@ const drawBoard11 = (ctx, W, H, frame) => {
       const a = D.at(p3, n * 0.35, n * 0.35 + 0.5);
       D.txt(ctx, ",", x0 + idx * cw - 2, yD + 12, { size: 34, col: "#C9A227", font: "marker", alpha: a });
     });
-    D.txt(ctx, "a comma goes between the periods", W / 2, yD + 92,
-      { size: 13, col: "#C9A227", font: "marker", alpha: D.at(f, 300, 380) });
   }
 
   if (p4 > 0) {
@@ -319,9 +316,9 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <StoryShell lane="fiction" character="lantern"
+          <StoryShell lane="fiction" character="lantern" support="hafizah"
             title="The page with seven empty boxes"
-            text="Omar sees a damaged civic folio. Zayd notices that the surviving places repeat in groups. The lantern reveals evidence—but never answers."
+            text="Omar sees a damaged civic folio. Zayd notices that the surviving places repeat in groups. The lantern reveals evidence—but never answers. Hafizah, the Lantern Keeper, sets it down and lifts the damaged page."
             clue="Rebuild the headings before reading the record">
             <NoticeWonder draw={drawChartIntro} height={238} award={award}
               notices={["The labels repeat", "There are groups of three", "Each group has a name", "Some places are empty"]}
@@ -350,7 +347,7 @@ const LESSON = {
             title="Zayd builds a movable place-value frame"
             text="He can slide a digit, but the class must predict what that position makes it worth before selecting it."
             clue="Digit and value are different pieces of evidence">
-            <ExploreChips draw={makeChartFocus(place)} height={225}
+            <ExploreChips draw={makeChartFocus(place, setPlace)} height={225}
               label="Test a place in 874,203"
               value={place}
               onPick={(v) => setPlace(v)}
@@ -369,7 +366,7 @@ const LESSON = {
             title="Omar turns the frame into an audit trail"
             text="A copied total is easier to check when every non-zero place is written as its full value."
             clue="Expanded form exposes a misplaced digit">
-            <ExploreChips draw={makeExpanded(shown)} height={235}
+            <ExploreChips draw={makeExpanded(shown, setShown)} height={235}
               label="Build the value of each digit in 62,415"
               value={shown}
               onPick={(v) => setShown(v)}
@@ -484,7 +481,7 @@ const LESSON = {
 
       case 9:
         return (
-          <StoryHandoff
+          <StoryHandoff support="hafizah"
             title="The first census fragment is restored"
             text="Omar files the checkable number record. Zayd notices that the same digit appears again—one chair to the left."
             artifact="Population and services brief · readable large-number record"

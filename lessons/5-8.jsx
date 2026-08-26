@@ -131,92 +131,84 @@ const LESSON = {
   ixl: ["5FE", "JYD", "UFM"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Counters being dealt into equal groups. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Dealing one at a time works. It is just slow.",
-      rail: { launch: "I am not asking how many each. Just watch the dealing.",
-        monitor: ["Counting the groups", "Counting one group", "Predicting the end"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Believing sharing must always be one at a time." } },
+    { phase: "warmup", title: "The share that <em>crosses a place</em>",
+      lead: "278 books, 4 crates. The 2 hundreds will not go round at all — the share has to cross from hundreds to tens.",
+      goal: "Notice a share can cross a place: 2 hundreds become 22 tens.",
+      pull: "278 is 2 hundreds, 7 tens and 8 ones — the hundreds will not go round.",
+      rail: { launch: "Fictional frame. Watch the sharing — no working yet.",
+        monitor: ["Seeing the stuck hundreds", "Predicting the regroup", "Counting the rounds"],
+        connect: "What happens to the 2 hundreds that will not go round?",
+        misconception: "Stopping when the hundreds cannot be shared." } },
 
-    { phase: "launch", title: "Two hundred and seventy-eight books, <em>four crates</em>",
-      lead: "278 books shared equally between 4 crates. Estimate first.",
-      goal: "Create the need — share the big units first.",
-      pull: "Estimate first, then share the tens.",
-      rail: { launch: "Roughly how many each? Then \u2014 what would you share first?",
-        monitor: ["Dealing one at a time", "Sharing tens first", "Guessing"],
-        connect: "Why start with the tens and not the ones?",
-        misconception: "Starting with the ones and losing track." } },
+    { phase: "launch", title: "About how many <em>books per crate</em>?",
+      lead: "278 books, 4 crates. Lock the per-crate number before the crossing begins.",
+      goal: "Create the need — a three-place share needs the crossing.",
+      pull: "The book count is simulated — the crossing works on any division.",
+      rail: { launch: "Give a per-crate number and say what you saw.",
+        monitor: ["Estimating with 280 ÷ 4", "Predicting 69", "Noticing the remainder 2"],
+        connect: "What will the 2 hundreds become?",
+        misconception: "Answering 6 r 178 — the share stopped at the hundreds." } },
 
-    { phase: "monitor", title: "Share the <em>tens</em> first",
-      lead: "Hand out whole tens. Then look at what will not go round.",
-      goal: "Sharing by place value, biggest units first.",
-      pull: "The leftover ten has to be broken up.",
-      rail: { launch: "Predict how many tens each group gets.",
-        monitor: ["Sharing tens evenly", "Noticing the leftover", "Regrouping into ones"],
-        connect: "What do you do with a ten that will not go round?",
-        misconception: "Throwing away the leftover ten." } },
+    { phase: "monitor", title: "Zayd shares the <em>tens first</em>",
+      lead: "The 2 hundreds become 22 tens. Six tens go to each crate, two tens are left — they cross into the ones.",
+      goal: "Share hundreds, then tens, then ones — regrouping across each place.",
+      pull: "The share continues after the largest place is exhausted.",
+      rail: { launch: "Before each crossing: what is being regrouped?",
+        monitor: ["Regrouping the hundreds", "Sharing the 22 tens", "Regrouping the 2 tens"],
+        connect: "Why did the tens have to be crossed twice?",
+        misconception: "Leaving the unshared tens unregrouped." } },
 
-    { phase: "monitor", title: "The written <em>record</em>",
-      lead: "The same sharing, written down one place at a time.",
-      goal: "Connect the blocks to the written method.",
-      pull: "Now match some divisions to their answers.",
-      rail: { launch: "Predict each line before you step.",
-        monitor: ["Matching blocks to lines", "Working tens then ones", "Losing the remainder"],
-        connect: "Where are the tens in the written record?",
-        misconception: "Reading the written record as a different method." } },
+    { phase: "monitor", title: "Write it down <em>as you go</em>",
+      lead: "Every line of the record is a handful of blocks: 6 tens each, then the crossed ones.",
+      goal: "Record the crossing as it happens — the record is the proof.",
+      pull: "Every line of the record is a handful of blocks.",
+      rail: { launch: "Before each line: which handful is it?",
+        monitor: ["Writing the tens line", "Writing the ones line", "Naming the remainder 2"],
+        connect: "How does the record prove 69 r 2?",
+        misconception: "Recording the quotient without the remainder." } },
 
-    { phase: "monitor", title: "Match the <em>quotient</em>",
-      lead: "Which answer belongs to that division? No grading until the class commits.",
-      goal: "Estimate first, then match.",
-      pull: "Two students shared the same amount differently.",
-      rail: { launch: "Estimate each one before you place it.",
-        monitor: ["Estimating first", "Dividing exactly", "Checking by multiplying back"],
-        connect: "Which did you estimate and which did you calculate?",
-        misconception: "Matching by the size of the dividend alone." } },
+    { phase: "monitor", title: "Match the <em>share</em>",
+      lead: "Three shares from the warehouse. Each one belongs to one division.",
+      goal: "Check a three-place share against its division.",
+      pull: "Multiply back and add the remainder.",
+      rail: { launch: "Check each claim by multiplying back before you place it.",
+        monitor: ["Multiplying back 278 ÷ 4", "Checking 365 ÷ 3 with its remainder", "Checking 504 ÷ 6"],
+        connect: "Which claim failed its check?",
+        misconception: "Checking the quotient and ignoring the remainder." } },
 
-    { phase: "connect", title: "Two ways to <em>share it</em>",
-      lead: "Dana shared hundreds, tens and ones in order. Yousef used partial quotients. Both got 69 r 2.",
+    { phase: "connect", title: "Dana follows <em>places</em>. Yousef chooses <em>chunks</em>",
+      lead: "Dana: hundreds, tens, ones, always. Yousef: 60 groups, then 9. Both get 69 remainder 2.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Sharing tens first", "Dealing one at a time", "Checking both answers"],
-        connect: "Whose method would still work with a thousand counters?",
-        misconception: "Believing dealing one at a time is just as good." } },
+        monitor: ["Comparing the orders", "Checking both end at 69 r 2", "Saying which is easier to record"],
+        connect: "When do chunks beat the fixed place order?",
+        misconception: "Believing the place order is the only valid order." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Share the tens. Regroup what is left. Share the ones. Count what one group holds.",
+    { phase: "synth", title: "On the <em>board</em>: the share crosses the place",
+      lead: "Hundreds, then tens, then ones — each crossing shown, each remainder named.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next share", "Naming the regroup", "Restating it in their own words"],
+        monitor: ["Predicting the crossing", "Naming the regroup", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Forgetting the regroup step." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the order of places", "Testing on a new division", "Checking by multiplying back"],
-        connect: "What do you do when the hundreds will not go round at all?",
-        misconception: "Sharing the ones before the tens." } },
+        misconception: "Crossing a place without regrouping the amount." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Share the tens first.",
-        monitor: ["Sharing tens first", "Regrouping correctly", "Reporting the remainder"],
+      lead: "365 between 3 groups — the share crosses places, and two are left over.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Show the crossings.",
+        monitor: ["Sharing the hundreds", "Sharing the tens", "Naming the remainder 2"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Dropping the remainder without mentioning it." } },
+        misconception: "Answering 121 — the remainder was dropped." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The crates are <em>balanced</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: choosing which division method to use.",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the blocks", "Ready to choose a strategy"],
+      pull: "Tomorrow: three loading methods — read the numbers before you pick.",
+      rail: { launch: "Ask three students to say the crossing in their own words.",
+        monitor: ["Able to explain the regrouping", "Still stops at a place", "Ready to choose a method"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -227,75 +219,130 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawStory58} height={256} award={award}
-          notices={["They are dealt one at a time", "The groups fill up evenly", "There are 4 groups", "Some are left at the end"]}
-          wonders={["How many each?", "Is there a faster way?", "What about the leftovers?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The share that crosses a place"
+            text="278 books, 4 crates. The 2 hundreds will not go round at all — the share has to cross from hundreds to tens."
+            clue="The hundreds will not go round — they become tens.">
+            <NoticeWonder draw={drawStory58} height={256} award={award}
+              notices={["They are dealt one at a time", "The groups fill up evenly", "There are 4 groups", "Some are left at the end"]}
+              wonders={["How many each?", "Is there a faster way?", "What about the leftovers?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStory58} height={256} award={award}
-          label="About how many books per crate?" min={30} max={120} start={70} unit="books"
-          after="Locked. Now let us share the tens first."
-          note="278 is 2 hundreds, 7 tens and 8 ones. The hundreds will not go round." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The books per crate, before the crossing"
+            text="Omar asks the warehouse's question: 278 books, 4 crates — about how many per crate, and what will the stuck hundreds become?"
+            clue="2 hundreds become 22 tens.">
+            <LaunchEstimate draw={drawStory58} height={256} award={award}
+              label="About how many books per crate?" min={30} max={120} start={70} unit="books"
+              after="Locked. Now let us share the tens first."
+              note="The book count is simulated — the crossing works on any division." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeShareBlocks58(stage)} height={258}
-          label="Share by place value"
-          value={stage}
-          onPick={(v) => setStage(v)}
-          chips={[{ v: 0, label: "before sharing" }, { v: 1, label: "share the tens" }, { v: 2, label: "share the ones" }]}
-          caption={<MathEl omml={stage >= 2 ? M.answer : M.shareTens} size="xl" display="block" />}
-          footnote="A ten that will not go round is broken into ten ones." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd shares across the place"
+            text="He can stop the sharing at any crossing — the class must see the hundreds become tens, and the tens become ones."
+            clue="The share continues after the largest place is exhausted.">
+            <ExploreChips draw={makeShareBlocks58(stage)} height={258}
+              label="Share by place value"
+              value={stage}
+              onPick={(v) => setStage(v)}
+              chips={[{ v: 0, label: "before sharing" }, { v: 1, label: "share the tens" }, { v: 2, label: "share the ones" }]}
+              caption={<MathEl omml={stage >= 2 ? M.answer : M.shareTens} size="xl" display="block" />}
+              footnote="A place that will not go round is regrouped into the next one down." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeRecord58(step)} height={256}
-          label="Write it down as you go"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 1, label: "the tens" }, { v: 2, label: "the ones" }]}
-          caption={<MathEl omml={M.regroup} size="lg" display="block" />}
-          footnote="Every line of the record is a handful of blocks." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar writes it down as he goes"
+            text="His record is a handful of blocks per line — the crossings and the remainder in the same drawing."
+            clue="Every line of the record is a handful of blocks.">
+            <ExploreChips draw={makeRecord58(step)} height={256}
+              label="Write it down as you go"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 1, label: "the tens" }, { v: 2, label: "the ones" }]}
+              caption={<MathEl omml={M.regroup} size="lg" display="block" />}
+              footnote="The remainder is part of the answer — 69 r 2." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[{ id: "u1", text: "69 r 2", target: "v1" }, { id: "u2", text: "121 r 2", target: "v2" }, { id: "u3", text: "84", target: "v3" }]}
-          targets={[{ id: "v1", label: "278 ÷ 4" }, { id: "v2", label: "365 ÷ 3" }, { id: "v3", label: "504 ÷ 6" }]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Match the share"
+            text="Omar and Zayd lay three shares on the warehouse board. Each one must survive its multiply-back check."
+            clue="Multiply back and add the remainder.">
+            <CardSort award={award} columns={3}
+              items={[{ id: "u1", text: "69 r 2", target: "v1" }, { id: "u2", text: "121 r 2", target: "v2" }, { id: "u3", text: "84", target: "v3" }]}
+              targets={[{ id: "v1", label: "278 ÷ 4" }, { id: "v2", label: "365 ÷ 3" }, { id: "v3", label: "504 ÷ 6" }]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Dana's way — place by place", omml: M.shareTens, h: 92, quote: "Hundreds first, then tens, then ones." }}
-          right={{ name: "Yousef's way — chunks", omml: M.answer, h: 92, quote: "I took out 60 groups, then 9 more." }}
-          same={["Both get 69 remainder 2", "Both work from the biggest units", "Both check by multiplying back"]}
-          diff={["Dana follows the places, Yousef chooses chunks", "Yousef can take any size chunk", "Dana's steps are always the same"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 69 r 2"
+            text="Dana follows the places, always. Yousef chooses chunks — 60, then 9. Both end at 69 remainder 2."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Dana's way — place by place", omml: M.shareTens, h: 92, quote: "Hundreds first, then tens, then ones." }}
+              right={{ name: "Yousef's way — chunks", omml: M.answer, h: 92, quote: "I took out 60 groups, then 9 more." }}
+              same={["Both get 69 remainder 2", "Both work from the biggest units", "Both check by multiplying back"]}
+              diff={["Dana follows the places, Yousef chooses chunks", "Yousef can take any size chunk", "Dana's steps are always the same"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard58} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The crossing is drawn, not declared"
+            text="Zayd builds only what the class can justify: the crossings shown, the remainders named, the record keeping them honest."
+            clue="Share hundreds, then tens, then ones.">
+            <BoardScreen draw={drawBoard58} height={430}
+              caption="Share hundreds, then tens, then ones." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "share hundreds, then tens, then ones" }]}
-          hand={"share the tens · regroup what will not go round · share the ones · count one group"}
-          cards={[
-            { title: "The sharing we did", omml: M.answer, note: "69 each, with 2 books over" },
-            { title: "Tap to check it", omml: M.shareTens, revealOmml: M.check, reveal: true,
-              note: "multiply back to prove it" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the balanced crates"
+            text="365 between 3 groups. Show the crossings — and the remainder named."
+            clue="1 hundred each, 2 tens each, 1 one each, and 2 left over.">
+            <ShowWhatYouKnow award={award}
+              prompt="Share 365 between 3 groups."
+              omml={M.swyk}
+              options={[{ v: "a", text: "121" }, { v: "b", text: "121 r 2" }, { v: "c", text: "120 r 5" }, { v: "d", text: "122" }]}
+              right="b"
+              support={{
+                yes: "Yes — 1 hundred each, 2 tens each, 1 one each, and 2 left over.",
+                notYet: "Not yet — share the tens first, then regroup what is left.",
+                draw: drawSupport58, h: 92,
+                hint: "After sharing the hundreds and tens you have 5 ones. Three go round, two do not."
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Share 365 between 3 groups."
-          omml={M.swyk}
-          options={[{ v: "a", text: "121" }, { v: "b", text: "121 r 2" }, { v: "c", text: "120 r 5" }, { v: "d", text: "122" }]}
-          right="b"
-          support={{
-            yes: "Yes — 1 hundred each, 2 tens each, 1 one each, and 2 left over.",
-            notYet: "Not yet — share the tens first, then regroup what is left.",
-            draw: drawSupport58, h: 92,
-            hint: "After sharing the hundreds and tens you have 5 ones. Three go round, two do not."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Share a three-digit number of things at home and say what the remainder means." />;
+        return (
+          <StoryHandoff
+            title="The crates are balanced"
+            text="Omar signs the balanced crates: every crossing shown, every remainder named. Three loading methods now stand at the gate — the numbers themselves decide which one to trust."
+            artifact="Caravan schedule · three-place shares"
+            next="Three loading methods at the gate — read the numbers before you pick a method.">
+            <Closing game={game} omml={M.rule}
+              action="Share a three-digit number of things at home and say what the remainder means." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

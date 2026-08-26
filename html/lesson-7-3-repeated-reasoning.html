@@ -135,6 +135,49 @@
         from { opacity: 0; transform: scale(1.014); filter: blur(6px); }
         to { opacity: 1; transform: none; filter: none; }
       }
+      /* THE STAGE (light paper scheme) — the slide IS the stage: the school's
+         light paper, teal + gold accents. Panels are borderless so the canvas
+         and the controls float directly on the stage (the canvas paints the
+         same paper via the light-stage remap in draw.js — no board, no box).
+         Interactive controls span the full stage width, not a bordered box. */
+      .visual > .glass-panel,
+      .visual > .story-shell .glass-panel {
+        background: transparent; border: none; box-shadow: none;
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+      }
+      .visual > .glass-panel:has(canvas),
+      .visual > .story-shell .glass-panel:has(canvas) { padding: 6px; }
+      .chip-bar { width: 100%; padding: 2px 2px 4px; }
+      .chip-label { font-weight: 900; font-size: 12px; color: var(--c); margin: 0 2px 9px; }
+      .chip-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+      .chip-row .btn { flex: 1 1 auto; min-width: 110px; }
+      .stage-line { text-align: center; font-size: 12.5px; color: var(--daf-ink-2); padding: 2px 8px 8px; }
+
+      /* THE STAGE — board screens are full-stage: the drawing owns the whole
+         visual area at full height (no framed box), Dar Al Fikr deep-teal
+         surface with the logo-gold breathing frame drawn by D.stage itself. */
+      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; }
+      .board-stage { position: relative; flex: 1; min-height: 300px; }
+      .stage-caption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 11.5px; color: rgba(16,36,43,.62); padding: 0 18px; pointer-events: none; }
+      .screen:has(.board-stage) { grid-template-columns: minmax(270px, 29%) 1fr; }
+
+      /* Staggered element reveals (Syntax-Academy revealUp, English edition):
+         every element on the screen enters with a .08s offset. Disabled under
+         prefers-reduced-motion (static state, per the accessibility policy). */
+      @keyframes revealUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+      }
+      .screen .copy > *, .screen .visual > * { animation: revealUp .5s var(--ease) both; }
+      .screen .copy > :nth-child(1), .screen .visual > :nth-child(1) { animation-delay: .06s; }
+      .screen .copy > :nth-child(2), .screen .visual > :nth-child(2) { animation-delay: .14s; }
+      .screen .copy > :nth-child(3), .screen .visual > :nth-child(3) { animation-delay: .22s; }
+      .screen .copy > :nth-child(4), .screen .visual > :nth-child(4) { animation-delay: .30s; }
+      .screen .copy > :nth-child(5), .screen .visual > :nth-child(5) { animation-delay: .38s; }
+      .screen .copy > :nth-child(6), .screen .visual > :nth-child(6) { animation-delay: .46s; }
+      @media (prefers-reduced-motion: reduce) {
+        .screen .copy > *, .screen .visual > * { animation: none; }
+      }
 
       .copy {
         position: relative; z-index: 5;
@@ -246,6 +289,59 @@
         box-shadow: 0 16px 36px color-mix(in srgb, var(--c) 18%, transparent);
       }
       .glass-card.chosen { border-color: var(--c); border-width: 2px; background: #fff; }
+
+      /* ---------------- story layer: three truth-status lanes ------------ */
+      .visual > .story-shell {
+        width: 100%; max-height: 100%; overflow-y: auto; padding: 1px 5px 5px;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.24) transparent;
+      }
+      .story-shell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+      .story-ribbon {
+        position: relative; min-height: 76px; overflow: hidden;
+        display: grid; grid-template-columns: auto minmax(0,1fr) minmax(145px,210px);
+        gap: 12px; align-items: center; padding: 8px 13px;
+        border-radius: 16px; border: 1px solid rgba(96,66,166,.24);
+        background: linear-gradient(112deg,#fff 0%,#f8f4ff 68%,#f0e9fa 100%);
+        box-shadow: 0 9px 24px rgba(7,30,39,.07);
+      }
+      .lane-stem .story-ribbon { border-color: rgba(45,112,179,.28); background: linear-gradient(112deg,#fff,#eef7ff); }
+      .lane-amanah .story-ribbon { border-color: rgba(56,140,70,.3); background: linear-gradient(112deg,#fff,#eff8ef); }
+      .story-motif { position: absolute; inset-inline-end: 0; bottom: -18px; width: 210px; height: 115px; color: #6042A6; opacity: .075; pointer-events: none; }
+      .lane-stem .story-motif { color: #2D70B3; }.lane-amanah .story-motif { color: #388C46; }
+      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; }
+      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); }
+      .story-ribbon-copy { position: relative; z-index: 2; min-width: 0; }
+      .story-lane { display: inline-flex; gap: 6px; align-items: center; font-size: 8.5px; font-weight: 950; letter-spacing: .13em; text-transform: uppercase; color: #6042A6; }
+      .lane-stem .story-lane { color: #2D70B3; }.lane-amanah .story-lane { color: #388C46; }
+      .story-ribbon-copy>b { display: block; margin-top: 2px; color: var(--daf-ink); font-size: 13px; line-height: 1.25; }
+      .story-ribbon-copy p { margin: 2px 0 0; color: var(--daf-ink-2); font-size: 10.5px; line-height: 1.38; }
+      .story-ribbon-copy small { display: block; margin-top: 4px; color: #6042A6; font-size: 9.5px; font-weight: 850; }
+      .lane-stem .story-ribbon-copy small { color: #2D70B3; }
+      .folio-progress { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 5px 8px; align-items: center; padding: 8px 9px; border-radius: 11px; background: rgba(255,255,255,.78); border: 1px solid rgba(96,66,166,.16); }
+      .folio-label { min-width: 0; }.folio-label b { display:block; font-size: 9px; color:#6042A6; text-transform:uppercase; letter-spacing:.1em; }.folio-label span { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:8.5px; color:var(--daf-ink-2); }
+      .folio-progress em { grid-row: 1 / span 2; grid-column: 2; font: 800 10px "JetBrains Mono",monospace; color:#6042A6; font-style:normal; }
+      .folio-pips { display:flex; gap:3px; }.folio-pips i { display:block; width:12px; height:4px; border-radius:5px; background:#ddd5ed; }.folio-pips i.restored { background:linear-gradient(90deg,#6042A6,#C9A227); }
+      .story-content { display:flex; flex-direction:column; gap:10px; min-width:0; }
+      .story-content>.glass-panel { flex: 1; }
+      .story-shell.compact .story-ribbon { min-height: 84px; }
+      .stem-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .stem-source-card { border:1px solid rgba(45,112,179,.25); border-radius:15px; background:#F2F8FD; padding:14px; }
+      .stem-source-card h3 { margin:8px 0 4px; font-size:13px; color:#1D5C91; }.stem-source-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .stem-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#2D70B3; text-transform:uppercase; }
+      .stem-source-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.stem-source-card summary { cursor:pointer; font-weight:900; color:#2D70B3; }.stem-source-card a { display:block; color:#1D5C91; margin-top:5px; }
+      .stem-math { min-width:0; display:flex; }.stem-math>.glass-panel { flex:1; }
+      .handoff-artifact { display:flex; gap:11px; align-items:center; padding:10px 14px; border-radius:13px; color:#fff; background:linear-gradient(100deg,#0B1F24,#12857C); border:1px solid rgba(201,162,39,.55); }
+      .handoff-artifact>span { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--daf-gold); color:#10242B; }.handoff-artifact b { display:block; color:var(--daf-gold-2); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }.handoff-artifact p { margin:2px 0 0; font-size:11px; color:#EAF4F2; }
+      .handoff-artifact .folio-stamp { margin-left:auto; align-self:center; }
+      .handoff-artifact .folio-stamp.on { color:#0B1F24; background:var(--daf-gold); }
+      .folio-save-note { flex-basis:100%; margin:0; font-size:9.5px; color:#F2C9C7; }
+      .amanah-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .amanah-card { border:1px solid rgba(56,140,70,.3); border-radius:15px; background:#F0F8F0; padding:14px; }
+      .amanah-card h3 { margin:8px 0 4px; font-size:13px; color:#2C6E38; }.amanah-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .amanah-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#388C46; text-transform:uppercase; }
+      .amanah-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.amanah-card summary { cursor:pointer; font-weight:900; color:#388C46; }
+      @media(max-width:900px){.amanah-layout{grid-template-columns:1fr}}
+      @media(max-width:900px){.story-ribbon{grid-template-columns:auto minmax(0,1fr)}.folio-progress{display:none}.stem-layout{grid-template-columns:1fr}.story-ribbon-copy p{font-size:9.5px}}
 
       .btn { border: none; cursor: pointer; font-weight: 800; border-radius: 10px; transition: all 0.25s var(--ease); font-size: 12px; padding: 10px 18px; font-family: inherit; }
       .btn-primary { background: var(--c-grad); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--c) 32%, transparent); }
@@ -387,7 +483,8 @@
       .dj-last{flex:1;min-width:200px}
       .dj-last em{font-style:normal;font:800 12px "JetBrains Mono",monospace}
       .dj-last em.pos{color:#7ED08C} .dj-last em.neg{color:#F2938F}
-      .dj-exports{display:flex;gap:14px}
+      .dj-exports{display:flex;gap:14px;flex-wrap:wrap}
+      .dj-note{flex-basis:100%;font-size:9px;color:rgba(217,237,235,.45);margin-top:2px}
       .dj-exports a{color:#9fc4bd;cursor:pointer;display:inline-flex;gap:6px;align-items:center;
         font-size:11px;letter-spacing:.06em;text-decoration:none}
       .dj-exports a:hover{color:var(--daf-gold)}
@@ -501,6 +598,8 @@
         border: 1px solid var(--daf-line); border-bottom-width: 2px; border-radius: 5px;
         font: 700 10px "JetBrains Mono", monospace; color: var(--daf-deep); background: #fff;
       }
+
+      
     </style>
   </head>
   <body>
@@ -962,8 +1061,53 @@
 (function (global) {
   "use strict";
 
+  /* LIGHT STAGE (Dar Al Fikr paper scheme) — the stage is the school's
+     light paper, so canvas colours are remapped from dark-board "chalk"
+     to ink-on-paper. The board colour itself becomes transparent, so the
+     drawing sits directly on the stage: no blackboard box can exist. */
+  var LIGHT_MAP = {
+    "#0b1f24": "transparent",
+    "#eaf4f2": "#10242b",
+    "#34d399": "#12857c",
+    "#f2938f": "#c75440",
+    "#e0665f": "#c75440",
+    "#ffa94d": "#fa7e19",
+    "#4a9be0": "#2d70b3",
+    "#fff": "#10242b"
+  };
+  function remapStyle(v) {
+    if (typeof v !== "string") return v;
+    var l = v.toLowerCase();
+    if (LIGHT_MAP[l]) return LIGHT_MAP[l];
+    var m = l.match(/^rgba\((234,244,242|52,211,153|74,155,224|255,255,255|160,190,200|120,150,160),([\d.]+)\)$/);
+    if (m) {
+      var rgb = m[1] === "234,244,242" ? "16,36,43"
+        : m[1] === "52,211,153" ? "18,133,124"
+        : m[1] === "74,155,224" ? "45,112,179"
+        : "16,36,43";
+      return "rgba(" + rgb + "," + m[2] + ")";
+    }
+    return v;
+  }
+
   function fit(canvas) {
-    var ctx = canvas.getContext("2d");
+    var raw = canvas.getContext("2d");
+    /* Canvas 2D methods are brand-checked: they must be called with the real
+       context as `this`. The remap proxy therefore binds every method to the
+       target context in a get trap (a set trap alone makes every native call
+       throw "Illegal invocation" and blank the whole page). */
+    var ctx = new Proxy(raw, {
+      get: function (target, prop) {
+        var val = Reflect.get(target, prop, target);
+        if (typeof val === "function") return val.bind(target);
+        return val;
+      },
+      set: function (target, prop, val) {
+        if (prop === "fillStyle" || prop === "strokeStyle") val = remapStyle(val);
+        Reflect.set(target, prop, val);
+        return true;
+      }
+    });
     var state = { ctx: ctx, W: 0, H: 0 };
     function resize() {
       var dpr = Math.min(global.devicePixelRatio || 1, 2);
@@ -1052,6 +1196,7 @@
     o = o || {};
     ctx.save();
     var size = o.size || 15;
+    var microAlpha = size < 10 ? 0.7 : 1;   /* stage: keep the canvas airy */
     var fam = o.font === "marker" ? '"Lemonada", cursive'
             : o.font === "mono" ? '"JetBrains Mono", monospace'
             : '"Cabinet Grotesk", sans-serif';
@@ -1059,39 +1204,50 @@
     ctx.fillStyle = o.col || "#EAF4F2";
     ctx.textAlign = o.align || "center";
     ctx.textBaseline = o.baseline || "middle";
-    ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.globalAlpha = (o.alpha == null ? 1 : o.alpha) * microAlpha;
     ctx.fillText(s, x, y);
     ctx.restore();
   }
 
-  /* THE BOARD — dark surface, dot grid, breathing gold frame */
-  function board(ctx, W, H, o) {
+  /* THE STAGE — the whole canvas is the slide: Dar Al Fikr deep-teal surface
+     (the brand canvas colour, not a black presentation deck), dot grid, and a
+     breathing frame in the logo gold. No inner board frame — the drawing has
+     the full area. English edition: labels stay LTR with western digits
+     (guardrails G5a/G5b). */
+  function accentCSS(name, fallback) {
+    try {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    } catch (e) { return fallback; }
+  }
+  function accent() { return accentCSS("--c", "#C9A227"); }
+  function accent2() { return accentCSS("--c-2", "#C9A227"); }
+
+  var GOLD = "#C9A227"; /* Dar Al Fikr logo gold */
+
+  function stage(ctx, W, H, o) {
     o = o || {};
     var t = o.t || 0;
-    var pad = o.pad == null ? 6 : o.pad;
     ctx.save();
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.fillStyle = "#0B1F24";
-    ctx.fill();
-    ctx.clip();
-    ctx.fillStyle = "rgba(234,244,242,.07)";
-    for (var x = pad + 14; x < W - pad; x += 26) {
-      for (var y = pad + 14; y < H - pad; y += 26) {
+    ctx.fillStyle = "rgba(234,244,242,.07)"
+    for (var x = 16; x < W; x += 26) {
+      for (var y = 16; y < H; y += 26) {
         ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill();
       }
     }
     ctx.restore();
-    /* breathing gold frame */
-    var breathe = 1 + Math.sin(t / 42) * 0.012;
+    /* breathing frame in the logo gold — the school's own colour scheme */
     ctx.save();
-    ctx.translate(W / 2, H / 2); ctx.scale(breathe, breathe); ctx.translate(-W / 2, -H / 2);
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.strokeStyle = "rgba(201,162,39," + (0.55 + Math.sin(t / 42) * 0.2) + ")";
-    ctx.lineWidth = 2;
-    ctx.stroke();
+    ctx.globalAlpha = 0.4 + Math.sin(t / 42) * 0.2;
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 2.5;
+    ctx.strokeRect(3, 3, W - 6, H - 6);
     ctx.restore();
-    if (o.title) txt(ctx, o.title, W / 2, pad + 24, { size: 13, col: "#C9A227", font: "mono", weight: 700 });
+    if (o.title) txt(ctx, o.title, W / 2, 26, { size: 13, col: GOLD, font: "mono", weight: 700 });
   }
+
+  /* THE BOARD — kept as the stage surface (synthesis screens) */
+  function board(ctx, W, H, o) { stage(ctx, W, H, o); }
 
   /* TAPE / BAR MODEL — the default fraction manipulative */
   function bar(ctx, o) {
@@ -1372,9 +1528,6 @@
       var cx = x + i * cw;
       var a2 = at(prog, 0.25 + (i / slots) * 0.5, 0.25 + (i / slots) * 0.5 + 0.3);
       if (a2 <= 0) continue;
-      var place = ["hundreds", "tens", "ones"][i % 3];
-      txt(ctx, place, cx + cw / 2, yPlace + 10,
-        { size: 8.5, col: "rgba(234,244,242,.45)", font: "mono", weight: 500, alpha: a2 });
       ctx.save();
       ctx.globalAlpha = a2;
       rr(ctx, cx + 3, yDigit - 2, cw - 6, hRow * 1.05, 6);
@@ -1385,6 +1538,9 @@
       ctx.stroke();
       ctx.restore();
       var d = i >= pad ? digits.charAt(i - pad) : "";
+      if (d !== "" && o.onTap) {
+        tap(ctx, { x: cx + 3, y: yDigit - 2, w: cw - 6, h: hRow * 1.05, value: i - pad, on: o.onTap });
+      }
       if (d !== "") {
         var isHi = o.highlight != null && (i - pad) === o.highlight;
         txt(ctx, d, cx + cw / 2, yDigit + hRow * 0.52,
@@ -2989,9 +3145,30 @@
     return { shown: Math.min(shown, total), total: total };
   }
 
+/* Tappable canvas regions — the drawing IS the control. Drawing code
+     registers hit regions each frame via D.tap(ctx, region); the Sketch
+     component clears them per frame and dispatches pointer taps to them. */
+  function clearTaps(canvas) { canvas.__taps = []; }
+  function tap(ctx, region) {
+    var canvas = ctx && ctx.canvas;
+    if (!canvas) return;
+    canvas.__taps = canvas.__taps || [];
+    canvas.__taps.push(region);
+  }
+  function hit(canvas, x, y) {
+    var taps = (canvas && canvas.__taps) || [];
+    for (var i = taps.length - 1; i >= 0; i--) {
+      var t = taps[i];
+      if (x >= t.x && x <= t.x + t.w && y >= t.y && y <= t.y + t.h) return t;
+    }
+    return null;
+  }
+
   global.DAFDraw = {
     fit: fit, loop: loop, at: at, ease: ease, easeOut: easeOut,
-    marker: marker, rr: rr, txt: txt, board: board,
+    tap: tap, clearTaps: clearTaps, hit: hit,
+    marker: marker, rr: rr, txt: txt, board: board, stage: stage,
+    accent: accent, accent2: accent2,
     bar: bar, numberLine: numberLine, areaGrid: areaGrid, star8: star8, fig: fig,
     axes: axes, plotLine: plotLine, plotPoints: plotPoints, table: table,
     pvChart: pvChart, digitBlocks: digitBlocks, roundLine: roundLine,
@@ -3006,6 +3183,95 @@
     decChart: decChart, cubePrism: cubePrism
   };
 })(window);
+/* ===========================================================================
+   DURABLE STORY STATE · class folio stamps (PR 02)
+
+   What this is: a per-class record of which lesson folio pages the class has
+   restored, kept in localStorage on this computer only. It is class-level
+   data — class name, lesson code and timestamps — and never stores student
+   names, scores or anything personal (student records stay in the dojo
+   session log, which is exported on demand).
+
+   Design follows the research gate (docs/research/pr-02-source-review-infrastructure.md,
+   S1/S2): the state is tiny, best-effort and NON-CRITICAL — when storage is
+   missing, cleared or evicted every deck behaves exactly as before (folio
+   pips fall back to position-based), and one tap can export a JSON backup.
+   There is no server, no sync and no cross-machine state.
+   =========================================================================== */
+const FOLIO_KEY = "daf.folio.v1";
+
+function folioStorage() {
+  /* test hook (node): an in-memory store object, mirroring __DAF_XML_PARSER__ */
+  if (typeof globalThis !== "undefined" && globalThis.__DAF_FOLIO_LS__) return globalThis.__DAF_FOLIO_LS__;
+  try { return (typeof window !== "undefined" && window.localStorage) || null; }
+  catch (e) { return null; }
+}
+
+function folioLoad() {
+  const ls = folioStorage();
+  if (!ls) return { version: 1, classes: {} };
+  try {
+    const st = JSON.parse(ls.getItem(FOLIO_KEY) || "{}") || {};
+    if (!st.classes) st.classes = {};
+    return st;
+  } catch (e) { return { version: 1, classes: {} }; }
+}
+
+function folioSave(st) {
+  const ls = folioStorage();
+  if (!ls) return false;
+  try {
+    st.version = 1;
+    ls.setItem(FOLIO_KEY, JSON.stringify(st));
+    return true;
+  } catch (e) { return false; } /* quota or disabled storage: degrade silently */
+}
+
+/* Stamped lessons for one class: { "1-1": "2026-08-24T09:00:00.000Z", ... } */
+function folioFor(className) {
+  if (!className) return { lessons: {} };
+  const c = folioLoad().classes[className];
+  return { lessons: (c && c.lessons) || {} };
+}
+
+/* Stamp (on !== false) or unstamp (on === false) one lesson for a class.
+   Returns true when the change was saved to this computer. */
+function folioStamp(className, code, on) {
+  if (!className || !code) return false;
+  const st = folioLoad();
+  const c = st.classes[className] || (st.classes[className] = { lessons: {} });
+  if (!c.lessons) c.lessons = {};
+  if (on === false) delete c.lessons[code];
+  else c.lessons[code] = new Date().toISOString();
+  c.updatedAt = new Date().toISOString();
+  return folioSave(st);
+}
+
+/* Clear the whole class folio on this computer. */
+function folioReset(className) {
+  if (!className) return true;
+  const st = folioLoad();
+  delete st.classes[className];
+  return folioSave(st);
+}
+
+/* Export the class folio as a JSON file the school can keep. */
+function folioExport(className) {
+  const data = JSON.stringify({
+    app: "Dar Al Fikr Grade 4 Mathematics",
+    key: FOLIO_KEY,
+    exportedAt: new Date().toISOString(),
+    class: className,
+    state: folioFor(className)
+  }, null, 2);
+  const blob = new Blob([data], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "daf-" + String(className).replace(/[^\w.-]+/g, "-") + "-folio.json";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
     </script>
     <script>window.DAF_ROSTER = {
   "school": "Dar Al Fikr Schools",
@@ -3064,6 +3330,7 @@
   }
 }
 ;</script>
+    <script>window.DAF_STORY = {"title":"The Lantern of Numeria — The Tale of the Seventeen Doors","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"supporting":[{"id":"hafizah","name":"Hafizah","role":"the Lantern Keeper","doors":[1,17],"prop":"lantern"},{"id":"zafir","name":"Ustadh Zafir","role":"the traveling scholar","doors":[2,5,6,7,13,17],"prop":"compass"},{"id":"rashed","name":"Rashed","role":"the Rival's Report","doors":[2,5,6,7,13,17],"prop":"clipboard"},{"id":"abulaila","name":"Abu Laila","role":"the merchant of the souq","doors":[2],"prop":"ledger"},{"id":"ihsan","name":"Ihsan","role":"the auditor","doors":[2,6],"prop":"seal"},{"id":"khalida","name":"Khalida","role":"the foreman","doors":[3,4],"prop":"ruler"},{"id":"mansur","name":"Mansur","role":"the caravan master","doors":[5],"prop":"tally"},{"id":"salma","name":"Salma","role":"the council scribe","doors":[6],"prop":"quill"},{"id":"mariam","name":"Mariam","role":"the architect","doors":[7,14,16],"prop":"compass"},{"id":"munira","name":"Munira","role":"the ferrywoman of the Fraction Isles","doors":[8],"prop":"oar"},{"id":"farida","name":"Farida","role":"the head cook","doors":[9],"prop":"ladle"},{"id":"zaynab","name":"Zaynab","role":"the clockmaker","doors":[10],"prop":"key"},{"id":"rashid","name":"Rashid","role":"the pearl diver","doors":[11],"prop":"mask"},{"id":"amina","name":"Amina","role":"the dockmaster","doors":[12],"prop":"clipboard"},{"id":"yusuf","name":"Yusuf","role":"the market warden","doors":[13],"prop":"balance"},{"id":"farid","name":"Farid","role":"the astronomer","doors":[15],"prop":"astrolabe"}],"unit":{"topic":7,"chapter":"The reef of hidden rectangles","question":"Which dimensions let one module serve many designs?","artifact":"A modular tile and scheduling kit based on factors and multiples","pbl":"Create modular garden tiles and a maintenance schedule using factor pairs and multiples.","bridge":"The tiles fit, but the water gardens require equal parts of different shapes. Whole-number modules open the Fraction Isles.","lessonCount":5,"lessonCodes":["7-1","7-2","7-3","7-4","7-5"]},"lesson":{"code":"7-3","curriculumTitle":"Repeated Reasoning","standard":"MP.8","storyBeat":"The rectangle pattern repeats","technique":"Escalating complication","storyMove":"Teams notice a repeatable method as dimensions grow.","studentMission":"Use repeated reasoning to predict and verify factor pairs.","handoff":"The indivisible border tile — some counts make only one rectangular pair; others make many.","screenPlan":{"shape":"reasoning-studio","shapeLabel":"Reasoning studio","recommended":14,"planningBand":"12–16","reason":"Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."},"implementationStatus":"story-built","index":2,"numberInUnit":3},"stemWindows":[],"amanahWindows":[]};</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
 const D = window.DAFDraw;
@@ -3170,13 +3437,28 @@ function Sketch({ draw, height, style }) {
     const stop = D.loop((frame) => {
       if (!st.W || !st.H) return;
       st.ctx.clearRect(0, 0, st.W, st.H);
+      D.clearTaps(cv);
       draw(st.ctx, st.W, st.H, frame);
     });
     return () => { stop(); if (st.destroy) st.destroy(); };
   }, [draw]);
+  /* The canvas itself is interactive: drawings register tappable regions
+     (D.tap) and pointer taps are dispatched to them — the drawing IS the
+     control. Chips stay as the accessible fallback. */
+  const pointer = (e, down) => {
+    const cv = ref.current;
+    if (!cv) return;
+    const r = cv.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    const hit = D.hit(cv, x, y);
+    cv.style.cursor = hit ? "pointer" : "default";
+    if (down && hit && hit.on) hit.on(hit.value, x, y);
+  };
   return (
     <canvas
       ref={ref}
+      onClick={(e) => pointer(e, true)}
+      onMouseMove={(e) => pointer(e, false)}
       style={Object.assign({ width: "100%", height: (height || 300) + "px", display: "block" }, style || {})}
     />
   );
@@ -3370,6 +3652,315 @@ function gameReducer(g, a) {
   }
 }
 /* ===========================================================================
+   STORY LAYER · fictional boys, truth-status lanes, folio progress and STEM
+   Reusable by every lesson. Sacred history never enters these fictional parts.
+   =========================================================================== */
+const STORY = window.DAF_STORY || null;
+
+function StoryCharacter({ id, pose, size }) {
+  const who = id === "zayd" ? "zayd" : "omar";
+  const zayd = who === "zayd";
+  const s = size || 76;
+  const wave = pose === "present" || pose === "question";
+  const build = pose === "build";
+  const skin = zayd ? "#B9784B" : "#9C633F";
+  const shirt = zayd ? "#2D70B3" : "#12857C";
+  const accent = zayd ? "#FA7E19" : "#C9A227";
+  const label = zayd ? "Zayd, the model builder" : "Omar, the evidence keeper";
+  return (
+    <svg className="story-character" style={{ width: s + "px", height: (s * 1.12) + "px" }}
+      viewBox="0 0 100 112" role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy="106" rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d="M29 103 L33 61 Q50 51 67 61 L72 103 Z" fill={shirt} />
+      <path d="M37 63 Q50 74 63 63" fill="none" stroke={accent} strokeWidth="3" />
+      <rect x="43" y="48" width="14" height="15" rx="6" fill={skin} />
+      <circle cx="50" cy="34" r="21" fill={skin} />
+      <path d={zayd ? "M30 31 Q33 8 51 11 Q70 11 72 34 Q62 22 52 22 Q39 25 30 31" : "M30 29 Q35 9 51 11 Q69 10 71 31 Q60 20 48 22 Q38 24 30 29"} fill="#172E35" />
+      <circle cx="42" cy="35" r="2.2" fill="#10242B" /><circle cx="58" cy="35" r="2.2" fill="#10242B" />
+      <path d="M43 44 Q50 49 58 43" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      {wave ? (
+        <g><path d="M32 68 Q17 58 19 40" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <circle cx="20" cy="37" r="5" fill={skin} /></g>
+      ) : (
+        <path d="M33 69 Q23 82 25 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {build ? (
+        <g><path d="M67 69 Q79 76 76 91" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <rect x="68" y="86" width="21" height="11" rx="2" fill={accent} />
+          <path d="M72 90h13M76 87v10M82 87v10" stroke="#fff" strokeWidth="1" /></g>
+      ) : (
+        <path d="M67 69 Q78 82 75 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {!zayd && (
+        <g transform="translate(63 72) rotate(-14)"><rect width="21" height="27" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" />
+          <path d="M5 7h11M5 12h9M5 17h11" stroke={shirt} strokeWidth="1.5" /></g>
+      )}
+    </svg>
+  );
+}
+
+function StoryLantern({ size }) {
+  const s = size || 64;
+  return (
+    <svg className="story-lantern" style={{ width: s + "px", height: s + "px" }} viewBox="0 0 80 80" role="img" aria-label="The brass lantern">
+      <title>The brass lantern</title>
+      <path d="M31 8h18M35 8v8h10V8" fill="none" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+      <path d="M26 22 Q40 12 54 22 L59 57 Q40 69 21 57 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="3" />
+      <path d="M30 25h20l4 28H26z" fill="#FFF8D8" stroke="#C9A227" strokeWidth="2" />
+      <path d="M40 27v24M28 40h24" stroke="#C9A227" strokeWidth="2" opacity=".8" />
+      <circle cx="40" cy="40" r="7" fill="#C9A227" opacity=".42" />
+      <path d="M26 61h28M31 67h18" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/* ===========================================================================
+   SUPPORTING CAST · fictional quest givers, the guide and the rival
+   (docs/plans/narrative/03-supporting-cast.md). Original fictional people of
+   present-day Jeddah — flat vector, modest contemporary clothing. Sacred
+   history never enters these fictional parts; labels come from the payload.
+   =========================================================================== */
+const SUPPORTING = {
+  hafizah:  { label: "Hafizah, the Lantern Keeper", jacket: "#6B5B73", accent: "#C9CDD3", skin: "#A06B45", head: "scarf", glasses: true, prop: "lantern" },
+  zafir:    { label: "Ustadh Zafir, the traveling scholar", jacket: "#4A6B8A", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#3A2E28", prop: "compass" },
+  rashed:   { label: "Rashed, the Rival's Report", boy: true, jacket: "#7A5CA8", accent: "#F2938F", skin: "#9C633F", head: "hair", hair: "#172E35", prop: "clipboard" },
+  abulaila: { label: "Abu Laila, the merchant of the souq", jacket: "#7A4E2D", accent: "#C9A227", skin: "#9C633F", head: "cap", cap: "#C9CDD3", prop: "ledger" },
+  ihsan:    { label: "Ihsan, the auditor", jacket: "#3A4A5A", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", glasses: true, prop: "seal" },
+  khalida:  { label: "Khalida, the foreman", jacket: "#5A6B7A", accent: "#FA7E19", skin: "#A06B45", head: "helmet", helmet: "#FA7E19", prop: "ruler" },
+  mansur:   { label: "Mansur, the caravan master", jacket: "#5A7A6B", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", prop: "tally" },
+  salma:    { label: "Salma, the council scribe", jacket: "#5A6B7A", accent: "#F2938F", skin: "#A06B45", head: "scarf", scarf: "#F2938F", prop: "quill" },
+  mariam:   { label: "Mariam, the architect", jacket: "#5A4A6B", accent: "#C9A227", skin: "#A06B45", head: "band", band: "#C9A227", hair: "#2A2E33", prop: "compass" },
+  munira:   { label: "Munira, the ferrywoman of the Fraction Isles", jacket: "#2D70B3", accent: "#C9A227", skin: "#A06B45", head: "scarf", scarf: "#2D70B3", prop: "oar" },
+  farida:   { label: "Farida, the head cook", jacket: "#7A4E5A", accent: "#F2938F", skin: "#A06B45", head: "scarf", scarf: "#F2938F", prop: "ladle" },
+  zaynab:   { label: "Zaynab, the clockmaker", jacket: "#4A6B8A", accent: "#C9A227", skin: "#A06B45", head: "band", band: "#C9A227", hair: "#2A2E33", prop: "key" },
+  rashid:   { label: "Rashid, the pearl diver", jacket: "#3A6B7A", accent: "#C9CDD3", skin: "#9C633F", head: "hair", hair: "#2A2E33", prop: "mask" },
+  amina:    { label: "Amina, the dockmaster", jacket: "#5A6B7A", accent: "#2D70B3", skin: "#A06B45", head: "cap", cap: "#2D70B3", prop: "clipboard" },
+  yusuf:    { label: "Yusuf, the market warden", jacket: "#5A4A3A", accent: "#C75440", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", prop: "balance" },
+  farid:    { label: "Farid, the astronomer", jacket: "#4A4A6B", accent: "#6042A6", skin: "#8A5A3B", head: "band", band: "#6042A6", hair: "#2A2E33", prop: "astrolabe" }
+};
+
+function SupportProp({ kind, accent, jacket }) {
+  switch (kind) {
+    case "lantern":
+      return <g transform="translate(64 66) scale(0.62)"><path d="M11 0h8M13 0v4h4V0" fill="none" stroke="#8A6D1B" strokeWidth="2.4" strokeLinecap="round" /><path d="M7 9 Q15 4 23 9 L25 26 Q15 31 5 26 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="2" /><path d="M9 28h12M11 31h8" stroke="#8A6D1B" strokeWidth="2" strokeLinecap="round" /></g>;
+    case "compass":
+      return <g transform="translate(74 84)"><circle r="9" fill="none" stroke={accent} strokeWidth="2.4" /><path d="M0 -6 L3 3 L-3 3 Z" fill={accent} /><path d="M0 9 v6 M-4 15 h8" stroke={accent} strokeWidth="1.6" fill="none" /></g>;
+    case "clipboard":
+      return <g transform="translate(66 72) rotate(8)"><rect width="18" height="24" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" /><rect x="4" y="-2" width="10" height="5" rx="1.5" fill={accent} /><path d="M4 8h10M4 13h8M4 18h10" stroke={jacket} strokeWidth="1.4" /></g>;
+    case "ledger":
+      return <g transform="translate(63 70) rotate(-14)"><rect width="22" height="28" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" /><path d="M5 8h12M5 13h10M5 18h12M5 23h8" stroke={jacket} strokeWidth="1.5" /></g>;
+    case "seal":
+      return <g transform="translate(76 82)"><circle r="8" fill="none" stroke={accent} strokeWidth="3" /><circle r="3" fill={accent} /><path d="M-8 8 Q-12 16 -6 18" stroke={accent} strokeWidth="2" fill="none" /></g>;
+    case "ruler":
+      return <g transform="translate(64 74) rotate(24)"><rect width="30" height="7" rx="1.5" fill="#C9CDD3" stroke={accent} strokeWidth="1.4" /><path d="M5 0v4M10 0v3M15 0v4M20 0v3M25 0v4" stroke={jacket} strokeWidth="1.2" /></g>;
+    case "tally":
+      return <g transform="translate(74 70) rotate(8)"><rect x="-2" width="5" height="30" rx="2" fill="#C9CDD3" stroke={accent} strokeWidth="1.4" /><path d="M-2 8h5M-2 14h5M-2 20h5" stroke={jacket} strokeWidth="1.4" /></g>;
+    case "quill":
+      return <g transform="translate(70 66) rotate(30)"><path d="M0 26 Q6 10 26 0 Q18 16 8 24 Z" fill="#FFFDF7" stroke={accent} strokeWidth="1.6" /><path d="M2 24 L14 8" stroke={accent} strokeWidth="1.2" /></g>;
+    case "oar":
+      return <g transform="translate(72 60) rotate(18)"><path d="M2 0 v44" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" /><ellipse cx="2" cy="48" rx="7" ry="10" fill="none" stroke="#8A6D1B" strokeWidth="2.6" /></g>;
+    case "ladle":
+      return <g transform="translate(72 68) rotate(12)"><path d="M0 0 v26" stroke={accent} strokeWidth="3" strokeLinecap="round" /><circle cx="0" cy="32" r="7" fill="none" stroke={accent} strokeWidth="2.6" /></g>;
+    case "key":
+      return <g transform="translate(76 76)"><circle r="7" fill="none" stroke={accent} strokeWidth="2.6" /><path d="M0 7 v10 M0 13 h5 M0 17 h4" stroke={accent} strokeWidth="2.2" /></g>;
+    case "mask":
+      return <g transform="translate(72 78)"><circle cx="-6" r="6" fill="none" stroke={accent} strokeWidth="2.4" /><circle cx="6" r="6" fill="none" stroke={accent} strokeWidth="2.4" /><path d="M0 -5 v-6 M-11 -3 Q-16 -8 -14 -12 M11 -3 Q16 -8 14 -12" stroke={accent} strokeWidth="1.6" fill="none" /></g>;
+    case "balance":
+      return <g transform="translate(74 72)"><path d="M0 0 v18 M-10 18 h20" stroke={accent} strokeWidth="2.4" /><path d="M-14 2 h28" stroke={accent} strokeWidth="2.2" /><path d="M-14 2 l-4 8 h8 Z M14 2 l-4 8 h8 Z" fill="none" stroke={accent} strokeWidth="1.8" /></g>;
+    case "astrolabe":
+      return <g transform="translate(76 82)"><circle r="10" fill="none" stroke={accent} strokeWidth="2.4" /><circle r="5" fill="none" stroke={accent} strokeWidth="1.4" /><path d="M0 -10 L4 0 L0 10 L-4 0 Z" fill="none" stroke={accent} strokeWidth="1.4" /></g>;
+    default: return null;
+  }
+}
+
+function SupportCharacter({ id, size }) {
+  const c = SUPPORTING[id];
+  if (!c) return null;
+  const s = size || 48;
+  const H = c.boy ? 112 : 120;
+  const payload = (STORY && STORY.supporting || []).find((p) => p.id === id);
+  const label = payload ? payload.name + ", " + payload.role : c.label;
+  const scarfCol = c.scarf || c.accent;
+  return (
+    <svg className="story-character story-support" style={{ width: s + "px", height: (s * H / 100) + "px" }}
+      viewBox={"0 0 100 " + H} role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy={H - 7} rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d={c.boy ? "M31 103 L34 64 Q50 55 66 64 L70 103 Z" : "M28 110 L33 60 Q50 50 67 60 L72 110 Z"} fill={c.jacket} />
+      <path d={c.boy ? "M38 66 Q50 76 62 66" : "M37 63 Q50 74 63 63"} fill="none" stroke={c.accent} strokeWidth="3" />
+      <rect x="43" y="46" width="14" height="15" rx="6" fill={c.skin} />
+      <circle cx="50" cy="33" r="21" fill={c.skin} />
+      {c.head === "scarf" && <path d="M27 30 Q28 9 50 8 Q72 9 73 30 Q73 42 66 44 L66 26 Q50 18 34 26 L34 44 Q27 42 27 30 Z M66 42 Q74 52 68 60 L62 50 Z" fill={scarfCol} />}
+      {c.head === "hair" && <path d="M30 29 Q34 9 51 10 Q69 10 71 30 Q61 19 49 21 Q38 23 30 29 Z" fill={c.hair} />}
+      {c.head === "cap" && <><path d="M28 28 Q32 10 50 10 Q68 10 72 28 Q50 20 28 28 Z" fill={c.cap} /><path d="M26 28 h48" stroke={c.cap} strokeWidth="4" strokeLinecap="round" /></>}
+      {c.head === "helmet" && <><path d="M28 30 Q30 8 50 8 Q70 8 72 30 Q50 22 28 30 Z" fill={c.helmet} /><path d="M25 30 h50" stroke={c.helmet} strokeWidth="4" strokeLinecap="round" /></>}
+      {c.head === "band" && <><path d="M30 29 Q34 9 51 10 Q69 10 71 30 Q61 19 49 21 Q38 23 30 29 Z" fill={c.hair} /><path d="M28 27 Q50 16 72 27" stroke={c.band} strokeWidth="4" fill="none" strokeLinecap="round" /></>}
+      <circle cx="42" cy="34" r="2.2" fill="#10242B" /><circle cx="58" cy="34" r="2.2" fill="#10242B" />
+      {c.glasses && <><circle cx="42" cy="34" r="6" fill="none" stroke="#10242B" strokeWidth="1.4" /><circle cx="58" cy="34" r="6" fill="none" stroke="#10242B" strokeWidth="1.4" /><path d="M48 34h4" stroke="#10242B" strokeWidth="1.4" /></>}
+      <path d="M43 43 Q50 48 58 42" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      <path d={c.boy ? "M33 70 Q24 82 26 94" : "M32 66 Q22 82 24 98"} fill="none" stroke={c.skin} strokeWidth="8" strokeLinecap="round" />
+      <path d={c.boy ? "M67 70 Q76 80 74 90" : "M68 66 Q78 78 76 88"} fill="none" stroke={c.skin} strokeWidth="8" strokeLinecap="round" />
+      <circle cx={c.boy ? 74 : 76} cy={c.boy ? 91 : 90} r="5" fill={c.skin} />
+      <SupportProp kind={c.prop} accent={c.accent} jacket={c.jacket} />
+    </svg>
+  );
+}
+
+
+function UnitShapeMotif({ topic }) {
+  if (topic !== 1) return <Star8 className="story-motif" />;
+  return (
+    <svg className="story-motif" viewBox="0 0 180 100" aria-hidden="true">
+      <path d="M8 85 Q28 52 48 85 Q68 52 88 85 Q108 52 128 85 Q148 52 172 85" fill="none" stroke="currentColor" strokeWidth="3" />
+      {[14, 42, 70, 98, 126, 154].map((x, i) => <rect key={x} x={x} y={18 + (i % 2) * 10} width="20" height="28" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />)}
+      <path d="M18 58h140" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" />
+    </svg>
+  );
+}
+
+/* Pips light from the class's stamped folio state when this computer has it
+   (daf.folio.v1); otherwise they fall back to position in the unit. The state
+   is class-level only — never student data — and non-critical: a cleared
+   browser changes nothing else in the deck. */
+function FolioProgress({ label }) {
+  if (!STORY) return null;
+  const n = STORY.lesson.numberInUnit, total = STORY.unit.lessonCount;
+  const codes = (STORY.unit && STORY.unit.lessonCodes) || [];
+  const stamped = (window.DAF_FOLIO && window.DAF_FOLIO.lessons) || null;
+  const done = (i) => stamped ? !!stamped[codes[i]] : i < n;
+  return (
+    <div className="folio-progress" aria-label={`Folio progress ${n} of ${total}`}>
+      <div className="folio-label"><b>Folio {STORY.unit.topic}</b><span>{label || STORY.unit.chapter}</span></div>
+      <div className="folio-pips">
+        {Array.from({ length: total }, (_, i) => <i key={i} className={done(i) ? "restored" : ""} />)}
+      </div>
+      <em>{n}/{total}</em>
+    </div>
+  );
+}
+
+const STORY_LANES = {
+  fiction: { label: "Our story", icon: "fa-book-open", cls: "fiction" },
+  stem: { label: "History of useful knowledge", icon: "fa-compass-drafting", cls: "stem" },
+  amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
+};
+
+function StoryShell({ lane, character, pose, support, title, text, clue, children, compact }) {
+  const info = STORY_LANES[lane || "fiction"];
+  const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  return (
+    <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
+      <div className="story-ribbon">
+        <UnitShapeMotif topic={topic} />
+        <div className="story-cast">
+          {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
+            : character === "lantern" ? <StoryLantern size={58} />
+            : character ? <StoryCharacter id={character} pose={pose} size={60} />
+            : <StoryLantern size={54} />}
+          {support ? <SupportCharacter id={support} size={46} /> : null}
+        </div>
+        <div className="story-ribbon-copy">
+          <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
+          <b>{title}</b>
+          <p>{text}</p>
+          {clue && <small><Icon name="fa-key" /> {clue}</small>}
+        </div>
+        <FolioProgress />
+      </div>
+      <div className="story-content">{children}</div>
+    </div>
+  );
+}
+
+function STEMWindow({ window: item, children }) {
+  if (!item) return <>{children}</>;
+  return (
+    <StoryShell lane="stem" title={item.title} text={item.studentText} clue={item.inquiry} compact>
+      <div className="stem-layout">
+        <div className="stem-source-card">
+          <div className="stem-status"><Icon name="fa-circle-check" /> {item.status}</div>
+          <h3>Why this matters now</h3>
+          <p>{item.modernConnection}</p>
+          <details>
+            <summary>Teacher source notes</summary>
+            <p>{item.teacherNote}</p>
+            {(item.sources || []).map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+
+function StoryHandoff({ title, text, artifact, next, support, children }) {
+  const code = (typeof LESSON !== "undefined" && LESSON.code) || "";
+  const [stamped, setStamped] = useState(false);
+  const [saved, setSaved] = useState(true);
+  useEffect(() => {
+    setStamped(!!(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  }, [code]);
+  const stamp = () => {
+    const cls = window.DAF_CURRENT_CLASS;
+    if (!cls || !code) return;
+    const on = !(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]);
+    setSaved(folioStamp(cls, code, on));
+    window.DAF_FOLIO = folioFor(cls);
+    setStamped(!!(window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  };
+  return (
+    <StoryShell lane="fiction" character="both" pose="present" support={support} title={title} text={text}
+      clue={next ? "Next folio clue · " + next : null}>
+      <div className="handoff-artifact">
+        <span><Icon name="fa-stamp" /></span>
+        <div><b>Artifact updated</b><p>{artifact}</p></div>
+        <button className={"btn btn-ghost btn-sm folio-stamp" + (stamped ? " on" : "")} onClick={stamp}
+          title="Class record on this computer — no points involved">
+          <Icon name={stamped ? "fa-rotate-left" : "fa-stamp"} />
+          {stamped ? "Folio page restored · tap to undo" : "Restore this folio page"}
+        </button>
+        {!saved && <small className="folio-save-note">Folio change could not be saved on this computer — export the class folio from the dojo before you leave.</small>}
+      </div>
+      {children}
+    </StoryShell>
+  );
+}
+
+/* ===========================================================================
+   AMANAH WINDOW · sacred-history lane (PR 02). Reverent, chronological,
+   non-gamified: no XP, no clue mechanics, no invented dialogue or quantities.
+   Only registry windows in `approved` state with the complete six-field audit
+   record (studentText, source, translation, reviewer, reviewDate) ever render
+   here; the payload embeds approved windows only, so an unapproved window is
+   invisible to the deck entirely.
+   =========================================================================== */
+const AMANAH_LANE = "amanah";
+
+function AmanahWindow({ window: item, children }) {
+  const approved = !!(item
+    && item.status === "approved"
+    && item.studentText && item.reviewer && item.reviewDate && item.source && item.translation);
+  if (!approved) return <>{children}</>;
+  return (
+    <StoryShell lane={AMANAH_LANE} title={item.title || "Amanah Window"} text={item.studentText} compact>
+      <div className="amanah-layout">
+        <div className="amanah-card">
+          <div className="amanah-status"><Icon name="fa-book" /> Reviewed · {item.reviewer} · {item.reviewDate}</div>
+          <h3>Values reflection</h3>
+          <p>The reflection follows the mathematics of this lesson; sacred history is never the game mechanic.</p>
+          <details>
+            <summary>Teacher review record</summary>
+            <p>Source: {item.source}</p>
+            <p>Translation used: {item.translation}</p>
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+/* ===========================================================================
    ROUTINE LIBRARY
    The Amplify Desmos instructional routines as prop-driven components, so a
    lesson file only supplies content and its own canvas drawings.
@@ -3493,9 +4084,9 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
   return (
     <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
       <Sketch draw={draw} height={height || 250} />
-      <div className="glass-card" style={{ cursor: "default" }}>
-        <div style={{ fontWeight: 900, fontSize: "12px", color: "var(--c)", marginBottom: "9px" }}>{label}</div>
-        <div style={{ display: "flex", gap: "7px", flexWrap: "wrap" }}>
+      <div className="chip-bar">
+        <div className="chip-label">{label}</div>
+        <div className="chip-row">
           {chips.map((c) => (
             <button key={c.v} onClick={() => onPick(c.v)}
               className={"btn btn-sm " + (value === c.v ? "btn-primary" : "btn-ghost")}>
@@ -3505,7 +4096,7 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
         </div>
       </div>
       {caption && (
-        <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
+        <div className="stage-line">
           {caption}
           {footnote && <div style={{ fontSize: "11px", color: "var(--daf-ink-2)", marginTop: "6px" }}>{footnote}</div>}
         </div>
@@ -3637,10 +4228,10 @@ function CompareConnect({ left, right, same, diff, award }) {
 /* ---- Synthesis · the board ---------------------------------------------- */
 function BoardScreen({ draw, height, caption }) {
   return (
-    <div className="glass-panel" style={{ padding: "12px" }}>
-      <Sketch draw={draw} height={height || 430} />
-      <div style={{ textAlign: "center", fontSize: "11.5px", color: "var(--daf-ink-2)", marginTop: "9px" }}>
-        {caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}
+    <div className="glass-panel board-panel" style={{ padding: 0 }}>
+      <div className="board-stage">
+        <Sketch draw={draw} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", borderRadius: "12px" }} />
+        <div className="stage-caption">{caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}</div>
       </div>
     </div>
   );
@@ -3950,6 +4541,77 @@ const drawSupport73 = (ctx, W, H) => {
     sets: [{ nums: [1,2,3,4,6,9,12,18,36], col: "#34D399" }] });
 };
 
+
+/* repeated reasoning: the same pair method as the tiles grow 24 → 36 → 48 */
+const makeGrow73 = (step, onStep) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14); ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: 30, y: 40, w: W - 60, h: H - 80, value: 0, on: () => onStep((step + 1) % 4) });
+  const rows = [
+    { n: "24", t: "1×24 · 2×12 · 3×8 · 4×6", col: "#2D70B3" },
+    { n: "36", t: "1×36 · 2×18 · 3×12 · 4×9 · 6×6", col: "#FA7E19" },
+    { n: "48", t: "1×48 · 2×24 · 3×16 · 4×12 · 6×8", col: "#6042A6" }
+  ];
+  let y = 70;
+  rows.forEach((r, k) => {
+    const on = k < step;
+    ctx.save();
+    D.rr(ctx, 30, y - 18, W - 60, 40, 8);
+    ctx.fillStyle = on ? "rgba(234,244,242,.06)" : "rgba(234,244,242,.02)";
+    ctx.fill();
+    ctx.strokeStyle = on ? r.col : "rgba(234,244,242,.15)";
+    ctx.lineWidth = on ? 2 : 1; ctx.stroke();
+    ctx.restore();
+    D.txt(ctx, r.n, 56, y + 2, { size: 16, col: r.col, font: "mono", weight: 700, alpha: on ? 1 : 0.3 });
+    D.txt(ctx, on ? r.t : "…", W / 2 + 40, y + 2, { size: 13.5, col: "#EAF4F2", font: "marker", alpha: on ? 1 : 0.25 });
+    y += 48;
+  });
+  D.txt(ctx, step === 3 ? "the same method, every size — the pairs close in the same way"
+                       : "the reef tiles grow — does the method survive?",
+    W / 2, H - 16, { size: 13, col: step === 3 ? "#34D399" : "#C9A227", font: "marker" });
+};
+
+/* the Missing Pair: a factor list that stopped too early */
+const makeMissingPair73 = (found, onFound) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14); ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onFound) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onFound(!found) });
+  D.txt(ctx, "a confident factor list for 24", W / 2, 30, { size: 13, col: "#2D70B3", font: "marker" });
+  const lines = [
+    { t: "1, 2, 3, 4, 6 — that is all the factors of 24", gap: true }
+  ];
+  let y = 74;
+  lines.forEach((l) => {
+    const flagged = found && l.gap;
+    ctx.save();
+    D.rr(ctx, 30, y - 15, W - 60, 34, 7);
+    ctx.fillStyle = flagged ? "rgba(199,68,64,.18)" : "rgba(234,244,242,.04)";
+    ctx.fill();
+    if (flagged) { ctx.strokeStyle = "#C74440"; ctx.lineWidth = 2; ctx.stroke(); }
+    ctx.restore();
+    D.txt(ctx, l.t, W / 2, y + 2, { size: 13.5, col: flagged ? "#C74440" : "#EAF4F2", font: "marker" });
+    y += 42;
+  });
+  D.txt(ctx, found ? "8, 12 and 24 are missing — the testing stopped too early"
+                   : "does the list really stop there?",
+    W / 2, H - 18, { size: 13, col: found ? "#C74440" : "#C9A227", font: "marker" });
+};
+
+/* the pairs of 36, one pair at a time — the self-pair meets in the middle */
+const makePair36 = (shown) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14); ctx.fillStyle = "#0B1F24"; ctx.fill();
+  const pairs = [[1, 36], [2, 18], [3, 12], [4, 9], [6, 6]];
+  pairs.forEach(function (p, k) {
+    const a = k < shown ? 1 : 0.16;
+    const y = 58 + k * 40;
+    D.txt(ctx, String(p[0]), W / 2 - 80, y, { size: 20, col: "#2D70B3", font: "marker", alpha: a });
+    D.txt(ctx, "\u00d7", W / 2 - 44, y, { size: 15, col: "rgba(234,244,242,.5)", font: "marker", alpha: a });
+    D.txt(ctx, String(p[1]), W / 2 - 6, y, { size: 20, col: "#FA7E19", font: "marker", alpha: a });
+    D.txt(ctx, "= 36", W / 2 + 52, y, { size: 15, col: "rgba(234,244,242,.6)", font: "marker", alpha: a });
+  });
+  D.txt(ctx, shown === 5 ? "6 \u00d7 6 meets itself \u2014 the list is complete"
+                         : "each test gives you two factors at once",
+    W / 2, H - 16, { size: 13.5, col: shown === 5 ? "#34D399" : "#C9A227", font: "marker" });
+};
+
 const LESSON = {
   code: "7-3",
   storageKey: "daf-g4-t7-l3",
@@ -3959,80 +4621,111 @@ const LESSON = {
   ixl: ["URL"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Some numbers up to 24 are highlighted. No question yet.", goal: "An invitation — every student has something to say.",
-      pull: "They come in pairs, though it may not look like it yet.",
-      rail: { launch: "I am not asking for a rule yet. Just look at the highlighted numbers.",
-        monitor: ["Spotting the gaps between them", "Reading them aloud", "Predicting the next one"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Assuming the highlighted numbers are random." } },
+    { phase: "warmup", title: "The method that <em>repeats</em>",
+      lead: "The pair method ran on 24. The reef tiles are growing — 36, then 48. The method must run again, the same way.",
+      goal: "Notice repeated reasoning: the same method, the same checks, a bigger tile.",
+      pull: "How do you know you have found them all — every time?",
+      rail: { launch: "Fictional frame. Look at the list for 24 — no working yet.",
+        monitor: ["Reading the pairs of 24", "Predicting the pairs of 36", "Wonding what stays the same"],
+        connect: "What part of the method never changes, tile after tile?",
+        misconception: "Starting each new tile with a new, random method." } },
 
-    { phase: "launch", title: "Find <em>every</em> factor pair of 24", lead: "Not just some pairs \u2014 all of them. Estimate how many pairs there are.",
-      goal: "Create the need — a list you can trust beats a list you guessed.",
-      pull: "Estimate first, then we will build the list properly.",
-      rail: { launch: "Do not list them yet. Just guess how many there will be.",
-        monitor: ["Guessing", "Working in order", "Using division to test"],
-        connect: "How will you know when you have them all?",
-        misconception: "Guessing without a system and missing some." } },
+    { phase: "launch", title: "How many factors does <em>36 have</em>?",
+      lead: "The bigger tile: the same order, the same meeting point. Lock your guess first.",
+      goal: "Create the need — the method must survive a tile it has not seen.",
+      pull: "A guess is fine. The method is what makes the guess checkable.",
+      rail: { launch: "Give a pair count and say where the pairs will meet.",
+        monitor: ["Guessing 5 pairs", "Predicting 6 × 6", "Planning the order"],
+        connect: "Where do the pairs meet for 36?",
+        misconception: "Assuming the meeting point is always the same number." } },
 
-    { phase: "monitor", title: "The <em>same question</em>, every time", lead: "Does 1 divide it? Does 2? Does 3? Same question, new number.",
-      goal: "Repeated reasoning: one question, applied in order.", pull: "Each one you find hands you a second.",
-      rail: { launch: "Predict the next one before you tap.",
-        monitor: ["Working in order", "Jumping around", "Checking each one"],
-        connect: "Why test in order rather than jumping about?", misconception: "Skipping 3 because it looks unlikely." } },
+    { phase: "monitor", title: "Zayd runs the method on <em>24</em>",
+      lead: "Test in order: 1, 2, 3, 4, 5, 6. Each hit writes its partner; the list closes at 4 and 6.",
+      goal: "Run the repeated reasoning once, out loud, on the known tile.",
+      pull: "Test in order and you cannot skip one by accident.",
+      rail: { launch: "Before each test: what partner would a hit give?",
+        monitor: ["Testing in order", "Writing the partners", "Stopping at the meeting"],
+        connect: "Which step of the method did you watch most carefully?",
+        misconception: "Skipping tests because the answer 'feels' right." } },
 
-    { phase: "monitor", title: "Know when to <em>stop</em>", lead: "When the two numbers of a pair meet, there is nothing left to find.",
-      goal: "Stopping early loses pairs; going on repeats them.", pull: "Now sort some numbers.",
-      rail: { launch: "Predict the partner before you tap.",
-        monitor: ["Testing carefully", "Guessing", "Explaining the test"],
-        connect: "Why can you stop at 4 and 6?", misconception: "Carrying on past the meeting point and repeating pairs." } },
+    { phase: "monitor", title: "The same method on <em>36 and 48</em>",
+      lead: "The tiles grow: 36, then 48. The method runs the same way — and the pairs close in the same place they should.",
+      goal: "Repeat the method on bigger tiles without changing it.",
+      pull: "The same method, every size — the pairs close in the same way.",
+      rail: { launch: "Before each tile: where will the pairs meet?",
+        monitor: ["Running the order on 36", "Running the order on 48", "Comparing the meeting points"],
+        connect: "What changed between tiles, and what did not?",
+        misconception: "Changing the order to 'fit' a bigger tile." } },
 
-    { phase: "monitor", title: "Factor of 24 or <em>not</em>?", lead: "Sort each number. No grading until the class commits.",
-      goal: "Apply the test to unfamiliar numbers.",
-      pull: "Two students organised their search differently.",
-      rail: { launch: "Test each one before you place it.",
-        monitor: ["Dividing to test", "Recognising by sight", "Guessing"],
-        connect: "Which was hardest to place, and why?",
-        misconception: "Assuming every even number is a factor." } },
+    { phase: "monitor", title: "Pair them up — <em>stop when they meet</em>",
+      lead: "1×36, 2×18, 3×12, 4×9, 6×6. When a pair meets itself, the list is complete.",
+      goal: "Find the meeting point, including a pair with itself.",
+      pull: "Once the two numbers in a pair are next to each other, there are no more.",
+      rail: { launch: "Before each pair: have the pairs met yet?",
+        monitor: ["Pairing 1 with 36", "Finding 6 × 6", "Stopping at the meeting"],
+        connect: "Why does 6 × 6 count as one pair, not two?",
+        misconception: "Counting a self-pair twice." } },
 
-    { phase: "connect", title: "Two ways to <em>be sure</em>", lead: "Sana wrote every pair as she found it. Marwan wrote only the small number and paired up at the end. Both found four pairs.",
+    { phase: "monitor", title: "The <em>missing pair</em> on the board",
+      lead: "A confident list for 24: 1, 2, 3, 4, 6 — that is all. But 8, 12 and 24 are missing; the testing stopped too early.",
+      goal: "Critique an incomplete list: the method, not the guess, is the certificate.",
+      pull: "8, 12 and 24 are missing — the testing stopped too early.",
+      rail: { launch: "Each claim must name the test that produced it.",
+        monitor: ["Checking the order was run", "Finding the skipped tests", "Flagging the early stop"],
+        connect: "What would have caught the missing pairs?",
+        misconception: "Accepting a list because it looks neat." } },
+
+    { phase: "connect", title: "Ola <em>re-checks every tile</em>. Ziad <em>trusts the meeting</em>",
+      lead: "Ola re-runs the whole order on every tile. Ziad runs it once and checks the meeting point. Both lists hold.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Working in order", "Working in pairs", "Checking nothing is missed"],
-        connect: "Whose method proves nothing was missed?",
-        misconception: "Believing a random search is enough." } },
+        monitor: ["Counting Ola's re-checks", "Finding Ziad's meeting check", "Comparing the lists"],
+        connect: "What does the meeting point save?",
+        misconception: "Believing the first tile's method must be redone from scratch each time." } },
 
-    { phase: "synth", title: "On the <em>board</em>", lead: "Test in order. Write each pair. Stop when the two numbers in a pair meet.",
+    { phase: "synth", title: "On the <em>board</em>: the same check, over and over",
+      lead: "1×24, 2×12, 3×8, 4×6 — and the same four moves on 36, and the same on 48. The repeated check is what makes it safe.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next mark", "Naming the pattern", "Restating it in their own words"],
+        monitor: ["Naming the four moves", "Watching them repeat", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Listing 4 × 6 and 6 × 4 as different pairs." } },
+        misconception: "Memorising the lists instead of the method." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "A method that repeats is a pattern you can trust: same order, same tests, same stopping rule, bigger tile.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the test", "Testing on a new number", "Explaining the edge case"],
-        connect: "Does every number have an even number of factors?", misconception: "Forgetting that a square number has a repeated factor." } },
+        monitor: ["Naming the repeated steps", "Checking the stopping rule", "Testing on a new tile"],
+        connect: "What would break the pattern?",
+        misconception: "Answering by guessing the list's length instead of running the method." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Work in order, not at random.",
-        monitor: ["Working in order", "Testing each one", "Guessing"],
+      lead: "How many factor pairs does 36 have?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Run the method, then count the pairs.",
+        monitor: ["Testing in order", "Finding 6 × 6", "Counting five pairs"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Missing 6 \u00d7 6 because the two numbers are the same." } },
+        misconception: "Answering 4 — the self-pair 6 × 6 was missed." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "synth", title: "The <em>certification</em> board",
+      lead: "Same order, same tests, same stopping rule — run three times, three complete lists. The certification is the repetition.",
+      goal: "A repeated method, certified on three tiles.",
+      pull: "The tile may grow — the method does not change.",
+      rail: { launch: "Point to the three lists and name what ran the same.",
+        monitor: ["Naming the repeated moves", "Checking each stopping point", "Saying the method did the work"],
+        connect: "What would the certificate look like for a tile of 100?",
+        misconception: "Certifying by memorising lists instead of the method." } },
+
+    { phase: "connect", title: "The method is <em>certified</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: numbers that make only one rectangle.",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the grid", "Ready for the next idea"],
+      pull: "Tomorrow: the indivisible border tile — some counts make only one rectangular pair.",
+      rail: { launch: "Ask three students to run the method on a new number.",
+        monitor: ["Able to explain the stopping rule", "Still guesses the list length", "Ready for the indivisible tile"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -4040,64 +4733,183 @@ const LESSON = {
   Visual: function ({ i, award, game }) {
     const [a, setA] = useState(1);
     const [b, setB] = useState(1);
+    const [grow, setGrow] = useState(0);
+    const [found, setFound] = useState(false);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeSearch(24)} height={256} award={award}
-          notices={["Some numbers are green", "1 and 24 are both green", "There are gaps", "8 is green but 7 is not"]} wonders={["Why those numbers?", "Is there a pattern?", "How many are there?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The method that repeats"
+            text="The pair method ran on 24. The reef tiles are growing — 36, then 48. The method must run again, the same way."
+            clue="Same order, same tests, same stopping rule — bigger tile.">
+            <NoticeWonder draw={makeSearch(24)} height={256} award={award}
+              notices={["Some numbers are green", "1 and 24 are both green", "There are gaps", "8 is green but 7 is not"]}
+              wonders={["Why those numbers?", "Is there a pattern?", "How do you know it works on a bigger tile?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStory73} height={256} award={award}
-          label="How many factor pairs does 24 have?" min={1} max={10} start={4} unit="pairs"
-          after="Locked. Now let us build the list properly."
-          note="The same question asked over and over is what proves nothing is missing." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The bigger tile's guess"
+            text="Omar asks the certificate's question: how many factor pairs does 36 have — with the method ready to check the guess?"
+            clue="A guess is fine. The method is what makes the guess checkable.">
+            <LaunchEstimate draw={drawStory73} height={256} award={award}
+              label="How many factor pairs does 36 have?" min={2} max={8} start={5} unit="pairs"
+              after="Locked. Now let us run the method — the same four moves."
+              note="The tile counts are simulated — the repeated method works on any number." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeSearch(a)} height={256}
-          label="Test each number in order" value={a}
-          onPick={(v) => setA(v)}
-          chips={[{ v: 1, label: "1" }, { v: 2, label: "2" }, { v: 3, label: "3" }, { v: 4, label: "4" }, { v: 5, label: "5" }, { v: 6, label: "6" }]}
-          caption={<MathEl omml={M.left} size="lg" display="block" />}
-          footnote="Test in order and you cannot skip one by accident." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd runs the method on 24"
+            text="He can test any candidate — but the method runs in order, and each hit writes its partner."
+            clue="Test in order and you cannot skip one by accident.">
+            <ExploreChips draw={makeSearch(a)} height={256}
+              label="Test each number in order" value={a}
+              onPick={(v) => setA(v)}
+              chips={[{ v: 1, label: "1" }, { v: 2, label: "2" }, { v: 3, label: "3" }, { v: 4, label: "4" }, { v: 5, label: "5" }, { v: 6, label: "6" }]}
+              caption={<MathEl omml={M.left} size="lg" display="block" />}
+              footnote="Test in order and you cannot skip one by accident." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makePairUp(b)} height={256}
-          label="Pair them up" value={b}
-          onPick={(v) => setB(v)}
-          chips={[{ v: 1, label: "1 × 24" }, { v: 2, label: "+ 2 × 12" }, { v: 3, label: "+ 3 × 8" }, { v: 4, label: "+ 4 × 6" }]}
-          caption={<MathEl omml={M.reveal} size="lg" display="block" />}
-          footnote="Once the two numbers in a pair are next to each other, there are no more." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build" support="mariam"
+            title="The same method on bigger tiles"
+            text="The tiles grow — 36, then 48 — and the method runs the same way on each, the pairs closing in the same way."
+            clue="The same method, every size.">
+            <ExploreChips draw={makeGrow73(grow)} height={256}
+              label="Run the method on each tile"
+              value={grow}
+              onPick={(v) => setGrow(v)}
+              chips={[{ v: 0, label: "no tiles" }, { v: 1, label: "tile 24" }, { v: 2, label: "+ tile 36" }, { v: 3, label: "+ tile 48" }]}
+              caption={<MathEl omml={M.reveal} size="lg" display="block" />}
+              footnote="The same method, every size — the pairs close in the same way." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[{ id: "n1", text: "6", target: "yes" }, { id: "n2", text: "7", target: "no" }, { id: "n3", text: "8", target: "yes" }, { id: "n4", text: "9", target: "no" }]} targets={[{ id: "yes", label: "a factor of 24" }, { id: "no", label: "not a factor of 24" }]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar pairs 36 up"
+            text="Each pair written: 1×36, 2×18, 3×12, 4×9, 6×6. When a pair meets itself, the list is complete."
+            clue="A pair with itself counts once.">
+            
+            {/* pair screen for 36 */}
+            <ExploreChips draw={makePair36(b)} height={256}
+              label="Pair them up" value={b}
+              onPick={(v) => setB(v)}
+              chips={[{ v: 1, label: "1 × 36" }, { v: 2, label: "+ 2 × 18" }, { v: 3, label: "+ 3 × 12" }, { v: 4, label: "+ 4 × 9" }, { v: 5, label: "+ 6 × 6" }]}
+              caption={<MathEl omml={M.reveal} size="lg" display="block" />}
+              footnote="Once the two numbers in a pair are next to each other, there are no more." />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Sana's way — write both as you go", omml: M.left, h: 92, quote: "Every time one works I write both numbers down." }}
-          right={{ name: "Marwan's way — pair up at the end", omml: M.right, h: 92, quote: "I list 1, 2, 3, 4 then work out each partner." }}
-          same={["Both find four pairs", "Both test in order", "Both stop at 4 and 6"]} diff={["Sana records as she goes, Marwan at the end", "Marwan writes less", "Sana can see the pairs closing in"]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The missing pair on the board"
+            text="A confident list for 24 walks in: 1, 2, 3, 4, 6 — that is all. Omar runs the method against it — and three pairs are missing."
+            clue="The method, not the guess, is the certificate.">
+            <ExploreChips draw={makeMissingPair73(found, setFound)} height={252}
+              label="Does the list survive the method?"
+              value={found ? 1 : 0}
+              onPick={(v) => setFound(v === 1)}
+              chips={[{ v: 0, label: "it looks complete" }, { v: 1, label: "run the method" }]}
+              caption={<MathEl omml={M.left} size="lg" display="block" />}
+              footnote="8, 12 and 24 are missing — the testing stopped too early." />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard73} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one repeated method"
+            text="Ola re-checks every tile from scratch. Ziad runs the method once and checks the meeting point. Both lists hold."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Ola's way — test everything", omml: M.left, h: 92, quote: "I re-run the whole order on every tile, to be safe." }}
+              right={{ name: "Ziad's way — trust the meeting", omml: M.reveal, h: 92, quote: "I run the order once and check the pairs meet." }}
+              same={["Both find the full list", "Both use the same four moves", "Both can re-check on demand"]}
+              diff={["Ola re-runs everything", "Ziad checks the stopping point", "Ziad's check is what the method guarantees"]} />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "test 1, 2, 3 in order and stop when the pair repeats" }]}
-          hand={"test in order · write both numbers of each pair · stop when they meet"}
-          cards={[
-            { title: "The factors of 24", omml: M.left, note: "four pairs, eight factors" },
-            { title: "Tap to see a non-factor", omml: M.right, revealOmml: M.reveal, reveal: true, note: "7 does not divide 24" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The repeated check, on the board"
+            text="Zayd builds only what the class can justify: the four moves, run three times, the lists closing the same way."
+            clue="The same question each time — that is what makes it safe.">
+            <BoardScreen draw={drawBoard73} height={430}
+              caption="The same check, over and over." />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="How many factor pairs does 36 have?" omml={M.swyk} options={[{ v: "a", text: "4" }, { v: "b", text: "5" }, { v: "c", text: "8" }, { v: "d", text: "9" }]} right="b"
-          support={{ yes: "Yes — 42 ÷ 6 = 7 exactly, so 6 and 7 are a factor pair of 42.", notYet: "Not yet — work through it in order.",
-            draw: drawSupport73, h: 82, hint: "Try 6 × 7. Does it land exactly on 42?" }} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="A method that repeats is a pattern you can trust: same order, same tests, same stopping rule, bigger tile."
+            clue="The repetition is the certificate.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "test 1, 2, 3 ... in order · stop when the pair repeats" }]}
+              hand={"same order · same tests · same stopping rule · the tile may grow, the method does not change"}
+              cards={[
+                { title: "The tile we ran it on", omml: M.left, note: "24: four pairs, eight factors" },
+                { title: "Tap to see the stopping rule", omml: M.reveal, revealOmml: M.right, reveal: true,
+                  note: "when the pairs meet, the list is complete" }
+              ]} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule} action="Pick a number under 50 and write every factor pair, stopping when they meet." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar counts the pairs"
+            text="How many factor pairs does 36 have? Run the method — then count."
+            clue="1×36, 2×18, 3×12, 4×9, 6×6.">
+            <ShowWhatYouKnow award={award}
+              prompt="How many factor pairs does 36 have?" omml={M.swyk}
+              options={[{ v: "a", text: "4" }, { v: "b", text: "5" }, { v: "c", text: "8" }, { v: "d", text: "9" }]}
+              right="b"
+              support={{ yes: "Yes — 1×36, 2×18, 3×12, 4×9, 6×6: five pairs, and 6 × 6 is where the pairs meet.", notYet: "Not yet — run the method in order, then count the pairs.",
+                draw: drawSupport73, h: 82, hint: "Test in order: 1, 2, 3, 4, 5, 6. Where do the pairs meet?" }} />
+          </StoryShell>
+        );
+
+      case 10:
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The method is certified"
+            text="The method is certified on three tiles: same order, same tests, same stopping rule. The architect's next tile is stranger — it will make only one rectangular pair."
+            clue="Some counts make only one rectangular pair — others make many.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "the same method, every size" }]}
+              hand={"run the method · write the pairs · stop at the meeting · the tile may grow, the method does not change"}
+              cards={[
+                { title: "The certified method", omml: M.left, note: "24, 36 and 48 all ran the same way" },
+                { title: "Tap for the next mystery", omml: M.swykAnswer, reveal: true,
+                  note: "6 × 6: a pair that meets itself — some tiles will have only one" }
+              ]} />
+          </StoryShell>
+        );
+
+      case 11:
+        return (
+          <StoryHandoff support="mariam"
+            title="The method is certified"
+            text="Omar and Zayd sign the certification: the method ran the same way on every tile. The architect slides the next tile across the table — it will make only one rectangular pair, and that is not a flaw."
+            artifact="Reef kit · certified repeated method"
+            next="The indivisible border tile — some counts make only one rectangular pair; others make many.">
+            <Closing game={game} omml={M.rule} action="Pick a number under 50 and write every factor pair, stopping when they meet." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }
@@ -4257,6 +5069,31 @@ function TeacherRail({ meta, onClose }) {
       <p>{r.connect}</p>
       <h4>ANTICIPATED MISCONCEPTION</h4>
       <p style={{ color: "#f2c9c7" }}>{r.misconception}</p>
+      {STORY && (STORY.stemWindows || []).length > 0 && (
+        <div>
+          <h4>SOURCES · HISTORY OF USEFUL KNOWLEDGE</h4>
+          {STORY.stemWindows.map((w) => (
+            <div key={w.id} style={{
+              marginBottom: "8px", background: "rgba(255,255,255,.05)",
+              borderRadius: "8px", padding: "8px 10px"
+            }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: "#cfe6e2" }}>
+                {w.title}{" "}
+                <span className="mono" style={{ fontSize: "10px", color: "var(--daf-gold)" }}>{w.status}</span>
+              </div>
+              <p style={{ fontSize: "11.5px", color: "#cfe6e2", margin: "5px 0 0", lineHeight: 1.5 }}>
+                {w.teacherNote}
+              </p>
+              {(w.sources || []).map((s) => (
+                <a key={s.url} href={s.url} target="_blank" rel="noreferrer"
+                  style={{ display: "block", fontSize: "11px", color: "#9cc0ba", marginTop: "4px" }}>
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
       {LESSON.ixl && LESSON.ixl.length > 0 && (
         <div>
           <h4>IXL PRACTICE TO ASSIGN</h4>
@@ -4758,6 +5595,16 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => {
+            if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
+              folioReset(game.section);
+              window.DAF_FOLIO = folioFor(game.section);
+            }
+          }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
+        </span>
+        <span className="dj-note">
+          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>
@@ -4853,6 +5700,15 @@ function App() {
     document.documentElement.style.setProperty("--c", ph.c);
     document.documentElement.style.setProperty("--c-2", ph.c2);
   }, [i]);
+
+  /* Durable story state (PR 02): the class's folio cache is class-level only
+     (lesson stamps, no student data), lives on this computer and refreshes
+     when a class is picked. Missing or cleared storage degrades silently to
+     position-based folio pips. */
+  useEffect(() => {
+    window.DAF_CURRENT_CLASS = (game && game.section) || null;
+    window.DAF_FOLIO = folioFor(window.DAF_CURRENT_CLASS);
+  }, [game && game.section]);
 
   useEffect(() => setReplay((r) => r + 1), [i]);
 

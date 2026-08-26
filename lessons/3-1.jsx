@@ -41,18 +41,20 @@ const drawBuses = (ctx, W, H, frame) => {
   }
 };
 
-const makePattern = (step) => (ctx, W, H, frame) => {
+const makePattern = (step, onStep) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: W / 2 - 80, y: 48, w: 160, h: 180, value: 0, on: () => onStep((step % 4) + 1) });
   D.pvPattern(ctx, { a: 3, b: 4, steps: 4, x: W / 2 - 60, y: 54, prog: step / 4, t: frame, lh: 42 });
   D.txt(ctx, step === 4 ? "the digits never change — only the zeros grow"
                         : "watch what happens to the zeros",
     W / 2, H - 18, { size: 13.5, col: step === 4 ? "#34D399" : "#C9A227", font: "marker" });
 };
 
-const makeBlocksScale = (unit) => (ctx, W, H, frame) => {
+const makeBlocksScale = (unit, onUnit) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onUnit) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onUnit(unit === 1 ? 10 : unit === 10 ? 100 : 1) });
   const names = { 1: "ones", 10: "tens", 100: "hundreds" };
   const cols = { 1: "#C9A227", 10: "#2D70B3", 100: "#6042A6" };
   const base = H - 66, s = unit === 100 ? 4.2 : 7;
@@ -108,37 +110,37 @@ const LESSON = {
   ixl: ["W6B", "2RP"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Four multiplications, stacked. No question yet.",
-      goal: "An invitation — every student has something to say.",
+    { phase: "warmup", title: "Four deliveries, <em>one pattern</em>",
+      lead: "Shade tiles arrive in bundles of tens, hundreds and thousands. Four deliveries are logged on the plan — and something stays exactly the same.",
+      goal: "Notice the pattern before any calculating — the digits stay, the places grow.",
       pull: "Something is staying exactly the same all the way down.",
-      rail: { launch: "I am not asking you to work anything out. Just look down the list.",
+      rail: { launch: "Fictional frame. I am not asking you to work anything out. Just look down the list.",
         monitor: ["Noticing the 12", "Counting the zeros", "Predicting the next line"],
         connect: "Who noticed something nobody else did?",
         misconception: "Seeing four unrelated facts instead of one pattern." } },
 
     { phase: "launch", title: "Five buses, <em>forty seats</em> each",
-      lead: "How many seats altogether? You already know 5 × 4.",
+      lead: "The trip to the grove site: 5 buses, 40 seats in each. How many seats altogether? You already know 5 × 4.",
       goal: "Create the need — a basic fact can carry a much bigger one.",
-      pull: "Estimate first, then we will see why it works.",
+      pull: "The trip roster is simulated — the place-value idea works on any batch.",
       rail: { launch: "Nobody counts 40 five times. What do you already know that helps?",
-        monitor: ["Adding 40 five times", "Using 5 x 4 then adding a zero", "Thinking in tens"],
+        monitor: ["Adding 40 five times", "Using 5 × 4 then adding a zero", "Thinking in tens"],
         connect: "What basic fact is hiding inside this problem?",
         misconception: "Adding a zero as a rule with no meaning behind it." } },
 
     { phase: "monitor", title: "Follow the <em>pattern</em>",
-      lead: "Reveal one line at a time. Watch the digits and watch the zeros.",
+      lead: "Reveal one delivery at a time. Watch the digits and watch the zeros.",
       goal: "The basic fact stays; the place value changes.",
-      pull: "But why does it work? Let us build it with blocks.",
-      rail: { launch: "Predict each line before you reveal it.",
+      pull: "The digits never change — only the zeros grow.",
+      rail: { launch: "Predict each line before Zayd reveals it.",
         monitor: ["Predicting correctly", "Counting zeros carefully", "Explaining in place-value words"],
-        connect: "How many zeros will 3 x 40,000 have?",
+        connect: "How many zeros will 3 × 40,000 have?",
         misconception: "Counting the zeros in the answer instead of in the factor." } },
 
-    { phase: "monitor", title: "Three groups of <em>four</em>",
-      lead: "Four ones, four tens, four hundreds. The groups never change.",
+    { phase: "monitor", title: "Bundles beside the <em>dry channel</em>",
+      lead: "Four ones, four tens, four hundreds. The groups never change — only the unit they hold.",
       goal: "The pattern is a place-value fact, not a zero trick.",
-      pull: "Now match some products to their expressions.",
+      pull: "3 groups of 4 hundreds is 12 hundreds.",
       rail: { launch: "Before you tap: how many blocks will there be?",
         monitor: ["Counting the blocks", "Naming the unit", "Reading 12 hundreds as 1,200"],
         connect: "Why is 12 hundreds written as 1,200?",
@@ -147,7 +149,7 @@ const LESSON = {
     { phase: "monitor", title: "Match the <em>product</em>",
       lead: "Which expression gives that answer? No grading until the class commits.",
       goal: "Read the pattern backwards.",
-      pull: "Two students explained the zeros differently.",
+      pull: "Look at the basic fact first, then the zeros.",
       rail: { launch: "Look at the basic fact first, then the zeros.",
         monitor: ["Using the basic fact", "Counting zeros", "Calculating fully"],
         connect: "Which part did you check first?",
@@ -162,7 +164,7 @@ const LESSON = {
         connect: "Whose explanation would help if you forgot the rule?",
         misconception: "Believing the zero-counting shortcut is the mathematics." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
+    { phase: "synth", title: "On the <em>board</em>: multiply the fact, attach the place",
       lead: "3 × 4 hundreds is 12 hundreds. Twelve hundreds is 1,200.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
@@ -176,24 +178,25 @@ const LESSON = {
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the fact and the place", "Testing on a new fact", "Asking about 50 x 40"],
-        connect: "What happens when both factors have zeros?",
-        misconception: "Applying the rule when the basic fact itself ends in zero, as in 5 x 4 = 20." } },
+        monitor: ["Naming the fact and the place", "Testing on a new fact", "Asking about hundreds"],
+        connect: "What happens when the factor is 1,000?",
+        misconception: "Attaching zeros to the basic fact's answer instead of the factor." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
+      lead: "6 × 700 — the basic fact first, then the place.",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
       rail: { launch: "Two minutes. Write the basic fact first.",
-        monitor: ["Writing 6 x 7 first", "Counting zeros", "Guessing the size"],
+        monitor: ["Writing 6 × 7", "Attaching the hundreds place", "Reading 42 hundreds"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Writing 420 instead of 4,200." } },
+        misconception: "Answering 420 — the hundreds place was missed." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The first delivery is <em>counted</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: is my product about right?",
+      pull: "Tomorrow: the foreman's quick promise — one truck for the whole order.",
       rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the blocks", "Ready to estimate"],
+        monitor: ["Able to explain the place", "Still counts zeros only", "Ready for two-digit factors"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -204,83 +207,157 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makePattern(4)} height={256} award={award}
-          notices={["The 12 is always there", "One more zero each line", "The 3 never changes", "The answers get ten times bigger"]}
-          wonders={["What comes next?", "Why does the 12 stay?", "Does it work for any fact?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="Four deliveries, one pattern"
+            text="The grove's first deliveries are logged: bundles of tens, hundreds and thousands of shade tiles. Four lines on the plan — and the digits barely move."
+            clue="Something stays the same all the way down">
+            <NoticeWonder draw={makePattern(4)} height={256} award={award}
+              notices={["The 12 is always there", "The zeros keep growing", "Each line multiplies by 10", "The digits never change"]}
+              wonders={["Why do the zeros just move across?", "Does it work for any fact?", "What is 3 × 40,000?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawBuses} height={258} award={award}
-          label="How many seats on 5 buses of 40?" min={50} max={400} start={200} unit="seats"
-          after="Locked. Now let us see the pattern behind it."
-          note="You already know 5 x 4. That fact is doing most of the work." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Five buses to the grove site"
+            text="Omar checks the trip roster: 5 buses, 40 seats in each. The grove site waits — but first, how many seats altogether?"
+            clue="A basic fact is hiding inside the problem">
+            <LaunchEstimate draw={drawBuses} height={258} award={award}
+              label="About how many seats altogether?" min={150} max={250} start={200} unit="seats"
+              after="Locked. Now follow the pattern and see why it works."
+              note="The trip roster is simulated — the place-value idea works on any batch." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makePattern(step)} height={256}
-          label="Reveal one line at a time"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 1, label: "3 × 4" }, { v: 2, label: "× 40" }, { v: 3, label: "× 400" }, { v: 4, label: "× 4,000" }]}
-          caption={<MathEl omml={M.thousands} size="xl" display="block" />}
-          footnote="The basic fact stays the same. Only the place value moves." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd reveals the deliveries one at a time"
+            text="He can reveal any line, but the class must predict the product before the zeros move."
+            clue="The digits never change — only the zeros grow">
+            <ExploreChips draw={makePattern(step, setStep)} height={256}
+              label="Reveal one delivery at a time"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 1, label: "3 × 4" }, { v: 2, label: "3 × 40" }, { v: 3, label: "3 × 400" }, { v: 4, label: "3 × 4,000" }]}
+              caption={<MathEl omml={step === 1 ? M.fact : step === 2 ? M.tens : step === 3 ? M.hundreds : M.thousands} size="lg" display="block" />}
+              footnote="The basic fact stays; the place value changes." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeBlocksScale(unit)} height={256}
-          label="Three groups of four ..."
-          value={unit}
-          onPick={(v) => setUnit(v)}
-          chips={[{ v: 1, label: "ones" }, { v: 10, label: "tens" }, { v: 100, label: "hundreds" }]}
-          caption={<MathEl omml={M.why} size="lg" display="block" />}
-          footnote="Twelve of anything works the same way — it is the unit that changes." />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Bundles beside the dry channel"
+            text="Omar and Zayd lay the bundles out: three groups of four — ones, tens or hundreds. The groups never change; the unit they hold does."
+            clue="3 groups of 4 hundreds is 12 hundreds">
+            <ExploreChips draw={makeBlocksScale(unit, setUnit)} height={256}
+              label="Three groups of four — what is the unit?"
+              value={unit}
+              onPick={(v) => setUnit(v)}
+              chips={[{ v: 1, label: "four ones" }, { v: 10, label: "four tens" }, { v: 100, label: "four hundreds" }]}
+              caption={<MathEl omml={M.why} size="lg" display="block" />}
+              footnote="The pattern is a place-value fact, not a zero trick." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={3}
-          items={[
-            { id: "m1", text: "1,200", target: "h" },
-            { id: "m2", text: "120", target: "t" },
-            { id: "m3", text: "12,000", target: "th" }
-          ]}
-          targets={[
-            { id: "t", label: "3 × 40" }, { id: "h", label: "3 × 400" }, { id: "th", label: "3 × 4,000" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Match the product"
+            text="Three products from the delivery log. Each one belongs to exactly one expression."
+            clue="Look at the basic fact first, then the zeros">
+            <CardSort award={award} columns={3}
+              items={[
+                { id: "m1", text: "1,200", target: "h" },
+                { id: "m2", text: "120", target: "t" },
+                { id: "m3", text: "12,000", target: "th" }
+              ]}
+              targets={[
+                { id: "t", label: "3 × 40" },
+                { id: "h", label: "3 × 400" },
+                { id: "th", label: "3 × 4,000" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Amal's way — count the zeros", omml: M.hundreds, h: 92,
-                  quote: "3 times 4 is 12, then I copy across the two zeros." }}
-          right={{ name: "Basil's way — name the unit", omml: M.why, h: 92,
-                   quote: "Three groups of four hundreds is twelve hundreds." }}
-          same={["Both get 1,200", "Both start from 3 x 4", "Both are quick"]}
-          diff={["Amal counts, Basil names the unit", "Basil can explain why", "Amal's is faster to say"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two ways to say why"
+            text="Amal counts the zeros. Basil names the unit. Both get 1,200 — for different reasons."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Amal's way — count the zeros", omml: M.tens, h: 92,
+                      quote: "3 times 4 is 12, and there is one zero to copy across." }}
+              right={{ name: "Basil's way — name the unit", omml: M.why, h: 92,
+                       quote: "3 times 4 hundreds is 12 hundreds." }}
+              same={["Both get 1,200", "Both start from 3 × 4", "Both are quick"]}
+              diff={["Amal counts, Basil names the unit", "Basil can explain why", "Amal's is faster to say"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard31} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The pattern is drawn into the grove plan"
+            text="Zayd builds only what the class can justify: the fact multiplied, the place attached."
+            clue="Multiply the fact, then attach the place">
+            <BoardScreen draw={drawBoard31} height={430}
+              caption="Multiply the fact, then attach the place." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "multiply the fact, then attach the place" }]}
-          hand={"find the basic fact · multiply it · then attach the same place value the factor had"}
-          cards={[
-            { title: "The seats we counted", omml: M.buses, note: "5 x 4 = 20, so 5 x 40 = 200" },
-            { title: "Tap to climb one more place", omml: M.hundreds, revealOmml: M.thousands, reveal: true,
-              note: "the fact never changes" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The rule goes into the grove plan with its reason, not alone."
+            clue="The zero belongs to the factor's place, not to the answer">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "multiply the fact, then attach the place" }]}
+              hand={"find the basic fact · multiply it · attach the factor's place to the answer"}
+              cards={[
+                { title: "The pattern we followed", omml: M.thousands, note: "the 12 never moves" },
+                { title: "Tap to move the place", omml: M.tens, revealOmml: M.hundreds, reveal: true,
+                  note: "the zero moves from the tens to the hundreds" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="What is 6 × 700?"
-          omml={M.swyk}
-          options={[{ v: "a", text: "420" }, { v: "b", text: "4,200" }, { v: "c", text: "42,000" }, { v: "d", text: "4,020" }]}
-          right="b"
-          support={{
-            yes: "Yes — 6 × 7 = 42, and 42 hundreds is 4,200.",
-            notYet: "Not yet — write the basic fact first, then attach the place.",
-            draw: drawSupport31, h: 96,
-            hint: "6 × 7 = 42. Now, 42 what? Ones, tens or hundreds?"
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs only a product he can defend"
+            text="6 × 700. Show the basic fact first — then the place."
+            clue="42 hundreds is 4,200">
+            <ShowWhatYouKnow award={award}
+              prompt="What is 6 × 700?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "4,200" }, { v: "b", text: "420" }, { v: "c", text: "42,000" }, { v: "d", text: "670" }]}
+              right="a"
+              support={{
+                yes: "Yes — 6 × 7 = 42, so 6 × 700 is 42 hundreds: 4,200.",
+                notYet: "Not yet — what is the basic fact first?",
+                draw: drawSupport31, h: 96,
+                hint: "6 × 7 = 42. Now attach the factor's place."
+              }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule}
-          action="Find a price ending in zeros at home and multiply it by a single digit in your head." />;
+        return (
+          <StoryHandoff
+            title="The first delivery is counted"
+            text="Omar logs the bundles of tens into the grove plan. Zayd reads the foreman's note: eight crates of dates for the market — and a promise that the whole order fits on one truck."
+            artifact="Grove plan · bundles of tens counted"
+            next="The foreman's quick promise: the whole order fits on one truck — can the class estimate before the truck arrives?">
+            <Closing game={game} omml={M.rule}
+              action="Find a multiple-of-ten multiplication at home, and say which basic fact is doing the work." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

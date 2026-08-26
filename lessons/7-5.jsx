@@ -16,22 +16,20 @@ const M = {
 const M6 = [6,12,18,24,30,36,42,48];
 const M4 = [4,8,12,16,20,24,28,32,36,40,44,48];
 
-const makeSieve = (step) => (ctx, W, H, frame) => {
-  D.rr(ctx, 0, 0, W, H, 14);
-  ctx.fillStyle = "#0B1F24"; ctx.fill();
-  const marks = [];
-  const base = [2, 3, 5];
-  for (var i = 0; i < step && i < base.length; i++) {
-    for (var m = base[i] * 2; m <= 50; m += base[i]) marks.push(m);
-  }
+const makeMultiples75 = (step) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14); ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (step === 0) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: (v, tx) => {} });
+  const mult6 = [6, 12, 18, 24, 30, 36, 42, 48];
+  const mult4 = [4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48];
+  const meet = [12, 24, 36, 48];
   D.numberGrid(ctx, { n: 50, cols: 10, x: 58, y: 44, w: W - 116, ch: 21,
-    sets: [{ nums: marks, col: "#C75440" },
-           { nums: step >= 3 ? PRIMES.filter(function (p) { return p <= 50; }) : [], col: "#34D399" },
-           { nums: [1], col: "#C9A227", ring: true }] });
-  const notes = ["start at 6", "multiples of 2 crossed out",
-                 "multiples of 3 as well", "what survives is prime"];
-  D.txt(ctx, notes[step], W / 2, H - 14,
-    { size: 13.5, col: step === 3 ? "#34D399" : "#C9A227", font: "marker" });
+    sets: [{ nums: mult6.slice(0, Math.ceil(mult6.length * (step >= 1 ? 1 : 0.4))), col: "#C9A227" },
+           { nums: step >= 3 ? mult4 : [], col: "#2D70B3" },
+           { nums: step >= 3 ? meet : [], col: "#34D399", ring: true }] });
+  const notes = ["count in sixes — every landing is a multiple of 6",
+                 "the gap is always 6: 6, 12, 18, 24 ...",
+                 "the inspection team counts in fours — the rings are the days they meet"];
+  D.txt(ctx, notes[Math.min(step, 2)], W / 2, H - 14, { size: 13.5, col: step >= 3 ? "#34D399" : "#C9A227", font: "marker" });
 };
 
 const makeCount = (n) => (ctx, W, H, frame) => {
@@ -90,7 +88,7 @@ const drawStory75 = (ctx, W, H, frame) => {
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   D.txt(ctx, "counting in sixes", W / 2, 22, { size: 12.5, col: "#C9A227", font: "marker", alpha: p1 });
   D.numberGrid(ctx, { n: 50, cols: 10, x: 56, y: 44, w: W - 112, ch: 22,
-    sets: [{ nums: [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47].slice(0, Math.ceil([2,3,5,7,11,13,17,19,23,29,31,37,41,43,47].length * p2)), col: "#34D399" }] });
+    sets: [{ nums: [6,12,18,24,30,36,42,48].slice(0, Math.ceil(8 * p2)), col: "#C9A227" }] });
   if (p3 > 0) D.txt(ctx, "what would come after 48?", W / 2, H - 14,
     { size: 14.5, col: "#C9A227", font: "marker", alpha: p3 });
 };
@@ -99,8 +97,8 @@ const drawSupport75 = (ctx, W, H) => {
   ctx.clearRect(0, 0, W, H);
   D.rr(ctx, 0, 0, W, H, 10);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
-  D.numberGrid(ctx, { n: 21, cols: 7, x: 26, y: 8, w: W - 52, ch: 19,
-    sets: [{ nums: [1,3,7,21], col: "#34D399" }] });
+  D.numberGrid(ctx, { n: 45, cols: 9, x: 26, y: 8, w: W - 52, ch: 19,
+    sets: [{ nums: [5,10,15,20,25,30,35,40,45], col: "#C9A227" }] });
 };
 
 const LESSON = {
@@ -112,145 +110,239 @@ const LESSON = {
   ixl: ["EFB"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "A grid with every sixth number picked out. No question yet.", goal: "An invitation — every student has something to say.",
-      pull: "The gaps between them are all the same size.",
-      rail: { launch: "I am not asking for a rule yet. Just look at the highlighted numbers.",
-        monitor: ["Spotting the gaps between them", "Reading them aloud", "Predicting the next one"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Confusing this with the factors of 6." } },
+    { phase: "warmup", title: "When will the <em>teams meet</em>?",
+      lead: "The cleaning team lands every 6 days: 6, 12, 18, 24... The inspection team lands every 4 days. On which days do they meet?",
+      goal: "Notice a multiple: where you land when you count in that number.",
+      pull: "The gap is always 6 — that is counting in sixes.",
+      rail: { launch: "Fictional frame. Look at the marked days — no working yet.",
+        monitor: ["Seeing the even marks", "Reading the constant gap", "Wonding what comes after 48"],
+        connect: "What do all the marked days share?",
+        misconception: "Thinking a multiple must be bigger than the number (a number is a multiple of itself)." } },
 
-    { phase: "launch", title: "Counting in <em>sixes</em>", lead: "Start at 6 and keep adding 6. Estimate how many you get before 50.",
-      goal: "Create the need — a list you can trust beats a list you guessed.",
-      pull: "Estimate first, then we will build the list properly.",
-      rail: { launch: "Count in sixes out loud together. Where do you stop before 50?",
-        monitor: ["Guessing", "Working in order", "Using division to test"],
-        connect: "How will you know when you have them all?",
-        misconception: "Starting the multiples at 0 or at 1 instead of at 6." } },
+    { phase: "launch", title: "How many multiples of 6 <em>under 50</em>?",
+      lead: "The maintenance calendar needs every landing day under 50. How many are there?",
+      goal: "Create the need — counting in sixes, the landings are the multiples.",
+      pull: "Every number you land on is a multiple of 6.",
+      rail: { launch: "Give a landing-day count and say how you would prove it.",
+        monitor: ["Counting in sixes", "Writing 6, 12, 18", "Estimating first"],
+        connect: "What would prove your list is complete under 50?",
+        misconception: "Stopping the list too early." } },
 
-    { phase: "monitor", title: "Count in <em>sixes</em>", lead: "Add 6 each time. Then look at the multiples of 4 as well.",
-      goal: "A multiple is a number you land on by skip counting.", pull: "Now test a number directly.",
-      rail: { launch: "Predict the next one before you tap.",
-        monitor: ["Working in order", "Jumping around", "Checking each one"],
-        connect: "Is 6 a multiple of 6?", misconception: "Leaving 6 itself out of its own multiples." } },
+    { phase: "monitor", title: "Zayd counts in <em>sixes</em>",
+      lead: "6, 12, 18, 24, 30, 36, 42, 48 — each landing is a multiple. The inspection team counts in fours; the rings are the days they meet.",
+      goal: "Build a multiple list by counting in the number, and find common landings.",
+      pull: "The gap is always the number itself.",
+      rail: { launch: "Before each landing: what is the next one?",
+        monitor: ["Adding 6 each time", "Spotting 12, 24, 36, 48 as shared", "Naming the meeting days"],
+        connect: "Why do the teams meet exactly on the ringed days?",
+        misconception: "Finding the meeting days by guessing instead of listing." } },
 
-    { phase: "monitor", title: "Test a <em>number</em>", lead: "Build it in rows of 6. A full last row means it is a multiple.",
-      goal: "A multiple leaves no gap in the last row.", pull: "Now sort some numbers.",
-      rail: { launch: "Predict whether the last row will be full.",
-        monitor: ["Testing carefully", "Guessing", "Explaining the test"],
-        connect: "What does a gap in the last row mean?", misconception: "Calling 30 a multiple of 4 because it is even." } },
+    { phase: "monitor", title: "A full last <em>row</em> means multiple",
+      lead: "24 tiles in rows of 6: four full rows, no gap. 25 tiles: a gap. A full last row means it is a multiple.",
+      goal: "Test a candidate for being a multiple: does it land on a full row?",
+      pull: "A full last row means it is a multiple of 6.",
+      rail: { launch: "Before each test: will the last row close?",
+        monitor: ["Testing 24 with full rows", "Testing 30 with full rows", "Testing 42 with full rows"],
+        connect: "How does this test relate to dividing?",
+        misconception: "Calling a number a multiple because it is even." } },
 
-    { phase: "monitor", title: "Factor or <em>multiple</em>?", lead: "Sort each number. No grading until the class commits.",
-      goal: "Apply the test to unfamiliar numbers.",
-      pull: "Two students organised their search differently.",
-      rail: { launch: "Test each one before you place it.",
-        monitor: ["Dividing to test", "Recognising by sight", "Guessing"],
-        connect: "Which was hardest to place, and why?",
-        misconception: "Swapping the two words around." } },
+    { phase: "monitor", title: "Factor or <em>multiple</em>?",
+      lead: "Four claims from the reef crew: some name a factor, some name a multiple. Same fact, two directions.",
+      goal: "Sort claims into factor and multiple — the same fact, two words.",
+      pull: "A factor divides it · a multiple contains it.",
+      rail: { launch: "Before each placement: which direction is the claim in?",
+        monitor: ["Reading 3 for 12 as a factor", "Reading 24 for 6 as a multiple", "Comparing the directions"],
+        connect: "How are the two directions of the same fact different?",
+        misconception: "Sorting factor claims as multiples." } },
 
-    { phase: "connect", title: "Two ways to <em>be sure</em>", lead: "Huda skip counted. Adel multiplied 6 by 1, 2, 3. Both got the same list.",
+    { phase: "connect", title: "Huda <em>skip-counts</em>. Adel <em>multiplies</em>",
+      lead: "Huda keeps adding 6 and writes down where she lands. Adel does 6 times 1, 6 times 2, 6 times 3. Both lists agree.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Working in order", "Working in pairs", "Checking nothing is missed"],
-        connect: "Whose method proves nothing was missed?",
-        misconception: "Believing a random search is enough." } },
+        monitor: ["Following the skip-count", "Following the multiplications", "Comparing the lists"],
+        connect: "When is multiplying faster than skip-counting?",
+        misconception: "Believing only the adding method gives multiples." } },
 
-    { phase: "synth", title: "On the <em>board</em>", lead: "3 fits inside 12. 12 is built from 3. One fact, two words.",
+    { phase: "synth", title: "On the <em>board</em>: factor or multiple?",
+      lead: "3 divides 12 — 3 is a factor, smaller, fits inside. 12 contains 3 — 12 is a multiple, bigger, built from it. Same fact, two words.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next mark", "Naming the pattern", "Restating it in their own words"],
+        monitor: ["Naming the factor direction", "Naming the multiple direction", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Using factor and multiple as if they mean the same thing." } },
+        misconception: "Answering 'factor' when the claim is built from the number." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "A multiple is what you get when you count in that number — the landings go on forever, and the gaps never change.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the test", "Testing on a new number", "Explaining the edge case"],
-        connect: "Can a number be a multiple of itself?", misconception: "Believing multiples must be bigger than the number." } },
+        monitor: ["Naming the landings", "Checking the constant gap", "Testing on a new number"],
+        connect: "Which numbers are multiples of every number?",
+        misconception: "Forgetting that a number is a multiple of itself." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Work in order, not at random.",
-        monitor: ["Working in order", "Testing each one", "Guessing"],
+      lead: "Is 45 a multiple of 5?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Land on it or divide it.",
+        monitor: ["Counting in fives", "Checking 5 × 9", "Landing on 45"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Saying no because 45 is odd." } },
+        misconception: "Answering no without landing on the number." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The calendar is <em>marked</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Next topic: fractions.",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the grid", "Ready for the next idea"],
+      pull: "Act I ends here — the reef, the tiles, the cycles. The next door opens onto the Fraction Isles.",
+      rail: { launch: "Ask three students to give a multiple list.",
+        monitor: ["Able to explain the landings", "Still guesses the list", "Ready for the Fraction Isles"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
 
   Visual: function ({ i, award, game }) {
     const [a, setA] = useState(0);
-    const [b, setB] = useState(7);
+    const [b, setB] = useState(24);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeSieve(3)} height={256} award={award}
-          notices={["They are all even", "The gap is always 6", "It starts at 6", "48 is the last one shown"]} wonders={["What comes next?", "Do they ever stop?", "Is 6 a multiple of itself?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="When will the teams meet?"
+            text="The cleaning team lands every 6 days: 6, 12, 18, 24... The inspection team lands every 4 days. On which days do they meet?"
+            clue="The gap is always 6 — that is counting in sixes.">
+            <NoticeWonder draw={makeMultiples75(1)} height={256} award={award}
+              notices={["They are all even", "The gap is always 6", "It starts at 6", "48 is the last one shown"]}
+              wonders={["What comes next?", "Do they ever stop?", "Is 6 a multiple of itself?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStory75} height={256} award={award}
-          label="How many multiples of 6 under 50?" min={2} max={20} start={8} unit="multiples"
-          after="Locked. Now let us build the list properly."
-          note="7 tiles make only 1 × 7. That is the whole idea." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The landing days, before the count"
+            text="Omar asks the maintenance calendar's question: how many landing days under 50 — and what would prove the list is complete?"
+            clue="Every number you land on is a multiple of 6.">
+            <LaunchEstimate draw={drawStory75} height={256} award={award}
+              label="How many multiples of 6 under 50?" min={2} max={20} start={8} unit="multiples"
+              after="Locked. Now let us build the list properly."
+              note="The calendar days are simulated — the multiple idea works on any number." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeSieve(a)} height={256}
-          label="Cross out the multiples" value={a}
-          onPick={(v) => setA(v)}
-          chips={[{ v: 0, label: "start" }, { v: 1, label: "× 2" }, { v: 2, label: "× 3" }, { v: 3, label: "× 5" }]}
-          caption={<MathEl omml={M.left} size="lg" display="block" />}
-          footnote="Every number you land on is a multiple of 6." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd counts in sixes"
+            text="He can run the counting in stages — and when the inspection team's fours appear, the ringed days are where the teams meet."
+            clue="The rings are the days both teams land.">
+            <ExploreChips draw={makeMultiples75(a)} height={256}
+              label="Count in sixes — and find the meetings" value={a}
+              onPick={(v) => setA(v)}
+              chips={[{ v: 1, label: "count in sixes" }, { v: 2, label: "see the gap" }, { v: 3, label: "the inspection team" }]}
+              caption={<MathEl omml={M.left} size="lg" display="block" />}
+              footnote="Every number you land on is a multiple of 6 — the rings are the shared landings." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeCount(b)} height={256}
-          label="Count the factors of ..." value={b}
-          onPick={(v) => setB(v)}
-          chips={[{ v: 24, label: "24" }, { v: 30, label: "30" }, { v: 36, label: "36" }, { v: 42, label: "42" }]}
-          caption={<MathEl omml={M.right} size="lg" display="block" />}
-          footnote="A full last row means it is a multiple of 6." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar tests the full rows"
+            text="He can test any candidate: rows of 6, and a full last row means it lands. The gap means it does not."
+            clue="A full last row means it is a multiple of 6.">
+            <ExploreChips draw={makeCount(b)} height={256}
+              label="Test rows of six" value={b}
+              onPick={(v) => setB(v)}
+              chips={[{ v: 24, label: "24" }, { v: 30, label: "30" }, { v: 36, label: "36" }, { v: 42, label: "42" }]}
+              caption={<MathEl omml={M.right} size="lg" display="block" />}
+              footnote="A full last row means it is a multiple of 6." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[{ id: "p1", text: "3 for 12", target: "fac" }, { id: "p2", text: "24 for 6", target: "mul" }, { id: "p3", text: "5 for 20", target: "fac" }, { id: "p4", text: "30 for 5", target: "mul" }]} targets={[{ id: "prime", label: "prime — exactly two factors" }, { id: "comp", label: "composite — more than two" }]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Factor or multiple?"
+            text="Omar and Zayd lay four claims from the reef crew on the board. Same fact, two directions — each claim names one of them."
+            clue="A factor divides it · a multiple contains it.">
+            <CardSort award={award} columns={2}
+              items={[{ id: "p1", text: "3 for 12", target: "fac" }, { id: "p2", text: "24 for 6", target: "mul" }, { id: "p3", text: "5 for 20", target: "fac" }, { id: "p4", text: "30 for 5", target: "mul" }]}
+              targets={[
+                { id: "fac", label: "a factor — it divides the number" },
+                { id: "mul", label: "a multiple — it contains the number" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Huda's way — skip count", omml: M.left, h: 92, quote: "I keep adding 6 and write down where I land." }}
-          right={{ name: "Adel's way — multiply", omml: M.right, h: 92, quote: "I do 6 times 1, 6 times 2, 6 times 3." }}
-          same={["Both give 6, 12, 18, 24", "Both start at 6", "Both could go on forever"]} diff={["Huda adds, Adel multiplies", "Adel can jump straight to the tenth one", "Huda's is easier to say out loud"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one multiple list"
+            text="Huda skip-counts by adding 6. Adel multiplies 6 by 1, 2, 3... Both lists agree."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Huda's way — skip count", omml: M.left, h: 92, quote: "I keep adding 6 and write down where I land." }}
+              right={{ name: "Adel's way — multiply", omml: M.right, h: 92, quote: "I do 6 times 1, 6 times 2, 6 times 3." }}
+              same={["Both give 6, 12, 18, 24", "Both start at 6", "Both could go on forever"]}
+              diff={["Huda adds, Adel multiplies", "Adel can jump straight to the tenth one", "Huda's is easier to say out loud"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard75} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The two directions, on the board"
+            text="Zayd builds only what the class can justify: 3 fits inside 12, and 12 is built from 3 — the same fact, read two ways."
+            clue="3 is a factor of 12 · 12 is a multiple of 3 · same fact, two words.">
+            <BoardScreen draw={drawBoard75} height={430}
+              caption="Same fact, two words." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "count the factors · exactly two means prime" }]}
-          hand={"list the factors · count them · two means prime, more means composite, one means neither"}
-          cards={[
-            { title: "Prime", omml: M.left, note: "exactly two factors: 1 and itself" },
-            { title: "Tap for the special case", omml: M.right, revealOmml: M.reveal, reveal: true, note: "1 has only one factor" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="A multiple is what you get when you count in that number — the landings go on forever, and the gaps never change."
+            clue="The landings never stop.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "a multiple is what you get when you count in that number" }]}
+              hand={"count in the number · every landing is a multiple · the gap is always the number itself"}
+              cards={[
+                { title: "The multiples we made", omml: M.left, note: "6, 12, 18, 24 — counting in sixes" },
+                { title: "Tap for the direction", omml: M.right, revealOmml: M.reveal, reveal: true,
+                  note: "a factor divides in; a multiple comes out of counting" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Is 45 a multiple of 5?" omml={M.swyk} options={[{ v: "a", text: "no" }, { v: "b", text: "yes" }, { v: "c", text: "only if you round" }, { v: "d", text: "cannot tell" }]} right="b"
-          support={{ yes: "Yes — 3 × 7 = 21, so it has four factors: 1, 3, 7 and 21.", notYet: "Not yet — work through it in order.",
-            draw: drawSupport75, h: 82, hint: "Count in fives: 5, 10, 15 ... do you land on 45?" }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar lands on the test"
+            text="Is 45 a multiple of 5? Land on it — or divide it."
+            clue="Count in fives: do you land on 45?">
+            <ShowWhatYouKnow award={award}
+              prompt="Is 45 a multiple of 5?" omml={M.swyk}
+              options={[{ v: "a", text: "no" }, { v: "b", text: "yes" }, { v: "c", text: "only if you round" }, { v: "d", text: "cannot tell" }]}
+              right="b"
+              support={{ yes: "Yes — count in fives: 5, 10, 15, 20, 25, 30, 35, 40, 45. We land on it (5 × 9 = 45).", notYet: "Not yet — land on the number or divide it.",
+                draw: drawSupport75, h: 82, hint: "Count in fives: 5, 10, 15 ... do you land on 45?" }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule} action="Count in sevens at home and write down the first ten multiples." />;
+        return (
+          <StoryHandoff support="zafir"
+            title="The calendar is marked"
+            text="Omar signs the maintenance calendar: every landing day marked, every meeting ringed. Act I closes here — the number, the provision, the systems. The next door opens onto the Fraction Isles, where two names can mean the same share."
+            artifact="Reef kit · certified multiple calendar"
+            next="Two gardens, one water share — two different-looking shares that may cover the same part.">
+            <Closing game={game} omml={M.rule} action="Count in sevens at home and write down the first ten multiples." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

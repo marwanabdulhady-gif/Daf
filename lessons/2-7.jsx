@@ -40,7 +40,7 @@ const drawZeros = (ctx, W, H, frame) => {
 };
 
 /* Monitor A: the borrow chain, one hop at a time */
-const makeChain = (hop) => (ctx, W, H, frame) => {
+const makeChain = (hop, onHop) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   const stages = ["4000", "3(10)00", "39(10)0", "399(10)"];
@@ -53,6 +53,8 @@ const makeChain = (hop) => (ctx, W, H, frame) => {
   ];
   const cw = 74, x0 = W / 2 - 2 * cw;
   const names = ["thousands", "hundreds", "tens", "ones"];
+  if (onHop) for (let i = 0; i < 4; i++)
+    D.tap(ctx, { x: x0 + i * cw, y: 56, w: cw, h: 64, value: i, on: (v) => onHop(v) });
   digitSets[hop].forEach((d, i) => {
     const changed = digitSets[hop][i] !== digitSets[0][i];
     D.txt(ctx, names[i], x0 + i * cw + cw / 2, 46,
@@ -82,11 +84,12 @@ const makeChain = (hop) => (ctx, W, H, frame) => {
     { size: 12.5, col: "rgba(234,244,242,.65)", font: "marker" });
 };
 
-const makeColumnZeros = (step) => (ctx, W, H, frame) => {
+const makeColumnZeros = (step, onStep) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onStep) D.tap(ctx, { x: W / 2 - 96, y: 30, w: 192, h: H - 70, value: 0, on: () => onStep((step + 1) % 5) });
   D.columnOp(ctx, { x: W / 2 - 96, y: 30, w: 192, a: 4000, b: 1362, op: "-", prog: step / 4, t: frame, cw: 44 });
-  const notes = ["set it up", "ones: nothing to take from — start the chain",
+  const notes = ["set it up — tap to step", "ones: nothing to take from — start the chain",
                  "tens: 9 − 6 = 3", "hundreds: 9 − 3 = 6", "thousands: 3 − 1 = 2"];
   D.txt(ctx, notes[step], W / 2, H - 18, { size: 13.5, col: step === 4 ? "#34D399" : "#C9A227", font: "marker" });
 };
@@ -133,92 +136,84 @@ const LESSON = {
   ixl: ["LZZ"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "A number with three empty places. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Those zeros are about to cause trouble.",
-      rail: { launch: "I am not asking anything yet. Just look at the chart.",
-        monitor: ["Noticing the three zeros", "Naming the 4 as thousands", "Saying it looks easy"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Reading a zero as nothing at all rather than as an empty place." } },
+    { phase: "warmup", title: "The line of <em>silent zeros</em>",
+      lead: "Water damage erased the regrouping marks from the ledger. All that is left: 4,000 — and the ones, tens and hundreds are silent.",
+      goal: "Notice there is nothing next door to trade — the trade must keep going left.",
+      pull: "The warehouse counts are simulated — the chain works on any zeros.",
+      rail: { launch: "Fictional frame. Describe the chart — no working yet.",
+        monitor: ["Noticing the zeros are empty", "Noticing 1,362 must come out", "Wonding where the trade starts"],
+        connect: "Where can the first trade begin?",
+        misconception: "Answering 0 − 2 as a negative and stopping." } },
 
-    { phase: "launch", title: "Nothing to <em>take from</em>",
-      lead: "4,000 − 1,362. The ones, tens and hundreds are all empty.",
-      goal: "Create the need — the usual one-step trade is not available.",
-      pull: "Estimate first, then we will find something to trade.",
-      rail: { launch: "Try it the usual way. Where do you get stuck?",
-        monitor: ["Getting stuck at the ones", "Writing 0 minus 2 as 2", "Looking left for help"],
-        connect: "Where is the nearest place that actually has something?",
-        misconception: "Writing 0 − 2 = 2 because the digits are flipped." } },
+    { phase: "launch", title: "4,000 − 1,362, <em>estimated</em>",
+      lead: "The difference before the chain runs — estimated to the nearest hundred.",
+      goal: "Estimate the across-zero difference before regrouping.",
+      pull: "Keep going left until you find something to trade.",
+      rail: { launch: "Round 1,362. What is 4,000 − 1,400?",
+        monitor: ["Rounding the subtrahend", "Subtracting the rounds", "Checking the gap is plausible"],
+        connect: "What should the exact difference be near?",
+        misconception: "Subtracting 2 from 0 in the ones without starting a chain." } },
 
-    { phase: "monitor", title: "The <em>chain</em> of trades",
-      lead: "Hop left until you find a place with something in it, then hand it back down.",
-      goal: "Regrouping across zeros is a chain, not a single step.",
-      pull: "Now watch it happen in the columns.",
-      rail: { launch: "Predict what each place will hold after the hop.",
-        monitor: ["Following the chain", "Trading only once", "Checking the value is unchanged"],
-        connect: "Is it still 4,000 after all those trades?",
-        misconception: "Believing the number gets smaller each time you rename it." } },
+    { phase: "monitor", title: "Zayd starts the <em>borrow chain</em>",
+      lead: "Nothing in the ones, tens or hundreds — so the trade starts in the thousands and hops left to right.",
+      goal: "Rename 4,000 as 3 thousands, 9 hundreds, 9 tens, 10 ones — one hop at a time.",
+      pull: "Keep going left until you find something to trade.",
+      rail: { launch: "Before each hop: what becomes what?",
+        monitor: ["Trading a thousand for ten hundreds", "Trading a hundred for ten tens", "Trading a ten for ten ones"],
+        connect: "Did the value of 4,000 change as it was renamed?",
+        misconception: "Believing the rename changes the number's value." } },
 
-    { phase: "monitor", title: "Now in the <em>columns</em>",
-      lead: "The same chain, written the way you will write it.",
-      goal: "Connect the renaming to the standard notation.",
-      pull: "Which of these will need a chain?",
-      rail: { launch: "Predict each column before you step.",
-        monitor: ["Writing the 9s", "Losing track of the thousands digit", "Checking against the estimate"],
-        connect: "Why are there two 9s in the middle?",
-        misconception: "Writing 10 in every column instead of 9, 9, 10." } },
+    { phase: "monitor", title: "Omar steps the <em>renamed row</em>",
+      lead: "Now the columns can be subtracted: 10 − 2, 9 − 6, 9 − 3, 3 − 1.",
+      goal: "Subtract after the chain has done its work.",
+      pull: "The renamed row is still 4,000.",
+      rail: { launch: "Predict each column of the renamed row.",
+        monitor: ["Subtracting 10 − 2", "Subtracting 9 − 6", "Reading 2,638"],
+        connect: "Which column needed the chain?",
+        misconception: "Forgetting to reduce the column that lent out its ten." } },
 
-    { phase: "monitor", title: "Chain or <em>single trade</em>?",
-      lead: "Sort each subtraction. No grading until the class commits.",
-      goal: "Recognise when a chain will be needed.",
-      pull: "Two students wrote the renaming differently.",
-      rail: { launch: "Look at the digits to the left of the ones.",
-        monitor: ["Spotting the zeros", "Calculating fully first", "Checking each column"],
-        connect: "What is the signal that a chain is coming?",
-        misconception: "Assuming any number with a zero needs a chain." } },
+    { phase: "monitor", title: "Ink the <em>renamed row</em>",
+      lead: "Four pieces of the rename. Each one belongs in exactly one place.",
+      goal: "Sort the renamed row by place value.",
+      pull: "3,9,9,10 is still 4,000.",
+      rail: { launch: "Name the place each piece belongs to.",
+        monitor: ["Placing the 3 thousands", "Placing the 9 hundreds", "Placing the 10 ones"],
+        connect: "Why is 10 ones not in the ones box forever?",
+        misconception: "Leaving 10 ones instead of renaming them." } },
 
-    { phase: "connect", title: "Two ways to <em>write it</em>",
-      lead: "Jood crossed out step by step. Talal renamed 4,000 in one go.",
+    { phase: "connect", title: "Aya renames <em>at once</em>. Musa trades one place at a time",
+      lead: "Aya writes 3,9,9,10 in one go. Musa hops the chain column by column. Both reach 2,638.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Crossing out one at a time", "Renaming in one move", "Mixing the two and losing track"],
-        connect: "Are these different methods, or the same one written differently?",
-        misconception: "Thinking the one-step rename is a shortcut with different rules." } },
+        monitor: ["Comparing the two routes", "Checking both end at 2,638", "Saying the value never changed"],
+        connect: "Which route is easier to check?",
+        misconception: "Believing the one-shot rename skips the trades." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "One thousand becomes ten hundreds, then one hundred becomes ten tens, then one ten becomes ten ones.",
+    { phase: "synth", title: "On the <em>board</em>: the trade keeps going left",
+      lead: "Draw the zeros. Start the chain in the thousands. Hop right until the ones can give.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next stroke", "Following the chain", "Restating it in their own words"],
+        monitor: ["Following each hop", "Saying the value is unchanged", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Seeing the row of 9s as a rule to memorise rather than a result." } },
-
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the chain", "Testing on a five-digit number", "Checking by adding back"],
-        connect: "What would 10,000 − 1 look like?",
-        misconception: "Believing the method breaks for longer chains." } },
+        misconception: "Stopping the chain at the first zero." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Estimate, calculate, then check by adding back.",
-        monitor: ["Renaming across the zeros", "Estimating first", "Checking by addition"],
+      lead: "6,000 − 2,475 — the difference across the zeros?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Start the chain in the thousands.",
+        monitor: ["Renaming across two zeros", "Subtracting the renamed row", "Checking against 3,600"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Writing 10 in the hundreds and tens instead of 9." } },
+        misconception: "Answering 3,575 — the tens chain was skipped." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The across-zeros ledger is <em>annotated</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: deciding which operation a problem needs at all.",
-      rail: { launch: "Ask three students to describe the chain in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the chart", "Ready for word problems"],
+      pull: "Tomorrow: the auditor's polished solution under the seal.",
+      rail: { launch: "Ask three students to say where their chain started.",
+        monitor: ["Able to explain the chain", "Still stops at the first zero", "Ready for two-step problems"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -229,86 +224,142 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawZeros} height={256} award={award}
-          notices={["Three places are empty", "Only the thousands has a digit", "It is 4,000", "The zeros hold the places"]}
-          wonders={["What if I have to subtract?", "Can I take from an empty place?", "Where do I get ones from?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The line of silent zeros"
+            text="Water crossed the ledger and erased the regrouping marks. All that survives: 4,000 in the warehouse, 1,362 to ship — and a line of silent zeros between them."
+            clue="The trade must keep going left">
+            <NoticeWonder draw={drawZeros} height={256} award={award}
+              notices={["The ones, tens and hundreds are empty", "1,362 must come out of 4,000", "The regrouping marks are gone", "Only the thousands hold anything"]}
+              wonders={["Where can the first trade begin?", "What is 4,000 renamed as?", "How do you check across the zeros?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawZeros} height={256} award={award}
-          label="About what is 4,000 − 1,362?" min={1500} max={4000} start={2600} unit=""
-          after="Locked. Now let us find something to trade."
-          note="Round 1,362 to 1,400 and take that from 4,000." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The difference, estimated before the chain"
+            text="Omar asks for the estimate before any hop is made — the difference must sit near it."
+            clue="Round 1,362, then subtract the rounds">
+            <LaunchEstimate draw={drawZeros} height={256} award={award}
+              label="4,000 − 1,362 — the difference, estimated" min={2000} max={3200} start={2600} unit="estimate"
+              after="Locked. Now start the borrow chain in the thousands."
+              note="The warehouse counts are simulated — the chain works on any zeros." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeChain(hop)} height={258}
-          label="Hop left to find something to trade"
-          value={hop}
-          onPick={(v) => setHop(v)}
-          chips={[{ v: 0, label: "stuck" }, { v: 1, label: "trade a thousand" }, { v: 2, label: "trade a hundred" }, { v: 3, label: "trade a ten" }]}
-          caption={<MathEl omml={M.rename} size="lg" display="block" />}
-          footnote="Every trade renames the number. The value never moves." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd starts the borrow chain"
+            text="Nothing next door — so he takes from the thousands and hops right, one rename at a time."
+            clue="Keep going left until you find something to trade">
+            <ExploreChips draw={makeChain(hop, setHop)} height={252}
+              label="Rename 4,000 one hop at a time"
+              value={hop}
+              onPick={(v) => setHop(v)}
+              chips={[{ v: 0, label: "nothing to take from" }, { v: 1, label: "trade from the thousands" }, { v: 2, label: "trade from the hundreds" }, { v: 3, label: "trade from the tens" }]}
+              caption={<MathEl omml={M.rename} size="lg" display="block" />}
+              footnote="Still 4,000 — just renamed." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeColumnZeros(step)} height={258}
-          label="Step through the columns"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "set up" }, { v: 1, label: "ones" }, { v: 2, label: "tens" },
-                  { v: 3, label: "hundreds" }, { v: 4, label: "thousands" }]}
-          caption={<MathEl omml={M.answer} size="xl" display="block" />}
-          footnote="9, 9, then 10 — that is what the chain leaves behind." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar steps the renamed row"
+            text="The chain has done its work — now each column can be subtracted in turn."
+            clue="10 − 2, then 9 − 6, then 9 − 3, then 3 − 1">
+            <ExploreChips draw={makeColumnZeros(step, setStep)} height={252}
+              label="Step the columns of 4,000 − 1,362"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "set it up" }, { v: 1, label: "start the chain" }, { v: 2, label: "tens" }, { v: 3, label: "hundreds" }, { v: 4, label: "thousands" }]}
+              caption={<MathEl omml={M.answer} size="lg" display="block" />}
+              footnote="The renamed row is still 4,000." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "z1", text: "4,000 − 1,362", target: "chain" },
-            { id: "z2", text: "4,530 − 1,362", target: "single" },
-            { id: "z3", text: "8,004 − 2,375", target: "chain" },
-            { id: "z4", text: "6,481 − 2,350", target: "single" }
-          ]}
-          targets={[
-            { id: "chain", label: "needs a chain of trades" },
-            { id: "single", label: "one trade is enough" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Ink the renamed row"
+            text="Omar and Zayd lay four pieces of the rename on the table. The ledger wants each one in its own place."
+            clue="3, 9, 9, 10 is still 4,000">
+            <CardSort award={award} columns={4} commitLabel="Ink the renamed row"
+              items={[
+                { id: "p1", text: "3 thousands", target: "thou" },
+                { id: "p2", text: "9 hundreds", target: "hund" },
+                { id: "p3", text: "9 tens", target: "tens" },
+                { id: "p4", text: "10 ones", target: "ones" }
+              ]}
+              targets={[
+                { id: "thou", label: "thousands" },
+                { id: "hund", label: "hundreds" },
+                { id: "tens", label: "tens" },
+                { id: "ones", label: "ones" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Jood's way — one cross-out at a time", omml: M.chain, h: 92,
-                  quote: "I did each trade separately so I could see it." }}
-          right={{ name: "Talal's way — rename in one go", omml: M.rename, h: 92,
-                   quote: "I wrote 3, 9, 9, 10 straight away." }}
-          same={["Both end with 3, 9, 9 and 10", "Both keep the value at 4,000", "Both get 2,638"]}
-          diff={["Jood shows each hop", "Talal writes it in one move", "Jood's is safer while it is new"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 2,638"
+            text="Aya renames the whole row at once. Musa trades one place at a time. Both reach 2,638."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Aya's way — rename the row at once", omml: M.rename, h: 92,
+                      quote: "4,000 is also 3 thousands, 9 hundreds, 9 tens, 10 ones." }}
+              right={{ name: "Musa's way — trade one place at a time", omml: M.chain, h: 92,
+                       quote: "Keep going left until you find something to trade." }}
+              same={["Both reach 2,638", "Both keep the value unchanged", "Both can be checked by adding back"]}
+              diff={["Aya's row is one line", "Musa's chain is four hops", "Musa's hops are easier to verify"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard27} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The chain is drawn, not declared"
+            text="Zayd builds only what the class can justify: the zeros, the chain from the thousands, the hops right."
+            clue="One thousand can be renamed all the way down to ten ones">
+            <BoardScreen draw={drawBoard27} height={430}
+              caption="Silent zeros: the trade keeps going left." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.chain, alt: "keep going left until you find something to trade" }]}
-          hand={"empty places cannot give · hop left to the first place that can · hand it back down, ten at a time"}
-          cards={[
-            { title: "The difference we found", omml: M.answer, note: "our estimate was 2,600" },
-            { title: "Tap to check it by adding", omml: M.estimate, revealOmml: M.check, reveal: true,
-              note: "adding the answer back proves it" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs the across-zeros ledger"
+            text="6,000 − 2,475. Show the difference — and the chain that made it."
+            clue="Start the chain in the thousands">
+            <ShowWhatYouKnow award={award}
+              prompt="6,000 − 2,475 — the difference across the zeros?"
+              omml={M.swyk}
+              options={[{ v: "a", text: "3,525" }, { v: "b", text: "3,575" }, { v: "c", text: "3,425" }, { v: "d", text: "4,525" }]}
+              right="a"
+              support={{
+                yes: "Yes — the chain runs across both zeros and 3,525 adds back to 6,000.",
+                notYet: "Not yet — add it back: the difference plus 2,475 must be 6,000.",
+                draw: drawSupport27, h: 82,
+                hint: "0 ones cannot take 5 — and the tens are empty too. Where does the chain start?"
+              }} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Subtract 6,000 − 2,475."
-          omml={M.swyk}
-          options={[{ v: "a", text: "3,525" }, { v: "b", text: "4,525" }, { v: "c", text: "3,475" }, { v: "d", text: "3,635" }]}
-          right="a"
-          support={{
-            yes: "Yes — and 3,525 + 2,475 = 6,000, so it checks out.",
-            notYet: "Not yet — rename 6,000 first, before you subtract anything.",
-            draw: drawSupport27, h: 96,
-            hint: "6,000 is 5 thousands, 9 hundreds, 9 tens and 10 ones."
-          }} />;
-
-      case 9:
-        return <Closing game={game} omml={M.rename}
-          action="Write 1,000 as hundreds, tens and ones on a scrap of paper and show someone why it is still 1,000." />;
+        return (
+          <StoryHandoff
+            title="Every trade is annotated"
+            text="Omar signs the across-zeros ledger with every trade annotated. The auditor leans in, lays a polished solution under the seal — and a polished answer can still hide a faulty step."
+            artifact="Across-zeros ledger · every trade annotated"
+            next="The auditor lays a polished solution under the seal — but a polished answer can still hide a faulty step.">
+            <Closing game={game} omml={M.chain}
+              action="Subtract across two zeros tonight — a bill, a distance — and annotate every trade." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }

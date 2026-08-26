@@ -1,76 +1,131 @@
 /* ===========================================================================
    SAVVAS enVision Mathematics · Grade 4 · Topic 1
-   LESSON 1-5 · Problem Solving: Construct Arguments     Standard: MP.3
+   LESSON 1-5 · Problem Solving: Construct Arguments   Standard: MP.3
    I can ... construct a math argument about place value, and critique the
             reasoning of others.
+   Story beat: "The seal of the first folio" — both teams at the council table.
    =========================================================================== */
 
 const M = {
-  claim: om(mt("13,637"), mnor(" and "), mt("13,533")),
-  evidence: om(mt("600>500")),
-  conclusion: om(mt("13,637>13,533")),
-  weakClaim: om(mnor("it just looks bigger")),
-  digitCount: om(mnor("both have "), mt("5"), mnor(" digits")),
-  swykPair: om(mt("28,405"), mnor(" and "), mt("28,450")),
-  swykAnswer: om(mt("28,405<28,450")),
-  tensPlace: om(mt("0<5")),
+  pair: om(mt("4,697,000"), mnor(" and "), mt("4,679,000")),
+  diff: om(mt("4,697,000−4,679,000=18,000")),
+  decide: om(mt("90,000>70,000")),
+  conclusion: om(mt("4,697,000>4,679,000")),
+  sameStart: om(mnor("both have "), mt("7"), mnor(" digits")),
   goodArgument: om(mnor("claim"), mt("+"), mnor("evidence"), mt("+"), mnor("conclusion"))
 };
 
-/* ---- drawings ------------------------------------------------------------ */
+/* ---- lesson-specific drawings ------------------------------------------- */
 
-/* Warm-Up: two speech bubbles, one with numbers and one without */
-const drawTwoClaims = (ctx, W, H, frame) => {
-  const CYCLE = 560, f = frame % CYCLE;
-  const p1 = D.at(f, 0, 120), p2 = D.at(f, 120, 260), p3 = D.at(f, 270, 380);
+/* Council table: two statement cards and the seal of Folio 1 */
+const drawCouncil = (ctx, W, H, frame) => {
+  const f = frame % 1100;
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
+  /* the table */
+  const pT = D.at(f, 0, 140);
+  ctx.save();
+  ctx.globalAlpha = pT;
+  D.rr(ctx, W / 2 - 110, H - 52, 220, 26, 6);
+  ctx.fillStyle = "rgba(201,162,39,.25)"; ctx.fill();
+  ctx.strokeStyle = "rgba(201,162,39,.6)"; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.restore();
+  D.txt(ctx, "THE COUNCIL TABLE", W / 2, H - 37, { size: 10, col: "#C9A227", font: "mono", weight: 700, alpha: pT });
 
-  const bubble = (x, y, w, h, col, a) => {
+  const cards = [
+    { who: "TEAM A", num: "4,697,000", col: "#388C46", x: 16, a: D.at(f, 120, 340) },
+    { who: "TEAM B", num: "4,679,000", col: "#2D70B3", x: W / 2 + 8, a: D.at(f, 240, 460) }
+  ];
+  const cw = W / 2 - 30;
+  cards.forEach((c) => {
+    if (c.a <= 0) return;
     ctx.save();
-    ctx.globalAlpha = a;
-    D.rr(ctx, x, y, w, h, 12);
-    ctx.fillStyle = "rgba(234,244,242,.05)";
-    ctx.fill();
-    ctx.strokeStyle = col; ctx.lineWidth = 1.8; ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(x + 24, y + h); ctx.lineTo(x + 38, y + h + 14); ctx.lineTo(x + 46, y + h);
-    ctx.fillStyle = "rgba(234,244,242,.05)"; ctx.fill(); ctx.stroke();
+    ctx.globalAlpha = c.a;
+    D.rr(ctx, c.x, 36, cw, 118, 12);
+    ctx.fillStyle = "rgba(255,255,255,.05)"; ctx.fill();
+    ctx.strokeStyle = c.col; ctx.lineWidth = 2; ctx.stroke();
     ctx.restore();
-  };
-
-  const bw = W / 2 - 34;
-  bubble(22, 34, bw, 96, "#C74440", p1);
-  D.fig(ctx, 60, H - 34, "#C74440", p1);
-  D.txt(ctx, "Gerald", 60, H - 10, { size: 11, col: "#C74440", font: "marker", alpha: p1 });
-  if (p2 > 0) {
-    D.txt(ctx, "My city is bigger.", 22 + bw / 2, 66, { size: 15, col: "#EAF4F2", font: "marker", alpha: p2 });
-    D.txt(ctx, "The number just looks bigger.", 22 + bw / 2, 96,
-      { size: 12.5, col: "rgba(234,244,242,.6)", font: "marker", alpha: p2 });
-  }
-
-  bubble(W / 2 + 12, 34, bw, 96, "#388C46", p1);
-  D.fig(ctx, W / 2 + 50, H - 34, "#388C46", p1);
-  D.txt(ctx, "Emily", W / 2 + 50, H - 10, { size: 11, col: "#388C46", font: "marker", alpha: p1 });
-  if (p3 > 0) {
-    D.txt(ctx, "My city is bigger.", W / 2 + 12 + bw / 2, 60, { size: 15, col: "#EAF4F2", font: "marker", alpha: p3 });
-    D.txt(ctx, "13,637 and 13,533 match until", W / 2 + 12 + bw / 2, 86,
-      { size: 12, col: "#C9A227", font: "marker", alpha: p3 });
-    D.txt(ctx, "the hundreds, and 600 beats 500.", W / 2 + 12 + bw / 2, 106,
-      { size: 12, col: "#C9A227", font: "marker", alpha: p3 });
+    D.txt(ctx, c.who + " defends", c.x + cw / 2, 60, { size: 11, col: c.col, font: "mono", weight: 700, alpha: c.a });
+    D.txt(ctx, c.num, c.x + cw / 2, 100, { size: 27, col: "#EAF4F2", font: "marker", alpha: c.a });
+    D.txt(ctx, "“this is the restored line”", c.x + cw / 2, 136, { size: 11, col: "rgba(234,244,242,.6)", font: "marker", alpha: c.a });
+  });
+  /* the seal waits at the top */
+  const pS = D.at(f, 520, 760);
+  if (pS > 0) {
+    D.star8(ctx, W / 2, 186, 15 + pS * 2, pS, "rgba(201,162,39," + (0.35 + pS * 0.5) + ")", 1.8);
+    D.txt(ctx, "the seal of Folio 1 waits for an argument — not a volume", W / 2, H - 12,
+      { size: 12, col: "#C9A227", font: "marker", alpha: pS });
   }
 };
 
-/* Monitor A: an argument assembling from the pieces the student picks */
+/* Scan the two census lines place by place */
+const makeCensusScan = (step, onScan) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  const a = "4697000", b = "4679000";
+  const cw = Math.min(50, (W - 80) / 7), x0 = W / 2 - (7 * cw) / 2;
+  const yA = 74, yB = 130;
+  const names = ["millions", "hundred\\nthousands", "ten\\nthousands", "thousands", "hundreds", "tens", "ones"];
+  for (let i = 0; i < 7; i++) {
+    const cx = x0 + i * cw + cw / 2;
+    if (onScan) D.tap(ctx, { x: x0 + i * cw, y: yA - 24, w: cw, h: (yB - yA) + 48, value: i, on: onScan });
+    const scanned = i < step;
+    const active = i === step;
+    const dim = i > step;
+    const col = dim ? "rgba(234,244,242,.28)" : scanned ? "rgba(234,244,242,.62)" : "#EAF4F2";
+    if (active) {
+      ctx.save();
+      ctx.globalAlpha = 0.55 + Math.sin(frame / 12) * 0.3;
+      D.rr(ctx, cx - cw / 2 + 2, yA - 24, cw - 4, (yB - yA) + 48, 8);
+      ctx.strokeStyle = "#C9A227"; ctx.lineWidth = 2; ctx.stroke();
+      ctx.restore();
+    }
+    D.txt(ctx, a[i], cx, yA, { size: 26, col: active ? "#C9A227" : col, font: "marker" });
+    D.txt(ctx, b[i], cx, yB, { size: 26, col: active ? "#C9A227" : col, font: "marker" });
+    if (scanned && a[i] === b[i]) D.txt(ctx, "same", cx, yB + 30, { size: 9, col: "rgba(52,211,153,.75)", font: "mono", weight: 700 });
+  }
+  if (step === 2) {
+    D.txt(ctx, "9 beats 7 — the argument stops here", W / 2, yB + 66, { size: 15, col: "#C9A227", font: "marker" });
+    D.txt(ctx, "4,697,000 is the greater reading", W / 2, H - 20, { size: 14, col: "#34D399", font: "marker" });
+  } else if (step === 1) {
+    D.txt(ctx, "the hundred thousands match — keep going", W / 2, yB + 66, { size: 14, col: "#EAF4F2", font: "marker" });
+  } else if (step === 0) {
+    D.txt(ctx, "start at the greatest place", W / 2, yB + 66, { size: 14, col: "#EAF4F2", font: "marker" });
+  } else {
+    D.txt(ctx, "we already knew it at the ten thousands place", W / 2, yB + 66,
+      { size: 12, col: "rgba(234,244,242,.55)", font: "marker" });
+  }
+};
+
+/* The two readings subtracted — the gap the argument must account for */
+const makeDiff = (pick) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  const p1 = D.at(frame % 500, 0, 160), p2 = D.at(frame % 500, 200, 360);
+  D.txt(ctx, "4,697,000", W / 2, 66, { size: 30, col: "#EAF4F2", font: "marker", alpha: p1 });
+  D.txt(ctx, "− 4,679,000", W / 2, 108, { size: 30, col: "#EAF4F2", font: "marker", alpha: D.at(frame % 500, 100, 240) });
+  if (p2 > 0) {
+    D.marker(ctx, [[W / 2 - 90, 128], [W / 2 + 90, 128]], p2, "rgba(201,162,39,.5)", 1.8);
+    D.txt(ctx, "the gap between the readings", W / 2, 152, { size: 12, col: "rgba(234,244,242,.6)", font: "marker", alpha: p2 });
+  }
+  const right = pick === 2;
+  D.txt(ctx, right ? "18,000" : "the gap is " + ["180", "1,800", "18,000", "180,000"][pick],
+    W / 2, 186, { size: 20, col: right ? "#34D399" : "#C9A227", font: "marker", alpha: D.at(frame % 500, 300, 420) });
+  D.txt(ctx, right ? "the difference is exactly 18,000 — the argument must account for it"
+                   : "which gap is the right size?", W / 2, H - 16,
+    { size: 12, col: right ? "#34D399" : "#C9A227", font: "marker" });
+};
+
+/* an argument assembling from the pieces the student picks */
 const makeArgument = (picked) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
   const rows = [
-    { key: "claim", label: "Claim", text: "Gerald's city has more people.", col: "#6042A6" },
-    { key: "numbers", label: "Numbers", text: "13,637 and 13,533", col: "#2D70B3" },
-    { key: "place", label: "Place value", text: "They match until the hundreds place.", col: "#FA7E19" },
-    { key: "compare", label: "Compare", text: "600 is greater than 500.", col: "#C9A227" },
-    { key: "conclusion", label: "So", text: "13,637 is greater than 13,533.", col: "#388C46" }
+    { key: "claim", label: "Claim", text: "Team A's reading is the restored line.", col: "#6042A6" },
+    { key: "numbers", label: "Numbers", text: "4,697,000 and 4,679,000", col: "#2D70B3" },
+    { key: "place", label: "Place value", text: "They match until the ten-thousands place.", col: "#FA7E19" },
+    { key: "compare", label: "Compare", text: "90,000 is greater than 70,000.", col: "#C9A227" },
+    { key: "conclusion", label: "So", text: "4,697,000 is the greater reading.", col: "#388C46" }
   ];
   let y = 34;
   rows.forEach((r) => {
@@ -94,19 +149,19 @@ const makeArgument = (picked) => (ctx, W, H, frame) => {
     W / 2, H - 16, { size: 13, col: done ? "#34D399" : "rgba(234,244,242,.55)", font: "marker" });
 };
 
-/* Monitor B: spot the gap in a flawed argument */
+/* spot the gap in a flawed argument */
 const makeCritique = (found) => (ctx, W, H, frame) => {
   D.rr(ctx, 0, 0, W, H, 14);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
-  D.txt(ctx, "Gerald's argument", W / 2, 28, { size: 13, col: "#C74440", font: "marker" });
+  D.txt(ctx, "Team B's argument", W / 2, 28, { size: 13, col: "#2D70B3", font: "marker" });
   const lines = [
-    { t: "Both numbers have 5 digits.", ok: true },
+    { t: "Both readings have 7 digits.", ok: true },
     { t: "So they are about the same size.", ok: true },
-    { t: "Mine starts with 1 and so does hers.", ok: true },
-    { t: "So my city must be bigger.", ok: false }
+    { t: "Ours came first in the ledger.", ok: true },
+    { t: "So ours must be the original.", ok: false }
   ];
   let y = 66;
-  lines.forEach((l, n) => {
+  lines.forEach((l) => {
     const flagged = found && !l.ok;
     ctx.save();
     ctx.globalAlpha = 1;
@@ -120,7 +175,7 @@ const makeCritique = (found) => (ctx, W, H, frame) => {
     D.txt(ctx, l.t, W / 2, y + 2, { size: 13.5, col: "#EAF4F2", font: "marker" });
     y += 42;
   });
-  D.txt(ctx, found ? "the last step has no evidence behind it"
+  D.txt(ctx, found ? "the last step has no place-value evidence behind it"
                    : "which step does not follow from the one before?",
     W / 2, H - 18, { size: 13, col: found ? "#C74440" : "#C9A227", font: "marker" });
 };
@@ -130,10 +185,10 @@ const drawBoard15 = (ctx, W, H, frame) => {
   const CYCLE = 780, f = frame % CYCLE;
   D.board(ctx, W, H, { t: frame, title: "What makes an argument, not a guess?" });
   const stages = [
-    { p: [20, 150], label: "Claim", text: "Gerald's city has more people.", col: "#6042A6" },
-    { p: [140, 290], label: "Evidence", text: "13,637 and 13,533 — hundreds place: 600 and 500", col: "#2D70B3" },
+    { p: [20, 150], label: "Claim", text: "Team A's reading is the restored census line.", col: "#6042A6" },
+    { p: [140, 290], label: "Evidence", text: "4,697,000 vs 4,679,000 — ten-thousands: 90,000 and 70,000", col: "#2D70B3" },
     { p: [280, 430], label: "Reason", text: "The first place that differs decides it.", col: "#FA7E19" },
-    { p: [420, 570], label: "Conclusion", text: "So 13,637 is greater than 13,533.", col: "#388C46" }
+    { p: [420, 570], label: "Conclusion", text: "So 4,697,000 is the greater reading (by 18,000).", col: "#388C46" }
   ];
   let y = 96;
   stages.forEach((s) => {
@@ -164,15 +219,15 @@ const drawSupport15 = (ctx, W, H) => {
   ctx.clearRect(0, 0, W, H);
   D.rr(ctx, 0, 0, W, H, 10);
   ctx.fillStyle = "#0B1F24"; ctx.fill();
-  const a = "28405", b = "28450";
-  const cw = Math.min(40, (W - 40) / 5), x0 = W / 2 - (5 * cw) / 2;
-  for (let i = 0; i < 5; i++) {
+  const a = "4697000", b = "4679000";
+  const cw = Math.min(38, (W - 40) / 7), x0 = W / 2 - (7 * cw) / 2;
+  for (let i = 0; i < 7; i++) {
     const cx = x0 + i * cw + cw / 2;
     const same = a[i] === b[i];
-    D.txt(ctx, a[i], cx, 26, { size: 21, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
-    D.txt(ctx, b[i], cx, 58, { size: 21, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
+    D.txt(ctx, a[i], cx, 24, { size: 17, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
+    D.txt(ctx, b[i], cx, 52, { size: 17, col: same ? "rgba(234,244,242,.5)" : "#C9A227", font: "marker" });
   }
-  D.txt(ctx, "tens place", x0 + 3.5 * cw, 80, { size: 10, col: "#C9A227", font: "mono", weight: 700 });
+  D.txt(ctx, "ten-thousands", x0 + 2.5 * cw, 74, { size: 9.5, col: "#C9A227", font: "mono", weight: 700 });
 };
 
 /* ---- the lesson ---------------------------------------------------------- */
@@ -185,246 +240,464 @@ const LESSON = {
   ixl: ["EFV", "XVJ"],
 
   metas: [
-    { phase: "warmup",
-      title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Two students say the same thing. One of them shows their thinking.",
-      goal: "An invitation — every student has something to say.",
-      pull: "Both said the same words. Only one of them said why.",
-      rail: { launch: "I am not asking who is right. Just tell me what you see.",
-        monitor: ["Noticing one has numbers", "Noticing both make the same claim", "Noticing the word because is missing"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Deciding who is right before reading the reasoning." } },
-
-    { phase: "launch",
-      title: "Is <em>it looks bigger</em> a reason?",
-      lead: "Gerald says his city is bigger because the number looks bigger. Is that enough?",
-      goal: "Create the need — a claim without evidence convinces nobody.",
-      pull: "Let us build an argument that would convince Gerald.",
-      rail: { launch: "Would that convince you? Turn and tell your partner.",
-        monitor: ["Accepting it", "Rejecting it without saying why", "Asking to see the numbers"],
-        connect: "What would Gerald have to add to convince you?",
-        misconception: "A confident voice counts as evidence. Do not correct it — ask what would change their mind." } },
-
-    { phase: "monitor",
-      title: "Build the <em>argument</em>",
-      lead: "Add one piece at a time. Watch when it starts to convince you.",
-      goal: "An argument has parts, and each one does a job.",
-      pull: "Now let us look at an argument that is missing a part.",
-      rail: { launch: "Add the pieces in any order. Say out loud when it becomes convincing.",
-        monitor: ["Starting with the claim", "Starting with the numbers", "Leaving out the conclusion"],
-        connect: "Which piece made the biggest difference?",
-        misconception: "Thinking more sentences means a stronger argument." } },
-
-    { phase: "monitor",
-      title: "Find the <em>gap</em>",
-      lead: "Every line here is true. One of them still does not follow.",
-      goal: "Critique the reasoning of others — the other half of MP.3.",
-      pull: "True sentences are not the same as a proof.",
-      rail: { launch: "Read it line by line. Where does it stop making sense?",
-        monitor: ["Checking each line is true", "Looking for the jump", "Rewriting the last line"],
-        connect: "What evidence is missing from the last line?",
-        misconception: "If every sentence is true the argument must be valid." } },
-
-    { phase: "monitor",
-      title: "Argument or <em>guess</em>?",
-      lead: "Sort each statement. No grading until the class commits.",
-      goal: "Tell evidence apart from opinion.",
-      pull: "Two students wrote the same argument different lengths.",
-      rail: { launch: "Read each card out loud before you place it.",
-        monitor: ["Looking for numbers", "Looking for the word because", "Checking it answers the question"],
-        connect: "What did every good one have in common?",
-        misconception: "Counting length as quality." } },
-
-    { phase: "connect",
-      title: "Two ways to <em>convince</em>",
-      lead: "Rana wrote three sentences. Adel wrote one. Both are complete.",
-      goal: "The comparison produces the rule — not the teacher.",
-      pull: "Now we put it on the board.",
-      rail: { launch: "Show both without judging either.",
-        monitor: ["Finding the evidence in both", "Preferring the longer one", "Noticing the short one still names the place"],
-        connect: "What does the short argument still contain?",
-        misconception: "Longer is always better." } },
-
-    { phase: "synth",
-      title: "On the <em>board</em>",
-      lead: "Claim. Evidence. Reason. Conclusion. Each one earns its place.",
-      goal: "The moment the lesson is taught — not displayed.",
-      pull: "Say it in one sentence.",
-      rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next box", "Naming the missing piece", "Restating it in their own words"],
-        connect: "Who can say what makes an argument in one sentence?",
-        misconception: "Treating the four boxes as a form to fill in rather than a way to think." } },
-
-    { phase: "synth",
-      title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming all three parts", "Testing it on their own writing", "Asking about arguments with pictures"],
-        connect: "Can a drawing be evidence?",
-        misconception: "Believing only words count as an argument." } },
-
-    { phase: "swyk",
-      title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.",
-      pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Choose the argument, then say why the others fail.",
-        monitor: ["Checking for numbers", "Checking the place value reason", "Checking the conclusion"],
-        connect: "Collect responses to open tomorrow.",
-        misconception: "Choosing the longest option." } },
-
-    { phase: "connect",
-      title: "What you <em>collected</em> today",
-      lead: "Points are for thinking, not for speed.",
-      goal: "Close on one action a student can actually do tonight.",
-      pull: "Next topic: adding and subtracting multi-digit numbers.",
-      rail: { launch: "Ask three students to say what makes an argument.",
-        monitor: ["Able to explain it to someone else", "Still needs the four boxes", "Ready for Topic 2"],
-        connect: "Who is teaching it at home tonight?",
-        misconception: "Chasing points instead of understanding." } }
+    {
+      phase: "warmup",
+      title: "The seal of the <em>first folio</em>",
+      lead: "Two teams stand at the council table, each defending a reading of the restored census line. The seal of Folio 1 waits.",
+      goal: "Notice that the two statements differ by only 18,000 — and that the seal asks for an argument.",
+      pull: "Volume is not evidence.",
+      rail: {
+        launch: "Fictional frame. Ask only: what do the two teams claim, and what is different?",
+        monitor: ["Noticing both readings are close", "Comparing digit by digit", "Asking what wins the seal"],
+        connect: "What would settle a dispute this close?",
+        misconception: "Thinking the louder or first team wins by default."
+      }
+    },
+    {
+      phase: "launch",
+      title: "The seal needs <em>evidence, not volume</em>",
+      lead: "Both readings are simulated census figures. Lock a prediction: how many places must an argument check before it decides?",
+      goal: "Predict where the first difference lands before the scan.",
+      pull: "A claim is the beginning of an argument, never the end.",
+      rail: {
+        launch: "State that both readings are simulated census data.",
+        monitor: ["Predicting the deciding place", "Checking the shared 4 and 6", "Arguing from the left"],
+        connect: "Why can't the council just average the two readings?",
+        misconception: "Saying 'mine looks bigger' with no place-value evidence."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Zayd builds the argument <em>piece by piece</em>",
+      lead: "A claim alone is not an argument. Add the pieces until the structure is complete.",
+      goal: "Assemble claim, numbers, place value, comparison and conclusion.",
+      pull: "Each piece earns its place.",
+      rail: {
+        launch: "Ask which piece is missing before the next one appears.",
+        monitor: ["Ordering the pieces", "Separating claim from evidence", "Naming the comparison"],
+        connect: "Which piece would an argument fail without?",
+        misconception: "Treating the conclusion as the whole argument."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Omar scans for the <em>first difference</em>",
+      lead: "Two seven-digit readings line up. Highlight the place where they first differ.",
+      goal: "Find the deciding place in a close comparison.",
+      pull: "Same is evidence too — it tells the argument to keep going.",
+      rail: {
+        launch: "Predict the deciding place before the scan confirms it.",
+        monitor: ["Checking places left to right", "Saying 'same' for equal places", "Stopping at the ten thousands"],
+        connect: "Why does the argument stop at the ten-thousands place?",
+        misconception: "Checking the ones place first because the numbers are 'close there'."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "The class critiques <em>Team B's case</em>",
+      lead: "Team B's argument has a gap. Find the step that does not follow from the one before.",
+      goal: "Critique reasoning by locating the step with no evidence.",
+      pull: "A critique names the gap — it does not just say 'no'.",
+      rail: {
+        launch: "Ask the class to quote the gap before flagging it.",
+        monitor: ["Reading each step in order", "Testing 'came first in the ledger'", "Naming the missing evidence"],
+        connect: "What would make Team B's argument complete?",
+        misconception: "Rejecting the whole argument because its conclusion is wrong."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Four statements need <em>labels</em>",
+      lead: "The council clerk mixes up the pieces. Sort each statement into its role in an argument.",
+      goal: "Identify claims, evidence and conclusions in written arguments.",
+      pull: "A start is not yet evidence.",
+      rail: {
+        launch: "Do not grade until the class commits to all four labels.",
+        monitor: ["Separating claim from conclusion", "Spotting the weak 'start'", "Quoting the evidence line"],
+        connect: "Which label is hardest to spot in real life?",
+        misconception: "Calling 'both have 7 digits' evidence when it only sets up the comparison."
+      }
+    },
+    {
+      phase: "connect",
+      title: "The class brings <em>two methods</em>",
+      lead: "The boys step back. Real student strategies for arguing from numbers take the board.",
+      goal: "Compare construct-first and critique-first strategies; name one in the Sijill.",
+      pull: "Building and checking are two sides of the same discipline.",
+      rail: {
+        launch: "Replace the sample names with students from this room when possible.",
+        monitor: ["Ordering the build", "Hunting the gap", "Explaining when each method helps"],
+        connect: "When is critique-first the better opening move?",
+        misconception: "Believing critique means being negative rather than precise."
+      }
+    },
+    {
+      phase: "synth",
+      title: "The anatomy of an argument <em>enters the folio</em>",
+      lead: "Claim. Evidence. Reason. Conclusion — in that order, every time.",
+      goal: "Build the argument structure publicly from the strategies just compared.",
+      pull: "This is the same structure the council will sign.",
+      rail: {
+        launch: "Draw with the class rather than presenting a finished rule.",
+        monitor: ["Restating the four parts", "Applying it to the census pair", "Checking the conclusion answers the claim"],
+        connect: "Which part fails most often when people argue about numbers?",
+        misconception: "Writing a conclusion that answers a different question than the claim."
+      }
+    },
+    {
+      phase: "swyk",
+      title: "The council hears <em>both teams</em>",
+      lead: "Team A defends 4,697,000; Team B defends 4,679,000. Which reading is supported — and what decides it?",
+      goal: "Use place-value evidence to choose between two close readings.",
+      pull: "A correct reading needs the deciding place, not just the answer.",
+      rail: {
+        launch: "Two minutes. Require the deciding place, not only an option letter.",
+        monitor: ["Scanning from the greatest place", "Naming the ten-thousands place", "Saying 9 beats 7"],
+        connect: "Which place decided it — and what are the values there?",
+        misconception: "Choosing the reading with the 'nicer' digits instead of comparing places."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "The argument must account for <em>the gap</em>",
+      lead: "How big is the difference between the two readings? The council wants the argument to account for it.",
+      goal: "Compute and state the difference between two close large numbers.",
+      pull: "A complete argument names what the winner beats the other by.",
+      rail: {
+        launch: "Ask for the gap before the subtraction reveals it.",
+        monitor: ["Subtracting place by place", "Keeping the zeros", "Saying 18,000, not 1,800"],
+        connect: "Why does the gap belong in the argument at all?",
+        misconception: "Dropping a zero and reporting 1,800 as the difference."
+      }
+    },
+    {
+      phase: "monitor",
+      title: "Team B's <em>last move</em>",
+      lead: "Team B says: 'Our reading came first in the ledger, so it must be the original.' Find the gap.",
+      goal: "Critique a reasoning error: order of appearance is not place-value evidence.",
+      pull: "The gap is the difference between a statement and its evidence.",
+      rail: {
+        launch: "Ask the class to quote the gap in one sentence.",
+        monitor: ["Testing the 'came first' step", "Distinguishing order from evidence", "Naming what the step would need"],
+        connect: "What evidence would make 'came first' into a real argument?",
+        misconception: "Answering the conclusion instead of examining the step that leads to it."
+      }
+    },
+    {
+      phase: "synth",
+      title: "The seal is ready to <em>land</em>",
+      lead: "Claim plus evidence plus conclusion — the class's argument is complete and checkable.",
+      goal: "State the full argument for the restored census line before the seal lands.",
+      pull: "The Sijill names the structure, not the students.",
+      rail: {
+        launch: "Have one student state the claim, one the evidence, one the conclusion.",
+        monitor: ["Holding the four-part structure", "Quoting the deciding place", "Stating the 18,000 gap"],
+        connect: "What makes this an argument rather than an opinion?",
+        misconception: "Skipping the evidence and jumping from claim to conclusion."
+      }
+    },
+    {
+      phase: "swyk",
+      title: "The class delivers the <em>defence</em>",
+      lead: "The council asks the room, not the teams: which statement is supported, and what is the deciding evidence?",
+      goal: "Construct the complete argument independently: statement, place, values, gap.",
+      pull: "A defended statement earns the seal of Folio 1.",
+      rail: {
+        launch: "Two minutes. Require claim, evidence and conclusion in one breath.",
+        monitor: ["Stating the deciding place", "Saying 90,000 beats 70,000", "Naming the 18,000 difference"],
+        connect: "Which part of the argument would survive the council's toughest question?",
+        misconception: "Giving only the winning number with no place-value evidence."
+      }
+    },
+    {
+      phase: "connect",
+      title: "Folio one is <em>sealed</em>",
+      lead: "The seal lands on a record the council can re-check. Then the council opens the budget ledger — and it is damaged.",
+      goal: "Close the unit artifact and open Chapter 2 with its mathematical need.",
+      pull: "Next chapter: the budget ledger audit — and the workshop that will multiply it.",
+      rail: {
+        launch: "Name the completed artifact, then reveal only the next chapter's need.",
+        monitor: ["Explaining the argument structure", "Using the difference as evidence", "Ready for multi-digit operations"],
+        connect: "Where have you had to defend a number with evidence before?",
+        misconception: "Remembering the seal but not the argument structure that earned it."
+      }
+    }
   ],
 
   Visual: function ({ i, award, game }) {
-    const [picked, setPicked] = useState([]);
-    const [found, setFound] = useState(false);
-    const order = ["claim", "numbers", "place", "compare", "conclusion"];
+    const [pieces, setPieces] = useState(0);
+    const [scan, setScan] = useState(0);
+    const [gap, setGap] = useState(0);
+    const [critique, setCritique] = useState(0);
+    const allKeys = ["claim", "numbers", "place", "compare", "conclusion"];
 
     switch (i) {
       case 0:
         return (
-          <NoticeWonder draw={drawTwoClaims} height={262} award={award}
-            notices={["They say the same thing", "Only one shows numbers", "One says because", "One mentions the hundreds place"]}
-            wonders={["Which one would convince a friend?", "Is a loud claim enough?", "What is missing on the left?"]}
-            footnote="Both students may be right. Only one of them has shown it." />
+          <StoryShell lane="fiction" character="lantern"
+            title="The seal of the first folio"
+            text="Two teams stand at the council table. Each defends a reading of the restored census line. The seal of Folio 1 waits — it lands on an argument, not on volume."
+            clue="The two readings differ by only 18,000">
+            <NoticeWonder draw={drawCouncil} height={238} award={award}
+              notices={["Two teams, one table", "Two different readings", "The numbers are very close", "The seal is still unlanded"]}
+              wonders={["What settles a dispute this close?", "Is a claim enough to win?", "What would the council demand?"]}
+              footnote="The story sets the stakes. The argument is the mathematics." />
+          </StoryShell>
         );
 
       case 1:
         return (
-          <LaunchEstimate draw={drawTwoClaims} height={262} award={award}
-            label="How convincing is it looks bigger, out of 10?"
-            min={0} max={10} start={5} unit="/ 10"
-            after="Locked. Now let us build something that would score a 10."
-            note="A claim tells you what someone thinks. An argument tells you why." />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The seal needs evidence, not volume"
+            text="Omar marks both readings as simulated census data — then asks how far an argument must scan before it decides."
+            clue="Lock a prediction before the scan moves">
+            <LaunchEstimate draw={drawCouncil} height={235} award={award}
+              label="How many places must we check before 4,697,000 and 4,679,000 settle?"
+              min={1} max={7} start={3} unit="places"
+              after="Locked. Now build the argument and see where the evidence lands."
+              note="Both readings are simulated census data — the argument works on any close pair." />
+          </StoryShell>
         );
 
       case 2:
         return (
-          <ExploreChips draw={makeArgument(picked)} height={270}
-            label="Add a piece to the argument"
-            value={null}
-            onPick={(v) => {
-              if (picked.indexOf(v) !== -1) return;
-              const next = picked.concat([v]);
-              setPicked(next);
-            }}
-            chips={order.map((k) => ({
-              v: k,
-              label: (picked.indexOf(k) !== -1 ? "✓ " : "+ ") +
-                     ({ claim: "Claim", numbers: "Numbers", place: "Place value", compare: "Compare", conclusion: "Conclusion" })[k]
-            }))}
-            caption={<MathEl omml={M.conclusion} size="xl" display="block" />}
-            footnote="Evidence is what turns a claim into an argument." />
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd builds the argument piece by piece"
+            text="A claim alone is not an argument. Add the pieces until the structure is complete — the folio shows what is still missing."
+            clue="Each piece earns its place">
+            <ExploreChips draw={makeArgument(allKeys.slice(0, pieces))} height={225}
+              label="How many pieces does the argument have so far?"
+              value={pieces}
+              onPick={(v) => setPieces(v)}
+              chips={[
+                { v: 1, label: "claim only" },
+                { v: 2, label: "+ the numbers" },
+                { v: 3, label: "+ the place" },
+                { v: 4, label: "+ the comparison" },
+                { v: 5, label: "+ the conclusion" }
+              ]}
+              caption={<MathEl omml={M.goodArgument} size="lg" display="block" />}
+              footnote="A claim on its own is not an argument." />
+          </StoryShell>
         );
 
       case 3:
         return (
-          <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
-            <Sketch draw={makeCritique(found)} height={258} />
-            <div style={{ textAlign: "center" }}>
-              <button className="btn btn-primary" disabled={found}
-                style={{ opacity: found ? 0.5 : 1 }}
-                onClick={() => { setFound(true); }}>
-                <Icon name="fa-magnifying-glass" /> Show the step that does not follow
-              </button>
-            </div>
-            <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
-              <MathEl omml={M.digitCount} size="lg" display="block" />
-              <div style={{ fontSize: "11px", color: "var(--daf-ink-2)", marginTop: "6px" }}>
-                Same number of digits tells you they are close. It does not tell you which is greater.
-              </div>
-            </div>
-          </div>
+          <StoryShell lane="fiction" character="omar"
+            title="Omar scans for the first difference"
+            text="Two seven-digit readings line up. He highlights one place at a time — the class chooses where they first differ."
+            clue="Same is evidence too — it says keep going">
+            <ExploreChips draw={makeCensusScan(scan, setScan)} height={225}
+              label="Where do the two readings first differ?"
+              value={scan}
+              onPick={(v) => setScan(v)}
+              chips={[{ v: 0, label: "millions" }, { v: 1, label: "hundred thousands" }, { v: 2, label: "ten thousands" }, { v: 3, label: "thousands" }]}
+              caption={<MathEl omml={M.decide} size="lg" display="block" />}
+              footnote="The first differing place decides the comparison." />
+          </StoryShell>
         );
 
       case 4:
         return (
-          <CardSort award={award} columns={2} commitLabel="The class is ready — check"
-            items={[
-              { id: "a1", text: "600 is greater than 500, so 13,637 wins", target: "arg" },
-              { id: "a2", text: "It just looks bigger to me", target: "guess" },
-              { id: "a3", text: "I counted the digits and guessed", target: "guess" },
-              { id: "a4", text: "They match until the hundreds place", target: "arg" }
-            ]}
-            targets={[
-              { id: "arg", label: "an argument — it uses numbers and place value" },
-              { id: "guess", label: "a guess — no evidence behind it" }
-            ]} />
+          <StoryShell lane="fiction" character="both" pose="question"
+            title="Team B's case has a gap"
+            text="Omar reads Team B's argument line by line. Zayd waits for the class to find the step that does not follow."
+            clue="A critique names the gap — it does not just say no">
+            <ExploreChips draw={makeCritique(critique === 1)} height={225}
+              label="Which step has no evidence behind it?"
+              value={critique}
+              onPick={(v) => setCritique(v)}
+              chips={[{ v: 0, label: "reading the steps…" }, { v: 1, label: "the last step — 'came first' " }]}
+              caption={<MathEl omml={M.sameStart} size="md" display="block" />}
+              footnote="Both readings have 7 digits — that sets up the comparison; it does not win it." />
+          </StoryShell>
         );
 
       case 5:
         return (
+          <StoryShell lane="fiction" character="both" pose="question"
+            title="The clerk mixed up the pieces"
+            text="Four statements from the hearing, shuffled. Sort each into its role before the folio checks."
+            clue="A start is not yet evidence">
+            <CardSort award={award} columns={2} commitLabel="Label the four statements"
+              items={[
+                { id: "s1", text: "My city is bigger.", target: "t1" },
+                { id: "s2", text: "13,637 and 13,533 match until the hundreds, and 600 beats 500.", target: "t2" },
+                { id: "s3", text: "So 13,637 is the greater number.", target: "t3" },
+                { id: "s4", text: "Both numbers have 5 digits.", target: "t4" }
+              ]}
+              targets={[
+                { id: "t1", label: "Claim" },
+                { id: "t2", label: "Evidence" },
+                { id: "t3", label: "Conclusion" },
+                { id: "t4", label: "A start (not evidence)" }
+              ]} />
+          </StoryShell>
+        );
+
+      case 6:
+        return (
+          <StoryShell lane="fiction" character="both" pose="present"
+            title="Omar and Zayd step out of the way"
+            text="The strongest argument strategies now come from students in this room. Compare them, then preserve one in the Sijill."
+            clue="Building and checking are two sides of the same discipline">
           <CompareConnect award={award}
-            left={{ name: "Rana's way — three sentences", h: 96,
+            left={{
+              name: "Aya's way — build in order", h: 88,
               draw: (ctx, W, H, frame) => {
                 ctx.clearRect(0, 0, W, H);
                 D.rr(ctx, 0, 0, W, H, 9);
                 ctx.fillStyle = "#0B1F24"; ctx.fill();
-                const p = D.at(frame % 420, 0, 180);
-                const lines = ["Both start with 13,", "then 6 hundreds beats 5 hundreds,", "so 13,637 is greater."];
-                lines.forEach((t, n) => {
-                  const a = D.at(p, n / 3, n / 3 + 0.4);
-                  D.txt(ctx, t, W / 2, 26 + n * 26, { size: 12.5, col: "#EAF4F2", font: "marker", alpha: a });
-                });
+                const p = D.at(frame % 500, 0, 160);
+                D.txt(ctx, "claim → numbers → place", W / 2, H / 2 - 22, { size: 15, col: "#EAF4F2", font: "marker", alpha: p });
+                D.txt(ctx, "→ compare → conclusion", W / 2, H / 2 + 6, { size: 15, col: "#EAF4F2", font: "marker", alpha: D.at(frame % 500, 120, 260) });
+                D.txt(ctx, "every piece before the seal", W / 2, H / 2 + 34, { size: 12, col: "#C9A227", font: "marker", alpha: D.at(frame % 500, 240, 360) });
               },
-              quote: "I walked through it step by step." }}
-            right={{ name: "Adel's way — one sentence", omml: M.evidence, h: 96,
-              quote: "The hundreds place decides it: 600 beats 500." }}
-            same={["Both name the hundreds place", "Both use real numbers", "Both reach the same conclusion"]}
-            diff={["Rana shows every step", "Adel trusts the reader to know the rule",
-                   "Rana's is easier to follow the first time"]} />
+              quote: "I build it in order, so nothing is missing when I speak."
+            }}
+            right={{
+              name: "Musa's way — hunt the gap first", h: 88,
+              draw: (ctx, W, H, frame) => {
+                ctx.clearRect(0, 0, W, H);
+                D.rr(ctx, 0, 0, W, H, 9);
+                ctx.fillStyle = "#0B1F24"; ctx.fill();
+                const p = D.at(frame % 500, 0, 160);
+                D.txt(ctx, "read every step in order", W / 2, H / 2 - 22, { size: 15, col: "#EAF4F2", font: "marker", alpha: p });
+                D.txt(ctx, "ask: what evidence backs this step?", W / 2, H / 2 + 6, { size: 13, col: "#2D70B3", font: "marker", alpha: D.at(frame % 500, 140, 280) });
+                D.txt(ctx, "flag the step with none", W / 2, H / 2 + 34, { size: 12, col: "#C9A227", font: "marker", alpha: D.at(frame % 500, 260, 380) });
+              },
+              quote: "I check the opponent's case first — the gap tells me what my argument must include."
+            }}
+            same={["Both use claim, evidence, conclusion",
+                   "Both rely on place-value evidence",
+                   "Both can be checked by a third person"]}
+            diff={["Aya opens by building, Musa opens by testing",
+                   "Musa needs a case to examine first",
+                   "Aya's order is the one the council signs"]} />
+          </StoryShell>
         );
-
-      case 6:
-        return <BoardScreen draw={drawBoard15} height={430} />;
 
       case 7:
         return (
-          <RuleScreen award={award}
-            ommls={[{ omml: M.goodArgument, alt: "claim plus evidence plus conclusion" }]}
-            hand={"say what you think · show the numbers and the place value · finish with a conclusion that answers the question"}
-            cards={[
-              { title: "The argument we built", omml: M.conclusion, note: "decided at the hundreds place" },
-              { title: "Tap to see the evidence", omml: M.claim, revealOmml: M.evidence, reveal: true,
-                note: "the numbers are the evidence" }
-            ]} />
+          <StoryShell lane="fiction" character="zayd" pose="build" support="hafizah"
+            title="The argument's anatomy is drawn into the Evidence Folio"
+            text="Zayd builds only what the class can justify from the two student methods."
+            clue="Claim · Evidence · Reason · Conclusion">
+            <BoardScreen draw={drawBoard15} height={380}
+              caption="The argument structure — not a louder voice — earns the seal." />
+          </StoryShell>
         );
 
       case 8:
         return (
-          <ShowWhatYouKnow award={award}
-            prompt="Which is the complete argument that 28,450 is greater than 28,405?"
-            omml={M.swykPair}
-            options={[
-              { v: "a", text: "It is bigger" },
-              { v: "b", text: "5 tens beats 0 tens" },
-              { v: "c", text: "Both have 5 digits" },
-              { v: "d", text: "I checked twice" }
-            ]}
-            right="b"
-            support={{
-              yes: "Yes — it names the deciding place and compares the values there.",
-              notYet: "Not yet — which place is the first one that differs?",
-              draw: drawSupport15, h: 92,
-              hint: "The gold digits are the first ones that differ. What are they worth?"
-            }} />
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The council hears both teams"
+            text="Team A defends 4,697,000; Team B defends 4,679,000. Name the supported reading — and the place that decides it."
+            clue="The deciding place is the ten-thousands">
+            <ShowWhatYouKnow award={award}
+              prompt="Which reading of the census line is supported by the place-value evidence?"
+              options={[{ v: "a", text: "4,697,000" }, { v: "b", text: "4,679,000" }, { v: "c", text: "They are equal" }, { v: "d", text: "Cannot be compared" }]}
+              right="a"
+              support={{
+                yes: "Yes — the ten-thousands places differ first: 90,000 beats 70,000, so 4,697,000 is greater.",
+                notYet: "Not yet — scan from the greatest place and find the first place that differs.",
+                draw: drawSupport15, h: 84,
+                hint: "The millions and hundred-thousands match. Keep going."
+              }} />
+          </StoryShell>
         );
 
       case 9:
         return (
-          <Closing game={game} omml={M.goodArgument}
-            action="Make a claim about two numbers at home, then give one piece of evidence for it." />
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The argument must account for the gap"
+            text="The council asks how much larger the winning reading is. The gap must belong in the argument."
+            clue="Subtract place by place — the zeros matter">
+            <ExploreChips draw={makeDiff(gap)} height={225}
+              label="How big is the gap between the two readings?"
+              value={gap}
+              onPick={(v) => setGap(v)}
+              chips={[{ v: 0, label: "180" }, { v: 1, label: "1,800" }, { v: 2, label: "18,000" }, { v: 3, label: "180,000" }]}
+              caption={<MathEl omml={M.diff} size="lg" display="block" />}
+              footnote="A complete argument names what the winner beats the other by." />
+          </StoryShell>
+        );
+
+      case 10:
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Team B's last move"
+            text="Team B: “Our reading came first in the ledger, so it must be the original.” Omar asks the class to find the gap."
+            clue="Order in a ledger is not place-value evidence">
+            <ShowWhatYouKnow award={award}
+              prompt="What is the gap in Team B's argument?"
+              options={[
+                { v: "a", text: "Ledger order is not evidence about which number is greater" },
+                { v: "b", text: "The ledger is too old to trust" },
+                { v: "c", text: "7 is actually bigger than 9" },
+                { v: "d", text: "Both readings are equal" }
+              ]}
+              right="a"
+              support={{
+                yes: "Yes — 'came first' says nothing about place value. The argument skips the evidence step.",
+                notYet: "Not yet — read each step and ask what evidence backs it.",
+                draw: makeCritique(true), h: 84,
+                hint: "The last step has no place-value evidence behind it."
+              }} />
+          </StoryShell>
+        );
+
+      case 11:
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The seal is ready to land"
+            text="Claim plus evidence plus conclusion — the class's argument is complete and checkable. State it before the seal lands."
+            clue="The Sijill names the structure, not the students">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.conclusion, alt: "4,697,000 is greater than 4,679,000" },
+                      { omml: M.diff, alt: "the difference is 18,000" }]}
+              hand={"claim + evidence + conclusion — in that order"}
+              cards={[
+                { title: "The deciding place", omml: M.decide, note: "ten-thousands: 9 beats 7" },
+                { title: "The gap", omml: M.diff, note: "the argument accounts for 18,000" }
+              ]} />
+          </StoryShell>
+        );
+
+      case 12:
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The class delivers the defence"
+            text="The council asks the room: which statement is supported, and what is the deciding evidence?"
+            clue="One breath: statement, place, values, gap">
+            <ShowWhatYouKnow award={award}
+              prompt="Deliver the defence: which statement is supported — and with what deciding evidence?"
+              options={[
+                { v: "a", text: "4,697,000 — ten-thousands: 90,000 beats 70,000, a gap of 18,000" },
+                { v: "b", text: "4,679,000 — it has a 7 in the ten-thousands" },
+                { v: "c", text: "Both — the difference is too small to matter" },
+                { v: "d", text: "Neither — seven-digit numbers cannot be compared" }
+              ]}
+              right="a"
+              support={{
+                yes: "Yes — claim, evidence (the first differing place), conclusion, and the gap. That is an argument.",
+                notYet: "Not yet — a complete defence states the place, the values there, and the gap.",
+                draw: drawSupport15, h: 84,
+                hint: "Same structure the folio just drew: claim, evidence, conclusion."
+              }} />
+          </StoryShell>
+        );
+
+      case 13:
+        return (
+          <StoryHandoff support="hafizah"
+            title="Folio one is sealed"
+            text="The seal lands on a record the council can re-check. Then the council opens the budget ledger — and it is damaged. The recovered population is much larger than expected, and services cannot be planned until the ledger is audited."
+            artifact="Population and services brief · completed census folio with place-value key"
+            next="The damaged budget ledger — audit it, or the council cannot plan a single service.">
+            <Closing game={game} omml={M.conclusion}
+              action="Write your own argument about a comparison from this unit: claim, evidence, conclusion — and the place that decided it." />
+          </StoryHandoff>
         );
 
       default:

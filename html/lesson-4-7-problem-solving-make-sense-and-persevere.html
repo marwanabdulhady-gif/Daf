@@ -135,6 +135,49 @@
         from { opacity: 0; transform: scale(1.014); filter: blur(6px); }
         to { opacity: 1; transform: none; filter: none; }
       }
+      /* THE STAGE (light paper scheme) — the slide IS the stage: the school's
+         light paper, teal + gold accents. Panels are borderless so the canvas
+         and the controls float directly on the stage (the canvas paints the
+         same paper via the light-stage remap in draw.js — no board, no box).
+         Interactive controls span the full stage width, not a bordered box. */
+      .visual > .glass-panel,
+      .visual > .story-shell .glass-panel {
+        background: transparent; border: none; box-shadow: none;
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+      }
+      .visual > .glass-panel:has(canvas),
+      .visual > .story-shell .glass-panel:has(canvas) { padding: 6px; }
+      .chip-bar { width: 100%; padding: 2px 2px 4px; }
+      .chip-label { font-weight: 900; font-size: 12px; color: var(--c); margin: 0 2px 9px; }
+      .chip-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+      .chip-row .btn { flex: 1 1 auto; min-width: 110px; }
+      .stage-line { text-align: center; font-size: 12.5px; color: var(--daf-ink-2); padding: 2px 8px 8px; }
+
+      /* THE STAGE — board screens are full-stage: the drawing owns the whole
+         visual area at full height (no framed box), Dar Al Fikr deep-teal
+         surface with the logo-gold breathing frame drawn by D.stage itself. */
+      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; }
+      .board-stage { position: relative; flex: 1; min-height: 300px; }
+      .stage-caption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 11.5px; color: rgba(16,36,43,.62); padding: 0 18px; pointer-events: none; }
+      .screen:has(.board-stage) { grid-template-columns: minmax(270px, 29%) 1fr; }
+
+      /* Staggered element reveals (Syntax-Academy revealUp, English edition):
+         every element on the screen enters with a .08s offset. Disabled under
+         prefers-reduced-motion (static state, per the accessibility policy). */
+      @keyframes revealUp {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: none; }
+      }
+      .screen .copy > *, .screen .visual > * { animation: revealUp .5s var(--ease) both; }
+      .screen .copy > :nth-child(1), .screen .visual > :nth-child(1) { animation-delay: .06s; }
+      .screen .copy > :nth-child(2), .screen .visual > :nth-child(2) { animation-delay: .14s; }
+      .screen .copy > :nth-child(3), .screen .visual > :nth-child(3) { animation-delay: .22s; }
+      .screen .copy > :nth-child(4), .screen .visual > :nth-child(4) { animation-delay: .30s; }
+      .screen .copy > :nth-child(5), .screen .visual > :nth-child(5) { animation-delay: .38s; }
+      .screen .copy > :nth-child(6), .screen .visual > :nth-child(6) { animation-delay: .46s; }
+      @media (prefers-reduced-motion: reduce) {
+        .screen .copy > *, .screen .visual > * { animation: none; }
+      }
 
       .copy {
         position: relative; z-index: 5;
@@ -246,6 +289,59 @@
         box-shadow: 0 16px 36px color-mix(in srgb, var(--c) 18%, transparent);
       }
       .glass-card.chosen { border-color: var(--c); border-width: 2px; background: #fff; }
+
+      /* ---------------- story layer: three truth-status lanes ------------ */
+      .visual > .story-shell {
+        width: 100%; max-height: 100%; overflow-y: auto; padding: 1px 5px 5px;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.24) transparent;
+      }
+      .story-shell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+      .story-ribbon {
+        position: relative; min-height: 76px; overflow: hidden;
+        display: grid; grid-template-columns: auto minmax(0,1fr) minmax(145px,210px);
+        gap: 12px; align-items: center; padding: 8px 13px;
+        border-radius: 16px; border: 1px solid rgba(96,66,166,.24);
+        background: linear-gradient(112deg,#fff 0%,#f8f4ff 68%,#f0e9fa 100%);
+        box-shadow: 0 9px 24px rgba(7,30,39,.07);
+      }
+      .lane-stem .story-ribbon { border-color: rgba(45,112,179,.28); background: linear-gradient(112deg,#fff,#eef7ff); }
+      .lane-amanah .story-ribbon { border-color: rgba(56,140,70,.3); background: linear-gradient(112deg,#fff,#eff8ef); }
+      .story-motif { position: absolute; inset-inline-end: 0; bottom: -18px; width: 210px; height: 115px; color: #6042A6; opacity: .075; pointer-events: none; }
+      .lane-stem .story-motif { color: #2D70B3; }.lane-amanah .story-motif { color: #388C46; }
+      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; }
+      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); }
+      .story-ribbon-copy { position: relative; z-index: 2; min-width: 0; }
+      .story-lane { display: inline-flex; gap: 6px; align-items: center; font-size: 8.5px; font-weight: 950; letter-spacing: .13em; text-transform: uppercase; color: #6042A6; }
+      .lane-stem .story-lane { color: #2D70B3; }.lane-amanah .story-lane { color: #388C46; }
+      .story-ribbon-copy>b { display: block; margin-top: 2px; color: var(--daf-ink); font-size: 13px; line-height: 1.25; }
+      .story-ribbon-copy p { margin: 2px 0 0; color: var(--daf-ink-2); font-size: 10.5px; line-height: 1.38; }
+      .story-ribbon-copy small { display: block; margin-top: 4px; color: #6042A6; font-size: 9.5px; font-weight: 850; }
+      .lane-stem .story-ribbon-copy small { color: #2D70B3; }
+      .folio-progress { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: 5px 8px; align-items: center; padding: 8px 9px; border-radius: 11px; background: rgba(255,255,255,.78); border: 1px solid rgba(96,66,166,.16); }
+      .folio-label { min-width: 0; }.folio-label b { display:block; font-size: 9px; color:#6042A6; text-transform:uppercase; letter-spacing:.1em; }.folio-label span { display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:8.5px; color:var(--daf-ink-2); }
+      .folio-progress em { grid-row: 1 / span 2; grid-column: 2; font: 800 10px "JetBrains Mono",monospace; color:#6042A6; font-style:normal; }
+      .folio-pips { display:flex; gap:3px; }.folio-pips i { display:block; width:12px; height:4px; border-radius:5px; background:#ddd5ed; }.folio-pips i.restored { background:linear-gradient(90deg,#6042A6,#C9A227); }
+      .story-content { display:flex; flex-direction:column; gap:10px; min-width:0; }
+      .story-content>.glass-panel { flex: 1; }
+      .story-shell.compact .story-ribbon { min-height: 84px; }
+      .stem-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .stem-source-card { border:1px solid rgba(45,112,179,.25); border-radius:15px; background:#F2F8FD; padding:14px; }
+      .stem-source-card h3 { margin:8px 0 4px; font-size:13px; color:#1D5C91; }.stem-source-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .stem-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#2D70B3; text-transform:uppercase; }
+      .stem-source-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.stem-source-card summary { cursor:pointer; font-weight:900; color:#2D70B3; }.stem-source-card a { display:block; color:#1D5C91; margin-top:5px; }
+      .stem-math { min-width:0; display:flex; }.stem-math>.glass-panel { flex:1; }
+      .handoff-artifact { display:flex; gap:11px; align-items:center; padding:10px 14px; border-radius:13px; color:#fff; background:linear-gradient(100deg,#0B1F24,#12857C); border:1px solid rgba(201,162,39,.55); }
+      .handoff-artifact>span { width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:var(--daf-gold); color:#10242B; }.handoff-artifact b { display:block; color:var(--daf-gold-2); font-size:10px; text-transform:uppercase; letter-spacing:.09em; }.handoff-artifact p { margin:2px 0 0; font-size:11px; color:#EAF4F2; }
+      .handoff-artifact .folio-stamp { margin-left:auto; align-self:center; }
+      .handoff-artifact .folio-stamp.on { color:#0B1F24; background:var(--daf-gold); }
+      .folio-save-note { flex-basis:100%; margin:0; font-size:9.5px; color:#F2C9C7; }
+      .amanah-layout { display:grid; grid-template-columns:minmax(190px,.72fr) minmax(0,1.5fr); gap:10px; align-items:stretch; }
+      .amanah-card { border:1px solid rgba(56,140,70,.3); border-radius:15px; background:#F0F8F0; padding:14px; }
+      .amanah-card h3 { margin:8px 0 4px; font-size:13px; color:#2C6E38; }.amanah-card p { margin:0; font-size:10.5px; color:var(--daf-ink-2); line-height:1.45; }
+      .amanah-status { font-size:8.5px; font-weight:900; letter-spacing:.08em; color:#388C46; text-transform:uppercase; }
+      .amanah-card details { margin-top:10px; font-size:9.5px; color:var(--daf-ink-2); }.amanah-card summary { cursor:pointer; font-weight:900; color:#388C46; }
+      @media(max-width:900px){.amanah-layout{grid-template-columns:1fr}}
+      @media(max-width:900px){.story-ribbon{grid-template-columns:auto minmax(0,1fr)}.folio-progress{display:none}.stem-layout{grid-template-columns:1fr}.story-ribbon-copy p{font-size:9.5px}}
 
       .btn { border: none; cursor: pointer; font-weight: 800; border-radius: 10px; transition: all 0.25s var(--ease); font-size: 12px; padding: 10px 18px; font-family: inherit; }
       .btn-primary { background: var(--c-grad); color: #fff; box-shadow: 0 6px 18px color-mix(in srgb, var(--c) 32%, transparent); }
@@ -387,7 +483,8 @@
       .dj-last{flex:1;min-width:200px}
       .dj-last em{font-style:normal;font:800 12px "JetBrains Mono",monospace}
       .dj-last em.pos{color:#7ED08C} .dj-last em.neg{color:#F2938F}
-      .dj-exports{display:flex;gap:14px}
+      .dj-exports{display:flex;gap:14px;flex-wrap:wrap}
+      .dj-note{flex-basis:100%;font-size:9px;color:rgba(217,237,235,.45);margin-top:2px}
       .dj-exports a{color:#9fc4bd;cursor:pointer;display:inline-flex;gap:6px;align-items:center;
         font-size:11px;letter-spacing:.06em;text-decoration:none}
       .dj-exports a:hover{color:var(--daf-gold)}
@@ -501,6 +598,8 @@
         border: 1px solid var(--daf-line); border-bottom-width: 2px; border-radius: 5px;
         font: 700 10px "JetBrains Mono", monospace; color: var(--daf-deep); background: #fff;
       }
+
+      
     </style>
   </head>
   <body>
@@ -962,8 +1061,53 @@
 (function (global) {
   "use strict";
 
+  /* LIGHT STAGE (Dar Al Fikr paper scheme) — the stage is the school's
+     light paper, so canvas colours are remapped from dark-board "chalk"
+     to ink-on-paper. The board colour itself becomes transparent, so the
+     drawing sits directly on the stage: no blackboard box can exist. */
+  var LIGHT_MAP = {
+    "#0b1f24": "transparent",
+    "#eaf4f2": "#10242b",
+    "#34d399": "#12857c",
+    "#f2938f": "#c75440",
+    "#e0665f": "#c75440",
+    "#ffa94d": "#fa7e19",
+    "#4a9be0": "#2d70b3",
+    "#fff": "#10242b"
+  };
+  function remapStyle(v) {
+    if (typeof v !== "string") return v;
+    var l = v.toLowerCase();
+    if (LIGHT_MAP[l]) return LIGHT_MAP[l];
+    var m = l.match(/^rgba\((234,244,242|52,211,153|74,155,224|255,255,255|160,190,200|120,150,160),([\d.]+)\)$/);
+    if (m) {
+      var rgb = m[1] === "234,244,242" ? "16,36,43"
+        : m[1] === "52,211,153" ? "18,133,124"
+        : m[1] === "74,155,224" ? "45,112,179"
+        : "16,36,43";
+      return "rgba(" + rgb + "," + m[2] + ")";
+    }
+    return v;
+  }
+
   function fit(canvas) {
-    var ctx = canvas.getContext("2d");
+    var raw = canvas.getContext("2d");
+    /* Canvas 2D methods are brand-checked: they must be called with the real
+       context as `this`. The remap proxy therefore binds every method to the
+       target context in a get trap (a set trap alone makes every native call
+       throw "Illegal invocation" and blank the whole page). */
+    var ctx = new Proxy(raw, {
+      get: function (target, prop) {
+        var val = Reflect.get(target, prop, target);
+        if (typeof val === "function") return val.bind(target);
+        return val;
+      },
+      set: function (target, prop, val) {
+        if (prop === "fillStyle" || prop === "strokeStyle") val = remapStyle(val);
+        Reflect.set(target, prop, val);
+        return true;
+      }
+    });
     var state = { ctx: ctx, W: 0, H: 0 };
     function resize() {
       var dpr = Math.min(global.devicePixelRatio || 1, 2);
@@ -1052,6 +1196,7 @@
     o = o || {};
     ctx.save();
     var size = o.size || 15;
+    var microAlpha = size < 10 ? 0.7 : 1;   /* stage: keep the canvas airy */
     var fam = o.font === "marker" ? '"Lemonada", cursive'
             : o.font === "mono" ? '"JetBrains Mono", monospace'
             : '"Cabinet Grotesk", sans-serif';
@@ -1059,39 +1204,50 @@
     ctx.fillStyle = o.col || "#EAF4F2";
     ctx.textAlign = o.align || "center";
     ctx.textBaseline = o.baseline || "middle";
-    ctx.globalAlpha = o.alpha == null ? 1 : o.alpha;
+    ctx.globalAlpha = (o.alpha == null ? 1 : o.alpha) * microAlpha;
     ctx.fillText(s, x, y);
     ctx.restore();
   }
 
-  /* THE BOARD — dark surface, dot grid, breathing gold frame */
-  function board(ctx, W, H, o) {
+  /* THE STAGE — the whole canvas is the slide: Dar Al Fikr deep-teal surface
+     (the brand canvas colour, not a black presentation deck), dot grid, and a
+     breathing frame in the logo gold. No inner board frame — the drawing has
+     the full area. English edition: labels stay LTR with western digits
+     (guardrails G5a/G5b). */
+  function accentCSS(name, fallback) {
+    try {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    } catch (e) { return fallback; }
+  }
+  function accent() { return accentCSS("--c", "#C9A227"); }
+  function accent2() { return accentCSS("--c-2", "#C9A227"); }
+
+  var GOLD = "#C9A227"; /* Dar Al Fikr logo gold */
+
+  function stage(ctx, W, H, o) {
     o = o || {};
     var t = o.t || 0;
-    var pad = o.pad == null ? 6 : o.pad;
     ctx.save();
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.fillStyle = "#0B1F24";
-    ctx.fill();
-    ctx.clip();
-    ctx.fillStyle = "rgba(234,244,242,.07)";
-    for (var x = pad + 14; x < W - pad; x += 26) {
-      for (var y = pad + 14; y < H - pad; y += 26) {
+    ctx.fillStyle = "rgba(234,244,242,.07)"
+    for (var x = 16; x < W; x += 26) {
+      for (var y = 16; y < H; y += 26) {
         ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill();
       }
     }
     ctx.restore();
-    /* breathing gold frame */
-    var breathe = 1 + Math.sin(t / 42) * 0.012;
+    /* breathing frame in the logo gold — the school's own colour scheme */
     ctx.save();
-    ctx.translate(W / 2, H / 2); ctx.scale(breathe, breathe); ctx.translate(-W / 2, -H / 2);
-    rr(ctx, pad, pad, W - pad * 2, H - pad * 2, 16);
-    ctx.strokeStyle = "rgba(201,162,39," + (0.55 + Math.sin(t / 42) * 0.2) + ")";
-    ctx.lineWidth = 2;
-    ctx.stroke();
+    ctx.globalAlpha = 0.4 + Math.sin(t / 42) * 0.2;
+    ctx.strokeStyle = GOLD;
+    ctx.lineWidth = 2.5;
+    ctx.strokeRect(3, 3, W - 6, H - 6);
     ctx.restore();
-    if (o.title) txt(ctx, o.title, W / 2, pad + 24, { size: 13, col: "#C9A227", font: "mono", weight: 700 });
+    if (o.title) txt(ctx, o.title, W / 2, 26, { size: 13, col: GOLD, font: "mono", weight: 700 });
   }
+
+  /* THE BOARD — kept as the stage surface (synthesis screens) */
+  function board(ctx, W, H, o) { stage(ctx, W, H, o); }
 
   /* TAPE / BAR MODEL — the default fraction manipulative */
   function bar(ctx, o) {
@@ -1372,9 +1528,6 @@
       var cx = x + i * cw;
       var a2 = at(prog, 0.25 + (i / slots) * 0.5, 0.25 + (i / slots) * 0.5 + 0.3);
       if (a2 <= 0) continue;
-      var place = ["hundreds", "tens", "ones"][i % 3];
-      txt(ctx, place, cx + cw / 2, yPlace + 10,
-        { size: 8.5, col: "rgba(234,244,242,.45)", font: "mono", weight: 500, alpha: a2 });
       ctx.save();
       ctx.globalAlpha = a2;
       rr(ctx, cx + 3, yDigit - 2, cw - 6, hRow * 1.05, 6);
@@ -1385,6 +1538,9 @@
       ctx.stroke();
       ctx.restore();
       var d = i >= pad ? digits.charAt(i - pad) : "";
+      if (d !== "" && o.onTap) {
+        tap(ctx, { x: cx + 3, y: yDigit - 2, w: cw - 6, h: hRow * 1.05, value: i - pad, on: o.onTap });
+      }
       if (d !== "") {
         var isHi = o.highlight != null && (i - pad) === o.highlight;
         txt(ctx, d, cx + cw / 2, yDigit + hRow * 0.52,
@@ -2989,9 +3145,30 @@
     return { shown: Math.min(shown, total), total: total };
   }
 
+/* Tappable canvas regions — the drawing IS the control. Drawing code
+     registers hit regions each frame via D.tap(ctx, region); the Sketch
+     component clears them per frame and dispatches pointer taps to them. */
+  function clearTaps(canvas) { canvas.__taps = []; }
+  function tap(ctx, region) {
+    var canvas = ctx && ctx.canvas;
+    if (!canvas) return;
+    canvas.__taps = canvas.__taps || [];
+    canvas.__taps.push(region);
+  }
+  function hit(canvas, x, y) {
+    var taps = (canvas && canvas.__taps) || [];
+    for (var i = taps.length - 1; i >= 0; i--) {
+      var t = taps[i];
+      if (x >= t.x && x <= t.x + t.w && y >= t.y && y <= t.y + t.h) return t;
+    }
+    return null;
+  }
+
   global.DAFDraw = {
     fit: fit, loop: loop, at: at, ease: ease, easeOut: easeOut,
-    marker: marker, rr: rr, txt: txt, board: board,
+    tap: tap, clearTaps: clearTaps, hit: hit,
+    marker: marker, rr: rr, txt: txt, board: board, stage: stage,
+    accent: accent, accent2: accent2,
     bar: bar, numberLine: numberLine, areaGrid: areaGrid, star8: star8, fig: fig,
     axes: axes, plotLine: plotLine, plotPoints: plotPoints, table: table,
     pvChart: pvChart, digitBlocks: digitBlocks, roundLine: roundLine,
@@ -3006,6 +3183,95 @@
     decChart: decChart, cubePrism: cubePrism
   };
 })(window);
+/* ===========================================================================
+   DURABLE STORY STATE · class folio stamps (PR 02)
+
+   What this is: a per-class record of which lesson folio pages the class has
+   restored, kept in localStorage on this computer only. It is class-level
+   data — class name, lesson code and timestamps — and never stores student
+   names, scores or anything personal (student records stay in the dojo
+   session log, which is exported on demand).
+
+   Design follows the research gate (docs/research/pr-02-source-review-infrastructure.md,
+   S1/S2): the state is tiny, best-effort and NON-CRITICAL — when storage is
+   missing, cleared or evicted every deck behaves exactly as before (folio
+   pips fall back to position-based), and one tap can export a JSON backup.
+   There is no server, no sync and no cross-machine state.
+   =========================================================================== */
+const FOLIO_KEY = "daf.folio.v1";
+
+function folioStorage() {
+  /* test hook (node): an in-memory store object, mirroring __DAF_XML_PARSER__ */
+  if (typeof globalThis !== "undefined" && globalThis.__DAF_FOLIO_LS__) return globalThis.__DAF_FOLIO_LS__;
+  try { return (typeof window !== "undefined" && window.localStorage) || null; }
+  catch (e) { return null; }
+}
+
+function folioLoad() {
+  const ls = folioStorage();
+  if (!ls) return { version: 1, classes: {} };
+  try {
+    const st = JSON.parse(ls.getItem(FOLIO_KEY) || "{}") || {};
+    if (!st.classes) st.classes = {};
+    return st;
+  } catch (e) { return { version: 1, classes: {} }; }
+}
+
+function folioSave(st) {
+  const ls = folioStorage();
+  if (!ls) return false;
+  try {
+    st.version = 1;
+    ls.setItem(FOLIO_KEY, JSON.stringify(st));
+    return true;
+  } catch (e) { return false; } /* quota or disabled storage: degrade silently */
+}
+
+/* Stamped lessons for one class: { "1-1": "2026-08-24T09:00:00.000Z", ... } */
+function folioFor(className) {
+  if (!className) return { lessons: {} };
+  const c = folioLoad().classes[className];
+  return { lessons: (c && c.lessons) || {} };
+}
+
+/* Stamp (on !== false) or unstamp (on === false) one lesson for a class.
+   Returns true when the change was saved to this computer. */
+function folioStamp(className, code, on) {
+  if (!className || !code) return false;
+  const st = folioLoad();
+  const c = st.classes[className] || (st.classes[className] = { lessons: {} });
+  if (!c.lessons) c.lessons = {};
+  if (on === false) delete c.lessons[code];
+  else c.lessons[code] = new Date().toISOString();
+  c.updatedAt = new Date().toISOString();
+  return folioSave(st);
+}
+
+/* Clear the whole class folio on this computer. */
+function folioReset(className) {
+  if (!className) return true;
+  const st = folioLoad();
+  delete st.classes[className];
+  return folioSave(st);
+}
+
+/* Export the class folio as a JSON file the school can keep. */
+function folioExport(className) {
+  const data = JSON.stringify({
+    app: "Dar Al Fikr Grade 4 Mathematics",
+    key: FOLIO_KEY,
+    exportedAt: new Date().toISOString(),
+    class: className,
+    state: folioFor(className)
+  }, null, 2);
+  const blob = new Blob([data], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "daf-" + String(className).replace(/[^\w.-]+/g, "-") + "-folio.json";
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
     </script>
     <script>window.DAF_ROSTER = {
   "school": "Dar Al Fikr Schools",
@@ -3064,6 +3330,7 @@
   }
 }
 ;</script>
+    <script>window.DAF_STORY = {"title":"The Lantern of Numeria — The Tale of the Seventeen Doors","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"supporting":[{"id":"hafizah","name":"Hafizah","role":"the Lantern Keeper","doors":[1,17],"prop":"lantern"},{"id":"zafir","name":"Ustadh Zafir","role":"the traveling scholar","doors":[2,5,6,7,13,17],"prop":"compass"},{"id":"rashed","name":"Rashed","role":"the Rival's Report","doors":[2,5,6,7,13,17],"prop":"clipboard"},{"id":"abulaila","name":"Abu Laila","role":"the merchant of the souq","doors":[2],"prop":"ledger"},{"id":"ihsan","name":"Ihsan","role":"the auditor","doors":[2,6],"prop":"seal"},{"id":"khalida","name":"Khalida","role":"the foreman","doors":[3,4],"prop":"ruler"},{"id":"mansur","name":"Mansur","role":"the caravan master","doors":[5],"prop":"tally"},{"id":"salma","name":"Salma","role":"the council scribe","doors":[6],"prop":"quill"},{"id":"mariam","name":"Mariam","role":"the architect","doors":[7,14,16],"prop":"compass"},{"id":"munira","name":"Munira","role":"the ferrywoman of the Fraction Isles","doors":[8],"prop":"oar"},{"id":"farida","name":"Farida","role":"the head cook","doors":[9],"prop":"ladle"},{"id":"zaynab","name":"Zaynab","role":"the clockmaker","doors":[10],"prop":"key"},{"id":"rashid","name":"Rashid","role":"the pearl diver","doors":[11],"prop":"mask"},{"id":"amina","name":"Amina","role":"the dockmaster","doors":[12],"prop":"clipboard"},{"id":"yusuf","name":"Yusuf","role":"the market warden","doors":[13],"prop":"balance"},{"id":"farid","name":"Farid","role":"the astronomer","doors":[15],"prop":"astrolabe"}],"unit":{"topic":4,"chapter":"The workshop tower","question":"Can the workshop scale a useful design without wasting materials?","artifact":"A production plan using two-digit multiplication","pbl":"Plan production quantities for simple solar lantern kits or shade panels.","bridge":"Production is complete, but equal delivery loads and leftover pieces must now be planned. The crates lead directly to division.","lessonCount":7,"lessonCodes":["4-1","4-2","4-3","4-4","4-5","4-6","4-7"]},"lesson":{"code":"4-7","curriculumTitle":"Problem Solving: Make Sense and Persevere","standard":"MP.1","storyBeat":"The jammed lift","technique":"Evidence reveal","storyMove":"The obvious method fails midway; the team must persist and revise without guessing.","studentMission":"Make sense of the constraint, choose another representation and defend the final plan.","handoff":"Production is complete, but equal delivery loads and leftover pieces must now be planned. The crates lead directly to division.","screenPlan":{"shape":"reasoning-studio","shapeLabel":"Reasoning studio","recommended":14,"planningBand":"12–16","reason":"Reasoning, critique or modelling needs room for competing approaches, revision and a defended conclusion."},"implementationStatus":"story-built","index":6,"numberInUnit":7},"stemWindows":[{"id":"t4-small-actions-make-machines","topic":4,"lessonCodes":["4-7"],"title":"Small actions make machines","studentText":"The Banu Musa brothers described about a hundred devices in their Book of Ingenious Devices, around 850 — fountains, lamps and lifting machines, some with controls that acted by themselves. Centuries later, al-Jazari described workshop machines that turned and lifted with gears and cranks. Big machines are built from small, understood actions — just as a big product is built from smaller multiplications.","inquiry":"How does a machine built from small actions compare with a product built from smaller multiplications?","modernConnection":"Any compound calculation — or any compound machine — works because the small parts are understood and combined.","teacherNote":"Banu Musa: Kitab al-Hiyal (ca. 850, al-Ma'mun's court), ~100 devices incl. automatic controls; translation of record: Donald R. Hill, The Book of Ingenious Devices by the Banu Musa bin Shakir (D. Reidel, 1979). Some designs show Greek (Hero, Philo) influence — credit it plainly; the cumulative pattern is the lesson. Placed on 4-7 (the jammed lift): a lift is a documented water-raising/lifting device.","sources":[{"label":"Muslim Heritage · Pioneers of automatic control systems","url":"https://muslimheritage.com/pioneers-of-automatic-control-systems/","accessed":"2026-08-25"},{"label":"Muslim Heritage · Islamic automation: al-Jazari's book","url":"https://muslimheritage.com/islamic-automation-al-jazaris-book-of-knowledge-of-ingenious-mechanical-devices/","accessed":"2026-08-25"}],"status":"source-checked"}],"amanahWindows":[]};</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
 const D = window.DAFDraw;
@@ -3170,13 +3437,28 @@ function Sketch({ draw, height, style }) {
     const stop = D.loop((frame) => {
       if (!st.W || !st.H) return;
       st.ctx.clearRect(0, 0, st.W, st.H);
+      D.clearTaps(cv);
       draw(st.ctx, st.W, st.H, frame);
     });
     return () => { stop(); if (st.destroy) st.destroy(); };
   }, [draw]);
+  /* The canvas itself is interactive: drawings register tappable regions
+     (D.tap) and pointer taps are dispatched to them — the drawing IS the
+     control. Chips stay as the accessible fallback. */
+  const pointer = (e, down) => {
+    const cv = ref.current;
+    if (!cv) return;
+    const r = cv.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    const hit = D.hit(cv, x, y);
+    cv.style.cursor = hit ? "pointer" : "default";
+    if (down && hit && hit.on) hit.on(hit.value, x, y);
+  };
   return (
     <canvas
       ref={ref}
+      onClick={(e) => pointer(e, true)}
+      onMouseMove={(e) => pointer(e, false)}
       style={Object.assign({ width: "100%", height: (height || 300) + "px", display: "block" }, style || {})}
     />
   );
@@ -3370,6 +3652,315 @@ function gameReducer(g, a) {
   }
 }
 /* ===========================================================================
+   STORY LAYER · fictional boys, truth-status lanes, folio progress and STEM
+   Reusable by every lesson. Sacred history never enters these fictional parts.
+   =========================================================================== */
+const STORY = window.DAF_STORY || null;
+
+function StoryCharacter({ id, pose, size }) {
+  const who = id === "zayd" ? "zayd" : "omar";
+  const zayd = who === "zayd";
+  const s = size || 76;
+  const wave = pose === "present" || pose === "question";
+  const build = pose === "build";
+  const skin = zayd ? "#B9784B" : "#9C633F";
+  const shirt = zayd ? "#2D70B3" : "#12857C";
+  const accent = zayd ? "#FA7E19" : "#C9A227";
+  const label = zayd ? "Zayd, the model builder" : "Omar, the evidence keeper";
+  return (
+    <svg className="story-character" style={{ width: s + "px", height: (s * 1.12) + "px" }}
+      viewBox="0 0 100 112" role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy="106" rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d="M29 103 L33 61 Q50 51 67 61 L72 103 Z" fill={shirt} />
+      <path d="M37 63 Q50 74 63 63" fill="none" stroke={accent} strokeWidth="3" />
+      <rect x="43" y="48" width="14" height="15" rx="6" fill={skin} />
+      <circle cx="50" cy="34" r="21" fill={skin} />
+      <path d={zayd ? "M30 31 Q33 8 51 11 Q70 11 72 34 Q62 22 52 22 Q39 25 30 31" : "M30 29 Q35 9 51 11 Q69 10 71 31 Q60 20 48 22 Q38 24 30 29"} fill="#172E35" />
+      <circle cx="42" cy="35" r="2.2" fill="#10242B" /><circle cx="58" cy="35" r="2.2" fill="#10242B" />
+      <path d="M43 44 Q50 49 58 43" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      {wave ? (
+        <g><path d="M32 68 Q17 58 19 40" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <circle cx="20" cy="37" r="5" fill={skin} /></g>
+      ) : (
+        <path d="M33 69 Q23 82 25 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {build ? (
+        <g><path d="M67 69 Q79 76 76 91" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+          <rect x="68" y="86" width="21" height="11" rx="2" fill={accent} />
+          <path d="M72 90h13M76 87v10M82 87v10" stroke="#fff" strokeWidth="1" /></g>
+      ) : (
+        <path d="M67 69 Q78 82 75 96" fill="none" stroke={skin} strokeWidth="8" strokeLinecap="round" />
+      )}
+      {!zayd && (
+        <g transform="translate(63 72) rotate(-14)"><rect width="21" height="27" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" />
+          <path d="M5 7h11M5 12h9M5 17h11" stroke={shirt} strokeWidth="1.5" /></g>
+      )}
+    </svg>
+  );
+}
+
+function StoryLantern({ size }) {
+  const s = size || 64;
+  return (
+    <svg className="story-lantern" style={{ width: s + "px", height: s + "px" }} viewBox="0 0 80 80" role="img" aria-label="The brass lantern">
+      <title>The brass lantern</title>
+      <path d="M31 8h18M35 8v8h10V8" fill="none" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+      <path d="M26 22 Q40 12 54 22 L59 57 Q40 69 21 57 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="3" />
+      <path d="M30 25h20l4 28H26z" fill="#FFF8D8" stroke="#C9A227" strokeWidth="2" />
+      <path d="M40 27v24M28 40h24" stroke="#C9A227" strokeWidth="2" opacity=".8" />
+      <circle cx="40" cy="40" r="7" fill="#C9A227" opacity=".42" />
+      <path d="M26 61h28M31 67h18" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/* ===========================================================================
+   SUPPORTING CAST · fictional quest givers, the guide and the rival
+   (docs/plans/narrative/03-supporting-cast.md). Original fictional people of
+   present-day Jeddah — flat vector, modest contemporary clothing. Sacred
+   history never enters these fictional parts; labels come from the payload.
+   =========================================================================== */
+const SUPPORTING = {
+  hafizah:  { label: "Hafizah, the Lantern Keeper", jacket: "#6B5B73", accent: "#C9CDD3", skin: "#A06B45", head: "scarf", glasses: true, prop: "lantern" },
+  zafir:    { label: "Ustadh Zafir, the traveling scholar", jacket: "#4A6B8A", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#3A2E28", prop: "compass" },
+  rashed:   { label: "Rashed, the Rival's Report", boy: true, jacket: "#7A5CA8", accent: "#F2938F", skin: "#9C633F", head: "hair", hair: "#172E35", prop: "clipboard" },
+  abulaila: { label: "Abu Laila, the merchant of the souq", jacket: "#7A4E2D", accent: "#C9A227", skin: "#9C633F", head: "cap", cap: "#C9CDD3", prop: "ledger" },
+  ihsan:    { label: "Ihsan, the auditor", jacket: "#3A4A5A", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", glasses: true, prop: "seal" },
+  khalida:  { label: "Khalida, the foreman", jacket: "#5A6B7A", accent: "#FA7E19", skin: "#A06B45", head: "helmet", helmet: "#FA7E19", prop: "ruler" },
+  mansur:   { label: "Mansur, the caravan master", jacket: "#5A7A6B", accent: "#C9A227", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", prop: "tally" },
+  salma:    { label: "Salma, the council scribe", jacket: "#5A6B7A", accent: "#F2938F", skin: "#A06B45", head: "scarf", scarf: "#F2938F", prop: "quill" },
+  mariam:   { label: "Mariam, the architect", jacket: "#5A4A6B", accent: "#C9A227", skin: "#A06B45", head: "band", band: "#C9A227", hair: "#2A2E33", prop: "compass" },
+  munira:   { label: "Munira, the ferrywoman of the Fraction Isles", jacket: "#2D70B3", accent: "#C9A227", skin: "#A06B45", head: "scarf", scarf: "#2D70B3", prop: "oar" },
+  farida:   { label: "Farida, the head cook", jacket: "#7A4E5A", accent: "#F2938F", skin: "#A06B45", head: "scarf", scarf: "#F2938F", prop: "ladle" },
+  zaynab:   { label: "Zaynab, the clockmaker", jacket: "#4A6B8A", accent: "#C9A227", skin: "#A06B45", head: "band", band: "#C9A227", hair: "#2A2E33", prop: "key" },
+  rashid:   { label: "Rashid, the pearl diver", jacket: "#3A6B7A", accent: "#C9CDD3", skin: "#9C633F", head: "hair", hair: "#2A2E33", prop: "mask" },
+  amina:    { label: "Amina, the dockmaster", jacket: "#5A6B7A", accent: "#2D70B3", skin: "#A06B45", head: "cap", cap: "#2D70B3", prop: "clipboard" },
+  yusuf:    { label: "Yusuf, the market warden", jacket: "#5A4A3A", accent: "#C75440", skin: "#8A5A3B", head: "hair", hair: "#2A2E33", prop: "balance" },
+  farid:    { label: "Farid, the astronomer", jacket: "#4A4A6B", accent: "#6042A6", skin: "#8A5A3B", head: "band", band: "#6042A6", hair: "#2A2E33", prop: "astrolabe" }
+};
+
+function SupportProp({ kind, accent, jacket }) {
+  switch (kind) {
+    case "lantern":
+      return <g transform="translate(64 66) scale(0.62)"><path d="M11 0h8M13 0v4h4V0" fill="none" stroke="#8A6D1B" strokeWidth="2.4" strokeLinecap="round" /><path d="M7 9 Q15 4 23 9 L25 26 Q15 31 5 26 Z" fill="#F8E8A5" stroke="#8A6D1B" strokeWidth="2" /><path d="M9 28h12M11 31h8" stroke="#8A6D1B" strokeWidth="2" strokeLinecap="round" /></g>;
+    case "compass":
+      return <g transform="translate(74 84)"><circle r="9" fill="none" stroke={accent} strokeWidth="2.4" /><path d="M0 -6 L3 3 L-3 3 Z" fill={accent} /><path d="M0 9 v6 M-4 15 h8" stroke={accent} strokeWidth="1.6" fill="none" /></g>;
+    case "clipboard":
+      return <g transform="translate(66 72) rotate(8)"><rect width="18" height="24" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" /><rect x="4" y="-2" width="10" height="5" rx="1.5" fill={accent} /><path d="M4 8h10M4 13h8M4 18h10" stroke={jacket} strokeWidth="1.4" /></g>;
+    case "ledger":
+      return <g transform="translate(63 70) rotate(-14)"><rect width="22" height="28" rx="2" fill="#FFFDF7" stroke={accent} strokeWidth="2" /><path d="M5 8h12M5 13h10M5 18h12M5 23h8" stroke={jacket} strokeWidth="1.5" /></g>;
+    case "seal":
+      return <g transform="translate(76 82)"><circle r="8" fill="none" stroke={accent} strokeWidth="3" /><circle r="3" fill={accent} /><path d="M-8 8 Q-12 16 -6 18" stroke={accent} strokeWidth="2" fill="none" /></g>;
+    case "ruler":
+      return <g transform="translate(64 74) rotate(24)"><rect width="30" height="7" rx="1.5" fill="#C9CDD3" stroke={accent} strokeWidth="1.4" /><path d="M5 0v4M10 0v3M15 0v4M20 0v3M25 0v4" stroke={jacket} strokeWidth="1.2" /></g>;
+    case "tally":
+      return <g transform="translate(74 70) rotate(8)"><rect x="-2" width="5" height="30" rx="2" fill="#C9CDD3" stroke={accent} strokeWidth="1.4" /><path d="M-2 8h5M-2 14h5M-2 20h5" stroke={jacket} strokeWidth="1.4" /></g>;
+    case "quill":
+      return <g transform="translate(70 66) rotate(30)"><path d="M0 26 Q6 10 26 0 Q18 16 8 24 Z" fill="#FFFDF7" stroke={accent} strokeWidth="1.6" /><path d="M2 24 L14 8" stroke={accent} strokeWidth="1.2" /></g>;
+    case "oar":
+      return <g transform="translate(72 60) rotate(18)"><path d="M2 0 v44" stroke="#8A6D1B" strokeWidth="3" strokeLinecap="round" /><ellipse cx="2" cy="48" rx="7" ry="10" fill="none" stroke="#8A6D1B" strokeWidth="2.6" /></g>;
+    case "ladle":
+      return <g transform="translate(72 68) rotate(12)"><path d="M0 0 v26" stroke={accent} strokeWidth="3" strokeLinecap="round" /><circle cx="0" cy="32" r="7" fill="none" stroke={accent} strokeWidth="2.6" /></g>;
+    case "key":
+      return <g transform="translate(76 76)"><circle r="7" fill="none" stroke={accent} strokeWidth="2.6" /><path d="M0 7 v10 M0 13 h5 M0 17 h4" stroke={accent} strokeWidth="2.2" /></g>;
+    case "mask":
+      return <g transform="translate(72 78)"><circle cx="-6" r="6" fill="none" stroke={accent} strokeWidth="2.4" /><circle cx="6" r="6" fill="none" stroke={accent} strokeWidth="2.4" /><path d="M0 -5 v-6 M-11 -3 Q-16 -8 -14 -12 M11 -3 Q16 -8 14 -12" stroke={accent} strokeWidth="1.6" fill="none" /></g>;
+    case "balance":
+      return <g transform="translate(74 72)"><path d="M0 0 v18 M-10 18 h20" stroke={accent} strokeWidth="2.4" /><path d="M-14 2 h28" stroke={accent} strokeWidth="2.2" /><path d="M-14 2 l-4 8 h8 Z M14 2 l-4 8 h8 Z" fill="none" stroke={accent} strokeWidth="1.8" /></g>;
+    case "astrolabe":
+      return <g transform="translate(76 82)"><circle r="10" fill="none" stroke={accent} strokeWidth="2.4" /><circle r="5" fill="none" stroke={accent} strokeWidth="1.4" /><path d="M0 -10 L4 0 L0 10 L-4 0 Z" fill="none" stroke={accent} strokeWidth="1.4" /></g>;
+    default: return null;
+  }
+}
+
+function SupportCharacter({ id, size }) {
+  const c = SUPPORTING[id];
+  if (!c) return null;
+  const s = size || 48;
+  const H = c.boy ? 112 : 120;
+  const payload = (STORY && STORY.supporting || []).find((p) => p.id === id);
+  const label = payload ? payload.name + ", " + payload.role : c.label;
+  const scarfCol = c.scarf || c.accent;
+  return (
+    <svg className="story-character story-support" style={{ width: s + "px", height: (s * H / 100) + "px" }}
+      viewBox={"0 0 100 " + H} role="img" aria-label={label}>
+      <title>{label}</title>
+      <ellipse cx="50" cy={H - 7} rx="32" ry="5" fill="rgba(7,30,39,.13)" />
+      <path d={c.boy ? "M31 103 L34 64 Q50 55 66 64 L70 103 Z" : "M28 110 L33 60 Q50 50 67 60 L72 110 Z"} fill={c.jacket} />
+      <path d={c.boy ? "M38 66 Q50 76 62 66" : "M37 63 Q50 74 63 63"} fill="none" stroke={c.accent} strokeWidth="3" />
+      <rect x="43" y="46" width="14" height="15" rx="6" fill={c.skin} />
+      <circle cx="50" cy="33" r="21" fill={c.skin} />
+      {c.head === "scarf" && <path d="M27 30 Q28 9 50 8 Q72 9 73 30 Q73 42 66 44 L66 26 Q50 18 34 26 L34 44 Q27 42 27 30 Z M66 42 Q74 52 68 60 L62 50 Z" fill={scarfCol} />}
+      {c.head === "hair" && <path d="M30 29 Q34 9 51 10 Q69 10 71 30 Q61 19 49 21 Q38 23 30 29 Z" fill={c.hair} />}
+      {c.head === "cap" && <><path d="M28 28 Q32 10 50 10 Q68 10 72 28 Q50 20 28 28 Z" fill={c.cap} /><path d="M26 28 h48" stroke={c.cap} strokeWidth="4" strokeLinecap="round" /></>}
+      {c.head === "helmet" && <><path d="M28 30 Q30 8 50 8 Q70 8 72 30 Q50 22 28 30 Z" fill={c.helmet} /><path d="M25 30 h50" stroke={c.helmet} strokeWidth="4" strokeLinecap="round" /></>}
+      {c.head === "band" && <><path d="M30 29 Q34 9 51 10 Q69 10 71 30 Q61 19 49 21 Q38 23 30 29 Z" fill={c.hair} /><path d="M28 27 Q50 16 72 27" stroke={c.band} strokeWidth="4" fill="none" strokeLinecap="round" /></>}
+      <circle cx="42" cy="34" r="2.2" fill="#10242B" /><circle cx="58" cy="34" r="2.2" fill="#10242B" />
+      {c.glasses && <><circle cx="42" cy="34" r="6" fill="none" stroke="#10242B" strokeWidth="1.4" /><circle cx="58" cy="34" r="6" fill="none" stroke="#10242B" strokeWidth="1.4" /><path d="M48 34h4" stroke="#10242B" strokeWidth="1.4" /></>}
+      <path d="M43 43 Q50 48 58 42" fill="none" stroke="#6E3F2D" strokeWidth="2" strokeLinecap="round" />
+      <path d={c.boy ? "M33 70 Q24 82 26 94" : "M32 66 Q22 82 24 98"} fill="none" stroke={c.skin} strokeWidth="8" strokeLinecap="round" />
+      <path d={c.boy ? "M67 70 Q76 80 74 90" : "M68 66 Q78 78 76 88"} fill="none" stroke={c.skin} strokeWidth="8" strokeLinecap="round" />
+      <circle cx={c.boy ? 74 : 76} cy={c.boy ? 91 : 90} r="5" fill={c.skin} />
+      <SupportProp kind={c.prop} accent={c.accent} jacket={c.jacket} />
+    </svg>
+  );
+}
+
+
+function UnitShapeMotif({ topic }) {
+  if (topic !== 1) return <Star8 className="story-motif" />;
+  return (
+    <svg className="story-motif" viewBox="0 0 180 100" aria-hidden="true">
+      <path d="M8 85 Q28 52 48 85 Q68 52 88 85 Q108 52 128 85 Q148 52 172 85" fill="none" stroke="currentColor" strokeWidth="3" />
+      {[14, 42, 70, 98, 126, 154].map((x, i) => <rect key={x} x={x} y={18 + (i % 2) * 10} width="20" height="28" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />)}
+      <path d="M18 58h140" stroke="currentColor" strokeWidth="2" strokeDasharray="4 5" />
+    </svg>
+  );
+}
+
+/* Pips light from the class's stamped folio state when this computer has it
+   (daf.folio.v1); otherwise they fall back to position in the unit. The state
+   is class-level only — never student data — and non-critical: a cleared
+   browser changes nothing else in the deck. */
+function FolioProgress({ label }) {
+  if (!STORY) return null;
+  const n = STORY.lesson.numberInUnit, total = STORY.unit.lessonCount;
+  const codes = (STORY.unit && STORY.unit.lessonCodes) || [];
+  const stamped = (window.DAF_FOLIO && window.DAF_FOLIO.lessons) || null;
+  const done = (i) => stamped ? !!stamped[codes[i]] : i < n;
+  return (
+    <div className="folio-progress" aria-label={`Folio progress ${n} of ${total}`}>
+      <div className="folio-label"><b>Folio {STORY.unit.topic}</b><span>{label || STORY.unit.chapter}</span></div>
+      <div className="folio-pips">
+        {Array.from({ length: total }, (_, i) => <i key={i} className={done(i) ? "restored" : ""} />)}
+      </div>
+      <em>{n}/{total}</em>
+    </div>
+  );
+}
+
+const STORY_LANES = {
+  fiction: { label: "Our story", icon: "fa-book-open", cls: "fiction" },
+  stem: { label: "History of useful knowledge", icon: "fa-compass-drafting", cls: "stem" },
+  amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
+};
+
+function StoryShell({ lane, character, pose, support, title, text, clue, children, compact }) {
+  const info = STORY_LANES[lane || "fiction"];
+  const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  return (
+    <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
+      <div className="story-ribbon">
+        <UnitShapeMotif topic={topic} />
+        <div className="story-cast">
+          {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
+            : character === "lantern" ? <StoryLantern size={58} />
+            : character ? <StoryCharacter id={character} pose={pose} size={60} />
+            : <StoryLantern size={54} />}
+          {support ? <SupportCharacter id={support} size={46} /> : null}
+        </div>
+        <div className="story-ribbon-copy">
+          <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
+          <b>{title}</b>
+          <p>{text}</p>
+          {clue && <small><Icon name="fa-key" /> {clue}</small>}
+        </div>
+        <FolioProgress />
+      </div>
+      <div className="story-content">{children}</div>
+    </div>
+  );
+}
+
+function STEMWindow({ window: item, children }) {
+  if (!item) return <>{children}</>;
+  return (
+    <StoryShell lane="stem" title={item.title} text={item.studentText} clue={item.inquiry} compact>
+      <div className="stem-layout">
+        <div className="stem-source-card">
+          <div className="stem-status"><Icon name="fa-circle-check" /> {item.status}</div>
+          <h3>Why this matters now</h3>
+          <p>{item.modernConnection}</p>
+          <details>
+            <summary>Teacher source notes</summary>
+            <p>{item.teacherNote}</p>
+            {(item.sources || []).map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+
+function StoryHandoff({ title, text, artifact, next, support, children }) {
+  const code = (typeof LESSON !== "undefined" && LESSON.code) || "";
+  const [stamped, setStamped] = useState(false);
+  const [saved, setSaved] = useState(true);
+  useEffect(() => {
+    setStamped(!!(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  }, [code]);
+  const stamp = () => {
+    const cls = window.DAF_CURRENT_CLASS;
+    if (!cls || !code) return;
+    const on = !(window.DAF_FOLIO && window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]);
+    setSaved(folioStamp(cls, code, on));
+    window.DAF_FOLIO = folioFor(cls);
+    setStamped(!!(window.DAF_FOLIO.lessons && window.DAF_FOLIO.lessons[code]));
+  };
+  return (
+    <StoryShell lane="fiction" character="both" pose="present" support={support} title={title} text={text}
+      clue={next ? "Next folio clue · " + next : null}>
+      <div className="handoff-artifact">
+        <span><Icon name="fa-stamp" /></span>
+        <div><b>Artifact updated</b><p>{artifact}</p></div>
+        <button className={"btn btn-ghost btn-sm folio-stamp" + (stamped ? " on" : "")} onClick={stamp}
+          title="Class record on this computer — no points involved">
+          <Icon name={stamped ? "fa-rotate-left" : "fa-stamp"} />
+          {stamped ? "Folio page restored · tap to undo" : "Restore this folio page"}
+        </button>
+        {!saved && <small className="folio-save-note">Folio change could not be saved on this computer — export the class folio from the dojo before you leave.</small>}
+      </div>
+      {children}
+    </StoryShell>
+  );
+}
+
+/* ===========================================================================
+   AMANAH WINDOW · sacred-history lane (PR 02). Reverent, chronological,
+   non-gamified: no XP, no clue mechanics, no invented dialogue or quantities.
+   Only registry windows in `approved` state with the complete six-field audit
+   record (studentText, source, translation, reviewer, reviewDate) ever render
+   here; the payload embeds approved windows only, so an unapproved window is
+   invisible to the deck entirely.
+   =========================================================================== */
+const AMANAH_LANE = "amanah";
+
+function AmanahWindow({ window: item, children }) {
+  const approved = !!(item
+    && item.status === "approved"
+    && item.studentText && item.reviewer && item.reviewDate && item.source && item.translation);
+  if (!approved) return <>{children}</>;
+  return (
+    <StoryShell lane={AMANAH_LANE} title={item.title || "Amanah Window"} text={item.studentText} compact>
+      <div className="amanah-layout">
+        <div className="amanah-card">
+          <div className="amanah-status"><Icon name="fa-book" /> Reviewed · {item.reviewer} · {item.reviewDate}</div>
+          <h3>Values reflection</h3>
+          <p>The reflection follows the mathematics of this lesson; sacred history is never the game mechanic.</p>
+          <details>
+            <summary>Teacher review record</summary>
+            <p>Source: {item.source}</p>
+            <p>Translation used: {item.translation}</p>
+          </details>
+        </div>
+        <div className="stem-math">{children}</div>
+      </div>
+    </StoryShell>
+  );
+}
+/* ===========================================================================
    ROUTINE LIBRARY
    The Amplify Desmos instructional routines as prop-driven components, so a
    lesson file only supplies content and its own canvas drawings.
@@ -3493,9 +4084,9 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
   return (
     <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px" }}>
       <Sketch draw={draw} height={height || 250} />
-      <div className="glass-card" style={{ cursor: "default" }}>
-        <div style={{ fontWeight: 900, fontSize: "12px", color: "var(--c)", marginBottom: "9px" }}>{label}</div>
-        <div style={{ display: "flex", gap: "7px", flexWrap: "wrap" }}>
+      <div className="chip-bar">
+        <div className="chip-label">{label}</div>
+        <div className="chip-row">
           {chips.map((c) => (
             <button key={c.v} onClick={() => onPick(c.v)}
               className={"btn btn-sm " + (value === c.v ? "btn-primary" : "btn-ghost")}>
@@ -3505,7 +4096,7 @@ function ExploreChips({ draw, height, label, chips, value, onPick, caption, foot
         </div>
       </div>
       {caption && (
-        <div className="glass-card" style={{ cursor: "default", textAlign: "center", background: "var(--daf-mint)" }}>
+        <div className="stage-line">
           {caption}
           {footnote && <div style={{ fontSize: "11px", color: "var(--daf-ink-2)", marginTop: "6px" }}>{footnote}</div>}
         </div>
@@ -3637,10 +4228,10 @@ function CompareConnect({ left, right, same, diff, award }) {
 /* ---- Synthesis · the board ---------------------------------------------- */
 function BoardScreen({ draw, height, caption }) {
   return (
-    <div className="glass-panel" style={{ padding: "12px" }}>
-      <Sketch draw={draw} height={height || 430} />
-      <div style={{ textAlign: "center", fontSize: "11.5px", color: "var(--daf-ink-2)", marginTop: "9px" }}>
-        {caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}
+    <div className="glass-panel board-panel" style={{ padding: 0 }}>
+      <div className="board-stage">
+        <Sketch draw={draw} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", borderRadius: "12px" }} />
+        <div className="stage-caption">{caption || "The drawing restarts on its own — look up at any moment and it is building itself again."}</div>
       </div>
     </div>
   );
@@ -4006,6 +4597,75 @@ const drawSupport47 = (ctx, W, H) => {
     parts: [{ v: 390, label: "26 \u00d7 15 = 390", col: "#12857C" }, { v: 110, label: "?", col: "#C9A227" }] });
 };
 
+
+/* Critique: the depot manager's polished plan, with a hidden gap */
+const makeJammed = (found, onFound) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onFound) D.tap(ctx, { x: 0, y: 0, w: W, h: H, value: 0, on: () => onFound(!found) });
+  D.txt(ctx, "the depot manager's plan for the lift", W / 2, 26, { size: 13, col: "#2D70B3", font: "marker" });
+  const lines = [
+    { t: "the lift moves crates of 24 bottles", ok: true },
+    { t: "18 crates × 24 = 432 bottles", ok: true },
+    { t: "350 sold = 14 full crates, so 432 − 336 = 96 left", ok: false }
+  ];
+  let y = 62;
+  lines.forEach((l) => {
+    const flagged = found && !l.ok;
+    ctx.save();
+    D.rr(ctx, 30, y - 15, W - 60, 34, 7);
+    ctx.fillStyle = flagged ? "rgba(199,68,64,.18)" : "rgba(234,244,242,.04)";
+    ctx.fill();
+    if (flagged) { ctx.strokeStyle = "#C74440"; ctx.lineWidth = 2; ctx.stroke(); }
+    ctx.restore();
+    D.txt(ctx, l.t, W / 2, y + 2, { size: 12.5, col: flagged ? "#C74440" : "#EAF4F2", font: "marker" });
+    y += 42;
+  });
+  D.txt(ctx, found ? "350 bottles is not a whole number of crates — count bottles, not crates"
+                   : "polished — but which line has no evidence behind it?",
+    W / 2, H - 18, { size: 12.5, col: found ? "#C74440" : "#C9A227", font: "marker" });
+};
+
+/* Revision: choose the step that unjams the plan */
+const makeUnjam = (pick, onPick) => (ctx, W, H, frame) => {
+  D.rr(ctx, 0, 0, W, H, 14);
+  ctx.fillStyle = "#0B1F24"; ctx.fill();
+  if (onPick) D.tap(ctx, { x: 56, y: 40, w: W - 112, h: 110, value: 0, on: (v, tx) => {
+    const opts = [W / 2 - 150, W / 2, W / 2 + 150];
+    let best = 0, bd = Infinity;
+    opts.forEach((x, i) => { const d = Math.abs(x - tx); if (d < bd) { bd = d; best = i; } });
+    onPick(best);
+  }});
+  const opts = ["432 − 350", "432 − 336", "350 − 336"];
+  opts.forEach((o, i) => {
+    const x = W / 2 + (i - 1) * 150;
+    const chosen = pick === i;
+    ctx.save();
+    D.rr(ctx, x - 62, 44, 124, 34, 8);
+    ctx.fillStyle = chosen ? (i === 0 ? "rgba(18,133,124,.25)" : "rgba(199,68,64,.18)") : "rgba(234,244,242,.05)";
+    ctx.fill();
+    ctx.strokeStyle = chosen ? (i === 0 ? "#12857C" : "#C74440") : "rgba(234,244,242,.3)";
+    ctx.lineWidth = chosen ? 2 : 1; ctx.stroke();
+    ctx.restore();
+    D.txt(ctx, o, x, 61, { size: 13, col: chosen ? (i === 0 ? "#34D399" : "#C74440") : "#EAF4F2", font: "mono", weight: 700 });
+  });
+  D.txt(ctx, "step 1 held: 18 × 24 = 432 bottles", W / 2, 108, { size: 13.5, col: "#34D399", font: "marker" });
+  if (pick === 0) {
+    D.txt(ctx, "step 2: 432 − 350 = 82 bottles left", W / 2, 146, { size: 15, col: "#34D399", font: "marker" });
+    D.txt(ctx, "the unjammed plan — bottles, not crates", W / 2, H - 18,
+      { size: 13, col: "#C9A227", font: "marker" });
+  } else if (pick > 0) {
+    D.txt(ctx, pick === 1 ? "that subtracts 14 crates' worth — but 350 is not 14 crates"
+                          : "that is only the extra bottles in the last crate",
+      W / 2, 150, { size: 13.5, col: "#C74440", font: "marker" });
+    D.txt(ctx, "which step takes all 350 bottles from the 432?", W / 2, H - 18,
+      { size: 13, col: "#C9A227", font: "marker" });
+  } else {
+    D.txt(ctx, "the second step is still jammed — choose it", W / 2, 150,
+      { size: 13.5, col: "rgba(234,244,242,.6)", font: "marker" });
+  }
+};
+
 const LESSON = {
   code: "4-7",
   storageKey: "daf-g4-t4-l7",
@@ -4015,92 +4675,120 @@ const LESSON = {
   ixl: ["RM5"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "Crates of bottles, and a number that has already been sold. No question yet.",
-      goal: "An invitation — every student has something to say.",
-      pull: "There are three numbers here. Not all of them go in the first step.",
-      rail: { launch: "I am not asking you to solve anything. What do you see?",
-        monitor: ["Counting the crates", "Noticing the 350", "Asking what the question is"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Assuming all three numbers belong in one calculation." } },
+    { phase: "warmup", title: "The <em>jammed lift</em>",
+      lead: "The water depot: 18 crates of 24 bottles, 350 sold — and the lift, jammed midway, holding the morning's plan. It is Khalida's lift, and the repair is hers to sign.",
+      goal: "Notice the three numbers — and that only two of them belong in the first step.",
+      pull: "Three numbers, and only two of them belong in the first step.",
+      rail: { launch: "Fictional frame. Read the depot — no working yet.",
+        monitor: ["Counting the crates", "Reading the 350 sold", "Wonding which number comes first"],
+        connect: "Which two numbers meet in the first step?",
+        misconception: "Subtracting 350 from 24 by reflex." } },
 
-    { phase: "launch", title: "What could you <em>ask</em>?",
-      lead: "18 crates. 24 bottles in each. 350 already sold.",
-      goal: "Create the need — the numbers do not name the question.",
-      pull: "Estimate an answer to your own question first.",
-      rail: { launch: "Do not solve. Just give me a question these numbers could answer.",
-        monitor: ["Asking for the total", "Asking how many are left", "Asking how many crates were sold"],
-        connect: "Which question needs two steps?",
-        misconception: "Assuming there is only one possible question." } },
+    { phase: "launch", title: "About how many <em>bottles</em> altogether?",
+      lead: "18 × 24. Lock the estimate before the plan is written.",
+      goal: "Estimate before planning — the estimate carries the decision.",
+      pull: "The depot counts are simulated — the planning works on any numbers.",
+      rail: { launch: "Give the estimate and what you rounded.",
+        monitor: ["Rounding 18 to 20", "Rounding 24 to 20", "Multiplying the rounds"],
+        connect: "What will the middle answer be near?",
+        misconception: "Estimating the final answer before the middle step." } },
 
-    { phase: "monitor", title: "Make a <em>plan</em> first",
-      lead: "What do I know, what am I asked, what must I find first.",
-      goal: "Planning is a step, not a delay.",
-      pull: "Now try the plan — and notice where it stalls.",
-      rail: { launch: "Fill the frame in any order. Say when it feels complete.",
-        monitor: ["Starting with what they know", "Jumping to the calculation", "Naming the middle step"],
-        connect: "Which line was hardest to fill?",
-        misconception: "Treating the plan as writing out the question again." } },
+    { phase: "monitor", title: "Zayd writes the <em>plan</em> before the calculation",
+      lead: "I know · I am asked · I must find first · then. A plan before a calculation.",
+      goal: "Plan the two steps before touching a number.",
+      pull: "A plan before a calculation.",
+      rail: { launch: "Before each line: is it a fact, a question, or a step?",
+        monitor: ["Naming what is known", "Naming what is asked", "Naming the middle step"],
+        connect: "Why must the total come before the subtraction?",
+        misconception: "Starting to calculate before the plan is complete." } },
 
-    { phase: "monitor", title: "Get <em>stuck</em>, then keep going",
-      lead: "Try to subtract first. You cannot — yet. That is the lesson.",
-      goal: "Persevering means finding the middle step, not trying harder.",
-      pull: "Sort some problems by where the sticking point is.",
-      rail: { launch: "Try the subtraction first, on purpose. What stops you?",
-        monitor: ["Noticing the whole is unknown", "Subtracting 350 from 24", "Finding the total first"],
-        connect: "What did being stuck actually tell you?",
-        misconception: "Reading being stuck as being wrong." } },
+    { phase: "monitor", title: "The first idea <em>does not finish</em> the job",
+      lead: "350 sold — but I cannot subtract yet: I do not know the whole. That is not failure; that is the middle step talking.",
+      goal: "Persevere: a first answer that is not the answer is progress, not a mistake.",
+      pull: "That is not failure — that is the middle step talking.",
+      rail: { launch: "Name the number that is missing before the subtraction.",
+        monitor: ["Seeing the gap", "Finding the middle step", "Returning to the total"],
+        connect: "What unlocked the question?",
+        misconception: "Guessing the total because the first step felt stuck." } },
 
     { phase: "monitor", title: "One step or <em>two</em>?",
-      lead: "Sort each question. No grading until the class commits.",
-      goal: "Recognise a hidden middle step.",
-      pull: "Two students planned the same problem differently.",
-      rail: { launch: "Ask: do I already know every number I need?",
-        monitor: ["Counting the unknowns", "Checking what is given", "Solving first, sorting after"],
+      lead: "Four questions from the depot. Each one needs one step — or two.",
+      goal: "Recognise the hidden middle step before modelling.",
+      pull: "Do I already know every number I need?",
+      rail: { launch: "Say the middle answer before you place the question.",
+        monitor: ["Checking what is given", "Counting the unknowns", "Solving first, sorting after"],
         connect: "What made the two-step ones different?",
-        misconception: "Counting the numbers rather than the unknowns." } },
+        misconception: "Counting the numbers in the question instead of the unknowns." } },
 
-    { phase: "connect", title: "Two <em>plans</em>, one answer",
-      lead: "Noura found the total first. Yasir worked out how many crates were sold. Both reach 82.",
+    { phase: "connect", title: "Noura works in <em>bottles</em>. Yasir works in <em>crates</em>",
+      lead: "Noura: total first, then take away 350. Yasir: how many crates is 350 first. Both reach 82.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Multiplying then subtracting", "Working in crates", "Checking both give 82"],
-        connect: "Why do both routes work?",
-        misconception: "Believing there is only one correct order." } },
+        monitor: ["Following the bottle route", "Following the crate route", "Checking both reach 82"],
+        connect: "Which plan is simpler to write down?",
+        misconception: "Believing one route is the only route." } },
 
-    { phase: "synth", title: "On the <em>board</em>",
-      lead: "Know. Asked. Find first. Then. Four lines, and the problem opens.",
+    { phase: "monitor", title: "The plan's <em>hidden gap</em>",
+      lead: "The depot manager's polished plan: 350 sold is 14 full crates, so 432 − 336 = 96 left. One line has no evidence.",
+      goal: "Critique a polished plan: find the step that does not follow.",
+      pull: "350 bottles is not a whole number of crates.",
+      rail: { launch: "Each line must follow from the line before it.",
+        monitor: ["Checking the total line", "Checking the crate conversion", "Flagging the 96 claim"],
+        connect: "What did the plan pretend 350 bottles were?",
+        misconception: "Accepting the final line because the plan is polished." } },
+
+    { phase: "monitor", title: "Unjam the <em>plan</em>",
+      lead: "The total held: 432 bottles. Now choose the step that takes all 350 bottles from it.",
+      goal: "Revise the plan by supplying the correct step.",
+      pull: "Count bottles, not crates.",
+      rail: { launch: "What does each candidate step actually subtract?",
+        monitor: ["Reading 432 − 350", "Discarding 432 − 336", "Discarding 350 − 336"],
+        connect: "How do you know the unjammed plan now holds?",
+        misconception: "Choosing the step that uses the most familiar numbers." } },
+
+    { phase: "synth", title: "On the <em>board</em>: when the first step is not the answer",
+      lead: "I know · I am asked · First · Then. A first answer that is not the answer is progress, not a mistake.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next line", "Naming the middle step", "Restating it in their own words"],
+        monitor: ["Predicting the next stage", "Naming the middle answer", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Filling the frame in without using it." } },
+        misconception: "Stopping at the first calculable number." } },
 
-    { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
-      goal: "Generalise after the model, never before it.",
-      pull: "Show what you know — one question only.",
-      rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the middle step", "Testing on a new problem", "Checking the answer against the question"],
-        connect: "What do you do when your first answer is not what was asked?",
-        misconception: "Stopping at the first number you can calculate." } },
+    { phase: "synth", title: "Small actions make <em>machines</em>",
+      lead: "The rule goes into the plan — and the window reminds the class how big systems are built from small, understood actions.",
+      goal: "Connect the lesson to the history of useful knowledge behind the lift.",
+      pull: "A plan you can re-check is a plan people can trust.",
+      rail: { launch: "Read the window as history of a method, not a story about people's faith.",
+        monitor: ["Connecting partial products to small actions", "Asking about the sources", "Testing the rule on their own work"],
+        connect: "Where in your own life do small understood parts combine?",
+        misconception: "Reading the window as an invention claim." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Write your plan before you calculate.",
-        monitor: ["Multiplying first", "Finding the middle step", "Answering the actual question"],
+      lead: "26 boxes of 15 pens, an order for 500. How many more are needed?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. Write the plan before the calculation.",
+        monitor: ["Naming the middle step", "Multiplying 26 × 15", "Subtracting from 500"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Answering 390 — the middle step, not the question." } },
+        misconception: "Answering 390 — the middle step instead of what was asked." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "monitor", title: "The lift asks for <em>perseverance</em>",
+      lead: "Before the morning plan is signed, the class says what the jam taught it.",
+      goal: "Close the chapter on the standard, not the score.",
+      pull: "A first answer that is not the answer is progress, not a mistake.",
+      rail: { launch: "Ask for the rule in students' own words before the plan is signed.",
+        monitor: ["Naming the middle step", "Naming the revision", "Saying 'progress' unprompted"],
+        connect: "What would you refuse to sign, and why?",
+        misconception: "Treating a stuck step as a failure." } },
+
+    { phase: "connect", title: "The morning is <em>planned</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Next topic: dividing by one-digit numbers.",
-      rail: { launch: "Ask three students what they do when they get stuck.",
-        monitor: ["Able to explain the plan", "Still needs the frame", "Ready for Topic 5"],
+      pull: "Next chapter: production is complete — the crates now need equal delivery loads and leftovers.",
+      rail: { launch: "Ask three students how they would unjam a plan.",
+        monitor: ["Able to explain the plan", "Still stops at the stuck step", "Ready for division"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -4108,99 +4796,211 @@ const LESSON = {
   Visual: function ({ i, award, game }) {
     const [picked, setPicked] = useState([]);
     const [step, setStep] = useState(0);
-    const order = ["know", "ask", "first", "then"];
+    const [gap, setGap] = useState(false);
+    const [pick, setPick] = useState(-1);
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={drawDepot} height={256} award={award}
-          notices={["There are 18 crates", "Each holds 24", "350 have been sold", "There are three numbers"]}
-          wonders={["How many are left?", "Do I multiply or subtract?", "Which number comes first?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern" support="khalida"
+            title="The jammed lift"
+            text="The water depot: 18 crates of 24 bottles, 350 sold — and the lift, jammed midway, holding the morning's plan."
+            clue="Three numbers, and only two belong in the first step.">
+            <NoticeWonder draw={drawDepot} height={256} award={award}
+              notices={["There are 18 crates", "Each holds 24", "350 have been sold", "There are three numbers"]}
+              wonders={["How many are left?", "Do I multiply or subtract?", "Which number comes first?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawDepot} height={256} award={award}
-          label="About how many bottles altogether?" min={200} max={700} start={430} unit="bottles"
-          after="Locked. Now let us plan before we calculate."
-          note="Three numbers, and only two of them belong in the first step." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The estimate before the plan"
+            text="Omar asks for the estimate before the plan is written — 18 × 24, rounded at a friendly place."
+            clue="Three numbers, and only two of them belong in the first step.">
+            <LaunchEstimate draw={drawDepot} height={256} award={award}
+              label="About how many bottles altogether?" min={200} max={700} start={430} unit="bottles"
+              after="Locked. Now let us plan before we calculate."
+              note="The depot counts are simulated — the planning works on any numbers." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makePlan(picked)} height={258}
-          label="Fill in the plan"
-          value={null}
-          onPick={(v) => {
-            if (picked.indexOf(v) !== -1) return;
-            const next = picked.concat([v]);
-            setPicked(next);
-          }}
-          chips={order.map((k) => ({
-            v: k,
-            label: (picked.indexOf(k) !== -1 ? "\u2713 " : "+ ") +
-              ({ know: "I know", ask: "I am asked", first: "Find first", then: "Then" })[k]
-          }))}
-          caption={<MathEl omml={M.plan} size="lg" display="block" />}
-          footnote="The plan is where you decide the order — not while you are calculating." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd writes the plan first"
+            text="He can light each line of the plan — the class must name what each line is before it lights."
+            clue="A plan before a calculation">
+            <ExploreChips draw={makePlan(picked)} height={258}
+              label="Complete the plan"
+              value={picked.length}
+              onPick={(v) => {
+                const keys = ["know", "ask", "first", "then"];
+                setPicked(keys.slice(0, v));
+              }}
+              chips={[{ v: 0, label: "start" }, { v: 1, label: "I know" }, { v: 2, label: "I am asked" }, { v: 3, label: "find first" }, { v: 4, label: "then" }]}
+              caption={<MathEl omml={M.plan} size="lg" display="block" />}
+              footnote="Now the plan is complete — and only now do you calculate." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makePersevere(step)} height={256}
-          label="Try it, get stuck, keep going"
-          value={step}
-          onPick={(v) => setStep(v)}
-          chips={[{ v: 0, label: "subtract first" }, { v: 1, label: "find the total" }, { v: 2, label: "now subtract" }]}
-          caption={<MathEl omml={step === 0 ? M.wrong : step === 1 ? M.step1 : M.step2} size="lg" display="block" />}
-          footnote="Being stuck is information. It tells you which step is missing." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The first idea does not finish the job"
+            text="350 sold — but the subtraction is stuck: the whole is not known yet. Zayd steps through the middle answer."
+            clue="That is not failure — that is the middle step talking">
+            <ExploreChips draw={makePersevere(step)} height={256}
+              label="Step through the stuck plan"
+              value={step}
+              onPick={(v) => setStep(v)}
+              chips={[{ v: 0, label: "stuck" }, { v: 1, label: "the middle answer" }, { v: 2, label: "the question" }]}
+              caption={<MathEl omml={M.step1} size="lg" display="block" />}
+              footnote="The middle answer unlocked the question." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[
-            { id: "p1", text: "How many bottles altogether?", target: "one" },
-            { id: "p2", text: "How many are left after 350 are sold?", target: "two" },
-            { id: "p3", text: "How many bottles in 5 crates?", target: "one" },
-            { id: "p4", text: "How many full crates were sold?", target: "two" }
-          ]}
-          targets={[
-            { id: "one", label: "one step" },
-            { id: "two", label: "two steps — something must be found first" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="One step or two?"
+            text="Omar and Zayd lay four questions from the depot on the table. Each one needs one step — or two."
+            clue="Do I already know every number I need?">
+            <CardSort award={award} columns={2} commitLabel="Sort the questions"
+              items={[
+                { id: "p1", text: "How many bottles altogether?", target: "one" },
+                { id: "p2", text: "How many are left after 350 are sold?", target: "two" },
+                { id: "p3", text: "How many bottles in 5 crates?", target: "one" },
+                { id: "p4", text: "How many full crates were sold?", target: "two" }
+              ]}
+              targets={[
+                { id: "one", label: "one step" },
+                { id: "two", label: "two steps — something must be found first" }
+              ]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Noura's plan — bottles", omml: M.step2, h: 92,
-                  quote: "Total first, then take away the 350." }}
-          right={{ name: "Yasir's plan — crates", omml: M.compare, h: 92,
-                   quote: "I worked out how many crates 350 bottles is first." }}
-          same={["Both reach 82", "Both need two steps", "Both use all three numbers"]}
-          diff={["Noura works in bottles, Yasir in crates",
-                 "Yasir's first step has a remainder to think about",
-                 "Noura's plan is simpler to write down"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one 82"
+            text="Noura works in bottles. Yasir works in crates. Both reach 82 — Yasir's first step has a remainder to think about."
+            clue="The comparison produces the rule">
+            <CompareConnect award={award}
+              left={{ name: "Noura's plan — bottles", omml: M.step2, h: 92,
+                      quote: "Total first, then take away the 350." }}
+              right={{ name: "Yasir's plan — crates", omml: M.compare, h: 92,
+                       quote: "I worked out how many crates 350 bottles is first." }}
+              same={["Both reach 82", "Both need two steps", "Both use all three numbers"]}
+              diff={["Noura works in bottles, Yasir in crates",
+                     "Yasir's first step has a remainder to think about",
+                     "Noura's plan is simpler to write down"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard47} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The plan's hidden gap"
+            text="The depot manager presents: 350 sold is 14 full crates, so 432 − 336 = 96 left. Omar reads it line by line — one step has no evidence."
+            clue="350 bottles is not a whole number of crates">
+            <ExploreChips draw={makeJammed(gap, setGap)} height={252}
+              label="Does the polished plan hold?"
+              value={gap ? 1 : 0}
+              onPick={(v) => setGap(v === 1)}
+              chips={[{ v: 0, label: "no gap — it is polished" }, { v: 1, label: "the gap is the crate count" }]}
+              caption={<MathEl omml={M.step1} size="lg" display="block" />}
+              footnote="A polished plan can still hide a faulty step." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.plan, alt: "what do I know, what am I asked, what must I find first" }]}
-          hand={"write what you know \u00b7 write what is asked \u00b7 name the middle step \u00b7 only then calculate"}
-          cards={[
-            { title: "The middle step", omml: M.step1, note: "not the answer, but the key to it" },
-            { title: "Tap for the real answer", omml: M.wrong, revealOmml: M.step2, reveal: true,
-              note: "the question asked how many are LEFT" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar unjams the plan"
+            text="The total held: 432 bottles. Now choose the step that takes all 350 bottles from it — and the unjammed plan appears."
+            clue="Count bottles, not crates">
+            <ExploreChips draw={makeUnjam(pick, setPick)} height={252}
+              label="Choose the missing second step"
+              value={pick}
+              onPick={(v) => setPick(v)}
+              chips={[{ v: 0, label: "432 − 350" }, { v: 1, label: "432 − 336" }, { v: 2, label: "350 − 336" }]}
+              caption={<MathEl omml={M.step2} size="lg" display="block" />}
+              footnote="The unjammed plan holds when every step follows from the one before." />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="A shop has 26 boxes of 15 pens. It needs 500 pens for an order. How many more are needed?"
-          omml={M.swykStep}
-          options={[{ v: "a", text: "390" }, { v: "b", text: "110" }, { v: "c", text: "890" }, { v: "d", text: "474" }]}
-          right="b"
-          support={{
-            yes: "Yes \u2014 26 \u00d7 15 = 390, then 500 \u2212 390 = 110.",
-            notYet: "Not yet \u2014 390 is the middle step. What was actually asked?",
-            draw: drawSupport47, h: 82,
-            hint: "The question asks how many MORE are needed, not how many there are."
-          }} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The plan is drawn, not declared"
+            text="Zayd builds only what the class can justify: the stages in order, the middle answer named, the question answered."
+            clue="A first answer that is not the answer is progress, not a mistake">
+            <BoardScreen draw={drawBoard47} height={430}
+              caption="When the first step is not the answer." />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.plan}
-          action="Find a two-step problem at home tonight and write the plan before you solve it." />;
+        return (
+          <STEMWindow window={STORY && STORY.stemWindows && STORY.stemWindows[0]}>
+            <RuleScreen award={award}
+              ommls={[{ omml: M.plan, alt: "what do I know · what am I asked · what must I find first" }]}
+              hand={"name what you know · name what you are asked · find the middle step · then calculate"}
+              cards={[
+                { title: "The plan we defended", omml: M.step2, note: "432 − 350 = 82" },
+                { title: "Tap to see the middle step", omml: M.compare, revealOmml: M.step1, reveal: true,
+                  note: "the middle answer is part of the argument" }
+              ]} />
+          </STEMWindow>
+        );
+
+      case 10:
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar signs a two-step he can defend"
+            text="26 boxes of 15 pens, an order for 500. Write the plan — then both steps, in order."
+            clue="390 is the middle step — 110 is the answer">
+            <ShowWhatYouKnow award={award}
+              prompt="A shop has 26 boxes of 15 pens. It needs 500 pens for an order. How many more are needed?"
+              omml={M.swykStep}
+              options={[{ v: "a", text: "390" }, { v: "b", text: "110" }, { v: "c", text: "890" }, { v: "d", text: "474" }]}
+              right="b"
+              support={{
+                yes: "Yes — 26 × 15 = 390, then 500 − 390 = 110.",
+                notYet: "Not yet — 390 is the middle step. What was actually asked?",
+                draw: drawSupport47, h: 82,
+                hint: "The question asks how many MORE are needed, not how many there are."
+              }} />
+          </StoryShell>
+        );
+
+      case 11:
+        return (
+          <AmanahWindow window={STORY && STORY.amanahWindows && STORY.amanahWindows[0]}>
+            <div style={{ textAlign: "center", padding: "30px 20px" }}>
+              <div style={{ fontSize: "20px", fontWeight: 800, color: "#10242B", marginBottom: "14px" }}>Perseverance</div>
+              <p style={{ fontSize: "15px", lineHeight: 1.7, color: "#10242B", maxWidth: "520px", margin: "0 auto 10px" }}>
+                The jammed lift taught the class that a stuck step is not a stopped plan. The early believers were known for their perseverance through difficulty, and Bilal ibn Rabah's steady service is remembered among them.
+              </p>
+              <p style={{ fontSize: "13px", lineHeight: 1.6, color: "#5B6B70", maxWidth: "520px", margin: "0 auto" }}>
+                Perseverance means staying with the question until every step of the answer has evidence behind it.
+              </p>
+            </div>
+          </AmanahWindow>
+        );
+
+      case 12:
+        return (
+          <StoryHandoff support="khalida"
+            title="The morning is planned"
+            text="Omar signs the unjammed plan. Production is complete — but equal delivery loads and leftover pieces must now be planned. The crates lead directly to division."
+            artifact="Depot plan · unjammed and signed"
+            next="Production is complete, but equal delivery loads and leftover pieces must now be planned. The crates lead directly to division.">
+            <Closing game={game} omml={M.plan}
+              action="Plan a real two-step problem tonight: write what you know, what you are asked, and the middle step." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }
@@ -4360,6 +5160,31 @@ function TeacherRail({ meta, onClose }) {
       <p>{r.connect}</p>
       <h4>ANTICIPATED MISCONCEPTION</h4>
       <p style={{ color: "#f2c9c7" }}>{r.misconception}</p>
+      {STORY && (STORY.stemWindows || []).length > 0 && (
+        <div>
+          <h4>SOURCES · HISTORY OF USEFUL KNOWLEDGE</h4>
+          {STORY.stemWindows.map((w) => (
+            <div key={w.id} style={{
+              marginBottom: "8px", background: "rgba(255,255,255,.05)",
+              borderRadius: "8px", padding: "8px 10px"
+            }}>
+              <div style={{ fontSize: "12px", fontWeight: 700, color: "#cfe6e2" }}>
+                {w.title}{" "}
+                <span className="mono" style={{ fontSize: "10px", color: "var(--daf-gold)" }}>{w.status}</span>
+              </div>
+              <p style={{ fontSize: "11.5px", color: "#cfe6e2", margin: "5px 0 0", lineHeight: 1.5 }}>
+                {w.teacherNote}
+              </p>
+              {(w.sources || []).map((s) => (
+                <a key={s.url} href={s.url} target="_blank" rel="noreferrer"
+                  style={{ display: "block", fontSize: "11px", color: "#9cc0ba", marginTop: "4px" }}>
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
       {LESSON.ixl && LESSON.ixl.length > 0 && (
         <div>
           <h4>IXL PRACTICE TO ASSIGN</h4>
@@ -4861,6 +5686,16 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => {
+            if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
+              folioReset(game.section);
+              window.DAF_FOLIO = folioFor(game.section);
+            }
+          }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
+        </span>
+        <span className="dj-note">
+          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>
@@ -4956,6 +5791,15 @@ function App() {
     document.documentElement.style.setProperty("--c", ph.c);
     document.documentElement.style.setProperty("--c-2", ph.c2);
   }, [i]);
+
+  /* Durable story state (PR 02): the class's folio cache is class-level only
+     (lesson stamps, no student data), lives on this computer and refreshes
+     when a class is picked. Missing or cleared storage degrades silently to
+     position-based folio pips. */
+  useEffect(() => {
+    window.DAF_CURRENT_CLASS = (game && game.section) || null;
+    window.DAF_FOLIO = folioFor(window.DAF_CURRENT_CLASS);
+  }, [game && game.section]);
 
   useEffect(() => setReplay((r) => r + 1), [i]);
 

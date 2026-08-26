@@ -104,80 +104,93 @@ const LESSON = {
   ixl: ["L9R"],
 
   metas: [
-    { phase: "warmup", title: "What do you <em>notice</em>? What do you <em>wonder</em>?",
-      lead: "A grid of numbers with some picked out in green. No question yet.", goal: "An invitation — every student has something to say.",
-      pull: "Every green number resists being split.",
-      rail: { launch: "I am not asking for a rule yet. Just look at the highlighted numbers.",
-        monitor: ["Spotting the gaps between them", "Reading them aloud", "Predicting the next one"],
-        connect: "Who noticed something nobody else did?",
-        misconception: "Looking for an arithmetic pattern in the gaps." } },
+    { phase: "warmup", title: "The <em>indivisible</em> border tile",
+      lead: "7 tiles make only 1 × 7 — one rectangular pair. Most tiles make several; some make exactly one. And 1 makes none.",
+      goal: "Notice a number that cannot be split into a rectangular pair: exactly two factors.",
+      pull: "7 tiles make only 1 × 7. That is the whole idea.",
+      rail: { launch: "Fictional frame. Look at the lit numbers — no working yet.",
+        monitor: ["Seeing 2 lit", "Noticing the even numbers dark", "Wonding why 1 is special"],
+        connect: "What is different about the numbers that stay lit?",
+        misconception: "Thinking a single pair means the tile is broken." } },
 
-    { phase: "launch", title: "Numbers that <em>will not split</em>", lead: "Some numbers make only one rectangle. Estimate how many there are under 50.",
-      goal: "Create the need — a list you can trust beats a list you guessed.",
-      pull: "Estimate first, then we will build the list properly.",
-      rail: { launch: "Try to make two different rectangles from 7 tiles. What happens?",
-        monitor: ["Guessing", "Working in order", "Using division to test"],
-        connect: "How will you know when you have them all?",
-        misconception: "Believing every number can be split into equal groups." } },
+    { phase: "launch", title: "How many such numbers <em>under 50</em>?",
+      lead: "The border tile must be cast in every count that makes only one rectangular pair. How many are there under 50?",
+      goal: "Create the need — count the numbers with exactly two factors.",
+      pull: "Exactly two factors: 1 and itself.",
+      rail: { launch: "Give a count and say how you would prove each one.",
+        monitor: ["Testing 2, 3, 5", "Checking the factor lists", "Estimating first"],
+        connect: "What would prove a number makes only one pair?",
+        misconception: "Answering by feel instead of by factor lists." } },
 
-    { phase: "monitor", title: "Cross out the <em>multiples</em>", lead: "Every multiple of 2, then of 3, then of 5. Watch what survives.",
-      goal: "A composite number is a multiple of something smaller.", pull: "Now count factors directly.",
-      rail: { launch: "Predict the next one before you tap.",
-        monitor: ["Working in order", "Jumping around", "Checking each one"],
-        connect: "Why is 2 itself not crossed out?", misconception: "Crossing out 2 along with the other even numbers." } },
+    { phase: "monitor", title: "Zayd crosses out the <em>multiples</em>",
+      lead: "Cross out the multiples of 2, then 3, then 5 — whatever survives has no factor but 1 and itself.",
+      goal: "Use crossing out multiples to find the exactly-two-factor numbers.",
+      pull: "Anything crossed out has a factor other than 1 and itself.",
+      rail: { launch: "Before each round: which numbers die this time?",
+        monitor: ["Crossing the even numbers", "Crossing the 3-multiples", "Watching the survivors"],
+        connect: "Why does crossing out prove composite?",
+        misconception: "Crossing out the number itself along with its multiples." } },
 
-    { phase: "monitor", title: "Count the <em>factors</em>", lead: "Two factors means prime. More means composite.",
-      goal: "The definition is a count, not a feeling.", pull: "Now sort some numbers.",
-      rail: { launch: "Predict the number of factors before you tap.",
-        monitor: ["Testing carefully", "Guessing", "Explaining the test"],
-        connect: "What is special about 1?", misconception: "Calling 1 prime." } },
+    { phase: "monitor", title: "Count the factors of <em>7, 12, 13, 1</em>",
+      lead: "7 has exactly two factors. 12 has six. 13 has two. And 1 has only one — neither prime nor composite.",
+      goal: "Count factors: exactly two means prime, more means composite, one means neither.",
+      pull: "Exactly two factors means prime. More than two means composite.",
+      rail: { launch: "Before each count: what do you expect?",
+        monitor: ["Counting 7's two factors", "Counting 12's six", "Naming 1's single factor"],
+        connect: "Why is 1 special?",
+        misconception: "Calling 1 prime because it is small." } },
 
-    { phase: "monitor", title: "Prime or <em>composite</em>?", lead: "Sort each number. No grading until the class commits.",
-      goal: "Apply the test to unfamiliar numbers.",
-      pull: "Two students organised their search differently.",
-      rail: { launch: "Test each one before you place it.",
-        monitor: ["Dividing to test", "Recognising by sight", "Guessing"],
-        connect: "Which was hardest to place, and why?",
-        misconception: "Assuming all odd numbers are prime." } },
+    { phase: "monitor", title: "Prime or <em>composite</em>?",
+      lead: "Four tiles from the reef crew. Each one must show its factor count before it is named.",
+      goal: "Sort numbers into prime and composite by factor count.",
+      pull: "The factor count decides the name.",
+      rail: { launch: "Before each placement: what is the factor count?",
+        monitor: ["Counting 13's factors", "Counting 15's three", "Counting 27's four"],
+        connect: "Which count earns which name?",
+        misconception: "Sorting by odd/even instead of by factor count." } },
 
-    { phase: "connect", title: "Two ways to <em>be sure</em>", lead: "Rima crossed out multiples. Bassel counted factors one number at a time. Both agree on the primes.",
+    { phase: "connect", title: "Rima <em>crosses out</em>. Bassel <em>counts factors</em>",
+      lead: "Rima crosses out multiples across the whole grid. Bassel lists each number's factors and counts. Both agree which are prime.",
       goal: "The comparison produces the rule — not the teacher.",
       pull: "Now we put it on the board.",
       rail: { launch: "Show both without judging either.",
-        monitor: ["Working in order", "Working in pairs", "Checking nothing is missed"],
-        connect: "Whose method proves nothing was missed?",
-        misconception: "Believing a random search is enough." } },
+        monitor: ["Following the crossing-out", "Following the factor counts", "Checking both lists agree"],
+        connect: "When is crossing-out faster than counting?",
+        misconception: "Believing one method is the only valid one." } },
 
-    { phase: "synth", title: "On the <em>board</em>", lead: "Seven has two factors. Twelve has six. Count them and the label follows.",
+    { phase: "synth", title: "On the <em>board</em>: count the factors",
+      lead: "List the factors. Count them. Two means prime, more means composite, one means neither.",
       goal: "The moment the lesson is taught — not displayed.",
       pull: "Say it in one sentence.",
       rail: { launch: "Draw it with them, do not present it to them.",
-        monitor: ["Predicting the next mark", "Naming the pattern", "Restating it in their own words"],
+        monitor: ["Listing the factors", "Counting them", "Restating it in their own words"],
         connect: "Who can say the rule in one sentence?",
-        misconception: "Calling a number prime because it looks awkward." } },
+        misconception: "Naming by the number's appearance instead of its factors." } },
 
     { phase: "synth", title: "The rule — <em>and why it works</em>",
-      lead: "One sentence worth memorising.",
+      lead: "The border tile is indivisible because its only partners are 1 and itself — the strongest border there is.",
       goal: "Generalise after the model, never before it.",
       pull: "Show what you know — one question only.",
       rail: { launch: "Read it together, one voice.",
-        monitor: ["Naming the test", "Testing on a new number", "Explaining the edge case"],
-        connect: "Is 2 the only even prime?", misconception: "Thinking prime means odd." } },
+        monitor: ["Naming the two-factor rule", "Checking 1's case", "Testing on a new number"],
+        connect: "Why does 'exactly two' make the border strong?",
+        misconception: "Answering 'prime' for 1 or for 9." } },
 
     { phase: "swyk", title: "<em>Show</em> what you know",
-      lead: "One question. Quick for you, useful for your teacher.",
-      goal: "A daily formative check.", pull: "Well done. Let us see what you collected today.",
-      rail: { launch: "Two minutes. Work in order, not at random.",
-        monitor: ["Working in order", "Testing each one", "Guessing"],
+      lead: "Is 21 prime or composite?",
+      goal: "A daily formative check.",
+      pull: "Well done. Let us see what you collected today.",
+      rail: { launch: "Two minutes. List the factors, then name it.",
+        monitor: ["Testing 3 into 21", "Finding 3 × 7", "Naming it composite"],
         connect: "Collect responses to open tomorrow.",
-        misconception: "Calling 21 prime because it is odd." } },
+        misconception: "Answering prime because 21 is odd." } },
 
-    { phase: "connect", title: "What you <em>collected</em> today",
+    { phase: "connect", title: "The border tile is <em>cast</em>",
       lead: "Points are for thinking, not for speed.",
       goal: "Close on one action a student can actually do tonight.",
-      pull: "Tomorrow: multiples instead of factors.",
-      rail: { launch: "Ask three students to say the rule in their own words.",
-        monitor: ["Able to explain it to someone else", "Still needs the grid", "Ready for the next idea"],
+      pull: "Tomorrow: the tiles that keep landing on the same marks — multiples.",
+      rail: { launch: "Ask three students to prove a number's name.",
+        monitor: ["Able to explain the factor count", "Still guesses by appearance", "Ready for multiples"],
         connect: "Who is teaching it at home tonight?",
         misconception: "Chasing points instead of understanding." } }
   ],
@@ -188,61 +201,138 @@ const LESSON = {
 
     switch (i) {
       case 0:
-        return <NoticeWonder draw={makeSieve(3)} height={256} award={award}
-          notices={["2 is green", "Most even numbers are not", "The gaps get bigger", "1 is not green"]} wonders={["Why those numbers?", "Is 1 special?", "Do they ever stop?"]} />;
+        return (
+          <StoryShell lane="fiction" character="lantern"
+            title="The indivisible border tile"
+            text="7 tiles make only 1 × 7 — one rectangular pair. Most tiles make several; some make exactly one. And 1 makes none."
+            clue="Exactly two factors: 1 and itself.">
+            <NoticeWonder draw={makeSieve(3)} height={256} award={award}
+              notices={["2 is green", "Most even numbers are not", "The gaps get bigger", "1 is not green"]}
+              wonders={["Why those numbers?", "Is 1 special?", "Do they ever stop?"]} />
+          </StoryShell>
+        );
 
       case 1:
-        return <LaunchEstimate draw={drawStory74} height={256} award={award}
-          label="How many such numbers under 50?" min={5} max={30} start={15} unit="numbers"
-          after="Locked. Now let us build the list properly."
-          note="7 tiles make only 1 × 7. That is the whole idea." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="The border tile's count"
+            text="Omar asks the architect's question: how many counts under 50 make only one rectangular pair — and what proves each one?"
+            clue="Exactly two factors: 1 and itself.">
+            <LaunchEstimate draw={drawStory74} height={256} award={award}
+              label="How many such numbers under 50?" min={5} max={30} start={15} unit="numbers"
+              after="Locked. Now let us build the list properly."
+              note="The tile counts are simulated — the factor rule works on any number." />
+          </StoryShell>
+        );
 
       case 2:
-        return <ExploreChips draw={makeSieve(a)} height={256}
-          label="Cross out the multiples" value={a}
-          onPick={(v) => setA(v)}
-          chips={[{ v: 0, label: "start" }, { v: 1, label: "× 2" }, { v: 2, label: "× 3" }, { v: 3, label: "× 5" }]}
-          caption={<MathEl omml={M.left} size="lg" display="block" />}
-          footnote="Anything crossed out has a factor other than 1 and itself." />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="Zayd crosses out the multiples"
+            text="He can run each crossing-out round — the class must say which numbers die, and why dying means composite."
+            clue="Anything crossed out has a factor other than 1 and itself.">
+            <ExploreChips draw={makeSieve(a)} height={256}
+              label="Cross out the multiples" value={a}
+              onPick={(v) => setA(v)}
+              chips={[{ v: 0, label: "start" }, { v: 1, label: "× 2" }, { v: 2, label: "× 3" }, { v: 3, label: "× 5" }]}
+              caption={<MathEl omml={M.left} size="lg" display="block" />}
+              footnote="Anything crossed out has a factor other than 1 and itself." />
+          </StoryShell>
+        );
 
       case 3:
-        return <ExploreChips draw={makeCount(b)} height={256}
-          label="Count the factors of ..." value={b}
-          onPick={(v) => setB(v)}
-          chips={[{ v: 7, label: "7" }, { v: 12, label: "12" }, { v: 13, label: "13" }, { v: 1, label: "1" }]}
-          caption={<MathEl omml={M.right} size="lg" display="block" />}
-          footnote="Exactly two factors means prime. More than two means composite." />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar counts the factors"
+            text="He can count any number's factors — the class must say what the count earns: prime, composite, or neither."
+            clue="Exactly two means prime. More means composite. One means neither.">
+            <ExploreChips draw={makeCount(b)} height={256}
+              label="Count the factors of ..." value={b}
+              onPick={(v) => setB(v)}
+              chips={[{ v: 7, label: "7" }, { v: 12, label: "12" }, { v: 13, label: "13" }, { v: 1, label: "1" }]}
+              caption={<MathEl omml={M.right} size="lg" display="block" />}
+              footnote="Exactly two factors means prime. More than two means composite." />
+          </StoryShell>
+        );
 
       case 4:
-        return <CardSort award={award} columns={2}
-          items={[{ id: "p1", text: "13", target: "prime" }, { id: "p2", text: "15", target: "comp" }, { id: "p3", text: "23", target: "prime" }, { id: "p4", text: "27", target: "comp" }]} targets={[{ id: "prime", label: "prime — exactly two factors" }, { id: "comp", label: "composite — more than two" }]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Prime or composite?"
+            text="Omar and Zayd lay four reef tiles on the board. Each one must show its factor count before it is named."
+            clue="The factor count decides the name.">
+            <CardSort award={award} columns={2}
+              items={[{ id: "p1", text: "13", target: "prime" }, { id: "p2", text: "15", target: "comp" }, { id: "p3", text: "23", target: "prime" }, { id: "p4", text: "27", target: "comp" }]}
+              targets={[{ id: "prime", label: "prime — exactly two factors" }, { id: "comp", label: "composite — more than two" }]} />
+          </StoryShell>
+        );
 
       case 5:
-        return <CompareConnect award={award}
-          left={{ name: "Rima's way — cross out multiples", omml: M.left, h: 92, quote: "If it is a multiple of something, it is composite." }}
-          right={{ name: "Bassel's way — count factors", omml: M.right, h: 92, quote: "I list the factors and count them." }}
-          same={["Both agree which are prime", "Both use factors", "Both treat 1 as special"]} diff={["Rima works on many numbers at once", "Bassel checks one number deeply", "Rima's is faster for a whole grid"]} />;
+        return (
+          <StoryShell lane="fiction" character="both"
+            title="Two merchants, one prime list"
+            text="Rima crosses out multiples across the grid. Bassel counts each number's factors. Both lists agree."
+            clue="The comparison produces the rule.">
+            <CompareConnect award={award}
+              left={{ name: "Rima's way — cross out multiples", omml: M.left, h: 92, quote: "If it is a multiple of something, it is composite." }}
+              right={{ name: "Bassel's way — count factors", omml: M.right, h: 92, quote: "I list the factors and count them." }}
+              same={["Both agree which are prime", "Both use factors", "Both treat 1 as special"]}
+              diff={["Rima works on many numbers at once", "Bassel checks one number deeply", "Rima's is faster for a whole grid"]} />
+          </StoryShell>
+        );
 
       case 6:
-        return <BoardScreen draw={drawBoard74} height={430} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The factor count is drawn, not declared"
+            text="Zayd builds only what the class can justify: the lists, the counts, the names."
+            clue="Count the factors · exactly two means prime.">
+            <BoardScreen draw={drawBoard74} height={430}
+              caption="Count the factors · exactly two means prime." />
+          </StoryShell>
+        );
 
       case 7:
-        return <RuleScreen award={award}
-          ommls={[{ omml: M.rule, alt: "count the factors · exactly two means prime" }]}
-          hand={"list the factors · count them · two means prime, more means composite, one means neither"}
-          cards={[
-            { title: "Prime", omml: M.left, note: "exactly two factors: 1 and itself" },
-            { title: "Tap for the special case", omml: M.right, revealOmml: M.reveal, reveal: true, note: "1 has only one factor" }
-          ]} />;
+        return (
+          <StoryShell lane="fiction" character="zayd" pose="build"
+            title="The rule — and why it works"
+            text="The border tile is indivisible because its only partners are 1 and itself — the strongest border there is."
+            clue="Two factors is the whole certificate.">
+            <RuleScreen award={award}
+              ommls={[{ omml: M.rule, alt: "count the factors · exactly two means prime" }]}
+              hand={"list the factors · count them · two means prime, more means composite, one means neither"}
+              cards={[
+                { title: "Prime", omml: M.left, note: "exactly two factors: 1 and itself" },
+                { title: "Tap for the special case", omml: M.right, revealOmml: M.reveal, reveal: true, note: "1 has only one factor" }
+              ]} />
+          </StoryShell>
+        );
 
       case 8:
-        return <ShowWhatYouKnow award={award}
-          prompt="Is 21 prime or composite?" omml={M.swyk} options={[{ v: "a", text: "prime" }, { v: "b", text: "composite" }, { v: "c", text: "neither" }, { v: "d", text: "both" }]} right="b"
-          support={{ yes: "Yes — 3 × 7 = 21, so it has four factors: 1, 3, 7 and 21.", notYet: "Not yet — work through it in order.",
-            draw: drawSupport74, h: 82, hint: "21 is odd, but odd does not mean prime. Try dividing by 3." }} />;
+        return (
+          <StoryShell lane="fiction" character="omar" pose="question"
+            title="Omar names the tile"
+            text="Is 21 prime or composite? List the factors — then name it."
+            clue="Odd does not mean prime. Try 3.">
+            <ShowWhatYouKnow award={award}
+              prompt="Is 21 prime or composite?" omml={M.swyk}
+              options={[{ v: "a", text: "prime" }, { v: "b", text: "composite" }, { v: "c", text: "neither" }, { v: "d", text: "both" }]}
+              right="b"
+              support={{ yes: "Yes — 3 × 7 = 21, so it has four factors: 1, 3, 7 and 21.", notYet: "Not yet — work through it in order.",
+                draw: drawSupport74, h: 82, hint: "21 is odd, but odd does not mean prime. Try dividing by 3." }} />
+          </StoryShell>
+        );
 
       case 9:
-        return <Closing game={game} omml={M.rule} action="Pick a number between 20 and 40 at home and prove whether it is prime." />;
+        return (
+          <StoryHandoff
+            title="The border tile is cast"
+            text="Omar signs the prime list: every count under 50 named by its factor count. The architect's next schedule is stranger — the tiles keep landing on the same marks, again and again."
+            artifact="Reef kit · certified prime border"
+            next="When will the teams meet? — cleaning and inspection cycles overlap on particular days.">
+            <Closing game={game} omml={M.rule} action="Pick a number between 20 and 40 at home and prove whether it is prime." />
+          </StoryHandoff>
+        );
 
       default: return null;
     }
