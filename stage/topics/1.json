@@ -345,28 +345,28 @@
    },
    "practice": {
     "independent": {
-     "prompt": "Two readings survived on the second page. Which one is supported by the place-value evidence?",
+     "prompt": "Two teams defend different numbers: 7,480,500 and 7,840,500. Which is the greater, and what is the exact gap the argument must explain?",
      "options": [
       {
        "v": "a",
-       "text": "5,084,200"
+       "text": "7,840,500 — the gap is 360,000"
       },
       {
        "v": "b",
-       "text": "5,048,200"
+       "text": "7,480,500 — the gap is 360,000"
       },
       {
        "v": "c",
-       "text": "They are equal"
+       "text": "7,840,500 — the gap is 36,000"
       },
       {
        "v": "d",
-       "text": "Cannot be compared"
+       "text": "They are equal"
       }
      ],
      "right": "a",
-     "yes": "Yes — the ten-thousands places differ first: 80,000 beats 40,000, so 5,084,200 is greater.",
-     "notYet": "Not yet — scan from the greatest place and find the first place that differs."
+     "yes": "Yes — the hundred-thousands places differ first: 800,000 beats 400,000, so 7,840,500 is greater, and the gap the argument must explain is 7,840,500 − 7,480,500 = 360,000.",
+     "notYet": "Not yet — scan from the greatest place to find the first difference, then work out the gap."
     },
     "harder": {
      "prompt": "Build the argument in one pass — claim, place, values, gap — for 8,241,000 against 8,214,000.",

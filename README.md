@@ -79,8 +79,8 @@ the student uses the AI to research or to challenge the build, then writes every
 themselves (AI critic, never author). The generated plan is the floor — including a floor
 production (two options, one AI-integrated) so no deck's production phase is empty; the topic
 files are the authored layer on top, merged in by
-`scripts/make-stage-plan.js`. Progress is tracked by `npm run check:stages` — **Topics 1–2 are
-deepened (13 lessons); 17 topics are in scope.** To deepen a topic: research first, add
+`scripts/make-stage-plan.js`. Progress is tracked by `npm run check:stages` — **Topics 1–3 are
+deepened (21 lessons); 17 topics are in scope.** To deepen a topic: research first, add
 `stage/topics/<n>.json` with `sources`, run `npm run build:stages`, then `npm run check:stages`
 and `node scripts/smoke-stage.js` over the topic's lessons.
 

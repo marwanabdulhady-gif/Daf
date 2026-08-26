@@ -274,27 +274,27 @@
    },
    "practice": {
     "independent": {
-     "prompt": "The next bundle: 138,427 + 69,584. What is the audited total?",
+     "prompt": "The next bundle: 284,936 + 127,058. What is the audited total?",
      "options": [
       {
        "v": "a",
-       "text": "208,011"
+       "text": "411,994"
       },
       {
        "v": "b",
-       "text": "208,111"
+       "text": "411,894"
       },
       {
        "v": "c",
-       "text": "198,011"
+       "text": "401,994"
       },
       {
        "v": "d",
-       "text": "218,011"
+       "text": "421,994"
       }
      ],
      "right": "a",
-     "yes": "Yes — about 140,000 plus about 70,000 is about 210,000, and 208,011 sits just under it.",
+     "yes": "Yes — about 280,000 plus about 130,000 is about 410,000, and 411,994 sits just past it.",
      "notYet": "Not yet — estimate to the ten-thousand first, then add the columns from the right."
     },
     "harder": {
@@ -418,27 +418,27 @@
    },
    "practice": {
     "independent": {
-     "prompt": "The warehouse line: 502,316 − 148,972. What is the verified difference?",
+     "prompt": "The warehouse line: 483,912 − 167,458. What is the verified difference?",
      "options": [
       {
        "v": "a",
-       "text": "353,344"
+       "text": "316,454"
       },
       {
        "v": "b",
-       "text": "353,444"
+       "text": "316,554"
       },
       {
        "v": "c",
-       "text": "343,344"
+       "text": "326,454"
       },
       {
        "v": "d",
-       "text": "363,344"
+       "text": "306,454"
       }
      ],
      "right": "a",
-     "yes": "Yes — about 500,000 minus about 150,000 is about 350,000, and 353,344 sits just past it.",
+     "yes": "Yes — about 480,000 minus about 170,000 is about 310,000, and 316,454 sits just past it.",
      "notYet": "Not yet — estimate first, then verify by adding the difference back."
     },
     "harder": {

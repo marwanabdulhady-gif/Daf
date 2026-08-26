@@ -1143,28 +1143,28 @@
           },
           {
             "mode": "independent",
-            "prompt": "Two readings survived on the second page. Which one is supported by the place-value evidence?",
+            "prompt": "Two teams defend different numbers: 7,480,500 and 7,840,500. Which is the greater, and what is the exact gap the argument must explain?",
             "options": [
               {
                 "v": "a",
-                "text": "5,084,200"
+                "text": "7,840,500 — the gap is 360,000"
               },
               {
                 "v": "b",
-                "text": "5,048,200"
+                "text": "7,480,500 — the gap is 360,000"
               },
               {
                 "v": "c",
-                "text": "They are equal"
+                "text": "7,840,500 — the gap is 36,000"
               },
               {
                 "v": "d",
-                "text": "Cannot be compared"
+                "text": "They are equal"
               }
             ],
             "right": "a",
-            "yes": "Yes — the ten-thousands places differ first: 80,000 beats 40,000, so 5,084,200 is greater.",
-            "notYet": "Not yet — scan from the greatest place and find the first place that differs."
+            "yes": "Yes — the hundred-thousands places differ first: 800,000 beats 400,000, so 7,840,500 is greater, and the gap the argument must explain is 7,840,500 − 7,480,500 = 360,000.",
+            "notYet": "Not yet — scan from the greatest place to find the first difference, then work out the gap."
           },
           {
             "mode": "harder",
@@ -2102,27 +2102,27 @@
           },
           {
             "mode": "independent",
-            "prompt": "The next bundle: 138,427 + 69,584. What is the audited total?",
+            "prompt": "The next bundle: 284,936 + 127,058. What is the audited total?",
             "options": [
               {
                 "v": "a",
-                "text": "208,011"
+                "text": "411,994"
               },
               {
                 "v": "b",
-                "text": "208,111"
+                "text": "411,894"
               },
               {
                 "v": "c",
-                "text": "198,011"
+                "text": "401,994"
               },
               {
                 "v": "d",
-                "text": "218,011"
+                "text": "421,994"
               }
             ],
             "right": "a",
-            "yes": "Yes — about 140,000 plus about 70,000 is about 210,000, and 208,011 sits just under it.",
+            "yes": "Yes — about 280,000 plus about 130,000 is about 410,000, and 411,994 sits just past it.",
             "notYet": "Not yet — estimate to the ten-thousand first, then add the columns from the right."
           },
           {
@@ -2582,27 +2582,27 @@
           },
           {
             "mode": "independent",
-            "prompt": "The warehouse line: 502,316 − 148,972. What is the verified difference?",
+            "prompt": "The warehouse line: 483,912 − 167,458. What is the verified difference?",
             "options": [
               {
                 "v": "a",
-                "text": "353,344"
+                "text": "316,454"
               },
               {
                 "v": "b",
-                "text": "353,444"
+                "text": "316,554"
               },
               {
                 "v": "c",
-                "text": "343,344"
+                "text": "326,454"
               },
               {
                 "v": "d",
-                "text": "363,344"
+                "text": "306,454"
               }
             ],
             "right": "a",
-            "yes": "Yes — about 500,000 minus about 150,000 is about 350,000, and 353,344 sits just past it.",
+            "yes": "Yes — about 480,000 minus about 170,000 is about 310,000, and 316,454 sits just past it.",
             "notYet": "Not yet — estimate first, then verify by adding the difference back."
           },
           {
@@ -3180,10 +3180,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>grove briefing</em> was already at home",
+          "lead": "Before class, the class met the multiplication briefing — the bundle math and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the grove work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about multiplying?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -3197,9 +3197,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the grove site",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bundles are counted.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -3215,9 +3215,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
-          "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+          "pull": "Now a genuinely new situation from the grove.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -3231,9 +3231,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the grove",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -3253,17 +3253,17 @@
           "tens"
         ],
         "home": [
-          "Why do the zeros just move across?",
-          "Does it work for any fact?",
-          "What is 3 × 40,000?"
+          "Five shade tiles, forty to a bundle. What is the total — and which basic fact is carrying it?",
+          "Why does 6 × 700 give the same shape as 6 × 7? Which seat does the answer land in, and why?",
+          "Write a bundle problem of your own: a basic fact with a bundle of hundreds. What is the total, and where does the zero sit?"
         ]
       },
       "diagnose": {
         "claims": [
-          "The basic fact stays; the place value changes.",
-          "The pattern is a place-value fact, not a zero trick.",
-          "I can read the pattern backwards.",
-          "The comparison produces the rule — not the teacher."
+          "I can name a basic fact like 6 × 7 and read off its bundle version, 6 × 700.",
+          "I can say which seat a product lands in — not just add a zero.",
+          "I can move a basic fact one place to the left for each bundle of ten.",
+          "I can check a bundle product by estimating its size first."
         ]
       },
       "practice": {
@@ -3300,28 +3300,33 @@
           },
           {
             "mode": "independent",
-            "prompt": "What is 6 × 700?",
+            "prompt": "The truck now carries bundles of 300. Six bundles — what is the inventory total?",
             "options": [
               {
                 "v": "a",
-                "text": "4,200"
+                "text": "1,800"
               },
               {
                 "v": "b",
-                "text": "420"
+                "text": "180"
               },
               {
                 "v": "c",
-                "text": "42,000"
+                "text": "18,000"
               },
               {
                 "v": "d",
-                "text": "670"
+                "text": "630"
               }
             ],
             "right": "a",
-            "yes": "Yes — 6 × 7 = 42, so 6 × 700 is 42 hundreds: 4,200.",
-            "notYet": "Not yet — what is the basic fact first?"
+            "yes": "Yes — 6 × 3 is 18, and the bundle of hundreds moves the 18 into the hundreds: 1,800.",
+            "notYet": "Not yet — find the basic fact first, then see which seat the bundle moves it into."
+          },
+          {
+            "mode": "harder",
+            "prompt": "A delivery note reads 7 × 400. Write it as a basic fact with bundles, then check the total two different ways.",
+            "answer": "7 × 400 is 7 × 4 = 28, moved into the hundreds: 2,800. Check one: four 400s make 1,600, three more 400s make 1,200, and 1,600 + 1,200 lands on 2,800. Check two: 400 × 10 would be 4,000, and taking away three 400s (1,200) leaves 2,800."
           }
         ]
       },
@@ -3374,15 +3379,21 @@
         "production": {
           "options": [
             {
-              "kind": "mini-project",
-              "task": "Produce your own version of the unit artifact — Grove plan · bundles of tens counted — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "kind": "model",
+              "task": "A bundle-scale model of the tile delivery: build a paper model of the truck and one bundle of 100 tiles, then label the whole delivery as basic fact × bundle, with the seat the answer lands in marked on the model.",
+              "stem": "ask what the delivery totals → plan the scale → build the bundle model → test it against the basic fact × bundle → share it at the dry channel",
               "ai": false
             },
             {
               "kind": "poster",
-              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
-              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "task": "A zeros-that-mean poster: take one bundle product from the delivery, show seat by seat where the answer lands and why the zero sits there — no bare zero rule allowed anywhere on the poster.",
+              "stem": "ask why the zero sits where it does → plan the poster → build the seat-by-seat story → test it on a classmate → share it on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A 60-second basic-fact-to-bundle clip: ask the AI to propose five bundle products, judge each on camera by its basic fact, and catch any one it gets wrong. The AI proposes, you decide — the verdicts are the work.",
+              "stem": "ask what a bundle product hides → plan the clip → request five bundle products from the AI (check each with the basic fact) → test your verdicts on camera → share it on the wall",
               "ai": true
             }
           ]
@@ -3396,7 +3407,7 @@
         "revisitOld": 6
       },
       "wall": {
-        "artifact": "Grove plan · bundles of tens counted",
+        "artifact": "The bundle inventory — the class's scale model, zero-meaning poster, and bundle verdicts",
         "next": "The foreman's quick promise: the whole order fits on one truck — can the class estimate before the truck arrives?"
       }
     },
@@ -3407,10 +3418,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>grove briefing</em> was already at home",
+          "lead": "Before class, the class met the multiplication briefing — the bundle math and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the grove work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about multiplying?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -3424,9 +3435,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the grove site",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bundles are counted.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -3442,9 +3453,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
-          "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+          "pull": "Now a genuinely new situation from the grove.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -3458,9 +3469,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the grove",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -3480,17 +3491,17 @@
           "estimate"
         ],
         "home": [
-          "About how many dates in total?",
-          "Which rounding is easier?",
-          "Can the estimate check the promise?"
+          "6 × 512 — round the 512 to a friendly hundred, then estimate the product. What promise could you make with that number?",
+          "Why round one factor and not both? What happens to the basic fact if you round both?",
+          "The foreman promises four loads of about 300 tiles each. Is that about 1,200 tiles? What would you check first?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can choose the rounding place the decision needs.",
-          "I can use the estimate to flag an answer that cannot be right.",
-          "I can say whether the exact product sits above or below the estimate.",
-          "The comparison produces the rule — not the teacher."
+          "I can round a many-digit factor to a friendly hundred before multiplying.",
+          "I can keep the one-digit factor exact so the basic fact survives the estimate.",
+          "I can judge a promise as reasonable or unreasonable from the estimate alone.",
+          "I can say which side of the exact product my estimate sits on."
         ]
       },
       "practice": {
@@ -3527,28 +3538,33 @@
           },
           {
             "mode": "independent",
-            "prompt": "Estimate 6 × 512 by rounding to the nearest hundred.",
+            "prompt": "The foreman promises the side yard gets 7 rows of 264 tiles. Estimate the product by rounding the 264 — what do you tell him?",
             "options": [
               {
                 "v": "a",
-                "text": "3,000"
+                "text": "About 2,100 — 264 rounds to 300, and 7 × 300 is 2,100"
               },
               {
                 "v": "b",
-                "text": "300"
+                "text": "About 1,400 — 264 rounds to 200, and 7 × 200 is 1,400"
               },
               {
                 "v": "c",
-                "text": "3,600"
+                "text": "About 1,820 — 264 rounds to 260, and 7 × 260 is 1,820"
               },
               {
                 "v": "d",
-                "text": "30,000"
+                "text": "About 2,800 — 264 rounds to 400, and 7 × 400 is 2,800"
               }
             ],
             "right": "a",
-            "yes": "Yes — 6 × 5 = 30, so 6 × 500 = 3,000. The exact answer, 3,072, is close.",
-            "notYet": "Not yet — round 512 first, then use the basic fact."
+            "yes": "Yes — 264 sits past halfway to 300, so round it to 300 and keep the 7: 7 × 300 = 2,100. The promise stands, a little on the safe side.",
+            "notYet": "Not yet — round the many-digit factor to a friendly hundred, keep the one-digit factor exact, and multiply the friendly pair."
+          },
+          {
+            "mode": "harder",
+            "prompt": "The foreman's real count is 7 × 264. Find the exact product, then say how close his estimate of 2,100 came.",
+            "answer": "7 × 264 = 1,848, so the 2,100 estimate ran 252 high — close enough to keep the promise, not close enough to bill the grove. The estimate sat above the exact product because 264 was rounded up."
           }
         ]
       },
@@ -3601,15 +3617,21 @@
         "production": {
           "options": [
             {
-              "kind": "mini-project",
-              "task": "Produce your own version of the unit artifact — Grove plan · product estimated — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "kind": "presentation",
+              "task": "A 60-second promise-defense presentation: take one of the foreman's promises from the morning, show the estimate that backs it, and state how far the estimate could be from the exact product.",
+              "stem": "ask which promise to defend → plan the estimate → build the friendly pair → test it against the exact product → share it at the dry channel",
+              "ai": false
+            },
+            {
+              "kind": "map",
+              "task": "A promise map: mark the day's promises on a line from estimate to exact product, and label each one keep or break — with the estimate that decided it written under the point.",
+              "stem": "ask which promises to test → plan the line → plot the estimate and the exact for each → test every label against the numbers → share it at the gate",
               "ai": false
             },
             {
               "kind": "poster",
-              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
-              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "task": "An AI-stress-tested promise poster: ask the AI to propose three new foreman promises (rows × tiles), verify every one with your own estimate, and show on the poster where the AI's arithmetic slipped — if it slipped at all.",
+              "stem": "ask what makes a promise testable → plan the poster → request three promises from the AI (verify every product yourself) → test each with an estimate → share it on the wall",
               "ai": true
             }
           ]
@@ -3633,10 +3655,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>grove briefing</em> was already at home",
+          "lead": "Before class, the class met the multiplication briefing — the bundle math and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the grove work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about multiplying?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -3650,9 +3672,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the grove site",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bundles are counted.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -3668,9 +3690,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
-          "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+          "pull": "Now a genuinely new situation from the grove.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -3684,9 +3706,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the grove",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -3706,17 +3728,17 @@
           "splitTens"
         ],
         "home": [
-          "How many chairs?",
-          "Could I split it?",
-          "Is there a quicker way than counting?"
+          "3 rows of 26 chairs. Split the 26 into 20 + 6 and multiply both parts by 3 — what are the two partial products, and the total?",
+          "Why is 3 × 26 the same total as 26 rows of 3? Which way does the grove read its arrays, and does it matter?",
+          "Draw an array of 4 rows of 15. Split the row length two different ways and write the partial products for each split."
         ]
       },
       "diagnose": {
         "claims": [
-          "I can split the array at a friendly number; nothing is added or removed.",
-          "I can multiply each piece, then add every piece back.",
-          "I can read partial products back to their arrays.",
-          "The comparison produces the rule — not the teacher."
+          "I can read an array as rows × row-length and name the total without counting every square.",
+          "I can split a row length into tens and ones and multiply each part.",
+          "I can add the partial products back into one total.",
+          "I can estimate an array product by the row length, not by the number of rows."
         ]
       },
       "practice": {
@@ -3753,28 +3775,33 @@
           },
           {
             "mode": "independent",
-            "prompt": "Use partial products to work out 3 × 26.",
+            "prompt": "The next panel row: 4 rows of 38 tiles. Split the 38 into 30 + 8 — what is the total?",
             "options": [
               {
                 "v": "a",
-                "text": "78"
+                "text": "152"
               },
               {
                 "v": "b",
-                "text": "68"
+                "text": "112"
               },
               {
                 "v": "c",
-                "text": "60"
+                "text": "162"
               },
               {
                 "v": "d",
-                "text": "618"
+                "text": "1,52"
               }
             ],
             "right": "a",
-            "yes": "Yes — 3 × 20 = 60 and 3 × 6 = 18, and 60 + 18 = 78.",
-            "notYet": "Not yet — did you add both parts?"
+            "yes": "Yes — 4 × 30 = 120 and 4 × 8 = 32; 120 + 32 = 152. The array's total is the two partial products added.",
+            "notYet": "Not yet — split the row length into tens and ones, multiply each part, then add the parts."
+          },
+          {
+            "mode": "harder",
+            "prompt": "The grove needs 5 rows of 47 tiles, but the row is delivered in two loads — 40, then 7. Show the partial products, and explain why splitting the delivery changes nothing.",
+            "answer": "5 × 40 = 200 and 5 × 7 = 35; 200 + 35 = 235. The two loads are just the distributive property in two deliveries — 5 × 47 stays 235 no matter where the truck breaks the row."
           }
         ]
       },
@@ -3827,15 +3854,21 @@
         "production": {
           "options": [
             {
-              "kind": "mini-project",
-              "task": "Produce your own version of the unit artifact — Grove plan · array total by partials — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "kind": "drawing",
+              "task": "An annotated array drawing of one panel row: the rows, the tens-ones split drawn across, the two partial products written inside their cells, and the total marked at the corner.",
+              "stem": "ask which row to draw → plan the split → draw the array with the partials → test the total by adding the parts → share it at the dry channel",
               "ai": false
             },
             {
-              "kind": "poster",
-              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
-              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "kind": "model",
+              "task": "A tile-strip array model: paper strips for the rows, marked at the tens-ones split, so a classmate can read the two partial products off the model without seeing your work.",
+              "stem": "ask what the model must show → plan the strips → build the marked array → test it on a classmate (they read the parts) → share it on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A 60-second which-split-is-cleaner clip: ask the AI to propose two different splits of one row length, work both partial-product routes on camera, and say which split you would defend and why.",
+              "stem": "ask what a clean split looks like → plan the clip → request two splits from the AI → test both routes on camera → share it on the wall",
               "ai": true
             }
           ]
@@ -3860,10 +3893,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>grove briefing</em> was already at home",
+          "lead": "Before class, the class met the multiplication briefing — the bundle math and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the grove work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about multiplying?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -3877,9 +3910,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the grove site",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bundles are counted.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -3895,9 +3928,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
-          "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+          "pull": "Now a genuinely new situation from the grove.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -3911,9 +3944,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the grove",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -3933,17 +3966,17 @@
           "answer"
         ],
         "home": [
-          "What is the total?",
-          "Why cut it there?",
-          "Do I add the pieces?"
+          "4 × 213 on an area model: split the 213 into 200 + 10 + 3. What are the three partial areas, and the total?",
+          "Why does the area model show the same total as the array? What is a rectangle's area really made of?",
+          "Take 3 × 126. Split the 126 two different ways and show that both area models land on the same area."
         ]
       },
       "diagnose": {
         "claims": [
-          "I can build the area model region by region.",
-          "I can multiply each region and add every part.",
-          "I can read area models back to their products.",
-          "The comparison produces the rule — not the teacher."
+          "I can partition a number into place-value parts and draw the area model.",
+          "I can multiply each part by the one-digit factor to get the partial areas.",
+          "I can add the partial areas into one total area.",
+          "I can estimate the area first and tell whether the total makes sense."
         ]
       },
       "practice": {
@@ -3980,28 +4013,33 @@
           },
           {
             "mode": "independent",
-            "prompt": "Use an area model to work out 4 × 213.",
+            "prompt": "The roof panel count: 5 × 246. Split the 246 into 200 + 40 + 6 — what is the total area?",
             "options": [
               {
                 "v": "a",
-                "text": "812"
+                "text": "1,230"
               },
               {
                 "v": "b",
-                "text": "852"
+                "text": "1,130"
               },
               {
                 "v": "c",
-                "text": "840"
+                "text": "1,236"
               },
               {
                 "v": "d",
-                "text": "8,412"
+                "text": "12,30"
               }
             ],
-            "right": "b",
-            "yes": "Yes — 800 + 40 + 12 = 852.",
-            "notYet": "Not yet — check that you added every region."
+            "right": "a",
+            "yes": "Yes — 1,000 + 200 + 30 = 1,230. Every panel of the roof is counted exactly once.",
+            "notYet": "Not yet — split the row length into place-value parts, find each partial area, then add them."
+          },
+          {
+            "mode": "harder",
+            "prompt": "The same roof: 5 × 246. Draw both splits — 200 + 40 + 6 and 200 + 46 — and show both models give 1,230. Why does the split not change the area?",
+            "answer": "Split one: 1,000 + 200 + 30 = 1,230. Split two: 1,000 + (5 × 46) = 1,000 + 230 = 1,230. The area is fixed by the two side lengths; only the partition lines inside the rectangle move."
           }
         ]
       },
@@ -4054,15 +4092,21 @@
         "production": {
           "options": [
             {
-              "kind": "mini-project",
-              "task": "Produce your own version of the unit artifact — Grove plan · roof priced by regions — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "kind": "design",
+              "task": "A roof area-model design: draw the roof as a rectangle, partition it the way the class chose, label every partial area, and total the panels — sized so a classmate could price the roof from your drawing alone.",
+              "stem": "ask how to split the roof → plan the partition → draw and label the model → test the total with a second split → share it at the gate",
               "ai": false
             },
             {
-              "kind": "poster",
-              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
-              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "kind": "song",
+              "task": "A partial-products chant for the roof: one verse per partial area, a chorus that adds them into the total — with a clap rhythm that carries the place-value parts.",
+              "stem": "ask what the roof's parts are → plan the verses → write the chant → test it on a classmate (they total the parts) → share it at the dry channel",
+              "ai": false
+            },
+            {
+              "kind": "map",
+              "task": "A partition map from a real roof: research one real long roof or fence length with the AI, verify it, then draw the area model for the panel count and map every partial area to a part of the real measurement.",
+              "stem": "ask what real length to model → plan the map → research a real measurement with the AI (verify it) → test the model with a second split → share it on the wall",
               "ai": true
             }
           ]
@@ -4089,10 +4133,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>grove briefing</em> was already at home",
+          "lead": "Before class, the class met the multiplication briefing — the bundle math and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the grove work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about multiplying?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -4106,9 +4150,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the grove site",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bundles are counted.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -4124,9 +4168,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
-          "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+          "pull": "Now a genuinely new situation from the grove.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -4140,9 +4184,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the grove",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -4162,17 +4206,17 @@
           "answer"
         ],
         "home": [
-          "What is the total?",
-          "Where does the cut go now?",
-          "Which region is easiest to forget?"
+          "3 × 2,146 — estimate first: round the 2,146 to a friendly number and multiply. Where must the exact product land?",
+          "Take 4 × 1,325. Split the 1,325 two different ways and show that both area models give the same total.",
+          "Why does rounding 2,146 to 2,100 lose something? Which region of the number went missing?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can build the area model with a region for every place in the number.",
-          "I can multiply each region and add all four parts.",
-          "I can read four-part models back to their products.",
-          "The comparison produces the rule — not the teacher."
+          "I can estimate a four-place product by rounding the many-digit factor first.",
+          "I can create two valid decompositions of the same number.",
+          "I can compare two area models and prove they give the same total.",
+          "I can name the region of a number that a rounding choice throws away."
         ]
       },
       "practice": {
@@ -4209,28 +4253,33 @@
           },
           {
             "mode": "independent",
-            "prompt": "Use an area model to work out 4 × 1,325.",
+            "prompt": "The courtyard side: 6 × 1,182. Split the 1,182 into 1,100 + 82 — what is the total?",
             "options": [
               {
                 "v": "a",
-                "text": "5,200"
+                "text": "7,092"
               },
               {
                 "v": "b",
-                "text": "5,300"
+                "text": "6,692"
               },
               {
                 "v": "c",
-                "text": "4,300"
+                "text": "7,098"
               },
               {
                 "v": "d",
-                "text": "53,000"
+                "text": "70,92"
               }
             ],
-            "right": "b",
-            "yes": "Yes — 4,000 + 1,200 + 80 + 20 = 5,300.",
-            "notYet": "Not yet — check that you added every region."
+            "right": "a",
+            "yes": "Yes — 6 × 1,100 = 6,600 and 6 × 82 = 492; 6,600 + 492 = 7,092. The 82 part still carries its own tens and ones — every region is multiplied in full.",
+            "notYet": "Not yet — multiply every region of the split, not just the big one, then add the partial areas."
+          },
+          {
+            "mode": "harder",
+            "prompt": "The same courtyard: 6 × 1,182. Split it again as 1,000 + 100 + 82 and show the third model also lands on 7,092 — then say which split you would defend to the council and why.",
+            "answer": "6 × 1,000 = 6,000; 6 × 100 = 600; 6 × 82 = 492. 6,000 + 600 + 492 = 7,092. All three splits agree because the side lengths never moved — only the partition lines did, so the class defends whichever split it can explain fastest."
           }
         ]
       },
@@ -4283,15 +4332,21 @@
         "production": {
           "options": [
             {
-              "kind": "mini-project",
-              "task": "Produce your own version of the unit artifact — Grove plan · courtyard priced by four regions — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "kind": "model",
+              "task": "A fold-out courtyard model: build the rectangle from paper regions (1,100 + 82, or 1,000 + 100 + 82), fold it flat, then unfold it to prove the two partitions give one area.",
+              "stem": "ask how to show two splits at once → plan the folds → build the regions → test both unfoldings → share it at the gate",
               "ai": false
             },
             {
-              "kind": "poster",
-              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
-              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "kind": "presentation",
+              "task": "A 60-second two-models-one-truth presentation: draw two valid decompositions live, compute both totals, and close with the sentence that proves they cannot disagree.",
+              "stem": "ask which two splits to show → plan the argument → draw both models → test both totals → share it at the council table",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "An AI-audited decomposition report: ask the AI to propose a decomposition of a four-place product, check every partial area yourself, and write a one-page report recording where you agreed and what the AI missed.",
+              "stem": "ask what a valid decomposition needs → plan the report → request a split from the AI (verify every partial area) → test the totals → share it on the wall",
               "ai": true
             }
           ]
@@ -4318,10 +4373,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>grove briefing</em> was already at home",
+          "lead": "Before class, the class met the multiplication briefing — the bundle math and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the grove work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about multiplying?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -4335,9 +4390,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the grove site",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bundles are counted.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -4353,9 +4408,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
-          "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+          "pull": "Now a genuinely new situation from the grove.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -4369,9 +4424,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the grove",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -4391,17 +4446,17 @@
           "compensate"
         ],
         "home": [
-          "How many mats in total?",
-          "Can I change the rows and keep the total?",
-          "Which change is friendliest?"
+          "5 × 18 without paper: 5 × 20 is 100 — what do you take away to land on 5 × 18?",
+          "6 × 49: why does going up to 6 × 50 and taking something off beat counting 49 six times?",
+          "Find a pair of compatible numbers that makes 8 × 25 easy in your head. What makes the pair compatible?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can compensation: change the numbers, protect the product.",
-          "I can reshape the factors when one is even and the other can halve.",
-          "I can sort the working so the class can choose a strategy on purpose.",
-          "The comparison produces the rule — not the teacher."
+          "I can round a factor up to a friendly number, multiply, and take the gap off.",
+          "I can regroup factors so the product lands on a friendly pair.",
+          "I can pick compatible numbers that make a product easy to hold.",
+          "I can check a mental product by reversing it — the other factor times the same partner."
         ]
       },
       "practice": {
@@ -4438,28 +4493,33 @@
           },
           {
             "mode": "independent",
-            "prompt": "Work out 6 × 49 in your head. What do you take off after 6 × 50?",
+            "prompt": "No paper at the gate: 7 × 98. Go up to a friendly hundred — what do you take away after 7 × 100?",
             "options": [
               {
                 "v": "a",
-                "text": "1"
+                "text": "70 — so 700 − 70 = 630"
               },
               {
                 "v": "b",
-                "text": "6"
+                "text": "14 — so 700 − 14 = 686"
               },
               {
                 "v": "c",
-                "text": "50"
+                "text": "98 — so 700 − 98 = 602"
               },
               {
                 "v": "d",
-                "text": "49"
+                "text": "7 — so 700 − 7 = 693"
               }
             ],
             "right": "b",
-            "yes": "Yes — 6 × 50 = 300, take off 6, so 294.",
-            "notYet": "Not yet — you added 1 to each of the six groups."
+            "yes": "Yes — 98 is two short of 100, so take away 2 × 7 = 14: 700 − 14 = 686. The gap times the other factor is all that leaves.",
+            "notYet": "Not yet — see how far the factor is from the friendly number, multiply that gap by the other factor, and subtract."
+          },
+          {
+            "mode": "harder",
+            "prompt": "The order now reads 9 × 198. Use the friendly hundred — show what you take away, and give the exact total with a check that uses a different move.",
+            "answer": "9 × 200 = 1,800; 198 is two short, so take away 2 × 9 = 18: 1,800 − 18 = 1,782. Check with a different move: 198 × 10 = 1,980, and taking away one row of 198 gives 1,980 − 198 = 1,782 — the same total, two routes."
           }
         ]
       },
@@ -4512,15 +4572,21 @@
         "production": {
           "options": [
             {
-              "kind": "mini-project",
-              "task": "Produce your own version of the unit artifact — Grove plan · order updated mentally — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "kind": "video",
+              "task": "A 90-second no-paper strategy video: pick the day's gate order, solve it fully in your head on camera, and narrate the move — round up, take the gap off — as you make it. The written check comes after the clip.",
+              "stem": "ask which order to solve → plan the narration → hold the product in your head → test it with the written check after the clip → share it on the wall",
               "ai": false
             },
             {
               "kind": "poster",
-              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
-              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "task": "A friendly-number poster: one mental strategy per panel — round up, regroup, compatible pairs — each with the gate's own numbers, so the class can re-run the whole delivery from the poster alone.",
+              "stem": "ask which strategies earned today → plan the panels → build the poster with the real orders → test each panel by re-solving → share it at the gate",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "An AI-challenged strategy map: draw the mental route for 9 × 198 — the arrows of the round-up and the take-off — then let the AI challenge the route; if it finds a shorter one, map that too and say which you would defend.",
+              "stem": "ask how the route looks → plan the map → draw the arrows → test it against the AI's challenge → share it on the wall",
               "ai": true
             }
           ]
@@ -4546,10 +4612,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>grove briefing</em> was already at home",
+          "lead": "Before class, the class met the multiplication briefing — the bundle math and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the grove work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about multiplying?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -4563,9 +4629,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the grove site",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bundles are counted.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -4581,9 +4647,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
-          "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+          "pull": "Now a genuinely new situation from the grove.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -4597,9 +4663,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the grove",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -4619,17 +4685,17 @@
           "nearWork"
         ],
         "home": [
-          "Would I do them the same way?",
-          "Which is quickest?",
-          "Is there a rule for choosing?"
+          "8 × 198 — three contractors propose: round to 200 and take away; split into 200 − 2; count 198 in eights. Which do you pick, and what do you take away?",
+          "Estimate 7 × 99 by rounding the 99 up to 100 — does the estimate land above or below the true product, and why?",
+          "Two strategies for one product: 5 × 44 as 5 × 40 + 5 × 4, or 5 × 50 − 5 × 6. Which is less work, and when would you switch?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can match each product to the strategy its numbers invite.",
-          "I can compare methods on the same product and judge efficiency.",
-          "I can choose the strategy from the numbers, on purpose.",
-          "The comparison produces the rule — not the teacher."
+          "I can list at least two valid strategies for one product.",
+          "I can choose the strategy that is least work for this number.",
+          "I can say whether an estimate lands above or below the exact product.",
+          "I can defend the choice with a reason tied to the numbers, not to habit."
         ]
       },
       "practice": {
@@ -4666,28 +4732,33 @@
           },
           {
             "mode": "independent",
-            "prompt": "Which strategy suits 8 × 198 best, and what do you take off?",
+            "prompt": "The gate order: 6 × 299. The best move is a friendly hundred — what do you take away, and what is the product?",
             "options": [
               {
                 "v": "a",
-                "text": "take off 2"
+                "text": "Take away 6 — 6 × 300 = 1,800, so 1,794"
               },
               {
                 "v": "b",
-                "text": "take off 16"
+                "text": "Take away 30 — so 1,770"
               },
               {
                 "v": "c",
-                "text": "take off 8"
+                "text": "Take away 60 — so 1,740"
               },
               {
                 "v": "d",
-                "text": "no shortcut"
+                "text": "No shortcut — count 299 six times"
               }
             ],
-            "right": "b",
-            "yes": "Yes — 8 × 200 = 1,600, take off 8 × 2 = 16, so 1,584.",
-            "notYet": "Not yet — you added 2 to each of the eight groups."
+            "right": "a",
+            "yes": "Yes — 299 is one short of 300, so take away 1 × 6 = 6: 1,800 − 6 = 1,794. One basic fact did the whole job.",
+            "notYet": "Not yet — find the friendly number, multiply it, then take away the gap times the other factor."
+          },
+          {
+            "mode": "harder",
+            "prompt": "Three contractors bid on 4 × 7,996: A rounds to 8,000 and takes away; B splits 8,000 − 4 and multiplies both parts; C multiplies in columns. Choose one, show the product, and say why the other two lose the contract.",
+            "answer": "A: 4 × 8,000 = 32,000; take away 4 × 4 = 16 → 31,984. B is the same move written in two parts — 4 × 8,000 − 4 × 4 = 31,984 — so A and B tie, and both beat C, whose column walk is slower here and still correct. The contract goes to the round-up: one basic fact, one take-away."
           }
         ]
       },
@@ -4740,15 +4811,21 @@
         "production": {
           "options": [
             {
-              "kind": "mini-project",
-              "task": "Produce your own version of the unit artifact — Grove plan · strategies chosen by the numbers — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "kind": "presentation",
+              "task": "A 60-second contract defense: stand at the gate, name the order, pick the strategy, show the product, and give the one sentence that decides why the other two bids lost.",
+              "stem": "ask which order to defend → plan the argument → choose the strategy → test the product a second way → share it at the gate",
               "ai": false
             },
             {
-              "kind": "poster",
-              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
-              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "kind": "model",
+              "task": "A three-lane strategy model: three paper lanes, one per contractor, each showing its route to the same product — the fastest lane marked, with the reason written on its label.",
+              "stem": "ask what three routes to show → plan the lanes → build each route → test that all three land the same → share it on the wall",
+              "ai": false
+            },
+            {
+              "kind": "map",
+              "task": "A strategy-choice map from real orders: ask the AI to propose three real gate orders at real magnitudes, verify each, and map the class's best strategy for each — with the take-away shown under the product.",
+              "stem": "ask what a real order looks like → plan the map → request three orders from the AI (verify the magnitudes) → test each strategy choice → share it on the wall",
               "ai": true
             }
           ]
@@ -4773,10 +4850,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>grove briefing</em> was already at home",
+          "lead": "Before class, the class met the multiplication briefing — the bundle math and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the grove work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about multiplying?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -4790,9 +4867,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the grove site",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the bundles are counted.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -4808,9 +4885,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
-          "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+          "pull": "Now a genuinely new situation from the grove.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -4824,9 +4901,9 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
-          "goal": "Transfer the method into new territory and defend it through critique.",
+          "title": "A genuinely <em>new situation</em> from the grove",
+          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
@@ -4846,17 +4923,17 @@
           "compare"
         ],
         "home": [
-          "How many books are packed?",
-          "How many are still to pack?",
-          "Where does the unknown sit?"
+          "The grove model needs 7 crates of 186 tiles. How many tiles are packed in total? How many more would reach 1,500?",
+          "Four cards each show two numbers. One card is not a model of the grove. How do you tell a model from a random pair?",
+          "Write the material-schedule line for one row of the grove: rows × tiles per row = total. Which number on the schedule would you double-check first?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can choose the diagram that fits, before choosing the operation.",
-          "I can chain two steps in one model — step 1 feeds step 2.",
-          "I can recognise the hidden middle step before modelling.",
-          "The comparison produces the rule — not the teacher."
+          "I can build a model of a situation with multiplication — rows × row-length.",
+          "I can tell a valid model from a pair of numbers with no model behind them.",
+          "I can solve a two-step situation: find the product, then compare it to the need.",
+          "I can read the unit's artifact — the grove's scale drawing and materials schedule — and defend one line of it."
         ]
       },
       "practice": {
@@ -4893,28 +4970,33 @@
           },
           {
             "mode": "independent",
-            "prompt": "A school packs 7 crates of 186 pens. The order is for 1,500 pens. How many are still needed?",
+            "prompt": "The grove model's second wall: 6 rows of 164 tiles are packed, and the wall needs 1,100 tiles. How many are still needed?",
             "options": [
               {
                 "v": "a",
-                "text": "1,302"
+                "text": "116"
               },
               {
                 "v": "b",
-                "text": "198"
+                "text": "936"
               },
               {
                 "v": "c",
-                "text": "288"
+                "text": "216"
               },
               {
                 "v": "d",
-                "text": "1,314"
+                "text": "106"
               }
             ],
-            "right": "b",
-            "yes": "Yes — 7 × 186 = 1,302, then 1,500 − 1,302 = 198.",
-            "notYet": "Not yet — what do you have to work out before you can answer?"
+            "right": "a",
+            "yes": "Yes — 6 × 164 = 984 packed; 1,100 − 984 = 116 still needed. Two steps, one model.",
+            "notYet": "Not yet — find the product first, then compare it to what the wall needs."
+          },
+          {
+            "mode": "harder",
+            "prompt": "The council asks: could the class have used 5 rows of 220 instead of 6 rows of 164 for the same 1,100-tile wall? Check both designs, and say which one the council should sign.",
+            "answer": "6 × 164 = 984 — eleven-six short, so that design under-builds the wall. 5 × 220 = 1,100 exactly — zero tiles wasted beyond the wall. The council signs the 5 × 220 design: the product lands exactly on the need."
           }
         ]
       },
@@ -4968,14 +5050,20 @@
           "options": [
             {
               "kind": "mini-project",
-              "task": "Produce your own version of the unit artifact — Grove model · defended before the council — for the situation above. Every student builds their own; the critic will examine the class's best defence of it.",
-              "stem": "ask a question the situation raises → plan the build → build it → test it against the method → share it on the evidence wall",
+              "task": "The grove's scale drawing and materials schedule: build the unit's own artifact — the grove drawn to scale, every row as rows × tiles, every total checked a second way, and the schedule signed by its maker. This is the product the class puts its name on.",
+              "stem": "ask what the grove needs → plan the scale → build the drawing and the schedule → test every total a second way → present it to the council",
               "ai": false
             },
             {
-              "kind": "poster",
-              "task": "A one-page research poster with the AI as researcher: it finds one real-world example of this lesson's idea, you verify it against a trusted source, and the poster shows what you found, how it checks out, and one claim the AI got wrong or that you had to verify. You write every line.",
-              "stem": "ask a question the situation raises → plan the poster → research with the AI (verify every claim) → build the poster → test it against the method → share it on the evidence wall",
+              "kind": "presentation",
+              "task": "The grove presentation: 90 seconds, no notes — walk the council through the model, the schedule, and the one line you re-checked last because it mattered most.",
+              "stem": "ask what the council must see → plan the order → build the talk around the artifact → test it once alone → deliver it at the seal desk",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A 90-second council Q&A clip: you defend the grove model on camera while the AI plays the council — ask it to challenge three lines of the schedule, answer each on camera yourself, and close with the sealed handoff to the two-digit workshop.",
+              "stem": "ask what the council will challenge → plan the defence → record it → let the AI challenge (answer every question yourself) → test the answers → share it on the wall",
               "ai": true
             }
           ]
@@ -4988,7 +5076,7 @@
         "revisitOld": 8
       },
       "wall": {
-        "artifact": "Grove model · defended before the council",
+        "artifact": "The grove model with its scale drawing, materials schedule, and the class's council defences",
         "next": "The grove design works, but its workshop fabricates many two-digit panels at once. A larger multiplication model is required."
       }
     },
