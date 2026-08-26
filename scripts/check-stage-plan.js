@@ -38,6 +38,22 @@ if (got.length !== codes.length) push("coverage: curriculum " + codes.length + "
 
 const hasArabic = (s) => /[\u0600-\u06FF]/.test(s);
 
+/* ---- per-topic authored improvements (stage/topics/*.json) ---------------- */
+/* The deepening pass is done topic by topic. Authored fields replace the
+   generated ones; where a topic file exists we also require the things that
+   make the pass real: the independent item is a genuinely new item (not the
+   guided item re-shown) and the harder lane (if any) is complete. */
+const topicsDir = path.join(ROOT, "stage", "topics");
+const overrides = {};
+let authoredTopics = 0;
+if (fs.existsSync(topicsDir)) {
+  for (const f of fs.readdirSync(topicsDir).filter((x) => x.endsWith(".json")).sort()) {
+    const t = JSON.parse(fs.readFileSync(path.join(topicsDir, f), "utf8"));
+    authoredTopics++;
+    for (const code of Object.keys(t.lessons || {})) overrides[code] = t;
+  }
+}
+
 for (const code of codes) {
   const L = plan.lessons[code];
   if (!L) continue;
@@ -106,6 +122,19 @@ for (const code of codes) {
     });
   }
 
+  /* the deepening pass, where present: the independent item must be a new
+     item, not the guided one re-shown, and the harder lane must be complete */
+  if (overrides[code] && PR.items && PR.items.length >= 2) {
+    if (PR.items[1].prompt === PR.items[0].prompt) push(where + "independent item is the guided item re-shown");
+    if (PR.items[1].options && PR.items[0].options &&
+        JSON.stringify(PR.items[1].options) === JSON.stringify(PR.items[0].options))
+      push(where + "independent item offers the same options as the guided item");
+    const harder = PR.items.find((it) => it.mode === "harder");
+    if (harder && (typeof harder.prompt !== "string" || !harder.prompt ||
+                   typeof harder.answer !== "string" || !harder.answer))
+      push(where + "harder lane incomplete (needs prompt + answer)");
+  }
+
   /* stage 5 */
   const C = L.critic || {};
   if (typeof C.situation !== "string" || !C.situation) push(where + "critic.situation missing");
@@ -150,4 +179,6 @@ if (errors.length) {
   errors.forEach((e) => console.error("FAIL", e));
   process.exit(1);
 }
-console.log("stage plan OK · " + codes.length + " lessons · 7 stages each");
+console.log("stage plan OK · " + codes.length + " lessons · 7 stages each · " +
+  authoredTopics + " of " + curriculum.topics.length + " topics deepened (" +
+  Object.keys(overrides).length + " lessons)");

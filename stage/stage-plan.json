@@ -60,10 +60,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>census briefing</em> was already at home",
+          "lead": "Before class, the class met the place-value briefing — the headline numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the census work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about place value?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -77,9 +77,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the census office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the first fragment is restored.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -95,9 +95,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the census records. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the archive. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -111,8 +111,8 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
+          "title": "A genuinely <em>new situation</em> from the archive",
+          "lead": "The class defends its place-value method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
           "goal": "Transfer the method into new territory and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
@@ -133,17 +133,17 @@
           "expandedShort"
         ],
         "home": [
-          "Why groups of three?",
-          "What comes after millions?",
-          "Where do the commas belong?"
+          "Read this number out loud, seat by seat: 482,106. Say each digit with the seat it sits in.",
+          "What is the zero in 482,106 standing for? What would the number be if the zero left its seat?",
+          "How many seats lie between the ones and the hundred-thousands? Name each one."
         ]
       },
       "diagnose": {
         "claims": [
-          "I can separate the digit from the value it carries in the civic record.",
-          "I can use expanded form as an auditable version of the place-value chart.",
-          "I can move between representations while protecting every placeholder zero.",
-          "I can compare methods and name a reusable strategy in the Sijill."
+          "I can read and write numbers up to 10,000 in a place-value chart.",
+          "I can say what a digit is worth in the ones, tens, hundreds and thousands.",
+          "I can use a zero to hold a place open, like in 305.",
+          "I can write a number in expanded form, like 4,215 = 4,000 + 200 + 10 + 5."
         ]
       },
       "practice": {
@@ -180,28 +180,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "Which number is three hundred five thousand, seventy-two?",
+            "prompt": "The second damaged record reads 205,306. Which statement is true?",
             "options": [
               {
                 "v": "a",
-                "text": "35,072"
+                "text": "The 5 is worth 5,000"
               },
               {
                 "v": "b",
-                "text": "305,072"
+                "text": "The 5 is worth 500"
               },
               {
                 "v": "c",
-                "text": "305,720"
+                "text": "The 3 is worth 30"
               },
               {
                 "v": "d",
-                "text": "350,072"
+                "text": "The 2 is worth 200"
               }
             ],
-            "right": "b",
-            "yes": "Yes — the hundreds place holds a zero, and the tens hold 7.",
-            "notYet": "Not yet — put it in the chart first."
+            "right": "a",
+            "yes": "Yes — the 5 sits in the thousands, so it is worth 5,000. The zeros hold the ten-thousands and tens places open.",
+            "notYet": "Not yet — put 205,306 in the chart and check which seat each digit sits in."
+          },
+          {
+            "mode": "harder",
+            "prompt": "Write 603,408 in expanded form.",
+            "answer": "600,000 + 3,000 + 400 + 8 — the zeros add nothing, but the places they hold open do.",
+            "hint": "Zeros add nothing — but the places they hold open do."
           }
         ]
       },
@@ -274,10 +280,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>census briefing</em> was already at home",
+          "lead": "Before class, the class met the place-value briefing — the headline numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the census work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about place value?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -291,9 +297,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the census office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the first fragment is restored.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -309,9 +315,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the census records. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the archive. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -325,8 +331,8 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
+          "title": "A genuinely <em>new situation</em> from the archive",
+          "lead": "The class defends its place-value method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
           "goal": "Transfer the method into new territory and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
@@ -347,17 +353,17 @@
           "leftSeven"
         ],
         "home": [
-          "Why does moving change the value?",
-          "What would sliding right do?",
-          "Does it work for every digit?"
+          "Take the number 45. If every digit moved one seat to the left, what would the new number be — and how much would it be worth?",
+          "Why is the seat after the ones called the tens? What are the next two seats called?",
+          "What happens to a number if every digit moves one seat to the right? Try 360."
         ]
       },
       "diagnose": {
         "claims": [
-          "I can build the 10-times relationship as a movable model.",
-          "I can state digit and value together for any place in a number.",
-          "I can apply the ten-times relationship to repair records.",
-          "I can compare methods and name the reusable rule in the Sijill."
+          "I can read and write numbers up to one million in a place-value chart.",
+          "I can state both the digit and its value for any place in a number.",
+          "I can multiply a whole number by 10 and say where each digit moved.",
+          "I can divide a multiple of 10 by 10 and say where each digit moved."
         ]
       },
       "practice": {
@@ -394,28 +400,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "The census key card is damaged: 3,000 = 10 × ? Which value completes it?",
+            "prompt": "The key card shows 80,000 = 10 × ?. Which value completes it?",
             "options": [
               {
                 "v": "a",
-                "text": "30"
+                "text": "800"
               },
               {
                 "v": "b",
-                "text": "300"
+                "text": "8,000"
               },
               {
                 "v": "c",
-                "text": "3,000"
+                "text": "800,000"
               },
               {
                 "v": "d",
-                "text": "30,000"
+                "text": "8,000,000"
               }
             ],
             "right": "b",
-            "yes": "Yes — 3,000 ÷ 10 = 300, and 300 × 10 = 3,000. The 300 sits in the hundreds.",
+            "yes": "Yes — 8,000 × 10 = 80,000; the 8 moves from the thousands to the ten-thousands.",
             "notYet": "Not yet — check both directions: ×10 going left, ÷10 going right."
+          },
+          {
+            "mode": "harder",
+            "prompt": "A record shows 7,000. Write it as 10 × ?, and again as 100 × ?.",
+            "answer": "7,000 = 10 × 700 = 100 × 7 — each seat one place left is worth ten times as much.",
+            "hint": "Start with 7 and count the seats."
           }
         ]
       },
@@ -488,10 +500,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>census briefing</em> was already at home",
+          "lead": "Before class, the class met the place-value briefing — the headline numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the census work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about place value?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -505,9 +517,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the census office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the first fragment is restored.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -523,9 +535,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the census records. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the archive. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -539,8 +551,8 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
+          "title": "A genuinely <em>new situation</em> from the archive",
+          "lead": "The class defends its place-value method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
           "goal": "Transfer the method into new territory and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
@@ -561,17 +573,17 @@
           "pairLess"
         ],
         "home": [
-          "How do we know which number is really larger?",
-          "Do we need every digit to decide?",
-          "What if one number had more digits?"
+          "Which is greater: 9,999 or 10,000? Which one has more digits — and does that decide it?",
+          "Compare 4,371 and 4,381. How many seats do the digits agree on before they disagree?",
+          "Make two 5-digit numbers as close together as you can. How close can you get?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can find the first differing place and stop there.",
-          "I can confirm the chart comparison with a second representation.",
-          "I can record comparisons with symbols, including different digit counts and equal pairs.",
-          "I can compare methods and name the reusable rule in the Sijill."
+          "I can read and write numbers up to one million in a place-value chart.",
+          "I can state the value of each digit in a number.",
+          "I can use the symbols for less than and greater than to record which of two numbers is greater.",
+          "I can find the first place where two numbers differ."
         ]
       },
       "practice": {
@@ -608,15 +620,15 @@
           },
           {
             "mode": "independent",
-            "prompt": "The card reads 305,072 or 350,072. Which is the greater number?",
+            "prompt": "The card reads 480,900 or 408,900. Which is the greater number?",
             "options": [
               {
                 "v": "a",
-                "text": "305,072"
+                "text": "480,900"
               },
               {
                 "v": "b",
-                "text": "350,072"
+                "text": "408,900"
               },
               {
                 "v": "c",
@@ -627,9 +639,15 @@
                 "text": "Cannot be compared"
               }
             ],
-            "right": "b",
-            "yes": "Yes — the ten-thousands places differ first: 5 beats 0, so 350,072 is greater.",
+            "right": "a",
+            "yes": "Yes — the ten-thousands places differ first: 8 beats 0, so 480,900 is greater.",
             "notYet": "Not yet — scan from the greatest place. Which place is the first to differ?"
+          },
+          {
+            "mode": "harder",
+            "prompt": "Which is greater: 999,999 or 1,000,000? Decide it before comparing any digits — and say why that works.",
+            "answer": "1,000,000 — it reaches into a place (millions) that 999,999 does not. A number with more digits is always greater.",
+            "hint": "Count the digits first."
           }
         ]
       },
@@ -700,10 +718,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>census briefing</em> was already at home",
+          "lead": "Before class, the class met the place-value briefing — the headline numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the census work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about place value?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -717,9 +735,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the census office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the first fragment is restored.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -735,9 +753,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the census records. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the archive. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -751,8 +769,8 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
+          "title": "A genuinely <em>new situation</em> from the archive",
+          "lead": "The class defends its place-value method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
           "goal": "Transfer the method into new territory and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
@@ -773,17 +791,17 @@
           "toThousand"
         ],
         "home": [
-          "What makes an estimate useful?",
-          "How close does 'close' need to be?",
-          "What tells you which way to go?"
+          "What is halfway between 3,000 and 4,000? Between 3,200 and 3,300?",
+          "The report needs about, not exactly. When do you round up, and when do you round down?",
+          "Round 4,861 to the nearest thousand. Which way did it go — and what told you?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can use the halfway point to decide round-up or round-down.",
-          "I can round to the requested place, not the most familiar one.",
-          "I can round multi-digit numbers to the requested place with embedded zeros.",
-          "I can compare methods and name the reusable rule in the Sijill."
+          "I can read and write numbers up to one million in a place-value chart.",
+          "I can find the halfway point between two values a place apart.",
+          "I can round a number to the nearest ten and to the nearest hundred.",
+          "I can decide which side of the halfway point a number sits on."
         ]
       },
       "practice": {
@@ -820,28 +838,34 @@
           },
           {
             "mode": "independent",
-            "prompt": "The order form asks for the nearest hundred. Which number goes on it?",
+            "prompt": "The council signs the form for 5,612. It asks for the nearest thousand. Which number goes on it?",
             "options": [
               {
                 "v": "a",
-                "text": "6,700"
+                "text": "5,000"
               },
               {
                 "v": "b",
-                "text": "6,800"
+                "text": "6,000"
               },
               {
                 "v": "c",
-                "text": "6,750"
+                "text": "5,600"
               },
               {
                 "v": "d",
-                "text": "6,748"
+                "text": "5,610"
               }
             ],
-            "right": "a",
-            "yes": "Yes — halfway between 6,700 and 6,800 is 6,750, and 6,748 sits before it, so it rounds down to 6,700.",
-            "notYet": "Not yet — find the halfway point of the hundreds and see which side 6,748 sits on."
+            "right": "b",
+            "yes": "Yes — halfway at the thousands is 5,500, and 5,612 sits past it, so it rounds up to 6,000.",
+            "notYet": "Not yet — find the halfway point of the thousands and see which side 5,612 sits on."
+          },
+          {
+            "mode": "harder",
+            "prompt": "Round 450 to the nearest hundred. Two students disagree — 400 and 500. Who is right, and what does the class rule say about a number that sits exactly on the halfway point?",
+            "answer": "500 — the rule is: at or past halfway, round up. 450 sits exactly on halfway.",
+            "hint": "The board rule says: at or past it, round up."
           }
         ]
       },
@@ -911,10 +935,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The briefing was <em>sent before class</em>",
-          "lead": "First exposure happened at home, at each student's own pace. This is the compressed material the class met before class.",
-          "goal": "Recover the first exposure, so class time begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold?",
+          "title": "The <em>census briefing</em> was already at home",
+          "lead": "Before class, the class met the place-value briefing — the headline numbers and three home questions, at each student's own pace.",
+          "goal": "Recover the first exposure, so the census work begins with thinking — not with content delivery.",
+          "pull": "Now the probe: what does the class already hold about place value?",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -928,9 +952,9 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> — not a grade",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds. We are mapping gaps, not scoring students.",
-          "goal": "Build a gap map: what is known, and what is missing.",
+          "title": "The <em>gap map</em> for the census office",
+          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "goal": "Build a gap map: what is known, and what is missing, before the first fragment is restored.",
           "pull": "Knowledge building closes exactly what the map flags.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
@@ -946,9 +970,9 @@
         "practice": {
           "phase": "practice",
           "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then with it closed. Every answer is met in the moment, not after a delayed correction.",
+          "lead": "First with the model open, then with it closed, on the census records. Every answer is met in the moment, not after a delayed correction.",
           "goal": "Guided, then independent — learning happens at the moment of doing.",
-          "pull": "Now a genuinely new situation. The critic arrives — as a critic, never as an author.",
+          "pull": "Now a genuinely new situation from the archive. The critic arrives — as a critic, never as an author.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -962,8 +986,8 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em>",
-          "lead": "The class defends its method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
+          "title": "A genuinely <em>new situation</em> from the archive",
+          "lead": "The class defends its place-value method in a situation it has not seen before. AI enters here — as a critic, never as an author.",
           "goal": "Transfer the method into new territory and defend it through critique.",
           "pull": "One individual task now decides each student's next path.",
           "rail": {
@@ -984,17 +1008,17 @@
           "diff"
         ],
         "home": [
-          "What settles a dispute this close?",
-          "Is a claim enough to win?",
-          "What would the council demand?"
+          "Two numbers differ by only 30,000. Which single seat can hold that whole difference?",
+          "Sort these into claim, evidence and conclusion: '4,697,000 is greater.' · 'The ten-thousands differ first: 90,000 beats 70,000.' · 'So the first reading is correct.'",
+          "When a partner's argument has a gap, what do you point to — the size of their voice, or the seat with no evidence?"
         ]
       },
       "diagnose": {
         "claims": [
-          "I can assemble claim, numbers, place value, comparison and conclusion.",
-          "I can find the deciding place in a close comparison.",
-          "I can critique reasoning by locating the step with no evidence.",
-          "I can identify claims, evidence and conclusions in written arguments."
+          "I can compare two numbers by the first place that differs.",
+          "I can state the value of a digit in any place up to the millions.",
+          "I can find the difference between two close large numbers.",
+          "I can tell a claim apart from the evidence that supports it."
         ]
       },
       "practice": {
@@ -1031,15 +1055,15 @@
           },
           {
             "mode": "independent",
-            "prompt": "Which reading of the census line is supported by the place-value evidence?",
+            "prompt": "Two readings survived on the second page. Which one is supported by the place-value evidence?",
             "options": [
               {
                 "v": "a",
-                "text": "4,697,000"
+                "text": "5,084,200"
               },
               {
                 "v": "b",
-                "text": "4,679,000"
+                "text": "5,048,200"
               },
               {
                 "v": "c",
@@ -1051,8 +1075,14 @@
               }
             ],
             "right": "a",
-            "yes": "Yes — the ten-thousands places differ first: 90,000 beats 70,000, so 4,697,000 is greater.",
+            "yes": "Yes — the ten-thousands places differ first: 80,000 beats 40,000, so 5,084,200 is greater.",
             "notYet": "Not yet — scan from the greatest place and find the first place that differs."
+          },
+          {
+            "mode": "harder",
+            "prompt": "Build the argument in one pass — claim, place, values, gap — for 8,241,000 against 8,214,000.",
+            "answer": "8,241,000 is greater: the ten-thousands differ first — 40,000 beats 10,000 — and the gap is 27,000.",
+            "hint": "Claim, then the deciding place, then the two values, then the gap."
           }
         ]
       },

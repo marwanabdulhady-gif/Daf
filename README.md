@@ -61,6 +61,17 @@ into [`stage/stage-plan.json`](stage/stage-plan.json) and stamped into each deck
 `window.DAF_STAGE` at build time. The full specification lives in
 [§3 of the reference](docs/reference/daf_math_slides_en.md#3-the-seven-stages).
 
+**Deepening the stages, one topic at a time.** The generated stage data is then deepened topic by
+topic in [`stage/topics/`](stage/topics/): home questions that genuinely work as first exposure
+(stage 1), gap-map claims that probe what the class *actually knows* rather than the lesson's own
+goals (stage 2), an independent practice item that is truly new — not the guided item re-shown
+(stage 4), the harder lane, and stage-screen copy in the unit's own story voice. The generated
+plan is the floor; the topic files are the authored layer on top, merged in by
+`scripts/make-stage-plan.js`. Progress is tracked by `npm run check:stages` — **Topic 1 is
+deepened (5 lessons); 17 topics are in scope.** To deepen a topic: add `stage/topics/<n>.json`,
+run `npm run build:stages`, then `npm run check:stages` and `node scripts/smoke-stage.js` over the
+topic's lessons.
+
 ## Storytelling curriculum proposal
 
 The proposed year-long story frame is **[The Lantern of Numeria](docs/plans/storytelling-curriculum-plan.html)**. It connects all 17 topics and maps a story purpose, student mission and handoff for every one of the 114 lessons. Its machine-readable source is [`story/story-map.json`](story/story-map.json).
@@ -461,6 +472,8 @@ html/                generated deliverables — one self-contained HTML file per
 stage/               per-lesson data for the seven-stage structure (generated, committed)
   stage-plan.json      all 114 plans: stage screens, home questions, gap-map claims,
                        sprint items, the critic, the gate, the wall
+  topics/              the per-topic deepening pass — authored home questions, gap-map claims,
+                       independent items, harder lanes, stage-screen voice (one file per topic)
 story/               approved/planned narrative data, separate from core curriculum data
   story-map.json       17 connected unit arcs and all 114 lesson story beats
   stem-sources.json    reviewed STEM windows (schema v2: re-verification dates, image provenance)

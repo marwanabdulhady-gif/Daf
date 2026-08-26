@@ -325,12 +325,63 @@ function planFor(code, lessonTitle, standard) {
   };
 }
 
+/* ---- per-topic authored improvements --------------------------------------
+   The files under stage/topics/ are a teacher-facing deepening pass, done
+   topic by topic: home questions that genuinely work as first exposure,
+   gap-map claims that probe what the class actually knows, a truly new
+   independent item, the harder lane, and topic-level stage screen copy.
+   Authored fields replace the generated ones; everything else stays
+   generated and deterministic. A topic with no file yet runs the generated
+   plan unchanged. */
+const overridesByCode = {};
+let overrideTopicCount = 0;
+(function loadOverrides() {
+  const dir = path.join(ROOT, "stage", "topics");
+  if (!fs.existsSync(dir)) return;
+  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".json")).sort()) {
+    const t = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
+    overrideTopicCount++;
+    for (const [code, o] of Object.entries(t.lessons || {})) overridesByCode[code] = { topic: t, o };
+  }
+})();
+
+function applyOverrides(code, entry) {
+  const ov = overridesByCode[code];
+  if (!ov) return entry;
+  const { topic, o } = ov;
+  /* topic-level stage screen copy — one voice per unit arc */
+  for (const [k, s] of Object.entries(topic.screens || {})) {
+    if (entry.screens[k]) Object.assign(entry.screens[k], s);
+  }
+  /* lesson-level fields */
+  for (const [k, s] of Object.entries(o.screens || {})) {
+    if (entry.screens[k]) Object.assign(entry.screens[k], s);
+  }
+  if (o.prep) {
+    if (Array.isArray(o.prep.home)) entry.prep.home = o.prep.home;
+    if (Array.isArray(o.prep.objects)) entry.prep.objects = o.prep.objects;
+  }
+  if (o.diagnose && Array.isArray(o.diagnose.claims)) entry.diagnose.claims = o.diagnose.claims;
+  if (o.practice) {
+    if (o.practice.independent) {
+      const i = entry.practice.items.findIndex((it) => it.mode === "independent");
+      if (i !== -1) entry.practice.items[i] = Object.assign({}, entry.practice.items[i], o.practice.independent);
+      else entry.practice.items.splice(1, 0, Object.assign({ mode: "independent" }, o.practice.independent));
+    }
+    if (o.practice.harder && !entry.practice.items.some((it) => it.mode === "harder")) {
+      entry.practice.items.push(Object.assign({ mode: "harder" }, o.practice.harder));
+    }
+  }
+  if (o.wall) Object.assign(entry.wall, o.wall);
+  return entry;
+}
+
 /* ---- build all 114 --------------------------------------------------------- */
 const lessons = {};
 const errors = [];
 curriculum.topics.forEach((t) => {
   t.lessons.forEach((l) => {
-    try { lessons[l.code] = planFor(l.code, l.title, l.standard); }
+    try { lessons[l.code] = applyOverrides(l.code, planFor(l.code, l.title, l.standard)); }
     catch (e) { errors.push(e.message); }
   });
 });
@@ -359,4 +410,5 @@ fs.mkdirSync(path.join(ROOT, "stage"), { recursive: true });
 const outPath = path.join(ROOT, "stage", "stage-plan.json");
 fs.writeFileSync(outPath, JSON.stringify(plan, null, 2) + "\n");
 console.log("stage plan written · " + Object.keys(plan.lessons).length + " lessons · " +
-  (fs.statSync(outPath).size / 1024).toFixed(0) + " KB");
+  (fs.statSync(outPath).size / 1024).toFixed(0) + " KB · " +
+  overrideTopicCount + " of " + curriculum.topics.length + " topics deepened");

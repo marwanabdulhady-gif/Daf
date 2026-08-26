@@ -281,7 +281,16 @@ posts what it made — a final product the student is willing to put their name 
 - The per-lesson data (stage screen copy, home questions, claims, sprint items, the critic, the
   gate, the wall) is generated **deterministically** into `stage/stage-plan.json` by
   `scripts/make-stage-plan.js` — same inputs, same bytes — and stamped into each built deck as
-  `window.DAF_STAGE` at build time. Nothing stage-specific is authored by hand.
+  `window.DAF_STAGE` at build time.
+- **The deepening pass is authored, topic by topic.** Each topic may ship a
+  `stage/topics/<n>.json` that replaces the generated fields with content that holds up to the
+  spec: stage 1 home questions that work as *first exposure at home*; stage 2 claims that probe
+  what the class **actually knows** (prerequisites and entry skills — not the lesson's own goals);
+  a stage 4 independent item that is genuinely new (new numbers, new context — never the guided
+  item re-shown); the harder lane; and stage-screen copy in the unit's story voice. The generated
+  plan is the floor; the topic file is the authored layer on top. `npm run check:stages` reports
+  how many of the 17 topics are deepened, and asserts that wherever a topic file exists, the
+  independent item differs from the guided one and the harder lane is complete.
 - Every screen's header carries its **stage chip**: *Stage N · name · timing*.
 - Decks without a stage plan (the topic bosses) run the classic lesson format: no stage chips, no
   stamp.
@@ -622,6 +631,7 @@ Always guard: `if (window.gsap && !matchMedia("(prefers-reduced-motion: reduce)"
 | `reference/verify.js` | 18 automated guardrail checks against a built deck. `node verify.js` |
 | `reference/build.sh` | Concatenates the `_a`/`_b`/`_c*` source parts into the single-file deck, and stamps the lesson's `window.DAF_STAGE` plan. |
 | `stage/stage-plan.json` | The per-lesson seven-stage data for every lesson — generated, committed, stamped into the decks. |
+| `stage/topics/<n>.json` | The per-topic deepening pass: authored home questions, gap-map claims, independent items, harder lanes and stage-screen voice for one topic. |
 | `scripts/make-stage-plan.js` | The stage-plan generator. Reads each lesson's own content (prompts, goals, formative check, board, IXL codes) plus the story map; deterministic (FNV-seeded shuffles). |
 | `scripts/lib-parse.js` | The restricted JS-literal parser the generator uses to read lesson sources without executing them. |
 | `scripts/check-stage-plan.js` | Independent validator for the stage plan (`npm run check:stages`) — 7 stages per lesson, every critic/challenge option a non-empty string. |
