@@ -321,6 +321,8 @@
         font-size: 11.5px; color: var(--daf-ink-2); line-height: 1.5; max-width: 480px;
       }
       .goal b { color: var(--daf-deep); }
+      .quest-strip { margin-top: 9px; padding: 9px 11px; border: 1px solid rgba(18,133,124,.28); border-radius: 11px; background: linear-gradient(100deg, rgba(18,133,124,.1), rgba(96,66,166,.07)); color: var(--daf-ink-2); font-size: 10.5px; line-height: 1.38; }
+      .quest-strip b { display: block; margin-bottom: 3px; color: #12857C; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
 
       .chips { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 18px; }
       .chip {
@@ -401,8 +403,9 @@
       .lane-amanah .story-ribbon { border-color: rgba(56,140,70,.3); background: linear-gradient(112deg,#fff,#eff8ef); }
       .story-motif { position: absolute; inset-inline-end: 0; bottom: -18px; width: 210px; height: 115px; color: #6042A6; opacity: .075; pointer-events: none; }
       .lane-stem .story-motif { color: #2D70B3; }.lane-amanah .story-motif { color: #388C46; }
-      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; }
-      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); }
+      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; cursor: pointer; border-radius: 14px; transition: transform .18s ease, background .18s ease; }
+      .story-cast:hover,.story-cast:focus-visible { transform: translateY(-2px) scale(1.04); background: rgba(201,162,39,.13); outline: 2px solid rgba(201,162,39,.45); outline-offset: 2px; }
+      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); pointer-events: none; }
       .story-ribbon-copy { position: relative; z-index: 2; min-width: 0; }
       .story-lane { display: inline-flex; gap: 6px; align-items: center; font-size: 8.5px; font-weight: 950; letter-spacing: .13em; text-transform: uppercase; color: #6042A6; }
       .lane-stem .story-lane { color: #2D70B3; }.lane-amanah .story-lane { color: #388C46; }
@@ -804,6 +807,23 @@
         border-radius: 999px; padding: 5px 14px;
       }
       .gremlin-tamed i { color: var(--ok); }
+      .gremlin-wrap { cursor: pointer; transition: transform .2s ease, filter .2s ease; }
+      .gremlin-wrap:hover,.gremlin-wrap:focus-visible,.gremlin-wrap.noticed { transform: translateY(-3px) scale(1.02); filter: drop-shadow(0 8px 14px rgba(18,133,124,.2)); outline: none; }
+      .gremlin-prompt { margin-top: 5px; padding: 6px 8px; border-radius: 9px; background: #FFF7D6; color: #6042A6; font-size: 10px; font-weight: 800; }
+      .critic-quest-link { margin-top: 7px; padding-top: 7px; border-top: 1px dashed rgba(201,162,39,.45); color: var(--daf-ink-2); font-size: 10px; }
+      .critic-quest-link svg,.critic-quest-link i { color: #12857C; margin-right: 4px; }
+      .cast-mission { grid-column: 1 / -1; display: flex; gap: 8px; align-items: baseline; padding: 6px 9px; border-radius: 9px; background: rgba(18,133,124,.1); color: var(--daf-ink-2); font-size: 10px; line-height: 1.35; }
+      .cast-mission b { color: #12857C; white-space: nowrap; }
+      .story-mission { grid-column: 1 / -1; display: flex; gap: 8px; align-items: baseline; padding: 7px 10px; border-radius: 10px; background: rgba(96,66,166,.09); border: 1px solid rgba(96,66,166,.22); color: var(--daf-ink-2); font-size: 10px; line-height: 1.35; }
+      .story-mission b { color: #6042A6; white-space: nowrap; }
+      .gremlin-opener { grid-column: 2 / -1; display: flex; gap: 10px; align-items: baseline;
+        margin: -2px 0 2px; padding: 7px 10px; border: 1px solid rgba(201,162,39,.38);
+        border-radius: 10px; background: linear-gradient(90deg, rgba(201,162,39,.13), rgba(18,133,124,.08));
+        color: rgba(234,244,242,.86); font-size: 11px; line-height: 1.35; }
+      .gremlin-opener b { color: #f2d37a; white-space: nowrap; letter-spacing: .02em; }
+      .gremlin-opener b i { margin-right: 5px; }
+      .gremlin-opener span { color: rgba(234,244,242,.72); font-style: italic; }
+      @media (max-width: 760px) { .gremlin-opener { grid-column: 1 / -1; flex-wrap: wrap; gap: 3px 8px; } }
 
       .critic-brief {
         background: var(--daf-mint); border: 1.5px solid var(--daf-line); border-radius: 13px;
@@ -3643,8 +3663,8 @@ var GREMLINS = {
           name: "Remainder-Dropper", trap: "The leftover doesn't matter — the whole groups are the answer." },
   "6":  { kind: "blob",   col: ["#a87fc4", "#81609e"], prop: "rusher",
           name: "The Rusher", trap: "This path is already working — why change it?" },
-  "7":  { kind: "blob",   col: ["#46b3a6", "#318278"], prop: "pair",
-          name: "Missing-Pair", trap: "You've found the shapes — the ones you didn't find don't exist." },
+  "7":  { kind: "blob",   col: ["#59D8C8", "#167F83"], prop: "pair",
+          name: "Pairy the Reef Sprite", trap: "One rectangle is enough — let’s skip the rest!" },
   "8":  { kind: "dragon", col: ["#5fb2e6", "#3a86b8"], prop: "twins",
           name: "Close-Islands", trap: "They look different, so they must be different." },
   "9":  { kind: "blob",   col: ["#e5809a", "#bb5473"], prop: "tray",
@@ -3788,6 +3808,21 @@ function drawGremlin(ctx, cx, baseY, o) {
     var fx = cx + (fi - (feetN - 1) / 2) * bodyW * 0.42;
     blk(ctx, fx - 11 * s, baseY - 12 * s, 22 * s, 14 * s, 5 * s, g.col[1]);
   }
+
+  /* toy-like face details: a soft shine and a tiny unit badge make the
+     creature feel collectible and friendly, not like a flat warning icon. */
+  ctx.save();
+  ctx.globalAlpha = state === "trap" ? 0.42 : 0.58;
+  blk(ctx, left + bodyW * 0.16, top + bodyH * 0.12, bodyW * 0.16, bodyH * 0.08,
+    5 * s, "rgba(255,255,255,.72)");
+  ctx.restore();
+  ctx.fillStyle = state === "tamed" ? "#F4D47A" : "rgba(255,255,255,.22)";
+  blk(ctx, cx - 10 * s, cy + bodyH * 0.19, 20 * s, 12 * s, 5 * s,
+    state === "tamed" ? "#F4D47A" : "rgba(16,36,43,.18)");
+  ctx.fillStyle = "#10242B";
+  ctx.font = "800 " + (8 * s) + "px 'JetBrains Mono', monospace";
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  ctx.fillText(state === "tamed" ? "OK" : "?", cx, cy + bodyH * 0.19);
 
   /* ---- big square Dojo eyes ---- */
   var ew = r * 0.30, eh = r * 0.34, eyeGap = r * 0.30, eyeY = cy - r * 0.14;
@@ -4293,6 +4328,7 @@ function Sketch({ draw, height, style }) {
    proof is accepted, then 'tamed' (happy, prop fixed). It is non-violent:
    the class never strikes it — it is correct-ted and helps next door. */
 function Gremlin({ state, code, size, whisper }) {
+  const [noticed, setNoticed] = useState(false);
   const g = (typeof GREMLINS !== "undefined") && GREMLINS[(code && String(code).split("-")[0]) || "1"];
   const def = g || GREMLINS["1"];
   const st = state === "tamed" ? "tamed" : "trap";
@@ -4301,7 +4337,11 @@ function Gremlin({ state, code, size, whisper }) {
     drawGremlin(ctx, W / 2, H - 14, { state: st, frame: frame, r: Math.min(W, H) * 0.34, code: code });
   };
   return (
-    <div className={"gremlin-wrap g-" + st}>
+    <div className={"gremlin-wrap g-" + st + (noticed ? " noticed" : "")} role="button" tabIndex="0"
+      aria-label={"Inspect " + def.name + "'s shortcut"}
+      title="Tap the creature to inspect its shortcut"
+      onClick={() => setNoticed((v) => !v)}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setNoticed((v) => !v); } }}>
       <Sketch draw={draw} height={size || 150} />
       <div className="gremlin-name"><i className="fa-solid fa-mask" /> {def.name}</div>
       {whisper && st === "trap" && (
@@ -4312,6 +4352,7 @@ function Gremlin({ state, code, size, whisper }) {
       {st === "tamed" && (
         <div className="gremlin-tamed"><i className="fa-solid fa-circle-check" /> the proof holds — it helps now</div>
       )}
+      {noticed && st === "trap" && <div className="gremlin-prompt"><i className="fa-solid fa-magnifying-glass" /> What will you test first?</div>}
     </div>
   );
 }
@@ -4719,14 +4760,22 @@ const STORY_LANES = {
   amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
 };
 
-function StoryShell({ lane, character, pose, support, title, text, clue, children, compact }) {
+function StoryShell({ lane, character, pose, support, title, text, clue, children, compact, opener }) {
   const info = STORY_LANES[lane || "fiction"];
   const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  const [castOpen, setCastOpen] = useState(false);
+  const gremlin = opener && typeof gremlinFor === "function" && typeof LESSON !== "undefined"
+    ? gremlinFor(LESSON.code) : null;
+  const mission = opener && STORY && STORY.lesson ? STORY.lesson.studentMission : null;
   return (
     <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
       <div className="story-ribbon">
         <UnitShapeMotif topic={topic} />
-        <div className="story-cast">
+        <div className="story-cast" role="button" tabIndex="0"
+          aria-label="Open the character mission card"
+          title="Tap the characters to see today's mission"
+          onClick={() => setCastOpen((v) => !v)}
+          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setCastOpen((v) => !v); } }}>
           {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
             : character === "lantern" ? <StoryLantern size={58} />
             : character ? <StoryCharacter id={character} pose={pose} size={60} />
@@ -4736,6 +4785,18 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
               lanes as a curious companion — never the sacred Amanah lane */}
           {(lane === "fiction" || info.cls === "stem") ? <GremlinAvatar size={50} /> : null}
         </div>
+        {castOpen && lane === "fiction" && <div className="cast-mission" role="status">
+          <b><Icon name="fa-compass" /> Mission crew</b>
+          <span>Omar checks the evidence. Zayd builds the model. Tap again to close.</span>
+        </div>}
+        {mission && <div className="story-mission" role="note">
+          <b><Icon name="fa-flag-checkered" /> Today's mission</b>
+          <span>{mission}</span>
+        </div>}
+        {gremlin && <div className="gremlin-opener" role="note">
+          <b><Icon name="fa-eye" /> Trap to watch for: {gremlin.name}</b>
+          <span>“{gremlin.trap}”</span>
+        </div>}
         <div className="story-ribbon-copy">
           <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
           <b>{title}</b>
@@ -5830,6 +5891,9 @@ function CriticBoard({ award }) {
         <div className="critic-brief-tag"><Icon name="fa-location-crosshairs" /> A genuinely new situation</div>
         <div>{C.situation}</div>
         <div className="critic-mission"><b>The mission: </b>{C.mission}</div>
+        {typeof STORY !== "undefined" && STORY.unit && <div className="critic-quest-link">
+          <Icon name="fa-link" /> <b>Quest product link:</b> {STORY.unit.artifact} — this choice becomes evidence for the quest.
+        </div>}
       </div>
 
       {C.production && (
@@ -6656,7 +6720,7 @@ function MathInventory({ onClose }) {
   );
 }
 
-function Frame({ meta, stage, children }) {
+function Frame({ meta, stage, children, quest }) {
   const vref = useRef(null);
   useEffect(() => {
     if (!window.gsap || !vref.current) return;
@@ -6686,6 +6750,10 @@ function Frame({ meta, stage, children }) {
         <h1 dangerouslySetInnerHTML={{ __html: meta.title }} />
         <p className="lead">{meta.lead}</p>
         <div className="goal"><b>Goal · </b>{meta.goal}</div>
+        {quest && <div className="quest-strip" role="note">
+          <b><Icon name="fa-route" /> Quest · {quest.storyBeat}</b>
+          <span>{quest.studentMission}</span>
+        </div>}
       </section>
       <section className="visual" ref={vref}>
         <Boundary>{children}</Boundary>
@@ -7314,7 +7382,7 @@ function App() {
       {game.flash && !dojo && <div className="flash">{game.flash}</div>}
 
       <div className="stage-wrap" key={i + "-" + replay}>
-        <Frame meta={meta} stage={SEQ.stages[i]}>
+        <Frame meta={meta} stage={SEQ.stages[i]} quest={i === 0 && typeof STORY !== "undefined" ? STORY.lesson : null}>
           {typeof SEQ.visuals[i] === "string"
             ? <StageScreens k={SEQ.visuals[i].slice(6)} award={award} game={game} />
             : <LESSON.Visual i={SEQ.visuals[i]} award={award} game={game} />}

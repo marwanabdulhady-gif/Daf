@@ -10559,10 +10559,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The <em>reef briefing</em> was already at home",
-          "lead": "Before class, the class met the module briefing — the first many-shaped tile and three home questions, at each student's own pace.",
+          "title": "The <em>reef builders</em> have a challenge",
+          "lead": "A design crew needs one tile that can fit many garden beds. Before class, students explore equal rows and rectangles at home.",
           "goal": "Recover the first exposure, so the module work begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold about equal rows and rectangles?",
+          "pull": "Now the team tests its first tile.",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -10576,10 +10576,10 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> for the reef",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "title": "The team's <em>starting map</em>",
+          "lead": "A quick, low-stakes map shows which rectangle and factor ideas are ready and which need another look.",
           "goal": "Build a gap map: what is known, and what is missing, before the first tile is certified.",
-          "pull": "Knowledge building closes exactly what the map flags.",
+          "pull": "Build only what the map says the team needs.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
             "monitor": [
@@ -10593,10 +10593,10 @@
         },
         "practice": {
           "phase": "practice",
-          "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "title": "Practice the <em>builder's test</em>",
+          "lead": "Build, list, and check factor pairs. Then try a new reef number with a partner.",
           "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
-          "pull": "Now a genuinely new situation from the reef.",
+          "pull": "Now transfer the method to a new design.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -10610,10 +10610,10 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em> from the reef",
-          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "title": "The <em>reef design challenge</em>",
+          "lead": "Teams build a new tile, calendar, or explanation and ask Pairy to critique it. The student remains the designer and verifier.",
           "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
-          "pull": "One individual task now decides each student's next path.",
+          "pull": "One individual check decides the next step.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
             "monitor": [
@@ -10796,10 +10796,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The <em>reef briefing</em> was already at home",
-          "lead": "Before class, the class met the module briefing — the first many-shaped tile and three home questions, at each student's own pace.",
+          "title": "The <em>reef builders</em> have a challenge",
+          "lead": "A design crew needs one tile that can fit many garden beds. Before class, students explore equal rows and rectangles at home.",
           "goal": "Recover the first exposure, so the module work begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold about equal rows and rectangles?",
+          "pull": "Now the team tests its first tile.",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -10813,10 +10813,10 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> for the reef",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "title": "The team's <em>starting map</em>",
+          "lead": "A quick, low-stakes map shows which rectangle and factor ideas are ready and which need another look.",
           "goal": "Build a gap map: what is known, and what is missing, before the first tile is certified.",
-          "pull": "Knowledge building closes exactly what the map flags.",
+          "pull": "Build only what the map says the team needs.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
             "monitor": [
@@ -10830,10 +10830,10 @@
         },
         "practice": {
           "phase": "practice",
-          "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "title": "Practice the <em>builder's test</em>",
+          "lead": "Build, list, and check factor pairs. Then try a new reef number with a partner.",
           "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
-          "pull": "Now a genuinely new situation from the reef.",
+          "pull": "Now transfer the method to a new design.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -10847,10 +10847,10 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em> from the reef",
-          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "title": "The <em>reef design challenge</em>",
+          "lead": "Teams build a new tile, calendar, or explanation and ask Pairy to critique it. The student remains the designer and verifier.",
           "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
-          "pull": "One individual task now decides each student's next path.",
+          "pull": "One individual check decides the next step.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
             "monitor": [
@@ -11034,10 +11034,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The <em>reef briefing</em> was already at home",
-          "lead": "Before class, the class met the module briefing — the first many-shaped tile and three home questions, at each student's own pace.",
+          "title": "The <em>reef builders</em> have a challenge",
+          "lead": "A design crew needs one tile that can fit many garden beds. Before class, students explore equal rows and rectangles at home.",
           "goal": "Recover the first exposure, so the module work begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold about equal rows and rectangles?",
+          "pull": "Now the team tests its first tile.",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -11051,10 +11051,10 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> for the reef",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "title": "The team's <em>starting map</em>",
+          "lead": "A quick, low-stakes map shows which rectangle and factor ideas are ready and which need another look.",
           "goal": "Build a gap map: what is known, and what is missing, before the first tile is certified.",
-          "pull": "Knowledge building closes exactly what the map flags.",
+          "pull": "Build only what the map says the team needs.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
             "monitor": [
@@ -11068,10 +11068,10 @@
         },
         "practice": {
           "phase": "practice",
-          "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "title": "Practice the <em>builder's test</em>",
+          "lead": "Build, list, and check factor pairs. Then try a new reef number with a partner.",
           "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
-          "pull": "Now a genuinely new situation from the reef.",
+          "pull": "Now transfer the method to a new design.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -11085,10 +11085,10 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em> from the reef",
-          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "title": "The <em>reef design challenge</em>",
+          "lead": "Teams build a new tile, calendar, or explanation and ask Pairy to critique it. The student remains the designer and verifier.",
           "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
-          "pull": "One individual task now decides each student's next path.",
+          "pull": "One individual check decides the next step.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
             "monitor": [
@@ -11271,10 +11271,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The <em>reef briefing</em> was already at home",
-          "lead": "Before class, the class met the module briefing — the first many-shaped tile and three home questions, at each student's own pace.",
+          "title": "The <em>reef builders</em> have a challenge",
+          "lead": "A design crew needs one tile that can fit many garden beds. Before class, students explore equal rows and rectangles at home.",
           "goal": "Recover the first exposure, so the module work begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold about equal rows and rectangles?",
+          "pull": "Now the team tests its first tile.",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -11288,10 +11288,10 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> for the reef",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "title": "The team's <em>starting map</em>",
+          "lead": "A quick, low-stakes map shows which rectangle and factor ideas are ready and which need another look.",
           "goal": "Build a gap map: what is known, and what is missing, before the first tile is certified.",
-          "pull": "Knowledge building closes exactly what the map flags.",
+          "pull": "Build only what the map says the team needs.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
             "monitor": [
@@ -11305,10 +11305,10 @@
         },
         "practice": {
           "phase": "practice",
-          "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "title": "Practice the <em>builder's test</em>",
+          "lead": "Build, list, and check factor pairs. Then try a new reef number with a partner.",
           "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
-          "pull": "Now a genuinely new situation from the reef.",
+          "pull": "Now transfer the method to a new design.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -11322,10 +11322,10 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em> from the reef",
-          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "title": "The <em>reef design challenge</em>",
+          "lead": "Teams build a new tile, calendar, or explanation and ask Pairy to critique it. The student remains the designer and verifier.",
           "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
-          "pull": "One individual task now decides each student's next path.",
+          "pull": "One individual check decides the next step.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
             "monitor": [
@@ -11508,10 +11508,10 @@
       "screens": {
         "prep": {
           "phase": "prep",
-          "title": "The <em>reef briefing</em> was already at home",
-          "lead": "Before class, the class met the module briefing — the first many-shaped tile and three home questions, at each student's own pace.",
+          "title": "The <em>reef builders</em> have a challenge",
+          "lead": "A design crew needs one tile that can fit many garden beds. Before class, students explore equal rows and rectangles at home.",
           "goal": "Recover the first exposure, so the module work begins with thinking — not with content delivery.",
-          "pull": "Now the probe: what does the class already hold about equal rows and rectangles?",
+          "pull": "Now the team tests its first tile.",
           "rail": {
             "launch": "Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.",
             "monitor": [
@@ -11525,10 +11525,10 @@
         },
         "diagnose": {
           "phase": "diagnose",
-          "title": "The <em>gap map</em> for the reef",
-          "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+          "title": "The team's <em>starting map</em>",
+          "lead": "A quick, low-stakes map shows which rectangle and factor ideas are ready and which need another look.",
           "goal": "Build a gap map: what is known, and what is missing, before the first tile is certified.",
-          "pull": "Knowledge building closes exactly what the map flags.",
+          "pull": "Build only what the map says the team needs.",
           "rail": {
             "launch": "Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.",
             "monitor": [
@@ -11542,10 +11542,10 @@
         },
         "practice": {
           "phase": "practice",
-          "title": "Practice — feedback in <em>seconds, not days</em>",
-          "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+          "title": "Practice the <em>builder's test</em>",
+          "lead": "Build, list, and check factor pairs. Then try a new reef number with a partner.",
           "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
-          "pull": "Now a genuinely new situation from the reef.",
+          "pull": "Now transfer the method to a new design.",
           "rail": {
             "launch": "Item one is supported: the model stays open. Item two is independent: no model until it is missed.",
             "monitor": [
@@ -11559,10 +11559,10 @@
         },
         "critic": {
           "phase": "produce",
-          "title": "A genuinely <em>new situation</em> from the reef",
-          "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+          "title": "The <em>reef design challenge</em>",
+          "lead": "Teams build a new tile, calendar, or explanation and ask Pairy to critique it. The student remains the designer and verifier.",
           "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
-          "pull": "One individual task now decides each student's next path.",
+          "pull": "One individual check decides the next step.",
           "rail": {
             "launch": "The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.",
             "monitor": [

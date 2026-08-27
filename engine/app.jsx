@@ -261,7 +261,7 @@ function MathInventory({ onClose }) {
   );
 }
 
-function Frame({ meta, stage, children }) {
+function Frame({ meta, stage, children, quest }) {
   const vref = useRef(null);
   useEffect(() => {
     if (!window.gsap || !vref.current) return;
@@ -291,6 +291,10 @@ function Frame({ meta, stage, children }) {
         <h1 dangerouslySetInnerHTML={{ __html: meta.title }} />
         <p className="lead">{meta.lead}</p>
         <div className="goal"><b>Goal · </b>{meta.goal}</div>
+        {quest && <div className="quest-strip" role="note">
+          <b><Icon name="fa-route" /> Quest · {quest.storyBeat}</b>
+          <span>{quest.studentMission}</span>
+        </div>}
       </section>
       <section className="visual" ref={vref}>
         <Boundary>{children}</Boundary>
@@ -919,7 +923,7 @@ function App() {
       {game.flash && !dojo && <div className="flash">{game.flash}</div>}
 
       <div className="stage-wrap" key={i + "-" + replay}>
-        <Frame meta={meta} stage={SEQ.stages[i]}>
+        <Frame meta={meta} stage={SEQ.stages[i]} quest={i === 0 && typeof STORY !== "undefined" ? STORY.lesson : null}>
           {typeof SEQ.visuals[i] === "string"
             ? <StageScreens k={SEQ.visuals[i].slice(6)} award={award} game={game} />
             : <LESSON.Visual i={SEQ.visuals[i]} award={award} game={game} />}

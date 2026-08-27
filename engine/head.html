@@ -321,6 +321,8 @@
         font-size: 11.5px; color: var(--daf-ink-2); line-height: 1.5; max-width: 480px;
       }
       .goal b { color: var(--daf-deep); }
+      .quest-strip { margin-top: 9px; padding: 9px 11px; border: 1px solid rgba(18,133,124,.28); border-radius: 11px; background: linear-gradient(100deg, rgba(18,133,124,.1), rgba(96,66,166,.07)); color: var(--daf-ink-2); font-size: 10.5px; line-height: 1.38; }
+      .quest-strip b { display: block; margin-bottom: 3px; color: #12857C; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
 
       .chips { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 18px; }
       .chip {
@@ -805,8 +807,15 @@
         border-radius: 999px; padding: 5px 14px;
       }
       .gremlin-tamed i { color: var(--ok); }
+      .gremlin-wrap { cursor: pointer; transition: transform .2s ease, filter .2s ease; }
+      .gremlin-wrap:hover,.gremlin-wrap:focus-visible,.gremlin-wrap.noticed { transform: translateY(-3px) scale(1.02); filter: drop-shadow(0 8px 14px rgba(18,133,124,.2)); outline: none; }
+      .gremlin-prompt { margin-top: 5px; padding: 6px 8px; border-radius: 9px; background: #FFF7D6; color: #6042A6; font-size: 10px; font-weight: 800; }
+      .critic-quest-link { margin-top: 7px; padding-top: 7px; border-top: 1px dashed rgba(201,162,39,.45); color: var(--daf-ink-2); font-size: 10px; }
+      .critic-quest-link svg,.critic-quest-link i { color: #12857C; margin-right: 4px; }
       .cast-mission { grid-column: 1 / -1; display: flex; gap: 8px; align-items: baseline; padding: 6px 9px; border-radius: 9px; background: rgba(18,133,124,.1); color: var(--daf-ink-2); font-size: 10px; line-height: 1.35; }
       .cast-mission b { color: #12857C; white-space: nowrap; }
+      .story-mission { grid-column: 1 / -1; display: flex; gap: 8px; align-items: baseline; padding: 7px 10px; border-radius: 10px; background: rgba(96,66,166,.09); border: 1px solid rgba(96,66,166,.22); color: var(--daf-ink-2); font-size: 10px; line-height: 1.35; }
+      .story-mission b { color: #6042A6; white-space: nowrap; }
       .gremlin-opener { grid-column: 2 / -1; display: flex; gap: 10px; align-items: baseline;
         margin: -2px 0 2px; padding: 7px 10px; border: 1px solid rgba(201,162,39,.38);
         border-radius: 10px; background: linear-gradient(90deg, rgba(201,162,39,.13), rgba(18,133,124,.08));

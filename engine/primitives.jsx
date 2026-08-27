@@ -171,6 +171,7 @@ function Sketch({ draw, height, style }) {
    proof is accepted, then 'tamed' (happy, prop fixed). It is non-violent:
    the class never strikes it — it is correct-ted and helps next door. */
 function Gremlin({ state, code, size, whisper }) {
+  const [noticed, setNoticed] = useState(false);
   const g = (typeof GREMLINS !== "undefined") && GREMLINS[(code && String(code).split("-")[0]) || "1"];
   const def = g || GREMLINS["1"];
   const st = state === "tamed" ? "tamed" : "trap";
@@ -179,7 +180,11 @@ function Gremlin({ state, code, size, whisper }) {
     drawGremlin(ctx, W / 2, H - 14, { state: st, frame: frame, r: Math.min(W, H) * 0.34, code: code });
   };
   return (
-    <div className={"gremlin-wrap g-" + st}>
+    <div className={"gremlin-wrap g-" + st + (noticed ? " noticed" : "")} role="button" tabIndex="0"
+      aria-label={"Inspect " + def.name + "'s shortcut"}
+      title="Tap the creature to inspect its shortcut"
+      onClick={() => setNoticed((v) => !v)}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setNoticed((v) => !v); } }}>
       <Sketch draw={draw} height={size || 150} />
       <div className="gremlin-name"><i className="fa-solid fa-mask" /> {def.name}</div>
       {whisper && st === "trap" && (
@@ -190,6 +195,7 @@ function Gremlin({ state, code, size, whisper }) {
       {st === "tamed" && (
         <div className="gremlin-tamed"><i className="fa-solid fa-circle-check" /> the proof holds — it helps now</div>
       )}
+      {noticed && st === "trap" && <div className="gremlin-prompt"><i className="fa-solid fa-magnifying-glass" /> What will you test first?</div>}
     </div>
   );
 }

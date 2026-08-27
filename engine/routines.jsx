@@ -992,6 +992,9 @@ function CriticBoard({ award }) {
         <div className="critic-brief-tag"><Icon name="fa-location-crosshairs" /> A genuinely new situation</div>
         <div>{C.situation}</div>
         <div className="critic-mission"><b>The mission: </b>{C.mission}</div>
+        {typeof STORY !== "undefined" && STORY.unit && <div className="critic-quest-link">
+          <Icon name="fa-link" /> <b>Quest product link:</b> {STORY.unit.artifact} — this choice becomes evidence for the quest.
+        </div>}
       </div>
 
       {C.production && (
