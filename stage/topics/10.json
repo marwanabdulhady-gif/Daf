@@ -1,0 +1,341 @@
+{
+ "topic": 10,
+ "title": "Extend Multiplication Concepts to Fractions",
+ "arc": "The clockmaker's repeated portions — one unit is repeated until seven eighths is just seven copies of an eighth-piece, the repeated batch is modelled as so-many groups of a fraction, the compact workshop notation writes the groups as one multiplication, the workshop clock measures elapsed time in hops across o'clocks and deadlines, and the final schedule is modelled and tested to prove it holds.",
+ "sources": [
+  "CCSS 4.NF.B.4 (thecorestandards.org): understand a fraction a/b as a multiple of 1/b; multiply a fraction by a whole number, understanding n x a/b as multiples of 1/b, and solve word problems using visual fraction models and equations",
+  "CCSS 4.MD.A.2: solve word problems involving intervals of time using the four operations and represent measurements with diagrams such as number line diagrams — the clock hops the clockmaker makes",
+  "FLDOE Grade 4 SASSME (fldoe.org Grade4SASSME.pdf): the 'Sugar in six cans of soda' visual (Packard's Little Numbers and Pictures) to visualize multiplication of a fraction, and MAFS.4.NF.2.4 model lessons building n copies of a unit fraction",
+  "Edible STEM fraction activities (imthecheftoo.com STEM for kids): real recipe scaling — doubling and halving ingredients measured in fractions of a cup; n batches each needing a/b of a cup becomes n x a/b, run and tasted as a physical test",
+  "Trouble-free Teaching 1212, 'STEM Project: Design a Garden Using Multiplying Fractions' (4th-5th, CCSS 4.NF.B.4): students use multiplication of fractions to design a real garden plot, computing repeated fractional areas — a genuine engineering-design fraction production",
+  "Georgia Organics Farm to School 'Planting a Square Foot Garden' (farmtoschool.georgiaorganics.org, grades 3-5): planting cells described as repeated fractional parts; nine cells per square foot across several beds multiplies a fraction-sized planting across groups",
+  "Time measurement classroom practice: elapsed-time number-line 'hop' models (to the o'clock, across hours, leftover minutes) as the standard elementary model for time intervals",
+  "NGSS Science and Engineering Practice 2 (Developing and Using Models) and Practice 5 (Using Mathematics): repeated fractional quantities modelled and computed to test whether a production schedule can hold"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>clockmaker's briefing</em> was already at home",
+   "lead": "Before class, the class met the repeated-portions briefing — one unit counted many times and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the workshop timing begins with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about repeating one fraction?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the workshop",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the first batch is timed.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the workshop."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the workshop",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "10-1": {
+   "prep": {
+    "home": [
+     "A bottle is marked in eighths. Seven of the eighth-marks are filled. Name the small piece first — what is one piece? How many copies of that piece are poured?",
+     "Write the filled amount as a repeated addition of unit fractions, then write it as 'a number times one piece'.",
+     "The workshop says 7/8 means '7 of the 1/8 pieces'. What would 5/6 mean in the same pattern, and which number names the piece?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can name the unit fraction a portion is built from.",
+     "I can read any fraction as a number of copies of its unit fraction.",
+     "I can write a fraction as a multiplication of a whole number by its unit fraction.",
+     "I can distinguish multiplying by the unit fraction from multiplying by the whole fraction."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Which multiplication describes 5/6?",
+     "options": [
+      { "v": "a", "text": "5 x 1/6" },
+      { "v": "b", "text": "6 x 1/5" },
+      { "v": "c", "text": "5 x 5/6" },
+      { "v": "d", "text": "6 x 1/30" }
+     ],
+     "right": "a",
+     "yes": "Yes — 5/6 is five copies of 1/6, so it is 5 times 1/6. The numerator counts copies; the denominator names the piece.",
+     "notYet": "Not yet — the piece is one sixth (1/6); five filled pieces means five copies of it."
+    },
+    "harder": {
+     "prompt": "A tray holds 4/5 of a batch. Rewrite it two ways — as repeated addition of unit fractions and as a multiplication — and say what number of full unit pieces would complete the batch.",
+     "answer": "Repeated: 1/5 + 1/5 + 1/5 + 1/5. Multiplication: 4 x 1/5 = 4/5. One whole batch is five unit pieces (5/5), so one more 1/5 piece completes it — the pattern 'n copies of 1/b' also reveals exactly how far the portion sits from a full unit."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A unit-piece fraction set: cut a tray (or cup measure) into equal unit pieces, then assemble and mount fractions such as 7/8 and 5/6 from exactly the right number of unit pieces, with the multiplication written under each.",
+       "stem": "ask which fraction to assemble → plan the equal pieces → cut and assemble the unit pieces → test the pieces count to the fraction → share the set on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A 'copies of the piece' teaching poster: take three fractions, show each one as a count of its unit fraction — repeated addition on the top row and multiplication on the bottom — so the numerator-as-count idea is unmistakable.",
+       "stem": "ask what the poster must show → plan the three rows → write the pieces as adds then multiplies → test each by counting unit pieces → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A pattern-prove clip with the AI as proposer: ask the AI to describe three fractions as copies of their unit fraction, verify each on camera by counting pieces, and close with the one the AI misread — proven by the physical pieces.",
+       "stem": "ask what pattern the copies reveal → plan the three fractions → request the AI's descriptions → test each by counting pieces → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "10-2": {
+   "prep": {
+    "home": [
+     "Three friends each drink 3/4 of a bottle. Model each drinker as a group of pieces — how many quarter-pieces in one drink? Across all three?",
+     "Count the pieces: three groups of 3 quarters. Write the repeated addition and the total pieces. Twelve quarters means how many full bottles, with what left over?",
+     "Why does the denominator stay 4 while the pieces are counted up?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can model a whole number of groups, each containing a fraction.",
+     "I can count total fractional pieces across the groups.",
+     "I can rename the total as a mixed number or whole when pieces complete a unit.",
+     "I can connect the model to the repeated addition."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Four jars are each filled to 2/3. How much fill is there in total, modeled in pieces?",
+     "options": [
+      { "v": "a", "text": "8/3" },
+      { "v": "b", "text": "8/12" },
+      { "v": "c", "text": "6/8" },
+      { "v": "d", "text": "2 and 2/3 bottles" }
+     ],
+     "right": "a",
+     "yes": "Yes — 4 groups of 2 thirds is 8 thirds: 8/3, which renames to 2 2/3 bottles. The pieces are thirds across all four jars.",
+     "notYet": "Not yet — count the third-pieces: each jar has 2, four jars give 8 thirds (option d is the renamed form of a different count)."
+    },
+    "harder": {
+     "prompt": "A recipe batch needs 3/4 cup of flour. The kitchen makes 5 batches. Model the total in quarter-pieces, rename it as a whole-plus-parts amount, and then say how many more quarter-pieces would make the next whole cup.",
+     "answer": "5 groups of 3 quarters is 15 quarter-pieces = 15/4 cups. Renamed: 3 full cups (12/4) plus 3/4, so 3 3/4 cups. One more quarter-piece makes the next full cup — 16/4 is exactly 4 cups. The model shows both the total pieces and the storage quantity for ordering."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A repeated-batch measuring model: use a real 1-cup measure filled to the same fraction repeatedly (e.g. 3/4 four times into a jug), record the groups, and present the total fill with its whole-and-parts rename.",
+       "stem": "ask what repeats in each batch → plan the pours → fill the same fraction repeatedly → test the total by reading the jug → share the measured model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "design",
+       "task": "A batch-groups diagram sheet: draw a production line of five identical groups, each shaded as the batch fraction, then draw the regrouped total with whole units boxed and the remainder pieces shaded.",
+       "stem": "ask how many groups to draw → plan the two diagrams → draw groups then regrouped wholes → test the wholes balance the pieces → share the sheet on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI batch verifier: ask the AI to give three 'n groups of a fraction' totals, model each yourself in pieces, and publish a verification sheet marking each total sound or wrong — including the rename the AI missed or miscounted.",
+       "stem": "ask what the correct total is built from → plan the checks → request three totals from the AI → test each by counting pieces → publish the sheet on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "10-3": {
+   "prep": {
+    "home": [
+     "Seven students each walk 2/5 of a kilometre along the Corniche. The compact workshop notation multiplies the count of people by the fraction — write the multiplication.",
+     "Multiply the numerator by the whole number and keep the bottom: what is 14/5, renamed as a mixed distance?",
+     "Estimate before computing: seven groups of just under half a kilometre is about how far total? How close does that put the answer?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can multiply a fraction by a whole number using symbols.",
+     "I can rename the product as a mixed number when it exceeds one whole.",
+     "I can keep the denominator unchanged through the multiplication.",
+     "I can estimate the product using the fraction's nearness to a benchmark."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Six boxes are each 3/8 full of dates. How much date capacity is filled in total?",
+     "options": [
+      { "v": "a", "text": "18/48" },
+      { "v": "b", "text": "9/4" },
+      { "v": "c", "text": "18/8" },
+      { "v": "d", "text": "6 and 3/8" }
+     ],
+     "right": "c",
+     "yes": "Yes — 6 times 3/8 = 18/8 (six groups of three eighth-pieces); renamed that is 2 2/8, or 2 1/4 boxfuls. The denominator stays 8.",
+     "notYet": "Not yet — multiply the piece count: 6 groups of 3 eighths is 18 eighths; the cut does not change."
+    },
+    "harder": {
+     "prompt": "A maker run needs 2/3 metre of ribbon per badge for 8 badges. Compute the total two ways — with symbols and by renaming into wholes — then decide whether 6 metres of ribbon bought is enough, and the spare or shortage.",
+     "answer": "8 x 2/3 = 16/3 metres. Renamed: 5 wholes (15/3) plus 1/3, so 5 1/3 metres. Six metres bought is enough, with 6 minus 5 1/3 = 2/3 metre spare. The rename answers the purchasing question; the symbols answer the pieces question."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "poster",
+       "task": "A multiply-then-rename production poster: take one real repeated measure (ribbon, fabric, cups), show the symbols line, the pieces line, and the renamed whole-plus-parts total, with an estimate strip at the top.",
+       "stem": "ask which real measure repeats → plan the three lines → compute, rename and estimate → test the rename against the pieces → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A Corniche-distance scale drawing: mark a kilometre strip, shade seven repeated 2/5-km walks end to end along it, and label where the total falls in whole kilometres and leftover fifths.",
+       "stem": "ask how many repeats fit on the strip → plan the scale → shade the repeated distances → test the endpoint against the symbols total → share the drawing on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A symbol-proof clip with the AI as foreman: ask the AI for three fraction-by-whole-number products, estimate then compute each on camera, and correct any product where the AI multiplied the denominator — shown by the pieces it would invent.",
+       "stem": "ask what never changes in the product → plan the three estimates → request products from the AI → test each against a piece count → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "10-4": {
+   "prep": {
+    "home": [
+     "A task starts at 2:50 and finishes at 4:15. Draw the clock line: first hop to the next o'clock, then the whole hours, then the leftover minutes. How long is each hop?",
+     "Why is the answer not '1 h 65 min', even though 50 to 15 looks like 65?",
+     "Plan backwards: if a batch needs 1 h 30 min and the deadline is 5:00, when must the batch begin?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can find elapsed time by hopping to the o'clock, across hours, and through leftover minutes.",
+     "I can rename minutes that total 60 into hours.",
+     "I can find a start time from an end time and a duration.",
+     "I can represent an interval on a number-line diagram."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A mixing cycle starts at 1:40 p.m. and runs for 55 minutes. When does it finish?",
+     "options": [
+      { "v": "a", "text": "2:35 p.m." },
+      { "v": "b", "text": "1:95 p.m." },
+      { "v": "c", "text": "2:55 p.m." },
+      { "v": "d", "text": "1:55 p.m." }
+     ],
+     "right": "a",
+     "yes": "Yes — 20 minutes hops to 2:00, then 35 more finishes at 2:35 p.m. The renaming never leaves 95 minutes on the clock.",
+     "notYet": "Not yet — hop from 1:40 to 2:00 (20 minutes), then spend the remaining 35 minutes past the o'clock."
+    },
+    "harder": {
+     "prompt": "Two deadlines: a batch must be done by 4:30 p.m. and takes 1 h 45 min. Find the latest start time; then say what happens if the start is delayed 25 minutes and a second line can take 1 h 10 min of the same batch — which line meets the deadline?",
+     "answer": "Latest start: 4:30 minus 1 h is 3:30, minus 45 minutes is 2:45 p.m. A 25-minute delay puts the start at 3:10; 3:10 plus 1 h 45 min is 4:55 — past the deadline, so the first line fails. The faster second line from 3:10 plus 1 h 10 min finishes at 4:20 — inside the deadline. Time is subtraction in reverse; the hop model runs either direction."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "A deadline-hopping schedule board: design a large number-line clock board for a real school event, mark start, o'clock hops and deadlines in colour, and include one backward-planned start time the event must hold to.",
+       "stem": "ask which events to schedule → plan the time line → mark hops and deadlines → test each interval in both directions → share the board on the wall",
+       "ai": false
+      },
+      {
+       "kind": "model",
+       "task": "A physical clock-interval model: build two paper clock faces, move the hands through a start-to-finish interval in o'clock hops, and leave the final position labelled with elapsed hours and minutes.",
+       "stem": "ask which interval to stage → plan the hops → move hands to, then across the o'clock → test the minutes rename at 60 → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A schedule-audit clip with the AI as planner: ask the AI to compute three elapsed-time or start-time schedules, run each on your own number line on camera, and expose any answer that leaves 60+ minutes unrenamed or misses a deadline.",
+       "stem": "ask what a correct schedule respects → plan the three cases → request the AI's schedules → test each on a hop line → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "10-5": {
+   "prep": {
+    "home": [
+     "Six bottles of laban are each 2/3 full. What repeats in this situation — draw it, then write the multiplication that replaces the repeated adding.",
+     "The raw product is 12/3. What whole number does that rename to, and does the story actually want a whole-number answer (how much laban total)?",
+     "Will the schedule hold? A delivery needs 4 full bottles' worth; compare your total to that need — what does the model decide?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can model a whole situation before computing — identify what repeats and the unknown.",
+     "I can choose multiplication for repeated equal fractions.",
+     "I can rename a product and answer the question the story asks.",
+     "I can check the result fits the context (enough, exact, or short)."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A garden plan uses 3/4 of a seed packet per bed across 8 beds. How many packets are used in total?",
+     "options": [
+      { "v": "a", "text": "24/32 packets" },
+      { "v": "b", "text": "6 packets" },
+      { "v": "c", "text": "8 and 3/4 packets" },
+      { "v": "d", "text": "3/32 packets" }
+     ],
+     "right": "b",
+     "yes": "Yes — 8 x 3/4 = 24/4 = 6 whole packets; the model renames cleanly to the whole number the supply question needs.",
+     "notYet": "Not yet — 8 beds repeat 3 quarters: 24 quarter-packets, which is exactly 6 packets."
+    },
+    "harder": {
+     "prompt": "A makerspace schedule: 6 kits each need 2/3 hour to build within a 4-hour window, and 2 facilitators can run lines in parallel. Model the total build-hours, decide whether the window holds, and state the slack the schedule leaves.",
+     "answer": "Total build work: 6 x 2/3 = 12/3 = 4 build-hours. With 2 parallel lines, the elapsed time is 3 kits per line: 3 x 2/3 = 2 hours — inside the 4-hour window, with 2 hours slack (or room for 6 more kits). The model answers both the fraction total and the real scheduling question."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "mini-project",
+       "task": "The scaled production and time schedule — the unit's own artifact: take a real repeated recipe, planting or maker task, scale it for the class with fraction multiplication, build an elapsed-time schedule around the batches, and publish the tested plan showing the schedule holds, signed by its makers.",
+       "stem": "ask what the production must deliver → plan quantities and times → scale the fractions and hop the clock → test totals against the materials and window → present the signed schedule",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A batch-and-clock flow map: draw one production line with the repeated fraction at each station, multiply the station totals along the bottom, and align them on a timeline that shows deadlines and slack.",
+       "stem": "ask what repeats station to station → plan the flow → mark fraction totals and time hops → test each node by multiplication → share the flow map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A will-it-hold review with the AI as supervisor: build your scaled schedule, ask the AI for three challenges about quantities or timing, defend each with your model and calculations on camera, and present the verdict — you answer every challenge yourself.",
+       "stem": "ask what could make the schedule fail → plan the defence → request three challenges from the AI → test each against your model → present the defended schedule on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The clockmaker's scaled production and time schedule — every repeated portion modelled, every product renamed, every deadline met on the hop chart, signed by its makers"
+   }
+  }
+ }
+}

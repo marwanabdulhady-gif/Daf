@@ -1,0 +1,342 @@
+{
+ "topic": 7,
+ "title": "Factors and Multiples",
+ "arc": "The reef of hidden rectangles — the first tile can be built in more than one shape, the architect demands every possible rectangle before a module is certified, the same ordering method repeats on a larger tile, the indivisible border tile turns out to have only one rectangle and earns the name prime, and the maintenance crews finally overlap on particular days — until the modular tile and scheduling kit is certified and the water gardens open the Fraction Isles.",
+ "sources": [
+  "CCSS 4.OA.B.4 (thecorestandards.org): 'Find all factor pairs for a whole number in the range 1-100. Recognize that a whole number is a multiple of each of its factors. Determine whether a given whole number in the range 1-100 is a multiple of a given one-digit number. Determine whether a given whole number in the range 1-100 is prime or composite.'",
+  "MathTeacherCoach, 'Factors and Multiples: The Factor Factory Activity' (mathteachercoach.com): students arrange coins or cards into every equal-row arrangement (6 tiles make 1x6, 2x3, 3x2, 6x1), record factor pairs as factory pairs, stop once a pair repeats, extend with array drawings on graph paper and a 3D 'Factor City' of different-shaped buildings that each hold the same block count — the certified-module task this unit builds",
+  "Performing in Education, 5-day PBL 'Plan a Field Day' (performingineducation.com, aligned to 4.OA.B.4): factors and multiples used for real team arrangements, supply purchasing and snack choices — teams that divide evenly, multiples for packaging decisions",
+  "Investigations-style 'Candy Boxes / arrays for 1-36' anchor investigation (vesmath.com 4th factors-multiples-arrays): the class builds every different rectangular array for the numbers 1-36, posts them in order on a wall strip, and writes conjectures from the patterns — 'prime numbers have only one rectangle', 'square numbers always have a perfect-square array'; students photograph real arrays around the school",
+  "Illustrative Mathematics Grade 4 Unit 1 Lesson 7 (curriculum.illustrativemathematics.org): factor-and-multiple statement practice ('is a factor of because…', 'is a multiple of because…') and the 'Find the Number' factor-or-multiple coverage game, plus the divisibility patterns — even numbers are multiples of 2, multiples of 5 end in 5 or 0, multiples of 10 end in 0",
+  "Periodical cicadas and prime-number life cycles (mathscareers.org.uk 'A bug's life'; mathcurious.com cicada activities): periodical cicadas emerge every 13 or 17 years — both prime — so their cycles rarely overlap with predators on 2-to-6-year cycles or with each other (13 and 17 coincide only every 221 years); a real, documented scientific example of primes and least common multiples in nature, with skip-counting, timeline and role-play activities for elementary students",
+  "Georgia Organics Farm to School, 'Planting a Square Foot Garden' (farmtoschool.georgiaorganics.org, grades 3-5): students partition a 12-by-12 inch square into 9 equal cells using arrays and division (3 times 3 is 9; 12 divided by 3 is 4 inches), then combine modules into larger gardens and compute possible configurations — modular garden tiles built from factor pairs",
+  "Vivify STEM, 'Design a School Garden' STEM project guide (grades 4-8): a multidisciplinary engineering-design challenge where students plan a long-term garden — modular beds, research and site planning — the modular-tile design brief this unit's production mirrors",
+  "NGSS Science and Engineering Practice 2 (Developing and Using Models) and Practice 4 (Analyzing Data), grades 3-5: rectangular arrays as models of multiplication, and schedule data organised to find repeating overlaps"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>reef briefing</em> was already at home",
+   "lead": "Before class, the class met the module briefing — the first many-shaped tile and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the module work begins with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about equal rows and rectangles?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the reef",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the first tile is certified.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the reef."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the reef",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "7-1": {
+   "prep": {
+    "home": [
+     "A reef tile is made of 12 squares. Build as many full rectangles as you can with all 12 — sketch each one. How many different shapes does the tile have?",
+     "Each rectangle you built names a multiplication fact: 3 times 4, and so on. Write the facts your rectangles revealed.",
+     "Try the same building with 7 squares. Why can 7 make only one rectangle shape — and what might that mean?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can build every full rectangle for a number with tiles or a drawing.",
+     "I can read a factor pair from the two sides of a rectangle.",
+     "I can record factor pairs without splitting or leaving out any tiles.",
+     "I can check a factor pair by multiplying the two sides back."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Which list gives every factor of 24?",
+     "options": [
+      { "v": "a", "text": "1, 2, 3, 4, 6, 8, 12, 24" },
+      { "v": "b", "text": "1, 2, 3, 4, 6, 12, 24" },
+      { "v": "c", "text": "2, 3, 4, 6, 8, 12, 24" },
+      { "v": "d", "text": "1, 2, 3, 4, 6, 8, 24" }
+     ],
+     "right": "a",
+     "yes": "Yes — the rectangles are 1x24, 2x12, 3x8 and 4x6, giving 1, 2, 3, 4, 6, 8, 12 and 24. Option b drops 8, c drops 1, d drops 12.",
+     "notYet": "Not yet — build the rectangles from 1 row upward: 1x24, 2x12, 3x8, 4x6, and read both sides of each."
+    },
+    "harder": {
+     "prompt": "A planner lists the factor pairs of 16 as 1x16, 2x8, 4x4 and 8x2, certifying four pairs. Apply the stopping rule to say why the list ends early, and give the true number of pairs and factors.",
+     "answer": "The pairs are (1,16), (2,8) and (4,4) — three unique pairs. The moment the two sides meet or start to repeat, you stop: 8x2 is the 2x8 rectangle rotated, not a new shape. The factors of 16 are 1, 2, 4, 8, 16 — five factors. A certified list never counts a rotated rectangle twice."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A many-shaped tile kit: cut 24 identical card squares, build every full rectangle one after another, and mount the four shapes in a row with the factor pair written under each — so a classmate can certify the tile by turning the shapes.",
+       "stem": "ask which tile count to certify → plan the builds → build every full rectangle from 1 row up → test each shape covers all 24 squares → share the kit on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A factor-pair wall chart: on graph paper, draw and colour every rectangle for three different tile counts (12, 18, 24), aligned at one starting edge, with each rectangle's factor pair labelled — a class wall of hidden rectangles.",
+       "stem": "ask which three counts to chart → plan the layout → draw every rectangle on grid paper → test each by multiplying its sides → share the chart on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A 60-second AI factor audit clip: ask the AI for the factor lists of three numbers under 100, build each list yourself with tile rectangles on camera, and close with any factor the AI missed or invented — proven by the rectangle that does or does not exist.",
+       "stem": "ask what a complete factor list needs → plan the three builds → request the AI's lists → test every factor by building its rectangle → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "7-2": {
+   "prep": {
+    "home": [
+     "To certify a 30-tile module, the architect tests possible sides in order: 1, then 2, then 3... For each side that splits the 30 evenly, what number belongs on the other side of the pair?",
+     "4 does not divide 30. What happens when a tested side fails — what does the architect do next?",
+     "At what test number can the architect stop and be certain no rectangle is missing? Explain why testing past that point repeats work."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can test possible factors in order from 1 and write both numbers of each pair.",
+     "I can skip a candidate that does not divide evenly and keep going.",
+     "I can stop when the pairs meet or repeat, knowing the list is complete.",
+     "I can prove a number is not a factor by showing no full rectangle uses it."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Is 9 a factor of 48?",
+     "options": [
+      { "v": "a", "text": "yes" },
+      { "v": "b", "text": "no" },
+      { "v": "c", "text": "only if you round" },
+      { "v": "d", "text": "cannot tell" }
+     ],
+     "right": "b",
+     "yes": "Yes — 'no' is correct: 9 times 5 is 45 and 9 times 6 is 54, so no full rectangle of 48 tiles has a side of 9. Nine is not a factor.",
+     "notYet": "Not yet — test the side: how many rows of 9 fit in 48 with none left over? 45 fits, 54 does not, so 9 fails."
+    },
+    "harder": {
+     "prompt": "The architect certifies a 28-tile slab. Test sides in order, state the first test where she can stop, list the sides that split 28 evenly, and explain the stopping rule to the apprentice.",
+     "answer": "In order: 1 splits it (1x28), 2 splits it (2x14), 3 does not, 4 splits it (4x7), 5 does not, and 6 would already pass the crossing point because 6 times 6 is 36, over 28 — the next successful side would be 7, which pairs with 4 already found. Sides that split 28: 1, 2, 4, 7, 14, 28. Stop once the pair numbers cross: every rectangle beyond that is one already on the list, rotated."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "An ordered certificate card: design a certification card for one tile count that shows the test track down the middle (1, 2, 3... with each failed test crossed out) and the certified factor pairs on the back, so an apprentice knows exactly where testing stops.",
+       "stem": "ask what the card must certify → plan the test track → test sides in order and mark each result → test the back list against rectangles → share the card design at the workshop",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A factor-wall map: test every number from 20 to 30 on a long chart strip, mark complete factor pairs for each, and colour the numbers that have only one rectangle — map the pattern that the prime hunt of the next lesson will need.",
+       "stem": "ask what the strip reveals → plan the eleven columns → test each count in order → test a neighbour's strip for one missed pair → share the wall map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI apprentice's test log: ask the AI to produce ordered test logs (candidate sides tried, successes and the stopping point) for three numbers under 100, redo each log yourself, and publish a master's log marking where the AI stopped too early or tested too long.",
+       "stem": "ask what a correct log contains → plan the audit sheet → request three logs from the AI → test each stopping point against the crossing rule → publish the master logs on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "7-3": {
+   "prep": {
+    "home": [
+     "The method repeats on a bigger tile: 36 squares. Use the same ordered test you used before. How many factor pairs do you predict before you start — and on what evidence?",
+     "Something unusual happens at the middle of 36's list: a pair with equal sides. What shape is that rectangle, and what does it say about the count?",
+     "Test a non-square count such as 35 beside 36. Why can 35 never produce a pair whose two sides are equal?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can apply the same ordered test to a larger number without changing the method.",
+     "I can predict the number of pairs from the pattern in smaller cases.",
+     "I can recognise the equal-side pair that only square numbers produce.",
+     "I can verify every predicted pair by building or multiplying."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "How many factor pairs does 48 have?",
+     "options": [
+      { "v": "a", "text": "4" },
+      { "v": "b", "text": "5" },
+      { "v": "c", "text": "6" },
+      { "v": "d", "text": "10" }
+     ],
+     "right": "b",
+     "yes": "Yes — 1x48, 2x24, 3x16, 4x12 and 6x8: five pairs (ten factors, counted once each). The ordered test stops after 6 pairs with 8, which repeats 6x8.",
+     "notYet": "Not yet — test in order: 1, 2, 3, 4... then 6 works (6x8), and the next candidate 8 turns back into a pair you have."
+    },
+    "harder": {
+     "prompt": "Predict, then verify: will a 64-tile slab have an odd or even number of factors? Build the ordered list, name the middle pair, and explain why only one shape of number produces it.",
+     "answer": "64 gives the pairs 1x64, 2x32, 4x16 and 8x8 — four pairs but seven factors (1, 2, 4, 8, 16, 32, 64), an odd count. The middle pair 8x8 is a square: the tile is a square itself, so its two sides name the same factor once. Only square numbers make an equal-side pair, which is why they alone have an odd number of factors."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "drawing",
+       "task": "A pattern-prediction drawing: draw the factor pairs of 36 and 64 on two grid strips aligned to one edge, ring the equal-side square in the middle of each, and annotate why the square makes the factor count odd.",
+       "stem": "ask what the middle pair shows → plan the aligned strips → draw every pair in order → test the pair counts by multiplying → share the drawing on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A 'same method, bigger tile' teaching poster: take the class through one ordered test on a large number (48 or 64), show the prediction made before listing, the tests in order, the crossing point marked, and the square-tile rule stated in one sentence.",
+       "stem": "ask what a reader must predict → plan the poster sections → write the test in order → test the prediction against the finished list → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A prediction-vs-AI test session: ask the AI to predict the number of factor pairs for three numbers including one square, predict each yourself first with reasoning, reveal the AI's answers, and present on camera where your ordered test proved the AI's number right or wrong.",
+       "stem": "ask what drives the pair count → plan the three predictions → request the AI's predictions → test all three by ordered building → present the verified results on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "7-4": {
+   "prep": {
+    "home": [
+     "The border tiles come in many counts. Build rectangles for 11 and for 12. One count makes a single thin rectangle; the other makes several. Which is which?",
+     "A prime number has exactly two factors. Which two? Use 11's rectangle to say what they are.",
+     "The count 1 is a special border case. How many rectangles does a single tile make — and why does that not make it prime?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can classify a number as prime or composite from its rectangle count.",
+     "I can explain that prime means exactly two factors: 1 and itself.",
+     "I can justify a classification by building or attempting the arrays.",
+     "I can explain why the number 1 is neither prime nor composite."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A border tile is ordered as a 47-square count. The supplier's clerk writes 'composite, splits into 7 rows'. Test the clerk's claim — how should the border be labelled?",
+     "options": [
+      { "v": "a", "text": "47 is prime; 7 rows leaves 5 tiles over" },
+      { "v": "b", "text": "47 is composite; the clerk's 7 rows split it evenly" },
+      { "v": "c", "text": "47 is square; a 7-by-7 border fits it" },
+      { "v": "d", "text": "47 is composite; it splits into 4 rows of 12" }
+     ],
+     "right": "a",
+     "yes": "Yes — 7 times 6 is 42 and 7 times 7 is 49, so 7 fails; no side from 2 to the crossing point divides 47, leaving only the 1x47 rectangle. 47 is prime.",
+     "notYet": "Not yet — test the clerk's rows first: 7 times what reaches 47 exactly? Then continue the ordered test to the crossing point before labelling."
+    },
+    "harder": {
+     "prompt": "The border order includes a single-unit tile marked '?' Apply the two-factors rule to the number 1, give its only rectangle, and write the label the border stamp should carry.",
+     "answer": "The number 1 has exactly one factor — itself — and its only rectangle is the single tile 1x1. A prime needs exactly two distinct factors (1 and the number, different from each other); a composite needs more than two. With one factor, 1 is neither prime nor composite: the stamp reads '1 — special: neither prime nor composite.'"
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A prime/composite border-tile set: build card tiles for the counts 1 through 20, mount each count's full set of rectangles (or its single 1-by-n strip), and edge the set in two colours so the prime borders are unmistakable.",
+       "stem": "ask how the set distinguishes primes → plan the two colours → build the rectangles for every count → test one prime and one composite by rectangle count → share the tile set on the wall",
+       "ai": false
+      },
+      {
+       "kind": "song",
+       "task": "A prime-border chant: write and perform a short chant for the primes up to 30, each line closing with the one rectangle a prime can make ('two, three, five, seven — nothing but 1-by...'), with the composite counts named as the many-rectangle ones.",
+       "stem": "ask which numbers the chant covers → plan the rhythm → build each number's rectangles to prove the list → test the chant against the wall chart → perform it at the reef gate",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A prime-in-nature research clip with the AI as research assistant: ask the AI to explain the 13-year and 17-year cicada life cycles, verify the facts against a second trusted source yourself, film a skip-counting or timeline demonstration of why prime cycles rarely overlap with a 6-year predator, and close with the claim you had to correct.",
+       "stem": "ask why primes would help an insect → plan the timeline → research the cicada cycles with the AI (verify every fact) → test the overlap with your own skip-counting → share the research clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "7-5": {
+   "prep": {
+    "home": [
+     "The garden crew waters every 4 days; the inspector visits every 6 days. Mark both cycles on one calendar from day 0. On which days does each crew land?",
+     "Which days are marked by both crews? Name the first shared day after day 0 — and the next one after that.",
+     "Why does the first shared day have to be a multiple of both cycle lengths? What does the gap between shared days always equal?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can generate the multiples of a number by counting in steps.",
+     "I can find a shared multiple on a calendar or list.",
+     "I can name the first overlap as the smallest number that is a multiple of each cycle.",
+     "I can use an overlap to schedule a joint event that repeats."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Watering runs every 4 days and inspection every 6 days, starting together on day 0. On which day do they first meet again?",
+     "options": [
+      { "v": "a", "text": "day 10" },
+      { "v": "b", "text": "day 12" },
+      { "v": "c", "text": "day 24" },
+      { "v": "d", "text": "day 6" }
+     ],
+     "right": "b",
+     "yes": "Yes — waterings land on 4, 8, 12, 16... and inspections on 6, 12, 18...; the first shared day after 0 is 12. Day 24 is shared too, but not first.",
+     "notYet": "Not yet — list the multiples of each cycle from day 0 and find the first number appearing on both lists: 12."
+    },
+    "harder": {
+     "prompt": "Add the pruning crew, who come every 9 days, starting with the others on day 0. Find the first day all three crews coincide, and state how often the planner can schedule a full joint inspection.",
+     "answer": "Multiples of 4: 4, 8, 12, 16, 20, 24, 28, 32, 36; of 6: 6, 12, 18, 24, 30, 36; of 9: 9, 18, 27, 36. The first number on all three lists is 36 — the joint day is day 36, and the pattern repeats every 36 days. The planner schedules the full joint inspection once per 36-day cycle; no earlier day is divisible by all of 4, 6 and 9."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "map",
+       "task": "A crew-overlap calendar map: build a real 60-day wall calendar marked in three colours for the watering, inspection and pruning crews, ring every shared day, and post the joint-inspection dates along the bottom.",
+       "stem": "ask which three cycles to mark → plan the calendar lanes → fill every crew's days → test the ringed days divide by each cycle → share the calendar map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The modular tile and scheduling kit — the unit's own artifact: design a modular garden bed from certified factor-pair tile counts, and pair it with a maintenance calendar whose joint days keep every crew aligned; the kit must show the tile's factor pairs and the schedule's first overlap, signed by its makers.",
+       "stem": "ask what garden the kit serves → plan the tile shapes and crew cycles → build the factor-certified tiles and the marked calendar → test every shape and shared day → present the certified kit to the council",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A schedule-Q-and-A with the AI as scheduler: ask the AI to propose meeting days for two or three repeating crews, check every proposed day yourself by listing the multiples on camera, and present the corrected calendar — closing with the one overlap the AI missed or mis-stated.",
+       "stem": "ask what makes a day shared → plan the cycle lists → request proposed days from the AI → test each day by dividing by every cycle → present the verified calendar on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The reef's modular tile and scheduling kit — every factor pair certified, every crew overlap calendar-dated, signed by its makers"
+   }
+  }
+ }
+}

@@ -1,0 +1,641 @@
+{
+ "topic": 5,
+ "title": "Use Strategies and Properties to Divide by 1-Digit Numbers",
+ "arc": "The caravan of equal loads — the first crates divide on a known fact, the carts are estimated before they roll, a larger manifest demands a bigger benchmark, two passengers are left standing at the gate, the crew unloads one useful chunk at a time, the longest sheet is checked back by multiplication, supplies are dealt one fair round at a time until a share crosses a place, three loading methods are read before one is chosen, and the dispatch board signs the full allocation — until every remainder has been interpreted honestly.",
+ "sources": [
+  "CCSS 4.NBT.B.6 (thecorestandards.org): 'Find whole-number quotients and remainders with up to four-digit dividends and one-digit divisors, using strategies based on place value, the properties of operations, and/or the relationship between multiplication and division. Illustrate and explain the calculation by using equations, rectangular arrays, and/or area models.'",
+  "CCSS 4.OA.A.3: solve multistep word problems with whole numbers 'including problems in which remainders must be interpreted' and assess reasonableness with estimation — the exact standard this unit's remainder productions demonstrate",
+  "Illustrative Mathematics, 'Instructional Materials Matter: Interpreting Remainders in Division' (illustrativemathematics.blog, 2018): the four context-decided remainder actions — round the quotient up (buses for 250 students, 36 per bus → 7 buses), drop the remainder (74 inches of ribbon, 10 inches per bow → 7 bows), report the remainder as the answer ($40, markers $6 → $4 short), and share the remainder as a fraction (5 brownies among 4 friends) — remainder meaning comes from the situation, never from a mnemonic",
+  "FLDOE Grade 4 Suggested Materials and Activities to Support Mathematics (fldoe.org Grade4SASSME.pdf): 'Array for Charity' (CPALMS lesson 74069) — students use array frames to find how many pennies each class collected for a charity drive and how the pennies are divided among seven charities; a real donation-distribution task for 4.NBT.B.6 / 4.OA.A.3",
+  "The Water Project, 'Water, Water Anywhere' station lesson (thewaterproject.org): a real measured fair-share experiment — students pour a limited water resource into cups labelled for competing needs and record what happens when the resource does not divide evenly; the scarcity station is deliberately unsatisfied so students interpret the shortfall",
+  "California Academy of Sciences, 'Earth's Water: A Drop in Your Cup' (calacademy.org): one litre of coloured water represents all Earth's water, measured and divided among six groups with different sources; groups predict their share, measure it, and must decide how to divide it equitably among members — a hands-on division with remainders experiment",
+  "Stanford DREME, 'Fair-Sharing and Sharing Fairly' (prek-math-te.stanford.edu): fair-sharing as the root model for division — dealing a collection into equal groups, and the key finding that equity is not always identical group size when a remainder must be interpreted honestly",
+  "Mathematics Hub (Australian Government, mathematicshub.edu.au), 'Representing sharing and grouping': the two division actions students must make explicit — sharing a collection equally by dealing, and grouping a collection into equal sets — with manipulatives, role-play and number talks for multiplicative thinking",
+  "New Jersey Agricultural Society, math-in-agriculture lessons (njagsociety.org): real seed-count and yield experiments where totals from equal plantings are divided among rows, sacks and deliveries, and the leftover is recorded as data",
+  "NGSS Science and Engineering Practice 4 (Analyzing and Interpreting Data), grades 3–5: quantitative data from repeated fair tests are organised and compared — totals shared across equal trials are one-digit divisions with recorded remainders"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>caravan briefing</em> was already at home",
+   "lead": "Before class, the class met the division briefing — the first manifest and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the loading begins with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about sharing into equal groups?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the caravan",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the first cart is loaded.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the caravan."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the caravan",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "5-1": {
+   "prep": {
+    "home": [
+     "A manifest reads 420 blankets split across 7 carts, evenly. What is each cart's load — and which multiplication fact carries the quotient?",
+     "3,500 divided by 7: the fact 7 times 5 is 35 sits inside it. How do the zeros move the answer from 5 to 500?",
+     "Write a division line of your own that rides on one basic fact, with a dividend ending in zeros. What fact is carrying it?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can read a division as a missing-factor question and name the multiplication fact that answers it.",
+     "I can use a basic fact to divide a number of tens or hundreds, placing the zeros by place value.",
+     "I can decide whether a quotient belongs in the tens, hundreds or thousands before I compute it.",
+     "I can check a mental quotient by multiplying it back."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The second manifest: 4,800 water bottles split evenly across 6 carts. How many bottles per cart?",
+     "options": [
+      { "v": "a", "text": "80" },
+      { "v": "b", "text": "800" },
+      { "v": "c", "text": "8,000" },
+      { "v": "d", "text": "8" }
+     ],
+     "right": "b",
+     "yes": "Yes — 6 times 8 is 48, so 6 times 800 is 4,800. The fact carries it; the hundreds place holds the zeros.",
+     "notYet": "Not yet — take the fact first: 6 times what is 48? Then place the zeros the dividend demands."
+    },
+    "harder": {
+     "prompt": "A loader claims 2,100 sacks across 3 carts is 70 per cart. Check his claim two ways — the fact and the place value — and say what he dropped.",
+     "answer": "3 times 7 is 21, so 3 times 700 is 2,100 — the load is 700 sacks per cart, not 70. He read 21 as tens instead of hundreds. Check: 70 times 3 is only 210, ten times too small; 700 times 3 is 2,100. The fact never changes — only the place the answer sits in."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A fact-crate model: build ten bundles of ten blocks (a hundred each) and split a load such as 4,200 into 7 equal carts by dealing the bundles, so a classmate can read the quotient and the basic fact straight off the bundles.",
+       "stem": "ask which load to split → plan the bundles → build the hundreds and deal them → test the split by multiplying back → share it at the caravan gate",
+       "ai": false
+      },
+      {
+       "kind": "song",
+       "task": "A facts-carry-loads chant: write and perform a short times-table chant for three division lines (such as 420 over 7, 4,800 over 6 and 2,100 over 3), each line ending on the basic fact that carries it and the place that holds the zeros.",
+       "stem": "ask which facts to chant → plan the rhythm → write the three division lines → test each line by multiplication → perform it at the caravan gate",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A 60-second AI-proofed fact clip: ask the AI to propose five zero-loaded division quotients, work every one yourself on camera using the basic fact, and close with the one the AI got wrong — if there was one — and the place-value reason.",
+       "stem": "ask what the clip must prove → plan the five lines → request five quotients from the AI (solve each yourself) → test every answer by multiplying back → share it on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The caravan schedule's first page — every clean load with the fact that carried it"
+   }
+  },
+  "5-2": {
+   "prep": {
+    "home": [
+     "Before the carts roll, the master needs a quick range: about how many carts for 430 sacks at 7 sacks a cart? Find a compatible number first.",
+     "Why is 420 over 7 a better estimate for 430 over 7 than 490 over 7 would be — what does each estimate do to the real answer?",
+     "Estimate 350 over 5 and 360 over 5. Which compatible number did each one use, and how far is each from the exact quotient?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can replace a dividend with a nearby compatible number that divides cleanly.",
+     "I can say whether my estimate runs high or low against the exact answer.",
+     "I can use an estimate to check that a computed quotient is in the right place value.",
+     "I can explain why an estimate is made before the exact loading begins."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Estimate 320 divided by 6 using a compatible number. About how many carts?",
+     "options": [
+      { "v": "a", "text": "about 50" },
+      { "v": "b", "text": "about 60" },
+      { "v": "c", "text": "about 6" },
+      { "v": "d", "text": "about 500" }
+     ],
+     "right": "a",
+     "yes": "Yes — 300 splits across 6 as 50, and 320 is close to 300, so about 50 carts (the exact answer is just over). The compatible number 300 divides cleanly.",
+     "notYet": "Not yet — look for the nearest number near 320 that 6 divides evenly, then divide that instead."
+    },
+    "harder": {
+     "prompt": "The master estimates 430 over 7 as about 70 using 490, and the crew estimates about 60 using 420. The exact answer is 61 r 3. Which estimate served the loading better, and why?",
+     "answer": "About 60 is the better estimate: 420 over 7 is exactly 60, and 430 is only 10 more, so the real answer 61 r 3 sits right by it. The 490 estimate (70) overshoots by nine carts — it rounds to a compatible number on the wrong side. Estimating before loading protects against sending far too many or too few carts."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "map",
+       "task": "A cart-estimate map: draw a number line from 0 to 100, plot five manifests (such as 320 over 6, 430 over 7, 240 over 4) at their estimated cart counts, mark each exact quotient beside the estimate, and shade whether the estimate landed high or low.",
+       "stem": "ask which manifests to plot → plan the line → pick the compatible number for each → test the estimates against the exact quotients → share the map at the gate",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A high-or-low poster: take one manifest, show the two compatible numbers on either side of it, compute both estimates, and teach the reader how to tell which side the exact answer will fall on — with the real quotient revealed at the bottom.",
+       "stem": "ask which manifest to teach → plan the layout → find both compatible numbers → test against the exact answer → share it on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A 60-second range-finder clip with the AI as dispatcher: ask it for three real-world division situations (people per table, boxes per shelf), estimate each on camera with a compatible number before computing, and correct any estimate the AI states without a compatible number.",
+       "stem": "ask what situations to use → plan the three estimates → request situations from the AI → test each estimate against the exact quotient on camera → share it on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "5-3": {
+   "prep": {
+    "home": [
+     "The manifest grows: 5,600 sacks across 9 carts. The old compatible number is too small to help. Which nearby thousands divide cleanly by 9?",
+     "5,400 over 9 and 6,300 over 9 both divide cleanly. Which gives an estimate closer to 5,600 over 9, and how do you know?",
+     "A loader estimates 5,600 over 9 as about 60. Place-value check: is 9 times 60 anywhere near 5,600? Where should the answer sit?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can choose a compatible number in the hundreds or thousands for a greater dividend.",
+     "I can place a greater quotient in the correct place value band.",
+     "I can justify why I chose one compatible benchmark over another.",
+     "I can use a multiplication check to reject an estimate in the wrong place."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Estimate 3,200 divided by 8 using a compatible benchmark. About how many loads?",
+     "options": [
+      { "v": "a", "text": "about 40" },
+      { "v": "b", "text": "about 400" },
+      { "v": "c", "text": "about 4,000" },
+      { "v": "d", "text": "about 4" }
+     ],
+     "right": "b",
+     "yes": "Yes — 32 hundreds over 8 rides on 8 times 4 is 32, giving about 400. The dividend is in the thousands, so the quotient belongs in the hundreds.",
+     "notYet": "Not yet — 3,200 is 32 hundreds; find the fact for 32 over 8, then restore the hundreds place."
+    },
+    "harder": {
+     "prompt": "Two benchmarks for 6,250 over 7 are offered: 6,300 over 7 and 5,600 over 7. Compute both estimates, say which is closer to the exact answer (892 r 6), and explain the place-value band each one lives in.",
+     "answer": "6,300 over 7 is 900 and 5,600 over 7 is 800. The exact answer 892 r 6 sits much nearer 900 — 6,300 is the closer compatible benchmark. Both estimates correctly put the quotient in the hundreds band; a loader who answered 90 would have dropped a place, since 7 times 90 is only 630."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "A benchmark dial design: design and build a paper dial a loader can turn to line up a large dividend with the nearest compatible number and read off the estimate band, marked in tens, hundreds or thousands.",
+       "stem": "ask what the dial must line up → plan the bands → build the dial with three benchmarks → test it on three manifests → share it at the loading ramp",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A thousands-band map: draw the manifests from 1,000 to 9,000 on a band chart, group the dividends by the compatible fact they ride on (over 6, over 7, over 8, over 9), and colour the place-value band each quotient lands in.",
+       "stem": "ask which divisors to chart → plan the bands → place each dividend on its fact → test five placements by multiplication → share the map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI estimator's audit: ask the AI for four estimates of large divisions (thousands divided by a single digit), audit each for the correct place-value band and a defensible compatible number, and publish a one-page audit marking each estimate sound or faulty with your own check.",
+       "stem": "ask what a sound estimate needs → plan the audit sheet → request four estimates from the AI → test each band by multiplying back → publish the audit on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "5-4": {
+   "prep": {
+    "home": [
+     "Fifty guests arrive and tables seat 6. Everyone must sit. How many tables are needed — and why is the answer not 8?",
+     "A ribbon is 50 inches long and a bow takes 6 inches. How many full bows can be made? Now the numbers are the same and the answer is different — what changed?",
+     "Fifty coins are shared among 6 travellers. What can honestly be done with the two coins left over?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can read a division with a remainder and say what the situation demands of it.",
+     "I can round the quotient up when no one and nothing can be left behind (tables, carts, buses).",
+     "I can drop the remainder when only complete items count (bows, boxes, full groups).",
+     "I can report or share the remainder when the question asks about what is left over."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "46 crates are loaded onto carts that hold 5 crates each. Every crate must ride. How many carts are needed?",
+     "options": [
+      { "v": "a", "text": "9" },
+      { "v": "b", "text": "10" },
+      { "v": "c", "text": "9 r 1" },
+      { "v": "d", "text": "1" }
+     ],
+     "right": "b",
+     "yes": "Yes — 46 over 5 is 9 remainder 1, and every crate must ride, so the one leftover crate needs a tenth cart. The situation rounds the quotient up.",
+     "notYet": "Not yet — do the division first (9 r 1), then ask: can that last crate be left behind? What does the situation demand?"
+    },
+    "harder": {
+     "prompt": "The camp has 50 loaves. A full ration pack uses 6 loaves. How many full packs can be made, and how many loaves are left for the cook's pot? Explain why the same numbers give a different decision than the guest-table problem.",
+     "answer": "50 over 6 is 8 packs with 2 loaves left over. Only complete packs count, so the pack count is 8 — the quotient is not rounded up. The 2 remaining loaves are the answer to the cook's question, not a reason to make a ninth pack. Same division, opposite decision: guests must all sit (round up), partial packs do not count (drop the remainder and report the 2)."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "drawing",
+       "task": "A remainder-comic strip: draw a three-panel comic of one caravan day where the same remainder appears three times — passengers needing a cart (round up), full sacks being sewn (drop it), coins left for the keeper (report it) — with the decision labelled in each panel.",
+       "stem": "ask which three situations to draw → plan the panels → draw each remainder decision → test each panel's division with a classmate → share the strip on the wall",
+       "ai": false
+      },
+      {
+       "kind": "model",
+       "task": "A seating-and-packing model: with counters as passengers and paper cups as carts, physically load two manifests (one where nobody can be left, one where only full packs count) and photograph the moment each remainder is decided.",
+       "stem": "ask what the two manifests must contrast → plan the loading → build the counters and cups and load both → test each decision against the situation → share the photos on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A remainder-court presentation with the AI as clerk of the court: ask the AI to draft three remainder situations, classify each yourself (round up, drop, report, or share), present your verdict for each with the evidence, and correct any verdict the AI gets wrong on screen.",
+       "stem": "ask what the four verdicts are → plan the cases → request three situations from the AI → test each against the situation's demand → present and post the verdicts on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "5-5": {
+   "prep": {
+    "home": [
+     "Eighty-four water skins go onto 7 donkeys. Instead of one skin at a time, take a useful chunk: ten skins a donkey is 70. What is left, and how many more rounds?",
+     "Why is pulling out 70 first fairer and faster than dealing 84 skins one by one — what does the chunk stand for?",
+     "84 over 7 by partial quotients: record 10 and then 2 beside the division. Why do those two numbers add into the answer?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can name a useful chunk of the dividend — a number of groups I can see immediately.",
+     "I can subtract the chunk, look at what is left, and take another chunk.",
+     "I can add the partial quotients into the full quotient.",
+     "I can check a partial-quotient division by multiplying the quotient back."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Use partial quotients for 96 divided by 8. Take the biggest chunk you can see. What is the quotient?",
+     "options": [
+      { "v": "a", "text": "11" },
+      { "v": "b", "text": "12" },
+      { "v": "c", "text": "13" },
+      { "v": "d", "text": "10 r 16" }
+     ],
+     "right": "b",
+     "yes": "Yes — take 10 groups of 8 (80), 16 is left, take 2 more groups of 8; 10 plus 2 is 12. Every chunk is a number of groups.",
+     "notYet": "Not yet — take a clean chunk first (80 is ten groups of 8), subtract it, then ask how many groups are left in the remainder."
+    },
+    "harder": {
+     "prompt": "Two crews split 96 over 8: one pulls 80 first then 16; the other pulls 40, then 40, then 16. Both reach 12. Show both sets of partial quotients and explain why the chunk order does not change the total.",
+     "answer": "Crew A subtracts 80 (10 groups), then 16 (2 groups): partials 10 plus 2 equals 12. Crew B subtracts 40 (5), another 40 (5), then 16 (2): partials 5 plus 5 plus 2 equals 12. The chunks are just the same 96 grouped differently — addition does not care about order, so the total number of groups is 12 either way. Check: 12 times 8 is 96."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A chunk-unloading model: build 96 (or another dividend) as base-ten blocks, physically unload one big chunk of groups onto paper carts, move the remainder to the side, unload the next chunk, and label each cart with its partial quotient.",
+       "stem": "ask which dividend to unload → plan the chunks → build the blocks and unload → test the chunk total by multiplication → share the labelled carts on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A partial-quotients step poster: show one division with three different valid chunk paths down the page, each path adding to the same quotient, teaching that many honest chunkings all reach one answer.",
+       "stem": "ask which division to teach → plan the three paths → write each chunk path → test that all three totals agree → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A 60-second unload-it clip with the AI as timekeeper: ask the AI for a two-digit division, record yourself pulling chunks aloud (how many groups, subtract, what is left, repeat), and let the AI call out a remainder it thinks is wrong — prove your chunks on camera.",
+       "stem": "ask what the clip must show → plan the chunks → request the division from the AI → test every chunk and the final quotient on camera → share it on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "5-6": {
+   "prep": {
+    "home": [
+     "The longest inventory sheet: 857 jars across 4 storehouses. Take the chunks in place value — how many hundreds can you pull at once?",
+     "After pulling 200 groups of 4 (800 jars), what remains, and what chunks finish it? Say the full quotient with its remainder.",
+     "A scribe writes 213 r 5 for 857 over 4. Check by multiplying: 213 times 4, then add 5 — what does the check expose?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can take partial quotients in the hundreds, tens and ones for a greater dividend.",
+     "I can keep the remainder smaller than the divisor and report it honestly.",
+     "I can check a greater division by multiplying the quotient by the divisor and adding the remainder.",
+     "I can spot a faulty division whose remainder is as large as the divisor."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Use partial quotients for 675 divided by 5. What is the quotient?",
+     "options": [
+      { "v": "a", "text": "135" },
+      { "v": "b", "text": "131 r 20" },
+      { "v": "c", "text": "115" },
+      { "v": "d", "text": "155" }
+     ],
+     "right": "a",
+     "yes": "Yes — 100 groups of 5 is 500 (175 left), 30 groups is 150 (25 left), 5 groups is 25; 100 plus 30 plus 5 is 135. Check: 135 times 5 is 675.",
+     "notYet": "Not yet — pull the hundreds chunk first (500), then the tens (150), then the ones (25), and add the partials."
+    },
+    "harder": {
+     "prompt": "A storehouse sheet claims 944 over 3 is 304 r 32. Run the multiplication check, find what is wrong with the remainder, and give the correct quotient and remainder.",
+     "answer": "The remainder 32 is larger than the divisor 3 — it was never finished. 304 times 3 is 912, and 944 minus 912 is 32, but 32 holds ten more groups of 3 with 2 left. The correct answer is 314 r 2: 314 times 3 is 942, plus 2 is 944. A remainder must always be smaller than the divisor; if it is not, another chunk comes out."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "A storehouse ledger design: design a ledger page for one real distribution (books, bottles or cans across locations) with a chunk column, a subtract column and a multiply-back check column, and fill it for one three-digit dividend.",
+       "stem": "ask what the ledger must track → plan the columns → run one real distribution in chunks → test the total by multiplication → share the ledger at the dispatch board",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A chunk-by-place drawing: draw 857 (or another three-digit load) as a place-value stack split across four storehouses, using colour for the hundreds chunk, tens chunk and ones chunk, with every partial quotient labelled and the remainder circled.",
+       "stem": "ask which places to colour → plan the stack → draw the chunks in place order → test the colours add to the dividend → share the drawing on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The faulty-sheet bureau: ask the AI to generate three three-digit-by-one-digit divisions, two with a hidden fault (a remainder too large or a forgotten place), work all three yourself with the multiply-back check, and publish a bureau page marking each sheet sound or faulty with the correction shown.",
+       "stem": "ask what faults the bureau catches → plan the checks → request three sheets from the AI → test each by multiplying back → publish the bureau page on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "5-7": {
+   "prep": {
+    "home": [
+     "Seventy-five dates are dealt one fair round at a time across 5 tables. Deal the tens first: how many tens can each table receive, and what must be regrouped?",
+     "After the tens round, fifteen ones remain. How do the ones finish the deal, and what is one table's full share?",
+     "Why does dealing one round to every table guarantee the shares are equal — what would break the fairness?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can share the tens first and regroup the tens that will not go round.",
+     "I can continue the share into the ones and record one group's full share.",
+     "I can connect each dealing round to a digit in the quotient.",
+     "I can explain why a round dealt to every group keeps the shares equal."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Share 96 equally between 4 tables, dealing by place. What is one table's share?",
+     "options": [
+      { "v": "a", "text": "24" },
+      { "v": "b", "text": "21 r 5" },
+      { "v": "c", "text": "14" },
+      { "v": "d", "text": "28" }
+     ],
+     "right": "a",
+     "yes": "Yes — each table gets 2 tens (80 dealt, 16 left), regroup the rest, then 4 ones each: 24. Check: 24 times 4 is 96.",
+     "notYet": "Not yet — deal the tens round first (2 tens per table), regroup the leftover, then deal the ones round."
+    },
+    "harder": {
+     "prompt": "A dealer shares 75 across 5 tables and writes 13 r 10 at the bottom of the mat. Run the deal from the tens round and explain the mistake the mat shows.",
+     "answer": "The tens round: 7 tens across 5 tables gives each table 1 ten, with 2 tens left — those 2 tens must be regrouped into 20 ones and joined to the 5 ones, making 25 ones. The ones round gives 5 per table. One table's share is 15, with no remainder (15 times 5 is 75). Writing r 10 means the dealer stopped before regrouping and redealing; a remainder of 10 with groups of 5 is impossible."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A dealing-rounds mat model: build a paper place-value mat with five table zones, deal a real counted collection (dried beans or counters) one round at a time, and leave the mat laid out with one share ringed as the answer.",
+       "stem": "ask which collection to deal → plan the zones → deal tens then ones, regrouping aloud → test one share by multiplying → share the mat on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A fair-rounds clip: film a 60-second deal of a real collection across four or five plates, narrating each round (tens, regrouping, ones), and prove at the end that every plate holds the same count.",
+       "stem": "ask what makes a round fair → plan the deal → film the rounds and regrouping → test the plates are equal on camera → share the clip on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A deal-vs-chunk comparison with the AI as questioner: ask the AI to propose whether sharing by rounds or pulling partial quotients is better for two given divisions, then present your own tested verdict for each — small divisor vs large dividend — with a dealt or chunked example for both.",
+       "stem": "ask when each method is efficient → plan the two cases → request the AI's comparison → test both methods yourself → present your verdict on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "5-8": {
+   "prep": {
+    "home": [
+     "Now the share crosses a place: 365 sacks across 3 storehouses. The hundreds go round once — what is left when the tens round begins, and why can the tens digit not simply come down as 6?",
+     "When the tens will not make a full round, what digit belongs in the quotient above the tens place — and what happens to those tens?",
+     "Work 365 over 3 to the end. What is one storehouse's share and what honestly remains?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can share across hundreds, tens and ones without losing a place.",
+     "I can write a zero in the quotient when a place will not make a full group.",
+     "I can regroup the undivided place into the next smaller place and continue.",
+     "I can report a remainder that is smaller than the divisor and check the share by multiplication."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Share 546 equally among 4 groups. What is one group's share?",
+     "options": [
+      { "v": "a", "text": "136 r 2" },
+      { "v": "b", "text": "131 r 2" },
+      { "v": "c", "text": "111 r 2" },
+      { "v": "d", "text": "136 r 6" }
+     ],
+     "right": "a",
+     "yes": "Yes — 1 hundred each (100, with 146 left), 3 tens each (120, 26 left), 6 ones each (24, 2 left): 136 r 2. Check: 136 times 4 is 544, plus 2 is 546.",
+     "notYet": "Not yet — share the hundreds, regroup the leftover into tens, share those, and keep the remainder smaller than 4."
+    },
+    "harder": {
+     "prompt": "Two answers are on the board for 832 over 4: 28 and 208. Test both against the multiplication check and the place-value rule, and explain the trap in the wrong one.",
+     "answer": "208 is correct: 4 times 208 is 832. The trap in 28 is the zero in the tens place of the quotient — after 8 hundreds over 4 gives 2 hundreds, the 3 tens will not make a group of 4, so a zero holds the tens place while the 3 tens regroup into 30 ones and join the 2; the ones round gives 8. Skipping that zero turns 208 into 28 and drops a place. Check: 28 times 4 is only 112."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "poster",
+       "task": "A hold-the-place poster: teach the zero-in-the-quotient rule with one division worked three ways (sharing mat, partial quotients, written form), the empty place circled red, and the test question 'What happens if I skip the zero?' answered at the bottom.",
+       "stem": "ask why the zero matters → plan the three methods → work the division each way → test skipping the zero against the multiplication check → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A regrouping-route map: draw 365 (or 546) as a flow from hundreds column to tens column to ones column, with arrows showing each regrouping, the zero places marked, and the remainder at the end.",
+       "stem": "ask where each regrouping happens → plan the flow → draw the column routes → test the route ends at the checked quotient → share the map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A zero-or-bust clip with the AI as auditor: ask the AI to judge three worked divisions (one with a missing zero in the quotient), film your own multiply-back audit of each, and close by correcting the AI whenever it accepts a place-dropped answer.",
+       "stem": "ask what the audit must catch → plan the three divisions → request the AI's judgements → test each answer by multiplication on camera → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "5-9": {
+   "prep": {
+    "home": [
+     "Three manifests arrive at once: 4,800 over 8 (zeros and a fact), 857 over 4 (a large sheet), and 63 over 3 (a small clean split). Read the numbers first — which loading method fits each?",
+     "Why would a loader reach for partial quotients on 857 over 4 but a mental fact on 4,800 over 8? What are you reading when you choose?",
+     "Estimate first, always: how does the estimate tell you whether a strategy is about to waste time?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can read a division and name an efficient strategy before I begin.",
+     "I can use mental math for zeros-and-a-fact divisions and estimate benchmarks for large ones.",
+     "I can choose between sharing, partial quotients and mental math with a reason.",
+     "I can justify my choice by the size of the numbers and the estimate, not by habit."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Choose the most efficient strategy for 2,400 divided by 6. What is the quotient?",
+     "options": [
+      { "v": "a", "text": "40" },
+      { "v": "b", "text": "400" },
+      { "v": "c", "text": "4,000" },
+      { "v": "d", "text": "4" }
+     ],
+     "right": "b",
+     "yes": "Yes — 6 times 4 is 24 with two place zeros: 400, done mentally in seconds. A zeros-and-a-fact division never needs the full written strategy.",
+     "notYet": "Not yet — read the numbers: the fact 24 over 6 with zeros is a mental division. Take the fact, then place the zeros."
+    },
+    "harder": {
+     "prompt": "The gate captain must load three manifests in the last ten minutes: 3,600 over 9, 725 over 5, and 84 over 7. Assign each a strategy (mental fact, partial quotients, or share), solve all three, and state the one reason each choice saves time.",
+     "answer": "3,600 over 9 is mental: 9 times 4 is 36, placed in the hundreds → 400. 725 over 5 wants partial quotients (or sharing by place): 100 groups is 500, 40 groups is 200, 5 groups is 25 → 145. 84 over 7 is a small clean split: 10 groups is 70, 2 more is 14 → 12. The rule: zeros and a fact go in the head, large sheets get chunks, small splits are dealt quickly — the estimate confirms every answer's place."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "A method-picker wheel design: build a spinning wheel that shows the three strategies and the number features that point to each (zeros-and-fact, large sheet, small split), with five example manifests pinned to the sector each one belongs to.",
+       "stem": "ask what features the wheel reads → plan the sectors → build the wheel and pin the five manifests → test each pin by solving → share the wheel at the gate",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A 90-second strategy talk: take three manifests, present your read of each (what the numbers look like), name the strategy before computing, and solve each one — closing with the sentence that justifies all three choices.",
+       "stem": "ask what the audience must learn → plan the three reads → name then solve each manifest → test each answer by estimate → deliver the talk at the gate",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "An AI-method audit map: ask the AI to recommend a strategy for six divisions, build a two-column map of its recommendation versus your own tested recommendation, and mark where the AI chose a slower or wrong method — with the estimate that proves your choice.",
+       "stem": "ask what makes a strategy efficient → plan the audit columns → request six recommendations from the AI → test each division both ways → post the map on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "5-10": {
+   "prep": {
+    "home": [
+     "The dispatch board: 150 pens are packed into boxes of 4 and every pen must be boxed. Draw the bar, mark the unknown, write the equation — what does the situation do with the remainder?",
+     "A donor offers water bottles for six classrooms; the bottles arrive in cases of 8. Model the situation before you calculate: what are you finding — bottles per class, cases, or what is left?",
+     "Why does drawing the bar first stop the most common dispatch error — computing the right answer to the wrong question?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can model a division situation with a bar drawing and an equation before calculating.",
+     "I can identify what the unknown represents — groups, per-group share, or remainder.",
+     "I can interpret the remainder using the model and the question asked.",
+     "I can check the answer fits the context and label what the numbers mean."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "134 donated notebooks are shared equally among 5 classrooms. How many notebooks does each classroom receive?",
+     "options": [
+      { "v": "a", "text": "26 r 4" },
+      { "v": "b", "text": "26" },
+      { "v": "c", "text": "27" },
+      { "v": "d", "text": "25 r 9" }
+     ],
+     "right": "b",
+     "yes": "Yes — 134 over 5 is 26 with 4 left; each classroom receives 26 notebooks (the 4 leftover are recorded honestly). The model shows the unknown is the equal share, not the boxes needed.",
+     "notYet": "Not yet — draw the bar in five equal parts, write 5 times what is 134, divide, then ask whether the situation rounds, drops or reports the remainder."
+    },
+    "harder": {
+     "prompt": "The food drive sends 200 cans in boxes that hold 6. Draw the bar, write the equation, and answer both questions the dispatcher needs: how many full boxes, and how many boxes must be loaded so every can goes?",
+     "answer": "200 over 6 is 33 remainder 2 (33 times 6 is 198). The bar shows a whole split into groups of 6. Full boxes: 33 — two cans do not complete a box. But every can must go, so the loading count rounds up to 34 boxes, the last carrying just 2 cans. One division, two answers: which one you report depends on the question — the bar keeps you from answering the wrong one."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "mini-project",
+       "task": "The real distribution schedule — the unit's own artifact: run an actual counted collection in the classroom (donated pens, bottles or cans), model its distribution with bar drawings, divide it across the school locations, justify every remainder decision on the schedule, and sign the dispatch board.",
+       "stem": "ask what the real collection is → plan the locations and the bar models → count, divide and record → test every line by multiplication and a remainder decision → present the signed schedule to the council",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A dispatch map of the school: draw the rooms and locations your real collection travels to, mark each one with its equal share and its remainder decision (round up, drop or report), and draw the routes the loaded carts take.",
+       "stem": "ask which locations receive shares → plan the map routes → mark each location's share and decision → test the shares total back to the collection → share the map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A data-poster with the AI as researcher: ask the AI to find one real-world example of fair distribution (water allocations, charity drives, packaging), verify the numbers against a second source, and present how the real organisers handled their leftover — with your own bar model of their numbers.",
+       "stem": "ask which real distribution to study → plan the poster → research one example with the AI (verify every figure) → build your own bar model of it → present it at the dispatch board",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The caravan dispatch board — every load modelled, every quotient checked, every remainder justified, signed by its makers"
+   }
+  }
+ }
+}

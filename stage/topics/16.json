@@ -1,0 +1,400 @@
+{
+  "topic": 16,
+  "title": "Lines, Angles, and Shapes",
+  "arc": "The garden of strong shapes — lines meet parallel or square, triangles take their names from both sides and angles, quadrilaterals belong to families that overlap, the mirror line makes both halves match exactly, shapes are drawn from their symmetry, and the final critique tests a claim with a counterexample — until the classified, symmetric pavilion elevation is planted.",
+  "sources": [
+    "CCSS 4.G.A.1 (thecorestandards.org): draw and identify points, lines, line segments, rays, angles (right, acute, obtuse), and perpendicular and parallel lines in two-dimensional figures",
+    "CCSS 4.G.A.2: classify two-dimensional figures based on the presence of parallel or perpendicular lines, or angles of a specified size; identify right triangles",
+    "CCSS 4.G.A.3: recognise a line of symmetry as a line across a figure such that folding along it produces matching parts, and draw lines of symmetry for symmetric two-dimensional figures",
+    "PBL geometry design tasks (playground/pavilion design PBL families): students place structures by angle and line relationships, classifying the shapes used — real engineering-design contexts for 4.G content",
+    "Tessellation and quilt symmetry crafts: folding paper to test for mirror lines, creating symmetric shapes on grid paper, and identifying figures that fold into matching halves",
+    "Shape-classification attribute games and card sorts: inclusive naming (a square is also a rectangle, an equilateral triangle is also acute and isosceles) and counterexample reasoning (a right triangle need not be isosceles — the 3-4-5 triangle)",
+    "Architecture/structure observation tasks: identifying parallel, perpendicular and symmetric features in buildings, bridges and garden layout — the strong-shapes design frame",
+    "NGSS Science and Engineering Practice 7 (Argument from Evidence), grades 3-5: challenge a generalisation with a counterexample; and Practice 2 (Using Models) for the folding and drawing of shapes"
+  ],
+  "screens": {
+    "prep": {
+      "title": "The <em>garden briefing</em> was already at home",
+      "lead": "Before class, the class met the strong-shapes briefing — two crossing edges and three home questions, at each student's own pace.",
+      "goal": "Recover the first exposure, so the garden design begins with thinking — not with content delivery.",
+      "pull": "Now the probe: what does the class already hold about lines and shapes?"
+    },
+    "diagnose": {
+      "title": "The <em>gap map</em> for the garden",
+      "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+      "goal": "Build a gap map: what is known, and what is missing, before the first edge is planted.",
+      "pull": "Knowledge building closes exactly what the map flags."
+    },
+    "practice": {
+      "title": "Practice — feedback in <em>seconds, not days</em>",
+      "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+      "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+      "pull": "Now a genuinely new situation from the garden."
+    },
+    "critic": {
+      "title": "A genuinely <em>new situation</em> from the garden",
+      "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+      "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+      "pull": "One individual task now decides each student's next path."
+    }
+  },
+  "lessons": {
+    "16-1": {
+      "prep": {
+        "home": [
+          "Survey a straight corridor: name two lines that never meet, and one pair that meets at a square corner. What names (parallel, perpendicular) fit each pair?",
+          "An angle smaller than a square corner is acute; larger but straight-less than flat is obtuse. Sketch one of each in a garden path.",
+          "Draw a ray reaching from a fountain outward. What distinguishes it from a line drawn across the whole plan?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can identify parallel and perpendicular lines in a figure.",
+          "I can name angles as right, acute or obtuse.",
+          "I can mark points, rays and segments on a drawing.",
+          "I can use line relationships to describe a real design."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "Two garden paths cross making a square corner. What is their relationship, and what angle do they make?",
+          "options": [
+            { "v": "a", "text": "parallel, no angle" },
+            { "v": "b", "text": "perpendicular, right angle" },
+            { "v": "c", "text": "parallel, right angle" },
+            { "v": "d", "text": "perpendicular, obtuse angle" }
+          ],
+          "right": "b",
+          "yes": "Yes — lines meeting at a square corner are perpendicular and the opening is a right angle (90 degrees).",
+          "notYet": "Not yet — a square corner means perpendicular lines and a right angle; parallel lines never meet at all."
+        },
+        "harder": {
+          "prompt": "A plan shows three paths: A and B never meet; B and C meet at an opening wider than a square corner; C and A meet square. Classify every pair and name each angle, then say which path must be re-drawn if all corners are meant to be square.",
+          "answer": "A-B are parallel; B-C meet at an obtuse angle; C-A are perpendicular (right). If all corners are meant square, the B-C edge must be redrawn — one obtuse meeting breaks the square-corner design even though two other relationships hold."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "drawing",
+              "task": "A campus line-relationship survey map: sketch a real site (yard, hallway, playground) marking at least two parallel pairs, two perpendicular pairs and one acute corner, with the relationships labelled directly on the drawing.",
+              "stem": "ask where the relationships occur → plan the survey route → sketch and label each pair → test labels against the visible angles → share the survey map on the wall",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A straw-path angle model: build three card paths on a pin board, set two parallel and a third crossing both, and mark the right, acute and obtuse openings that result with coloured angle cards.",
+              "stem": "ask which meetings the model shows → plan the path layout → pin and label each angle type → test the marked openings with a square corner → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "An edge-hunt clip with the AI as surveyor: ask the AI to name line relationships in three described scenes, film the matching real edge for each, and correct any scene the AI mis-labelled as parallel when the lines actually meet.",
+              "stem": "ask what identifies each relationship → plan the three scenes → request descriptions from the AI → test each against a real angle check → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "16-2": {
+      "prep": {
+        "home": [
+          "Triangles take names from side lengths and angles. A triangle with three equal sides is equilateral — what kind of angles does it always have (acute, right or obtuse)?",
+          "A triangle with one right angle and three different side lengths earns two names. What are they?",
+          "Sketch an obtuse triangle; decide whether it can also be isosceles, and defend your answer."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can classify triangles by sides (equilateral, isosceles, scalene).",
+          "I can classify triangles by angles (acute, right, obtuse).",
+          "I can give a triangle both names (one from sides, one from angles).",
+          "I can recognise an equilateral triangle as also acute and isosceles."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "A triangle has two equal sides and all three angles smaller than a right angle. Which two names fit?",
+          "options": [
+            { "v": "a", "text": "scalene, right" },
+            { "v": "b", "text": "isosceles, acute" },
+            { "v": "c", "text": "equilateral, obtuse" },
+            { "v": "d", "text": "isosceles, obtuse" }
+          ],
+          "right": "b",
+          "yes": "Yes — two equal sides is isosceles; all acute angles makes it an acute triangle. Every triangle earns one side name and one angle name.",
+          "notYet": "Not yet — the side name comes from equal sides (two = isosceles); the angle name from all corners being under 90 = acute."
+        },
+        "harder": {
+          "prompt": "A triangle has sides 3, 4 and 5 units with a right angle between the shorter sides. Give its side name and angle name, then say whether it is isosceles and what about it would disprove a claim that every right triangle has two equal sides.",
+          "answer": "Sides all different: scalene. One right angle: right. It is not isosceles (3 ≠ 4 ≠ 5), so a single 3-4-5 triangle is the counterexample disproving 'every right triangle has two equal sides' — generalisations about shapes need only one counterexample to fail."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A classified triangle kit: cut eight triangles (including equilateral, isosceles, scalene and a right triangle with different sides), mount them in a two-way sorting grid by side type and angle type.",
+              "stem": "ask what the grid must distinguish → plan the eight pieces → cut, sort and double-name each → test each triangle against a square corner → share the kit on the wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A strong-structure drawing sheet: draw three real triangular structures (roof, frame, flag), mark each triangle's right or acute corners, and name each by sides and angles.",
+              "stem": "ask which structures are triangular → plan the three drawings → draw and mark the corners → test one name per type → share the sheet on the wall",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "The AI counterexample bureau: ask the AI to make three general claims about triangles (such as 'right triangles are always isosceles'), test each with a constructed counterexample, and publish which claims fall and the one triangle that knocks each down.",
+              "stem": "ask what would disprove a claim → plan the counterexample checks → request claims from the AI → test each by constructing a triangle → publish the bureau results on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "16-3": {
+      "prep": {
+        "home": [
+          "A shape has four right angles and four equal sides. List every name it earns — which broader family does it also belong to?",
+          "Parallel sides occur in trapezoids; both pairs parallel occurs in another family. Name that larger family.",
+          "Two quadrilateral names may share one shape (a rhombus that is also...?). List two overlapping families before class."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can classify quadrilaterals by parallel sides, equal sides and angles.",
+          "I can use inclusive naming (a square is also a rectangle and a rhombus).",
+          "I can distinguish a trapezoid, parallelogram, rectangle, rhombus and square.",
+          "I can draw a quadrilateral to meet given parallel or angle conditions."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "A four-sided figure has exactly one pair of parallel sides and no right angles. What is it?",
+          "options": [
+            { "v": "a", "text": "rectangle" },
+            { "v": "b", "text": "trapezoid" },
+            { "v": "c", "text": "square" },
+            { "v": "d", "text": "rhombus" }
+          ],
+          "right": "b",
+          "yes": "Yes — one pair of parallel sides with no square corners is a trapezoid; rectangles, squares and rhombuses all carry two pairs of parallel sides.",
+          "notYet": "Not yet — count the parallel pairs: exactly one means the trapezoid family."
+        },
+        "harder": {
+          "prompt": "A plan requires a bed with four equal sides, two parallel pairs and four right angles. Name the shape and all broader families it belongs to, then draw a rhombus that is not a square to show the classifications are not identical.",
+          "answer": "Four equal sides plus four right angles is a square; it is also a rectangle (right angles), a rhombus (equal sides) and a parallelogram (two parallel pairs). A rhombus with equal sides but non-right angles proves the square is the special case — equal sides alone do not make a square."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A quadrilateral family tree model: cut eight four-sided figures and mount them on a tree where each broader family branch holds the shapes that belong to it (square under rectangle and rhombus), with the family rules written on the branches.",
+              "stem": "ask what rule defines each branch → plan the tree → cut, sort and mount → test each shape against its branch rule → share the family tree on the wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A 'this shape is also that' classification poster: take five figures and list every name each earns, with the inclusive rules (parallel pairs, right angles, equal sides) displayed.",
+              "stem": "ask which names overlap → plan the five rows → name and rule each figure → test one broader name per shape → share the poster on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A name-game clip with the AI as new gardener: ask the AI to name five described quadrilaterals, sort each yourself against the family rules, and correct on camera any label the AI made too broad or too narrow — shown by a counterexample sketch.",
+              "stem": "ask what rule each name tests → plan the five figures → request names from the AI → test each against parallel/angle rules → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "16-4": {
+      "prep": {
+        "home": [
+          "A mirror line divides a shape so both halves fold onto each other. A square has four such lines — how many does a non-square rectangle have, and why not four?",
+          "Test a folded paper triangle: equilateral folds match three ways; an isosceles triangle folds how many?",
+          "Which everyday objects (leaf, plate, kite) show mirror symmetry, and where is their fold line?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can find lines of symmetry by folding or imagining a fold.",
+          "I can count the symmetry lines of common polygons.",
+          "I can distinguish a matching fold line from a line that splits a figure unevenly.",
+          "I can say how many symmetry lines a shape has and why."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "How many lines of symmetry does an isosceles triangle (not equilateral) have?",
+          "options": [
+            { "v": "a", "text": "0" },
+            { "v": "b", "text": "1" },
+            { "v": "c", "text": "2" },
+            { "v": "d", "text": "3" }
+          ],
+          "right": "b",
+          "yes": "Yes — only the fold from the point between the equal sides to the middle of the base matches both halves; other folds leave different angles on each side.",
+          "notYet": "Not yet — fold from the vertex the two equal sides make: that one line mirrors; the equilateral has three such folds."
+        },
+        "harder": {
+          "prompt": "A rhombus that is not a square has exactly two lines of symmetry; a square has four. Explain the two extra folds the square allows, and why the rhombus fails them.",
+          "answer": "Both fold along their diagonals (2 lines). The square also folds through the midpoints of opposite sides: because every corner is a right angle, opposite sides match edge for edge across those lines. The non-square rhombus has non-right angles, so a midpoint fold would pair an acute corner with an obtuse one — the halves would not match."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A fold-test symmetry kit: fold ten paper shapes to test mirror lines, mount each folded-then-unfolded sheet with its actual fold lines marked and its symmetry count written.",
+              "stem": "ask where the folds match → plan the ten shapes → fold, mark and count each → test every claimed line by refolding → share the kit on the wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A symmetric garden-bed design: draw an elevation of a garden or facade half, complete its mirror half across a drawn symmetry line, and mark every fold line your design possesses.",
+              "stem": "ask what mirrors across the line → plan the half drawing → mirror each feature → test matches by folding or measuring distances → share the design on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "The symmetry hunt with the AI as photographer: ask the AI to list five symmetric objects and their fold-line counts, film and fold each real object yourself, and correct any count the AI over-claimed (a rectangle called four-fold).",
+              "stem": "ask what fold makes two halves match → plan the five objects → request counts from the AI → test each by folding → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "16-5": {
+      "prep": {
+        "home": [
+          "Draw a point three grid squares to the left of a mirror line; its partner sits where — same distance, other side. Complete one point on the other half.",
+          "Mirror each vertex of a small shape across the line, then connect them. What property (distances, matching shape) guarantees the halves match?",
+          "What error moves a reflected point to the mirror line itself instead of across it?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can draw the reflected partner of a point across a line of symmetry.",
+          "I can complete a symmetric figure by mirroring its vertices.",
+          "I can keep equal distances from the mirror line.",
+          "I can check the completed shape folds to a match."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "A corner sits 5 squares right of the mirror line. Where does its partner belong?",
+          "options": [
+            { "v": "a", "text": "5 squares left of the line" },
+            { "v": "b", "text": "10 squares left of the line" },
+            { "v": "c", "text": "on the mirror line" },
+            { "v": "d", "text": "5 squares right of the line" }
+          ],
+          "right": "a",
+          "yes": "Yes — reflection preserves distance across the line: 5 squares right mirrors to 5 squares left.",
+          "notYet": "Not yet — count the same distance on the opposite side; doubling (to 10) would stretch the half."
+        },
+        "harder": {
+          "prompt": "Complete half a pavilion elevation given three vertices at distances 2, 4 and 2 squares to the right of the mirror line and heights 3, 5 and 3. State the mirrored points and check whether the completed figure is itself symmetric across any second line.",
+          "answer": "Reflected partners sit at 2, 4, 2 squares left of the line at the same heights (3, 5, 3). The joined elevation arches symmetrically. A second fold line is absent unless the heights mirror left-to-right within a half — here the top point lies on the mirror line but the arch only folds across the given one line."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "design",
+              "task": "A mirror-complete pavilion half: design half an elevation on grid paper, hand it to a partner who must mirror it across the line, then verify every reflected vertex is at the same distance, and publish the completed design.",
+              "stem": "ask what distances the mirror preserves → plan the half → mirror the vertices → test distances point by point → share the completed pavilion on the wall",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A peg-board reflection model: build a shape with pegs on one side of a string mirror line, build its reflection on the other side peg by peg, and leave both built with distances matched.",
+              "stem": "ask what each peg mirrors to → plan the shape → place pegs and partners → test distances with a ruler → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "The AI symmetry checker: give the AI a set of completed symmetric figures to judge (some secretly with a point at the wrong distance), then check its verdicts against fold and distance tests yourself and publish which of the AI's accepted figures actually fail.",
+              "stem": "ask what makes a reflection exact → plan the test figures → request the AI's verdicts → test each point's distance → publish the checker results on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "16-6": {
+      "prep": {
+        "home": [
+          "A claim says every four-sided figure with parallel sides must be a rectangle. What counterexample breaks it — which parallel-sided shape has no right angles?",
+          "Before accepting 'all triangles with equal sides are obtuse', test an equilateral triangle: what angles does it actually have?",
+          "What counts as proof in geometry: one more example, or a counterexample to disprove and evidence that holds for every case to support?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can critique a geometric claim and decide if it is justified.",
+          "I can construct a counterexample that disproves a generalisation.",
+          "I can support a claim with the attribute every case shares.",
+          "I can read my own reasoning for over-generalised labels."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "Someone claims: every triangle with a right angle is isosceles. Is it true?",
+          "options": [
+            { "v": "a", "text": "true — right angles make equal sides" },
+            { "v": "b", "text": "false — a scalene right triangle is a counterexample" },
+            { "v": "c", "text": "true for small triangles" },
+            { "v": "d", "text": "cannot be decided without measuring" }
+          ],
+          "right": "b",
+          "yes": "Yes — one right triangle with all different sides (such as a 3-4-5 triangle) disproves it: the claim is too broad.",
+          "notYet": "Not yet — generalisations are killed by one counterexample; a scalene right triangle exists, so 'all' fails."
+        },
+        "harder": {
+          "prompt": "Defend this plan claim: 'both square beds I designed have four symmetry lines, and both triangular trellises — one equilateral, one isosceles — have exactly one.' One part is supported, one is false. Identify each with the evidence.",
+          "answer": "The square-bed part is supported: every square folds across four lines (two diagonals, two midpoint lines). The trellis claim is false: the equilateral trellis has three lines of symmetry, not one. The isosceles alone has one. A correct critique replaces the blanket statement with the per-figure fold count."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "The classified symmetric pavilion plan — the unit's own artifact: design a small pavilion elevation with specified line relationships (one square corner, one acute corner, one parallel pair), classify every triangle and quadrilateral it uses, mark every line of symmetry, and present the defended plan with counterexamples tested, signed by its makers.",
+              "stem": "ask what the pavilion must contain → plan the features and shapes → draw, classify and fold-test every part → test broad labels with counterexamples → present the signed pavilion plan",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A claim-vs-counterexample poster: publish four geometry claims, mark each supported or disproved, and draw the decisive evidence (the shared attribute or the one shape that breaks it) beneath each.",
+              "stem": "ask what would decide each claim → plan the four rows → draw the evidence per claim → test one counterexample per 'false' → share the poster on the wall",
+              "ai": false
+            },
+            {
+              "kind": "presentation",
+              "task": "A design-critique hearing with the AI as inspector: present your pavilion, let the AI raise three challenges to your classifications and symmetry claims, answer each with measured evidence (or a counterexample of its labels) yourself on camera.",
+              "stem": "ask what the inspector will challenge → plan the three defences → request the AI's challenges → test each against the geometry → present the defended pavilion on the wall",
+              "ai": true
+            }
+          ]
+        }
+      },
+      "wall": {
+        "artifact": "The classified, symmetric pavilion plan — every line relationship identified, every shape named both ways, every symmetry fold-tested and every broad claim answered with evidence, signed by its makers"
+      }
+    }
+  }
+}

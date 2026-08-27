@@ -1,0 +1,401 @@
+{
+  "topic": 15,
+  "title": "Geometric Measurement: Understand Concepts of Angles and Angle Measurement",
+  "arc": "The observatory of turning light — lines and rays reach outward from one endpoint, an angle becomes a fraction of a full turn, the turn is filled with unit wedges, protractors measure and draw the opening, angles split and combine into pieces, and the right tool for the right job closes the observatory with a shade arm that tracks the sun.",
+  "sources": [
+    "CCSS 4.MD.C.5 (thecorestandards.org): recognise angles as geometric shapes formed wherever two rays share a common endpoint, and understand angle measurement concepts; 4.MD.C.5a: one degree is a 1/360 turn; 4.MD.C.5b: an angle of n degrees measures n one-degree angles",
+    "CCSS 4.MD.C.6: measure angles in whole-number degrees using a protractor and sketch angles of specified measure",
+    "CCSS 4.MD.C.7: recognise angle measure as additive — the measure of a split angle is the sum of the measures of its parts; solve for unknown angles",
+    "PBL 'Measuring & Drawing Angles: Design a Playground' (5-day Grade 4 PBL, 4.MD.C.5b/C.6): students use angle measurement and protractor drawing to place playground equipment and choose safe slide designs — the real engineering design brief this unit mirrors",
+    "Clock-face turn modelling: the 360-degree full turn, 180 half turn, 90 quarter (right angle), and fraction-of-a-turn reasoning demonstrated on clock or wheel — the unit-wedge idea made physical",
+    "Paper wedge/unit-angle construction: filling an angle with same-sized wedges (circular sectors) shows angle measure as a count of unit turns",
+    "Sun-angle and shade STEM designs: track-the-sun paper arms and light-catchers that rotate a shade arm to a measured angle; an applied engineering task for 4.G and 4.MD angle content",
+    "NGSS Science and Engineering Practice 6 (Constructing Explanations / Designing Solutions) and the 'use appropriate tools' habit (MP.5): protractor vs square corner vs ruler, each matched to the precision the question needs",
+    "NGSS 3-5-ETS1-1/2: a design problem (controlling sunlight or shade) met with measured geometry and tested prototypes"
+  ],
+  "screens": {
+    "prep": {
+      "title": "The <em>observatory briefing</em> was already at home",
+      "lead": "Before class, the class met the turning-light briefing — one wide opening and three home questions, at each student's own pace.",
+      "goal": "Recover the first exposure, so the angle work begins with thinking — not with content delivery.",
+      "pull": "Now the probe: what does the class already hold about turns and openings?"
+    },
+    "diagnose": {
+      "title": "The <em>gap map</em> for the observatory",
+      "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+      "goal": "Build a gap map: what is known, and what is missing, before the first ray is drawn.",
+      "pull": "Knowledge building closes exactly what the map flags."
+    },
+    "practice": {
+      "title": "Practice — feedback in <em>seconds, not days</em>",
+      "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+      "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+      "pull": "Now a genuinely new situation from the observatory."
+    },
+    "critic": {
+      "title": "A genuinely <em>new situation</em> from the observatory",
+      "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+      "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+      "pull": "One individual task now decides each student's next path."
+    }
+  },
+  "lessons": {
+    "15-1": {
+      "prep": {
+        "home": [
+          "At the observatory, one reach starts at a point and continues forever in one direction. Draw it, then draw its partner: a straight path extending both ways forever. Which is the ray and which is the line?",
+          "Two rays from one point make an opening. What is the shared endpoint called, and what does the opening measure?",
+          "A segment has two endpoints. Order the three reach-types (line, ray, segment) by how many endpoints each holds."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can distinguish a line, a ray and a segment by their endpoints.",
+          "I can identify an angle as two rays sharing an endpoint.",
+          "I can draw a ray from a given point in a chosen direction.",
+          "I can name the shared point (the vertex) of an angle."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "A beam starts at a lighthouse lamp and reaches forever out to sea. Which geometric figure is the beam?",
+          "options": [
+            { "v": "a", "text": "a line segment" },
+            { "v": "b", "text": "a ray" },
+            { "v": "c", "text": "a line" },
+            { "v": "d", "text": "an angle" }
+          ],
+          "right": "b",
+          "yes": "Yes — one endpoint (the lamp) and one direction extending forever: that is a ray. A line would extend past the lamp too, and a segment would end.",
+          "notYet": "Not yet — count the endpoints: the beam starts once (the lamp) and never stops going out; that is a ray."
+        },
+        "harder": {
+          "prompt": "Two observatory beams start at different lamps and meet at a marker at sea; a third path runs along the dock edge with two marked ends. Classify all three figures and say which two figures form the angle the surveyor measures at the marker.",
+          "answer": "Each lamp-to-marker beam is a ray (one endpoint at the lamp, passing the marker outward). The dock path with two marked ends is a segment. The angle at the marker is formed by two rays that share that vertex — the incoming beam directions read from the marker; identifying the shared vertex separates the two rays from the unrelated segment."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "drawing",
+              "task": "A real-lines observatory chart: sketch the school site from above, trace real straight edges, and mark at least two rays, two lines of sight and two segments, with endpoints and vertices labelled.",
+              "stem": "ask which edges extend or end → plan the chart → trace and label each figure type → test each ray has one endpoint and each segment two → share the chart on the wall",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A reach-types arm model: build three card strips — one with one free end (ray), one with both ends free (line) and one with both ends capped (segment) — to hold up against real edges and classify them.",
+              "stem": "ask what endpoints identify each → plan the three strips → build the capped and open arms → test them on three real edges → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A figure-hunt clip with the AI as spotter: ask the AI to name three real-world examples each of lines, rays, segments and angles, film the matching object for each, and correct any example the AI labelled with the wrong endpoint count.",
+              "stem": "ask what defines each figure → plan the six shots → request examples from the AI → test each against its endpoint count → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "15-2": {
+      "prep": {
+        "home": [
+          "A full turn brings you back where you faced. One full turn is 360 degrees. What fraction of a full turn is a square corner (90 degrees)?",
+          "The shade arm turns one third of a full turn. How many degrees did it move, and how many one-degree wedges fill that opening?",
+          "Say which is bigger before calculating: a turn of 60 degrees or a turn of 120 — and justify by fractions of the circle."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I understand a degree as a fraction of a full 360-degree turn.",
+          "I can relate angle measure to the fraction of a circle that turns.",
+          "I can fill an angle with equal unit wedges and count.",
+          "I can name straight (180) and right (90) turns from the circle."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "How many degrees are in one quarter of a full turn?",
+          "options": [
+            { "v": "a", "text": "45°" },
+            { "v": "b", "text": "90°" },
+            { "v": "c", "text": "60°" },
+            { "v": "d", "text": "180°" }
+          ],
+          "right": "b",
+          "yes": "Yes — 360 divided by 4 is 90; a quarter turn is the square corner, 90 degrees, filled by 90 one-degree wedges.",
+          "notYet": "Not yet — divide the full turn (360) by 4 equal quarters: each is 90."
+        },
+        "harder": {
+          "prompt": "A shade arm must sweep through a straight angle to track the sun morning to noon and a right angle on the return adjustment. Express each as a fraction of a full turn and give the degrees turned total across both moves.",
+          "answer": "Straight angle 180° is 180/360 = half a full turn; right angle 90° is one quarter. Total: 180 + 90 = 270 degrees, or 270 one-degree wedges — three quarters of a complete turn."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A unit-wedge wheel: cut a card wheel into equal wedges (a 10- or 30-degree set), fill five different openings completely with wedges, and label each opening by its wedge count and degrees.",
+              "stem": "ask how the wedges fill an opening → plan the wedge size → cut wedges and fill five angles → test degrees = wedges x wedge angle → share the wheel on the wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A fraction-of-the-circle poster: draw the same circle divided into half, quarter and third turns, mark each opening's degrees, and annotate that an angle's measure is how much of the circle it sweeps.",
+              "stem": "ask which turns to divide → plan the circle cuts → draw and label the three openings → test each against the 360 total → share the poster on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A turns-and-wedges clip with the AI as surveyor: ask the AI to give four fraction-turn angles (in degrees), fill each on camera with your wedge set, and correct any degree figure the AI produced without the 360 fraction shown.",
+              "stem": "ask what makes the degree count correct → plan the four turns → request figures from the AI → test each by wedges on camera → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "15-3": {
+      "prep": {
+        "home": [
+          "The unit wedge is 15 degrees wide. Filling an opening with 4 wedges gives what measure — and why is the count multiplied, not the degrees added another way?",
+          "One opening is five 30-degree wedges and another is three 30-degree wedges. Which is bigger, and by how many wedges and degrees?",
+          "Explain how a full set of same-size wedges covering an opening proves the angle measure."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can measure an angle by counting unit wedges.",
+          "I can multiply wedge count by the unit wedge's degrees.",
+          "I can compare angles measured with the same wedge size.",
+          "I can estimate an angle's measure by how much of the turn it covers."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "An opening is filled by 6 wedges, each 15 degrees. How wide is the angle?",
+          "options": [
+            { "v": "a", "text": "21°" },
+            { "v": "b", "text": "60°" },
+            { "v": "c", "text": "90°" },
+            { "v": "d", "text": "210°" }
+          ],
+          "right": "c",
+          "yes": "Yes — 6 wedges of 15 degrees each: 6 x 15 = 90 degrees. The wedges completely fill a quarter turn.",
+          "notYet": "Not yet — multiply the number of equal wedges by each wedge's degrees: 6 times 15."
+        },
+        "harder": {
+          "prompt": "Use two wedge sets to measure the same opening: set A with 10-degree wedges needs 9 wedges, set B with 15-degree wedges needs 6. Show both measures agree, then give the opening's fraction of a full turn.",
+          "answer": "Set A: 9 x 10 = 90°. Set B: 6 x 15 = 90°. Both wedge sets fill the same quarter-turn: 90/360 = 1/4 of the circle. Consistent measurement across unit sizes is the check that the count is an angle measure."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A wedge-measurement kit: make two wedge sets of different unit sizes, measure five real openings (doors, book covers, clock hands) with both sets, and display the matched degree pairs.",
+              "stem": "ask what each opening measures → plan the two wedge sets → measure five openings twice → test both sets agree in degrees → share the kit on the wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A count-the-wedges teaching poster: show an opening measured step by step — place wedge, count, multiply — with the common mistake (adding instead of multiplying, or leaving gaps) crossed out.",
+              "stem": "ask what the measurement step is → plan the poster panels → draw wedge-by-wedge measuring → test the final degree count → share the poster on the wall",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "The AI wedge bureau: ask the AI to measure five described angles with a stated wedge size, redo each by multiplication yourself, and publish the bureau marking any count the AI failed to multiply (or wedges left gaping).",
+              "stem": "ask what a filled measurement requires → plan the audit rows → request the AI's measures → test each by wedges times degrees → publish the bureau on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "15-4": {
+      "prep": {
+        "home": [
+          "An angle sits between 80 and 100 on the protractor scale and opens a little wider than a square corner. Which scale reading is it — and how do the two protractor scales keep you honest?",
+          "Read a protractor from the correct zero before placing its centre on the vertex — what does lining the zero with one ray protect?",
+          "Sketch an angle of about 60 degrees before drawing it with the protractor. Estimate first, then measure: why does estimating catch a scale misread?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can read a protractor using the correct scale and zero line.",
+          "I can place the protractor's centre on the vertex and align one ray with zero.",
+          "I can draw an angle of a given measure with the protractor.",
+          "I can estimate an angle's measure before measuring."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "An angle opens a little narrower than a square corner, reading between 60 and 90. The protractor shows 72 against the correct zero. What is the measure?",
+          "options": [
+            { "v": "a", "text": "108°" },
+            { "v": "b", "text": "72°" },
+            { "v": "c", "text": "90°" },
+            { "v": "d", "text": "18°" }
+          ],
+          "right": "b",
+          "yes": "Yes — estimated as under 90 first, the correct zero reads 72 degrees; 108 would come from reading the reverse scale for an angle over 90.",
+          "notYet": "Not yet — estimate under 90, then read the scale that starts from your aligned ray: the inner and outer scales differ by exactly this amount."
+        },
+        "harder": {
+          "prompt": "Draw two angles on one ray: 35 degrees then a further 55-degree turn on the same opening. Use the protractor for each, measure the total opening, and state what the total degrees mean on the circle.",
+          "answer": "Two adjacent turns on the same ray: 35 + 55 = 90 degrees. The total opening is a right angle — exactly one quarter turn. Drawing each with zero aligned on the correct starting ray lands the second ray on the 90 position."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "design",
+              "task": "A protractor station chart: design a how-to-measure station poster with three worked openings, the estimate written before the measure, and the zero-line and centre marked on every protractor diagram.",
+              "stem": "ask what each step protects → plan the three examples → estimate, align and measure each → test the readings a second way → share the station chart on the wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "An angle-drawing worksheet: draw five angles of specified measures (20, 45, 90, 130, 175), estimate-mark each first, and leave the protractor arcs visible so a partner can measure them back.",
+              "stem": "ask which measures to draw → plan the five openings → estimate, draw and measure back → test a partner's measurements match → share the worksheet on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "The scale-trap clip with the AI as reader: ask the AI to read protractor positions on five described angles, place the correct zero yourself on camera, and expose any reverse-scale (180-minus) misread the AI accepted.",
+              "stem": "ask which zero the reading starts from → plan the five reads → request the AI's readings → test each with an estimate first → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "15-5": {
+      "prep": {
+        "home": [
+          "A straight 180-degree opening splits into a 70-degree piece and one more. What must the second piece measure, and how does addition prove it?",
+          "Two known pieces (50 and 85 degrees) meet at a corner. What is the total opening, and what does 'additive' mean for angles?",
+          "If the whole opening is 120 degrees and one piece is 45, how do you find the missing piece — add or subtract?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can add adjacent angle measures to find the total opening.",
+          "I can subtract a known piece to find an unknown angle.",
+          "I can use the straight (180) and full (360) totals as benchmarks.",
+          "I can check combined angles against the circle fraction."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "A 130-degree opening is made of a 55-degree piece and one other piece. How wide is the missing piece?",
+          "options": [
+            { "v": "a", "text": "75°" },
+            { "v": "b", "text": "185°" },
+            { "v": "c", "text": "85°" },
+            { "v": "d", "text": "55°" }
+          ],
+          "right": "a",
+          "yes": "Yes — the pieces add to the whole: 130 minus 55 is 75 degrees; 75 + 55 = 130 checks it.",
+          "notYet": "Not yet — subtract the known piece from the total opening: 130 - 55."
+        },
+        "harder": {
+          "prompt": "At a survey point, two adjacent angles of 95 degrees and 110 degrees meet. Give the combined opening and state the remaining angle to complete one full turn around the point, explaining both moves.",
+          "answer": "Combined: 95 + 110 = 205 degrees. A full turn is 360, so the remaining opening is 360 - 205 = 155 degrees. Angles add where pieces join; the unknown gap around the vertex is the full turn minus the covered pieces."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "drawing",
+              "task": "An add-the-pieces puzzle sheet: draw three split openings (a fan, a clock, a pie) with pieces measured, the total to add, and one unknown to find by subtraction.",
+              "stem": "ask which pieces combine → plan the three figures → measure pieces and find totals → test unknowns by adding back → share the puzzle sheet on the wall",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A fold-and-combine angle model: fold paper to make two or three labelled wedges, hinge them at a vertex, and demonstrate the opening growing as pieces are added alongside one another.",
+              "stem": "ask how pieces combine → plan the hinge → fold, label and join the wedges → test totals against the protractor → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "The missing-piece clip with the AI as clerk: ask the AI for three split-angle puzzles, measure each total and piece on camera, and correct any total the AI added over 180 or 360 without noting it can't be.",
+              "stem": "ask what the pieces must total → plan the three puzzles → request them from the AI → test each against 180 or 360 → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "15-6": {
+      "prep": {
+        "home": [
+          "Only one question matters at the shade arm: is the corner square? Which tool is enough to answer that — ruler, protractor, or a square corner?",
+          "The plans need an angle exact to the nearest degree. What changes about the tool choice, and what does the ruler cannot tell you?",
+          "Choose the tool for each task: check a table edge is square, draw an opening of 73 degrees, compare two long lines."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can choose the appropriate tool for a geometry task.",
+          "I can use a square corner to test for a right angle without a protractor.",
+          "I can reach for the protractor when an exact measure is required.",
+          "I can explain why precision beyond the tool's reach is false precision."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "A builder only needs to know whether two deck boards meet at a right angle. Which tool is both enough and appropriate?",
+          "options": [
+            { "v": "a", "text": "a protractor, read to the degree" },
+            { "v": "b", "text": "a square corner" },
+            { "v": "c", "text": "a ruler measuring lengths" },
+            { "v": "d", "text": "no tool — it looks square" }
+          ],
+          "right": "b",
+          "yes": "Yes — a square corner tests exactly the question being asked; the protractor would give more information than the decision needs.",
+          "notYet": "Not yet — when only square-or-not matters, a square corner answers it directly; length tools never measure openings."
+        },
+        "harder": {
+          "prompt": "The shade prototype needs the arm to open 110 degrees; later, only its right-angle lock must be tested. State the tool for each job, and what precision each tool can honestly claim.",
+          "answer": "Drawing and setting the 110-degree opening needs the protractor (whole-number degrees). Testing the right-angle lock needs only the square corner. Neither tool measures beyond its own precision — a square corner cannot confirm 89 or 91, and reporting a half-degree from a degree protractor is false precision."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "The angle-controlled shade prototype — the unit's own artifact: build a paper sun-shade arm whose opening is set to measured angles for morning, noon and afternoon positions, mark the right-angle lock and the protractor-set angles, and publish the tested prototype with the angles written on it, signed by its makers.",
+              "stem": "ask what sun positions the shade must meet → plan the arm angles → build and set the opening at each position → test with the appropriate tool at each step → present the signed prototype",
+              "ai": false
+            },
+            {
+              "kind": "design",
+              "task": "A tools decision chart: design a chart matching five geometry questions ('is it square?', 'draw 65°', 'are the lines equal?') to their appropriate tool and honest precision.",
+              "stem": "ask what each question needs → plan the chart rows → match tool and precision per question → test each match with a real task → share the chart on the wall",
+              "ai": false
+            },
+            {
+              "kind": "presentation",
+              "task": "A prototype Q-and-A with the AI as site inspector: build your shade arm, ask the AI to challenge three settings and tool choices, justify each with the measured opening and the appropriate tool yourself on camera, and revise where the challenge lands.",
+              "stem": "ask what the inspector will challenge → plan the three defences → request the AI's challenges → test each setting with the right tool → present the defended prototype on the wall",
+              "ai": true
+            }
+          ]
+        }
+      },
+      "wall": {
+        "artifact": "The observatory shade prototype — every turn measured, every angle set and split, every tool matched to its question, signed by its makers"
+      }
+    }
+  }
+}

@@ -79,10 +79,19 @@ the student uses the AI to research or to challenge the build, then writes every
 themselves (AI critic, never author). The generated plan is the floor — including a floor
 production (two options, one AI-integrated) so no deck's production phase is empty; the topic
 files are the authored layer on top, merged in by
-`scripts/make-stage-plan.js`. Progress is tracked by `npm run check:stages` — **Topics 1–4 are
-deepened (28 lessons); 17 topics are in scope.** To deepen a topic: research first, add
-`stage/topics/<n>.json` with `sources`, run `npm run build:stages`, then `npm run check:stages`
-and `node scripts/smoke-stage.js` over the topic's lessons.
+`scripts/make-stage-plan.js`. Progress is tracked by `npm run check:stages` — **all 17 topics are
+deepened: 114 of 114 lessons.** Every lesson's Production phase (Stage 5) offers **three STEAM
+builds to choose between** (model, poster, drawing, map, video, presentation, design, mini-project
+or song), each run through the STEM cycle (ask → plan → build → test → share); **exactly one
+option always runs AI in the loop** — the student uses the AI to research, audit or critique, and
+writes, builds and verifies every piece themselves (AI as critic, never as author). The floor
+(two options, one AI-integrated) remains for any deck not yet authored, and every topic file
+carries its research `sources` — approved STEM activities and real-experiment projects the
+productions are grounded in (folding fraction strips, measured line plots, fair-test paper
+bridges, square-foot gardens, cube-packing volume, paper sun-shade prototypes and more).
+To deepen a topic: research first, add `stage/topics/<n>.json` with `sources`, run
+`npm run build:stages`, then `npm run check:stages` and `node scripts/smoke-stage.js` over the
+topic's lessons.
 
 ## Storytelling curriculum proposal
 

@@ -1,0 +1,402 @@
+{
+ "topic": 6,
+ "title": "Use Operations with Whole Numbers to Solve Problems",
+ "arc": "The council of competing plans — two districts bring two claims, a comparison that turns its unknown around, the first proposal that needs three steps, a condition arriving late to force a revision, the final calculation that must fit its context, and a plan that refuses to cooperate until a dead end is named and the representation is changed — until the council signs a decision board with every assumption and check written down.",
+ "sources": [
+  "CCSS 4.OA.A.2 (thecorestandards.org): 'Multiply or divide to solve word problems involving multiplicative comparison, e.g., by using drawings and equations with a symbol for the unknown number to represent the problem, distinguishing multiplicative comparison from additive comparison' — the standard the comparison productions demonstrate",
+  "CCSS 4.OA.A.3: solve multistep word problems with whole numbers using the four operations, including interpreted remainders, represent them with equations using a letter for the unknown, and 'assess the reasonableness of answers using mental computation and estimation strategies including rounding'",
+  "FLDOE Grade 4 Suggested Materials and Activities to Support Mathematics (fldoe.org Grade4SASSME.pdf): MAFS.4.OA.1.2 multiplicative comparison word problems (with drawings and a symbol for the unknown) and MAFS.4.OA.1.3 multistep problems with an estimation check for reasonableness — the council's own two claims",
+  "Science Buddies, 'Paper Bridge Design Challenge' (sciencebuddies.org): a real engineering design test for grades K-5 — build flat and folded paper bridges, count the pennies each holds before collapse, and compare the designs with quantitative data; one design holding several times as many pennies is a genuine multiplicative comparison collected in class",
+  "WPI STEM Education Center, 'Paper Bridge Design Challenge' (wpi.edu): the engineering design cycle and a decision matrix used to evaluate competing solutions against criteria and constraints — exactly the council's work of choosing between competing proposals, with iteration, data and a documented recommendation",
+  "Open-ended fundraiser PBL (bakesale project, grades 4-5): a real-world situation with no single answer key where students must figure out what to do and defend their thinking in writing; multi-step money and quantity work (costs, capacity, remaining stock), the decision-board habit this unit builds",
+  "Data Nuggets (MSU KBS LTER, NSF DRK-12 funded; datanuggets.org; ERIC EJ1048999): free K-16 activities on authentic research data where students follow the process of science — predictions, visualising, evidence-based claims — comparing quantities across groups with multi-step whole-number arithmetic",
+  "New Jersey Agricultural Society, math-in-agriculture lessons (njagsociety.org): real farm situations comparing yields, acres and deliveries — 'how many times as many' and multi-step harvest totals computed from measured data",
+  "NGSS Science and Engineering Practice 7 (Engaging in Argument from Evidence), grades 3-5: make a claim about the merit of a solution with evidence, and respectfully evaluate competing ideas — the council's defence-and-decision discipline",
+  "NGSS 3-5-ETS1-1 and 3-5-ETS1-3: define a simple design problem reflecting a need, and plan and carry out fair tests with controlled variables to compare solutions — the engineering basis for the council's tested proposals"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>council briefing</em> was already at home",
+   "lead": "Before class, the class met the competing-plans briefing — the first claim and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the council session begins with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about comparing and combining plans?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the council",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the first claim is drawn.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the council."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the council",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "6-1": {
+   "prep": {
+    "home": [
+     "The east district plants 6 trees. The west district plants 8 times as many. Before any drawing: is the west count found by adding 8, or by copying the east bar 8 times?",
+     "Draw the two district bars for 6 trees and 8 times as many. What does each copy of the bar represent, and what must the full west bar total?",
+     "A councillor says '8 times as many' means '8 more'. Test the claim with small numbers — 3 flags and 2 times as many — and say what goes wrong."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can recognise a multiplicative comparison and copy the comparison bar the named number of times.",
+     "I can tell 'times as many' apart from 'how many more' before I calculate.",
+     "I can write an equation with a symbol for the unknown comparison quantity.",
+     "I can check the comparison by dividing back to the single bar."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A reading corner has 7 magazines. The library corner has 6 times as many. How many magazines are in the library corner?",
+     "options": [
+      { "v": "a", "text": "42" },
+      { "v": "b", "text": "13" },
+      { "v": "c", "text": "35" },
+      { "v": "d", "text": "48" }
+     ],
+     "right": "a",
+     "yes": "Yes — 6 copies of a bar of 7 is 6 times 7, or 42. The single bar is 7; the comparison bar is six of them.",
+     "notYet": "Not yet — draw one bar of 7, then copy it 6 times and count the total instead of adding 6 to 7."
+    },
+    "harder": {
+     "prompt": "The east district plants 6 trees and the west plants 8 times as many. Answer the council's real question: how many more trees does the west district plant, and what two operations does that take?",
+     "answer": "West plants 8 times 6 = 48 trees. 'How many more' is a second question: 48 minus 6 = 42 more. The comparison is multiplicative (copy the bar); the difference is subtractive (cut the single bar off the long one). One situation, two operations — the council wants the gap stated, not just the total."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A comparison-bar model: build two quantities from interlocking cubes (for example two bridge designs holding pennies, or two stacks of books), so that one is a whole-number number of times the other, and label the single bar, the copies and the total.",
+       "stem": "ask what two quantities to compare → plan the bars → build the single bar and its copies → test the ratio by dividing back → share the labelled model at the council",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A 60-second times-as-many clip: run a real fair test in class (folding a paper bridge flat and then folded, counting the pennies each holds), film the counts, and state on camera how many times as many pennies the stronger design held — with the two totals shown.",
+       "stem": "ask what makes the test fair → plan the two builds → build and count pennies for each → test the ratio claim against the counts → share the clip on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A real-world comparison poster with the AI as researcher: ask the AI for a real 'times as many' fact (an animal size, a building height, a crop yield), verify it against a second source, and draw the comparison bars with your own label of the single quantity and the multiplier.",
+       "stem": "ask which comparison is verifiable → plan the bars → research the fact with the AI (check it twice) → build the bar drawing from the verified numbers → share the poster on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "6-2": {
+   "prep": {
+    "home": [
+     "The claim changes direction: the top shelf holds 72 books, which is 6 times as many as the bottom shelf. Where does the question mark sit now — on the long bar or on the single bar?",
+     "If 6 copies of the bottom shelf make 72, what single-bar number fits? Check by drawing six equal pieces that total 72.",
+     "A councillor reads '6 times as many' and multiplies 72 by 6. What is wrong with what that bar would show — which quantity was already known?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can locate the unknown on the bar model whether it is the long bar or the single bar.",
+     "I can divide to find a single-bar quantity when the multiplied total is known.",
+     "I can label every quantity in a comparison so the equation means something.",
+     "I can check the found base by multiplying it back to the total."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A school kitchen prepares 96 meals for the late shift — that is 4 times as many as it prepares for the early shift. How many meals does the early shift get?",
+     "options": [
+      { "v": "a", "text": "24" },
+      { "v": "b", "text": "100" },
+      { "v": "c", "text": "384" },
+      { "v": "d", "text": "20" }
+     ],
+     "right": "a",
+     "yes": "Yes — 4 equal bars total 96, so one bar is 96 divided by 4, or 24. The unknown is the single bar this time, so the operation is division.",
+     "notYet": "Not yet — the 96 is four copies of the unknown bar; split 96 into four equal pieces rather than multiplying."
+    },
+    "harder": {
+     "prompt": "The top shelf holds 72 books — 6 times as many as the bottom shelf. The council also asks how many books the two shelves hold together and how many more the top holds. Give all three numbers with the bar evidence.",
+     "answer": "Bottom shelf: 72 divided by 6 is 12. Together: 72 plus 12 is 84. The gap: 72 minus 12 is 60 more on top. The same comparison answers three questions — base (12), total (84) and difference (60) — depending on what the bar is asked."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "drawing",
+       "task": "An unknown-position drawing sheet: draw three comparison problems side by side with the question mark in three different places — on the long bar, on the single bar, and on the difference — so a classmate can see which operation each position demands.",
+       "stem": "ask which three unknowns to place → plan the bars → draw the three marked situations → test each with its inverse operation → share the sheet on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A 90-second direction-change talk: present one comparison where the unknown is the long bar and one where it is the single bar, narrate why the operation flips between multiply and divide, and close with the check that proves both.",
+       "stem": "ask why the operation flips → plan the two cases → build both bar models → test each by the inverse operation → deliver the talk to the council",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A claim-check clip with the AI as councillor: ask the AI to write two 'times as many' claims with different unknown positions, solve each yourself on camera with the bar model, and correct on screen any claim the AI sets up as an addition instead of a multiplication.",
+       "stem": "ask what each unknown position requires → plan the two claims → request them from the AI → test each with a drawn bar on camera → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "6-3": {
+   "prep": {
+    "home": [
+     "The first plan runs three steps: 4 crates of 39 books arrive at a store of 200. Before calculating, draw what you know — which number is a group count, and which is a total?",
+     "What is the intermediate number the final answer needs — the number packed, or the number still unpacked? Which operation finds each one?",
+     "Estimate first: is the number unpacked closer to 40 or to 360? How does the estimate guard against answering the wrong question?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can draw or write what I know before choosing an operation.",
+     "I can find the intermediate quantity a multi-step plan depends on.",
+     "I can choose each operation from the model and write the steps in order.",
+     "I can check the final number answers the question actually asked."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A kitchen prepares 6 trays of 24 meals for 150 expected guests. How many guests will still be waiting for a meal?",
+     "options": [
+      { "v": "a", "text": "6" },
+      { "v": "b", "text": "144" },
+      { "v": "c", "text": "294" },
+      { "v": "d", "text": "26" }
+     ],
+     "right": "a",
+     "yes": "Yes — 6 trays of 24 is 144 meals prepared; 150 minus 144 leaves 6 guests waiting. The middle number is 144; the asked number is the gap.",
+     "notYet": "Not yet — find the prepared total first (6 times 24), then compare it to the 150 guests; the answer is the shortage, not the total."
+    },
+    "harder": {
+     "prompt": "After the 144 meals, two more trays of 24 arrive late. The council asks for the new surplus, and a member simply reports 48. Show the full three-step plan and state the true spare.",
+     "answer": "Trays now: 6 plus 2 is 8; meals: 8 times 24 is 192; spare over the 150 guests: 192 minus 150 is 42. Reporting 48 counts the two late trays alone and forgets the six guests who were short before they arrived. The decision board must show every intermediate number — tray count, meal total, then surplus — or the council acts on a half-figure."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "A decision-board sheet design: design a reusable council form with a 'what I know' box, an intermediate-figure column, an operation column and an 'answers the question?' tick line, then fill it for one real school proposal.",
+       "stem": "ask what a decision board must record → plan the columns → run one proposal through the form → test it against a direct recount → share the design at the council",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A three-step poster: take one proposal (a trip, a kitchen or a stock order), draw the situation, box the intermediate number in red, and show the estimate, the three steps and the final answer in the question's own units.",
+       "stem": "ask which proposal to display → plan the layout → draw the steps with the middle figure boxed → test the answer against the estimate → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI proposal audit: ask the AI to propose a three-step plan for a school need (books, meals, seats), audit every step yourself — does each operation match the situation, is the intermediate figure correct, does the last line answer the question — and publish the audit with your correction.",
+       "stem": "ask what a sound three-step plan needs → plan the audit → request a proposal from the AI → test each step and the estimate yourself → publish the marked proposal on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "6-4": {
+   "prep": {
+    "home": [
+     "A condition arrives late: a plan shares 5 boxes of 24 books among 3 classes — then one class merges with another. What stays fixed in the model when the plan changes?",
+     "Draw the original share and the revised share. Which number never changes — the books, the groups, or the per-group amount?",
+     "Estimate the original share (120 over 3) and the revised share (120 over 2). How far apart are the estimates, and what does that say about the late condition?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can keep the fixed total visible when a condition changes.",
+     "I can revise the model — groups, steps or operations — and re-solve the updated situation.",
+     "I can compare the original and revised results and say what the change cost or gained.",
+     "I can explain which quantities the model holds constant."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A shop prints 6 rolls of 50 stickers and shares them equally among 4 clubs. How many stickers does each club receive?",
+     "options": [
+      { "v": "a", "text": "75" },
+      { "v": "b", "text": "300" },
+      { "v": "c", "text": "56" },
+      { "v": "d", "text": "200" }
+     ],
+     "right": "a",
+     "yes": "Yes — 6 rolls of 50 is 300 stickers; shared over 4 clubs, that is 75 per club. The fixed total is 300; the sharing groups do the changing.",
+     "notYet": "Not yet — build the total first (6 times 50 is 300), then divide it equally across the 4 clubs."
+    },
+    "harder": {
+     "prompt": "After the share, one club withdraws and its stickers are redistributed equally among the remaining clubs. How many extra stickers does each remaining club receive, and what stays fixed on the board?",
+     "answer": "Original share: 300 over 4 is 75 per club. With one club gone, 3 clubs share the fixed 300: 100 each. Each remaining club gains 100 minus 75, or 25 stickers. The 300-sticker total never moves — the late condition changes only the number of equal groups, which is exactly what the revised model must show."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A before-and-after physical model: deal a real counted collection (300 counters or slips) into 4 equal containers, then merge one container out and redistribute, leaving both states labelled with the fixed total tag still attached.",
+       "stem": "ask what the late condition changes → plan the two deals → deal, then redistribute the real collection → test both shares total 300 → share the model at the council",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A plan-revision flow map: draw the original proposal as a flow of boxes (total, groups, share), mark the point where the late condition enters, and draw the revised route underneath with the changed step highlighted.",
+       "stem": "ask where the condition enters → plan the two routes → draw the flow and the changed step → test both routes end to end → share the map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A council revision hearing with the AI as objecting councillor: present your original multi-step plan, let the AI raise one late condition, revise the model live on camera with the fixed total held constant, and state the new result yourself.",
+       "stem": "ask what must stay fixed → plan the original → invite the AI's late condition → test the revised plan step by step → present the defended revision to the council",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "6-5": {
+   "prep": {
+    "home": [
+     "The council's final calculation: 7 packs of 24 flyers are folded, and 200 were promised. Model it first — which two steps decide whether the promise is kept?",
+     "The folded total is 168. Estimate whether 'about 30 more' or 'about 170 more' is sensible, and justify with place value.",
+     "A volunteer reports the answer as 168 flyers. What has the volunteer computed, and what question did the council actually ask?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can solve a multi-step problem and label every quantity in context.",
+     "I can use estimation to judge whether an answer is reasonable before trusting it.",
+     "I can distinguish a computed total from the quantity the question requests.",
+     "I can state the answer in the situation's own units with what it means."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A team bags 8 packs of 20 rice cups. The shelter asked for 250 cups. How many more cups must be bagged?",
+     "options": [
+      { "v": "a", "text": "90" },
+      { "v": "b", "text": "160" },
+      { "v": "c", "text": "410" },
+      { "v": "d", "text": "40" }
+     ],
+     "right": "a",
+     "yes": "Yes — 8 packs of 20 is 160 cups bagged; 250 minus 160 is 90 cups still owed. The estimate (250 is about 240, and 160 is 80 short of that) confirms the answer is in the tens, not the hundreds.",
+     "notYet": "Not yet — compute the bagged total (160), then subtract it from the 250-cup promise; the asked number is the remaining need."
+    },
+    "harder": {
+     "prompt": "The team can fill 9 more packs of 20 cups. The council asks whether that covers the shortage and, if so, by how many cups the drive over-delivers — with a reasonableness check stated first.",
+     "answer": "Estimate first: the shortage is about 90 cups, and 9 packs hold about 180, so there is roughly enough with a margin. Exactly: 9 packs of 20 is 180 cups added to 160, giving 340 total; 340 minus 250 is 90 cups over. The drive covers its promise with 90 spare — the estimate keeps the council from reading the spare as the shortage."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "video",
+       "task": "A reasonableness-check reel: film three council-style problems solved on camera, each opened with an estimate ('about how much?'), and show the moment each final answer is either accepted or rejected against the estimate.",
+       "stem": "ask what an estimate must guard → plan the three cases → estimate first, then solve on camera → test each answer against its estimate → share the reel on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A labelled-steps comic: draw a four-panel comic of one proposal — the model, the intermediate figure, the estimate, the final answer — with every speech bubble labelling its number in context (cups, guests, flyers), and a red cross where an unlabelled figure would mislead.",
+       "stem": "ask which proposal to comic → plan the four panels → draw and label every quantity → test the last panel answers the question → share the comic on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A real data poster with the AI as researcher: ask the AI for an authentic dataset with quantities to compare (a harvest, a drive, a fair-test result from a data source), verify the figures, build your own two- or three-step whole-number model, and post the answer with the estimate that confirms it.",
+       "stem": "ask which dataset has a multi-step question → plan the poster → research with the AI (verify every figure) → build and check the model → share the poster on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "6-6": {
+   "prep": {
+    "home": [
+     "The plan will not cooperate: 9 rows of 8 chairs are set for 2 shows. A member adds 9 + 8 + 2 and gets 19. Walk the hall — what does 19 even count?",
+     "Name the dead end: which quantity does addition fail to model here? Draw the rows as a rectangle before the shows are even considered.",
+     "Once the rectangle gives seats per show, how does the second show enter the plan — and how would you check the final total two ways?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can name when a first path is a dead end instead of forcing it through.",
+     "I can keep the question fixed while changing the representation — bars, rows or equations.",
+     "I can check a result a second way before I present it.",
+     "I can present the persevered plan as evidence, not just an answer."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A hall sets 12 rows of 9 chairs for each of 3 shows. How many seats are used in all?",
+     "options": [
+      { "v": "a", "text": "324" },
+      { "v": "b", "text": "108" },
+      { "v": "c", "text": "24" },
+      { "v": "d", "text": "36" }
+     ],
+     "right": "a",
+     "yes": "Yes — the rows make a rectangle: 12 times 9 is 108 seats per show; three shows use 108 times 3, or 324 seats. Adding the three numbers would count nothing real.",
+     "notYet": "Not yet — find seats per show from the array (12 times 9), then multiply by the 3 shows; the dead end is adding the row count, chair count and show count."
+    },
+    "harder": {
+     "prompt": "A worker reports 24 for the first show ('12 plus 9 plus 3'), then divides by 2 for safety. Name the dead end, change to a representation that fits, solve the real three-show total, and say which check catches the 24.",
+     "answer": "The dead end: adding rows, chairs-per-row and shows counts three different units at once — 24 is no real quantity. Change representation to the rectangle: 12 rows of 9 is 108 seats per show; 3 shows use 108 times 3 = 324 seats. The estimate catches it at once — a hall of over a hundred seats per show cannot serve 24 — and the second check agrees: 9 chairs across 3 shows is 27 per row position, times 12 rows is 324."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "mini-project",
+       "task": "The council decision board — the unit's own artifact: compare two real school-service proposals (for example two book-distribution, seating or catering plans), model each with bar or rectangle drawings, run every multi-step calculation, keep an assumptions-and-checks column, and deliver a written recommendation signed by its makers.",
+       "stem": "ask what need the proposals serve → plan the comparison criteria → model and compute both proposals → test every figure a second way and record the checks → present the signed decision board to the council",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A perseverance retrospective, 90 seconds: walk the camera through a plan whose first path dead-ended, name the wrong representation, show the switch (rows to rectangle, or words to a bar), and end on the checked result — the story of the fix is the evidence.",
+       "stem": "ask what the camera must catch → plan the story → build the wrong path then the switch → test the fixed result two ways → share the clip on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A design-review presentation with the AI as critical panel: build and test two competing paper-structure designs in class (flat versus folded), collect the data, present your recommendation with the multi-step figures, and answer the AI's three challenges to the evidence — you respond to each yourself.",
+       "stem": "ask what the decision rests on → plan the fair test → build, test and count both designs → let the AI challenge the evidence (you answer) → present the decision to the council",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The council decision board — two proposals modelled, every intermediate figure shown, every answer checked for reasonableness, signed by its makers"
+   }
+  }
+ }
+}

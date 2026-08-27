@@ -1,0 +1,401 @@
+{
+ "topic": 12,
+ "title": "Understand and Compare Decimals",
+ "arc": "The docks of tenths and hundredths — fractions of ten and a hundred first appear as gauge readings, the number line places every decimal at one true distance, the crates are compared place by place, tenths and hundredths are traded onto one shared scale, the procurement sheets run in riyals and halalas, and the structured ledger finally shows what columns make a figure trustworthy.",
+ "sources": [
+  "CCSS 4.NF.C.6 (thecorestandards.org): decimal notation for fractions with denominators 10 or 100, including rewriting 62/100 as 0.62, locating decimals on a number line, and money notation",
+  "CCSS 4.NF.C.7: compare two decimals to hundredths by reasoning about their size, recording with greater-than/less-than and justifying with a model",
+  "CCSS 4.NF.C.5: express a fraction with denominator 10 as an equivalent fraction with denominator 100 and add two fractions with denominators 10 and 100",
+  "Money as the canonical tenths/hundredths model (TEKS 4.2E resource families): decimals represented through money and concrete models — riyals/dirhams or dollars/dimes/pennies mapping wholes/tenths/hundredths, matched to shaded grids and number lines",
+  "FLDOE Grade 4 SASSME (fldoe.org Grade4SASSME.pdf): decimal grid, number-line and benchmark instruction; place value extended from whole numbers to tenths and hundredths with the same digit-position structure",
+  "Procurement/receipt-keeping real tasks: adding money amounts with decimals for purchases, comparing costs, and checking change — contexts used across Grade 4 word-problem materials (4.MD.A.2 money)",
+  "Decimal grid overlays: shading tenths grids beside hundredths grids shows 0.9 and 0.90 as the same shaded area — the equivalence rule as a visible model",
+  "NGSS Science and Engineering Practice 5 (Using Mathematics and Computational Thinking), grades 3-5: reading and comparing measurements and prices to two decimal places from real gauges and sheets",
+  "Structure across representations (MP.7): the unit's 12-6 habit of looking for column structure shared by whole numbers and decimals"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>docks briefing</em> was already at home",
+   "lead": "Before class, the class met the decimal briefing — one gauge reading and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the dock gauges begin with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about tenths and hundredths?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the docks",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the first gauge is read.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the docks."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the docks",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "12-1": {
+   "prep": {
+    "home": [
+     "A gauge divides one whole crate into 100 equal marks. Nine of the hundredths marks are shaded — how do you write that as a fraction and as a decimal?",
+     "Money check: ten halalas make one tenth of a riyal; how many halalas sit in 0.90 riyal? What does the zero after the 9 do to the value?",
+     "Write seven tenths as a decimal. Now write seven hundredths. The digits look similar — which place is holding which?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can write a tenths or hundredths fraction as a decimal.",
+     "I can read the digit position that tells tenths from hundredths.",
+     "I can show a decimal on a shaded grid or a money model.",
+     "I can explain that 0.9 and 0.90 shade the same amount."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "How do you write thirty-five hundredths as a decimal?",
+     "options": [
+      { "v": "a", "text": "0.35" },
+      { "v": "b", "text": "0.035" },
+      { "v": "c", "text": "3.5" },
+      { "v": "d", "text": "35.0" }
+     ],
+     "right": "a",
+     "yes": "Yes — thirty-five out of one hundred is 0.35: 3 tenths and 5 hundredths, read straight off the hundredths grid.",
+     "notYet": "Not yet — hundredths live two places right of the point; 35 hundredths is 0.35."
+    },
+    "harder": {
+     "prompt": "A sheet lists 0.6, 0.60 and 0.06 for the same crate's fill. Which two agree, which one means a different amount, and what does the money model show for each in halalas?",
+     "answer": "0.6 and 0.60 agree — 6 tenths equals 60 hundredths, so both are 60 halalas out of the riyal; the trailing zero changes the cut, not the value. 0.06 is only 6 hundredths — 6 halalas — ten times less. The hundredths grid shows 0.6 and 0.60 shading the same area while 0.06 shades one small column's worth."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A decimal gauge: build a paper 10-by-10 dock gauge that flips between tenths columns and hundredths squares, and set it to three recorded readings so a classmate reads both names (fraction and decimal) per setting.",
+       "stem": "ask what each reading must show → plan the two grid sides → build the flip gauge → test readings against the shaded squares → share the gauge on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A halalas-to-decimals money poster: display riyal and halala amounts as money, shaded grids and decimals in three aligned rows, teaching that ten halalas is one tenth of a riyal.",
+       "stem": "ask which amounts to line up → plan the three rows → draw money, grid and decimal per amount → test each row matches the others → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A gauge-read clip with the AI as recorder: ask the AI to write five fractions-of-a-hundred readings as decimals, verify each on camera against a hundredths grid, and broadcast any position the AI placed a digit wrongly.",
+       "stem": "ask what each position means → plan the five readings → request the AI's decimals → test each by shading the grid → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "12-2": {
+   "prep": {
+    "home": [
+     "The dock line runs from 0 to 1 with a tick every hundredth. Place 0.45 — between which two tenths does it land, and how far along that gap?",
+     "0.4 and 0.40 sit on the same point. What does that say about the decimal the line measures?",
+     "A mark is written at 0.09. On which side of the first tenth-tick does it belong — nearly at zero, or nearly at one tenth?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can place a decimal on a number line cut into tenths or hundredths.",
+     "I can name the two tenths-ticks a hundredths decimal sits between.",
+     "I can place equivalent decimals (0.4 and 0.40) at the same point.",
+     "I can read a decimal's distance from zero on the line."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Where does 0.72 belong on the line from 0 to 1?",
+     "options": [
+      { "v": "a", "text": "between 0 and 0.1" },
+      { "v": "b", "text": "between 0.7 and 0.8" },
+      { "v": "c", "text": "between 0.2 and 0.3" },
+      { "v": "d", "text": "exactly on 0.8" }
+     ],
+     "right": "b",
+     "yes": "Yes — 7 tenths then 2 more hundredths: 0.72 sits two hundredths past the 0.7 tick, before 0.8.",
+     "notYet": "Not yet — the tenths digit 7 puts it in the 0.7-to-0.8 gap; the 2 places it near the start of that gap."
+    },
+    "harder": {
+     "prompt": "Plot the four gauge readings 0.3, 0.37, 0.03 and 0.73 on one hundredths line, and state which two are closest to each other and how wide the gap between them is in hundredths.",
+     "answer": "On the line: 0.03 sits just past zero, 0.3 is the 30-hundredths point, 0.37 is 7 hundredths beyond it, and 0.73 is far past half. The closest pair is 0.3 (30/100) and 0.37 — seven hundredths apart. Plotting converts a digit-order question into a visible distance question."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "map",
+       "task": "A dock number-line chart: draw a classroom-scale line from 0 to 1 in hundredths, place eight given readings as pegs, and join each to its tenths bracket with coloured thread.",
+       "stem": "ask which readings to place → plan the tick scale → peg the readings and bracket them → test each position with tenths neighbours → share the chart map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "design",
+       "task": "A slider-gauge design: design and build a card slider where a marker moves along tenths and hundredths slots and a window reveals the decimal, with a money row underneath that fills as it slides.",
+       "stem": "ask what the window must reveal → plan the slots → build the slider and money row → test three readings against the line → share the design on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A placement-check clip with the AI as dock master: ask the AI to place five decimals on a 0-to-1 line, mark each point yourself on camera, and correct any placement that skips a place — shown by the tick distance.",
+       "stem": "ask what fixes a decimal's position → plan five placements → request the AI's points → test each by counting ticks on camera → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "12-3": {
+   "prep": {
+    "home": [
+     "Two crates read 0.7 and 0.65 full. A worker compares the longest decimal string and chooses 0.65. Why is comparing digit counts a trap?",
+     "Read place by place: seven tenths against sixty-five hundredths — which fills more? Use the hundredths grid to settle it.",
+     "Money: compare 70 halalas and 65 halalas. Which crate is fuller, and how many halalas decide it?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can compare decimals by place value, not by digit count.",
+     "I can rewrite tenths as hundredths to compare on one cut.",
+     "I can use a model or money amount to justify the greater decimal.",
+     "I can say how far apart two decimals are in hundredths."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Which is greater, 0.8 or 0.72?",
+     "options": [
+      { "v": "a", "text": "0.72" },
+      { "v": "b", "text": "0.8" },
+      { "v": "c", "text": "they are equal" },
+      { "v": "d", "text": "cannot tell" }
+     ],
+     "right": "b",
+     "yes": "Yes — on the hundredths cut, 0.8 is 80 hundredths against 72; eight tenths beats seventy-two hundredths by eight hundredths.",
+     "notYet": "Not yet — rewrite as hundredths: 0.80 versus 0.72, then the numerators decide."
+    },
+    "harder": {
+     "prompt": "Three crates measure 0.4, 0.42 and 0.24. Order the three from emptiest to fullest, and explain the mistake in ordering by the digits seen.",
+     "answer": "On hundredths: 0.24 = 24, 0.4 = 40, 0.42 = 42. Emptiest first: 0.24, then 0.4, then 0.42. The digit-count trap reads '42' as largest in any position, but the hundredths digit of 0.24 is reached through only 2 tenths; place value, not digit length, orders the crates."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "drawing",
+       "task": "A hundredths-duel drawing: draw three crate gauges side by side for each comparison with both tenths and hundredths grids shaded, and mark the winning fill with an order label and the hundredths gap.",
+       "stem": "ask which gauges to compare → plan the grid columns → shade and label each fill → test the order on a number line → share the drawing on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A place-by-place comparison poster: teach the dock rule — same place, compare that digit; rewrite tenths as hundredths — with three worked comparisons and the digit-count trap crossed out.",
+       "stem": "ask what rule the poster teaches → plan the worked rows → rewrite and compare each pair → test with money amounts → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI comparison audit: ask the AI to order six decimal measurements, rebuild every comparison yourself on the hundredths grid, and publish the audit listing each place where digit-length thinking led the AI (or a dock hand) wrong.",
+       "stem": "ask what the grid proves → plan the audit rows → request six orderings from the AI → test each pair on the grid → publish the audit on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "12-4": {
+   "prep": {
+    "home": [
+     "Six tenths of a crate from one supplier plus nine hundredths from another — the pieces are different sizes. What must happen before they add?",
+     "Rewrite six tenths as hundredths. Now the sum is how many hundredths in total?",
+     "A worker adds and gets 15/110. What has that answer counted that the dock never cuts?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can convert tenths to hundredths before adding.",
+     "I can add fractions with denominators of 10 and 100 once they share a cut.",
+     "I can write the sum as both a fraction and a decimal.",
+     "I can check the total against a tenths/hundredths grid."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "What is 4 tenths plus 17 hundredths?",
+     "options": [
+      { "v": "a", "text": "21/110" },
+      { "v": "b", "text": "57/100" },
+      { "v": "c", "text": "21/100" },
+      { "v": "d", "text": "57/10" }
+     ],
+     "right": "b",
+     "yes": "Yes — 4 tenths is 40 hundredths; 40 plus 17 is 57 hundredths: 57/100, or 0.57. One shared cut, one addition.",
+     "notYet": "Not yet — trade the 4/10 into 40/100 first, then add the hundredths pieces."
+    },
+    "harder": {
+     "prompt": "A manifest totals 7/10 from the morning and 34/100 from the afternoon, with 2/10 removed. Rewrite everything on one cut, report the remaining fill as a fraction and decimal, and say why no denominator is ever added.",
+     "answer": "7/10 = 70/100 and 2/10 = 20/100. Remaining: 70 + 34 - 20 = 84 hundredths: 84/100 = 0.84. The denominator is the size of the cut the pieces share — joining or removing pieces never recuts the whole, so 100 stays 100 throughout."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A tenths-hundredths trading model: build a card set of tenth-strips and hundredths-squares that physically exchange (one tenth-strip equals ten hundredth-squares), then model two additions and leave the traded result mounted.",
+       "stem": "ask when the pieces trade → plan the exchange rates → build strips, squares and the trade → test the hundredths total on the grid → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "design",
+       "task": "A dual-scale filling chart: design a procurement chart where one column fills in tenths and a partner column in hundredths, and the rows only add when both columns show the same cut.",
+       "stem": "ask what makes rows addable → plan the two scales → fill example rows and trade → test totals read as decimals → share the chart on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "The trade-first clip with the AI as tally clerk: ask the AI to add three tenths-plus-hundredths amounts, perform the hundredths trade on camera each time, and catch any 15/110-style answer the AI gives with the grid as proof.",
+       "stem": "ask what a shared cut requires → plan three sums → request the AI's additions → test each on the trading model → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "12-5": {
+   "prep": {
+    "home": [
+     "Dates cost 3.40 riyals and juice 1.85 riyals. Estimate first: is the total closer to 5 or to 6 riyals?",
+     "Add the two prices column by column as money, tenths and hundredths aligned. What is the exact total?",
+     "Paying with a 10-riyal note, what change returns — and which subtraction (10.00 minus the total) produces it?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can add and subtract money amounts written to two decimal places.",
+     "I can align decimal points and add columns with carry.",
+     "I can estimate a total and check it against the exact sum.",
+     "I can compute change from a whole-riyal note by subtracting."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "School supplies cost 2.60 SR and 1.55 SR. What is the total paid?",
+     "options": [
+      { "v": "a", "text": "3.115 SR" },
+      { "v": "b", "text": "4.15 SR" },
+      { "v": "c", "text": "4.05 SR" },
+      { "v": "d", "text": "3.65 SR" }
+     ],
+     "right": "b",
+     "yes": "Yes — hundredths: 0+5 = 5; tenths: 6+5 = 11, carry one to the riyals: 2+1+1 = 4. The total is 4.15 SR, with points aligned.",
+     "notYet": "Not yet — line up the decimal points, add hundredths then tenths then riyals, carrying one tenth when the tenths reach 10."
+    },
+    "harder": {
+     "prompt": "A buyer has 8.00 SR, pays 3.40 SR for dates and 1.85 SR for juice, and tips in an extra 1.05 SR to round the purchase for charity. State the final spend and the money returned, with the estimate that checked it.",
+     "answer": "Spend: 3.40 + 1.85 = 5.25; plus 1.05 makes 6.30 SR. Change from 8.00: 8.00 - 6.30 = 1.70 SR. Estimate: about 5.25, near 5, plus about 1 is near 6.30; change near 1.70 riyals agrees. Column-by-column alignment keeps riyals with riyals and halalas with halalas."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "mini-project",
+       "task": "The transparent procurement sheet — the unit's own artifact: audit a real (or simulated) small purchase list with prices to the halala, run estimate then exact for each total, compute change per note, and publish the sheet with every column aligned and signed.",
+       "stem": "ask what a trustworthy sheet shows → plan the columns → price, estimate and total the list → test every total by re-adding columns → present the signed sheet",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A market-trail price map: draw a market route with five stalls, mark each item's decimal price on the trail, and total the running spend at every stop in both fractions and money notation.",
+       "stem": "ask which stalls the route visits → plan the stops → price and total step by step → test the final total by direct addition → share the price map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A receipt-court with the AI as ledger clerk: ask the AI for three receipt totals and one change figure, audit each by aligned-column addition and subtraction, and present the corrected ledger, correcting any place the AI misaligned.",
+       "stem": "ask what a correct ledger aligns → plan the audit → request receipts from the AI → test each total column by column → present the corrected ledger on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "12-6": {
+   "prep": {
+    "home": [
+     "Faisal has 0.85 riyal toward a one-riyal coin. Read the structure: how many hundredths make the whole, and how many is he missing?",
+     "Why does 1.00 minus 0.85 finish at 0.15 — show the subtraction across the decimal point, not by subtracting 85 from 100 in your head.",
+     "A sheet always uses the same columns. What structure do whole numbers and decimals share that lets both be checked the same way?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can use the decimal column structure to subtract from a whole (1.00 - a decimal).",
+     "I can align, ungroup and carry across the decimal point.",
+     "I can check a decimal subtraction by adding back.",
+     "I can identify the column rule that makes whole and decimal arithmetic one structure."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A gauge shows 0.6 full. What amount completes one whole crate?",
+     "options": [
+      { "v": "a", "text": "0.4" },
+      { "v": "b", "text": "0.94" },
+      { "v": "c", "text": "0.44" },
+      { "v": "d", "text": "1.6" }
+     ],
+     "right": "a",
+     "yes": "Yes — 1.0 minus 0.6 is 0.4; on hundredths, 100 - 60 = 40 hundredths. Six tenths plus four tenths fills the whole.",
+     "notYet": "Not yet — write the whole as 1.0 (or 100 hundredths) and subtract the 6 tenths from it."
+    },
+    "harder": {
+     "prompt": "A crate moves 0.27 at the first crane, 0.3 at the second, and is then filled to exactly 1.00 by the third. Find the third crane's amount by structure, and explain what the zero in the hundredths place of 0.30 is doing.",
+     "answer": "On one cut: 0.27 + 0.30 = 0.57; the third crane adds 1.00 - 0.57 = 0.43. Writing 0.3 as 0.30 keeps the hundredths column present, so the alignment (and the ungrouping across the point) is honest: the zero marks an empty column rather than removing it."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "drawing",
+       "task": "A column-structure cut-away drawing: draw a decimal amount built in the same coloured column system as the whole-number chart from Topic 1, with the point as a divider and ungrouping arrows shown across it.",
+       "stem": "ask what the columns share → plan the coloured place rows → draw the ungroup across the point → test the subtraction by adding back → share the drawing on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A complete-the-whole poster: display five part-to-one-whole decimal puzzles (gauge fills, savings toward a riyal), each solved column by column and checked by adding the part back to the completion.",
+       "stem": "ask how many puzzles to show → plan the rows → solve each by aligned columns → test each with add-back → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A structure-hunt clip with the AI as inspector: ask the AI to complete three 'reach the whole' decimal tasks, show the aligned-column work on camera, and flag any answer where the AI subtracted without the hundredths place — with the add-back proof.",
+       "stem": "ask what the column structure demands → plan the three tasks → request the AI's completions → test each by adding back → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The dock's decimal gauge and transparent procurement sheet — every reading placed, every column aligned, every total checked, signed by its makers"
+   }
+  }
+ }
+}

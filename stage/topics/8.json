@@ -1,0 +1,460 @@
+{
+ "topic": 8,
+ "title": "Extend Understanding of Fraction Equivalence and Ordering",
+ "arc": "The islands with different names — two gardens draw the same water share under different cuts, the same point on the number line answers to two names, the partition lens multiplies the pieces while the share stays put, the surveyor simplifies a map by merging pieces, a half-way lighthouse judges the shares on opposite sides of one half, the close islands are rewritten onto one common strip, and the council hears both maps until an argument with numbers wins — until the equivalence map for every irrigation plot is certified.",
+ "sources": [
+  "CCSS 4.NF.A.1 (thecorestandards.org): 'Explain why a fraction a/b is equivalent to a fraction (n x a)/(n x b) by using visual fraction models, with attention to how the number and size of the parts differ even though the two fractions themselves are the same size. Use this principle to recognize and generate equivalent fractions.'",
+  "CCSS 4.NF.A.2: compare two fractions with different numerators and denominators 'by creating common denominators or numerators, or by comparing to a benchmark fraction such as 1/2', recording with symbols and justifying with a visual model",
+  "CPALMS lesson 74084 'Are You My Equal?' (florida CPalms, in FLDOE Grade 4 SASSME fldoe.org): students identify and model equivalent fractions by making their own fraction strips, solving situational problems and creating model representations — the strip-mapping production this unit builds",
+  "CPALMS 'Chocolate Fractions' (lesson 26891) and area-model equivalence lesson (37667, coloured tiles then graph-paper drawings): equivalence through the concrete-representational-abstract sequence, with students defending why two fractions are equal through reasoning",
+  "Education.com 'Cooking School Fractions' (4.NF.A.1 lesson plan): students use real measuring cups and spoons to recognise and generate equivalent fractions — a genuine hands-on kitchen equivalence task",
+  "Guided paper-folding fraction strips (SJSU math institute practice, mshaughs.blogspot.com): students create their own strips for 1 whole, halves, thirds, fourths, sixths, eighths, twelfths and sixteenths by folding, then build a human number line ordered from 0 to 1 — folding same-way every piece is the equivalence rule made physical",
+  "Patty-paper layering (same source): layering folded sheets lets students see equivalent fractions line up exactly, and transparencies model the same point on different cuts",
+  "Edible/measuring-cup fraction activities (imthecheftoo.com STEM for kids): fill identical containers to 1/2 and to 3/4 and compare by physical volume; doubling and halving recipes applies equivalence in real scaling",
+  "NGSS Science and Engineering Practice 7 (Engaging in Argument from Evidence), grades 3-5: construct and present arguments with evidence — the 8-7 council hearing of both maps, where a number sentence wins over 'it just is'"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>islands briefing</em> was already at home",
+   "lead": "Before class, the class met the equivalence briefing — two differently named shares and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the mapping begins with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about shares that look different?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the islands",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the first map is certified.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the islands."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the islands",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "8-1": {
+   "prep": {
+    "home": [
+     "Two gardens are the same size. One is watered as 3/4 of the bed; the other's quarters are cut in half first. If the same area is watered, what fraction of the more-cut bed does that make?",
+     "Fold a strip in half, then fold the same strip in half again. The shaded 3/4 is now shaded in how many pieces, and how big is each piece?",
+     "The pieces got smaller, but what happened to the total shaded amount? Say it without using the rule 'multiply both numbers'."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can show an area fraction on a model cut two different ways.",
+     "I can explain that cutting every piece the same way changes the number and size of parts but not the share.",
+     "I can name the new fraction a re-cut model shows.",
+     "I can check equivalence by comparing the total shaded area on the two models."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A bed is shown as 2/3 shaded. The surveyor cuts every third into two equal pieces. What fraction names the same shaded amount now?",
+     "options": [
+      { "v": "a", "text": "4/6" },
+      { "v": "b", "text": "2/6" },
+      { "v": "c", "text": "4/3" },
+      { "v": "d", "text": "3/6" }
+     ],
+     "right": "a",
+     "yes": "Yes — every third splits into 2, giving 6 pieces, and the 2 shaded thirds become 4 shaded sixths: 4/6 shades the same area as 2/3.",
+     "notYet": "Not yet — count the pieces after the re-cut: 6 pieces total, and both original shaded pieces doubled to 4."
+    },
+    "harder": {
+     "prompt": "A gardener shades 1/2 of a strip, then cuts it into twelfths by folding every half again and again. Name the twelfths fraction that matches, and explain why two different folds both land on it.",
+     "answer": "1/2 re-cut into twelfths is 6/12. Folding halves to quarters (4 pieces) then to eighths then to twelfths is not a same-way path — the honest route is: 1/2 = 6/12 directly by cutting the whole into 12 equal pieces and shading 6. Any same-way cut of every piece that lands on 12 equal parts leaves half of them shaded, so 6/12 always results. The area never moved; only the cut count changed."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A folding-equivalence strip set: fold coloured paper strips into halves, quarters, thirds, sixths and eighths yourself, then mount them aligned so a classmate can read off three equivalent fractions by sight — the folds are the proof.",
+       "stem": "ask which denominators to fold → plan the cuts → fold and label each strip → test that matching fractions line up exactly → share the strip set on the wall",
+       "ai": false
+      },
+      {
+       "kind": "design",
+       "task": "An equivalent-water-bed design: draw two identical garden beds, partition one into quarters and one into eighths, shade the same irrigated area on both, and annotate the cut each piece went through.",
+       "stem": "ask what same area to shade → plan the two partitions → draw and shade both beds → test the shaded areas match by overlay → share the design on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A folding-proof clip with the AI as challenger: ask the AI to claim three fraction equivalences, fold paper strips on camera to prove or disprove each, and close with any claim the AI got wrong, shown by the folds themselves.",
+       "stem": "ask what makes an equivalence visible → plan the three folds → request three claims from the AI → test each by folding on camera → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "8-2": {
+   "prep": {
+    "home": [
+     "Two bridges are marked on the same number line: one at 1/2, the other on a line cut into eighths. Which eighth-mark sits exactly under 1/2?",
+     "Plot 1/3 on a line cut into sixths. The point does not move — what sixth does it land on?",
+     "A sailor says 2/5 and 4/10 are different points because their names differ. Use the same line to settle it."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can place fractions on a number line and find the same point on a finer cut.",
+     "I can read an equivalent fraction from the distance from zero.",
+     "I can partition a line to show a given denominator and locate the equivalent mark.",
+     "I can explain that the point, not the name, is fixed."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "On a line cut into tenths, which point is the same as 3/5?",
+     "options": [
+      { "v": "a", "text": "3/10" },
+      { "v": "b", "text": "6/10" },
+      { "v": "c", "text": "5/10" },
+      { "v": "d", "text": "8/10" }
+     ],
+     "right": "b",
+     "yes": "Yes — 3/5 of the way from 0 to 1 lands on the sixth tenth: 6/10. The distance from zero is identical.",
+     "notYet": "Not yet — cut the 0-to-1 distance into 5 equal jumps; the third jump lines up with the sixth tenth."
+    },
+    "harder": {
+     "prompt": "Two islands are marked at 2/3 and at 3/4 on separate charts, to be drawn on one line cut into twelfths. Place both, say which is farther from zero, and state the gap between the two marks in twelfths.",
+     "answer": "On the twelfths line, 2/3 is 8/12 and 3/4 is 9/12. The points sit one small piece apart: 9/12 minus 8/12 is 1/12. Putting both on one common strip not only locates them but makes their distance measurable — the same trick the close-islands lesson uses."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "map",
+       "task": "A dual-name chart map: draw a long number line from 0 to 1, mark the halves/quarters line above it and the thirds/sixths line below it, and connect every pair of names that fall on the same point with a bridge line.",
+       "stem": "ask which points share a name → plan the two strips → draw both cuts and connect matches → test each bridge by measurement → share the map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A human number-line poster: draw a classroom-sized line with standing positions for halves, quarters, thirds and sixths, and mark with colour which children stand on the same point — the equivalence is the coinciding spots.",
+       "stem": "ask where positions coincide → plan the scale → draw positions for all four cuts → test coincidences with a ruler → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI chart-checker bureau: ask the AI to place six fractions on given cuts, mark each point yourself on a paper line, measure distances from zero, and publish a bureau sheet marking each AI placement sound or off with your measured correction.",
+       "stem": "ask what a correct placement needs → plan the audit sheet → request six placements from the AI → test each by measuring from zero → publish the bureau sheet on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "8-3": {
+   "prep": {
+    "home": [
+     "The partition lens magnifies: take 2/5 and slice every fifth into 3 equal slivers. How many slivers total, and how many in the shaded part?",
+     "Multiplying numerator and denominator by the same number — what is that number actually doing to the picture?",
+     "Write 3/4 as three different-looking equivalent fractions using three different lenses. Which lens would a surveyor choose for a map cut into 100 grid squares?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can generate an equivalent fraction by multiplying numerator and denominator by the same number.",
+     "I can connect that number to the extra cuts in the model.",
+     "I can produce several equivalents for one fraction and name the cut each uses.",
+     "I can choose a useful equivalent for a target denominator."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Multiply the top and bottom of 5/6 by 2. What fraction results?",
+     "options": [
+      { "v": "a", "text": "10/12" },
+      { "v": "b", "text": "5/12" },
+      { "v": "c", "text": "10/6" },
+      { "v": "d", "text": "7/8" }
+     ],
+     "right": "a",
+     "yes": "Yes — every sixth is cut into 2, so 6 pieces become 12 and the 5 shaded become 10: 10/12 is the same share.",
+     "notYet": "Not yet — multiply both numbers: 5 times 2 over 6 times 2 is 10/12. Multiplying only one number changes the share."
+    },
+    "harder": {
+     "prompt": "The irrigation grid is 100 squares. Rewrite 3/4, 2/5 and 1/2 so each is measured in hundredths, and state the number of grid squares each share waters.",
+     "answer": "3/4 needs a times-25 lens: 75/100, watering 75 squares. 2/5 needs a times-20 lens: 40/100, watering 40 squares. 1/2 needs a times-50 lens: 50/100, watering 50 squares. Each multiplier is just the number of pieces the old slice is cut into; choosing the lens that lands on the 100-grid turns the whole map into one measurable strip."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "A partition-lens wheel design: build a rotating paper wheel showing one fraction at the hub and, at each turn, the same fraction through a times-2, times-3 and times-4 lens, with the slice drawings beside each number.",
+       "stem": "ask what the wheel must magnify → plan the three lenses → build the rotating drawings → test each turn covers the same area → share the wheel at the chart room",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A hundred-grid equivalence poster: draw three 10-by-10 grids, shade 3/4, 2/5 and 1/2 on each, and teach how the multiplier that reaches hundredths is read straight off the squares.",
+       "stem": "ask which fractions to grid → plan the three grids → shade and count squares → test each count against the multiplication → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A lens-test clip with the AI as supplier: ask the AI for three equivalent-fraction pairs, verify each on camera with an area model or grids, and expose any pair the AI produced by multiplying only one number — with the picture that proves it.",
+       "stem": "ask what a true lens does → plan the three checks → request pairs from the AI → test each pair with a drawn model → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "8-4": {
+   "prep": {
+    "home": [
+     "A map is labelled 8/12, but the chart room wants simpler names. Which same number divides both 8 and 12, and what does merging the pieces do to the map?",
+     "Dividing top and bottom by a common factor — what is happening to the pieces when you go from 8/12 to 2/3?",
+     "A scribe simplifies 6/10 to 3/5 and another simplifies it to 2/4. Check both by re-cutting; only one keeps the shaded area identical."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can find a factor that divides both numerator and denominator.",
+     "I can simplify a fraction by dividing both numbers by the same factor.",
+     "I can connect division to merging small pieces into larger ones.",
+     "I can check a simplified fraction with an area model."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Simplify 9/12 by dividing both numbers by their common factor. What is the result?",
+     "options": [
+      { "v": "a", "text": "3/4" },
+      { "v": "b", "text": "3/12" },
+      { "v": "c", "text": "9/4" },
+      { "v": "d", "text": "6/9" }
+     ],
+     "right": "a",
+     "yes": "Yes — 3 divides both 9 and 12: 9 divided by 3 is 3 and 12 divided by 3 is 4, giving 3/4. The small pieces merge into larger ones; the share does not move.",
+     "notYet": "Not yet — find a factor common to 9 and 12 (it is 3), then divide both numbers."
+    },
+    "harder": {
+     "prompt": "The chart receives 12/16 and 10/15. Simplify both as far as they can go, then say which simplified names the same map as 3/4 and which as 2/3 — with the common-factor steps shown.",
+     "answer": "12/16 divides by 4 to 3/4 — no larger factor is common. 10/15 divides by 5 to 2/3 — 10 and 15 share only 5. The map in 3/4 matches the first; the map in 2/3 matches the second. Simplifying 'as far as it can go' means dividing until no factor but 1 divides both numbers — then the name is in simplest form."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A merging-pieces paper model: show one fraction (such as 8/12) as pieces that can be grouped with a pencil into twos, threes or fours, so a classmate can physically merge pieces into larger ones and read the simplified fraction.",
+       "stem": "ask which fraction to merge → plan the grouping boundaries → draw pieces and merge groups → test each merge leaves area unchanged → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A simplification chart map: draw arrows from four labelled plots (6/10, 8/12, 9/15, 4/16) to their simplest-name islands, with the common factor written on each arrow.",
+       "stem": "ask which plots need renaming → plan the arrow routes → find each common factor and simplify → test each landing by multiplying back → share the map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "An AI simplification audit poster: ask the AI to simplify four fractions, redo each by hand with the factor shown, and poster the results as 'agreed' or 'faulty' — any time the AI divides only one number, mark the shaded model that catches it.",
+       "stem": "ask what a valid simplification requires → plan the audit rows → request four simplifications from the AI → test each with the merging model → share the poster on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "8-5": {
+   "prep": {
+    "home": [
+     "The half-way lighthouse sits at exactly 1/2 of the channel. Plot 3/7 and 5/9 around it — one is closer to the whole than the lighthouse, one nearer to zero. Which is which, from the number of pieces short of half?",
+     "Why does comparing each fraction to 1/2 sometimes settle the question without any multiplication?",
+     "Two shares, 5/8 and 3/7: one passes the half mark and one does not. Say which wins and why the halves benchmark finishes the case."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can tell whether a fraction is less than, equal to, or greater than 1/2.",
+     "I can compare two fractions that land on opposite sides of one half without rewriting.",
+     "I can justify the comparison with a model or the numerator-versus-half-the-denominator check.",
+     "I can recognise when two fractions on the same side of half still need more work."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Which is greater, 6/11 or 3/8?",
+     "options": [
+      { "v": "a", "text": "6/11" },
+      { "v": "b", "text": "3/8" },
+      { "v": "c", "text": "they are equal" },
+      { "v": "d", "text": "cannot tell without common denominators" }
+     ],
+     "right": "a",
+     "yes": "Yes — half of 11 is 5.5, so 6/11 passes the half mark; half of 8 is 4, so 3/8 falls short. Opposite sides of one half settles it: 6/11 is greater.",
+     "notYet": "Not yet — compare the numerator to half the denominator: 6 clears 5.5 (past half) while 3 does not reach 4 (below half)."
+    },
+    "harder": {
+     "prompt": "Three islands report harvest shares of 4/9, 4/7 and 4/5. The lighthouse test sorts only one pair immediately; the other pair needs one more step. Identify the pair the benchmark settles, then order all three with reasons.",
+     "answer": "4/9 is below half (4 under 4.5) and 4/7 is above half (4 over 3.5), so the benchmark immediately places 4/7 over 4/9. 4/5 and 4/7 are both above half — the equal numerators finish it: same number of pieces, but fifths are larger than sevenths, so 4/5 is greater. Order: 4/9, then 4/7, then 4/5. The benchmark is decisive only when shares sit on opposite sides."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "drawing",
+       "task": "A lighthouse sorting poster: draw a channel line with the 1/2 lighthouse, place eight given fractions on either side using models, and colour-code each as 'before', 'at' or 'past' the lighthouse.",
+       "stem": "ask which side each fraction hits → plan the channel scale → draw and place all eight → test each side with the half-the-denominator check → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "model",
+       "task": "A half-benchmark measuring kit: pour and mark identical clear containers at 1/2, then fill pairs of cups to given fractions using measuring cups, and judge each pair by eye around the half line before confirming with a full measurement.",
+       "stem": "ask which fill levels to compare → plan the half marks → fill cups and judge around half → test with exact fraction measures → share the kit results on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A bench-hearing with the AI as ferry clerk: ask the AI to rule which of four fraction pairs is greater, present your own lighthouse verdict for each on camera, and catch any ruling where the AI ignores that two fractions lie on the same side of half.",
+       "stem": "ask when the half test decides → plan the four cases → request rulings from the AI → test each pair's side of half yourself → present the corrected verdicts on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "8-6": {
+   "prep": {
+    "home": [
+     "Two islands are close: 5/6 of a water tank and 7/9 of an identical tank. Why can neither the half benchmark nor the piece size alone settle this one?",
+     "Find a denominator both sixths and ninths fit into. Rewrite both shares onto that one cut — which numerator wins?",
+     "After rewriting, say exactly how much more water one tank holds, in the new pieces."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can find a common denominator for two fractions.",
+     "I can rewrite both fractions onto the same cut and compare numerators.",
+     "I can use common numerators as an alternative when the numerators match.",
+     "I can order several fractions and state the difference between the close ones."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Which is greater, 2/3 or 5/8?",
+     "options": [
+      { "v": "a", "text": "2/3" },
+      { "v": "b", "text": "5/8" },
+      { "v": "c", "text": "they are equal" },
+      { "v": "d", "text": "thirds are bigger so it cannot be compared" }
+     ],
+     "right": "a",
+     "yes": "Yes — common cut of 24: 2/3 is 16/24 and 5/8 is 15/24, so 2/3 wins by one twenty-fourth. Same cut, bigger numerator.",
+     "notYet": "Not yet — rewrite both onto a cut both fit (24 pieces): 16 pieces versus 15 pieces."
+    },
+    "harder": {
+     "prompt": "Order the four harvest shares 3/4, 5/6, 7/12 and 2/3 from least to greatest on a common strip, and state the gap between the largest and smallest in the rewritten pieces.",
+     "answer": "Common cut: twelfths. 3/4 = 9/12, 5/6 = 10/12, 7/12 stays 7/12, 2/3 = 8/12. Order: 7/12, 8/12 (2/3), 9/12 (3/4), 10/12 (5/6). The gap from smallest to largest is 10/12 minus 7/12 = 3/12, or 1/4 of a harvest share."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A common-strip comparison model: build folded strips for two close fractions (such as 5/6 and 7/9), overlay them on a shared cut you fold yourself, and mount the overlaid strips with the winning edge marked.",
+       "stem": "ask which close pair to settle → plan the shared cut → fold both strips and overlay → test the edge difference by counting pieces → share the mounted model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A common-denominator recipe poster: take a real scaling decision (two recipes using different-cup measures), convert every fraction to one measure (quarter or eighth cups), and post the ordering with the totals in the shared unit.",
+       "stem": "ask which two recipes to compare → plan the shared unit → rewrite every measure → test the totals by pouring or re-folding → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A close-call clip with the AI as second judge: ask the AI to order three hard comparison pairs, work each pair on camera with common strips or common numerators, and close with any pair the AI mis-ordered and the strip that proves it.",
+       "stem": "ask what each close call needs → plan the three comparisons → request orders from the AI → test each pair on a shared strip → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "8-7": {
+   "prep": {
+    "home": [
+     "The council hears two map-makers argue whether 2/5 or 3/8 is the larger irrigation share. 'Mine looks bigger' is not an argument — what would evidence look like?",
+     "Build the number sentence a full argument needs: both shares on one cut, the two rewritten fractions, and a conclusion sentence.",
+     "A councillor objects: 'Both are less than half, so they must be equal.' Name the flaw in that reasoning before the hearing."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can construct a complete fraction comparison argument: claim, model, number sentence and conclusion.",
+     "I can distinguish evidence from opinion ('it just is').",
+     "I can use a common denominator or benchmark as the ground of the claim.",
+     "I can respond to a counter-claim with the model, not the volume."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Which is the complete argument that 3/4 is greater than 5/7?",
+     "options": [
+      { "v": "a", "text": "21/28 beats 20/28, so 3/4 is greater" },
+      { "v": "b", "text": "Quarters are bigger pieces, so 3/4 wins" },
+      { "v": "c", "text": "3/4 is over half, 5/7 is not" },
+      { "v": "d", "text": "They are equal because both are near half" }
+     ],
+     "right": "a",
+     "yes": "Yes — rewritten onto 28ths, 3/4 is 21/28 and 5/7 is 20/28; the numbers on one common cut force the conclusion. That is an argument, not an opinion.",
+     "notYet": "Not yet — an argument rewrites both onto one cut and compares numerators: 21 pieces versus 20."
+    },
+    "harder": {
+     "prompt": "A map-maker claims 4/6 and 6/9 are unequal shares and demands extra water for the larger. Build the full council argument — models, numbers and conclusion — and say what the audit actually finds.",
+     "answer": "Claim: the shares are equal. Evidence: 4/6 simplifies (divide by 2) to 2/3; 6/9 simplifies (divide by 3) to 2/3. On a common cut of eighteenths, 4/6 is 12/18 and 6/9 is 12/18 — identical. Conclusion: the two names mark one share; no extra water is owed, and a simplified-model check confirms it. The argument's force is the shared number, not the speaker."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "presentation",
+       "task": "A council-hearing talk: present a complete 90-second argument for a real comparison (two allocations in class or home), with a model shown, the rewritten number sentence on display, and a one-sentence conclusion — then take one counter-claim and answer it with the model.",
+       "stem": "ask what the claim is → plan the argument structure → build the model and number sentence → test the argument on a partner first → deliver it at the council",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "An argument-vs-opinion poster: show two fraction comparisons side by side — one backed by evidence strips and number sentences, one backed only by 'it just is' — and annotate the four parts that make the supported one complete.",
+       "stem": "ask what parts an argument needs → plan the two columns → build the evidence for the supported claim → test the number sentences → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI appeal court: ask the AI to give three 'which fraction is greater' verdicts with its reasons, evaluate each reason yourself for the four parts of an argument, and publish a court record marking each verdict supported, flawed or unsupported — with your own complete argument for the last word.",
+       "stem": "ask what makes a verdict stand up → plan the court record → request three verdicts and reasons from the AI → test each with a common-cut model → publish the court record on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The certified equivalence map for the irrigation plots — every share renamed, every ordering evidenced, every conclusion argued with numbers"
+   }
+  }
+ }
+}

@@ -1,0 +1,547 @@
+{
+ "topic": 13,
+ "title": "Measurement: Find Equivalence in Units of Measure",
+ "arc": "The market of honest measures — lengths, capacities and weights are first converted honestly within the customary and metric systems, mixed units are then combined into one unit, the perimeter and area of the final site are measured apart, and the pavilion survey closes with a precision standard: the instrument decides the measurement, and the measurement decides the plan.",
+ "sources": [
+  "CCSS 4.MD.A.1 (thecorestandards.org): know relative sizes of measurement units within one system (km/m/cm; kg/g; lb/oz.; l/ml; hr/min/sec), express larger units in smaller units, and record equivalents in a two-column table",
+  "CCSS 4.MD.A.2: solve word problems involving distance, time, liquid volume, mass and money with the four operations, and represent measurements with number-line-style diagrams",
+  "CCSS 4.MD.A.3: apply the area and perimeter formulas for rectangles in real-world and mathematical problems — the site survey that closes the market",
+  "The two-column conversion-table model: record equivalents in a two-column table (foot-inches, metre-centimetres) to express larger units in smaller units — the calibrate-first discipline of the kit",
+  "Georgia Organics Farm to School 'Bringing the Garden' lessons (njagsociety.org math_lessons.pdf): calculate classroom area with one-foot paper squares, multiply length times width, and find perimeter and area of square configurations — a real measurement-in-situ task",
+  "Vivify STEM 'Design a School Garden' guide (grades 4-8): measure site dimensions, calibrate bed layouts, and plan material quantities against surveyed area and perimeter",
+  "Kitchen measuring conversions (Education.com and Grade 4 cooking fractions lessons): real cup/pint/quart and litre/millilitre conversions used in scaling recipes",
+  "NGSS Science and Engineering Practice 3 (Planning and Carrying Out Investigations), grades 3-5: choose appropriate tools and make precise measurements; and the 'appropriate tools' habit (MP.5) the precision lesson builds",
+  "NGSS 3-5-ETS1-1 / ETS1-2: design problems with criteria and constraints measured precisely, using repeated measurement to compare designs"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>market briefing</em> was already at home",
+   "lead": "Before class, the class met the honest-measures briefing — one conversion table and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the market measures begin with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about equivalent units?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the market",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the kit is calibrated.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the market."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the market",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "13-1": {
+   "prep": {
+    "home": [
+     "A rope stall sells by the yard. One length is 4 yards. Feet are 3 to a yard, inches 12 to a foot — build the two-column table for yards into feet before inches.",
+     "Yoursef's desk measures 5 feet. Express it in inches, and say why going to a smaller unit multiplies rather than divides.",
+     "Estimate the classroom length in yards first, then feet. What happens to the number when the unit shrinks?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can express feet in inches, yards in feet, and miles in yards from the table.",
+     "I can explain that smaller units produce a larger count for the same length.",
+     "I can build and use a two-column conversion table.",
+     "I can estimate a length in one unit before converting."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A fabric strip is 8 yards long. How many feet is that?",
+     "options": [
+      {
+       "v": "a",
+       "text": "11 feet"
+      },
+      {
+       "v": "b",
+       "text": "24 feet"
+      },
+      {
+       "v": "c",
+       "text": "8 feet"
+      },
+      {
+       "v": "d",
+       "text": "96 feet"
+      }
+     ],
+     "right": "b",
+     "yes": "Yes — feet are smaller, so the count grows: 8 yards times 3 feet per yard is 24 feet.",
+     "notYet": "Not yet — use the table: 1 yard is 3 feet, so multiply the yard count by 3."
+    },
+    "harder": {
+     "prompt": "A pavilion walkway is 3 yards long and the remaining link is 4 feet long. Express both in inches, then state the total walkway length in feet and inches.",
+     "answer": "3 yards = 9 feet = 108 inches; 4 feet = 48 inches. Total: 156 inches, which is 13 feet (or 4 yards 1 foot). Smaller units multiply: yards to feet by 3, feet to inches by 12 — total 108 + 48 = 156 inches."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A body-unit length kit: build a calibrated tape from folded paper feet and marked yards, measure three real classroom lengths in yards and feet, and mount the two-column table with the smaller-unit counts.",
+       "stem": "ask what the tape must mark → plan the folds → build and measure three lengths → test the conversions on the table → share the kit on the wall",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "A site trail map: draw a short measured route (classroom to playground), mark every segment's surveyed length, and show each length in both yards and feet with the multiplication shown on the arrow.",
+       "stem": "ask which segments to survey → plan the route → measure and record each → test every conversion by multiplying back → share the trail map on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A convert-it clip with the AI as appraiser: ask the AI for five length conversions (customary), verify each with your paper tape on camera, and close with any conversion the AI performed backward — proven by the measured fold.",
+       "stem": "ask which direction a conversion goes → plan the five checks → request conversions from the AI → test each on the tape → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "13-2": {
+   "prep": {
+    "home": [
+     "The drink stall needs 2 quarts of laban. Cups are 4 to the quart. How many cups must be poured, and why does a small unit make the number grow?",
+     "Build the capacity table: cups to pints, pints to quarts, quarts to gallons. Which two steps get you from cups to quarts?",
+     "A punch bowl holds 12 pints. Estimate first: is that closer to 6 quarts or 3 quarts? Convert and confirm."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can convert cups, pints, quarts and gallons using the capacity table.",
+     "I can express a larger capacity unit in the smaller unit.",
+     "I can estimate capacity before converting.",
+     "I can check a conversion by reversing it."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A recipe needs 5 quarts of water. How many cups is that?",
+     "options": [
+      {
+       "v": "a",
+       "text": "10 cups"
+      },
+      {
+       "v": "b",
+       "text": "20 cups"
+      },
+      {
+       "v": "c",
+       "text": "5 cups"
+      },
+      {
+       "v": "d",
+       "text": "40 cups"
+      }
+     ],
+     "right": "b",
+     "yes": "Yes — 4 cups per quart, so 5 quarts is 20 cups; the small unit multiplies the count.",
+     "notYet": "Not yet — follow the table: quarts to cups is times 4."
+    },
+    "harder": {
+     "prompt": "A stall brews 2 gallons then sells 10 quarts of it. State whether 2 gallons was enough, using one unit for both amounts, and the leftover or shortage in cups.",
+     "answer": "Convert to quarts: 2 gallons is 8 quarts; selling 10 quarts was impossible — the stall is short by 2 quarts, i.e. 8 cups. The honest measure: the order needed 10 quarts (2.5 gallons), so 2 gallons under-pours. One unit, one comparison."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A pour-and-convert station: use real cup/quart containers (or jug and marks) to pour equivalent volumes for three recipes, leaving the filled containers arranged with their two-unit labels displayed.",
+       "stem": "ask which volumes to pour → plan the container stack → pour and label → test each pair fills equal volume → share the station on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "The capacity ladder poster: draw cups-pints-quarts-gallons as rungs with the multiply-by steps, and work four real recipe conversions down the page.",
+       "stem": "ask what steps connect the rungs → plan the ladder → draw and convert four recipes → test each by pouring or reversing → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI menu audit: ask the AI to convert the liquid amounts on a four-item drink menu into cups, audit each line by reversing the conversion, and publish the audit with any backward conversion the AI made marked.",
+       "stem": "ask what a correct conversion reverses to → plan the audit → request the menu conversions from the AI → test each by reversing → publish the audit on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "13-3": {
+   "prep": {
+    "home": [
+     "The grain stall weighs by the pound, and 16 ounces make a pound. A sack of 3 pounds is how many ounces?",
+     "Ton, pound, ounce — which is the smallest, and what happens to the count as you weigh the same rice in smaller units?",
+     "Estimate: a 5-pound bag of flour in ounces is closest to 20, 80, or 100? Convert to settle it."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can convert pounds to ounces and tons to pounds from the weight table.",
+     "I can express larger weight units in smaller units.",
+     "I can estimate a weight conversion before computing it.",
+     "I can compare weights once they share a unit."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A box of dates weighs 6 pounds. How many ounces is that?",
+     "options": [
+      {
+       "v": "a",
+       "text": "22 ounces"
+      },
+      {
+       "v": "b",
+       "text": "96 ounces"
+      },
+      {
+       "v": "c",
+       "text": "6 ounces"
+      },
+      {
+       "v": "d",
+       "text": "48 ounces"
+      }
+     ],
+     "right": "b",
+     "yes": "Yes — 16 ounces to the pound: 6 times 16 is 96 ounces.",
+     "notYet": "Not yet — the table multiplies pounds into ounces by 16."
+    },
+    "harder": {
+     "prompt": "Two sacks weigh 4 pounds 6 ounces and 2 pounds 12 ounces. Combine them in one unit, state the total weight, and give it in ounces and in pounds-with-remainder ounces.",
+     "answer": "4 lb 6 oz = 70 oz; 2 lb 12 oz = 44 oz; total 114 oz = 7 pounds 2 ounces (7x16 = 112, plus 2). Mixed units combine honestly once the pound-and-ounce pieces are all expressed in the smaller unit."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "An ounce-balance model: build a paper two-pan balance with 16 marked ounces per pound, weigh four class objects, and display their weights in both units.",
+       "stem": "ask what the balance must compare → plan the pan marks → weigh and record four objects → test the two-unit labels → share the balance on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A market-stall weight chart: draw the stall's goods with their pounds weights and converted ounce weights beside each, with the times-16 step arrowed.",
+       "stem": "ask which goods to weigh → plan the chart rows → draw and convert each weight → test by dividing the ounces back → share the chart on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "An ounce-count clip with the AI as weigh-master: ask the AI for five pound-to-ounce weights, verify each on camera (with the table or balance), and flag the one the AI divided instead of multiplied.",
+       "stem": "ask how the count changes → plan the five weights → request the AI's conversions → test each back into pounds → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "13-4": {
+   "prep": {
+    "home": [
+     "The surveyor uses metric: 7 metres of wall. Centimetres are 100 to a metre, millimetres 10 to a centimetre. How many centimetres long is the wall?",
+     "Why are metric conversions all steps of 10 and 100? Compare that with the customary tables from earlier.",
+     "Estimate the whiteboard in metres first, then convert to centimetres. Which estimate is easier in metric, and why?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can convert kilometres, metres and centimetres using powers of ten.",
+     "I can express a larger metric length in the smaller unit.",
+     "I can compare metric length with the customary tables' pattern.",
+     "I can move the decimal for a metric conversion by place value."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A path measures 4 kilometres. How many metres is that?",
+     "options": [
+      {
+       "v": "a",
+       "text": "400 metres"
+      },
+      {
+       "v": "b",
+       "text": "4,000 metres"
+      },
+      {
+       "v": "c",
+       "text": "40 metres"
+      },
+      {
+       "v": "d",
+       "text": "40,000 metres"
+      }
+     ],
+     "right": "b",
+     "yes": "Yes — 1,000 metres to the kilometre: 4 km is 4,000 m, a place-value shift of three.",
+     "notYet": "Not yet — metric conversions multiply by 10, 100 or 1,000; kilometres to metres is times 1,000."
+    },
+    "harder": {
+     "prompt": "A race route is 2 km 50 m. Express it fully in metres, then in centimetres, and explain the two shifts that the metric system stacks.",
+     "answer": "2 km = 2,000 m, plus 50 m gives 2,050 metres. To centimetres, times 100: 205,000 cm. Metric stacks place-value shifts — km to m shifts three places, m to cm shifts two — with no conversion factor to memorise."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A metric field tape: build and mark a metre tape in centimetres, survey three lengths (book, desk, wall), and mount the place-value shifts as a moving decimal display.",
+       "stem": "ask what the tape must resolve → plan the centimetre marks → measure three objects → test the shifts by dividing back → share the tape on the wall",
+       "ai": false
+      },
+      {
+       "kind": "design",
+       "task": "A two-system conversion card: design a pocket card with one real length shown in inches/feet and in centimetres/metres, showing the very different multiply factors side by side.",
+       "stem": "ask what differs between systems → plan the two columns → measure one object and convert both ways → test by re-measuring → share the card design on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "The powers-of-ten clip with the AI as clerk: ask the AI for five metric conversions, show each place-value shift on camera with the tape, and catch the AI when it applies a customary factor (like 12 or 16) to metric.",
+       "stem": "ask what makes metric convert by tens → plan the five shifts → request conversions from the AI → test each with place value → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "13-5": {
+   "prep": {
+    "home": [
+     "The water jars: 3 litres of laban. millilitres are 1,000 to a litre — how many millilitres? Then the rice: 4 kilograms is how many grams?",
+     "Capacity and mass share the same metric prefixes. Write the times-1,000 rule that covers both.",
+     "A bottle holds 1.5 L. Estimate in mL first — does the conversion multiply or divide for the smaller unit?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can convert litres to millilitres and kilograms to grams by thousands.",
+     "I can express decimal metric amounts (e.g. 1.5 L) in the smaller unit.",
+     "I can compare metric capacities and masses on one unit.",
+     "I can estimate a metric measure before converting."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A water jug holds 6 litres. How many millilitres is that?",
+     "options": [
+      {
+       "v": "a",
+       "text": "600 mL"
+      },
+      {
+       "v": "b",
+       "text": "6,000 mL"
+      },
+      {
+       "v": "c",
+       "text": "60 mL"
+      },
+      {
+       "v": "d",
+       "text": "60,000 mL"
+      }
+     ],
+     "right": "b",
+     "yes": "Yes — 1,000 millilitres per litre: 6 L is 6,000 mL.",
+     "notYet": "Not yet — litres to millilitres multiplies by 1,000."
+    },
+    "harder": {
+     "prompt": "A pantry holds 2 kg 300 g of rice and uses 750 g for the event. Report the remaining mass in grams and in kilograms-with-grams, showing the ungroup step across the units.",
+     "answer": "2 kg 300 g = 2,300 g; minus 750 g leaves 1,550 g = 1 kg 550 g. The ungroup is place value: one kilogram opens into 1,000 grams, just as a metre opens into 1,000 millimetres."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A market measures kit (capacity and mass): build labelled litre/millilitre bottle marks and kilogram/gram balance weights, run three real measuring tasks, and leave the conversions displayed.",
+       "stem": "ask what the kit measures → plan the marks and weights → measure three items → test each smaller-unit count by reversing → share the kit on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A recipe scaling chart: take one real recipe in litres and grams, scale it to serve the class, and chart every metric conversion with its thousands shift.",
+       "stem": "ask how many the recipe serves → plan the scale → convert each measure → test the scaled batch with a pour or weight check → share the chart on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI pantry audit: ask the AI to list metric capacity and mass conversions for a stocked pantry, audit every line with the thousands rule, and publish the corrected stock sheet.",
+       "stem": "ask what the stock sheet must get right → plan the audit → request conversions from the AI → test each by shifting place value → publish the sheet on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "13-6": {
+   "prep": {
+    "home": [
+     "The site is a rectangle 8 m by 3 m. Perimeter counts the border, area counts the floor — which formula is which, and what are the two results in metres and square metres?",
+     "A worker answers perimeter 24. What quantity did she actually compute, and which number answers the fencing question?",
+     "A rug 6 m long and 4 m wide needs edge trim and floor covering. State both numbers with their units, keeping them from being confused."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can apply the perimeter formula to a rectangle.",
+     "I can apply the area formula (length times width) to a rectangle.",
+     "I can keep units of length (m) apart from units of area (sq m).",
+     "I can say which formula answers a border problem and which answers a covering problem."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A pavilion floor is 9 m long and 5 m wide. What is its perimeter?",
+     "options": [
+      {
+       "v": "a",
+       "text": "28 m"
+      },
+      {
+       "v": "b",
+       "text": "45 m"
+      },
+      {
+       "v": "c",
+       "text": "14 m"
+      },
+      {
+       "v": "d",
+       "text": "45 sq m"
+      }
+     ],
+     "right": "a",
+     "yes": "Yes — twice the length plus twice the width: 18 + 10 = 28 metres of edge. The 45 square metres is the area, the floor's other measurement.",
+     "notYet": "Not yet — perimeter is the border: add all four sides, or 2 times length plus 2 times width."
+    },
+    "harder": {
+     "prompt": "A garden bed is 10 m by 6 m. Fencing costs the boundary metres and matting costs the square-metre surface. Give both quantities and explain what changes if one bed 10 by 6 is split into two beds 5 by 6.",
+     "answer": "One bed: perimeter 2(10+6) = 32 m of fence; area 60 sq m of matting. Split into two 5-by-6 beds: the total area stays 60 sq m (30 + 30), but the perimeter becomes 2 x 22 = 44 m — splitting a shape adds boundary without adding surface. Matting is area; fencing is perimeter, and they answer different budgets."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "The site perimeter-and-area model: use string for the boundary and unit squares for the surface on a surveyed rectangle, physically laying both measures, and display the two quantities with distinct units.",
+       "stem": "ask which part is border or floor → plan the string and squares → survey and lay both → test the counts against the formulas → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "design",
+       "task": "A pavilion floor plan: design a small pavilion layout to scale on grid paper, then compute the perimeter (edge trim) and area (floor covering) for every room with the units colour-coded.",
+       "stem": "ask what rooms fit the site → plan the grid layout → draw rooms, count edges and squares → test each with the formula → share the plan on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "The muddled-units trial with the AI as contractor: ask the AI for three perimeter and three area answers, challenge each on camera with the matching formula, and expose any answer that labels square units on a border or vice versa.",
+       "stem": "ask which formula each problem needs → plan the six challenges → request the AI's answers → test each with string or squares → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The surveyed site plan — every boundary measured as perimeter, every surface covered as area, units kept distinct, both quantities checked"
+   }
+  },
+  "13-7": {
+   "prep": {
+    "home": [
+     "Two rice sacks read 1 kg 200 g and 800 g. Before adding, write both in one unit (grams). What is the total, expressed back in kilograms and grams?",
+     "Precision first: if a corner must be square to the nearest degree, which tool do you need — a ruler, or something that turns?",
+     "A measurement 'about 4 metres' and another '400 cm' — are they equal or different? What role does the unit play in precision?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can combine mixed units by expressing them in one smaller unit.",
+     "I can choose the appropriate tool for the precision the question needs.",
+     "I can report a result with the unit that matches the measurement.",
+     "I can check a combined measurement by recomposing the mixed units."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A surveyor measures 3 kg 250 g in one bag and 1 kg 750 g in another. What is the total?",
+     "options": [
+      {
+       "v": "a",
+       "text": "5 kg"
+      },
+      {
+       "v": "b",
+       "text": "4 kg 1,000 g"
+      },
+      {
+       "v": "c",
+       "text": "4 kg 100 g"
+      },
+      {
+       "v": "d",
+       "text": "5,000 g unrounded"
+      }
+     ],
+     "right": "a",
+     "yes": "Yes — in grams: 3,250 + 1,750 = 5,000 g = 5 kg exactly. Both expressions agree once the unit unifies them.",
+     "notYet": "Not yet — convert both to grams first; the 1,000 grams regroups into a full kilogram."
+    },
+    "harder": {
+     "prompt": "Two measured strips are 1 m 85 cm and 95 cm. State the combined length in one unit, then give it to the nearest centimetre and say which instrument's precision that claims.",
+     "answer": "1 m 85 cm = 185 cm; plus 95 cm = 280 cm = 2 m 80 cm. Reported to the nearest centimetre, the claim is that the tape itself resolved millimetres or fine centimetre marks; precision beyond the tool is false precision. The instrument sets the honest unit."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "mini-project",
+       "task": "The calibrated field kit and site plan — the unit's own artifact: calibrate a classroom measurement kit (tape, marked jug, balance), survey one small site or table layout for the pavilion, record every measure to the instrument's honest precision, and publish the perimeter/area site plan, signed by its makers.",
+       "stem": "ask what the site must deliver → plan the calibration checks → measure, convert, and compute perimeter and area → test every figure twice and by reversing conversions → present the signed site plan",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A choose-the-tool poster: list six survey questions (is the corner square? how much liquid? how long a wall?) with the appropriate tool and the honest unit beside each.",
+       "stem": "ask what precision each question needs → plan the six rows → match tool and unit to each → test with a real measurement per tool → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "The precision challenge with the AI as foreman: ask the AI to solve three mixed-unit measurement tasks and name its tools, perform the conversions and tool choices on camera, and correct any answer reporting precision its imaginary tool could never have given.",
+       "stem": "ask what each instrument can resolve → plan the three tasks → request answers from the AI → test each with the kit and conversions → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The market's calibrated field kit and perimeter/area site plan — every measure converted honestly, every tool matched to its question, every unit reported as measured, signed by its makers"
+   }
+  }
+ }
+}

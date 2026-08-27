@@ -1,0 +1,636 @@
+{
+ "topic": 9,
+ "title": "Understand Addition and Subtraction of Fractions",
+ "arc": "The kitchen of shared trays — two trays arrive together and are pushed onto one plate, a single portion answers to many decompositions, the shared denominator holds the pieces the same size, the used portion is subtracted from the tray that started full, the leftovers get an honest label, orders and returns pass through the same shared-pieces rule, whole trays and loose pieces are counted together, the two stations combine until the loose pieces make a whole tray, and the second sitting ends by breaking a whole tray before any piece is taken — until the event manager's modelled tray-and-leftovers plan is signed.",
+ "sources": [
+  "CCSS 4.NF.B.3 (thecorestandards.org): understand a fraction a/b with a > 1 as a sum of fractions 1/b; add and subtract fractions joining and separating parts of the same whole; decompose a fraction into a sum of fractions with the same denominator in more than one way; add and subtract mixed numbers with like denominators; solve word problems with fraction models and equations",
+  "CPALMS/FLDOE Grade 4 SASSME (fldoe.org Grade4SASSME.pdf): MAFS.4.NF.2.3 fraction-strip and model lessons — decompositions, joining and separating parts of a whole, and the 'check pieces are the same size' discipline this kitchen runs on",
+  "Education.com 'Cooking School Fractions' and cooking-with-fractions lessons: real measuring cups and spoons used to join, split and scale portions — fractions of a cup physically added and removed (like-denominator addition with unit cups)",
+  "Edible STEM fraction activities (imthecheftoo.com): doubling and halving real recipes, combining measured fractional amounts, and comparing portion sizes with identical containers — the community-kitchen tray context done with physical measures",
+  "Guided paper-folding and patty-paper fraction strips (mshaughs.blogspot.com): a tray folded into equal pieces lets students physically combine shaded pieces on one whole and watch the denominator stay fixed when pieces are the same size",
+  "Measuring-cup volume comparisons and the 'fill identical containers' task: filling a 1-cup with 1/4 and 1/3 cups shows when joining makes sense only on equal-size units",
+  "Georgia Organics Farm to School 'Planting a Square Foot Garden' (farmtoschool.georgiaorganics.org, grades 3-5): each cell's plantings described as fractions that add to one whole (5/9 + 3/9 + 1/9 = 1), decomposing one shared unit — like-denominator addition from a real planting plan",
+  "NGSS Science and Engineering Practice 5 (Using Mathematics and Computational Thinking), grades 3-5: describe, measure and compare quantities such as portions, using units; and Practice 2 (Developing and Using Models) for the tray/bar models this unit builds"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>kitchen briefing</em> was already at home",
+   "lead": "Before class, the class met the shared-trays briefing — two arriving portions and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so kitchen service begins with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about joining and separating pieces?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the kitchen",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the first tray is combined.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the kitchen."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the kitchen",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "9-1": {
+   "prep": {
+    "home": [
+     "Two trays of the same cut arrive: 2/8 of a tray from table one and 3/8 from table two pushed together. Count the pieces — how many eighths are on the joined tray?",
+     "A new cook writes the total as 5/16. What has she done to the pieces? Draw the two trays and say why the piece size never changes when you join them.",
+     "When can two fractions be added straight onto one tray — what must be true of the pieces?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can show fraction addition as joining pieces of one same-sized whole.",
+     "I can add the numerators and keep the denominator when pieces match.",
+     "I can explain why adding denominators is a mistake.",
+     "I can check a sum against a model of the whole tray."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The kitchen plates 3/6 of a tray of dates and then 2/6 more. How much is on the serving plate?",
+     "options": [
+      { "v": "a", "text": "5/12" },
+      { "v": "b", "text": "5/6" },
+      { "v": "c", "text": "6/6" },
+      { "v": "d", "text": "1/6" }
+     ],
+     "right": "b",
+     "yes": "Yes — 3 sixths plus 2 sixths is 5 sixths; the pieces stay sixths, so 5/6 of the tray is served.",
+     "notYet": "Not yet — the pieces are all sixths: add the counts (3 plus 2) and keep the cut as sixths."
+    },
+    "harder": {
+     "prompt": "A table receives 4/8 of a tray, then returns 2/8, and is then sent 3/8. The cook logs one single answer as 9/24. Correct the log: describe each move with its sign and give the true total with the model shown.",
+     "answer": "The cook added denominators at every step. Model it on one tray cut in eighths: plus 4 pieces, take back 2 pieces (4/8 minus 2/8 = 2/8), then add 3 pieces (2/8 + 3/8 = 5/8). The tray holds 5/8. Joining and separating never changes the cut — the denominator is 8 throughout."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A joining-trays paper model: fold a paper tray into equal pieces, shade pieces from two incoming plates in two colours, and leave the joined result with the correct fraction label — the model shows the denominator never moved.",
+       "stem": "ask what whole the trays share → plan the fold → shade both portions in colour → test the pieces are the same size → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A recipe-join drawing: draw a real two-step combination (measuring cups of two ingredients poured into one bowl), mark each fractional measure on the same cut, and total the filled portion with the joining rule shown.",
+       "stem": "ask what is being combined → plan the cup measures → draw each pour in fraction pieces → test the total by counting unit cups → share the drawing on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A tray-joining clip with the AI as trainee: ask the AI to compute three like-denominator joins, work each on camera with a folded tray, and stop the trainee's mistake whenever it adds the denominators — prove the error with the model on screen.",
+       "stem": "ask what happens when denominators are added → plan the three joins → request the AI's answers → test each on a folded tray → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "9-2": {
+   "prep": {
+    "home": [
+     "A portion of 7/10 can be spoken as many ways. Break it into unit fractions first — how many tenth-pieces is it?",
+     "Group those unit pieces two different ways (for example 3/10 + 4/10 and another split). Check each grouping rebuilds the same seven pieces.",
+     "The kitchen wants three possible serving descriptions for 5/8. Write them, and say why every honest decomposition must keep the denominator at 8."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can decompose a fraction into a sum of same-denominator fractions in more than one way.",
+     "I can write a fraction as a sum of unit fractions.",
+     "I can verify that a decomposition rebuilds the original total.",
+     "I can explain why the parts in a decomposition all share one denominator."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Which pair adds back to 5/6?",
+     "options": [
+      { "v": "a", "text": "2/6 + 3/6" },
+      { "v": "b", "text": "2/3 + 3/3" },
+      { "v": "c", "text": "5/6 + 1/6" },
+      { "v": "d", "text": "2/6 + 3/12" }
+     ],
+     "right": "a",
+     "yes": "Yes — 2 sixths plus 3 sixths is 5 sixths; both pieces are sixths and the counts rebuild the whole portion.",
+     "notYet": "Not yet — both addends must be sixths, and their piece counts must total 5: 2 plus 3."
+    },
+    "harder": {
+     "prompt": "A tray is 8/12 full. Write three honest decompositions — one into unit fractions, one in exactly two terms, and one including a term of exactly half the tray (6/12). Verify each rebuilds 8/12.",
+     "answer": "Unit form: 1/12 + 1/12 + 1/12 + 1/12 + 1/12 + 1/12 + 1/12 + 1/12. Two terms: any sixths-matching split such as 5/12 + 3/12. Including half: 6/12 + 2/12. Each keeps twelfths as the cut and the pieces total 8 — many names serve one tray, and any decomposition whose counts add to 8 with twelfths underneath is honest."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "design",
+       "task": "A many-names portion card: design a reusable card showing one portion (such as 7/10) broken three ways on three folded strips, so a classmate can flip the flaps and confirm every strip shades the same amount.",
+       "stem": "ask which portion to name → plan the three breakups → fold and shade each strip → test the strips match when overlaid → share the card design on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A decomposition menu poster for the kitchen: take one tray fraction and list five ways the staff could serve it (unit pieces, a half plus pieces, two bowls), each drawn and checked to rebuild the tray.",
+       "stem": "ask how many servings to list → plan the five rows → draw each breakup → test each row sums to the tray fraction → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A many-ways tasting with the AI as checker: ask the AI for three decompositions of a tray fraction, verify each by counting the pieces yourself, and present the ones that hold — plus the one the AI wrote with a wrong denominator, corrected live.",
+       "stem": "ask what a valid decomposition requires → plan the checks → request three breakups from the AI → test each by rebuilding the tray → present the findings on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "9-3": {
+   "prep": {
+    "home": [
+     "Two plates of the same cut are combined: 5/12 and 4/12 of a tray. What does the joined plate hold — and what does the cook write underneath it?",
+     "The sum 9/12 is close to a whole tray. How far from a full tray is it, and how would the kitchen label the still-empty part?",
+     "Why does the rule say 'check the pieces are the same size' before anything is added?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can add same-denominator fractions using a model and then symbols.",
+     "I can interpret a sum as part of one whole tray.",
+     "I can keep the denominator fixed across the addition.",
+     "I can estimate the sum against a full tray before writing it."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Two portions of 3/8 and 4/8 are combined. What fraction of the tray is served?",
+     "options": [
+      { "v": "a", "text": "7/16" },
+      { "v": "b", "text": "7/8" },
+      { "v": "c", "text": "1/8" },
+      { "v": "d", "text": "12/8" }
+     ],
+     "right": "b",
+     "yes": "Yes — 3 eighths plus 4 eighths is 7 eighths: 7/8 of the tray, with one eighth left free.",
+     "notYet": "Not yet — the pieces are eighths on both plates; add 3 and 4 and keep the cut as 8."
+    },
+    "harder": {
+     "prompt": "Service combines 5/8 then another 6/8 of the same tray over the sitting. Report the total honestly as a mixed amount, say how many full trays that means for ordering, and explain what the model shows beyond a single tray.",
+     "answer": "5/8 + 6/8 = 11/8 — eleven eighths cannot sit on one tray: that is one full tray plus 3/8 of the next, written 1 3/8. The ordering decision: the sitting consumed the equivalent of more than one whole tray, so at least two trays must have been prepared. When the pieces exceed the whole, honest reporting renames rather than hiding the extra whole."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A served-tray fraction model: use a real partitioned tray (paper or cup dividers) to place and combine two measured portions, then label the combined fill as a fraction of the one cut.",
+       "stem": "ask what the shared cut is → plan the partitions → place and join the two portions → test the count against the spaces → share the labelled model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A near-the-whole clip: film three tray combinations ending near or past a whole, estimate each against a full tray first ('about how much?'), and reveal the sums — one should need more than one tray.",
+       "stem": "ask which sums cross a whole → plan the three serves → estimate then combine on camera → test each against a full-tray model → share the clip on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI kitchen-audit page: ask the AI for four same-denominator sums, verify each with your own tray model including how far each is from a full tray, and publish the audit with every wrong-denominator answer caught and corrected.",
+       "stem": "ask what the audit must check → plan the rows → request four sums from the AI → test each on a tray model → publish the audit page on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "9-4": {
+   "prep": {
+    "home": [
+     "A tray starts 5/6 full and a table takes 2/6. Cross off the pieces used — what fraction remains?",
+     "A cook records subtraction as 3/0. What does the model show should happen to the denominator when pieces are removed from the same cut?",
+     "Subtraction of fractions is which of the tray actions — joining, or separating?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can model fraction subtraction as removing pieces from one whole.",
+     "I can subtract the numerators and keep the denominator.",
+     "I can explain why a zero denominator is an impossible cut.",
+     "I can check a difference by adding it back to the amount removed."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A tray holds 7/9 after service begins; 4/9 is taken by a table. How much remains?",
+     "options": [
+      { "v": "a", "text": "3/0" },
+      { "v": "b", "text": "3/9" },
+      { "v": "c", "text": "11/9" },
+      { "v": "d", "text": "3/18" }
+     ],
+     "right": "b",
+     "yes": "Yes — 7 ninths minus 4 ninths is 3 ninths left; the tray is still cut in ninths, so the remainder is 3/9.",
+     "notYet": "Not yet — remove 4 pieces from the 7 ninth-pieces; the cut stays ninths, so the difference keeps denominator 9."
+    },
+    "harder": {
+     "prompt": "Two stations draw from one 8/8 tray: the first takes 3/8 and the second takes 2/8. Show the separating steps on the tray and find the leftover; then run the add-back check to prove it.",
+     "answer": "Full tray minus first serving: 8/8 minus 3/8 = 5/8. Minus second serving: 5/8 minus 2/8 = 3/8 remains. Add-back check: 3/8 + 2/8 + 3/8? The served pieces were 3/8 and 2/8, total 5/8; adding the leftover 3/8 rebuilds 8/8 — the whole tray. Separation is addition in reverse, which is why the add-back is the proof."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "drawing",
+       "task": "A remove-and-cross-off strip: draw one fully shaded tray, cross the served pieces in red in two stages, and present the surviving pieces with the subtraction sentence written underneath.",
+       "stem": "ask how many stages to show → plan the crossings → shade then cross the served pieces → test the remainder by add-back → share the strip on the wall",
+       "ai": false
+      },
+      {
+       "kind": "model",
+       "task": "A measuring-cup pour-back model: fill a clear 1-cup to a fractional level, pour out measured like-pieces, and use the remaining fill plus the poured amount to demonstrate the add-back check physically.",
+       "stem": "ask what remains after pouring → plan the measures → pour and pour back → test the remainder plus pours fill the cup → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A zero-denominator trap clip with the AI as new cook: ask the AI to work three subtractions, perform the tray removal on camera each time, and correct any answer that collapses the denominator — with the add-back that proves the right remainder.",
+       "stem": "ask why subtraction keeps the cut → plan three removals → request the AI's subtractions → test each by add-back on camera → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "9-5": {
+   "prep": {
+    "home": [
+     "After the first sitting, 11/12 of a tray were made and 7/12 were eaten. The leftovers label needs a number — what does the tray hold now?",
+     "The label '4/12 leftover' — simplify that to its clearest kitchen name without changing the amount.",
+     "Why does the leftovers report subtract only from what was actually made, and not from a full tray?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can subtract same-denominator fractions to find a remainder.",
+     "I can report a leftover in the context's own terms.",
+     "I can simplify or rename a remainder when the kitchen wants the clearest label.",
+     "I can distinguish subtracting from a full tray from subtracting from a partial amount."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A kitchen prepares 10/12 of a tray and serves 6/12. What fraction is left over?",
+     "options": [
+      { "v": "a", "text": "4/0" },
+      { "v": "b", "text": "4/12" },
+      { "v": "c", "text": "16/12" },
+      { "v": "d", "text": "6/12" }
+     ],
+     "right": "b",
+     "yes": "Yes — 10 twelfths made minus 6 served is 4 twelfths left, a leftover of 4/12 (the same as 1/3 of the tray).",
+     "notYet": "Not yet — subtract the served pieces from what was made: 10 minus 6 = 4 twelfths remain."
+    },
+    "harder": {
+     "prompt": "Two trays were prepared: the first at 11/12, served to leave 5/12; the second at 9/12, served to leave 4/12. Combine the true leftovers, rename them simply, and say how many more pieces would be needed to fill one complete tray.",
+     "answer": "Leftovers: 5/12 + 4/12 = 9/12, which simplifies to 3/4 of a tray. To complete a tray: 12/12 minus 9/12 = 3/12 more, i.e. 3 twelfth-pieces (1/4 tray). The label combines honest remainders first, renames for clarity second, and measures the gap third."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "poster",
+       "task": "A leftovers-label poster for one event: show made, served and left for three dishes as tray models, with each remainder labelled in fractions and simplified, and the gap to a full tray marked.",
+       "stem": "ask which dishes to label → plan the three rows → draw made/served/left for each → test each label by adding served plus leftover → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "model",
+       "task": "A leftover-pieces model: partition a paper tray, remove the eaten pieces from a partial fill (not from a full tray), and mount the remainder with its simplest-name label beside the original label.",
+       "stem": "ask where the removal starts → plan the partial fill → remove the served pieces → test the leftover plus served equals the made amount → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "map",
+       "task": "An AI leftovers audit map: ask the AI for the leftovers of four serve situations, build a two-column map of its answers versus your model-checked answers, and mark each sound or faulty with the made/served numbers it misread.",
+       "stem": "ask what the remainder is measured from → plan the audit columns → request four leftovers from the AI → test each against its made-and-served trays → share the audit map on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "9-6": {
+   "prep": {
+    "home": [
+     "Orders and returns move through one jug: it starts at 7/8, 3/8 is poured out, then 2/8 is poured back in. Track the jug — what does it hold at each step?",
+     "Write the whole situation as one fraction sentence with both a minus and a plus. What keeps the denominator trustworthy throughout?",
+     "Estimate first: is the jug closer to full or to empty at the end? Confirm with the exact fraction."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can add and subtract same-denominator fractions in one multi-move situation.",
+     "I can track a quantity through orders and returns with one equation.",
+     "I can estimate the result against the whole before computing.",
+     "I can keep the same denominator across every move."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A bowl holds 6/8 of a tray of salad; 2/8 is served and 3/8 is returned to it. How much is in the bowl now?",
+     "options": [
+      { "v": "a", "text": "7/8" },
+      { "v": "b", "text": "1/8" },
+      { "v": "c", "text": "7/16" },
+      { "v": "d", "text": "11/8" }
+     ],
+     "right": "a",
+     "yes": "Yes — 6/8 minus 2/8 is 4/8, plus the returned 3/8 is 7/8. One cut (eighths), three moves, one jug.",
+     "notYet": "Not yet — track the level: serve subtracts (6 minus 2), return adds (plus 3), all in eighths."
+    },
+    "harder": {
+     "prompt": "A jug starts at 5/8, receives two orders out of 2/8 each and one return of 4/8. Estimate whether it overshoots a full jug, then compute exactly and explain how the kitchen must store the result.",
+     "answer": "Estimate: leaving 5/8, removing 4/8 total, then adding 4/8 roughly returns near the start, but 5/8 minus 4/8 = 1/8 and 1/8 plus 4/8 = 5/8 — the jug ends at 5/8, below full. (Had the return been 5/8, the 6/8 result is still under; a push past 8/8 needs a second jug.) The exact level 5/8 needs one jug; the same cut holds through every move."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "An order-and-return flow model: build a paper jug strip with movable coloured pieces, run a three-move serve-and-return sequence in front of a partner, and leave the final level labelled as one fraction sentence.",
+       "stem": "ask which moves the flow shows → plan the start level and moves → shift pieces in and out → test the sentence balances on the strip → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A tracking clip: film a real container as portions are poured out and back to match a three-move fraction story, keep the level visible at every step, and close by reading the final fraction straight off the container.",
+       "stem": "ask what the camera must keep visible → plan the pours → pour out and back in order → test the filmed level against the arithmetic → share the clip on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A jug-dispatch Q-and-A with the AI as order clerk: ask the AI to call out a four-move serve/return sequence, track the jug yourself on a fraction track, estimate before each step, and present where the AI's totals ever break the common cut.",
+       "stem": "ask how the level moves → plan the tracking chart → request a sequence from the AI → test each step on your track → present the tracked final level on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "9-7": {
+   "prep": {
+    "home": [
+     "Whole trays and loose pieces arrive together: 2 whole trays plus 1/4 and another 1 whole plus 1/4. How many wholes and how many loose pieces at the pass?",
+     "Write the combined count as a mixed number. Then check: when the loose pieces total 2/4, what whole tray could they partly make?",
+     "Why does the kitchen keep the wholes and the fractions in separate columns until the end?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can model mixed numbers as whole trays plus a fractional part.",
+     "I can add the wholes and the fractions of two mixed portions.",
+     "I can recognise when the fraction parts meet or make a whole.",
+     "I can record a mixed-number result with its wholes and pieces labelled."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "The kitchen combines 1 2/6 trays prepared at one station and 2 3/6 at another. What is the total?",
+     "options": [
+      { "v": "a", "text": "3 5/12" },
+      { "v": "b", "text": "3 5/6" },
+      { "v": "c", "text": "3 1/6" },
+      { "v": "d", "text": "4 5/6" }
+     ],
+     "right": "b",
+     "yes": "Yes — the whole trays give 3, the loose pieces give 2/6 + 3/6 = 5/6: 3 5/6 trays total.",
+     "notYet": "Not yet — add the trays (1 + 2 = 3), add the pieces (2 + 3 sixths = 5/6), and keep the cut at sixths."
+    },
+    "harder": {
+     "prompt": "Service plates 2 4/8 trays of one dish and 1 5/8 of another for the same table. Combine them, decide whether the loose pieces complete another whole, and report the mixed amount for the ordering sheet.",
+     "answer": "Wholes: 2 + 1 = 3. Loose pieces: 4/8 + 5/8 = 9/8, which is 8/8 + 1/8 — one more whole tray and 1/8 over. Total: 4 1/8 trays. The loose pieces crossed the cut (9 eighths exceed the 8 in a tray), so one whole moves across before the report is written."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "A whole-trays-and-pieces model: build paper trays (full circles/rectangles) plus a partial cut tray, assemble two mixed portions out of them, and mount the combined count with wholes ringed and loose pieces counted.",
+       "stem": "ask what counts as a whole → plan the full and partial trays → assemble the two portions → test the loose pieces against a full tray → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A two-station handoff drawing: draw trays arriving from two kitchen stations, whole trays in one colour and pieces in another, and show the combined pass with the mixed-number total and any carried whole marked.",
+       "stem": "ask how the two stations split → plan the two columns → draw wholes and pieces → test the pieces make-or-not a whole → share the drawing on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A mixed-portion clip with the AI as station lead: ask the AI for three mixed-number combinations, stage each with paper trays on camera, and stop the AI if it adds wholes to pieces without the model — show the carry live.",
+       "stem": "ask when loose pieces become a tray → plan the three combos → request them from the AI → test each with whole and piece trays → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "9-8": {
+   "prep": {
+    "home": [
+     "Two stations combine: 1 5/8 and 2 6/8 trays of pastries. Add the trays first, then add the loose pieces. What do 11 loose eighths make?",
+     "After the loose pieces complete a whole, what is the final mixed total the event sheet must record?",
+     "Estimate first: is the answer closest to 3, 4, or 5 trays? Say why before computing."
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can add mixed numbers with like denominators using models.",
+     "I can carry a completed whole from the fraction column to the wholes column.",
+     "I can record the carried whole without losing the leftover pieces.",
+     "I can estimate the total against whole trays before adding."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Combine 2 3/5 and 1 4/5 for one service. What is the total, renamed properly?",
+     "options": [
+      { "v": "a", "text": "3 7/10" },
+      { "v": "b", "text": "4 2/5" },
+      { "v": "c", "text": "3 7/5" },
+      { "v": "d", "text": "4 1/5" }
+     ],
+     "right": "b",
+     "yes": "Yes — wholes give 3; pieces give 3/5 + 4/5 = 7/5 = 1 whole and 2/5; total 4 2/5. The loose fifths completed a tray.",
+     "notYet": "Not yet — add the pieces to get 7/5, exchange 5 of those fifths for one whole, and keep the 2 fifths remaining."
+    },
+    "harder": {
+     "prompt": "A station prepares 3 7/8 trays in the morning and adds 2 5/8 in the afternoon. Total the production, carry the whole, and state how many full trays the event of 7 trays planned — is production enough?",
+     "answer": "Wholes: 3 + 2 = 5; pieces: 7/8 + 5/8 = 12/8 = 1 4/8 (one carried whole plus 4/8). Total: 6 4/8, or 6 1/2 trays. Against the plan of 7 trays: production is short by 2/8 (a quarter tray) — the carry is counted and the gap still stands."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "The carrying-pieces model: build two mixed quantities with full paper trays and piece-cards, physically exchange the completed group of pieces for one whole tray in front of an audience, and leave the exchanged result mounted.",
+       "stem": "ask how many pieces complete a tray → plan the portions → build and exchange the pieces → test the mixed total by counting trays → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A production-total poster for a real event (school breakfast or bake plan): two stations' mixed tray counts, the wholes column and pieces column shown separately, the carry arrowed, and the renamed total at the bottom.",
+       "stem": "ask which event to total → plan the two columns → draw wholes, pieces and the carry → test the total against an estimate → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "mini-project",
+       "task": "The AI production sheet audit: ask the AI to total four mixed-number production lines, audit each carry yourself (did the whole cross? are leftovers kept?), and publish the corrected production sheet with the one exchange the AI missed.",
+       "stem": "ask what a correct carry looks like → plan the audit sheet → request four totals from the AI → test each carry with a tray model → publish the audited sheet on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "9-9": {
+   "prep": {
+    "home": [
+     "After the second sitting, 4 2/6 trays were made and 1 5/6 is now used. The pieces column says '2 take away 5' — what must happen before any subtraction?",
+     "Break one whole tray of the 4 into sixths. How many sixths become available, and what does the subtraction look like after the break?",
+     "Why does breaking a whole change neither the amount started with nor the denominator?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can subtract mixed numbers with like denominators using models.",
+     "I can break one whole into fraction pieces when the top fraction is too small.",
+     "I can subtract the wholes and pieces after renaming.",
+     "I can check the result by adding the used and remaining parts."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Subtract: 5 2/8 minus 2 5/8. What remains?",
+     "options": [
+      { "v": "a", "text": "3 3/8" },
+      { "v": "b", "text": "2 5/8" },
+      { "v": "c", "text": "3 5/8" },
+      { "v": "d", "text": "2 3/8" }
+     ],
+     "right": "b",
+     "yes": "Yes — break one whole: 5 2/8 becomes 4 wholes and 10 eighths; subtract 5 eighths leaves 5 eighths, and 4 minus 2 leaves 2 wholes: 2 5/8.",
+     "notYet": "Not yet — the pieces (2/8) are fewer than 5/8, so exchange one whole tray for 8 eighths before subtracting."
+    },
+    "harder": {
+     "prompt": "The kitchen produced 3 1/4 trays and sold 2 3/4. Show the breaking step, report the remaining stock, and verify it by rebuilding the produced amount from the sold and leftover parts.",
+     "answer": "Rename 3 1/4 as 2 wholes and 5 fourths (one whole becomes 4/4, added to the 1/4). Subtract: 2 5/4 minus 2 3/4 leaves 0 wholes and 2/4 — stock is 2/4, i.e. 1/2 tray. Rebuild check: sold 2 3/4 plus leftover 2/4 = 2 5/4 = 3 1/4 produced. Breaking a whole never lost stock: the pieces replaced it exactly."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "model",
+       "task": "The break-a-tray model: use paper trays to stage a mixed subtraction, tear one whole tray into its fraction pieces live, and mount the before-and-after renamed quantities with the remaining pieces shaded.",
+       "stem": "ask when a whole must be broken → plan the rename → tear the tray into pieces → test by adding used plus leftover → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A column-exchange comic: draw the subtraction in panels — wholes and pieces columns, the 'not enough pieces' moment starred, the break arrow, and the final remainder — with a speech bubble naming the exchanged whole.",
+       "stem": "ask which moment stars → plan the panels → draw columns, break and remainder → test the remainder rebuilds the start → share the comic on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "The break-first clip with the AI as second cook: ask the AI to work three mixed subtractions, demonstrate the exchange on camera for each, and correct any answer where the AI subtracts the smaller piece from the larger without breaking a whole.",
+       "stem": "ask what 'not enough pieces' demands → plan three subtraction cases → request the AI's work → test each with the tray exchange → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "9-10": {
+   "prep": {
+    "home": [
+     "The event manager models one bottle that was full: 4/10 was drunk at the first table and 3/10 more at the next. Draw the bar, mark what was drunk, and mark the unknown — what is the question really asking?",
+     "Write the fraction sentence that finds the remaining drink. What stays fixed about the cut, and why does the unknown appear on one side of the bar?",
+     "A guest answers 7/10. What did that number correctly describe, and what question did it answer instead?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can model a multi-step fraction situation with a bar drawing and an equation.",
+     "I can identify what the unknown represents — consumed, remaining or total.",
+     "I can keep the denominator consistent and put the unit back on the answer.",
+     "I can check that my computed answer fits the story question."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A tray of kanafeh is full. 2/12 is served at the first call and 5/12 at the second. How much remains for the late table?",
+     "options": [
+      { "v": "a", "text": "7/12" },
+      { "v": "b", "text": "5/12" },
+      { "v": "c", "text": "5/0" },
+      { "v": "d", "text": "7/24" }
+     ],
+     "right": "b",
+     "yes": "Yes — served: 2/12 + 5/12 = 7/12; remaining: 12/12 minus 7/12 = 5/12. The unknown is what is left, so the bar is read from the other side.",
+     "notYet": "Not yet — total the served portions first (7/12), then subtract from the full tray; the answer is the unshaded part of the bar."
+    },
+    "harder": {
+     "prompt": "Two bottles for a table each start full. The first drinks 3/8 then 2/8; the second drinks 4/8. The manager must answer two questions: which bottle has more left, and what total fraction of one bottle remains across both? Model and answer both.",
+     "answer": "Bottle one: 8/8 minus (3/8 + 2/8) = 3/8 left. Bottle two: 8/8 minus 4/8 = 4/8 left. The second has more left (4/8 versus 3/8). Across both: 3/8 + 4/8 = 7/8 of one bottle's worth remains — not 7/16, because the cut is eighths throughout. The bar for each bottle is full-to-empty; the comparison and the total answer different questions."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "mini-project",
+       "task": "The community-event tray and leftovers plan — the unit's own artifact: plan servings for a real class event with fraction tray models, log every portion made, served and left, model the unknowns with bars, and publish the signed leftovers sheet the manager cooks from.",
+       "stem": "ask what the event must serve → plan the dishes and portions → model, combine and subtract on trays → test every line with an estimate and a rebuild check → present the signed plan to the event manager",
+       "ai": false
+      },
+      {
+       "kind": "model",
+       "task": "A measured-drinks bar model: use identical clear cups filled to planned fractional levels, mark full, served and remaining with tape, and display the three quantities with the fraction sentence for each cup.",
+       "stem": "ask which quantity is unknown → plan the cup marks → fill, serve and mark → test the marks add to a full cup → share the marked cups on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "A real-event data poster with the AI as researcher: ask the AI for one genuine fractional recipe or serving situation (scaled quantities), verify the measures and the model yourself, and present the bar drawing, the served total and the remaining amount with your own checks.",
+       "stem": "ask what situation has real fractions → plan the bar → research a recipe/serving with the AI (verify each measure) → build the model and solve → share the verified poster on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The community-kitchen tray and leftovers plan — portions modelled, wholes carried, remainders verified, signed by its makers"
+   }
+  }
+ }
+}

@@ -1,0 +1,283 @@
+{
+ "topic": 11,
+ "title": "Represent and Interpret Data on Line Plots",
+ "arc": "The pearl diver's evidence board — fractional measurements first appear as marks above one measuring line, the blank evidence board is filled from a real set of repeated measures, the cluster of marks tells its one supported story, and a beautiful but unsupported claim is challenged until the counting behind the plot decides.",
+ "sources": [
+  "CCSS 4.MD.B.4 (thecorestandards.org): 'Make a line plot to display a data set of measurements in fractions of a unit (1/2, 1/4, 1/8). Solve problems involving addition and subtraction of fractions by using information presented in line plots.'",
+  "CCSS 4.MD.A.1 / A.2: measure and record lengths, and solve word problems involving measurements with diagrams such as number line diagrams — the line's measuring scale",
+  "CPALMS MA.4.DP.1.1 (cpalms.org PreviewStandard/15377): collect and represent authentic numerical data including fractional values using tables and line plots, measuring with precision to the nearest 1/8 inch; instructional tasks include measuring ten used pencils to the nearest 1/8 and plotting, tossing marshmallows to the nearest half foot, and measuring insect lengths then solving fraction addition and subtraction from the plot",
+  "UGA Extension School Gardens, 'Growth in the Garden' Grade 4 lesson (extension.uga.edu, MCC5.MD.2): students measure real seedlings every other day, record heights, and create class line plots of fractional measurements — a genuine plant-growth data production",
+  "Plant-growth investigation packets (Grades 3-5 fair-test investigations): students design fair tests, grow plants, collect repeated measurements, and write evidence-based conclusions from their own data — the recommendation culture this unit teaches",
+  "Paper Airplane data-collection and fitness data activities (sit-up logs, paper-airplane throws): real repeated classroom measurements collected by students, displayed and interpreted, with central tendency discussed from the plotted marks",
+  "NGSS Science and Engineering Practice 4 (Analyzing and Interpreting Data), grades 3-5: represent data in line plots, look for patterns, and use quantitative data to make evidence-based claims; and Practice 7 (Engaging in Argument from Evidence) for challenging unsupported claims",
+  "Data Nuggets (MSU KBS LTER, NSF DRK-12 funded; datanuggets.org): free K-16 activities on authentic research data — students make predictions, visualize data and answer questions with evidence; the scientific-claim discipline behind the 11-4 critique",
+  "The data-cycle rule across FLDOE/CPALMS materials: identify the question of interest, collect real measurements, organize on the plot, and never claim more than the marks support"
+ ],
+ "screens": {
+  "prep": {
+   "title": "The <em>evidence-board briefing</em> was already at home",
+   "lead": "Before class, the class met the data briefing — one line of fractional marks and three home questions, at each student's own pace.",
+   "goal": "Recover the first exposure, so the evidence board begins with thinking — not with content delivery.",
+   "pull": "Now the probe: what does the class already hold about marks above a line?"
+  },
+  "diagnose": {
+   "title": "The <em>gap map</em> for the evidence board",
+   "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+   "goal": "Build a gap map: what is known, and what is missing, before the first mark is read.",
+   "pull": "Knowledge building closes exactly what the map flags."
+  },
+  "practice": {
+   "title": "Practice — feedback in <em>seconds, not days</em>",
+   "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+   "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+   "pull": "Now a genuinely new situation from the evidence board."
+  },
+  "critic": {
+   "title": "A genuinely <em>new situation</em> from the evidence board",
+   "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+   "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+   "pull": "One individual task now decides each student's next path."
+  }
+ },
+ "lessons": {
+  "11-1": {
+   "prep": {
+    "home": [
+     "Joud's line plot shows seedling heights marked above quarters. Read the scale first — what length does each tick position stand for?",
+     "Count only the marks sitting before the half-unit position. What does counting the column, not measuring again, tell you?",
+     "A diver reads the tallest mark instead of counting a column. What question is each reading answering?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can read the fractional scale of a line plot before interpreting marks.",
+     "I can count the marks in one column to answer 'how many had this measure'.",
+     "I can read questions that need the column count rather than the extreme value.",
+     "I can distinguish the tallest mark, the most frequent measure and the total count."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "On a leaf-length plot in quarter-units, how many leaves measure more than half a unit?",
+     "options": [
+      { "v": "a", "text": "4" },
+      { "v": "b", "text": "7" },
+      { "v": "c", "text": "3" },
+      { "v": "d", "text": "12" }
+     ],
+     "right": "a",
+     "yes": "Yes — the columns past the 1/2 position hold 4 leaves in total; the question asks for a count of marks past a boundary, not the length itself.",
+     "notYet": "Not yet — find the 1/2 tick, then count every mark strictly beyond it."
+    },
+    "harder": {
+     "prompt": "A shell-width plot holds 16 marks in eighth-units: three at 1/4, five at 3/8, six at 1/2 and two at 5/8. Answer with the count of marks in each interval shorter than 3/8, and state what the plot alone can and cannot tell you about why.",
+     "answer": "Shorter than 3/8 means the 1/4 column only: 3 shells (the 3/8 column is not strictly shorter). The plot reports measurements, not causes — it can say how many and where, but it cannot say why most shells sit at 1/2; that needs an investigation. Reading is counting within boundaries; interpretation must stop where the data stops."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "poster",
+       "task": "A how-to-read-it board: make a labelled anchor chart that teaches the three readings a line plot answers — the most frequent column, the extreme marks, and the count within a boundary — each demonstrated on one example plot.",
+       "stem": "ask what the three readings are → plan the chart sections → draw a sample plot and mark each reading → test each reading by recounting → share the chart on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "A diver's log illustration: draw a line plot of pearl-size measurements from a described dive, colour-code the tallest, the cluster and the rare marks, and annotate which diving question each colour answers.",
+       "stem": "ask which three questions the board answers → plan the scale → draw and colour the marks → test each answer by counting columns → share the log on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A read-it-aloud clip with the AI as spotter: ask the AI to read three counts off a described line plot, recount each column yourself on camera, and stop the spotter when it answers with a length instead of a count.",
+       "stem": "ask what each question demands → plan the three questions → request the AI's readings → test every reading by counting marks → share the clip on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "11-2": {
+   "prep": {
+    "home": [
+     "The blank board needs a scale. The measurements 1/2, 3/4, 1 and 1/4 arrive — which single unit (halves, quarters, eighths) places every mark exactly?",
+     "Why choose the smallest unit the data needs — what happens to a 3/4 mark on a halves-only line?",
+     "Each measurement gets exactly one mark. What would placing a mark between ticks instead of on a tick falsely suggest?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can choose the scale unit from the smallest and largest measurements.",
+     "I can draw every tick position the data needs.",
+     "I can place one mark per measurement above its true position.",
+     "I can keep a plot honest: marks land on ticks, one per data point."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "A data set contains 1/2, 5/8, 3/4 and 7/8. Which scale must the line plot use to place every mark exactly?",
+     "options": [
+      { "v": "a", "text": "halves" },
+      { "v": "b", "text": "quarters" },
+      { "v": "c", "text": "eighths" },
+      { "v": "d", "text": "wholes" }
+     ],
+     "right": "c",
+     "yes": "Yes — the 5/8 and 7/8 measures need eighth ticks; a coarser cut would leave them between marks. The scale is the finest unit the data reaches.",
+     "notYet": "Not yet — look at the smallest unit in the data (it is an eighth), and choose a scale where every measure sits exactly on a tick."
+    },
+    "harder": {
+     "prompt": "Collect twelve measurements from life at home to the nearest quarter unit (lengths of shoes, books or pencils), list them, choose the scale, and state the tick range the final plot must span before any mark is drawn.",
+     "answer": "Valid collection: twelve real quarter-unit measures. The scale is quarters (if any measure is a whole or half it still lands on a quarter tick); the line spans from the smallest measure down to 0 (or the nearest tidy floor) to the largest measure, with every quarter tick in between drawn before placing marks. Planning the range from the data keeps the board honest."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "mini-project",
+       "task": "The blank-board build: actually collect repeated measurements with a ruler (seedling heights, pencil lengths or paper-plane throws to the nearest fraction), choose the scale, and build the complete line plot — title, axis ticks, one mark per measurement — from your own data.",
+       "stem": "ask what real thing to measure → plan the measurement rounds → measure, then choose the scale and place marks → test by recounting the total → share the built board on the wall",
+       "ai": false
+      },
+      {
+       "kind": "design",
+       "task": "A reusable plot-board template: design a printable line-plot board with interchangeable scale strips (halves, quarters, eighths) and counters that stack as marks, so any classroom measurement set can be plotted without redrawing.",
+       "stem": "ask what scales a board must support → plan the strips and counters → build the template → test all three scales against sample data → share the template on the wall",
+       "ai": false
+      },
+      {
+       "kind": "poster",
+       "task": "An AI-data verification poster: ask the AI to invent a described measurement set, plot it yourself from its listed values, and poster where its claimed totals fail a recount or where the scale cannot hold its numbers — verified against your own scale choice.",
+       "stem": "ask what makes a data set plottable → plan the checks → request an invented set from the AI → test its scale and counts by plotting → share the verification poster on the wall",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "11-3": {
+   "prep": {
+    "home": [
+     "The cluster of seedling marks has meaning. To total the height of the three tallest marks, what fraction operation combines them — and why like pieces first?",
+     "Five marks sit at 3/8. Repeated addition gives the cluster total — write it as a multiplication of the fraction.",
+     "A recommendation needs a comparison of totals, not a guess from the picture. What number would the cluster need to beat another cluster?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can solve a total problem by combining the values of the marks in a column.",
+     "I can add fractions from the plot using like denominators.",
+     "I can interpret the cluster: which measure occurs most and what that supports.",
+     "I can turn a pattern of marks into one stated recommendation."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Two marks at 1/4 m and two at 1/2 m represent the four tallest seedlings. What is their total height?",
+     "options": [
+      { "v": "a", "text": "20/8 m" },
+      { "v": "b", "text": "1 1/2 m" },
+      { "v": "c", "text": "3/4 m" },
+      { "v": "d", "text": "1 2/8 m" }
+     ],
+     "right": "b",
+     "yes": "Yes — rewritten on the same cut: 2/4 plus 2/2 is 2/4 plus 4/4 = 6/4 = 1 2/4, or 1 1/2 metres. Totalling from the plot means putting every mark on one cut.",
+     "notYet": "Not yet — rewrite every mark as eighths or quarters: 1/4 + 1/4 + 1/2 + 1/2, then add the like pieces."
+    },
+    "harder": {
+     "prompt": "The class plot over three treatments (water amounts) shows clusters: control group marks total 12/8 m of growth, watered group total 20/8 m. State the difference and the one recommendation the data supports — plus the check the next experiment must run.",
+     "answer": "The watered group shows 20/8 - 12/8 = 8/8 = 1 full metre more total growth. The data supports recommending the watered treatment for a repeat planting, with the honest qualifier that totals compare groups and individuals varied; the check is a repeated fair test with equal plant counts and equal light before any stronger claim."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "poster",
+       "task": "The cluster-recommendation poster: take a real collected data set, total each column's measures, state what the cluster means in plain words, and make one practical recommendation with the numbers shown on the poster.",
+       "stem": "ask what decision the data informs → plan the recommendation → total the columns and compare → test the totals by re-adding the marks → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "model",
+       "task": "A fraction-bar total model: under a plotted column of identical marks, build the repeated fraction as stacked pieces of a folded bar, and show the column total renamed as a whole or mixed number, physically matching the marks.",
+       "stem": "ask which column to total → plan the stack → fold the bar pieces and stack them → test the renamed total against the count of marks → share the model on the wall",
+       "ai": false
+      },
+      {
+       "kind": "presentation",
+       "task": "A findings hearing with the AI as second researcher: collect your own data and present one recommendation, let the AI pose three challenges about totals and fairness, answer each with your plotted numbers on camera, and revise the claim wherever your own evidence does not hold.",
+       "stem": "ask what the claim rests on → plan the three answers → invite the AI's challenges → test each against the column totals → present the defended recommendation",
+       "ai": true
+      }
+     ]
+    }
+   }
+  },
+  "11-4": {
+   "prep": {
+    "home": [
+     "A speaker claims 'half the class jumped exactly 5/8 metre.' Before believing it, what would you count on the plot — and what fraction of all marks would that require?",
+     "What are the two sides of the boundary the claim creates, and which side actually answers 'at least 5/8' versus 'exactly 5/8'?",
+     "A beautiful claim that the data does not support — what is the diver's move: argue louder, or recount and name the evidence?"
+    ]
+   },
+   "diagnose": {
+    "claims": [
+     "I can test a stated claim by counting marks on both sides of its boundary.",
+     "I can distinguish 'exactly', 'at least' and 'more than' on a line plot.",
+     "I can judge whether a claim is justified by the fraction of marks it needs.",
+     "I can name the evidence in a counter-argument instead of denying it by opinion."
+    ]
+   },
+   "practice": {
+    "independent": {
+     "prompt": "Someone claims most leaves are exactly 3/4 long, and the plot shows 4 of 16 marks there. Is the claim justified?",
+     "options": [
+      { "v": "a", "text": "yes — 3/4 is the common measure" },
+      { "v": "b", "text": "no — only 4 of 16 is one quarter, not most" },
+      { "v": "c", "text": "yes — 3/4 marks are tallest" },
+      { "v": "d", "text": "no — no leaf is 3/4 long" }
+     ],
+     "right": "b",
+     "yes": "Yes — 'most' requires more than half the marks; 4 of 16 is exactly a quarter. The claim is beautiful and false, and the count proves it.",
+     "notYet": "Not yet — recount the exact column: 4 marks out of 16 total is one quarter, nowhere near half."
+    },
+    "harder": {
+     "prompt": "Three claims appear on the same 20-mark jump plot (at least half a metre: 12 marks; exactly 5/8: 5 marks; longer than 5/8: 6 marks). For each claim, draw its boundary, state supported or unsupported with the fraction, and note one rewording that turns a false claim into a true one.",
+     "answer": "'At least half a metre': 12 of 20 = 3/5, supported (true majority). 'Exactly 5/8': 5 of 20 = 1/4, not most — unsupported as stated; supported if reworded 'a quarter jumped 5/8'. 'Longer than 5/8': 6 of 20 = 3/10; as 'most' it fails, as 'nearly a third jumped past 5/8' it stands. Boundary discipline turns the same counts into honest claims."
+    }
+   },
+   "critic": {
+    "production": {
+     "options": [
+      {
+       "kind": "poster",
+       "task": "A claim-testers poster: take three sample statements about a plot, draw the boundary each claim needs, show the count on both sides with fractions, and stamp each as supported or unsupported with the evidence written beneath.",
+       "stem": "ask what boundary each claim sets → plan the three stamp rows → count both sides and fraction them → test each stamp against the totals → share the poster on the wall",
+       "ai": false
+      },
+      {
+       "kind": "drawing",
+       "task": "The beautiful-false-claim comic: a four-panel comic where a confident claim about a line plot is made, challenged by a recount, retested with boundaries drawn, and replaced by a true statement — the counting wins the final panel.",
+       "stem": "ask what the claim gets wrong → plan the four panels → draw claim, challenge, recount and verdict → test the verdict against the fraction of marks → share the comic on the wall",
+       "ai": false
+      },
+      {
+       "kind": "video",
+       "task": "A claim-audit reel with the AI as confidence speaker: ask the AI to state three bold conclusions from a described plot, test each on camera by counting the boundary, and broadcast the corrected verdict for any claim whose required fraction the marks do not reach.",
+       "stem": "ask what each claim would need to prove → plan the three counts → request bold claims from the AI → test each by recounting marks → share the audit reel on the wall",
+       "ai": true
+      }
+     ]
+    }
+   },
+   "wall": {
+    "artifact": "The pearl diver's evidence board — real fractional measurements collected, plotted, totalled and challenged, with one recommendation the marks actually support, signed by its makers"
+   }
+  }
+ }
+}

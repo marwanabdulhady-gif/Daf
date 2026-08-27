@@ -1,0 +1,638 @@
+{
+  "topic": 17,
+  "title": "Step-Up to Grade 5",
+  "arc": "The grand gate and the letter forward — decimals deepen to the thousandth, decimals are compared and added and estimated, fractions meet unlike denominators and are combined by multiplication and divided into wholes, space becomes volume in three dimensions, and the class builds the final pavilion model, annotates its mathematics, and seals a letter for the next class.",
+  "sources": [
+    "CCSS 5.NBT.A.3 (thecorestandards.org): read, write and compare decimals to thousandths; Grade 5 step-up decimal place-value and comparison content",
+    "CCSS 5.NBT.B.7: add, subtract, multiply and divide decimals to hundredths, using concrete models and estimating for reasonableness",
+    "CCSS 5.NF.A.1: add and subtract fractions with unlike denominators by replacing them with equivalent fractions (common denominators) — 17-5 through 17-7",
+    "CCSS 5.NF.B.4 and 5.NF.B.7: multiply a fraction by a whole number / whole number by a fraction, and divide a whole number by a unit fraction (17-8, 17-9)",
+    "CCSS 5.MD.C.4 and 5.MD.C.5: measure volume by counting unit cubes and apply the volume formula V = l x w x h (17-10) — real box, container and packing productions",
+    "Cube-packing and box-volume classroom tasks: filling rectangular boxes with unit cubes and discovering the three-edge product — the standard Grade 5 volume model",
+    "Recipe scaling PBL: multiplying fractions to scale ingredients (Trouble-free Teaching 'STEM Project: Design a Garden Using Multiplying Fractions', 4.NF.B.4; edible fraction scaling activities) — 17-8 context",
+    "Decimal measurement contexts: money, length and capacity read to thousandths or compared to hundredths across real sheets (procurement, lab measure, packaging)",
+    "Maker-space volume design: designing and testing containers that hold a target cubic unit count — an engineering-design volume production",
+    "NGSS Science and Engineering Practice 2 (Models) and Practice 5 (Mathematics): multi-step quantitative reasoning across decimals, fractions and volume in the final pavilion build"
+  ],
+  "screens": {
+    "prep": {
+      "title": "The <em>grand-gate briefing</em> was already at home",
+      "lead": "Before class, the class met the step-up briefing — one new Grade-5 idea and three home questions per lesson, at each student's own pace.",
+      "goal": "Recover the first exposure, so the final build begins with thinking — not with content delivery.",
+      "pull": "Now the probe: what does the class already hold on the step-up ground?"
+    },
+    "diagnose": {
+      "title": "The <em>gap map</em> at the gate",
+      "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+      "goal": "Build a gap map: what is known, and what is missing, before the gate opens.",
+      "pull": "Knowledge building closes exactly what the map flags."
+    },
+    "practice": {
+      "title": "Practice — feedback in <em>seconds, not days</em>",
+      "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+      "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+      "pull": "Now a genuinely new situation at the gate."
+    },
+    "critic": {
+      "title": "A genuinely <em>new situation</em> at the gate",
+      "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+      "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+      "pull": "One individual task now decides each student's next path."
+    }
+  },
+  "lessons": {
+    "17-1": {
+      "prep": {
+        "home": [
+          "The gate measure reads 6.207 metres. Name each place: units, tenths, hundredths, thousandths — which digit sits two places right of the point?",
+          "Two readings, 0.05 and 0.005, look similar. How many times smaller is the second, and which decimal place decides it?",
+          "Write a decimal with a zero in the tenths and a 7 in the thousandths. Say why zeros inside the decimal are not empty space."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can read decimal places to the thousandths.",
+          "I can name the value of any digit after the point.",
+          "I can explain that a zero inside a decimal holds a place open.",
+          "I can write a described decimal from its places."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "Which digit is in the hundredths place of 3.419?",
+          "options": [
+            { "v": "a", "text": "1" },
+            { "v": "b", "text": "4" },
+            { "v": "c", "text": "9" },
+            { "v": "d", "text": "3" }
+          ],
+          "right": "a",
+          "yes": "Yes — places right of the point read tenths, hundredths, thousandths: the 1 is second, the hundredths place; the 9 is thousandths.",
+          "notYet": "Not yet — count from the point: 4 tenths, 1 hundredth, 9 thousandths."
+        },
+        "harder": {
+          "prompt": "Build the gate reading: 2 wholes, no tenths, 8 hundredths, no thousandths. Write it, then write the number one thousandth larger, and say what place changed.",
+          "answer": "The reading is 2.080 — the tenths zero holds the open place and the trailing zero marks thousandths precision. Adding one thousandth gives 2.081; only the thousandths digit changes. A zero between the point and the 8 keeps 8 hundredths from becoming 8 tenths."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A thousandths gate measure: build a place-value gauge with three decimal places (use a 10-by-10 grid plus an imagined hundred-slices row), set and read five readings, and display them with each digit's place named.",
+              "stem": "ask what each position is worth → plan the three decimal places → set and read five readings → test each against the grid → share the gauge on the wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A decimal-place column chart: draw one reading (such as 6.207) with columns for units, tenths, hundredths and thousandths, shading the value of each digit and circling the held-open zero.",
+              "stem": "ask which digits fill the columns → plan the chart → shade each place → test the columns rebuild the reading → share the chart on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A place-value audit clip with the AI as recorder: ask the AI to name each digit place for five decimals, point to the place on your gauge on camera, and correct any reading where the AI treated an inside zero as nothing.",
+              "stem": "ask what an inside zero does → plan the five readings → request places from the AI → test each on the gauge → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "17-2": {
+      "prep": {
+        "home": [
+          "Compare 0.6 and 0.582. The trap is digit count — on the thousandths cut, what is each number?",
+          "0.600 and 0.582 — which place decides, and how many thousandths separate them?",
+          "Write the order for 0.7, 0.077 and 0.77 on one cut before class, then say which is greatest."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can compare decimals to thousandths place by place.",
+          "I can rewrite shorter decimals with trailing zeros onto one cut.",
+          "I can order several decimals and justify the first place that differs.",
+          "I can avoid the digit-count trap."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "Which is greater, 0.9 or 0.875?",
+          "options": [
+            { "v": "a", "text": "0.875" },
+            { "v": "b", "text": "0.9" },
+            { "v": "c", "text": "they are equal" },
+            { "v": "d", "text": "cannot tell" }
+          ],
+          "right": "b",
+          "yes": "Yes — 0.900 against 0.875: nine hundred thousandths beat eight hundred seventy-five by 25 thousandths; place value, not digit length, decides.",
+          "notYet": "Not yet — rewrite 0.9 as 0.900, then compare thousandths."
+        },
+        "harder": {
+          "prompt": "Order 0.3, 0.313, 0.033 and 0.33 on one cut, and name the first decimal place that decides each close pair.",
+          "answer": "On thousandths: 0.033, then 0.300 (0.3), then 0.313, then 0.330 (0.33). The tenths place separates 0.033 from the rest; among the 0.3 group, the hundredths place orders 300, 313 and 330. Comparing is a race down the places until two digits differ."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "map",
+              "task": "A thousandths number-line board: draw a 0-to-1 line in hundredths with a thousandths zoom strip, peg eight decimals, and mark the place that decided each close pair with a flag.",
+              "stem": "ask where each peg belongs → plan the two-scale line → peg and flag each decimal → test positions on the zoom strip → share the board on the wall",
+              "ai": false
+            },
+            {
+              "kind": "poster",
+              "task": "A digit-count-trap poster: work three decimal comparisons by rewriting on the thousandths cut, with the misleading 'longer decimal wins' answer crossed out.",
+              "stem": "ask what the trap recommends → plan the three comparisons → rewrite and decide each → test against the line → share the poster on the wall",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "The AI comparison audit: ask the AI to order six decimals to thousandths, verify each by rewriting on one cut yourself, and publish the audit including any comparison the AI made by digit length.",
+              "stem": "ask what settles a comparison → plan the audit rows → request orders from the AI → test each on one cut → publish the audit on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "17-3": {
+      "prep": {
+        "home": [
+          "Two gate sections measure 0.45 m and 0.37 m. Align the decimal points first — what do the columns total, and where is the carry?",
+          "Estimate before adding: is 0.45 + 0.37 closer to 0.8 or to 8? Use the estimate to reject a misplaced point.",
+          "Subtract 0.38 from 0.7 on grid paper — why must the 0.7 become 0.70?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can add and subtract decimals with points aligned.",
+          "I can carry and ungroup across decimal places.",
+          "I can estimate the result to place the point.",
+          "I can check with the reverse operation."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "What is 0.56 + 0.28?",
+          "options": [
+            { "v": "a", "text": "0.84" },
+            { "v": "b", "text": "0.714" },
+            { "v": "c", "text": "8.4" },
+            { "v": "d", "text": "0.74" }
+          ],
+          "right": "a",
+          "yes": "Yes — hundredths: 6 + 8 = 14, carry a tenth; tenths: 5 + 2 + 1 = 8: 0.84. The estimate (about 0.6 plus about 0.3) confirms.",
+          "notYet": "Not yet — align the points, add hundredths, carry one tenth, then the tenths."
+        },
+        "harder": {
+          "prompt": "A gate length of 1.2 m has a panel 0.48 m fitted. Find the remaining gap, then show the subtraction a second way using hundredths, and check by adding back.",
+          "answer": "Write 1.2 as 1.20; 1.20 - 0.48: ungroup one tenth (1.20 becomes 1.10 with 10 hundredths... hundredths 10 - 8 = 2, tenths 11 - 4 = 7) = 0.72 m. As hundredths: 120 - 48 = 72 hundredths = 0.72. Check: 0.72 + 0.48 = 1.20."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A decimal columns wall model: build tenths-strips and hundredths-squares, physically carry 10 hundredths into one tenth across three additions and one subtraction, leaving the exchange mounted.",
+              "stem": "ask when ten pieces exchange → plan the strips and squares → build the carry and ungroup → test by reverse operation → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A measure-fit drawing: draw a measured gate or shelf with a fitted panel, show the aligned-point sum or difference along the edge, and mark the estimate and the carry.",
+              "stem": "ask what is being fitted → plan the measured edge → draw, align and compute → check by the reverse operation → share the drawing on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "An alignment-check clip with the AI as apprentice: ask the AI to add and subtract three decimal lengths, work each on camera with strips, and correct any misaligned-point answer with the estimate that rejects it.",
+              "stem": "ask what alignment protects → plan the three calculations → request the AI's answers → test each by estimate and reverse → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "17-4": {
+      "prep": {
+        "home": [
+          "Four boards each 2.9 metres long arrive. Estimate: is 4 x 2.9 nearer 12 than to anything else, and is the estimate high or low, and why?",
+          "Compute 2.9 as (3 - 0.1): what does 4 x 2.9 equal by place value?",
+          "An estimate of 120 comes from misreading the place. Estimate-first: how would the real answer's size rule it out at once?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can estimate a whole-number times decimal product by rounding.",
+          "I can say whether my estimate is high or low.",
+          "I can compute the product by decimal place value.",
+          "I can use the estimate to reject a place-value error."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "Estimate 6 x 2.1, then say whether the estimate runs high or low of the exact product.",
+          "options": [
+            { "v": "a", "text": "about 12, slightly high" },
+            { "v": "b", "text": "about 12, slightly low" },
+            { "v": "c", "text": "about 120" },
+            { "v": "d", "text": "about 8" }
+          ],
+          "right": "a",
+          "yes": "Yes — round 2.1 to 2 for an estimate of 12; since 2 is below 2.1, the estimate 12 is slightly low; the exact product 6 x 2.1 = 12.6.",
+          "notYet": "Not yet — multiply by the rounded whole (6 x 2 = 12) and check which side of 2.1 you rounded."
+        },
+        "harder": {
+          "prompt": "A builder estimates 5 x 4.2 as about 25 and exact 20.1. Show the estimate as high or low, compute the exact product, and explain which decimal-place mistake yields 20.1.",
+          "answer": "Rounding 4.2 up? 5 x 4 = 20 is the low estimate (4 < 4.2); exact: 4.2 x 5 = 21.0. 25 would come from rounding 4.2 toward 5, too high; 20.1 treats the one tenth as added once (5 x 4 + 0.1) instead of five times (5 x 0.1 = 0.5). Estimate 20 and exact 21 agree to one place; 20.1 does not."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "poster",
+              "task": "An estimate-first buying poster: take four bulk purchases at decimal prices/measures, post the rounding estimate and high/low label above the exact product on each row.",
+              "stem": "ask what the rounded value is → plan the four rows → estimate, label, compute → test exact against estimate size → share the poster on the wall",
+              "ai": false
+            },
+            {
+              "kind": "design",
+              "task": "An estimate dial design: build a dial showing the exact product region for 'times a decimal' problems, with markers for the rounded estimate and a red zone for place-value errors (answers ten times out).",
+              "stem": "ask what region the exact answer sits in → plan the dial zones → mark three example products → test each marker against the exact → share the design on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "The high-or-low clip with the AI as buyer: ask the AI for three times-decimal products with an estimate, compute each on camera, label high or low, and reject the AI's estimate wherever it rounds without the side.",
+              "stem": "ask which side of the estimate the exact lands → plan the three products → request estimates from the AI → test each by computing → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "17-5": {
+      "prep": {
+        "home": [
+          "Quarters and sixths meet. Write 1/4 and 1/6 as slices that share one cut — what denominator do both fit?",
+          "Why does 12 work, not 10 or 20? Look for a number both 4 and 6 divide.",
+          "Once on twelfths, what does adding look like — and why must the denominators match before any pieces combine?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can find a common denominator for two fractions.",
+          "I can explain that a common denominator is a shared cut.",
+          "I can rewrite both fractions before combining.",
+          "I can see when one denominator already fits inside the other."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "What common denominator do one third and one fifth share?",
+          "options": [
+            { "v": "a", "text": "fifteenths" },
+            { "v": "b", "text": "eighths" },
+            { "v": "c", "text": "fifths" },
+            { "v": "d", "text": "thirds" }
+          ],
+          "right": "a",
+          "yes": "Yes — a number both 3 and 5 divide: 15 fifteenths; both slices fit exactly that cut.",
+          "notYet": "Not yet — multiply-style: look for the first number both denominators reach (15)."
+        },
+        "harder": {
+          "prompt": "A mixture needs fractions 1/2, 1/3 and 1/4 compared on one cut. Find a common denominator for all three, rewrite each, and state which single amount the three share as their measuring cut.",
+          "answer": "The first number 2, 3 and 4 all divide is 12: 1/2 = 6/12, 1/3 = 4/12, 1/4 = 3/12. All three measure in twelfths; any common multiple beyond 12 (24, 36) works but 12 is the simplest shared cut."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A common-cut folding model: fold paper strips into 4 and 6 pieces separately, then into the shared 12-cut, and leave three fractions marked twice (different cut, same point).",
+              "stem": "ask which cuts must meet → plan the folds → fold each and the shared cut → test equivalence by overlay → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "design",
+              "task": "A recipe-conversion sheet: design a kitchen sheet where ingredients measured in thirds and quarters are converted to one common measure before combining, with the cut and the rewrites printed.",
+              "stem": "ask what measure all ingredients share → plan the conversions → rewrite each measure → test a sample mix-up by folding → share the sheet design on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "The shared-cut clip with the AI as cook: ask the AI to find common denominators for three fraction pairs, fold each shared cut on camera, and correct any cut the AI chose that neither denominator divides.",
+              "stem": "ask what makes a cut valid → plan the three pairs → request cuts from the AI → test each by folding → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "17-6": {
+      "prep": {
+        "home": [
+          "Add 1/4 + 1/6: rewrite both onto the common 12-cut. What do 3 and 2 twelfths make together?",
+          "Why is 2/10 wrong — what would that count that neither fraction is cut into?",
+          "Check the result 5/12 by shading each fraction on a folded strip: do the shaded pieces reach the claimed total?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can add unlike fractions by common denominators.",
+          "I can rewrite both fractions before adding the numerators.",
+          "I can keep the shared denominator after adding.",
+          "I can verify the sum on a folded strip."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "What is one third plus one half?",
+          "options": [
+            { "v": "a", "text": "5/6" },
+            { "v": "b", "text": "2/5" },
+            { "v": "c", "text": "2/6" },
+            { "v": "d", "text": "1/6" }
+          ],
+          "right": "a",
+          "yes": "Yes — sixths: 1/3 = 2/6, 1/2 = 3/6; the shaded pieces total 5/6. The shared cut is sixths, not the denominators added.",
+          "notYet": "Not yet — rewrite both on sixths (2/6 + 3/6), then add the numerators."
+        },
+        "harder": {
+          "prompt": "A run covers 1/2 km on one path and 1/3 km on a second. Find the total, say how much less than a full kilometre it is, and prove the run shorter than one whole.",
+          "answer": "Sixths: 3/6 + 2/6 = 5/6 km total. That is 6/6 - 5/6 = 1/6 km short of a full kilometre. Because 5/6 < 1, the model proves the run shorter than one whole — the unlike denominators never block the addition once the cut is shared."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "drawing",
+              "task": "A two-strip sum drawing: draw three unlike-denominator additions with the separate cuts above and the shared cut below, shading the combined pieces and writing each total.",
+              "stem": "ask which fractions combine → plan the paired strips → shade and rewrite each → test sums by folding → share the drawing on the wall",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A measuring-cup combine model: measure out two unlike-cup fractions (as with 1/2 and 1/3 cup marks), pour together, and demonstrate the combined level against the shared denominator.",
+              "stem": "ask what the combined level should read → plan the pours → measure and combine → test against the rewritten sum → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "The AI addition audit: ask the AI for four unlike-denominator sums (some deliberately with denominators added), verify each on folded strips, and publish the corrected list with each denominator-added trap shown.",
+              "stem": "ask what a correct sum preserves → plan the audit → request sums from the AI → test each on a shared cut → publish the audit on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "17-7": {
+      "prep": {
+        "home": [
+          "A full 1/2 section is removed from one of 1/5: the cuts differ. What shared denominator lets you subtract?",
+          "On tenths: what is 5/10 minus 2/10 — and is the result positive or negative, and how do you know 1/2 was the larger fraction?",
+          "Check the difference by adding it back to 2/10: does the piece return to one half?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can subtract unlike fractions using a common denominator.",
+          "I can rewrite before subtracting the numerators.",
+          "I can keep the shared denominator.",
+          "I can add back to verify the difference."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "What is one half minus one fourth?",
+          "options": [
+            { "v": "a", "text": "1/4" },
+            { "v": "b", "text": "0/2" },
+            { "v": "c", "text": "1/2" },
+            { "v": "d", "text": "1/8" }
+          ],
+          "right": "a",
+          "yes": "Yes — quarters: 2/4 - 1/4 = 1/4. The fourths fit the half already, so no new cut is needed.",
+          "notYet": "Not yet — write 1/2 as 2/4, then subtract one fourth."
+        },
+        "harder": {
+          "prompt": "A board 3/4 m long has a piece 1/3 m cut off. Find the remaining length on a shared cut, then express it in simplest form, and add back to verify.",
+          "answer": "Twelfths: 3/4 = 9/12, 1/3 = 4/12; remaining 5/12 m. Simplest form is 5/12 (no common factor above 1). Add back: 5/12 + 4/12 = 9/12 = 3/4 — the removed piece and remainder rebuild the board."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "drawing",
+              "task": "A cut-and-remove strip comic: draw three subtraction situations as strips folded, shaded then crossed off on the shared cut, with the remaining pieces marked and added back.",
+              "stem": "ask what remains after removing → plan the three strips → shade, cut and verify → test each by add-back → share the comic on the wall",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A poured-out measuring model: fill to one fraction, pour out a unlike-cup portion, and demonstrate the remaining level — reading the result on the shared measure.",
+              "stem": "ask what level remains → plan the two pours → fill and pour out → test remainder plus poured equals start → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "The add-back proof clip with the AI as inspector: ask the AI for three unlike-denominator differences, verify each on camera by adding the difference back, and catch any answer whose add-back does not rebuild the start.",
+              "stem": "ask what add-back should return → plan the three cases → request differences from the AI → test each by adding back → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "17-8": {
+      "prep": {
+        "home": [
+          "Two thirds of 15 lanterns are lit. Find it two ways: split 15 into three equal parts, take two; or write 2/3 x 15. What is 1/3 of 15, then 2/3?",
+          "The model divides first, then multiplies — why does 2/3 of 15 equal 10 lanterns?",
+          "Scale a recipe for 24 people that calls for a 1/4 portion each: what fraction of the bulk is made, and in wholes how much?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can find a unit fraction of a whole (1/3 of 15 = 5).",
+          "I can multiply a whole number by a fraction.",
+          "I can model 'fraction of' with equal groups.",
+          "I can apply fraction multiplication to scaling situations."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "What is three fourths of 20?",
+          "options": [
+            { "v": "a", "text": "15" },
+            { "v": "b", "text": "5" },
+            { "v": "c", "text": "12" },
+            { "v": "d", "text": "80" }
+          ],
+          "right": "a",
+          "yes": "Yes — 1/4 of 20 is 5; three of those parts is 15. Divide first (20 ÷ 4), then multiply by the numerator (x 3).",
+          "notYet": "Not yet — find one fourth of 20 (5), then take three such parts."
+        },
+        "harder": {
+          "prompt": "A wall of 24 panels is 3/4 complete. How many panels stand, and how many remain? Verify both answers against the full wall.",
+          "answer": "1/4 of 24 is 6, so 3/4 is 18 panels standing; remaining is 6 panels. Check: 18 + 6 = 24 — the parts rebuild the whole wall."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "A scaled recipe production: take one real recipe with a fractional amount per portion, scale it up for the class by fraction-of-a-whole multiplication, measure the actual bulk ingredients, and post the scaled recipe.",
+              "stem": "ask how many the recipe serves → plan the scaling → multiply each fractional measure → test the bulk with cups and totals → share the scaled recipe on the wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A part-of-the-whole mural: draw a group of 12 or 20 icons (lanterns, trees), shade the fraction-of-a-whole stated for three questions, and count the shaded icons beneath each.",
+              "stem": "ask how many equal parts → plan the three icon sets → divide, count and shade → test shaded plus unshaded equals all → share the mural on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "The scale-it clip with the AI as line cook: ask the AI for three 'fraction of a whole' scaling calculations, divide-and-count each on camera with real items, and correct any answer the AI computed by multiplying whole by denominator.",
+              "stem": "ask what a fraction-of means → plan the three scalings → request the AI's values → test each with counted parts → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "17-9": {
+      "prep": {
+        "home": [
+          "Five wholes are each split into thirds. Asking 'how many thirds are there in all' — write it as 5 ÷ 1/3. How many pieces?",
+          "A serving is 1/3 of a batch: how many servings come out of 2 wholes — and what does a left-over mean here?",
+          "Division by a unit fraction gives a number larger or smaller than the wholes you started with? Reason it from the cut pieces."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can divide a whole number by a unit fraction.",
+          "I can reason that smaller pieces mean more of them.",
+          "I can model dividing wholes into equal fractional parts.",
+          "I can check the answer by multiplying back (pieces x unit fraction = wholes)."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "How many one-fifth pieces are there in 3 wholes?",
+          "options": [
+            { "v": "a", "text": "15" },
+            { "v": "b", "text": "3/5" },
+            { "v": "c", "text": "5" },
+            { "v": "d", "text": "8" }
+          ],
+          "right": "a",
+          "yes": "Yes — each whole splits into 5 fifths; 3 wholes give 3 x 5 = 15 pieces. Dividing by a piece size counts the pieces, so the answer grows.",
+          "notYet": "Not yet — five fifths per whole times three wholes (15); multiply back: 15 x 1/5 = 3 wholes."
+        },
+        "harder": {
+          "prompt": "A water tank is filled in 1/4-tank servings. 6 tanks must be dispensed, but a station can pour 8 servings an hour. How many servings, and does the station finish in 2 hours, with what margin?",
+          "answer": "Servings: 6 ÷ 1/4 = 24. In 2 hours the station pours 16 servings — not finished; it needs 24/8 = 3 hours, short of the 2-hour target by 8 servings (one hour). The unit-fraction division counts the pieces; capacity is a separate comparison."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A split-wholes serving model: cut paper 'wholes' into the stated unit fraction for four problems, mount the strips with the count of pieces, and label each with its division and multiply-back check.",
+              "stem": "ask how many pieces each whole makes → plan the cuts → cut and count → test count times the unit equals wholes → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A servings board: draw pitchers/loaves divided into equal fractions, number every piece across the wholes, and show the total servings and the multiply-back.",
+              "stem": "ask what piece size is being served → plan the dividers → draw, cut and number pieces → test by multiplying back → share the board on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "The more-pieces clip with the AI as quartermaster: ask the AI for three whole-divided-by-unit-fraction results, count every piece on camera from cut strips, and correct any answer the AI left smaller than the starting wholes.",
+              "stem": "ask what direction the answer moves → plan the three cuts → request results from the AI → test each by cutting and counting → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "17-10": {
+      "prep": {
+        "home": [
+          "A box is 5 cubes long, 2 wide and 3 high. Build the bottom layer and count cubes; then stack layers — what does 5 x 2 x 3 give?",
+          "Why is the answer in cubic units and not square? Count the third dimension's role.",
+          "Two boxes: 4 x 2 x 3 and 5 x 2 x 2. Predict which holds more before computing, then confirm."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can find volume by counting unit cubes.",
+          "I can apply the volume formula l x w x h.",
+          "I can use cubic units for volume.",
+          "I can compare the capacity of rectangular boxes."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "A box is 4 cubes long, 3 wide and 2 high. What is its volume?",
+          "options": [
+            { "v": "a", "text": "24 cubic units" },
+            { "v": "b", "text": "9 cubic units" },
+            { "v": "c", "text": "24 square units" },
+            { "v": "d", "text": "12 cubic units" }
+          ],
+          "right": "a",
+          "yes": "Yes — bottom layer 4 x 3 = 12 cubes, 2 layers high: 12 x 2 = 24 cubic units. Space fills in three dimensions.",
+          "notYet": "Not yet — multiply the three edges (4 x 3 x 2) and call the unit cubic."
+        },
+        "harder": {
+          "prompt": "A display case is 6 x 4 x 2 units and an alternate is 5 x 5 x 1. Compare volumes, give each, and state which box carries the greater volume without any extra height.",
+          "answer": "Case A: 6 x 4 x 2 = 48 cubic units. Case B: 5 x 5 x 1 = 25 cubic units. Case A holds 23 more cubic units, because stacking two layers doubles the footprint; the single-height box loses volume despite the 5 x 5 base."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "The pavilion exhibition model — the unit's own artifact: build the final pavilion (or a display box) from unit cubes/cardboard with dimensions specified, compute its volume, annotate every mathematical idea the year taught across its faces, and host the exhibition for another class or families, signed by its makers.",
+              "stem": "ask what the pavilion must hold and show → plan dimensions and annotations → build and cube-count → test volume with l x w x h and the annotations in a talk → present and exhibit the model",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A cube-packing box model: fill two small box designs with unit cubes layer by layer, label footprint cubes and layers, and compare their volumes physically.",
+              "stem": "ask how many cubes each layer holds → plan the box interiors → pack and count by layers → test counts against l x w x h → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "presentation",
+              "task": "The exhibition-defence Q-and-A with the AI as visitor: build the pavilion model, ask the AI to pose three challenges (volume, capacity, why cubic), answer each on camera with the cube count and formula, and seal the letter to next class after the defence.",
+              "stem": "ask what a visitor might challenge → plan the three answers → request the AI's challenges → test each answer against the packed cubes → present the defended exhibition on the wall",
+              "ai": true
+            }
+          ]
+        }
+      },
+      "wall": {
+        "artifact": "The grand gate — the three-dimensional pavilion exhibition model, every face annotated with the year's mathematics, and the sealed letter for the next class, signed by its makers"
+      }
+    }
+  }
+}

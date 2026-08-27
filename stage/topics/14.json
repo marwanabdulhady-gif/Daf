@@ -1,0 +1,282 @@
+{
+  "topic": 14,
+  "title": "Algebra: Generate and Analyze Patterns",
+  "arc": "The pattern hidden in the folios — a number sequence grows term by term from its start, the folio rule is written so any term can be predicted, the repeating façade cycles its core of shapes and returns predictably, and the structure between two growing patterns is found and defended — until a human-readable algorithm runs the façade for anyone who follows it.",
+  "sources": [
+    "CCSS 4.OA.C.5 (thecorestandards.org): generate a number or shape pattern that follows a given rule, identify apparent features of the pattern that were not explicit in the rule itself, and explain informally why the numbers will continue to alternate in given ways",
+    "CPALMS/FLDOE Grade 4 pattern tasks: extend number sequences, identify the rule, and generate repeating-shape patterns using the remainder of the term position divided by the core length",
+    "Vivify STEM 'Design a School Garden' and tile-pattern engineering tasks: repeating facade and tile motifs used in real design, with an algorithm a maker can follow",
+    "Human-robot-algorithm unplugged activities: writing and testing a clear sequence of instructions (the 'programmable pattern' idea of the PBL), where a partner follows the algorithm exactly and errors reveal missing rules",
+    "Bead/bracelet and weaving pattern crafts: repeating cores of 3-5 elements where the 27th element is found with division and remainder — a real hands-on repeating-pattern production",
+    "Paper quilting / tessellation design: geometric growing patterns (each figure adds a fixed border) used across Grades 3-5 pattern units to predict figure n",
+    "NGSS Science and Engineering Practice 2 (Developing and Using Models) and Practice 5 (Using Mathematics): patterns modelled, extended and used as evidence; and the 'look for structure' habit (MP.7/MP.8)",
+    "Real growth data (plant growth charts, staircase/tiling in architecture) as natural sequences a rule can predict"
+  ],
+  "screens": {
+    "prep": {
+      "title": "The <em>pattern briefing</em> was already at home",
+      "lead": "Before class, the class met the folio-pattern briefing — one growing sequence and three home questions, at each student's own pace.",
+      "goal": "Recover the first exposure, so the façade work begins with thinking — not with content delivery.",
+      "pull": "Now the probe: what does the class already hold about rules and repetition?"
+    },
+    "diagnose": {
+      "title": "The <em>gap map</em> for the folios",
+      "lead": "Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.",
+      "goal": "Build a gap map: what is known, and what is missing, before the first rule is written.",
+      "pull": "Knowledge building closes exactly what the map flags."
+    },
+    "practice": {
+      "title": "Practice — feedback in <em>seconds, not days</em>",
+      "lead": "First with the model open, then alone, then the harder lane — every answer met in the moment.",
+      "goal": "Guided, then independent — with feedback that arrives in seconds, not days.",
+      "pull": "Now a genuinely new situation from the folios."
+    },
+    "critic": {
+      "title": "A genuinely <em>new situation</em> from the folios",
+      "lead": "The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.",
+      "goal": "Build the STEM production, transfer the method into new territory, and defend it through critique.",
+      "pull": "One individual task now decides each student's next path."
+    }
+  },
+  "lessons": {
+    "14-1": {
+      "prep": {
+        "home": [
+          "Start at 3 and add 5 each time: write the first six terms. What separates the term position from the number you land on?",
+          "The even-and-odd pattern in an add-5 sequence — does the parity alternate, and how could you predict term 10 without listing all ten?",
+          "Write a starting number and a step of your own; predict the fifth term, then list to check."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can extend a sequence by applying its stated start and step.",
+          "I can find a term several positions out without listing every earlier term.",
+          "I can notice features not stated in the rule (even/odd alternation, digit patterns).",
+          "I can distinguish the term number (its position) from the term value."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "Start at 6 and add 4 each time. What is the sixth term?",
+          "options": [
+            { "v": "a", "text": "30" },
+            { "v": "b", "text": "26" },
+            { "v": "c", "text": "22" },
+            { "v": "d", "text": "24" }
+          ],
+          "right": "b",
+          "yes": "Yes — 6, 10, 14, 18, 22, 26; or directly, 6 plus six-1 (five) jumps of 4 = 6 + 20 = 26.",
+          "notYet": "Not yet — the sixth term is the start plus five steps (not six): 6 + (5 x 4)."
+        },
+        "harder": {
+          "prompt": "Two builders work from start 4 with step 3 and start 20 with step 2. List enough terms to find whether one overtakes the other, and predict the parity (even/odd) of the seventh term of each.",
+          "answer": "A: 4, 7, 10, 13, 16, 19, 22 (term 7 is even). B: 20, 22, 24, 26, 28, 30, 32 (term 7 even). B stays ahead and the gap holds steady (start gap 16, step difference 1 means A gains 1 per jump but never reaches in 7 terms). Parity: adding 3 flips parity each term so term 7 (odd position) of A matches the start parity = even; adding 2 keeps B even throughout."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "model",
+              "task": "A staircase-brick growth model: build the first five figures of a growing staircase from blocks (each figure adds a fixed number of bricks), photograph them in a row, and label the total brick count under each figure.",
+              "stem": "ask how many bricks each figure adds → plan the first five builds → build and count → test your figure-5 total against the rule → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "map",
+              "task": "A term-position table map: build a two-column chart of positions and values for two different sequences, plot them on a number-path, and colour where the values share a hidden feature (all even, repeating digit).",
+              "stem": "ask what feature the chart should reveal → plan the columns → fill positions and values → test a predicted late term → share the table map on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A predict-it clip with the AI as caller: ask the AI for three start-and-step sequences, predict far terms yourself on camera before listing, and show any prediction the AI's own values contradict — proven by the jump count.",
+              "stem": "ask what governs a far term → plan the three predictions → request sequences from the AI → test each prediction against listing → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "14-2": {
+      "prep": {
+        "home": [
+          "The table maps in 1, 2, 3, 4 to out 5, 10, 15, 20. Say the rule in words — what is done to each input?",
+          "Distinguish two rules that look similar: 'add 4' and 'times 5' both explain some early rows of a table. Which input's output separates them?",
+          "Write your own one-operation rule and give the first four input-output pairs so a partner can name the rule."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can identify the rule of an input-output table (add, subtract, multiply).",
+          "I can distinguish an additive rule from a multiplicative rule using the table's values.",
+          "I can extend a table by applying the identified rule.",
+          "I can write a rule in words a reader can apply without asking."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "A table maps in = 1, 2, 3, 4 to out = 6, 12, 18, 24. What is the rule?",
+          "options": [
+            { "v": "a", "text": "out = in x 6" },
+            { "v": "b", "text": "out = in + 6" },
+            { "v": "c", "text": "out = in + 5" },
+            { "v": "d", "text": "out = in x 5" }
+          ],
+          "right": "a",
+          "yes": "Yes — every output is its input times 6 (6, 12, 18, 24); an add-6 rule would give 7 for input 1, which the table contradicts.",
+          "notYet": "Not yet — test the gap between pairs: 1 to 6 and 2 to 12 is a multiplication by 6, not a constant add."
+        },
+        "harder": {
+          "prompt": "Two tables are claimed to have 'the same rule': table A out = 7, 8, 9, 10 for in = 1..4; table B out = 7, 14, 21, 28. State each rule and the input value where an add rule and a times rule would first disagree if confused.",
+          "answer": "A is add 6 (1+6=7); B is times 7 (1x7=7). They agree only at input 1 — at input 2, add gives 8 while times gives 14, so the first confusion already separates them. A rule must explain every row; fitting the first pair proves nothing."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "design",
+              "task": "A rule-guessing partner game design: write five input-output pairs on cards from a secret one-operation rule, quiz a partner who must state the rule in one sentence, and record which rule the fewest clues exposed.",
+              "stem": "ask what makes a rule discoverable → plan the five clue cards → run the guess with a partner → test the stated rule on a new input → share the game on the wall",
+              "ai": false
+            },
+            {
+              "kind": "drawing",
+              "task": "A two-machine flow drawing: draw an 'add machine' and a 'times machine' in folio style, each fed by the same four inputs, and draw how the outputs diverge after input 1.",
+              "stem": "ask where the machines diverge → plan the input flow → draw both machines' outputs → test the divergence point → share the drawing on the wall",
+              "ai": false
+            },
+            {
+              "kind": "mini-project",
+              "task": "The AI rule bureau: ask the AI to state rules for four tables, verify each rule against all rows yourself, and publish a bureau page naming any rule that fits the first row but breaks on a later one.",
+              "stem": "ask what a rule must satisfy → plan the audit rows → request rules from the AI → test each against every row → publish the bureau page on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "14-3": {
+      "prep": {
+        "home": [
+          "The façade core repeats four shapes: triangle, square, hexagon, star. Count positions — which core shape sits at position 27?",
+          "Use the remainder: 27 divided by the core length of 4 tells you how far into the core to look. What does the remainder name?",
+          "Design your own core of four shapes and predict position 40 before the pattern is even drawn."
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can identify the repeating core of a shape pattern.",
+          "I can use division and the remainder to find a shape at any position.",
+          "I can extend a repeating pattern for several cycles.",
+          "I can predict without drawing every earlier figure."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "A core of three shapes (circle, square, triangle) repeats. Which shape is position 25?",
+          "options": [
+            { "v": "a", "text": "circle" },
+            { "v": "b", "text": "square" },
+            { "v": "c", "text": "triangle" },
+            { "v": "d", "text": "the core ends there" }
+          ],
+          "right": "a",
+          "yes": "Yes — 25 divided by 3 is 8 cycles with remainder 1; a remainder of 1 points to the first core shape: the circle. Positions on exact cycles (remainder 0) are the last core shape.",
+          "notYet": "Not yet — divide 25 by the core length 3: the remainder 1 points to the first shape of the core."
+        },
+        "harder": {
+          "prompt": "Two façade bands run cores of 3 and 4 shapes starting together. Position by position, find the first position after 0 where both bands show their first core shape again, and explain it as the shared multiple of the core lengths.",
+          "answer": "Band A (core 3) returns to its first shape at positions 3, 6, 9, 12... Band B (core 4) at 4, 8, 12... The first shared first-shape position is 12 — the smallest number that is a multiple of both core lengths. The façade algorithm uses the shared multiple to place matching motifs on schedule."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "design",
+              "task": "A repeating façade band: design and draw a decorative border (paper strip, wavy cut or tile row) from one core of 3-5 shapes, then mark every position where the first shape reappears, proving the core.",
+              "stem": "ask what motif the core uses → plan the core shapes → draw or tile the repeating band → test marked positions with division → share the façade band on the wall",
+              "ai": false
+            },
+            {
+              "kind": "model",
+              "task": "A bead-pattern physical model: string a bracelet or garland on a repeating core, count bead positions with a partner, and leave the string mounted with position-25 and position-40 tags answered.",
+              "stem": "ask which bead sits where → plan the core and string order → string the repeating pattern → test the tags by counting → share the model on the wall",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "A remainder-trick clip with the AI as challenger: ask the AI to predict shapes at far positions for three cores, answer each yourself using the remainder on camera, and reveal any far prediction the AI miscounted.",
+              "stem": "ask what the remainder names → plan the three challenges → request predictions from the AI → test each with division on camera → share the clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      }
+    },
+    "14-4": {
+      "prep": {
+        "home": [
+          "A growing tile figure adds the same border each time. Figure 1 uses some tiles; the rule predicts figure 10 — how does the figure number enter the calculation?",
+          "Look for structure: two different-looking growing patterns may share the same rule. What would you compare to decide?",
+          "Without drawing figure 10's tiles, how does the structure (the added border) let you state the count directly?"
+        ]
+      },
+      "diagnose": {
+        "claims": [
+          "I can describe how a growing figure changes at each step.",
+          "I can use the step structure to predict a far figure's count.",
+          "I can compare two patterns and name their shared or different rule.",
+          "I can justify a predicted figure with the structure, not by listing."
+        ]
+      },
+      "practice": {
+        "independent": {
+          "prompt": "Figures 1, 2, 3 of a tile pattern use 4, 7 and 10 tiles. How many tiles does figure 8 use?",
+          "options": [
+            { "v": "a", "text": "25" },
+            { "v": "b", "text": "24" },
+            { "v": "c", "text": "28" },
+            { "v": "d", "text": "22" }
+          ],
+          "right": "a",
+          "yes": "Yes — the pattern adds 3 tiles per figure: figure n uses 4 + 3(n-1); figure 8 is 4 + 21 = 25. The added border, not the listed values, produces the answer.",
+          "notYet": "Not yet — each step adds 3: 4, 7, 10, 13... figure 8 is seven jumps from figure 1."
+        },
+        "harder": {
+          "prompt": "Two figures are presented: pattern X uses 3, 5, 7... and pattern Y uses 5, 8, 11... Determine whether they ever have the same tile count at the same figure number, and express each rule in words for the façade builder.",
+          "answer": "X = 3 + 2(n-1) = 2n + 1; Y = 5 + 3(n-1) = 3n + 2. The counts grow by 3-2 = 1 tile per figure in Y's favour; X starts 2 behind, so Y stays ahead (equal counts require 2n+1 = 3n+2, which gives n = -1 — impossible). The structure (different steps) guarantees no shared figure."
+        }
+      },
+      "critic": {
+        "production": {
+          "options": [
+            {
+              "kind": "mini-project",
+              "task": "The programmable façade — the unit's own artifact: design a repeating and growing façade motif on grid paper, write the human-readable algorithm (the core, the step, the position rule), hand it to a builder who runs it without your help, and mount the completed pattern with the algorithm that produced it, signed by its makers.",
+              "stem": "ask what the façade must produce → plan the core and the growth rule → write the algorithm so it runs unaided → test by having a builder follow it → present the working façade to the council",
+              "ai": false
+            },
+            {
+              "kind": "presentation",
+              "task": "A structure-hunting talk: present two growing patterns side by side, narrate how each figure changes, and close with the single sentence stating whether they share a rule — with figure-10 figures to prove it.",
+              "stem": "ask what each pattern adds → plan the two figures → build enough terms to see the step → test the far figure against the rule → deliver the talk at the workshop",
+              "ai": false
+            },
+            {
+              "kind": "video",
+              "task": "An algorithm-test clip with the AI as new mason: write your own façade algorithm, ask the AI to predict figure 10 from it (and critique whether your instructions were complete), then on camera you predict the same figure from the structure and compare — the AI critiques your instructions; you do every tile.",
+              "stem": "ask what a complete algorithm states → plan the algorithm → ask the AI to follow and critique → test figure 10 yourself on camera → share the tested clip on the wall",
+              "ai": true
+            }
+          ]
+        }
+      },
+      "wall": {
+        "artifact": "The programmable façade — one core repeated, one growth rule followed, one human-readable algorithm that any builder can run, signed by its makers"
+      }
+    }
+  }
+}
