@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚖️ Scaling Up - Times as Much Adventure Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #4a5568;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #718096;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .progress-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .scale-meter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .scale-icon {
+            font-size: 3rem;
+            margin: 0 20px;
+            animation: balance 2s ease-in-out infinite;
+        }
+        
+        @keyframes balance {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #48bb78, #38a169);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+        
+        .progress-fill.glowing {
+            animation: glow 1s ease-in-out;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px #48bb78; }
+            50% { box-shadow: 0 0 20px #48bb78, 0 0 30px #48bb78; }
+        }
+        
+        .tabs {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tab {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #f7fafc;
+            color: #4a5568;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .tab:hover:not(.active) {
+            background: #edf2f7;
+            transform: translateY(-1px);
+        }
+        
+        .content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-height: 500px;
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .mission-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mission-card:nth-child(2) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .mission-card:nth-child(3) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .mission-card:nth-child(4) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .mission-card.completed {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+        }
+        
+        .mission-card.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .mission-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mission-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .mission-button {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .mission-button:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .role-card {
+            background: white;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .role-card:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.1);
+        }
+        
+        .role-card.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .role-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .role-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .badge {
+            background: white;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .badge.earned {
+            border-color: #f6ad55;
+            background: linear-gradient(135deg, #fed7aa, #f6ad55);
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .badge-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .compact-badges {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+        }
+        
+        .compact-badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        
+        .compact-badge {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .compact-badge.earned {
+            border-color: #f6ad55;
+            background: linear-gradient(135deg, #fed7aa, #f6ad55);
+            animation: compactSparkle 2s infinite;
+        }
+        
+        @keyframes compactSparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .compact-badge-icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .compact-badge-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: #4a5568;
+        }
+        
+        .compact-badge.earned .compact-badge-title {
+            color: #2d3436;
+        }
+        
+        .compact-badge-status {
+            font-size: 0.8rem;
+            color: #718096;
+            font-weight: 500;
+        }
+        
+        .compact-badge.earned .compact-badge-status {
+            color: #2d3436;
+            font-weight: 600;
+        }
+        
+        .interactive-problem {
+            background: #f7fafc;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .problem-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .input-field {
+            padding: 10px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            width: 80px;
+            text-align: center;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .check-button {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .check-button:hover {
+            background: #38a169;
+            transform: translateY(-1px);
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .feedback.correct {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 2px solid #48bb78;
+        }
+        
+        .feedback.incorrect {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 2px solid #e53e3e;
+        }
+        
+        .akhlaq-reminder {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border: 3px solid #fdcb6e;
+        }
+        
+        .akhlaq-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2d3436;
+        }
+        
+        .arabic-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #6c5ce7;
+            margin-bottom: 10px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                min-width: auto;
+            }
+            
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚖️ Scaling Up - Times as Much Adventure Hub</h1>
+            <p>Grade 4, Unit 4 – Week 6: Explore multiplicative vs additive comparisons with أمانة (honesty/precision)</p>
+        </div>
+        
+        <div class="progress-container">
+            <div class="scale-meter">
+                <span class="scale-icon">⚖️</span>
+                <div style="text-align: center;">
+                    <h3>Fair Comparator Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">0/4 Missions Complete</p>
+                </div>
+                <span class="scale-icon">⚖️</span>
+            </div>
+            
+            <!-- Compact Badge Display -->
+            <div class="compact-badges">
+                <h4 style="text-align: center; margin-bottom: 15px; color: #4a5568;">🏅 Achievement Badges</h4>
+                <div class="compact-badge-grid">
+                    <div class="compact-badge" id="compactBadge1">
+                        <div class="compact-badge-icon">➗✖️</div>
+                        <div class="compact-badge-title">Equation Expert</div>
+                        <div class="compact-badge-status">Not Yet</div>
+                    </div>
+                    
+                    <div class="compact-badge" id="compactBadge2">
+                        <div class="compact-badge-icon">🔍</div>
+                        <div class="compact-badge-title">Clear Comparator</div>
+                        <div class="compact-badge-status">Not Yet</div>
+                    </div>
+                    
+                    <div class="compact-badge" id="compactBadge3">
+                        <div class="compact-badge-icon">📖⚖️</div>
+                        <div class="compact-badge-title">Trustworthy Explainer</div>
+                        <div class="compact-badge-status">Not Yet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('missions')">
+                🎯 Station Missions
+            </button>
+            <button class="tab" onclick="showTab('roles')">
+                👥 Team Roles
+            </button>
+            <button class="tab" onclick="showTab('badges')">
+                🏅 Achievement Badges
+            </button>
+            <button class="tab" onclick="showTab('exit')">
+                📝 Exit Tickets
+            </button>
+            <button class="tab" onclick="showTab('project')">
+                📊 Class Project
+            </button>
+        </div>
+        
+        <div class="content">
+            <!-- Missions Tab -->
+            <div id="missions" class="tab-content">
+                <h2>🎯 Interactive Mission Stations</h2>
+                <div class="mission-grid">
+                    <div class="mission-card" onclick="startMission(1)">
+                        <div class="mission-title">
+                            🎯 Mission 1: Multiplicative vs Additive
+                        </div>
+                        <div class="mission-content">
+                            Compare "Sara has 3 more" vs "Sara has 3 times as many." Learn the crucial difference between adding and multiplying!
+                        </div>
+                        <button class="mission-button">Start Mission</button>
+                    </div>
+                    
+                    <div class="mission-card" onclick="startMission(2)">
+                        <div class="mission-title">
+                            ✍️ Mission 2: Write Equations
+                        </div>
+                        <div class="mission-content">
+                            Represent comparison problems with accurate equations. Practice turning word problems into math expressions.
+                        </div>
+                        <button class="mission-button">Start Mission</button>
+                    </div>
+                    
+                    <div class="mission-card" onclick="startMission(3)">
+                        <div class="mission-title">
+                            📏 Mission 3: Real-Life Scale
+                        </div>
+                        <div class="mission-content">
+                            Explore scaling in the real world! From toy cars to buildings, discover how multiplication helps us compare sizes.
+                        </div>
+                        <button class="mission-button">Start Mission</button>
+                    </div>
+                    
+                    <div class="mission-card" onclick="startMission(4)">
+                        <div class="mission-title">
+                            🔍 Mission 4: Comparison Sort
+                        </div>
+                        <div class="mission-content">
+                            Sort problems into additive vs multiplicative categories. Master the art of identifying comparison types!
+                        </div>
+                        <button class="mission-button">Start Mission</button>
+                    </div>
+                </div>
+                
+                <div class="akhlaq-reminder">
+                    <div class="arabic-text">أمانة</div>
+                    <div class="akhlaq-text">
+                        Remember: Honesty and precision in our comparisons prevent misleading others. 
+                        Always be accurate in your mathematical representations!
+                    </div>
+                </div>
+                
+                <!-- Mission Content Areas -->
+                <div id="mission1Content" class="hidden">
+                    <h3>🎯 Mission 1: Understanding the Difference</h3>
+                    <div class="interactive-problem">
+                        <p><strong>Scenario:</strong> Ali has 4 stickers. How many does Sara have?</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                            <div style="background: #e6fffa; padding: 15px; border-radius: 10px;">
+                                <h4>📈 Additive: "Sara has 3 MORE"</h4>
+                                <p>Sara = Ali + 3</p>
+                                <p>Sara = 4 + 3 = <strong>7 stickers</strong></p>
+                            </div>
+                            <div style="background: #fef5e7; padding: 15px; border-radius: 10px;">
+                                <h4>✖️ Multiplicative: "Sara has 3 TIMES AS MANY"</h4>
+                                <p>Sara = Ali × 3</p>
+                                <p>Sara = 4 × 3 = <strong>12 stickers</strong></p>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Your Turn:</strong> Omar has 6 books. Layla has 4 times as many. How many books does Layla have?</p>
+                        <div class="problem-input">
+                            <span>Layla = </span>
+                            <input type="number" class="input-field" id="mission1Answer" placeholder="?">
+                            <span>books</span>
+                            <button class="check-button" onclick="checkMission1()">Check Answer</button>
+                        </div>
+                        <div id="mission1Feedback" class="feedback hidden"></div>
+                    </div>
+                </div>
+                
+                <div id="mission2Content" class="hidden">
+                    <h3>✍️ Mission 2: Writing Perfect Equations</h3>
+                    <div class="interactive-problem">
+                        <p><strong>Problem:</strong> Lina has 5 times as many pencils as Noor. Noor has 6 pencils. How many pencils does Lina have?</p>
+                        
+                        <div style="background: #f0fff4; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                            <h4>Step-by-Step:</h4>
+                            <p>1. Identify what we know: Noor = 6 pencils</p>
+                            <p>2. Identify the relationship: Lina = 5 × Noor's amount</p>
+                            <p>3. Write the equation: 5 × 6 = 30</p>
+                            <p>4. Answer: Lina has 30 pencils</p>
+                        </div>
+                        
+                        <p><strong>Your Turn:</strong> Ahmed has 7 times as many marbles as Fatima. Fatima has 8 marbles.</p>
+                        <div class="problem-input">
+                            <span>Equation: </span>
+                            <input type="number" class="input-field" id="mission2Mult" placeholder="?">
+                            <span>×</span>
+                            <input type="number" class="input-field" id="mission2Base" placeholder="?">
+                            <span>=</span>
+                            <input type="number" class="input-field" id="mission2Result" placeholder="?">
+                            <button class="check-button" onclick="checkMission2()">Check Equation</button>
+                        </div>
+                        <div id="mission2Feedback" class="feedback hidden"></div>
+                    </div>
+                </div>
+                
+                <div id="mission3Content" class="hidden">
+                    <h3>📏 Mission 3: Real-World Scaling</h3>
+                    <div class="interactive-problem">
+                        <p><strong>Scenario:</strong> A toy car is 12 cm long. The real car is 40 times longer. How long is the real car?</p>
+                        
+                        <div style="background: #f7fafc; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                            <h4>🚗 Scaling Formula:</h4>
+                            <p>Real Size = Toy Size × Scale Factor</p>
+                            <p>Real Car = 12 cm × 40 = 480 cm = 4.8 meters</p>
+                        </div>
+                        
+                        <div class="akhlaq-reminder" style="margin: 15px 0;">
+                            <div class="arabic-text">أمانة في القياس</div>
+                            <div class="akhlaq-text">
+                                Precision in measurements matters! Exaggerating or being careless with scales can mislead people.
+                            </div>
+                        </div>
+                        
+                        <p><strong>Your Challenge:</strong> A model airplane is 25 cm long. The real airplane is 60 times longer. Find the real length in meters.</p>
+                        <div class="problem-input">
+                            <span>Real length = </span>
+                            <input type="number" class="input-field" id="mission3Answer" placeholder="?">
+                            <span>meters</span>
+                            <button class="check-button" onclick="checkMission3()">Check Answer</button>
+                        </div>
+                        <div id="mission3Feedback" class="feedback hidden"></div>
+                    </div>
+                </div>
+                
+                <div id="mission4Content" class="hidden">
+                    <h3>🔍 Mission 4: Comparison Detective</h3>
+                    <div class="interactive-problem">
+                        <p><strong>Sort these problems:</strong> Drag each statement to the correct category!</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                            <div style="background: #e6fffa; padding: 15px; border-radius: 10px; min-height: 150px;">
+                                <h4>📈 Additive (More/Less)</h4>
+                                <div id="additiveZone" class="drop-zone" style="min-height: 100px; border: 2px dashed #4fd1c7; border-radius: 8px; padding: 10px;">
+                                    Drop additive comparisons here
+                                </div>
+                            </div>
+                            <div style="background: #fef5e7; padding: 15px; border-radius: 10px; min-height: 150px;">
+                                <h4>✖️ Multiplicative (Times as many)</h4>
+                                <div id="multiplicativeZone" class="drop-zone" style="min-height: 100px; border: 2px dashed #f6ad55; border-radius: 8px; padding: 10px;">
+                                    Drop multiplicative comparisons here
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="sortingItems" style="display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0;">
+                            <div class="sorting-item" draggable="true" data-type="additive">Ali runs 5 more laps</div>
+                            <div class="sorting-item" draggable="true" data-type="multiplicative">Sara has 3 times as many books</div>
+                            <div class="sorting-item" draggable="true" data-type="additive">Omar scored 8 more points</div>
+                            <div class="sorting-item" draggable="true" data-type="multiplicative">Layla collected 6 times as many shells</div>
+                        </div>
+                        
+                        <button class="check-button" onclick="checkMission4()">Check Sorting</button>
+                        <div id="mission4Feedback" class="feedback hidden"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Roles Tab -->
+            <div id="roles" class="tab-content hidden">
+                <h2>👥 Team Role Cards</h2>
+                <p>Choose your role to help your team succeed in comparing with multiplication!</p>
+                
+                <div class="role-cards">
+                    <div class="role-card" onclick="selectRole(this)">
+                        <div class="role-icon">👑</div>
+                        <div class="role-title">Leader</div>
+                        <p>Guides the group to identify whether problems are additive or multiplicative</p>
+                    </div>
+                    
+                    <div class="role-card" onclick="selectRole(this)">
+                        <div class="role-icon">✍️</div>
+                        <div class="role-title">Recorder</div>
+                        <p>Writes equations neatly and keeps track of the team's work</p>
+                    </div>
+                    
+                    <div class="role-card" onclick="selectRole(this)">
+                        <div class="role-icon">🤔</div>
+                        <div class="role-title">Reflector</div>
+                        <p>محاسبة النفس: Asks "Did we confuse 'more' with 'times as many'?"</p>
+                    </div>
+                    
+                    <div class="role-card" onclick="selectRole(this)">
+                        <div class="role-icon">🌟</div>
+                        <div class="role-title">Diligent Checker</div>
+                        <p>Double-checks that equations match the word problems correctly</p>
+                    </div>
+                    
+                    <div class="role-card" onclick="selectRole(this)">
+                        <div class="role-icon">🎤</div>
+                        <div class="role-title">Presenter</div>
+                        <p>Explains bar models and solutions to the class with confidence</p>
+                    </div>
+                </div>
+                
+                <div class="akhlaq-reminder">
+                    <div class="arabic-text">العمل الجماعي</div>
+                    <div class="akhlaq-text">
+                        Teamwork with أمانة means being honest about what you understand and helping others learn!
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Badges Tab -->
+            <div id="badges" class="tab-content hidden">
+                <h2>🏅 Achievement Badge Collection</h2>
+                <p>Earn these special badges by mastering multiplicative comparisons!</p>
+                
+                <div class="badge-grid">
+                    <div class="badge" id="badge1">
+                        <div class="badge-icon">➗✖️</div>
+                        <div class="role-title">Equation Expert</div>
+                        <p>Writes correct multiplicative equations consistently</p>
+                        <div style="margin-top: 10px; font-weight: 600; color: #718096;">Not Yet Earned</div>
+                    </div>
+                    
+                    <div class="badge" id="badge2">
+                        <div class="badge-icon">🔍</div>
+                        <div class="role-title">Clear Comparator</div>
+                        <p>Distinguishes between additive and multiplicative comparisons perfectly</p>
+                        <div style="margin-top: 10px; font-weight: 600; color: #718096;">Not Yet Earned</div>
+                    </div>
+                    
+                    <div class="badge" id="badge3">
+                        <div class="badge-icon">📖⚖️</div>
+                        <div class="role-title">Trustworthy Explainer</div>
+                        <p>Represents comparisons with أمانة (honesty and precision)</p>
+                        <div style="margin-top: 10px; font-weight: 600; color: #718096;">Not Yet Earned</div>
+                    </div>
+                </div>
+                
+                <div class="akhlaq-reminder">
+                    <div class="arabic-text">الحمد لله</div>
+                    <div class="akhlaq-text">
+                        Celebrate your growth with gratitude! Each badge represents your dedication to learning with أمانة.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Exit Tickets Tab -->
+            <div id="exit" class="tab-content hidden">
+                <h2>📝 Exit Ticket Checkpoint</h2>
+                <p>Show what you've learned about multiplicative comparisons!</p>
+                
+                <div class="interactive-problem">
+                    <h3>Question 1:</h3>
+                    <p>Write the equation: "Omar has 4 times Ahmed's books. Ahmed has 7 books."</p>
+                    <div class="problem-input">
+                        <input type="number" class="input-field" id="exit1Mult" placeholder="?">
+                        <span>×</span>
+                        <input type="number" class="input-field" id="exit1Base" placeholder="?">
+                        <span>=</span>
+                        <input type="number" class="input-field" id="exit1Result" placeholder="?">
+                        <button class="check-button" onclick="checkExit1()">Check</button>
+                    </div>
+                    <div id="exit1Feedback" class="feedback hidden"></div>
+                </div>
+                
+                <div class="interactive-problem">
+                    <h3>Question 2:</h3>
+                    <p>Decide: "Sara has 10 more marbles than Ali" - Is this additive or multiplicative?</p>
+                    <div class="problem-input">
+                        <button class="check-button" onclick="selectComparison('additive')" id="additiveBtn">Additive</button>
+                        <button class="check-button" onclick="selectComparison('multiplicative')" id="multiplicativeBtn">Multiplicative</button>
+                    </div>
+                    <div id="exit2Feedback" class="feedback hidden"></div>
+                </div>
+                
+                <div class="akhlaq-reminder">
+                    <div class="arabic-text">محاسبة النفس</div>
+                    <div class="akhlaq-text">
+                        Self-reflection: "Did I mix up 'times as many' and 'more than'? What skill did I grow today?"
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Tab -->
+            <div id="project" class="tab-content hidden">
+                <h2>📊 "Times as Many" Classroom Survey Project</h2>
+                <p><strong>Driving Question:</strong> How can we use multiplication to compare classroom data fairly?</p>
+                
+                <div class="interactive-problem">
+                    <h3>Step 1: Collect Data</h3>
+                    <p>Count items in our classroom and record them:</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                        <div>
+                            <label>Pencils: </label>
+                            <input type="number" class="input-field" id="pencilCount" placeholder="Count">
+                        </div>
+                        <div>
+                            <label>Books: </label>
+                            <input type="number" class="input-field" id="bookCount" placeholder="Count">
+                        </div>
+                        <div>
+                            <label>Stickers: </label>
+                            <input type="number" class="input-field" id="stickerCount" placeholder="Count">
+                        </div>
+                        <div>
+                            <label>Erasers: </label>
+                            <input type="number" class="input-field" id="eraserCount" placeholder="Count">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="interactive-problem">
+                    <h3>Step 2: Create Comparisons</h3>
+                    <button class="check-button" onclick="generateComparisons()">Generate Multiplicative Comparisons</button>
+                    <div id="comparisonResults" style="margin-top: 20px;"></div>
+                </div>
+                
+                <div class="akhlaq-reminder">
+                    <div class="arabic-text">أمانة في البحث</div>
+                    <div class="akhlaq-text">
+                        Research with integrity: Count accurately and represent data honestly. 
+                        Fair comparisons help everyone understand the truth!
+                    </div>
+                </div>
+                
+                <div style="background: #f0fff4; padding: 20px; border-radius: 15px; margin-top: 20px;">
+                    <h3>🏆 Project Rubric (20 points total)</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✅ <strong>Accuracy (8 pts):</strong> Correct counts and calculations</li>
+                        <li>✅ <strong>Comparison Clarity (4 pts):</strong> Clear multiplicative statements</li>
+                        <li>✅ <strong>Collaboration (4 pts):</strong> Effective teamwork</li>
+                        <li>✅ <strong>Akhlāq (4 pts):</strong> Demonstrates أمانة in data collection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let completedMissions = 0;
+        let earnedBadges = [];
+        let selectedComparison = null;
+        
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+        
+        function startMission(missionNumber) {
+            // Hide all mission contents
+            for (let i = 1; i <= 4; i++) {
+                const content = document.getElementById(`mission${i}Content`);
+                if (content) content.classList.add('hidden');
+            }
+            
+            // Show selected mission content
+            const missionContent = document.getElementById(`mission${missionNumber}Content`);
+            if (missionContent) {
+                missionContent.classList.remove('hidden');
+                missionContent.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        function checkMission1() {
+            const answer = parseInt(document.getElementById('mission1Answer').value);
+            const feedback = document.getElementById('mission1Feedback');
+            
+            if (answer === 24) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '🎉 Excellent! 6 × 4 = 24 books. You understand multiplicative comparisons!';
+                completeMission(1);
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = '🤔 Not quite. Remember: "times as many" means multiply. Try 6 × 4.';
+            }
+            feedback.classList.remove('hidden');
+        }
+        
+        function checkMission2() {
+            const mult = parseInt(document.getElementById('mission2Mult').value);
+            const base = parseInt(document.getElementById('mission2Base').value);
+            const result = parseInt(document.getElementById('mission2Result').value);
+            const feedback = document.getElementById('mission2Feedback');
+            
+            if (mult === 7 && base === 8 && result === 56) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '🎉 Perfect equation! 7 × 8 = 56. Ahmed has 56 marbles!';
+                completeMission(2);
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = '🤔 Check your equation. Ahmed has 7 times as many as Fatima (8 marbles).';
+            }
+            feedback.classList.remove('hidden');
+        }
+        
+        function checkMission3() {
+            const answer = parseFloat(document.getElementById('mission3Answer').value);
+            const feedback = document.getElementById('mission3Feedback');
+            
+            if (answer === 15) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '🎉 Correct! 25 cm × 60 = 1500 cm = 15 meters. Precise scaling with أمانة!';
+                completeMission(3);
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = '🤔 Remember to convert: 25 × 60 = 1500 cm. How many meters is that?';
+            }
+            feedback.classList.remove('hidden');
+        }
+        
+        function checkMission4() {
+            const additiveZone = document.getElementById('additiveZone');
+            const multiplicativeZone = document.getElementById('multiplicativeZone');
+            const feedback = document.getElementById('mission4Feedback');
+            
+            const additiveItems = additiveZone.querySelectorAll('.sorting-item');
+            const multiplicativeItems = multiplicativeZone.querySelectorAll('.sorting-item');
+            
+            let correct = true;
+            
+            additiveItems.forEach(item => {
+                if (item.dataset.type !== 'additive') correct = false;
+            });
+            
+            multiplicativeItems.forEach(item => {
+                if (item.dataset.type !== 'multiplicative') correct = false;
+            });
+            
+            if (correct && additiveItems.length === 2 && multiplicativeItems.length === 2) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '🎉 Excellent sorting! You can distinguish between additive and multiplicative comparisons!';
+                completeMission(4);
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = '🤔 Check your sorting. Look for "more/less" vs "times as many" clues.';
+            }
+            feedback.classList.remove('hidden');
+        }
+        
+        function completeMission(missionNumber) {
+            const missionCard = document.querySelectorAll('.mission-card')[missionNumber - 1];
+            missionCard.classList.add('completed');
+            
+            completedMissions++;
+            updateProgress();
+            
+            // Award badges based on missions completed
+            if (missionNumber === 2 && !earnedBadges.includes('badge1')) {
+                earnBadge('badge1', 'Equation Expert');
+            }
+            if (missionNumber === 4 && !earnedBadges.includes('badge2')) {
+                earnBadge('badge2', 'Clear Comparator');
+            }
+            if (completedMissions >= 3 && !earnedBadges.includes('badge3')) {
+                earnBadge('badge3', 'Trustworthy Explainer');
+            }
+        }
+        
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            
+            const percentage = (completedMissions / 4) * 100;
+            progressFill.style.width = percentage + '%';
+            progressText.textContent = `${completedMissions}/4 Missions Complete`;
+            
+            if (completedMissions === 4) {
+                progressFill.classList.add('glowing');
+                progressText.textContent = '🎉 All Missions Complete! Fair Comparator Achieved! ⚖️';
+            }
+        }
+        
+        function earnBadge(badgeId, badgeName) {
+            const badge = document.getElementById(badgeId);
+            badge.classList.add('earned');
+            badge.querySelector('div:last-child').textContent = '🎉 Earned!';
+            badge.querySelector('div:last-child').style.color = '#2d3436';
+            
+            // Also update compact badge
+            const compactBadgeId = 'compact' + badgeId.charAt(0).toUpperCase() + badgeId.slice(1);
+            const compactBadge = document.getElementById(compactBadgeId);
+            if (compactBadge) {
+                compactBadge.classList.add('earned');
+                compactBadge.querySelector('.compact-badge-status').textContent = '🎉 Earned!';
+            }
+            
+            earnedBadges.push(badgeId);
+        }
+        
+        function selectRole(roleCard) {
+            // Remove selection from all role cards
+            document.querySelectorAll('.role-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selection to clicked card
+            roleCard.classList.add('selected');
+        }
+        
+        function checkExit1() {
+            const mult = parseInt(document.getElementById('exit1Mult').value);
+            const base = parseInt(document.getElementById('exit1Base').value);
+            const result = parseInt(document.getElementById('exit1Result').value);
+            const feedback = document.getElementById('exit1Feedback');
+            
+            if (mult === 4 && base === 7 && result === 28) {
+                feedback.className = 'feedback correct';
+                feedback.textContent = '🎉 Perfect! 4 × 7 = 28 books for Omar!';
+            } else {
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = '🤔 Omar has 4 times Ahmed\'s 7 books. What\'s 4 × 7?';
+            }
+            feedback.classList.remove('hidden');
+        }
+        
+        function selectComparison(type) {
+            selectedComparison = type;
+            const feedback = document.getElementById('exit2Feedback');
+            
+            // Reset button styles
+            document.getElementById('additiveBtn').style.background = '#48bb78';
+            document.getElementById('multiplicativeBtn').style.background = '#48bb78';
+            
+            if (type === 'additive') {
+                document.getElementById('additiveBtn').style.background = '#38a169';
+                feedback.className = 'feedback correct';
+                feedback.textContent = '🎉 Correct! "10 more" indicates addition, not multiplication.';
+            } else {
+                document.getElementById('multiplicativeBtn').style.background = '#e53e3e';
+                feedback.className = 'feedback incorrect';
+                feedback.textContent = '🤔 "More" indicates addition. "Times as many" would be multiplicative.';
+            }
+            feedback.classList.remove('hidden');
+        }
+        
+        function generateComparisons() {
+            const pencils = parseInt(document.getElementById('pencilCount').value) || 0;
+            const books = parseInt(document.getElementById('bookCount').value) || 0;
+            const stickers = parseInt(document.getElementById('stickerCount').value) || 0;
+            const erasers = parseInt(document.getElementById('eraserCount').value) || 0;
+            
+            const results = document.getElementById('comparisonResults');
+            
+            if (pencils && books && stickers && erasers) {
+                let comparisons = '';
+                
+                if (stickers > pencils) {
+                    const times = Math.round(stickers / pencils * 10) / 10;
+                    comparisons += `<p>📌 We have ${times} times as many stickers as pencils (${stickers} ÷ ${pencils} = ${times})</p>`;
+                }
+                
+                if (books > erasers) {
+                    const times = Math.round(books / erasers * 10) / 10;
+                    comparisons += `<p>📚 We have ${times} times as many books as erasers (${books} ÷ ${erasers} = ${times})</p>`;
+                }
+                
+                results.innerHTML = `
+                    <div style="background: #f0fff4; padding: 15px; border-radius: 10px;">
+                        <h4>🔍 Your Classroom Comparisons:</h4>
+                        ${comparisons}
+                        <p style="margin-top: 15px; font-weight: 600;">Remember: These comparisons show multiplicative relationships with أمانة!</p>
+                    </div>
+                `;
+            } else {
+                results.innerHTML = '<p style="color: #e53e3e;">Please fill in all the counts first!</p>';
+            }
+        }
+        
+        // Drag and drop functionality for Mission 4
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortingItems = document.querySelectorAll('.sorting-item');
+            const dropZones = document.querySelectorAll('.drop-zone');
+            
+            sortingItems.forEach(item => {
+                item.style.cssText = `
+                    background: #667eea;
+                    color: white;
+                    padding: 10px 15px;
+                    border-radius: 8px;
+                    cursor: move;
+                    user-select: none;
+                    margin: 5px;
+                    display: inline-block;
+                `;
+                
+                item.addEventListener('dragstart', function(e) {
+                    e.dataTransfer.setData('text/plain', e.target.outerHTML);
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+            });
+            
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    zone.style.backgroundColor = 'rgba(102, 126, 234, 0.1)';
+                });
+                
+                zone.addEventListener('dragleave', function(e) {
+                    zone.style.backgroundColor = '';
+                });
+                
+                zone.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    zone.style.backgroundColor = '';
+                    
+                    const data = e.dataTransfer.getData('text/plain');
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = data;
+                    const draggedElement = tempDiv.firstChild;
+                    
+                    // Remove original element
+                    const originalElement = document.querySelector(`[draggable="true"]:not([style*="display: none"])`);
+                    if (originalElement && originalElement.textContent === draggedElement.textContent) {
+                        originalElement.remove();
+                    }
+                    
+                    // Add to drop zone
+                    zone.appendChild(draggedElement);
+                    
+                    // Re-add event listeners
+                    draggedElement.addEventListener('dragstart', function(e) {
+                        e.dataTransfer.setData('text/plain', e.target.outerHTML);
+                        e.dataTransfer.effectAllowed = 'move';
+                    });
+                });
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9720bef49484e9ef',t:'MTc1NTY4MDkwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

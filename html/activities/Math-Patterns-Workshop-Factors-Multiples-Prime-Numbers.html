@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔁 Patterns Workshop 🧩</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Fredoka', sans-serif;
+        }
+        
+        .factor-rainbow {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stamp-effect {
+            animation: stamp 0.6s ease-out;
+            transform-origin: center;
+        }
+        
+        @keyframes stamp {
+            0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(-5deg); opacity: 0.8; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(219, 39, 119, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(219, 39, 119, 0.6); }
+        }
+        
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 4px;
+        }
+        
+        .number-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .shape-pattern {
+            transition: transform 0.3s ease;
+        }
+        
+        .shape-pattern:hover {
+            transform: scale(1.1);
+        }
+        
+        .detective-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: badgeShine 3s infinite;
+        }
+        
+        @keyframes badgeShine {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-cyan-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-5xl font-bold text-blue-800 mb-4">🔁 Patterns Workshop 🧩</h1>
+            <p class="text-xl text-blue-600">Discover the secrets of numbers and shapes!</p>
+        </div>
+
+        <!-- Section 1: Factor Rainbows -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 mb-8">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">🌈 Factor Rainbows</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-700 mb-4">What are factors?</h3>
+                    <p class="text-gray-700 mb-4">Factors are numbers that divide evenly into another number!</p>
+                    
+                    <div class="bg-blue-50 rounded-2xl p-6">
+                        <label class="block text-blue-800 font-semibold mb-2">Find factors of:</label>
+                        <input type="number" id="factorInput" class="w-full p-3 border-2 border-blue-300 rounded-xl text-lg" placeholder="Enter a number" min="1" max="100">
+                        <button onclick="showFactors()" class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-colors">
+                            Create Factor Rainbow 🌈
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="factorDisplay" class="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-6 min-h-48 flex items-center justify-center">
+                    <p class="text-gray-500 text-center">Enter a number to see its factor rainbow!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Prime Detective -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 mb-8">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">🕵️ Prime Detective Challenge</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-magenta-50 rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold text-magenta-700 mb-4">Prime Numbers</h3>
+                    <p class="text-gray-700 mb-4">Have exactly 2 factors: 1 and themselves</p>
+                    <div class="text-2xl font-bold text-magenta-600">2, 3, 5, 7, 11...</div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-4">Composite Numbers</h3>
+                    <p class="text-gray-700 mb-4">Have more than 2 factors</p>
+                    <div class="text-2xl font-bold text-blue-600">4, 6, 8, 9, 10...</div>
+                </div>
+                
+                <div class="bg-yellow-50 rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-4">Special Case</h3>
+                    <p class="text-gray-700 mb-4">1 is neither prime nor composite</p>
+                    <div class="text-2xl font-bold text-yellow-600">Just 1! 🎯</div>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-gradient-to-r from-magenta-100 to-blue-100 rounded-2xl p-6">
+                <h3 class="text-2xl font-bold text-center mb-6">Is it Prime? 🤔</h3>
+                <div class="flex flex-wrap justify-center gap-4 mb-6" id="primeNumbers">
+                    <!-- Numbers will be generated here -->
+                </div>
+                <div class="text-center">
+                    <div id="primeScore" class="text-xl font-bold text-blue-800 mb-4">Score: 0/0</div>
+                    <button onclick="generatePrimeChallenge()" class="bg-magenta-600 hover:bg-magenta-700 text-white font-bold py-3 px-6 rounded-xl transition-colors">
+                        New Challenge 🎲
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: 100 Chart Patterns -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 mb-8">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">📊 100 Chart Pattern Explorer</h2>
+            <div class="mb-6 flex flex-wrap justify-center gap-4">
+                <button onclick="highlightMultiples(2)" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-xl transition-colors">
+                    Multiples of 2
+                </button>
+                <button onclick="highlightMultiples(3)" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl transition-colors">
+                    Multiples of 3
+                </button>
+                <button onclick="highlightMultiples(5)" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-xl transition-colors">
+                    Multiples of 5
+                </button>
+                <button onclick="highlightPrimes()" class="bg-magenta-600 hover:bg-magenta-700 text-white font-bold py-2 px-4 rounded-xl transition-colors">
+                    Prime Numbers
+                </button>
+                <button onclick="clearHighlights()" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-xl transition-colors">
+                    Clear All
+                </button>
+            </div>
+            
+            <div class="number-grid bg-blue-50 p-4 rounded-2xl" id="numberChart">
+                <!-- 100 chart will be generated here -->
+            </div>
+        </div>
+
+        <!-- Section 4: Shape Patterns -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 mb-8">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">🔺 Shape Pattern Detective</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-700 mb-4">Triangle Numbers</h3>
+                    <div class="bg-blue-50 rounded-2xl p-6">
+                        <div class="flex flex-wrap justify-center gap-2 mb-4" id="trianglePattern">
+                            <!-- Triangle pattern will be generated here -->
+                        </div>
+                        <p class="text-center text-gray-700">1, 3, 6, 10, 15, 21...</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-magenta-700 mb-4">Square Numbers</h3>
+                    <div class="bg-magenta-50 rounded-2xl p-6">
+                        <div class="flex flex-wrap justify-center gap-2 mb-4" id="squarePattern">
+                            <!-- Square pattern will be generated here -->
+                        </div>
+                        <p class="text-center text-gray-700">1, 4, 9, 16, 25, 36...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pattern Detective Badge -->
+        <div class="text-center">
+            <div id="detectiveBadge" class="detective-badge inline-block px-8 py-6 rounded-full text-white font-bold text-2xl shadow-2xl" style="display: none;">
+                🕵️ Pattern Detective Badge Earned! 🕵️
+            </div>
+            <div id="badgeProgress" class="mt-4 text-lg font-semibold text-blue-800">
+                Complete challenges to earn your detective badge!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let primeScore = 0;
+        let primeTotal = 0;
+        let challengesCompleted = 0;
+
+        // Initialize the workshop
+        function init() {
+            generateNumberChart();
+            generateShapePatterns();
+            generatePrimeChallenge();
+        }
+
+        // Factor Rainbow functionality
+        function showFactors() {
+            const num = parseInt(document.getElementById('factorInput').value);
+            const display = document.getElementById('factorDisplay');
+            
+            if (!num || num < 1) {
+                display.innerHTML = '<p class="text-red-500 text-center">Please enter a valid number!</p>';
+                return;
+            }
+            
+            const factors = [];
+            for (let i = 1; i <= num; i++) {
+                if (num % i === 0) {
+                    factors.push(i);
+                }
+            }
+            
+            display.innerHTML = `
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-4">Factors of ${num}</h3>
+                    <div class="factor-rainbow text-3xl font-bold mb-4">${factors.join(', ')}</div>
+                    <p class="text-gray-700">${factors.length} factors found!</p>
+                    <p class="text-sm text-gray-600 mt-2">${factors.length === 2 ? '🎯 This is a PRIME number!' : factors.length > 2 ? '🧩 This is a COMPOSITE number!' : '⭐ Special case: 1'}</p>
+                </div>
+            `;
+            
+            challengesCompleted++;
+            updateBadgeProgress();
+        }
+
+        // Prime number challenge
+        function generatePrimeChallenge() {
+            const numbers = [];
+            for (let i = 0; i < 8; i++) {
+                numbers.push(Math.floor(Math.random() * 30) + 2);
+            }
+            
+            const container = document.getElementById('primeNumbers');
+            container.innerHTML = numbers.map(num => `
+                <button onclick="checkPrime(${num}, this)" class="bg-blue-200 hover:bg-blue-300 text-blue-800 font-bold py-3 px-4 rounded-xl transition-colors text-xl">
+                    ${num}
+                </button>
+            `).join('');
+            
+            primeScore = 0;
+            primeTotal = 0;
+            updatePrimeScore();
+        }
+
+        function checkPrime(num, button) {
+            if (button.classList.contains('answered')) return;
+            
+            const isPrime = num > 1 && Array.from({length: Math.sqrt(num)}, (_, i) => i + 2).every(i => num % i !== 0);
+            primeTotal++;
+            
+            if (isPrime) {
+                button.className = 'bg-green-500 text-white font-bold py-3 px-4 rounded-xl text-xl stamp-effect answered';
+                button.innerHTML = `${num} ✅`;
+                primeScore++;
+            } else {
+                button.className = 'bg-red-500 text-white font-bold py-3 px-4 rounded-xl text-xl stamp-effect answered';
+                button.innerHTML = `${num} ❌`;
+            }
+            
+            updatePrimeScore();
+            
+            if (primeTotal === 8) {
+                challengesCompleted++;
+                updateBadgeProgress();
+            }
+        }
+
+        function updatePrimeScore() {
+            document.getElementById('primeScore').textContent = `Score: ${primeScore}/${primeTotal}`;
+        }
+
+        // 100 Chart functionality
+        function generateNumberChart() {
+            const chart = document.getElementById('numberChart');
+            chart.innerHTML = '';
+            
+            for (let i = 1; i <= 100; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'number-cell bg-white border-2 border-blue-200 text-blue-800';
+                cell.textContent = i;
+                cell.id = `cell-${i}`;
+                chart.appendChild(cell);
+            }
+        }
+
+        function highlightMultiples(num) {
+            clearHighlights();
+            for (let i = num; i <= 100; i += num) {
+                const cell = document.getElementById(`cell-${i}`);
+                if (num === 2) cell.className = 'number-cell bg-red-400 text-white border-2 border-red-600';
+                else if (num === 3) cell.className = 'number-cell bg-green-400 text-white border-2 border-green-600';
+                else if (num === 5) cell.className = 'number-cell bg-purple-400 text-white border-2 border-purple-600';
+            }
+            challengesCompleted++;
+            updateBadgeProgress();
+        }
+
+        function highlightPrimes() {
+            clearHighlights();
+            const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+            primes.forEach(prime => {
+                const cell = document.getElementById(`cell-${prime}`);
+                cell.className = 'number-cell bg-magenta-500 text-white border-2 border-magenta-700 pulse-glow';
+            });
+            challengesCompleted++;
+            updateBadgeProgress();
+        }
+
+        function clearHighlights() {
+            for (let i = 1; i <= 100; i++) {
+                const cell = document.getElementById(`cell-${i}`);
+                cell.className = 'number-cell bg-white border-2 border-blue-200 text-blue-800';
+            }
+        }
+
+        // Shape patterns
+        function generateShapePatterns() {
+            // Triangle numbers
+            const triangleContainer = document.getElementById('trianglePattern');
+            triangleContainer.innerHTML = '';
+            
+            for (let n = 1; n <= 5; n++) {
+                const triangleNum = n * (n + 1) / 2;
+                const triangle = document.createElement('div');
+                triangle.className = 'shape-pattern';
+                triangle.innerHTML = `
+                    <div class="text-center">
+                        <div class="text-blue-600 font-bold text-lg mb-2">${triangleNum}</div>
+                        <div class="flex flex-col items-center">
+                            ${Array.from({length: n}, (_, i) => 
+                                `<div class="flex">${Array.from({length: i + 1}, () => '🔵').join('')}</div>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+                triangleContainer.appendChild(triangle);
+            }
+            
+            // Square numbers
+            const squareContainer = document.getElementById('squarePattern');
+            squareContainer.innerHTML = '';
+            
+            for (let n = 1; n <= 5; n++) {
+                const squareNum = n * n;
+                const square = document.createElement('div');
+                square.className = 'shape-pattern';
+                square.innerHTML = `
+                    <div class="text-center">
+                        <div class="text-magenta-600 font-bold text-lg mb-2">${squareNum}</div>
+                        <div class="grid gap-1" style="grid-template-columns: repeat(${n}, 1fr);">
+                            ${Array.from({length: squareNum}, () => '<div class="w-4 h-4 bg-magenta-400 rounded"></div>').join('')}
+                        </div>
+                    </div>
+                `;
+                squareContainer.appendChild(square);
+            }
+        }
+
+        // Badge system
+        function updateBadgeProgress() {
+            const progress = document.getElementById('badgeProgress');
+            const badge = document.getElementById('detectiveBadge');
+            
+            if (challengesCompleted >= 5) {
+                badge.style.display = 'inline-block';
+                progress.textContent = '🎉 Congratulations! You are now a certified Pattern Detective! 🎉';
+                progress.className = 'mt-4 text-lg font-semibold text-green-600';
+            } else {
+                progress.textContent = `Complete ${5 - challengesCompleted} more challenges to earn your detective badge!`;
+            }
+        }
+
+        // Initialize when page loads
+        init();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970f53363203a428',t:'MTc1NTQ5ODIzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

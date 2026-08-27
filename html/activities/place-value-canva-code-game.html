@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Value Math Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .bounce-number {
+            animation: bounce 2s infinite;
+        }
+        
+        .pulse-badge {
+            animation: pulse 2s infinite;
+        }
+        
+        .drag-card {
+            cursor: grab;
+            transition: all 0.3s ease;
+        }
+        
+        .drag-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .drop-zone {
+            min-height: 60px;
+            border: 2px dashed #14b8a6;
+            transition: all 0.3s ease;
+        }
+        
+        .drop-zone.drag-over {
+            background-color: #f0fdfa;
+            border-color: #0d9488;
+            transform: scale(1.02);
+        }
+        
+        .progress-step {
+            transition: all 0.5s ease;
+        }
+        
+        .progress-step.active {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px #fbbf24);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-teal-50 to-amber-50 min-h-screen p-4">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-teal-800 mb-2">🧮 Place Value Math Center 🔢</h1>
+            <p class="text-lg text-teal-600">Master numbers from ones to millions!</p>
+            
+            <!-- Progress Bar -->
+            <div class="flex justify-center items-center mt-6 space-x-4">
+                <div class="progress-step active" id="step1">🧮</div>
+                <div class="w-8 h-1 bg-teal-200 rounded"></div>
+                <div class="progress-step" id="step2">🔢</div>
+                <div class="w-8 h-1 bg-teal-200 rounded"></div>
+                <div class="progress-step" id="step3">🏆</div>
+            </div>
+        </div>
+
+        <!-- Activity 1: Number Building -->
+        <div class="activity-section mb-8" id="activity1">
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-teal-200">
+                <h2 class="text-2xl font-bold text-teal-700 mb-4">📦 Build Your Number</h2>
+                <p class="text-teal-600 mb-6">Drag the digit cards to build the number: <span class="font-bold text-2xl bounce-number" id="target-number">2,456,789</span></p>
+                
+                <!-- Place Value Chart -->
+                <div class="grid grid-cols-7 gap-2 mb-6">
+                    <div class="text-center">
+                        <div class="text-sm font-semibold text-teal-700 mb-2">Millions</div>
+                        <div class="drop-zone rounded-lg p-4 bg-teal-50" data-place="millions"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-sm font-semibold text-teal-700 mb-2">Hundred Thousands</div>
+                        <div class="drop-zone rounded-lg p-4 bg-amber-50" data-place="hundred-thousands"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-sm font-semibold text-teal-700 mb-2">Ten Thousands</div>
+                        <div class="drop-zone rounded-lg p-4 bg-teal-50" data-place="ten-thousands"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-sm font-semibold text-teal-700 mb-2">Thousands</div>
+                        <div class="drop-zone rounded-lg p-4 bg-amber-50" data-place="thousands"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-sm font-semibold text-teal-700 mb-2">Hundreds</div>
+                        <div class="drop-zone rounded-lg p-4 bg-teal-50" data-place="hundreds"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-sm font-semibold text-teal-700 mb-2">Tens</div>
+                        <div class="drop-zone rounded-lg p-4 bg-amber-50" data-place="tens"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-sm font-semibold text-teal-700 mb-2">Ones</div>
+                        <div class="drop-zone rounded-lg p-4 bg-teal-50" data-place="ones"></div>
+                    </div>
+                </div>
+                
+                <!-- Digit Cards -->
+                <div class="flex flex-wrap justify-center gap-3 mb-4" id="digit-cards">
+                    <div class="drag-card bg-gradient-to-br from-teal-400 to-teal-600 text-white text-2xl font-bold w-16 h-16 rounded-lg flex items-center justify-center shadow-lg" draggable="true" data-digit="2">2</div>
+                    <div class="drag-card bg-gradient-to-br from-amber-400 to-amber-600 text-white text-2xl font-bold w-16 h-16 rounded-lg flex items-center justify-center shadow-lg" draggable="true" data-digit="4">4</div>
+                    <div class="drag-card bg-gradient-to-br from-teal-400 to-teal-600 text-white text-2xl font-bold w-16 h-16 rounded-lg flex items-center justify-center shadow-lg" draggable="true" data-digit="5">5</div>
+                    <div class="drag-card bg-gradient-to-br from-amber-400 to-amber-600 text-white text-2xl font-bold w-16 h-16 rounded-lg flex items-center justify-center shadow-lg" draggable="true" data-digit="6">6</div>
+                    <div class="drag-card bg-gradient-to-br from-teal-400 to-teal-600 text-white text-2xl font-bold w-16 h-16 rounded-lg flex items-center justify-center shadow-lg" draggable="true" data-digit="7">7</div>
+                    <div class="drag-card bg-gradient-to-br from-amber-400 to-amber-600 text-white text-2xl font-bold w-16 h-16 rounded-lg flex items-center justify-center shadow-lg" draggable="true" data-digit="8">8</div>
+                    <div class="drag-card bg-gradient-to-br from-teal-400 to-teal-600 text-white text-2xl font-bold w-16 h-16 rounded-lg flex items-center justify-center shadow-lg" draggable="true" data-digit="9">9</div>
+                </div>
+                
+                <button class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors" onclick="checkActivity1()">Check Answer 🧮</button>
+                <div id="result1" class="mt-4 text-lg font-semibold"></div>
+            </div>
+        </div>
+
+        <!-- Activity 2: Word and Expanded Form -->
+        <div class="activity-section mb-8 hidden" id="activity2">
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-amber-200">
+                <h2 class="text-2xl font-bold text-amber-700 mb-4">🔢 Number Forms Challenge</h2>
+                <p class="text-amber-600 mb-6">Convert this number: <span class="font-bold text-2xl bounce-number" id="form-number">1,234,567</span></p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Word Form -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-amber-700 mb-3">Word Form:</h3>
+                        <textarea class="w-full p-3 border-2 border-amber-200 rounded-lg focus:border-amber-500 focus:outline-none" 
+                                  id="word-form" rows="3" placeholder="Write the number in words..."></textarea>
+                    </div>
+                    
+                    <!-- Expanded Form -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-amber-700 mb-3">Expanded Form:</h3>
+                        <textarea class="w-full p-3 border-2 border-amber-200 rounded-lg focus:border-amber-500 focus:outline-none" 
+                                  id="expanded-form" rows="3" placeholder="Break down the number..."></textarea>
+                    </div>
+                </div>
+                
+                <button class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors mt-4" onclick="checkActivity2()">Check Forms 🔢</button>
+                <div id="result2" class="mt-4 text-lg font-semibold"></div>
+            </div>
+        </div>
+
+        <!-- Activity 3: Number Comparison -->
+        <div class="activity-section mb-8 hidden" id="activity3">
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-teal-200">
+                <h2 class="text-2xl font-bold text-teal-700 mb-4">⚖️ Compare Numbers</h2>
+                <p class="text-teal-600 mb-6">Choose the correct symbol to compare these numbers:</p>
+                
+                <div class="flex items-center justify-center space-x-6 mb-6">
+                    <div class="text-3xl font-bold text-teal-700 bounce-number" id="num1">3,456,789</div>
+                    <div class="flex space-x-3">
+                        <button class="comparison-btn bg-teal-100 hover:bg-teal-200 text-2xl font-bold px-4 py-2 rounded-lg border-2 border-teal-300 transition-colors" data-symbol="<">&lt;</button>
+                        <button class="comparison-btn bg-amber-100 hover:bg-amber-200 text-2xl font-bold px-4 py-2 rounded-lg border-2 border-amber-300 transition-colors" data-symbol="=">=</button>
+                        <button class="comparison-btn bg-teal-100 hover:bg-teal-200 text-2xl font-bold px-4 py-2 rounded-lg border-2 border-teal-300 transition-colors" data-symbol=">">&gt;</button>
+                    </div>
+                    <div class="text-3xl font-bold text-teal-700 bounce-number" id="num2">2,987,654</div>
+                </div>
+                
+                <button class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors" onclick="generateNewComparison()">New Numbers 🔄</button>
+                <div id="result3" class="mt-4 text-lg font-semibold"></div>
+            </div>
+        </div>
+
+        <!-- Final Badge -->
+        <div class="text-center hidden" id="final-badge">
+            <div class="bg-gradient-to-br from-amber-400 to-amber-600 text-white p-8 rounded-xl shadow-2xl inline-block pulse-badge">
+                <div class="text-6xl mb-4">🏆</div>
+                <h2 class="text-3xl font-bold mb-2">Place-Value Pro!</h2>
+                <p class="text-xl">You've mastered place value from ones to millions!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentActivity = 1;
+        let selectedSymbol = null;
+        const targetNumber = [2, 4, 5, 6, 7, 8, 9]; // millions to ones
+        let userNumber = [null, null, null, null, null, null, null];
+
+        // Drag and Drop functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dragCards = document.querySelectorAll('.drag-card');
+            const dropZones = document.querySelectorAll('.drop-zone');
+
+            dragCards.forEach(card => {
+                card.addEventListener('dragstart', function(e) {
+                    e.dataTransfer.setData('text/plain', this.dataset.digit);
+                    this.style.opacity = '0.5';
+                });
+
+                card.addEventListener('dragend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                    this.classList.add('drag-over');
+                });
+
+                zone.addEventListener('dragleave', function() {
+                    this.classList.remove('drag-over');
+                });
+
+                zone.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.classList.remove('drag-over');
+                    const digit = e.dataTransfer.getData('text/plain');
+                    this.textContent = digit;
+                    this.classList.add('bg-green-100', 'text-2xl', 'font-bold');
+                    
+                    // Update user number array
+                    const places = ['millions', 'hundred-thousands', 'ten-thousands', 'thousands', 'hundreds', 'tens', 'ones'];
+                    const placeIndex = places.indexOf(this.dataset.place);
+                    userNumber[placeIndex] = parseInt(digit);
+                });
+            });
+
+            // Comparison buttons
+            document.querySelectorAll('.comparison-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.comparison-btn').forEach(b => b.classList.remove('bg-green-200', 'border-green-500'));
+                    this.classList.add('bg-green-200', 'border-green-500');
+                    selectedSymbol = this.dataset.symbol;
+                    checkComparison();
+                });
+            });
+
+            generateNewComparison();
+        });
+
+        function checkActivity1() {
+            const correct = JSON.stringify(userNumber) === JSON.stringify(targetNumber);
+            const result = document.getElementById('result1');
+            
+            if (correct) {
+                result.innerHTML = '<span class="text-green-600">🎉 Perfect! You built the number correctly!</span>';
+                setTimeout(() => {
+                    nextActivity();
+                }, 2000);
+            } else {
+                result.innerHTML = '<span class="text-red-600">Try again! Make sure each digit is in the right place.</span>';
+            }
+        }
+
+        function checkActivity2() {
+            const wordForm = document.getElementById('word-form').value.toLowerCase().trim();
+            const expandedForm = document.getElementById('expanded-form').value.trim();
+            const result = document.getElementById('result2');
+            
+            const correctWord = wordForm.includes('one million') && wordForm.includes('two hundred') && wordForm.includes('thirty') && wordForm.includes('four thousand');
+            const correctExpanded = expandedForm.includes('1,000,000') && expandedForm.includes('200,000') && expandedForm.includes('30,000') && expandedForm.includes('4,000');
+            
+            if (correctWord && correctExpanded) {
+                result.innerHTML = '<span class="text-green-600">🎉 Excellent work on both forms!</span>';
+                setTimeout(() => {
+                    nextActivity();
+                }, 2000);
+            } else {
+                result.innerHTML = '<span class="text-amber-600">Good try! Check your word form and expanded form again.</span>';
+            }
+        }
+
+        function generateNewComparison() {
+            const num1 = Math.floor(Math.random() * 9000000) + 1000000;
+            const num2 = Math.floor(Math.random() * 9000000) + 1000000;
+            
+            document.getElementById('num1').textContent = num1.toLocaleString();
+            document.getElementById('num2').textContent = num2.toLocaleString();
+            
+            // Reset selection
+            document.querySelectorAll('.comparison-btn').forEach(b => b.classList.remove('bg-green-200', 'border-green-500'));
+            selectedSymbol = null;
+            document.getElementById('result3').innerHTML = '';
+        }
+
+        function checkComparison() {
+            if (!selectedSymbol) return;
+            
+            const num1 = parseInt(document.getElementById('num1').textContent.replace(/,/g, ''));
+            const num2 = parseInt(document.getElementById('num2').textContent.replace(/,/g, ''));
+            const result = document.getElementById('result3');
+            
+            let correct = false;
+            if (selectedSymbol === '<' && num1 < num2) correct = true;
+            if (selectedSymbol === '=' && num1 === num2) correct = true;
+            if (selectedSymbol === '>' && num1 > num2) correct = true;
+            
+            if (correct) {
+                result.innerHTML = '<span class="text-green-600">🎉 Correct comparison!</span>';
+                setTimeout(() => {
+                    showFinalBadge();
+                }, 2000);
+            } else {
+                result.innerHTML = '<span class="text-red-600">Try again! Think about which number is larger.</span>';
+            }
+        }
+
+        function nextActivity() {
+            document.getElementById(`activity${currentActivity}`).classList.add('hidden');
+            document.getElementById(`step${currentActivity}`).classList.remove('active');
+            
+            currentActivity++;
+            
+            document.getElementById(`activity${currentActivity}`).classList.remove('hidden');
+            document.getElementById(`step${currentActivity}`).classList.add('active');
+        }
+
+        function showFinalBadge() {
+            document.getElementById('activity3').classList.add('hidden');
+            document.getElementById('step3').classList.remove('active');
+            document.getElementById('final-badge').classList.remove('hidden');
+            
+            // Confetti effect
+            setTimeout(() => {
+                for (let i = 0; i < 50; i++) {
+                    createConfetti();
+                }
+            }, 500);
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.innerHTML = ['🎉', '⭐', '🏆', '🎊'][Math.floor(Math.random() * 4)];
+            confetti.style.position = 'fixed';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.fontSize = '2rem';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = '1000';
+            document.body.appendChild(confetti);
+            
+            const animation = confetti.animate([
+                { transform: 'translateY(-10px) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(100vh) rotate(360deg)`, opacity: 0 }
+            ], {
+                duration: 3000,
+                easing: 'ease-out'
+            });
+            
+            animation.onfinish = () => confetti.remove();
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970effc310d678a8',t:'MTc1NTQ5NDgxNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏗️ Bridge Builders - Strong Foundations</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid #FF6B35;
+        }
+        
+        .header h1 {
+            color: #2C3E50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            color: #34495E;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bridge {
+            background: #E8F4FD;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid #3498DB;
+        }
+        
+        .bridge-meter {
+            width: 100%;
+            height: 30px;
+            background: #BDC3C7;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bridge-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #F39C12, #E67E22);
+            width: 0%;
+            transition: width 0.8s ease;
+            border-radius: 15px;
+        }
+        
+        .bridge-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .top-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .bottom-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .mission-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid #3498DB;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+        
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FF6B35, #F39C12);
+        }
+        
+        .mission-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .mission-number {
+            background: #3498DB;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+        
+        .mission-title {
+            color: #2C3E50;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .mission-content {
+            margin-bottom: 20px;
+        }
+        
+        .task-section {
+            background: #E8F6FF;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #3498DB;
+        }
+        
+        .challenge-section {
+            background: #FFF3E0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #FF9800;
+        }
+        
+        .misconception-section {
+            background: #FFEBEE;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #F44336;
+        }
+        
+        .reteach-section {
+            background: #E8F5E8;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .roles-panel, .badges-panel, .exit-ticket, .project-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 3px solid #9B59B6;
+        }
+        
+        .panel-title {
+            color: #2C3E50;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .roles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        
+        .role-card {
+            background: #F8F9FA;
+            padding: 8px;
+            border-radius: 8px;
+            border-left: 3px solid #9B59B6;
+            transition: transform 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .role-card:hover {
+            transform: translateX(3px);
+            background: #E9ECEF;
+        }
+        
+        .badges-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            background: #FFF9C4;
+            padding: 8px;
+            border-radius: 8px;
+            border: 2px solid #FFC107;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .badge:hover {
+            background: #FFF176;
+            transform: scale(1.02);
+        }
+        
+        .badge.earned {
+            background: #C8E6C9;
+            border-color: #4CAF50;
+        }
+        
+        .problem-workspace {
+            background: #F8F9FA;
+            border: 2px dashed #6C757D;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            min-height: 100px;
+            position: relative;
+        }
+        
+        .problem-workspace::before {
+            content: 'Work Space 📝';
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background: white;
+            padding: 0 10px;
+            color: #6C757D;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #3498DB, #2980B9);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #27AE60, #229954);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #F39C12, #E67E22);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #E74C3C, #C0392B);
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #BDC3C7;
+            border-radius: 10px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            margin: 8px 0;
+            transition: border-color 0.3s ease;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #3498DB;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+        
+        .celebration {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            z-index: 1000;
+            display: none;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1001;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .bounce {
+            animation: bounce 1s ease infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .top-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .bottom-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .missions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏗️ Bridge Builders - Strong Foundations</h1>
+        <div class="subtitle">Grade 4, Unit 3 – Week 5: Mastering Subtraction with Regrouping</div>
+        <div class="subtitle">Learning أمانة (Trustworthiness) in Managing Numbers</div>
+        
+        <div class="progress-bridge">
+            <div style="margin-bottom: 10px; font-weight: 600; color: #2C3E50;">🌉 Bridge Construction Progress</div>
+            <div class="bridge-meter">
+                <div class="bridge-progress" id="bridgeProgress"></div>
+                <div class="bridge-icon">🏗️</div>
+            </div>
+            <div style="margin-top: 10px; text-align: center; color: #7F8C8D;" id="progressText">Foundation Stage: 0% Complete</div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Top Section: Roles and Badges -->
+        <div class="top-section">
+            <!-- Team Roles -->
+            <div class="roles-panel">
+                <div class="panel-title">👷‍♀️ Bridge Worker Roles</div>
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <strong>👑 Leader</strong><br>
+                        <small>Guides problem planning</small>
+                    </div>
+                    <div class="role-card">
+                        <strong>✍️ Recorder</strong><br>
+                        <small>Writes regrouping steps</small>
+                    </div>
+                    <div class="role-card">
+                        <strong>🤔 Reflector</strong><br>
+                        <small>محاسبة النفس: Check work</small>
+                    </div>
+                    <div class="role-card">
+                        <strong>🌟 Diligent</strong><br>
+                        <small>Checks accuracy</small>
+                    </div>
+                    <div class="role-card">
+                        <strong>📐 Planner</strong><br>
+                        <small>Creates bar models</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievement Badges -->
+            <div class="badges-panel">
+                <div class="panel-title">🏅 Bridge Builder Badges</div>
+                <div class="badges-grid">
+                    <div class="badge" id="badge1">
+                        <span style="margin-right: 8px;">🧮</span>
+                        <div>
+                            <strong>Regrouping Pro</strong><br>
+                            <small>Master accurate regrouping</small>
+                        </div>
+                    </div>
+                    <div class="badge" id="badge2">
+                        <span style="margin-right: 8px;">🔎</span>
+                        <div>
+                            <strong>Problem Solver</strong><br>
+                            <small>Solve multi-step problems</small>
+                        </div>
+                    </div>
+                    <div class="badge" id="badge3">
+                        <span style="margin-right: 8px;">📊</span>
+                        <div>
+                            <strong>Trustworthy Accountant</strong><br>
+                            <small>Neat, honest recording (أمانة)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Missions Section -->
+        <div class="missions-grid">
+            <!-- Mission 1 -->
+            <div class="mission-card" onclick="openMission(1)">
+                <div class="mission-header">
+                    <div class="mission-number">1</div>
+                    <div class="mission-title">🎯 Subtraction with Regrouping</div>
+                </div>
+                <div class="mission-content">
+                    <div class="task-section">
+                        <strong>📋 Task:</strong> Solve 632 – 487 using the subtraction algorithm
+                    </div>
+                    <div class="challenge-section">
+                        <strong>⚡ Challenge:</strong> Create a subtraction problem with 2 regrouping steps
+                    </div>
+                    <div class="misconception-section">
+                        <strong>🚫 Common Error:</strong> "Always subtract smaller from larger digit"
+                    </div>
+                    <div class="reteach-section">
+                        <strong>🔄 Remember:</strong> Regroup when top digit < bottom digit
+                    </div>
+                </div>
+                <button class="btn">Start Mission 🚀</button>
+            </div>
+
+            <!-- Mission 2 -->
+            <div class="mission-card" onclick="openMission(2)">
+                <div class="mission-header">
+                    <div class="mission-number">2</div>
+                    <div class="mission-title">🎯 Estimate & Check</div>
+                </div>
+                <div class="mission-content">
+                    <div class="task-section">
+                        <strong>📋 Task:</strong> Estimate 5,004 – 3,879 by rounding to nearest hundred
+                    </div>
+                    <div class="challenge-section">
+                        <strong>⚡ Challenge:</strong> Compare your estimate with the exact answer
+                    </div>
+                    <div class="misconception-section">
+                        <strong>🚫 Common Error:</strong> "Estimation means sloppy math"
+                    </div>
+                    <div class="reteach-section">
+                        <strong>🔄 Remember:</strong> Estimation is a quick check tool for accuracy
+                    </div>
+                </div>
+                <button class="btn">Start Mission 🚀</button>
+            </div>
+
+            <!-- Mission 3 -->
+            <div class="mission-card" onclick="openMission(3)">
+                <div class="mission-header">
+                    <div class="mission-number">3</div>
+                    <div class="mission-title">🎯 Multi-Step Bridge Traffic</div>
+                </div>
+                <div class="mission-content">
+                    <div class="task-section">
+                        <strong>📋 Problem:</strong> Bridge traffic: Mon 25,487 • Tue 18,964 • Wed 19,872<br>
+                        Step 1: Add Mon + Tue. Step 2: Subtract Wed from total.
+                    </div>
+                    <div class="challenge-section">
+                        <strong>⚡ Challenge:</strong> Write this as a single equation
+                    </div>
+                    <div class="misconception-section">
+                        <strong>🚫 Common Error:</strong> Wrong operation order
+                    </div>
+                    <div class="reteach-section">
+                        <strong>🔄 Remember:</strong> Use bar models to plan your steps
+                    </div>
+                </div>
+                <button class="btn">Start Mission 🚀</button>
+            </div>
+
+            <!-- Mission 4 -->
+            <div class="mission-card" onclick="openMission(4)">
+                <div class="mission-header">
+                    <div class="mission-number">4</div>
+                    <div class="mission-title">🎯 Error Detective</div>
+                </div>
+                <div class="mission-content">
+                    <div class="task-section">
+                        <strong>📋 Investigation:</strong> A student solved 4,203 – 1,785 = 3,082<br>
+                        Find and fix the error!
+                    </div>
+                    <div class="challenge-section">
+                        <strong>⚡ Challenge:</strong> Explain what went wrong and show correct solution
+                    </div>
+                    <div class="misconception-section">
+                        <strong>🚫 Common Error:</strong> Ignoring regrouping in hundreds place
+                    </div>
+                    <div class="reteach-section">
+                        <strong>🔄 Remember:</strong> Use place-value chart to track regrouping
+                    </div>
+                </div>
+                <button class="btn">Start Mission 🚀</button>
+            </div>
+
+            <!-- Mission 5 -->
+            <div class="mission-card" onclick="openMission(5)">
+                <div class="mission-header">
+                    <div class="mission-number">5</div>
+                    <div class="mission-title">🎯 Construction Budget (أمانة)</div>
+                </div>
+                <div class="mission-content">
+                    <div class="task-section">
+                        <strong>📋 Real-Life Problem:</strong> Budget = $48,250, Spent = $29,865<br>
+                        How much money is left for materials?
+                    </div>
+                    <div class="challenge-section">
+                        <strong>⚡ Challenge:</strong> Estimate first, then find exact amount
+                    </div>
+                    <div class="misconception-section">
+                        <strong>🚫 Common Error:</strong> Not checking work for accuracy
+                    </div>
+                    <div class="reteach-section">
+                        <strong>🌱 أمانة (Trustworthiness):</strong> Always be honest and accurate with money calculations
+                    </div>
+                </div>
+                <button class="btn">Start Mission 🚀</button>
+            </div>
+        </div>
+
+        <!-- Bottom Section: Exit Ticket and Project -->
+        <div class="bottom-section">
+            <!-- Exit Ticket -->
+            <div class="exit-ticket">
+                <div class="panel-title">🎫 Bridge Pass - Exit Ticket</div>
+                <div style="margin-bottom: 15px;">
+                    <strong>Q1:</strong> Subtract 4,506 – 2,789
+                    <input type="text" class="input-field" id="exitQ1" placeholder="Your answer...">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>Q2:</strong> A builder orders 4,800 bricks and uses 2,675. How many are left?
+                    <input type="text" class="input-field" id="exitQ2" placeholder="Your answer...">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>محاسبة النفس:</strong> What error did you correct today?
+                    <input type="text" class="input-field" id="reflection1" placeholder="Your reflection...">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>الحمد:</strong> What skill did you master today?
+                    <input type="text" class="input-field" id="reflection2" placeholder="Your gratitude...">
+                </div>
+                <button class="btn btn-success" onclick="submitExitTicket()">Submit Bridge Pass ✅</button>
+            </div>
+
+            <!-- Project Section -->
+            <div class="project-panel">
+                <div class="panel-title">📑 Week 5 Project: Bridge Budget Tracker</div>
+                <div style="background: #E8F6FF; padding: 15px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #3498DB;">
+                    <strong>🎯 Driving Question:</strong><br>
+                    How can subtraction + problem solving ensure fair management of bridge budgets?
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <strong>📋 Project Steps:</strong>
+                    <ol style="margin: 10px 0; padding-left: 20px;">
+                        <li>Create a 3-day cost/usage record</li>
+                        <li>Estimate daily remaining budget</li>
+                        <li>Calculate exact totals with regrouping</li>
+                        <li>Represent with bar model or chart</li>
+                    </ol>
+                </div>
+                <div style="background: #FFF3E0; padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #FF9800;">
+                    <strong>🏆 Rubric (20 pts):</strong><br>
+                    Accuracy (8) • Representation (4) • Collaboration (4) • Akhlāq (4)
+                </div>
+                <div style="background: #E8F5E8; padding: 12px; border-radius: 8px; border-left: 4px solid #4CAF50;">
+                    <strong>🌱 Service Link:</strong> Emphasize أمانة in handling community funds
+                </div>
+                <button class="btn btn-warning" onclick="startProject()" style="margin-top: 15px;">Start Project 📊</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission Modal -->
+    <div class="overlay" id="overlay" onclick="closeMission()"></div>
+    <div class="celebration" id="missionModal">
+        <div id="modalContent"></div>
+        <div class="problem-workspace" id="workspace"></div>
+        <button class="btn btn-success" onclick="completeMission()" id="completeBtn">Complete Mission ✅</button>
+        <button class="btn btn-warning" onclick="closeMission()" style="margin-left: 10px;">Close 📝</button>
+    </div>
+
+    <!-- Celebration Modal -->
+    <div class="celebration" id="celebrationModal">
+        <h2 style="color: #27AE60; margin-bottom: 20px;">🎉 Congratulations! 🎉</h2>
+        <div style="font-size: 3rem; margin: 20px 0;">🏗️🌟</div>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">You've earned the <strong>Foundation Builder</strong> badge!</p>
+        <p style="color: #7F8C8D;">Your bridge construction is complete! 🌉</p>
+        <button class="btn" onclick="closeCelebration()">Continue Building 🚀</button>
+    </div>
+
+    <div class="fireworks" id="fireworks"></div>
+
+    <script>
+        let completedMissions = 0;
+        let earnedBadges = 0;
+        
+        const missions = {
+            1: {
+                title: "🎯 Subtraction with Regrouping",
+                content: `
+                    <h3>Mission 1: Master Regrouping! 🧮</h3>
+                    <p><strong>Solve:</strong> 632 – 487</p>
+                    <p>Remember: When the top digit is smaller than the bottom digit, you need to regroup!</p>
+                    <div style="margin: 15px 0;">
+                        <strong>Steps:</strong><br>
+                        1. Start with ones: 2 < 7, so regroup from tens<br>
+                        2. 12 - 7 = 5<br>
+                        3. Tens: 2 < 8, so regroup from hundreds<br>
+                        4. 12 - 8 = 4<br>
+                        5. Hundreds: 5 - 4 = 1<br>
+                        <strong>Answer: 145</strong>
+                    </div>
+                `
+            },
+            2: {
+                title: "🎯 Estimate & Check",
+                content: `
+                    <h3>Mission 2: Smart Estimation! 📊</h3>
+                    <p><strong>Problem:</strong> 5,004 – 3,879</p>
+                    <p><strong>Step 1 - Estimate:</strong></p>
+                    <p>Round to nearest hundred: 5,000 – 3,900 = 1,100</p>
+                    <p><strong>Step 2 - Exact calculation:</strong></p>
+                    <p>5,004 – 3,879 = 1,125</p>
+                    <p><strong>Check:</strong> 1,125 is close to 1,100 ✅</p>
+                `
+            },
+            3: {
+                title: "🎯 Multi-Step Bridge Traffic",
+                content: `
+                    <h3>Mission 3: Traffic Analysis! 🚗</h3>
+                    <p><strong>Bridge Traffic Data:</strong></p>
+                    <p>Monday: 25,487 cars • Tuesday: 18,964 cars • Wednesday: 19,872 cars</p>
+                    <p><strong>Step 1:</strong> Add Mon + Tue = 25,487 + 18,964 = 44,451</p>
+                    <p><strong>Step 2:</strong> Subtract Wed = 44,451 - 19,872 = 24,579</p>
+                    <p><strong>Single equation:</strong> (25,487 + 18,964) - 19,872 = 24,579</p>
+                    <p><strong>Answer:</strong> 24,579 more cars on Mon+Tue than Wed</p>
+                `
+            },
+            4: {
+                title: "🎯 Error Detective",
+                content: `
+                    <h3>Mission 4: Find the Error! 🔍</h3>
+                    <p><strong>Student's work:</strong> 4,203 – 1,785 = 3,082</p>
+                    <p><strong>Error found:</strong> Incorrect regrouping in hundreds place!</p>
+                    <p><strong>Correct solution:</strong></p>
+                    <p>4,203 - 1,785:</p>
+                    <p>Ones: 3 < 5, regroup → 13 - 5 = 8</p>
+                    <p>Tens: 0 < 8, regroup → 10 - 8 = 2</p>
+                    <p>Hundreds: 1 < 7, regroup → 11 - 7 = 4</p>
+                    <p>Thousands: 3 - 1 = 2</p>
+                    <p><strong>Correct answer: 2,418</strong></p>
+                `
+            },
+            5: {
+                title: "🎯 Construction Budget (أمانة)",
+                content: `
+                    <h3>Mission 5: Honest Budget Management! 💰</h3>
+                    <p><strong>Budget Problem:</strong></p>
+                    <p>Total Budget: $48,250</p>
+                    <p>Amount Spent: $29,865</p>
+                    <p><strong>Estimate:</strong> $48,000 - $30,000 = $18,000</p>
+                    <p><strong>Exact calculation:</strong></p>
+                    <p>$48,250 - $29,865 = $18,385</p>
+                    <p><strong>أمانة (Trustworthiness):</strong> Always double-check money calculations to ensure accuracy and honesty in financial reporting.</p>
+                `
+            }
+        };
+
+        function openMission(missionNum) {
+            const mission = missions[missionNum];
+            document.getElementById('modalContent').innerHTML = mission.content;
+            document.getElementById('workspace').innerHTML = `
+                <div style="text-align: center; color: #7F8C8D; padding: 20px;">
+                    📝 Use this space to show your work and calculations
+                </div>
+            `;
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('missionModal').style.display = 'block';
+            document.getElementById('completeBtn').onclick = () => completeMission(missionNum);
+        }
+
+        function closeMission() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('missionModal').style.display = 'none';
+        }
+
+        function completeMission(missionNum) {
+            completedMissions++;
+            updateProgress();
+            earnBadge();
+            closeMission();
+            
+            if (completedMissions === 5) {
+                setTimeout(showCelebration, 500);
+            }
+        }
+
+        function updateProgress() {
+            const progress = (completedMissions / 5) * 100;
+            document.getElementById('bridgeProgress').style.width = progress + '%';
+            
+            let stage = 'Foundation Stage';
+            if (progress >= 20) stage = 'Pillar Construction';
+            if (progress >= 40) stage = 'Deck Building';
+            if (progress >= 60) stage = 'Cable Installation';
+            if (progress >= 80) stage = 'Final Assembly';
+            if (progress === 100) stage = 'Bridge Complete! 🎉';
+            
+            document.getElementById('progressText').textContent = `${stage}: ${Math.round(progress)}% Complete`;
+        }
+
+        function earnBadge() {
+            if (completedMissions >= 2 && earnedBadges < 1) {
+                document.getElementById('badge1').classList.add('earned');
+                earnedBadges++;
+            }
+            if (completedMissions >= 3 && earnedBadges < 2) {
+                document.getElementById('badge2').classList.add('earned');
+                earnedBadges++;
+            }
+            if (completedMissions >= 4 && earnedBadges < 3) {
+                document.getElementById('badge3').classList.add('earned');
+                earnedBadges++;
+            }
+        }
+
+        function submitExitTicket() {
+            const q1 = document.getElementById('exitQ1').value;
+            const q2 = document.getElementById('exitQ2').value;
+            const ref1 = document.getElementById('reflection1').value;
+            const ref2 = document.getElementById('reflection2').value;
+            
+            if (q1 && q2 && ref1 && ref2) {
+                alert('🎫 Bridge Pass submitted successfully! Great work on your reflections and problem solving!');
+                // Check answers
+                if (q1.includes('1717') || q1.includes('1,717')) {
+                    alert('✅ Excellent! Q1 is correct: 4,506 - 2,789 = 1,717');
+                }
+                if (q2.includes('2125') || q2.includes('2,125')) {
+                    alert('✅ Perfect! Q2 is correct: 4,800 - 2,675 = 2,125 bricks left');
+                }
+            } else {
+                alert('Please complete all sections of your Bridge Pass before submitting.');
+            }
+        }
+
+        function showCelebration() {
+            createFireworks();
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('celebrationModal').style.display = 'block';
+        }
+
+        function closeCelebration() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('celebrationModal').style.display = 'none';
+            document.getElementById('fireworks').innerHTML = '';
+        }
+
+        function createFireworks() {
+            const fireworksContainer = document.getElementById('fireworks');
+            const colors = ['#FF6B35', '#F39C12', '#3498DB', '#9B59B6', '#27AE60'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.style.position = 'absolute';
+                    firework.style.left = Math.random() * 100 + '%';
+                    firework.style.top = Math.random() * 100 + '%';
+                    firework.style.fontSize = '2rem';
+                    firework.innerHTML = ['🎆', '✨', '🎉', '⭐'][Math.floor(Math.random() * 4)];
+                    firework.style.color = colors[Math.floor(Math.random() * colors.length)];
+                    firework.classList.add('bounce');
+                    fireworksContainer.appendChild(firework);
+                    
+                    setTimeout(() => {
+                        if (firework.parentNode) {
+                            firework.parentNode.removeChild(firework);
+                        }
+                    }, 3000);
+                }, i * 200);
+            }
+        }
+
+        function startProject() {
+            alert('🏗️ Bridge Budget Tracker Project Started!\n\nYou will create a 3-day budget tracking system using subtraction with regrouping. Remember to practice أمانة (trustworthiness) in all your calculations!');
+        }
+
+        // Initialize progress
+        updateProgress();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9720ac56a31dea75',t:'MTc1NTY4MDE0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

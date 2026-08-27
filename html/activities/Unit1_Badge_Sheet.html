@@ -1,0 +1,142 @@
+
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Unit 1 Badge Sheet — Place Value & Operations</title>
+<style>
+    :root{
+      --bg1:#e6f7f6;
+      --bg2:#dff5ff;
+      --ink:#0f2a2a;
+      --accent:#14b8a6;
+      --accent2:#4f46e5;
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --paper:#ffffff;
+      --mute:#64748b;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:system-ui,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,var(--bg1),var(--bg2));overflow-x:hidden}
+    a{color:var(--accent2);text-decoration:none}
+    .wrap{max-width:1100px;margin:28px auto;padding:16px}
+    h1,h2,h3{margin:0 0 8px}
+    .subtitle{color:var(--mute);margin-bottom:16px}
+    .grid{display:grid;gap:14px}
+    .cards{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+    .card{background:var(--paper);border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.06);padding:14px;position:relative;overflow:hidden}
+    .tag{display:inline-block;font-size:12px;padding:4px 8px;border-radius:999px;background:#eafaf7;color:#0b7267;margin-right:6px}
+    .pill{display:inline-block;font-size:12px;padding:4px 8px;border-radius:999px;background:#eef2ff;color:#3631b9;margin-right:6px}
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .footer{margin-top:24px;color:var(--mute);font-size:12px}
+    /* Floating subject icons */
+    .float{position:fixed;opacity:.25;filter:saturate(.9);animation: drift 18s linear infinite;pointer-events:none}
+    .f1{left:6%;top:12%;font-size:36px;animation-duration:22s}
+    .f2{left:80%;top:20%;font-size:44px;animation-duration:26s}
+    .f3{left:12%;top:75%;font-size:30px;animation-duration:20s}
+    .f4{left:88%;top:70%;font-size:38px;animation-duration:24s}
+    @keyframes drift{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(8deg)}100%{transform:translateY(0) rotate(0)}}
+    /* Progress Plant */
+    .progress{position:sticky;top:8px;display:flex;justify-content:flex-end;margin-bottom:10px}
+    .plant{font-size:28px;transition:transform .3s ease}
+    .plant.grow{transform:scale(1.15)}
+    .progress small{margin-left:8px;color:var(--mute)}
+    .btn{background:var(--accent);border:none;color:#fff;padding:8px 12px;border-radius:10px;cursor:pointer}
+    .btn:focus{outline:3px solid #86efac}
+    /* Celebration */
+    .leaf{position:fixed;top:-20px;font-size:20px;animation:fall 4s linear forwards;pointer-events:none}
+    @keyframes fall{to{transform:translateY(110vh) rotate(180deg);opacity:.1}}
+    /* Print */
+    @media print{
+      .float,.progress .btn{display:none!important}
+      .wrap{padding:0}
+      .card{break-inside:avoid}
+    }
+
+.sheet{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.bad{text-align:center;padding:16px;border:2px dashed #93c5fd}
+.bad .em{font-size:36px}
+.bad button{margin-top:8px}
+</style>
+</head><body>
+<div class="float f1">🍃</div><div class="float f2">🔢</div>
+<div class="wrap">
+  <div class="progress"><span class="plant">🌱</span><small>Click a badge to award</small><button id="water" class="btn">💧 Water</button></div>
+  <h1>Badges — Academic + Akhlāq</h1>
+  <div class="sheet">
+    <div class="card bad" data-complete>
+      <div class="em">🎯</div>
+      <h3>Place‑Value Pro</h3>
+      <p>Explains ten‑times pattern across places (4.NBT.A.1).</p>
+      <button class="btn">Award</button>
+    </div>
+    <div class="card bad" data-complete>
+      <div class="em">📝</div>
+      <h3>Forms Master</h3>
+      <p>Writes numbers correctly in all three forms (4.NBT.A.2).</p>
+      <button class="btn">Award</button>
+    </div>
+    <div class="card bad" data-complete>
+      <div class="em">⚖️</div>
+      <h3>Fair Trader (عدل)</h3>
+      <p>Uses precise numbers to keep pricing honest (أمانة).</p>
+      <button class="btn">Award</button>
+    </div>
+    <div class="card bad" data-complete>
+      <div class="em">📈</div>
+      <h3>Rounding Reasoner</h3>
+      <p>Justifies sensible rounding choices (4.NBT.A.3).</p>
+      <button class="btn">Award</button>
+    </div>
+    <div class="card bad" data-complete>
+      <div class="em">🤝</div>
+      <h3>Team Mercy (رحمة)</h3>
+      <p>Gives kind feedback during error analysis.</p>
+      <button class="btn">Award</button>
+    </div>
+  </div>
+  <div id="badge" class="badge"><h2>🏅 Badge Ceremony</h2><p>🍃 Congratulations to today’s Junior Mathematicians!</p></div>
+</div>
+<script>
+const totalGoals=5; 
+  // Progress plant logic
+  let progressCount = 0;
+  const plantEl = document.querySelector('.plant');
+  const progressText = document.getElementById('ptext');
+  function updatePlant(){
+    const stages = ['🌱','🌿','🌳'];
+    const idx = Math.min(2, Math.floor(progressCount/Math.max(1, totalGoals/3)));
+    plantEl.textContent = stages[idx];
+    plantEl.classList.add('grow');
+    setTimeout(()=>plantEl.classList.remove('grow'),250);
+    progressText.textContent = `${progressCount}/${totalGoals} done`;
+  }
+  function celebrate(){
+    for(let i=0;i<18;i++){
+      const lf = document.createElement('div');
+      lf.className='leaf';
+      lf.style.left = Math.random()*100+'vw';
+      lf.style.animationDelay = (Math.random()*1.5)+'s';
+      lf.textContent='🍃';
+      document.body.appendChild(lf);
+      setTimeout(()=>lf.remove(),4500);
+    }
+  }
+  // Click-to-complete behavior
+  document.querySelectorAll('[data-complete]').forEach(el=>{
+    el.addEventListener('click',()=>{
+      if(!el.dataset.done){
+        el.dataset.done='1';
+        el.style.boxShadow='0 0 0 3px #86efac';
+        progressCount++;
+        updatePlant();
+        if(progressCount>=totalGoals){celebrate();document.getElementById('badge').style.display='block'}
+      }
+    });
+  });
+  // Water button
+  document.getElementById('water').addEventListener('click',()=>{
+    plantEl.classList.add('grow');
+    setTimeout(()=>plantEl.classList.remove('grow'),300);
+  });
+
+</script>
+</body></html>

@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔢 Patterns with Power - Grade 4 Math Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+            grid-template-rows: auto auto auto auto auto auto;
+        }
+
+        /* Header Section */
+        .header-section {
+            background: linear-gradient(135deg, #2d3436, #636e72);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .standards {
+            font-size: 14px;
+            color: #ffeaa7;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .unit-title {
+            font-size: 18px;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+
+        .theme-title {
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48cae4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .progress-title {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.3);
+            border-radius: 25px;
+            height: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #48cae4, #023e8a);
+            height: 100%;
+            width: 0%;
+            border-radius: 25px;
+            transition: width 1s ease-in-out;
+            position: relative;
+        }
+
+        .progress-fill.glow {
+            animation: spiral-glow 2s infinite;
+        }
+
+        @keyframes spiral-glow {
+            0%, 100% { box-shadow: 0 0 20px #48cae4; }
+            50% { box-shadow: 0 0 40px #023e8a, 0 0 60px #48cae4; }
+        }
+
+        /* Badges and Roles Row */
+        .badges-roles-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .badges-container, .roles-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #2d3436;
+            text-align: center;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .badge {
+            background: linear-gradient(45deg, #ffecd2, #fcb69f);
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .badge:hover {
+            transform: scale(1.05);
+            border-color: #ff6b6b;
+        }
+
+        .badge.earned {
+            background: linear-gradient(45deg, #56ab2f, #a8e6cf);
+            border-color: #27ae60;
+        }
+
+        .roles-grid {
+            display: grid;
+            gap: 8px;
+        }
+
+        .role {
+            background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .role:hover {
+            background: linear-gradient(45deg, #2196f3, #64b5f6);
+            color: white;
+        }
+
+        /* Missions Grid */
+        .missions-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .mission-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .mission-card.completed {
+            border-left-color: #27ae60;
+            background: linear-gradient(135deg, #f8fff8, #e8f5e8);
+        }
+
+        .mission-title {
+            font-size: 18px;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+
+        .mission-content {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .mission-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, #56ab2f, #a8e6cf);
+            color: white;
+        }
+
+        /* Exit Tickets */
+        .exit-tickets-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .exit-card {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .quiz-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .quiz-input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        /* Project Section */
+        .project-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .project-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .fireworks {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .fireworks.show {
+            animation: fireworks 2s ease-out;
+        }
+
+        @keyframes fireworks {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .close-btn {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .badges-roles-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .missions-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="unit-info">
+                <div class="standards">Standards: 4.OA.C.5, 4.NBT.A.1, 4.NBT.B.5</div>
+                <div class="unit-title">Grade 4, Unit 5 – Week 10</div>
+                <div class="theme-title">🔢 Patterns with Power</div>
+            </div>
+        </div>
+
+        <!-- Progress Bar Section -->
+        <div class="progress-section">
+            <div class="progress-title">🔢 Power Pattern Meter</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div style="margin-top: 10px; color: white;">
+                <span id="progressText">0/5 Missions Complete</span>
+            </div>
+        </div>
+
+        <!-- Badges and Roles Section -->
+        <div class="badges-roles-section">
+            <div class="badges-container">
+                <div class="section-title">🏅 Badges</div>
+                <div class="badges-grid">
+                    <div class="badge" data-badge="rule-maker">
+                        📝<br>Rule Maker<br><small>writes clear pattern rules</small>
+                    </div>
+                    <div class="badge" data-badge="zero-power">
+                        🔢<br>Zero Power<br><small>multiplies by 10, 100, 1,000</small>
+                    </div>
+                    <div class="badge" data-badge="precise-patternist">
+                        🌱<br>Precise Patternist<br><small>shows إتقان by careful steps</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="roles-container">
+                <div class="section-title">👥 Roles</div>
+                <div class="roles-grid">
+                    <div class="role">👑 Leader – chooses numbers/shapes</div>
+                    <div class="role">✍️ Recorder – writes rules in words</div>
+                    <div class="role">🤔 Reflector – محاسبة النفس</div>
+                    <div class="role">🌟 Diligent – checks multiplication</div>
+                    <div class="role">🎤 Presenter – shares patterns</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Missions Section -->
+        <div class="missions-section">
+            <div class="mission-card" data-mission="1">
+                <div class="mission-title">🎯 Mission 1: Generate a Rule</div>
+                <div class="mission-content">
+                    <strong>Task:</strong> Extend 2, 4, 6, 8...<br>
+                    💡 <strong>Example:</strong> Rule = add 2<br>
+                    ⚡ <strong>Challenge:</strong> Make a doubling sequence<br>
+                    🚫 <strong>Misconception:</strong> Random numbers<br>
+                    🔄 <strong>Reteach:</strong> Rule controls sequence
+                </div>
+                <div class="mission-buttons">
+                    <button class="btn btn-primary" onclick="startMission(1)">Start Mission</button>
+                    <button class="btn btn-success" onclick="completeMission(1)" style="display:none;">Complete ✓</button>
+                </div>
+            </div>
+
+            <div class="mission-card" data-mission="2">
+                <div class="mission-title">🎯 Mission 2: Shape Growth</div>
+                <div class="mission-content">
+                    <strong>Task:</strong> ◼, ◼◼, ◼◼◼... extend 2 steps<br>
+                    ⚡ <strong>Challenge:</strong> Make your own<br>
+                    🌱 <strong>Akhlāq:</strong> إتقان – accurate visuals
+                </div>
+                <div class="mission-buttons">
+                    <button class="btn btn-primary" onclick="startMission(2)">Start Mission</button>
+                    <button class="btn btn-success" onclick="completeMission(2)" style="display:none;">Complete ✓</button>
+                </div>
+            </div>
+
+            <div class="mission-card" data-mission="3">
+                <div class="mission-title">🎯 Mission 3: Multiply by Tens</div>
+                <div class="mission-content">
+                    <strong>Task:</strong> 36 × 10, 36 × 100, 36 × 1,000<br>
+                    💡 <strong>Example:</strong> 360, 3,600, 36,000<br>
+                    ⚡ <strong>Challenge:</strong> Try 47 × 100<br>
+                    🚫 <strong>Misconception:</strong> "Add zero" shortcut<br>
+                    🔄 <strong>Reteach:</strong> Explain place value shift
+                </div>
+                <div class="mission-buttons">
+                    <button class="btn btn-primary" onclick="startMission(3)">Start Mission</button>
+                    <button class="btn btn-success" onclick="completeMission(3)" style="display:none;">Complete ✓</button>
+                </div>
+            </div>
+
+            <div class="mission-card" data-mission="4">
+                <div class="mission-title">🎯 Mission 4: Real-Life Multiples</div>
+                <div class="mission-content">
+                    <strong>Task:</strong> Box = 100 pencils → 7 boxes = ?<br>
+                    ⚡ <strong>Challenge:</strong> 32 boxes = ?<br>
+                    🚫 <strong>Misconception:</strong> Adding instead of multiplying<br>
+                    🔄 <strong>Reteach:</strong> Show grouping method
+                </div>
+                <div class="mission-buttons">
+                    <button class="btn btn-primary" onclick="startMission(4)">Start Mission</button>
+                    <button class="btn btn-success" onclick="completeMission(4)" style="display:none;">Complete ✓</button>
+                </div>
+            </div>
+
+            <div class="mission-card" data-mission="5">
+                <div class="mission-title">🎯 Mission 5: Pattern Detective</div>
+                <div class="mission-content">
+                    <strong>Task:</strong> 5, 50, 500, 5,000... rule?<br>
+                    ⚡ <strong>Challenge:</strong> Extend 2 steps<br>
+                    🌱 <strong>Akhlāq:</strong> أمانة – explain reasoning clearly
+                </div>
+                <div class="mission-buttons">
+                    <button class="btn btn-primary" onclick="startMission(5)">Start Mission</button>
+                    <button class="btn btn-success" onclick="completeMission(5)" style="display:none;">Complete ✓</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exit Tickets Section -->
+        <div class="exit-tickets-section">
+            <div class="exit-card">
+                <div class="section-title">📝 Exit Ticket - Q1</div>
+                <p><strong>Extend:</strong> 7, 14, 21, 28... → next 3</p>
+                <input type="text" class="quiz-input" placeholder="Enter the next 3 numbers" id="q1-answer">
+                <button class="btn btn-primary" onclick="checkAnswer(1)">Check Answer</button>
+                <div id="q1-feedback" style="margin-top: 10px;"></div>
+            </div>
+
+            <div class="exit-card">
+                <div class="section-title">📝 Exit Ticket - Q2</div>
+                <p><strong>Solve:</strong> 25 × 100</p>
+                <input type="text" class="quiz-input" placeholder="Enter your answer" id="q2-answer">
+                <button class="btn btn-primary" onclick="checkAnswer(2)">Check Answer</button>
+                <div id="q2-feedback" style="margin-top: 10px;"></div>
+            </div>
+
+            <div class="exit-card">
+                <div class="section-title">🤔 Reflection</div>
+                <p><strong>محاسبة النفس:</strong> Did I double-check zeros?</p>
+                <textarea class="quiz-input" rows="2" placeholder="Your reflection..."></textarea>
+                <p><strong>الحمد:</strong> One beautiful pattern in math is...</p>
+                <textarea class="quiz-input" rows="2" placeholder="Share what you found beautiful..."></textarea>
+            </div>
+
+            <div class="exit-card">
+                <div class="section-title">📊 Mastery Rubric</div>
+                <div style="font-size: 12px;">
+                    <div>🌟 4 - Mastery: Extends patterns & explains clearly</div>
+                    <div>⭐ 3 - Proficient: Completes most tasks correctly</div>
+                    <div>✨ 2 - Developing: Shows understanding with help</div>
+                    <div>💫 1 - Beginning: Needs more practice</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Section -->
+        <div class="project-section">
+            <div class="project-title">📂 Project: "Patterns that Grow"</div>
+            <p style="font-size: 18px; margin-bottom: 20px;">
+                <strong>Driving Question:</strong> How do number patterns and multiples of 10, 100, 1,000 help us in real life?
+            </p>
+            
+            <div class="project-content">
+                <div class="project-card">
+                    <h3>📋 Instructions</h3>
+                    <ul style="text-align: left; font-size: 14px;">
+                        <li>Pick a 2-digit number</li>
+                        <li>Multiply it by 10, 100, 1,000</li>
+                        <li>Create a growing sequence with a rule</li>
+                        <li>Show with visuals (charts, drawings)</li>
+                    </ul>
+                </div>
+                
+                <div class="project-card">
+                    <h3>📊 Rubric (20 pts)</h3>
+                    <div style="text-align: left; font-size: 14px;">
+                        <div>Accuracy (8 pts)</div>
+                        <div>Rule Explanation (4 pts)</div>
+                        <div>Creativity (4 pts)</div>
+                        <div>Akhlāq (4 pts)</div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>🔧 SAMR Integration</h3>
+                    <div style="text-align: left; font-size: 14px;">
+                        <div>📝 Substitution → paper sequences</div>
+                        <div>📈 Augmentation → Google Sheets</div>
+                        <div>📊 Modification → digital graphs</div>
+                        <div>📚 Redefinition → Pattern Storybook</div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <h3>🤝 Service Connection</h3>
+                    <p style="font-size: 14px;">Multiples support fair distribution in community: supplies, shopping, charity packs</p>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" style="margin-top: 20px; font-size: 16px; padding: 12px 24px;" onclick="startProject()">
+                🚀 Start Project
+            </button>
+        </div>
+    </div>
+
+    <!-- Fireworks Animation -->
+    <div class="fireworks" id="fireworks">🎆✨🎇</div>
+
+    <!-- Mission Modal -->
+    <div class="modal" id="missionModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        let completedMissions = 0;
+        const totalMissions = 5;
+        let earnedBadges = [];
+
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const percentage = (completedMissions / totalMissions) * 100;
+            
+            progressFill.style.width = percentage + '%';
+            progressText.textContent = `${completedMissions}/${totalMissions} Missions Complete`;
+            
+            if (completedMissions === totalMissions) {
+                progressFill.classList.add('glow');
+                showFireworks();
+                earnBadge('power-patternist');
+            }
+        }
+
+        function startMission(missionNumber) {
+            const missionCard = document.querySelector(`[data-mission="${missionNumber}"]`);
+            const startBtn = missionCard.querySelector('.btn-primary');
+            const completeBtn = missionCard.querySelector('.btn-success');
+            
+            startBtn.style.display = 'none';
+            completeBtn.style.display = 'inline-block';
+            
+            // Show mission-specific content in modal
+            showMissionModal(missionNumber);
+        }
+
+        function completeMission(missionNumber) {
+            const missionCard = document.querySelector(`[data-mission="${missionNumber}"]`);
+            missionCard.classList.add('completed');
+            
+            completedMissions++;
+            updateProgress();
+            
+            // Award badges based on mission
+            if (missionNumber === 1) earnBadge('rule-maker');
+            if (missionNumber === 3) earnBadge('zero-power');
+            if (missionNumber === 2 || missionNumber === 5) earnBadge('precise-patternist');
+            
+            closeModal();
+        }
+
+        function earnBadge(badgeType) {
+            if (!earnedBadges.includes(badgeType)) {
+                earnedBadges.push(badgeType);
+                const badge = document.querySelector(`[data-badge="${badgeType}"]`);
+                if (badge) {
+                    badge.classList.add('earned');
+                    badge.style.animation = 'pulse 1s ease-in-out';
+                }
+            }
+        }
+
+        function showMissionModal(missionNumber) {
+            const modal = document.getElementById('missionModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            const missionContents = {
+                1: `
+                    <h2>🎯 Mission 1: Generate a Rule</h2>
+                    <p>Let's extend the pattern: 2, 4, 6, 8...</p>
+                    <div style="margin: 20px 0;">
+                        <p><strong>What's the rule?</strong></p>
+                        <input type="text" placeholder="Describe the rule..." style="width: 100%; padding: 10px; margin: 10px 0;">
+                        <p><strong>Next 3 numbers:</strong></p>
+                        <input type="text" placeholder="10, 12, 14" style="width: 100%; padding: 10px; margin: 10px 0;">
+                    </div>
+                    <button class="btn btn-success" onclick="completeMission(1)">Submit & Complete ✓</button>
+                `,
+                2: `
+                    <h2>🎯 Mission 2: Shape Growth</h2>
+                    <p>Pattern: ◼, ◼◼, ◼◼◼...</p>
+                    <div style="margin: 20px 0;">
+                        <p><strong>Draw the next 2 steps:</strong></p>
+                        <div style="font-size: 24px; margin: 10px 0;">
+                            ◼◼◼◼ (4 squares)<br>
+                            ◼◼◼◼◼ (5 squares)
+                        </div>
+                        <p><strong>What's your rule?</strong></p>
+                        <input type="text" placeholder="Add one more square each time" style="width: 100%; padding: 10px;">
+                    </div>
+                    <button class="btn btn-success" onclick="completeMission(2)">Submit & Complete ✓</button>
+                `,
+                3: `
+                    <h2>🎯 Mission 3: Multiply by Tens</h2>
+                    <p>Calculate: 36 × 10, 36 × 100, 36 × 1,000</p>
+                    <div style="margin: 20px 0;">
+                        <p>36 × 10 = <input type="text" placeholder="360" style="width: 100px; padding: 5px;"></p>
+                        <p>36 × 100 = <input type="text" placeholder="3,600" style="width: 100px; padding: 5px;"></p>
+                        <p>36 × 1,000 = <input type="text" placeholder="36,000" style="width: 100px; padding: 5px;"></p>
+                        <p><strong>Challenge:</strong> 47 × 100 = <input type="text" placeholder="4,700" style="width: 100px; padding: 5px;"></p>
+                    </div>
+                    <button class="btn btn-success" onclick="completeMission(3)">Submit & Complete ✓</button>
+                `,
+                4: `
+                    <h2>🎯 Mission 4: Real-Life Multiples</h2>
+                    <p>Each box contains 100 pencils. How many pencils in 7 boxes?</p>
+                    <div style="margin: 20px 0;">
+                        <p>7 boxes × 100 pencils = <input type="text" placeholder="700" style="width: 100px; padding: 5px;"> pencils</p>
+                        <p><strong>Challenge:</strong> 32 boxes = <input type="text" placeholder="3,200" style="width: 100px; padding: 5px;"> pencils</p>
+                        <p><strong>Explain your thinking:</strong></p>
+                        <textarea placeholder="I multiplied because..." style="width: 100%; padding: 10px; height: 60px;"></textarea>
+                    </div>
+                    <button class="btn btn-success" onclick="completeMission(4)">Submit & Complete ✓</button>
+                `,
+                5: `
+                    <h2>🎯 Mission 5: Pattern Detective</h2>
+                    <p>Find the rule: 5, 50, 500, 5,000...</p>
+                    <div style="margin: 20px 0;">
+                        <p><strong>What's the rule?</strong></p>
+                        <input type="text" placeholder="Multiply by 10 each time" style="width: 100%; padding: 10px;">
+                        <p><strong>Next 2 numbers:</strong></p>
+                        <input type="text" placeholder="50,000, 500,000" style="width: 100%; padding: 10px;">
+                        <p><strong>Explain your reasoning:</strong></p>
+                        <textarea placeholder="Each number is 10 times bigger..." style="width: 100%; padding: 10px; height: 60px;"></textarea>
+                    </div>
+                    <button class="btn btn-success" onclick="completeMission(5)">Submit & Complete ✓</button>
+                `
+            };
+            
+            modalContent.innerHTML = missionContents[missionNumber];
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('missionModal').style.display = 'none';
+        }
+
+        function checkAnswer(questionNumber) {
+            const answers = {
+                1: ['35, 42, 49', '35,42,49', '35 42 49'],
+                2: ['2500', '2,500']
+            };
+            
+            const input = document.getElementById(`q${questionNumber}-answer`);
+            const feedback = document.getElementById(`q${questionNumber}-feedback`);
+            const userAnswer = input.value.trim();
+            
+            if (questionNumber === 1) {
+                if (answers[1].some(ans => userAnswer.toLowerCase().includes('35') && userAnswer.includes('42') && userAnswer.includes('49'))) {
+                    feedback.innerHTML = '✅ Correct! The pattern adds 7 each time.';
+                    feedback.style.color = 'green';
+                } else {
+                    feedback.innerHTML = '❌ Try again. What number do we add each time?';
+                    feedback.style.color = 'red';
+                }
+            } else if (questionNumber === 2) {
+                if (answers[2].includes(userAnswer)) {
+                    feedback.innerHTML = '✅ Perfect! 25 × 100 = 2,500';
+                    feedback.style.color = 'green';
+                } else {
+                    feedback.innerHTML = '❌ Remember: multiply by 100 means add two zeros!';
+                    feedback.style.color = 'red';
+                }
+            }
+        }
+
+        function showFireworks() {
+            const fireworks = document.getElementById('fireworks');
+            fireworks.classList.add('show');
+            setTimeout(() => {
+                fireworks.classList.remove('show');
+            }, 2000);
+        }
+
+        function startProject() {
+            alert('🚀 Great! Open your favorite tool (paper, Google Sheets, or drawing app) and start creating your Pattern Project. Remember to show your work clearly and explain your thinking!');
+        }
+
+        // Initialize progress
+        updateProgress();
+
+        // Add pulse animation for badges
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97212b67825d58fa',t:'MTc1NTY4NTM0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

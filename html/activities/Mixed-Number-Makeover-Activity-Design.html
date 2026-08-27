@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixed-Number Makeover 🧰</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        },
+                        mint: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        @keyframes arrowFlow {
+            0% { transform: translateX(-10px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(10px); opacity: 0; }
+        }
+        .slide-down { animation: slideDown 0.5s ease-out; }
+        .bounce { animation: bounce 1s; }
+        .arrow-flow { animation: arrowFlow 2s infinite; }
+        .tool-shadow { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-100 to-mint-50 min-h-screen font-sans">
+    <!-- Header -->
+    <header class="bg-slate-800 text-white p-6 tool-shadow">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl font-bold text-center mb-2">🧰 Mixed-Number Makeover ➕➖</h1>
+            <p class="text-center text-slate-300">Master mixed numbers with your mathematical toolbox!</p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto p-6">
+        <!-- Progress & Badge -->
+        <div class="bg-white rounded-xl p-6 mb-6 tool-shadow">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-800">Your Progress</h2>
+                    <div class="flex items-center mt-2">
+                        <div class="bg-slate-200 rounded-full h-4 w-64 mr-4">
+                            <div id="progressBar" class="bg-mint-500 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <span id="progressText" class="text-slate-600 font-medium">0/12 Complete</span>
+                    </div>
+                </div>
+                <div id="badge" class="text-center opacity-50 transition-all duration-500">
+                    <div class="text-4xl mb-2">🔧</div>
+                    <div class="text-sm font-bold text-slate-600">Mixed-Number<br>Mechanic</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Workspace -->
+        <div class="grid lg:grid-cols-2 gap-6">
+            <!-- Conversion Tool -->
+            <div class="bg-white rounded-xl p-6 tool-shadow">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                    🔄 Number Converter
+                    <span class="ml-2 text-sm bg-mint-100 text-mint-700 px-2 py-1 rounded">Tool 1</span>
+                </h3>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-center space-x-4">
+                        <div id="mixedForm" class="text-center">
+                            <div class="text-lg font-medium text-slate-600 mb-2">Mixed Number</div>
+                            <div class="flex items-center justify-center space-x-2">
+                                <input type="number" id="whole" class="w-16 p-2 border-2 border-slate-300 rounded text-center" placeholder="2" min="0">
+                                <div class="flex flex-col items-center">
+                                    <input type="number" id="numerator" class="w-16 p-1 border-2 border-slate-300 rounded text-center text-sm" placeholder="3" min="1">
+                                    <div class="border-t-2 border-slate-400 w-12 my-1"></div>
+                                    <input type="number" id="denominator" class="w-16 p-1 border-2 border-slate-300 rounded text-center text-sm" placeholder="4" min="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div id="arrow1" class="text-2xl text-mint-500 arrow-flow">→</div>
+                            <button id="convertBtn" class="bg-mint-500 hover:bg-mint-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                                Convert
+                            </button>
+                            <div id="arrow2" class="text-2xl text-mint-500 arrow-flow" style="animation-delay: 1s;">←</div>
+                        </div>
+
+                        <div id="improperForm" class="text-center">
+                            <div class="text-lg font-medium text-slate-600 mb-2">Improper Fraction</div>
+                            <div class="flex flex-col items-center">
+                                <input type="number" id="impNumerator" class="w-20 p-2 border-2 border-slate-300 rounded text-center" placeholder="11" min="1">
+                                <div class="border-t-2 border-slate-400 w-16 my-2"></div>
+                                <input type="number" id="impDenominator" class="w-20 p-2 border-2 border-slate-300 rounded text-center" placeholder="4" min="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="conversionResult" class="text-center p-4 bg-mint-50 rounded-lg hidden">
+                        <div class="text-lg font-medium text-mint-700"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenge Arena -->
+            <div class="bg-white rounded-xl p-6 tool-shadow">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                    🎯 Challenge Arena
+                    <span class="ml-2 text-sm bg-slate-100 text-slate-700 px-2 py-1 rounded">Level <span id="currentLevel">1</span></span>
+                </h3>
+
+                <div id="challengeContent" class="space-y-4">
+                    <div id="problemDisplay" class="text-center p-6 bg-slate-50 rounded-lg">
+                        <div class="text-2xl font-bold text-slate-800 mb-4" id="problemText">
+                            Convert 2¾ to an improper fraction
+                        </div>
+                        <div class="flex justify-center items-center space-x-4">
+                            <input type="number" id="answerNum" class="w-20 p-3 border-2 border-slate-300 rounded text-center text-lg" placeholder="?">
+                            <div class="text-2xl text-slate-400">/</div>
+                            <input type="number" id="answerDen" class="w-20 p-3 border-2 border-slate-300 rounded text-center text-lg" placeholder="?">
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-3">
+                        <button id="checkAnswer" class="flex-1 bg-mint-500 hover:bg-mint-600 text-white py-3 rounded-lg font-medium transition-colors">
+                            Check Answer 🔍
+                        </button>
+                        <button id="nextProblem" class="flex-1 bg-slate-500 hover:bg-slate-600 text-white py-3 rounded-lg font-medium transition-colors hidden">
+                            Next Challenge →
+                        </button>
+                    </div>
+
+                    <div id="feedback" class="hidden p-4 rounded-lg text-center font-medium"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reflection Zone -->
+        <div class="bg-white rounded-xl p-6 mt-6 tool-shadow">
+            <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                💭 Reflection Zone
+                <span class="ml-2 text-sm bg-slate-100 text-slate-700 px-2 py-1 rounded">Think & Learn</span>
+            </h3>
+            
+            <div id="reflectionPrompts" class="space-y-4">
+                <div class="p-4 bg-mint-50 rounded-lg">
+                    <p class="font-medium text-mint-800 mb-2">🤔 Current Reflection:</p>
+                    <p id="currentPrompt" class="text-slate-700">
+                        When converting a mixed number to improper fraction, what happens to the whole number part?
+                    </p>
+                    <textarea id="reflectionAnswer" class="w-full mt-3 p-3 border-2 border-mint-200 rounded-lg resize-none" rows="3" placeholder="Share your thoughts..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Reference -->
+        <div class="bg-slate-800 text-white rounded-xl p-6 mt-6 tool-shadow">
+            <h3 class="text-xl font-bold mb-4">🛠️ Quick Reference Toolbox</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                <div>
+                    <h4 class="font-bold text-mint-300 mb-2">Mixed → Improper:</h4>
+                    <p>Multiply whole × denominator, then add numerator</p>
+                    <p class="text-mint-200">Example: 2¾ = (2×4+3)/4 = 11/4</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-mint-300 mb-2">Improper → Mixed:</h4>
+                    <p>Divide numerator by denominator</p>
+                    <p class="text-mint-200">Example: 11/4 = 2 remainder 3 = 2¾</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLevel = 1;
+        let correctAnswers = 0;
+        let totalProblems = 12;
+        
+        const problems = [
+            {level: 1, type: 'mixed-to-improper', problem: '2¾', answer: [11, 4], prompt: 'How did multiplying help you convert the mixed number?'},
+            {level: 1, type: 'improper-to-mixed', problem: '13/5', answer: [2, 3, 5], prompt: 'What does the remainder represent in your mixed number?'},
+            {level: 1, type: 'mixed-to-improper', problem: '1⅖', answer: [7, 5], prompt: 'Why do we add the numerator after multiplying?'},
+            {level: 2, type: 'add-mixed', problem: '1½ + 2¼', answer: [3, 3, 4], prompt: 'How did you handle the different denominators?'},
+            {level: 2, type: 'subtract-mixed', problem: '3⅔ - 1¼', answer: [2, 5, 12], prompt: 'When did you need to borrow from the whole number?'},
+            {level: 2, type: 'mixed-to-improper', problem: '4⅝', answer: [37, 8], prompt: 'What pattern do you notice in mixed number conversions?'},
+            {level: 3, type: 'add-mixed', problem: '2⅚ + 1¾', answer: [4, 7, 12], prompt: 'How do you find a common denominator efficiently?'},
+            {level: 3, type: 'subtract-mixed', problem: '5¼ - 2⅝', answer: [2, 5, 8], prompt: 'Describe your strategy for borrowing with fractions.'},
+            {level: 3, type: 'improper-to-mixed', problem: '23/6', answer: [3, 5, 6], prompt: 'How does division help you find the mixed number parts?'},
+            {level: 3, type: 'add-mixed', problem: '3⅞ + 2⅝', answer: [6, 1, 2], prompt: 'What happens when your fraction sum is improper?'},
+            {level: 3, type: 'subtract-mixed', problem: '6⅓ - 2¾', answer: [3, 7, 12], prompt: 'How confident do you feel with mixed number operations now?'},
+            {level: 3, type: 'mixed-to-improper', problem: '5⅞', answer: [47, 8], prompt: 'What strategies help you avoid calculation errors?'}
+        ];
+
+        let currentProblemIndex = 0;
+
+        // Converter functionality
+        document.getElementById('convertBtn').addEventListener('click', function() {
+            const whole = parseInt(document.getElementById('whole').value) || 0;
+            const num = parseInt(document.getElementById('numerator').value) || 0;
+            const den = parseInt(document.getElementById('denominator').value) || 1;
+            
+            if (num && den) {
+                // Convert mixed to improper
+                const improperNum = whole * den + num;
+                document.getElementById('impNumerator').value = improperNum;
+                document.getElementById('impDenominator').value = den;
+                
+                showConversionResult(`${whole} ${num}/${den} = ${improperNum}/${den}`);
+            } else {
+                // Convert improper to mixed
+                const impNum = parseInt(document.getElementById('impNumerator').value) || 0;
+                const impDen = parseInt(document.getElementById('impDenominator').value) || 1;
+                
+                if (impNum && impDen) {
+                    const wholeResult = Math.floor(impNum / impDen);
+                    const remainder = impNum % impDen;
+                    
+                    document.getElementById('whole').value = wholeResult;
+                    document.getElementById('numerator').value = remainder;
+                    document.getElementById('denominator').value = impDen;
+                    
+                    showConversionResult(`${impNum}/${impDen} = ${wholeResult} ${remainder}/${impDen}`);
+                }
+            }
+        });
+
+        function showConversionResult(text) {
+            const result = document.getElementById('conversionResult');
+            result.querySelector('div').textContent = text;
+            result.classList.remove('hidden');
+            result.classList.add('slide-down');
+        }
+
+        // Challenge functionality
+        function loadProblem() {
+            const problem = problems[currentProblemIndex];
+            document.getElementById('problemText').textContent = `Convert or solve: ${problem.problem}`;
+            document.getElementById('currentPrompt').textContent = problem.prompt;
+            document.getElementById('currentLevel').textContent = problem.level;
+            
+            // Clear previous answers
+            document.getElementById('answerNum').value = '';
+            document.getElementById('answerDen').value = '';
+            document.getElementById('feedback').classList.add('hidden');
+            document.getElementById('checkAnswer').classList.remove('hidden');
+            document.getElementById('nextProblem').classList.add('hidden');
+        }
+
+        document.getElementById('checkAnswer').addEventListener('click', function() {
+            const problem = problems[currentProblemIndex];
+            const userNum = parseInt(document.getElementById('answerNum').value);
+            const userDen = parseInt(document.getElementById('answerDen').value);
+            
+            let isCorrect = false;
+            
+            if (problem.answer.length === 2) {
+                // Improper fraction answer
+                isCorrect = userNum === problem.answer[0] && userDen === problem.answer[1];
+            } else {
+                // Mixed number answer - for simplicity, checking as improper fraction
+                const correctImproper = problem.answer[0] * problem.answer[2] + problem.answer[1];
+                const correctDen = problem.answer[2];
+                isCorrect = userNum === correctImproper && userDen === correctDen;
+            }
+            
+            const feedback = document.getElementById('feedback');
+            if (isCorrect) {
+                feedback.className = 'p-4 rounded-lg text-center font-medium bg-mint-100 text-mint-800';
+                feedback.textContent = '🎉 Excellent work! You\'ve mastered this conversion!';
+                correctAnswers++;
+                updateProgress();
+            } else {
+                feedback.className = 'p-4 rounded-lg text-center font-medium bg-red-100 text-red-800';
+                feedback.textContent = '🔧 Not quite right. Check your calculation and try again!';
+            }
+            
+            feedback.classList.remove('hidden');
+            feedback.classList.add('bounce');
+            
+            if (isCorrect) {
+                document.getElementById('checkAnswer').classList.add('hidden');
+                document.getElementById('nextProblem').classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('nextProblem').addEventListener('click', function() {
+            currentProblemIndex++;
+            if (currentProblemIndex < problems.length) {
+                loadProblem();
+            } else {
+                showCompletion();
+            }
+        });
+
+        function updateProgress() {
+            const percentage = (correctAnswers / totalProblems) * 100;
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = `${correctAnswers}/${totalProblems} Complete`;
+            
+            if (correctAnswers >= totalProblems * 0.8) {
+                const badge = document.getElementById('badge');
+                badge.classList.remove('opacity-50');
+                badge.classList.add('bounce');
+            }
+        }
+
+        function showCompletion() {
+            document.getElementById('challengeContent').innerHTML = `
+                <div class="text-center p-8">
+                    <div class="text-6xl mb-4">🏆</div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">Congratulations, Mixed-Number Mechanic!</h3>
+                    <p class="text-slate-600 mb-6">You've mastered the art of mixed number conversions and operations!</p>
+                    <button onclick="location.reload()" class="bg-mint-500 hover:bg-mint-600 text-white px-6 py-3 rounded-lg font-medium">
+                        Start New Challenge 🔄
+                    </button>
+                </div>
+            `;
+        }
+
+        // Initialize
+        loadProblem();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970f8fb1c58d58fa',t:'MTc1NTUwMDcxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

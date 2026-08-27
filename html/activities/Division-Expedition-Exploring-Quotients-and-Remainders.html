@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Division Expedition 🗺️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes firework {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(1.5) rotate(360deg); opacity: 0; }
+        }
+        .firework {
+            animation: firework 2s ease-out infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .bounce { animation: bounce 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .pulse { animation: pulse 2s infinite; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-800 via-green-600 to-orange-400 min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-6">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <h1 class="text-4xl font-bold text-white mb-2">🗺️ Division Expedition 🧭</h1>
+            <div class="flex justify-center items-center space-x-4 text-2xl">
+                <span id="progress-flag" class="text-orange-300">🚩</span>
+                <span class="text-white">→</span>
+                <span id="progress-camp" class="text-gray-400">🏕️</span>
+                <span class="text-white">→</span>
+                <span id="progress-trophy" class="text-gray-400">🏆</span>
+            </div>
+        </div>
+
+        <!-- Game Container -->
+        <div class="bg-white/90 backdrop-blur rounded-2xl shadow-2xl p-8 max-w-4xl mx-auto">
+            
+            <!-- Stage 1: Equal Groups -->
+            <div id="stage1" class="stage">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold text-green-800 mb-2">🚩 Base Camp: Equal Groups</h2>
+                    <p class="text-lg text-gray-700">Help the explorers organize their supplies into equal groups!</p>
+                </div>
+                
+                <div class="bg-green-50 rounded-xl p-6 mb-6">
+                    <div class="text-center mb-4">
+                        <p class="text-xl font-semibold text-green-800">24 energy bars need to be shared equally among 6 explorers</p>
+                        <p class="text-lg text-gray-600 mt-2">24 ÷ 6 = ?</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-6 gap-4 mb-6">
+                        <div class="bg-orange-200 rounded-lg p-4 text-center">
+                            <div class="text-2xl mb-2">👤</div>
+                            <div id="group1" class="space-y-1"></div>
+                        </div>
+                        <div class="bg-orange-200 rounded-lg p-4 text-center">
+                            <div class="text-2xl mb-2">👤</div>
+                            <div id="group2" class="space-y-1"></div>
+                        </div>
+                        <div class="bg-orange-200 rounded-lg p-4 text-center">
+                            <div class="text-2xl mb-2">👤</div>
+                            <div id="group3" class="space-y-1"></div>
+                        </div>
+                        <div class="bg-orange-200 rounded-lg p-4 text-center">
+                            <div class="text-2xl mb-2">👤</div>
+                            <div id="group4" class="space-y-1"></div>
+                        </div>
+                        <div class="bg-orange-200 rounded-lg p-4 text-center">
+                            <div class="text-2xl mb-2">👤</div>
+                            <div id="group5" class="space-y-1"></div>
+                        </div>
+                        <div class="bg-orange-200 rounded-lg p-4 text-center">
+                            <div class="text-2xl mb-2">👤</div>
+                            <div id="group6" class="space-y-1"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button id="distribute-btn" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors">
+                            Distribute Energy Bars 🍫
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="stage1-result" class="hidden text-center">
+                    <p class="text-2xl font-bold text-green-700 mb-4">Great! Each explorer gets 4 energy bars!</p>
+                    <button id="next-to-stage2" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors bounce">
+                        Continue to Mountain Trail 🏔️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stage 2: Arrays -->
+            <div id="stage2" class="stage hidden">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold text-green-800 mb-2">🏕️ Mountain Trail: Arrays</h2>
+                    <p class="text-lg text-gray-700">Arrange the camping tents in neat rows!</p>
+                </div>
+                
+                <div class="bg-green-50 rounded-xl p-6 mb-6">
+                    <div class="text-center mb-4">
+                        <p class="text-xl font-semibold text-green-800">35 tents need to be arranged in 5 equal rows</p>
+                        <p class="text-lg text-gray-600 mt-2">35 ÷ 5 = ?</p>
+                    </div>
+                    
+                    <div id="tent-array" class="grid grid-cols-7 gap-2 max-w-md mx-auto mb-6">
+                        <!-- Tents will be added here -->
+                    </div>
+                    
+                    <div class="text-center">
+                        <button id="arrange-tents" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors">
+                            Arrange Tents ⛺
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="stage2-result" class="hidden text-center">
+                    <p class="text-2xl font-bold text-green-700 mb-4">Perfect! 5 rows with 7 tents each!</p>
+                    <button id="next-to-stage3" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-colors bounce">
+                        Reach the Summit 🏔️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stage 3: Real-world Remainders -->
+            <div id="stage3" class="stage hidden">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold text-green-800 mb-2">🏆 Summit Challenge: Remainders</h2>
+                    <p class="text-lg text-gray-700">Solve real-world problems with remainders!</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Problem 1: Discard -->
+                    <div class="bg-orange-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-orange-800 mb-3">Problem 1: Packing Backpacks 🎒</h3>
+                        <p class="text-lg mb-4">You have 23 items to pack. Each backpack holds 4 items. How many full backpacks can you pack?</p>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-lg">23 ÷ 4 = </span>
+                            <input type="number" id="answer1" class="border-2 border-orange-300 rounded-lg px-3 py-2 w-16 text-center" placeholder="?">
+                            <span class="text-lg">remainder</span>
+                            <input type="number" id="remainder1" class="border-2 border-orange-300 rounded-lg px-3 py-2 w-16 text-center" placeholder="?">
+                        </div>
+                        <p class="text-md text-gray-600 mb-3">What should you do with the remainder?</p>
+                        <div class="space-x-4">
+                            <button class="remainder-choice bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg" data-choice="discard">
+                                Leave behind (discard)
+                            </button>
+                            <button class="remainder-choice bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" data-choice="round">
+                                Pack extra bag (round up)
+                            </button>
+                        </div>
+                        <div id="result1" class="hidden mt-4 p-3 bg-green-100 rounded-lg">
+                            <p class="text-green-800 font-semibold">Correct! You can pack 5 full backpacks and leave 3 items behind.</p>
+                        </div>
+                    </div>
+
+                    <!-- Problem 2: Round Up -->
+                    <div class="bg-orange-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-orange-800 mb-3">Problem 2: Hiring Guides 👥</h3>
+                        <p class="text-lg mb-4">29 explorers need guides. Each guide can help 8 people. How many guides do you need?</p>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-lg">29 ÷ 8 = </span>
+                            <input type="number" id="answer2" class="border-2 border-orange-300 rounded-lg px-3 py-2 w-16 text-center" placeholder="?">
+                            <span class="text-lg">remainder</span>
+                            <input type="number" id="remainder2" class="border-2 border-orange-300 rounded-lg px-3 py-2 w-16 text-center" placeholder="?">
+                        </div>
+                        <p class="text-md text-gray-600 mb-3">What should you do with the remainder?</p>
+                        <div class="space-x-4">
+                            <button class="remainder-choice bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg" data-choice="discard">
+                                Leave people behind
+                            </button>
+                            <button class="remainder-choice bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg" data-choice="round">
+                                Hire extra guide (round up)
+                            </button>
+                        </div>
+                        <div id="result2" class="hidden mt-4 p-3 bg-green-100 rounded-lg">
+                            <p class="text-green-800 font-semibold">Excellent! You need 4 guides total (3 full groups + 1 extra for the remaining 5 people).</p>
+                        </div>
+                    </div>
+
+                    <!-- Problem 3: Share -->
+                    <div class="bg-orange-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-orange-800 mb-3">Problem 3: Sharing Treasure 💰</h3>
+                        <p class="text-lg mb-4">You found 17 gold coins to share equally among 3 explorers. How much does each person get?</p>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <span class="text-lg">17 ÷ 3 = </span>
+                            <input type="number" id="answer3" class="border-2 border-orange-300 rounded-lg px-3 py-2 w-16 text-center" placeholder="?">
+                            <span class="text-lg">remainder</span>
+                            <input type="number" id="remainder3" class="border-2 border-orange-300 rounded-lg px-3 py-2 w-16 text-center" placeholder="?">
+                        </div>
+                        <p class="text-md text-gray-600 mb-3">What should you do with the remainder?</p>
+                        <div class="space-x-4">
+                            <button class="remainder-choice bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg" data-choice="share">
+                                Share equally (keep as remainder)
+                            </button>
+                            <button class="remainder-choice bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg" data-choice="discard">
+                                Throw away extra coins
+                            </button>
+                        </div>
+                        <div id="result3" class="hidden mt-4 p-3 bg-green-100 rounded-lg">
+                            <p class="text-green-800 font-semibold">Perfect! Each explorer gets 5 coins, with 2 coins left to share later or save.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="final-result" class="hidden text-center mt-8">
+                    <div class="relative">
+                        <h2 class="text-4xl font-bold text-green-800 mb-4">🎉 Expedition Complete! 🎉</h2>
+                        <p class="text-2xl text-orange-600 mb-6">You've mastered division with remainders!</p>
+                        
+                        <!-- Fireworks -->
+                        <div class="absolute inset-0 pointer-events-none">
+                            <div class="firework text-4xl absolute top-4 left-1/4">🎆</div>
+                            <div class="firework text-4xl absolute top-8 right-1/4" style="animation-delay: 0.5s;">🎆</div>
+                            <div class="firework text-4xl absolute top-12 left-1/2" style="animation-delay: 1s;">🎆</div>
+                            <div class="firework text-4xl absolute top-6 left-1/6" style="animation-delay: 1.5s;">🎆</div>
+                            <div class="firework text-4xl absolute top-10 right-1/6" style="animation-delay: 2s;">🎆</div>
+                        </div>
+                        
+                        <button id="restart-game" class="bg-gradient-to-r from-green-600 to-orange-500 hover:from-green-700 hover:to-orange-600 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all pulse">
+                            Start New Expedition 🗺️
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStage = 1;
+        let problemsSolved = 0;
+
+        // Stage 1: Equal Groups
+        document.getElementById('distribute-btn').addEventListener('click', function() {
+            // Animate distribution
+            for (let i = 1; i <= 6; i++) {
+                const group = document.getElementById(`group${i}`);
+                group.innerHTML = '';
+                for (let j = 0; j < 4; j++) {
+                    setTimeout(() => {
+                        const bar = document.createElement('div');
+                        bar.textContent = '🍫';
+                        bar.className = 'text-lg';
+                        group.appendChild(bar);
+                    }, (i-1) * 200 + j * 100);
+                }
+            }
+            
+            setTimeout(() => {
+                document.getElementById('stage1-result').classList.remove('hidden');
+                updateProgress(1);
+            }, 2000);
+        });
+
+        document.getElementById('next-to-stage2').addEventListener('click', function() {
+            document.getElementById('stage1').classList.add('hidden');
+            document.getElementById('stage2').classList.remove('hidden');
+            currentStage = 2;
+        });
+
+        // Stage 2: Arrays
+        document.getElementById('arrange-tents').addEventListener('click', function() {
+            const tentArray = document.getElementById('tent-array');
+            tentArray.innerHTML = '';
+            
+            for (let i = 0; i < 35; i++) {
+                setTimeout(() => {
+                    const tent = document.createElement('div');
+                    tent.textContent = '⛺';
+                    tent.className = 'text-2xl text-center';
+                    tentArray.appendChild(tent);
+                }, i * 50);
+            }
+            
+            setTimeout(() => {
+                document.getElementById('stage2-result').classList.remove('hidden');
+                updateProgress(2);
+            }, 2000);
+        });
+
+        document.getElementById('next-to-stage3').addEventListener('click', function() {
+            document.getElementById('stage2').classList.add('hidden');
+            document.getElementById('stage3').classList.remove('hidden');
+            currentStage = 3;
+        });
+
+        // Stage 3: Remainder problems
+        const problems = [
+            { answer: 5, remainder: 3, correctChoice: 'discard' },
+            { answer: 3, remainder: 5, correctChoice: 'round' },
+            { answer: 5, remainder: 2, correctChoice: 'share' }
+        ];
+
+        document.querySelectorAll('.remainder-choice').forEach(button => {
+            button.addEventListener('click', function() {
+                const problemNum = this.closest('.bg-orange-50').querySelector('h3').textContent.includes('1') ? 1 : 
+                                 this.closest('.bg-orange-50').querySelector('h3').textContent.includes('2') ? 2 : 3;
+                
+                const answerInput = document.getElementById(`answer${problemNum}`);
+                const remainderInput = document.getElementById(`remainder${problemNum}`);
+                const result = document.getElementById(`result${problemNum}`);
+                
+                const answer = parseInt(answerInput.value);
+                const remainder = parseInt(remainderInput.value);
+                const choice = this.dataset.choice;
+                
+                const problem = problems[problemNum - 1];
+                
+                if (answer === problem.answer && remainder === problem.remainder && choice === problem.correctChoice) {
+                    result.classList.remove('hidden');
+                    problemsSolved++;
+                    
+                    // Disable buttons for this problem
+                    this.closest('.bg-orange-50').querySelectorAll('.remainder-choice').forEach(btn => {
+                        btn.disabled = true;
+                        btn.classList.add('opacity-50');
+                    });
+                    
+                    if (problemsSolved === 3) {
+                        setTimeout(() => {
+                            document.getElementById('final-result').classList.remove('hidden');
+                            updateProgress(3);
+                        }, 1000);
+                    }
+                }
+            });
+        });
+
+        // Restart game
+        document.getElementById('restart-game').addEventListener('click', function() {
+            location.reload();
+        });
+
+        function updateProgress(stage) {
+            if (stage >= 1) {
+                document.getElementById('progress-flag').className = 'text-orange-400 text-3xl';
+            }
+            if (stage >= 2) {
+                document.getElementById('progress-camp').className = 'text-orange-400 text-3xl';
+            }
+            if (stage >= 3) {
+                document.getElementById('progress-trophy').className = 'text-yellow-400 text-3xl';
+            }
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970f6bb4219a7884',t:'MTc1NTQ5OTIzNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

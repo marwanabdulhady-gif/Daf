@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚖️ Fair Shares & Multiplicative Comparisons Adventure Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .scale-animation {
+            animation: balance 3s ease-in-out infinite;
+        }
+        
+        @keyframes balance {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+        
+        .glow {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+        
+        .mission-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        
+        .badge-earned {
+            animation: sparkle 0.8s ease-in-out;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: scale(0) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+        
+        .bar-model {
+            transition: all 0.3s ease;
+        }
+        
+        .bar-segment {
+            animation: fillUp 1s ease-in-out;
+        }
+        
+        @keyframes fillUp {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl scale-animation">⚖️</div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Fair Shares & Multiplicative Comparisons</h1>
+                        <p class="text-gray-600">Grade 4 • Unit 4 • Week 7 • أمانة في المقارنات</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="bg-blue-100 px-4 py-2 rounded-lg inline-block">
+                        <span class="text-sm font-medium text-blue-800">Grade 4 Math Adventure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        <!-- Progress Bar Section -->
+        <div class="bg-white rounded-xl p-6 shadow-lg mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-2xl font-bold text-gray-800">📊 Mission Progress</h3>
+                <div id="balance-meter" class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
+                    <span class="text-2xl">⚖️</span>
+                </div>
+            </div>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <span class="text-lg font-medium">Overall Progress</span>
+                    <span id="progress-text" class="text-lg font-bold text-blue-600">0/5</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-4">
+                    <div id="progress-bar" class="progress-bar bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full" style="width: 0%"></div>
+                </div>
+                <div class="text-sm text-gray-600">
+                    Complete all missions to unlock the Champion badge and activate the balance meter! 🏆
+                </div>
+            </div>
+        </div>
+
+        <!-- Badges and Roles Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Achievement Badges Box -->
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+                <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    🏅 Achievement Badges
+                </h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <div id="badge-comparison" class="p-3 bg-gray-100 rounded-lg text-center opacity-50 transition-all">
+                        <div class="text-2xl mb-2">⚖️</div>
+                        <p class="text-sm font-medium">Comparison Solver</p>
+                    </div>
+                    <div id="badge-artist" class="p-3 bg-gray-100 rounded-lg text-center opacity-50 transition-all">
+                        <div class="text-2xl mb-2">🎨</div>
+                        <p class="text-sm font-medium">Bar Model Artist</p>
+                    </div>
+                    <div id="badge-honest" class="p-3 bg-gray-100 rounded-lg text-center opacity-50 transition-all">
+                        <div class="text-2xl mb-2">💬</div>
+                        <p class="text-sm font-medium">Honest Explainer</p>
+                    </div>
+                    <div id="badge-champion" class="p-3 bg-gray-100 rounded-lg text-center opacity-50 transition-all">
+                        <div class="text-2xl mb-2">🏆</div>
+                        <p class="text-sm font-medium">Fair Shares Champion</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Roles Box -->
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+                <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                    👥 Team Roles
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div class="flex items-center p-2 bg-yellow-50 rounded-lg border-l-2 border-yellow-400">
+                        <span class="text-sm mr-2">👑</span>
+                        <div>
+                            <p class="text-xs font-bold text-gray-800">Leader</p>
+                            <p class="text-xs text-gray-600">Guides solving</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-2 bg-blue-50 rounded-lg border-l-2 border-blue-400">
+                        <span class="text-sm mr-2">✍️</span>
+                        <div>
+                            <p class="text-xs font-bold text-gray-800">Recorder</p>
+                            <p class="text-xs text-gray-600">Writes equations</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-2 bg-green-50 rounded-lg border-l-2 border-green-400">
+                        <span class="text-sm mr-2">🤔</span>
+                        <div>
+                            <p class="text-xs font-bold text-gray-800">Reflector</p>
+                            <p class="text-xs text-gray-600">محاسبة النفس</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-2 bg-purple-50 rounded-lg border-l-2 border-purple-400">
+                        <span class="text-sm mr-2">🌟</span>
+                        <div>
+                            <p class="text-xs font-bold text-gray-800">Diligent</p>
+                            <p class="text-xs text-gray-600">Verifies work</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center p-2 bg-pink-50 rounded-lg border-l-2 border-pink-400 sm:col-span-2">
+                        <span class="text-sm mr-2">🎤</span>
+                        <div>
+                            <p class="text-xs font-bold text-gray-800">Presenter</p>
+                            <p class="text-xs text-gray-600">Explains with visuals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Hub -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Mission Cards -->
+            <div class="lg:col-span-2">
+                <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                    🎯 Mission Control Center
+                    <span class="ml-4 text-lg font-normal bg-white/20 px-3 py-1 rounded-full">Standard: 4.OA.A.2</span>
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Mission 1: Multiplication Comparison -->
+                    <div class="mission-card bg-white rounded-xl p-6 border-l-4 border-green-500" data-mission="1">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Mission 1: Multiplication Magic</h3>
+                            <span class="text-2xl">🎯</span>
+                        </div>
+                        
+                        <div class="bg-green-50 p-4 rounded-lg mb-4">
+                            <p class="text-gray-700 font-medium">Ali has 4× as many coins as Sami</p>
+                            <p class="text-gray-600">Sami has 9 coins</p>
+                            <div class="mt-3">
+                                <div class="text-sm text-gray-500 mb-2">Bar Model:</div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center">
+                                        <span class="w-16 text-sm">Sami:</span>
+                                        <div class="w-12 h-6 bg-blue-400 rounded mr-1"></div>
+                                        <span class="text-xs">9</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="w-16 text-sm">Ali:</span>
+                                        <div class="flex space-x-1">
+                                            <div class="w-12 h-6 bg-green-400 rounded bar-segment"></div>
+                                            <div class="w-12 h-6 bg-green-400 rounded bar-segment" style="animation-delay: 0.2s"></div>
+                                            <div class="w-12 h-6 bg-green-400 rounded bar-segment" style="animation-delay: 0.4s"></div>
+                                            <div class="w-12 h-6 bg-green-400 rounded bar-segment" style="animation-delay: 0.6s"></div>
+                                        </div>
+                                        <span class="text-xs ml-2">4 × 9 = ?</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <input type="number" id="mission1-answer" placeholder="Ali has ___ coins" 
+                                   class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-green-500 focus:outline-none">
+                            <button onclick="checkMission1()" 
+                                    class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition-colors">
+                                Solve Mission 1
+                            </button>
+                        </div>
+                        
+                        <div class="mt-4 text-sm">
+                            <div class="flex items-center text-amber-600 mb-2">
+                                <span class="mr-2">🚫</span>
+                                <span>Common mistake: Writing 4 + 9 instead of 4 × 9</span>
+                            </div>
+                            <div class="flex items-center text-blue-600">
+                                <span class="mr-2">💡</span>
+                                <span>"times as many" means multiplication!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mission 2: Division Comparison -->
+                    <div class="mission-card bg-white rounded-xl p-6 border-l-4 border-purple-500" data-mission="2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Mission 2: Division Detective</h3>
+                            <span class="text-2xl">🔍</span>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 rounded-lg mb-4">
+                            <p class="text-gray-700 font-medium">Huda has 45 pencils</p>
+                            <p class="text-gray-600">That's 9× as many as Salma</p>
+                            <div class="mt-3">
+                                <div class="text-sm text-gray-500 mb-2">Think: 45 ÷ 9 = ?</div>
+                                <div class="bg-purple-200 p-2 rounded">
+                                    <div class="grid grid-cols-9 gap-1">
+                                        <div class="w-4 h-4 bg-purple-400 rounded"></div>
+                                        <div class="w-4 h-4 bg-purple-400 rounded"></div>
+                                        <div class="w-4 h-4 bg-purple-400 rounded"></div>
+                                        <div class="w-4 h-4 bg-purple-400 rounded"></div>
+                                        <div class="w-4 h-4 bg-purple-400 rounded"></div>
+                                        <div class="w-4 h-4 bg-purple-400 rounded"></div>
+                                        <div class="w-4 h-4 bg-purple-400 rounded"></div>
+                                        <div class="w-4 h-4 bg-purple-400 rounded"></div>
+                                        <div class="w-4 h-4 bg-purple-400 rounded"></div>
+                                    </div>
+                                    <p class="text-xs mt-1">45 pencils split into 9 equal groups</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <input type="number" id="mission2-answer" placeholder="Salma has ___ pencils" 
+                                   class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none">
+                            <button onclick="checkMission2()" 
+                                    class="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 rounded-lg transition-colors">
+                                Solve Mission 2
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mission 3: Bar Model Builder -->
+                    <div class="mission-card bg-white rounded-xl p-6 border-l-4 border-orange-500" data-mission="3">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Mission 3: Bar Model Builder</h3>
+                            <span class="text-2xl">🎨</span>
+                        </div>
+                        
+                        <div class="bg-orange-50 p-4 rounded-lg mb-4">
+                            <p class="text-gray-700 font-medium">A tree is 6× taller than a bush</p>
+                            <p class="text-gray-600">The bush is 3 feet tall</p>
+                            
+                            <div class="mt-4 space-y-2">
+                                <div class="flex items-end">
+                                    <span class="w-16 text-sm mr-2">Bush:</span>
+                                    <div class="w-8 h-6 bg-green-300 rounded"></div>
+                                    <span class="text-xs ml-2">3 ft</span>
+                                </div>
+                                <div class="flex items-end">
+                                    <span class="w-16 text-sm mr-2">Tree:</span>
+                                    <div class="flex space-x-1">
+                                        <div class="w-8 h-12 bg-green-600 rounded bar-segment"></div>
+                                        <div class="w-8 h-12 bg-green-600 rounded bar-segment" style="animation-delay: 0.1s"></div>
+                                        <div class="w-8 h-12 bg-green-600 rounded bar-segment" style="animation-delay: 0.2s"></div>
+                                        <div class="w-8 h-12 bg-green-600 rounded bar-segment" style="animation-delay: 0.3s"></div>
+                                        <div class="w-8 h-12 bg-green-600 rounded bar-segment" style="animation-delay: 0.4s"></div>
+                                        <div class="w-8 h-12 bg-green-600 rounded bar-segment" style="animation-delay: 0.5s"></div>
+                                    </div>
+                                    <span class="text-xs ml-2">6 × 3 = ? ft</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <input type="number" id="mission3-answer" placeholder="Tree height in feet" 
+                                   class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:outline-none">
+                            <button onclick="checkMission3()" 
+                                    class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition-colors">
+                                Build & Solve
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mission 4: Word Problem Detective -->
+                    <div class="mission-card bg-white rounded-xl p-6 border-l-4 border-red-500" data-mission="4">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">Mission 4: Operation Detective</h3>
+                            <span class="text-2xl">🕵️</span>
+                        </div>
+                        
+                        <div class="bg-red-50 p-4 rounded-lg mb-4">
+                            <p class="text-gray-700 font-medium mb-3">Which operation do you need?</p>
+                            <div class="space-y-2">
+                                <div class="p-2 bg-white rounded border">
+                                    <p class="text-sm">"Sara has 72 stickers, which is 8× as many as Mariam has."</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="selectOperation('multiplication')" id="mult-btn"
+                                        class="p-3 border-2 border-gray-300 rounded-lg hover:border-red-500 transition-colors">
+                                    ✖️ Multiplication
+                                </button>
+                                <button onclick="selectOperation('division')" id="div-btn"
+                                        class="p-3 border-2 border-gray-300 rounded-lg hover:border-red-500 transition-colors">
+                                    ➗ Division
+                                </button>
+                            </div>
+                            <input type="number" id="mission4-answer" placeholder="How many stickers does Mariam have?" 
+                                   class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none">
+                            <button onclick="checkMission4()" 
+                                    class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-lg transition-colors">
+                                Solve Detective Case
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission 5: Real-Life Comparison -->
+                <div class="mission-card bg-white rounded-xl p-6 border-l-4 border-indigo-500 mt-6" data-mission="5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Mission 5: Library Challenge</h3>
+                        <span class="text-2xl">📚</span>
+                    </div>
+                    
+                    <div class="bg-indigo-50 p-4 rounded-lg mb-4">
+                        <p class="text-gray-700 font-medium">The library has 64 storybooks</p>
+                        <p class="text-gray-600">This is 8× as many as science books</p>
+                        
+                        <div class="mt-4 p-3 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                            <div class="flex items-center">
+                                <span class="text-lg ml-2">🌱</span>
+                                <p class="text-sm font-medium text-yellow-800">أمانة (Honesty): Be precise in your comparison - no exaggeration!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <input type="number" id="mission5-answer" placeholder="Number of science books" 
+                               class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                        <button onclick="checkMission5()" 
+                                class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 rounded-lg transition-colors">
+                            Complete Final Mission
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Exit Tickets Section -->
+        <div class="bg-white rounded-xl p-6 shadow-lg mb-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">📝 Exit Tickets & Quick Check</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-lg font-medium mb-3">Q1: Cat weighs 6× kitten. Kitten = 2kg. Cat = ?</p>
+                        <input type="number" id="exit-q1" placeholder="Cat's weight in kg" 
+                               class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <p class="text-lg font-medium mb-3">Q2: Basket has 56 oranges, 7× small basket. Small basket = ?</p>
+                        <input type="number" id="exit-q2" placeholder="Small basket oranges" 
+                               class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-lg font-medium mb-3">محاسبة النفس: Did I check my operation?</p>
+                        <select id="exit-reflection" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                            <option value="">Choose your reflection...</option>
+                            <option value="yes">Yes, I double-checked my work</option>
+                            <option value="no">I need to check more carefully</option>
+                            <option value="sometimes">I checked some but not all</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="text-lg font-medium mb-3">الحمد: What comparison was easiest for me?</p>
+                        <select id="exit-gratitude" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                            <option value="">Choose what you're grateful for...</option>
+                            <option value="multiplication">Multiplication comparisons</option>
+                            <option value="division">Division comparisons</option>
+                            <option value="bar-models">Drawing bar models</option>
+                            <option value="word-problems">Understanding word problems</option>
+                        </select>
+                    </div>
+                    <button onclick="submitExitTicket()" 
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-lg transition-colors">
+                        Submit Exit Ticket
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Culminating Project Section -->
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                🏗️ Week 7 Culminating Project: "Our Classroom in Comparison"
+            </h3>
+            
+            <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg mb-6">
+                <h4 class="text-xl font-bold text-purple-800 mb-3">Driving Question:</h4>
+                <p class="text-lg text-purple-700 font-medium">How can we use multiplication/division to compare classroom data fairly?</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">📋 Project Steps:</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-start p-3 bg-blue-50 rounded-lg">
+                            <span class="text-xl mr-3">1️⃣</span>
+                            <div>
+                                <p class="font-medium">Choose classroom item</p>
+                                <p class="text-sm text-gray-600">Books, pencils, laptops, desks, etc.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-green-50 rounded-lg">
+                            <span class="text-xl mr-3">2️⃣</span>
+                            <div>
+                                <p class="font-medium">Make 3 multiplicative comparison statements</p>
+                                <p class="text-sm text-gray-600">Use "times as many" language</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-yellow-50 rounded-lg">
+                            <span class="text-xl mr-3">3️⃣</span>
+                            <div>
+                                <p class="font-medium">Solve with both operations</p>
+                                <p class="text-sm text-gray-600">One multiplication, one division</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-3 bg-purple-50 rounded-lg">
+                            <span class="text-xl mr-3">4️⃣</span>
+                            <div>
+                                <p class="font-medium">Create bar models + equations</p>
+                                <p class="text-sm text-gray-600">Visual representations for all problems</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">📊 Rubric (20 points total):</h4>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                            <span class="font-medium">Accuracy</span>
+                            <span class="bg-red-200 px-3 py-1 rounded-full text-sm font-bold">8 pts</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                            <span class="font-medium">Bar Models</span>
+                            <span class="bg-orange-200 px-3 py-1 rounded-full text-sm font-bold">4 pts</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                            <span class="font-medium">Explanation</span>
+                            <span class="bg-blue-200 px-3 py-1 rounded-full text-sm font-bold">4 pts</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <span class="font-medium">أمانة (Honesty)</span>
+                            <span class="bg-green-200 px-3 py-1 rounded-full text-sm font-bold">4 pts</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-lg border-l-4 border-yellow-500">
+                        <h5 class="font-bold text-yellow-800 mb-2">🌟 SAMR Integration Levels:</h5>
+                        <div class="text-sm space-y-1">
+                            <p><strong>Substitution:</strong> Solve with paper & pencil</p>
+                            <p><strong>Augmentation:</strong> Create digital bar models</p>
+                            <p><strong>Modification:</strong> Design infographics</p>
+                            <p><strong>Redefinition:</strong> Share report with families</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <button onclick="startProject()" 
+                        class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105">
+                    🚀 Start Your Project
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-8 max-w-md mx-4 text-center">
+            <div class="text-6xl mb-4">🏆</div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Congratulations!</h2>
+            <p class="text-gray-600 mb-4">You've completed all missions and earned the Fair Shares Champion badge!</p>
+            <div class="text-4xl mb-4 glow">⚖️✨</div>
+            <button onclick="closeModal()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg">
+                Continue Learning!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let completedMissions = 0;
+        let selectedOperation = null;
+        
+        function updateProgress() {
+            completedMissions++;
+            document.getElementById('progress-text').textContent = `${completedMissions}/5`;
+            document.getElementById('progress-bar').style.width = `${(completedMissions / 5) * 100}%`;
+            
+            // Update balance meter
+            const meter = document.getElementById('balance-meter');
+            if (completedMissions >= 3) {
+                meter.classList.add('glow');
+                meter.style.background = 'linear-gradient(45deg, #ffd700, #ffed4e)';
+            }
+            
+            // Check for completion
+            if (completedMissions === 5) {
+                setTimeout(() => {
+                    document.getElementById('success-modal').classList.remove('hidden');
+                    document.getElementById('success-modal').classList.add('flex');
+                    earnBadge('badge-champion');
+                }, 1000);
+            }
+        }
+        
+        function earnBadge(badgeId) {
+            const badge = document.getElementById(badgeId);
+            badge.classList.remove('opacity-50', 'bg-gray-100');
+            badge.classList.add('badge-earned', 'bg-gradient-to-br', 'from-yellow-400', 'to-yellow-600', 'text-white');
+        }
+        
+        function showSuccess(message) {
+            // Create temporary success message
+            const successDiv = document.createElement('div');
+            successDiv.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            successDiv.textContent = message;
+            document.body.appendChild(successDiv);
+            
+            setTimeout(() => {
+                successDiv.remove();
+            }, 3000);
+        }
+        
+        function checkMission1() {
+            const answer = parseInt(document.getElementById('mission1-answer').value);
+            if (answer === 36) {
+                showSuccess('Excellent! Ali has 36 coins (4 × 9 = 36)');
+                document.querySelector('[data-mission="1"]').classList.add('bg-green-50', 'border-green-500');
+                earnBadge('badge-comparison');
+                updateProgress();
+            } else {
+                alert('Try again! Remember: "times as many" means multiplication. 4 × 9 = ?');
+            }
+        }
+        
+        function checkMission2() {
+            const answer = parseInt(document.getElementById('mission2-answer').value);
+            if (answer === 5) {
+                showSuccess('Perfect! Salma has 5 pencils (45 ÷ 9 = 5)');
+                document.querySelector('[data-mission="2"]').classList.add('bg-purple-50', 'border-purple-500');
+                earnBadge('badge-comparison');
+                updateProgress();
+            } else {
+                alert('Think again! If Huda has 9× as many, divide: 45 ÷ 9 = ?');
+            }
+        }
+        
+        function checkMission3() {
+            const answer = parseInt(document.getElementById('mission3-answer').value);
+            if (answer === 18) {
+                showSuccess('Amazing bar model work! Tree is 18 feet tall (6 × 3 = 18)');
+                document.querySelector('[data-mission="3"]').classList.add('bg-orange-50', 'border-orange-500');
+                earnBadge('badge-artist');
+                updateProgress();
+            } else {
+                alert('Check your bar model! The tree is 6× taller: 6 × 3 = ?');
+            }
+        }
+        
+        function selectOperation(operation) {
+            selectedOperation = operation;
+            document.getElementById('mult-btn').classList.remove('border-red-500', 'bg-red-100');
+            document.getElementById('div-btn').classList.remove('border-red-500', 'bg-red-100');
+            
+            if (operation === 'multiplication') {
+                document.getElementById('mult-btn').classList.add('border-red-500', 'bg-red-100');
+            } else {
+                document.getElementById('div-btn').classList.add('border-red-500', 'bg-red-100');
+            }
+        }
+        
+        function checkMission4() {
+            const answer = parseInt(document.getElementById('mission4-answer').value);
+            if (selectedOperation === 'division' && answer === 9) {
+                showSuccess('Detective work complete! Division was correct: 72 ÷ 8 = 9');
+                document.querySelector('[data-mission="4"]').classList.add('bg-red-50', 'border-red-500');
+                earnBadge('badge-honest');
+                updateProgress();
+            } else if (selectedOperation === null) {
+                alert('First select the operation you need!');
+            } else {
+                alert('Think carefully! Sara has 8× as many as Mariam. Use division: 72 ÷ 8 = ?');
+            }
+        }
+        
+        function checkMission5() {
+            const answer = parseInt(document.getElementById('mission5-answer').value);
+            if (answer === 8) {
+                showSuccess('أمانة! Honest and precise: 8 science books (64 ÷ 8 = 8)');
+                document.querySelector('[data-mission="5"]').classList.add('bg-indigo-50', 'border-indigo-500');
+                earnBadge('badge-honest');
+                updateProgress();
+            } else {
+                alert('Be precise with أمانة! If 64 is 8× as many: 64 ÷ 8 = ?');
+            }
+        }
+        
+        function submitExitTicket() {
+            const q1 = document.getElementById('exit-q1').value;
+            const q2 = document.getElementById('exit-q2').value;
+            const reflection = document.getElementById('exit-reflection').value;
+            const gratitude = document.getElementById('exit-gratitude').value;
+            
+            if (q1 && q2 && reflection && gratitude) {
+                let correct = 0;
+                if (parseInt(q1) === 12) correct++;
+                if (parseInt(q2) === 8) correct++;
+                
+                if (correct === 2) {
+                    showSuccess('Exit ticket complete! Perfect answers and great reflection on your learning journey.');
+                } else if (correct === 1) {
+                    showSuccess('Exit ticket submitted! One answer needs checking, but great reflection!');
+                } else {
+                    showSuccess('Exit ticket submitted! Check your math: Q1: 6 × 2 = ?, Q2: 56 ÷ 7 = ?');
+                }
+            } else {
+                alert('Please complete all questions for your reflection.');
+            }
+        }
+        
+        function startProject() {
+            showSuccess('🚀 Project launched! Time to explore classroom comparisons with أمانة (honesty)!');
+        }
+        
+        function closeModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+            document.getElementById('success-modal').classList.remove('flex');
+        }
+        
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate mission cards on load
+            const cards = document.querySelectorAll('.mission-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9720dbf5c775f536',t:'MTc1NTY4MjA5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

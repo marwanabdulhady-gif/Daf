@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Architects - Grade 4 Math Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .progress-segment {
+            width: 8.33%;
+            height: 100%;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin: 0 2px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-segment.filled {
+            background: linear-gradient(45deg, #10b981, #34d399);
+            animation: fillGlow 0.5s ease;
+        }
+        
+        .progress-segment.filled::after {
+            content: '🧩';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+        
+        @keyframes fillGlow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
+            100% { transform: scale(1); }
+        }
+        
+        .mission-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .mission-card:hover {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        }
+        
+        .mission-card.completed {
+            border-color: #10b981;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+        }
+        
+        .badge {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+        }
+        
+        .role-card {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .role-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+        }
+        
+        .array-grid {
+            display: grid;
+            gap: 2px;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        
+        .array-dot {
+            width: 12px;
+            height: 12px;
+            background: #3b82f6;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .array-dot:hover {
+            background: #1d4ed8;
+            transform: scale(1.2);
+        }
+        
+        .completed-animation {
+            animation: celebrate 1s ease-in-out;
+        }
+        
+        @keyframes celebrate {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.05) rotate(1deg); }
+            75% { transform: scale(1.05) rotate(-1deg); }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Title & Standards Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 card p-6">
+                <div class="text-center">
+                    <h1 class="text-4xl font-bold text-gray-800 mb-2">🧩 Unit 6 – Week 11: Array Architects</h1>
+                    <p class="text-lg text-gray-600">Master the distributive property through arrays and real-world applications!</p>
+                </div>
+            </div>
+            <div class="card p-6 bg-gradient-to-br from-blue-50 to-indigo-100">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">📚 Standards</h3>
+                <div class="bg-white rounded-lg p-3">
+                    <p class="font-semibold text-blue-700">4.NBT.B.5</p>
+                    <p class="text-sm text-gray-600">Multiply a whole number of up to four digits by a one-digit whole number using strategies based on place value and properties of operations.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="card p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">🧩 Blueprint Progress</h3>
+            <div class="flex justify-center items-center mb-4">
+                <div class="flex w-full max-w-2xl h-12 bg-gray-100 rounded-lg p-2" id="progressBar">
+                    <div class="progress-segment" data-mission="1"></div>
+                    <div class="progress-segment" data-mission="2"></div>
+                    <div class="progress-segment" data-mission="3"></div>
+                    <div class="progress-segment" data-mission="4"></div>
+                    <div class="progress-segment" data-mission="5"></div>
+                    <div class="progress-segment" data-mission="6"></div>
+                    <div class="progress-segment" data-mission="7"></div>
+                    <div class="progress-segment" data-mission="8"></div>
+                    <div class="progress-segment" data-mission="9"></div>
+                    <div class="progress-segment" data-mission="10"></div>
+                    <div class="progress-segment" data-mission="11"></div>
+                    <div class="progress-segment" data-mission="12"></div>
+                </div>
+            </div>
+            <p class="text-center text-gray-600" id="progressText">Complete missions to build your array mastery! 0/12 completed</p>
+        </div>
+
+        <!-- Badges & Roles Row -->
+        <div class="flex gap-4">
+            <!-- Badges -->
+            <div class="card p-4 flex-1">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">🏅 Badges</h3>
+                <div class="flex flex-wrap gap-2">
+                    <div class="badge text-xs px-3 py-1" id="badge1">🎨 Array Artist</div>
+                    <div class="badge text-xs px-3 py-1" id="badge2">🧠 Property Pro</div>
+                    <div class="badge text-xs px-3 py-1" id="badge3">🌱 Honest Worker</div>
+                </div>
+            </div>
+            
+            <!-- Roles -->
+            <div class="card p-4 flex-1">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">👥 Team Roles</h3>
+                <div class="flex flex-wrap gap-2">
+                    <div class="role-card text-xs px-2 py-1">
+                        <span class="mr-1">👑</span>
+                        <span class="font-semibold">Leader</span>
+                    </div>
+                    <div class="role-card text-xs px-2 py-1">
+                        <span class="mr-1">✍️</span>
+                        <span class="font-semibold">Recorder</span>
+                    </div>
+                    <div class="role-card text-xs px-2 py-1">
+                        <span class="mr-1">🤔</span>
+                        <span class="font-semibold">Reflector</span>
+                    </div>
+                    <div class="role-card text-xs px-2 py-1">
+                        <span class="mr-1">🌟</span>
+                        <span class="font-semibold">Diligent</span>
+                    </div>
+                    <div class="role-card text-xs px-2 py-1">
+                        <span class="mr-1">🎤</span>
+                        <span class="font-semibold">Presenter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Missions Grid -->
+        <div class="card p-6">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">🎯 Array Architect Missions</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Mission 1 -->
+                <div class="mission-card p-6 rounded-xl" data-mission="1">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800">🎯 Mission 1: Break It Apart</h4>
+                        <button class="text-2xl" onclick="completeMission(1)">⭕</button>
+                    </div>
+                    <div class="space-y-3">
+                        <p><strong>Task:</strong> Solve 7 × (3 + 2)</p>
+                        <p class="text-blue-600"><strong>💡 Example:</strong> (7×3) + (7×2) = 21 + 14 = 35</p>
+                        <p class="text-purple-600"><strong>⚡ Challenge:</strong> Try 9 × (4 + 6)</p>
+                        <p class="text-red-600"><strong>🚫 Misconception:</strong> Add first, then multiply</p>
+                        <p class="text-green-600"><strong>🔄 Reteach:</strong> Step-by-step decomposition</p>
+                        <div class="mt-4">
+                            <input type="text" placeholder="Your answer..." class="w-full p-2 border rounded-lg" id="answer1">
+                            <button onclick="checkAnswer(1, 35)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Check Answer</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission 2 -->
+                <div class="mission-card p-6 rounded-xl" data-mission="2">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800">🎯 Mission 2: Array Builder</h4>
+                        <button class="text-2xl" onclick="completeMission(2)">⭕</button>
+                    </div>
+                    <div class="space-y-3">
+                        <p><strong>Task:</strong> Build array for 6 × 7 → (6×5)+(6×2)</p>
+                        <div class="array-grid" style="grid-template-columns: repeat(7, 1fr);" id="array2">
+                            <!-- Array dots will be generated by JavaScript -->
+                        </div>
+                        <p class="text-purple-600"><strong>⚡ Challenge:</strong> Break 8 × 9 in 2 ways</p>
+                        <p class="text-green-600"><strong>🌱 Akhlāq:</strong> إتقان – neat, careful work</p>
+                        <button onclick="buildArray(2, 6, 7)" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">Build Array</button>
+                    </div>
+                </div>
+
+                <!-- Mission 3 -->
+                <div class="mission-card p-6 rounded-xl" data-mission="3">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800">🎯 Mission 3: Word Problem Split</h4>
+                        <button class="text-2xl" onclick="completeMission(3)">⭕</button>
+                    </div>
+                    <div class="space-y-3">
+                        <p><strong>Task:</strong> 9 rows × 12 plants per row</p>
+                        <p class="text-blue-600"><strong>💡 Example:</strong> (9×10)+(9×2) = 90+18 = 108</p>
+                        <p class="text-purple-600"><strong>⚡ Challenge:</strong> Try with 14 plants per row</p>
+                        <div class="mt-4">
+                            <input type="text" placeholder="Show your work..." class="w-full p-2 border rounded-lg" id="answer3">
+                            <button onclick="checkAnswer(3, 108)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Check Answer</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission 4 -->
+                <div class="mission-card p-6 rounded-xl" data-mission="4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800">🎯 Mission 4: Factor Flexibility</h4>
+                        <button class="text-2xl" onclick="completeMission(4)">⭕</button>
+                    </div>
+                    <div class="space-y-3">
+                        <p><strong>Task:</strong> 15 × 8 = (10×8)+(5×8)</p>
+                        <p class="text-purple-600"><strong>⚡ Challenge:</strong> 27 × 4 = (20×4)+(7×4)</p>
+                        <p class="text-red-600"><strong>🚫 Misconception:</strong> Forgetting both parts</p>
+                        <p class="text-green-600"><strong>🔄 Reteach:</strong> Use arrows to connect</p>
+                        <div class="mt-4">
+                            <input type="text" placeholder="Calculate 15 × 8..." class="w-full p-2 border rounded-lg" id="answer4">
+                            <button onclick="checkAnswer(4, 120)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Check Answer</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission 5 -->
+                <div class="mission-card p-6 rounded-xl" data-mission="5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800">🎯 Mission 5: Real-Life Application</h4>
+                        <button class="text-2xl" onclick="completeMission(5)">⭕</button>
+                    </div>
+                    <div class="space-y-3">
+                        <p><strong>Task:</strong> 13 packs × 6 bottles each</p>
+                        <p class="text-blue-600"><strong>💡 Solution:</strong> (10×6)+(3×6) = 60+18 = 78</p>
+                        <p class="text-purple-600"><strong>⚡ Challenge:</strong> 18 packs × 7 bottles</p>
+                        <div class="mt-4">
+                            <input type="text" placeholder="Your calculation..." class="w-full p-2 border rounded-lg" id="answer5">
+                            <button onclick="checkAnswer(5, 78)" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Check Answer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exit Tickets -->
+        <div class="card p-6">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">📝 Exit Tickets</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-yellow-50 p-6 rounded-xl border-2 border-yellow-200">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Q1: Solve 8 × 12 with distributive property</h4>
+                    <textarea class="w-full p-3 border rounded-lg" rows="3" placeholder="Show your work step by step..."></textarea>
+                </div>
+                <div class="bg-green-50 p-6 rounded-xl border-2 border-green-200">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Q2: Explain how arrays help multiplication</h4>
+                    <textarea class="w-full p-3 border rounded-lg" rows="3" placeholder="Explain in your own words..."></textarea>
+                </div>
+            </div>
+            <div class="mt-6 bg-purple-50 p-6 rounded-xl border-2 border-purple-200">
+                <h4 class="text-lg font-semibold text-gray-800 mb-3">🤔 Reflection</h4>
+                <div class="space-y-3">
+                    <div>
+                        <p class="font-medium">محاسبة النفس → "Did I explain distributive property in words?"</p>
+                        <textarea class="w-full p-2 border rounded-lg mt-2" rows="2" placeholder="Your reflection..."></textarea>
+                    </div>
+                    <div>
+                        <p class="font-medium">الحمد → "One real-life use of breaking numbers I'm grateful for..."</p>
+                        <textarea class="w-full p-2 border rounded-lg mt-2" rows="2" placeholder="Share your gratitude..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 bg-blue-50 p-4 rounded-xl border-2 border-blue-200">
+                <h4 class="font-semibold text-gray-800 mb-2">📊 Mastery Rubric</h4>
+                <div class="grid grid-cols-4 gap-2 text-sm">
+                    <div class="text-center p-2 bg-red-100 rounded">1 - Beginning</div>
+                    <div class="text-center p-2 bg-yellow-100 rounded">2 - Developing</div>
+                    <div class="text-center p-2 bg-blue-100 rounded">3 - Proficient</div>
+                    <div class="text-center p-2 bg-green-100 rounded">4 - Advanced</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Gallery -->
+        <div class="card p-6">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">📂 Distributive Property Poster Gallery</h3>
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-100 p-6 rounded-xl">
+                <h4 class="text-xl font-semibold text-gray-800 mb-4">🎨 Driving Question: How can breaking numbers apart make multiplication easier?</h4>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <h5 class="font-semibold text-gray-800">📋 Instructions:</h5>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Choose a 2-digit × 1-digit multiplication</li>
+                            <li>• Solve with distributive property (equation + array)</li>
+                            <li>• Write a sentence explaining the method</li>
+                            <li>• Create a colorful poster</li>
+                        </ul>
+                        
+                        <div class="bg-white p-4 rounded-lg">
+                            <h6 class="font-semibold text-gray-800 mb-2">📊 Rubric (20 pts):</h6>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div>Accuracy (8 pts)</div>
+                                <div>Visual Model (4 pts)</div>
+                                <div>Explanation (4 pts)</div>
+                                <div>Akhlāq (4 pts)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <h5 class="font-semibold text-gray-800">🔄 SAMR Integration:</h5>
+                        <div class="space-y-2">
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong>Substitution:</strong> Paper posters
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong>Augmentation:</strong> Digital posters
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong>Modification:</strong> Online gallery wall
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong>Redefinition:</strong> Family math gallery night
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg">
+                            <h6 class="font-semibold text-gray-800 mb-2">♿ UDL Supports:</h6>
+                            <p class="text-sm text-gray-700">Sentence starters, color coding, manipulatives</p>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg">
+                            <h6 class="font-semibold text-gray-800 mb-2">🤝 Service Link:</h6>
+                            <p class="text-sm text-gray-700">Teach distributive property to younger students/family to support mental math in shopping</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button onclick="startProject()" class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-purple-600 hover:to-indigo-700 transition-all transform hover:scale-105">
+                        🚀 Start Your Poster Project
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let completedMissions = 0;
+        let totalMissions = 12;
+
+        function completeMission(missionNumber) {
+            const missionCard = document.querySelector(`[data-mission="${missionNumber}"]`);
+            const progressSegment = document.querySelector(`[data-mission="${missionNumber}"]`);
+            
+            if (!missionCard.classList.contains('completed')) {
+                missionCard.classList.add('completed', 'completed-animation');
+                progressSegment.classList.add('filled');
+                completedMissions++;
+                
+                updateProgress();
+                checkBadges();
+                
+                // Remove animation class after animation completes
+                setTimeout(() => {
+                    missionCard.classList.remove('completed-animation');
+                }, 1000);
+            }
+        }
+
+        function updateProgress() {
+            const progressText = document.getElementById('progressText');
+            progressText.textContent = `Complete missions to build your array mastery! ${completedMissions}/${totalMissions} completed`;
+            
+            if (completedMissions === totalMissions) {
+                progressText.innerHTML = '🎉 Congratulations! You are now an Array Architect Master! ✨';
+                showMasterBadge();
+            }
+        }
+
+        function checkBadges() {
+            if (completedMissions >= 2) {
+                document.getElementById('badge1').style.background = 'linear-gradient(135deg, #10b981 0%, #34d399 100%)';
+            }
+            if (completedMissions >= 4) {
+                document.getElementById('badge2').style.background = 'linear-gradient(135deg, #10b981 0%, #34d399 100%)';
+            }
+            if (completedMissions >= 6) {
+                document.getElementById('badge3').style.background = 'linear-gradient(135deg, #10b981 0%, #34d399 100%)';
+            }
+        }
+
+        function showMasterBadge() {
+            const badge = document.createElement('div');
+            badge.innerHTML = '🎨🧠✨ Array Architect Master ✨🧠🎨';
+            badge.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-xl text-xl font-bold shadow-2xl z-50 animate-bounce';
+            document.body.appendChild(badge);
+            
+            setTimeout(() => {
+                badge.remove();
+            }, 3000);
+        }
+
+        function checkAnswer(missionNumber, correctAnswer) {
+            const input = document.getElementById(`answer${missionNumber}`);
+            const userAnswer = parseInt(input.value);
+            
+            if (userAnswer === correctAnswer) {
+                input.style.borderColor = '#10b981';
+                input.style.backgroundColor = '#d1fae5';
+                completeMission(missionNumber);
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.textContent = '✅ Correct! Great work!';
+                successMsg.className = 'text-green-600 font-semibold mt-2';
+                input.parentNode.appendChild(successMsg);
+                
+                setTimeout(() => {
+                    successMsg.remove();
+                }, 2000);
+            } else {
+                input.style.borderColor = '#ef4444';
+                input.style.backgroundColor = '#fee2e2';
+                
+                // Show hint message
+                const hintMsg = document.createElement('div');
+                hintMsg.textContent = '💡 Try breaking the number apart first!';
+                hintMsg.className = 'text-blue-600 font-semibold mt-2';
+                input.parentNode.appendChild(hintMsg);
+                
+                setTimeout(() => {
+                    hintMsg.remove();
+                    input.style.borderColor = '#d1d5db';
+                    input.style.backgroundColor = 'white';
+                }, 2000);
+            }
+        }
+
+        function buildArray(missionNumber, rows, cols) {
+            const arrayContainer = document.getElementById(`array${missionNumber}`);
+            arrayContainer.innerHTML = '';
+            
+            for (let i = 0; i < rows * cols; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'array-dot';
+                arrayContainer.appendChild(dot);
+                
+                // Animate dots appearing
+                setTimeout(() => {
+                    dot.style.opacity = '1';
+                    dot.style.transform = 'scale(1)';
+                }, i * 50);
+            }
+            
+            completeMission(missionNumber);
+        }
+
+        function startProject() {
+            alert('🎨 Great choice! Start by picking a 2-digit number to multiply. Remember to show your work using the distributive property and create a beautiful visual array!');
+        }
+
+        // Initialize array for mission 2
+        document.addEventListener('DOMContentLoaded', function() {
+            const array2 = document.getElementById('array2');
+            for (let i = 0; i < 42; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'array-dot';
+                dot.style.opacity = '0.3';
+                array2.appendChild(dot);
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97213c65e30ee9ef',t:'MTc1NTY4NjA0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

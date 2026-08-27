@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔁 Pattern Makers Hub - Grade 4 Unit 5 Week 9</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 20px;
+            grid-template-rows: auto auto auto auto auto auto;
+        }
+
+        /* Title and Standards Section */
+        .title-standards-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .main-title h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .unit-info {
+            font-size: 18px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .theme {
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+
+        .standards-container {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .standards-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .standard-card {
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .standard-code {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .standard-text {
+            font-size: 14px;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        .learning-objectives {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .objectives-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .objectives-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .objective {
+            font-size: 14px;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            border-left: 4px solid #ffd700;
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .progress-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #4a5568;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e2e8f0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #48bb78, #38a169);
+            border-radius: 15px;
+            width: 0%;
+            transition: width 1s ease-in-out;
+            position: relative;
+        }
+
+        .progress-pattern {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .starburst {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 24px;
+            animation: sparkle 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.2); }
+        }
+
+        /* Badges and Roles */
+        .badges-roles-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .badges-container, .roles-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #4a5568;
+            text-align: center;
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 12px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .badge:hover {
+            transform: scale(1.05);
+        }
+
+        .roles-grid {
+            display: grid;
+            gap: 8px;
+        }
+
+        .role {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .role:hover {
+            transform: translateX(5px);
+        }
+
+        /* Missions Grid */
+        .missions-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .mission-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .mission-title {
+            font-size: 18px;
+            color: #4a5568;
+        }
+
+        .mission-content {
+            display: grid;
+            gap: 10px;
+        }
+
+        .mission-item {
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .task { background: #e6fffa; border-left: 4px solid #38b2ac; }
+        .example { background: #fffaf0; border-left: 4px solid #ed8936; }
+        .challenge { background: #f0fff4; border-left: 4px solid #48bb78; }
+        .misconception { background: #fed7d7; border-left: 4px solid #e53e3e; }
+        .reteach { background: #ebf8ff; border-left: 4px solid #3182ce; }
+
+        .mission-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: transform 0.3s;
+        }
+
+        .mission-button:hover {
+            transform: scale(1.05);
+        }
+
+        .completed {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        }
+
+        /* Exit Tickets */
+        .exit-tickets-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .exit-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .quiz-question {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .reflection-item {
+            background: #fffaf0;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .rubric-scale {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .scale-item {
+            background: #e2e8f0;
+            padding: 8px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .scale-item:hover {
+            background: #cbd5e0;
+        }
+
+        /* Project Section */
+        .project-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .project-title {
+            font-size: 24px;
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .samr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .samr-item {
+            background: rgba(255,255,255,0.8);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* Animations */
+        .celebration {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            z-index: 1000;
+            animation: celebrate 3s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes celebrate {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .badges-roles-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .missions-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Title and Standards Section -->
+        <div class="title-standards-section">
+            <div class="main-title">
+                <h1>🔁 Pattern Makers Hub</h1>
+                <div class="unit-info">Grade 4 • Unit 5 • Week 9</div>
+                <div class="theme">Exploring Multiples & Extending Patterns with إتقان (Mastery)</div>
+            </div>
+            
+            <div class="standards-container">
+                <div class="standards-title">📚 Learning Standards</div>
+                <div style="text-align: center; font-size: 24px; color: #ffd700; font-weight: bold;">
+                    4.OA.C.5 • 4.NBT.B.6 • 4.OA.A.1
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar Section -->
+        <div class="progress-section">
+            <div class="progress-title">🔁 Pattern Progress Meter</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">
+                    <div class="progress-pattern" id="progressPattern">🔵🔺</div>
+                </div>
+                <div class="starburst" id="starburst">✨</div>
+            </div>
+            <div style="margin-top: 10px; font-size: 14px; color: #666;">
+                Complete missions to evolve your pattern mastery!
+            </div>
+        </div>
+
+        <!-- Badges and Roles Section -->
+        <div class="badges-roles-section">
+            <div class="badges-container">
+                <div class="section-title">🏅 Achievement Badges</div>
+                <div class="badges-grid">
+                    <div class="badge" onclick="earnBadge(this)">
+                        🔢 Multiple Master<br>
+                        <small>Quick with multiples</small>
+                    </div>
+                    <div class="badge" onclick="earnBadge(this)">
+                        🔁 Pattern Pro<br>
+                        <small>Extends & explains patterns</small>
+                    </div>
+                    <div class="badge" onclick="earnBadge(this)">
+                        🌱 Careful Checker<br>
+                        <small>Shows إتقان by avoiding mistakes</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="roles-container">
+                <div class="section-title">👥 Team Roles</div>
+                <div class="roles-grid">
+                    <div class="role" onclick="selectRole(this)">👑 Leader - directs finding rules</div>
+                    <div class="role" onclick="selectRole(this)">✍️ Recorder - writes sequences</div>
+                    <div class="role" onclick="selectRole(this)">🤔 Reflector - محاسبة النفس</div>
+                    <div class="role" onclick="selectRole(this)">🌟 Diligent - ensures consistency</div>
+                    <div class="role" onclick="selectRole(this)">🎤 Presenter - shares patterns</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Missions Section -->
+        <div class="missions-section">
+            <div class="mission-card" data-mission="1">
+                <div class="mission-header">
+                    <span>🎯</span>
+                    <div class="mission-title">Mission 1: Multiples Hunt</div>
+                </div>
+                <div class="mission-content">
+                    <div class="mission-item task">
+                        <strong>Task:</strong> Find the first 5 multiples of 6
+                    </div>
+                    <div class="mission-item example">
+                        <strong>💡 Example:</strong> 6, 12, 18, 24, 30
+                    </div>
+                    <div class="mission-item challenge">
+                        <strong>⚡ Challenge:</strong> Multiples of 9 up to 90
+                    </div>
+                    <div class="mission-item misconception">
+                        <strong>🚫 Watch out:</strong> Don't mix multiples with factors
+                    </div>
+                    <div class="mission-item reteach">
+                        <strong>🔄 Remember:</strong> Multiples = skip counting forward
+                    </div>
+                </div>
+                <button class="mission-button" onclick="completeMission(this, 1)">Start Mission</button>
+            </div>
+
+            <div class="mission-card" data-mission="2">
+                <div class="mission-header">
+                    <span>🎯</span>
+                    <div class="mission-title">Mission 2: Multiple or Not?</div>
+                </div>
+                <div class="mission-content">
+                    <div class="mission-item task">
+                        <strong>Task:</strong> Is 48 a multiple of 8?
+                    </div>
+                    <div class="mission-item example">
+                        <strong>💡 Example:</strong> Yes! 8×6=48
+                    </div>
+                    <div class="mission-item challenge">
+                        <strong>⚡ Challenge:</strong> Test if 50 is a multiple of 8
+                    </div>
+                    <div class="mission-item reteach">
+                        <strong>🌱 Akhlāq:</strong> إتقان → check carefully
+                    </div>
+                </div>
+                <button class="mission-button" onclick="completeMission(this, 2)">Start Mission</button>
+            </div>
+
+            <div class="mission-card" data-mission="3">
+                <div class="mission-header">
+                    <span>🎯</span>
+                    <div class="mission-title">Mission 3: Shape Pattern Builder</div>
+                </div>
+                <div class="mission-content">
+                    <div class="mission-item task">
+                        <strong>Task:</strong> Extend 🔺🔵🔺🔵...
+                    </div>
+                    <div class="mission-item challenge">
+                        <strong>⚡ Challenge:</strong> Create your own pattern
+                    </div>
+                    <div class="mission-item misconception">
+                        <strong>🚫 Watch out:</strong> Random shapes break patterns
+                    </div>
+                    <div class="mission-item reteach">
+                        <strong>🔄 Remember:</strong> Identify the repeating "unit"
+                    </div>
+                </div>
+                <button class="mission-button" onclick="completeMission(this, 3)">Start Mission</button>
+            </div>
+
+            <div class="mission-card" data-mission="4">
+                <div class="mission-header">
+                    <span>🎯</span>
+                    <div class="mission-title">Mission 4: Growing Numbers</div>
+                </div>
+                <div class="mission-content">
+                    <div class="mission-item task">
+                        <strong>Task:</strong> Continue 3, 6, 9, 12...
+                    </div>
+                    <div class="mission-item challenge">
+                        <strong>⚡ Challenge:</strong> Rule = "Add 3 each time"
+                    </div>
+                    <div class="mission-item misconception">
+                        <strong>🚫 Watch out:</strong> Random additions
+                    </div>
+                    <div class="mission-item reteach">
+                        <strong>🔄 Remember:</strong> Keep rule consistent
+                    </div>
+                </div>
+                <button class="mission-button" onclick="completeMission(this, 4)">Start Mission</button>
+            </div>
+
+            <div class="mission-card" data-mission="5">
+                <div class="mission-header">
+                    <span>🎯</span>
+                    <div class="mission-title">Mission 5: Real-Life Pattern</div>
+                </div>
+                <div class="mission-content">
+                    <div class="mission-item task">
+                        <strong>Task:</strong> Bus every 5 minutes → list first 30 mins
+                    </div>
+                    <div class="mission-item challenge">
+                        <strong>⚡ Challenge:</strong> How many stops in 1 hour?
+                    </div>
+                    <div class="mission-item example">
+                        <strong>💡 Connection:</strong> Multiples = real-life schedules
+                    </div>
+                </div>
+                <button class="mission-button" onclick="completeMission(this, 5)">Start Mission</button>
+            </div>
+        </div>
+
+        <!-- Exit Tickets Section -->
+        <div class="exit-tickets-section">
+            <div class="exit-card">
+                <div class="section-title">📝 Exit Ticket Questions</div>
+                <div class="quiz-question">
+                    <strong>Q1:</strong> Is 63 a multiple of 9? Explain your thinking.
+                </div>
+                <div class="quiz-question">
+                    <strong>Q2:</strong> Extend this pattern: 2, 4, 8, 16, __, __
+                </div>
+                <button class="mission-button" onclick="submitExitTicket()">Submit Answers</button>
+            </div>
+
+            <div class="exit-card">
+                <div class="section-title">🤔 Reflection</div>
+                <div class="reflection-item">
+                    <strong>محاسبة النفس:</strong> What mistake did I catch today?
+                </div>
+                <div class="reflection-item">
+                    <strong>الحمد:</strong> One life pattern I'm thankful for...
+                </div>
+                <div class="section-title" style="margin-top: 15px;">Mastery Scale</div>
+                <div class="rubric-scale">
+                    <div class="scale-item" onclick="selectScale(this, 1)">1<br>Beginning</div>
+                    <div class="scale-item" onclick="selectScale(this, 2)">2<br>Developing</div>
+                    <div class="scale-item" onclick="selectScale(this, 3)">3<br>Proficient</div>
+                    <div class="scale-item" onclick="selectScale(this, 4)">4<br>Mastery</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Section -->
+        <div class="project-section">
+            <div class="project-title">📂 Final Project: "Patterns All Around Us"</div>
+            <div style="text-align: center; margin-bottom: 20px; font-size: 18px; color: #4a5568;">
+                <strong>Driving Question:</strong> How can we recognize and use number & shape patterns in real life?
+            </div>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <h4>📊 Instructions</h4>
+                    <ul style="font-size: 14px; margin-top: 10px;">
+                        <li>Collect one number pattern</li>
+                        <li>Collect one shape pattern</li>
+                        <li>Write the rule for each</li>
+                        <li>Extend 5 more steps</li>
+                        <li>Present with visuals</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h4>📋 Rubric (20 pts)</h4>
+                    <div style="font-size: 12px; margin-top: 10px;">
+                        <div>• Accuracy (8 pts)</div>
+                        <div>• Rule Explanation (4 pts)</div>
+                        <div>• Creativity (4 pts)</div>
+                        <div>• Akhlāq (4 pts)</div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h4>🌟 UDL Supports</h4>
+                    <div style="font-size: 12px; margin-top: 10px;">
+                        <div>• Visual aids available</div>
+                        <div>• Manipulatives provided</div>
+                        <div>• Sentence starters</div>
+                        <div>• Multiple ways to show work</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">🔄 SAMR Integration Levels</div>
+            <div class="samr-grid">
+                <div class="samr-item">
+                    <strong>Substitution</strong><br>
+                    Paper charts
+                </div>
+                <div class="samr-item">
+                    <strong>Augmentation</strong><br>
+                    Digital slides w/ animations
+                </div>
+                <div class="samr-item">
+                    <strong>Modification</strong><br>
+                    Digital tessellations
+                </div>
+                <div class="samr-item">
+                    <strong>Redefinition</strong><br>
+                    Share gallery online
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="mission-button" onclick="startProject()" style="font-size: 16px; padding: 15px 30px;">
+                    🚀 Launch Project
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let completedMissions = 0;
+        let totalMissions = 5;
+        let earnedBadges = 0;
+
+        function updateProgress() {
+            const progressFill = document.getElementById('progressFill');
+            const progressPattern = document.getElementById('progressPattern');
+            const starburst = document.getElementById('starburst');
+            
+            const percentage = (completedMissions / totalMissions) * 100;
+            progressFill.style.width = percentage + '%';
+            
+            // Update pattern complexity
+            const patterns = ['🔵🔺', '🔵🔺🟡', '🔵🔺🟡🔶', '🔵🔺🟡🔶🟢', '🌐✨🎆'];
+            progressPattern.textContent = patterns[completedMissions] || '🔵🔺';
+            progressPattern.style.opacity = percentage > 0 ? '1' : '0';
+            
+            // Show starburst when complete
+            if (completedMissions === totalMissions) {
+                starburst.style.opacity = '1';
+                showCelebration();
+            }
+        }
+
+        function completeMission(button, missionNum) {
+            if (!button.classList.contains('completed')) {
+                button.classList.add('completed');
+                button.textContent = '✅ Completed!';
+                completedMissions++;
+                updateProgress();
+                
+                // Show mission completion feedback
+                showMissionFeedback(missionNum);
+            }
+        }
+
+        function showMissionFeedback(missionNum) {
+            const feedbacks = [
+                "Great job finding those multiples! 🔢",
+                "Perfect! You checked carefully with إتقان! 🌱",
+                "Excellent pattern building! 🔁",
+                "You found the growing rule! 📈",
+                "Real-world patterns mastered! 🌍"
+            ];
+            
+            const feedback = document.createElement('div');
+            feedback.textContent = feedbacks[missionNum - 1];
+            feedback.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #48bb78;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                z-index: 1000;
+                animation: slideIn 0.5s ease-out;
+            `;
+            
+            document.body.appendChild(feedback);
+            
+            setTimeout(() => {
+                feedback.remove();
+            }, 3000);
+        }
+
+        function earnBadge(badge) {
+            if (!badge.classList.contains('earned')) {
+                badge.classList.add('earned');
+                badge.style.background = 'linear-gradient(135deg, #ffd700 0%, #ffb347 100%)';
+                badge.style.transform = 'scale(1.1)';
+                earnedBadges++;
+                
+                const celebration = document.createElement('div');
+                celebration.textContent = '🏅 Badge Earned!';
+                celebration.className = 'celebration';
+                document.body.appendChild(celebration);
+                
+                setTimeout(() => {
+                    celebration.remove();
+                    badge.style.transform = 'scale(1)';
+                }, 3000);
+            }
+        }
+
+        function selectRole(role) {
+            // Remove previous selection
+            document.querySelectorAll('.role').forEach(r => {
+                r.style.background = 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)';
+            });
+            
+            // Highlight selected role
+            role.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            role.style.color = 'white';
+            
+            const roleText = role.textContent.split(' - ')[0];
+            showFeedback(`You are now the ${roleText}! 👥`);
+        }
+
+        function submitExitTicket() {
+            showFeedback('Exit ticket submitted! Great reflection! 📝✨');
+        }
+
+        function selectScale(item, level) {
+            // Remove previous selection
+            document.querySelectorAll('.scale-item').forEach(s => {
+                s.style.background = '#e2e8f0';
+                s.style.color = '#333';
+            });
+            
+            // Highlight selected scale
+            item.style.background = '#667eea';
+            item.style.color = 'white';
+            
+            const levels = ['Beginning', 'Developing', 'Proficient', 'Mastery'];
+            showFeedback(`Self-assessment: ${levels[level-1]} level! Keep growing! 🌱`);
+        }
+
+        function startProject() {
+            showFeedback('Project launched! Time to find patterns everywhere! 🚀📂');
+        }
+
+        function showCelebration() {
+            const celebration = document.createElement('div');
+            celebration.textContent = '🎆 Pattern Master Achieved! 🔁✨';
+            celebration.className = 'celebration';
+            celebration.style.fontSize = '36px';
+            document.body.appendChild(celebration);
+            
+            setTimeout(() => {
+                celebration.remove();
+            }, 4000);
+        }
+
+        function showFeedback(message) {
+            const feedback = document.createElement('div');
+            feedback.textContent = message;
+            feedback.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #667eea;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                z-index: 1000;
+                animation: slideIn 0.5s ease-out;
+            `;
+            
+            document.body.appendChild(feedback);
+            
+            setTimeout(() => {
+                feedback.remove();
+            }, 3000);
+        }
+
+        // Add CSS animation for slide in effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize progress
+        updateProgress();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9721054f47e1881e',t:'MTc1NTY4Mzc4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depth Diver of Decimals 🤿</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes bubble-pop {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .bubble-animation {
+            animation: bubble-pop 0.8s ease-out;
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .coral-bg {
+            background: linear-gradient(135deg, #0891b2 0%, #164e63 100%);
+        }
+        
+        .water-effect {
+            background: linear-gradient(45deg, #06b6d4, #0891b2, #0e7490);
+            background-size: 400% 400%;
+            animation: wave 4s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body class="water-effect min-h-screen text-white">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-4 text-cyan-100">🤿 Depth Diver of Decimals 🪸</h1>
+            <div class="bg-navy-800 bg-opacity-50 rounded-full px-6 py-3 inline-block">
+                <span class="text-2xl">Score: <span id="score">0</span>/20</span>
+            </div>
+        </div>
+
+        <!-- Progress Badge -->
+        <div class="text-center mb-8">
+            <div id="badge" class="inline-block bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full px-8 py-4 text-xl font-bold shadow-lg transform transition-all duration-300">
+                🏊‍♀️ Shallow Waters Explorer
+            </div>
+        </div>
+
+        <!-- Activity Sections -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Section 1: Decimal Notation -->
+            <div class="bg-cyan-900 bg-opacity-60 rounded-xl p-6 backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4 text-cyan-200">🐠 Decimal Notation Discovery</h2>
+                <div class="space-y-4">
+                    <div class="question-block">
+                        <p class="mb-3">What decimal represents 3 tenths?</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="checkAnswer(this, false, 1)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">0.03</button>
+                            <button onclick="checkAnswer(this, true, 1)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">0.3</button>
+                            <button onclick="checkAnswer(this, false, 1)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">3.0</button>
+                            <button onclick="checkAnswer(this, false, 1)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">0.003</button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-block">
+                        <p class="mb-3">Which shows 45 hundredths?</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="checkAnswer(this, false, 2)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">4.5</button>
+                            <button onclick="checkAnswer(this, true, 2)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">0.45</button>
+                            <button onclick="checkAnswer(this, false, 2)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">0.045</button>
+                            <button onclick="checkAnswer(this, false, 2)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">45.0</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Compare & Order -->
+            <div class="bg-blue-900 bg-opacity-60 rounded-xl p-6 backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4 text-blue-200">🐙 Compare & Order Depths</h2>
+                <div class="space-y-4">
+                    <div class="question-block">
+                        <p class="mb-3">Which is greater: 0.7 or 0.65?</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="checkAnswer(this, true, 3)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">0.7</button>
+                            <button onclick="checkAnswer(this, false, 3)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">0.65</button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-block">
+                        <p class="mb-3">Order from smallest to largest: 0.8, 0.08, 0.80</p>
+                        <div class="space-y-2">
+                            <button onclick="checkAnswer(this, true, 4)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors w-full">0.08, 0.8, 0.80</button>
+                            <button onclick="checkAnswer(this, false, 4)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors w-full">0.8, 0.08, 0.80</button>
+                            <button onclick="checkAnswer(this, false, 4)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors w-full">0.80, 0.8, 0.08</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Fraction Thinking -->
+            <div class="bg-teal-900 bg-opacity-60 rounded-xl p-6 backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4 text-teal-200">🦈 Fraction to Decimal Thinking</h2>
+                <div class="space-y-4">
+                    <div class="question-block">
+                        <p class="mb-3">What is 2/10 as a decimal?</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="checkAnswer(this, false, 5)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">0.02</button>
+                            <button onclick="checkAnswer(this, true, 5)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">0.2</button>
+                            <button onclick="checkAnswer(this, false, 5)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">2.0</button>
+                            <button onclick="checkAnswer(this, false, 5)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">0.20</button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-block">
+                        <p class="mb-3">Add: 0.3 + 0.4 (Think: 3/10 + 4/10)</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="checkAnswer(this, false, 6)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">0.34</button>
+                            <button onclick="checkAnswer(this, true, 6)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">0.7</button>
+                            <button onclick="checkAnswer(this, false, 6)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">0.07</button>
+                            <button onclick="checkAnswer(this, false, 6)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">7.0</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Money Word Problems -->
+            <div class="bg-indigo-900 bg-opacity-60 rounded-xl p-6 backdrop-blur-sm">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-200">💰 Treasure Hunt Money Problems</h2>
+                <div class="space-y-4">
+                    <div class="question-block">
+                        <p class="mb-3">🪙 You find 2 quarters and 3 dimes. How much money?</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="checkAnswer(this, false, 7)" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors">$0.23</button>
+                            <button onclick="checkAnswer(this, true, 7)" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors">$0.80</button>
+                            <button onclick="checkAnswer(this, false, 7)" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors">$0.50</button>
+                            <button onclick="checkAnswer(this, false, 7)" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors">$0.35</button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-block">
+                        <p class="mb-3">💵 A treasure chest has $1.25. You add $0.75. Total?</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="checkAnswer(this, false, 8)" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors">$1.90</button>
+                            <button onclick="checkAnswer(this, true, 8)" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors">$2.00</button>
+                            <button onclick="checkAnswer(this, false, 8)" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors">$2.10</button>
+                            <button onclick="checkAnswer(this, false, 8)" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors">$1.50</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- More Advanced Problems -->
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-cyan-800 bg-opacity-60 rounded-xl p-6 backdrop-blur-sm">
+                <h3 class="text-xl font-bold mb-4 text-cyan-200">🌊 Deep Sea Challenges</h3>
+                <div class="space-y-4">
+                    <div class="question-block">
+                        <p class="mb-3">Compare: 0.50 __ 0.5</p>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="checkAnswer(this, false, 9)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">&gt;</button>
+                            <button onclick="checkAnswer(this, true, 9)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">=</button>
+                            <button onclick="checkAnswer(this, false, 9)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">&lt;</button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-block">
+                        <p class="mb-3">💎 Diving gear costs $12.50. You pay with $15.00. Change?</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="checkAnswer(this, false, 10)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">$3.50</button>
+                            <button onclick="checkAnswer(this, true, 10)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">$2.50</button>
+                            <button onclick="checkAnswer(this, false, 10)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">$2.00</button>
+                            <button onclick="checkAnswer(this, false, 10)" class="bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg transition-colors">$3.00</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-800 bg-opacity-60 rounded-xl p-6 backdrop-blur-sm">
+                <h3 class="text-xl font-bold mb-4 text-blue-200">🐢 Turtle Speed Decimals</h3>
+                <div class="space-y-4">
+                    <div class="question-block">
+                        <p class="mb-3">Add: 0.25 + 0.35</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="checkAnswer(this, false, 11)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">0.50</button>
+                            <button onclick="checkAnswer(this, true, 11)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">0.60</button>
+                            <button onclick="checkAnswer(this, false, 11)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">0.70</button>
+                            <button onclick="checkAnswer(this, false, 11)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">0.55</button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-block">
+                        <p class="mb-3">🪸 Which is closest to 1? 0.9, 0.09, or 0.99?</p>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="checkAnswer(this, false, 12)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">0.9</button>
+                            <button onclick="checkAnswer(this, false, 12)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">0.09</button>
+                            <button onclick="checkAnswer(this, true, 12)" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">0.99</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Challenges -->
+        <div class="mt-8 bg-gradient-to-r from-teal-800 to-blue-800 bg-opacity-60 rounded-xl p-6 backdrop-blur-sm">
+            <h3 class="text-2xl font-bold mb-4 text-center text-teal-200">🏆 Master Diver Final Challenge</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="question-block">
+                    <p class="mb-3">🎯 Order these depths from shallowest to deepest: 0.75m, 0.7m, 0.705m</p>
+                    <div class="space-y-2">
+                        <button onclick="checkAnswer(this, true, 13)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors w-full">0.7, 0.705, 0.75</button>
+                        <button onclick="checkAnswer(this, false, 13)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors w-full">0.705, 0.7, 0.75</button>
+                        <button onclick="checkAnswer(this, false, 13)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors w-full">0.75, 0.705, 0.7</button>
+                    </div>
+                </div>
+                
+                <div class="question-block">
+                    <p class="mb-3">💰 You buy snorkel gear for $8.75 and fins for $12.25. Total cost?</p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="checkAnswer(this, false, 14)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">$20.90</button>
+                        <button onclick="checkAnswer(this, true, 14)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">$21.00</button>
+                        <button onclick="checkAnswer(this, false, 14)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">$21.10</button>
+                        <button onclick="checkAnswer(this, false, 14)" class="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded-lg transition-colors">$20.50</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Sea Creatures -->
+        <div class="fixed top-20 right-10 text-4xl floating">🐠</div>
+        <div class="fixed bottom-20 left-10 text-3xl floating" style="animation-delay: 1s;">🐙</div>
+        <div class="fixed top-1/2 left-20 text-2xl floating" style="animation-delay: 2s;">🦈</div>
+        <div class="fixed bottom-1/3 right-20 text-3xl floating" style="animation-delay: 0.5s;">🐢</div>
+    </div>
+
+    <script>
+        let score = 0;
+        let answeredQuestions = new Set();
+
+        function checkAnswer(button, isCorrect, questionId) {
+            // Prevent multiple answers for same question
+            if (answeredQuestions.has(questionId)) return;
+            
+            const questionBlock = button.closest('.question-block');
+            const buttons = questionBlock.querySelectorAll('button');
+            
+            // Disable all buttons in this question
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50');
+            });
+            
+            answeredQuestions.add(questionId);
+            
+            if (isCorrect) {
+                button.classList.add('bg-green-500', 'hover:bg-green-500');
+                button.classList.remove('bg-cyan-600', 'bg-blue-600', 'bg-teal-600', 'bg-indigo-600');
+                score++;
+                document.getElementById('score').textContent = score;
+                
+                // Create bubble animation
+                createBubbleAnimation(button);
+                
+                // Update badge based on score
+                updateBadge();
+            } else {
+                button.classList.add('bg-red-500', 'hover:bg-red-500');
+                button.classList.remove('bg-cyan-600', 'bg-blue-600', 'bg-teal-600', 'bg-indigo-600');
+                
+                // Show correct answer
+                buttons.forEach(btn => {
+                    if (btn.onclick.toString().includes('true')) {
+                        btn.classList.add('bg-green-500', 'hover:bg-green-500');
+                        btn.classList.remove('bg-cyan-600', 'bg-blue-600', 'bg-teal-600', 'bg-indigo-600');
+                    }
+                });
+            }
+        }
+
+        function createBubbleAnimation(element) {
+            const bubble = document.createElement('div');
+            bubble.innerHTML = '💙';
+            bubble.className = 'absolute text-2xl bubble-animation pointer-events-none';
+            bubble.style.left = Math.random() * 100 + 'px';
+            bubble.style.top = Math.random() * 100 + 'px';
+            
+            element.style.position = 'relative';
+            element.appendChild(bubble);
+            
+            setTimeout(() => {
+                if (bubble.parentNode) {
+                    bubble.parentNode.removeChild(bubble);
+                }
+            }, 800);
+        }
+
+        function updateBadge() {
+            const badge = document.getElementById('badge');
+            
+            if (score >= 14) {
+                badge.innerHTML = '🏆 Master Depth Diver of Decimals';
+                badge.className = 'inline-block bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full px-8 py-4 text-xl font-bold shadow-lg transform transition-all duration-300 scale-110';
+            } else if (score >= 10) {
+                badge.innerHTML = '🤿 Deep Sea Decimal Explorer';
+                badge.className = 'inline-block bg-gradient-to-r from-purple-400 to-pink-500 rounded-full px-8 py-4 text-xl font-bold shadow-lg transform transition-all duration-300 scale-105';
+            } else if (score >= 6) {
+                badge.innerHTML = '🐠 Reef Decimal Navigator';
+                badge.className = 'inline-block bg-gradient-to-r from-green-400 to-blue-500 rounded-full px-8 py-4 text-xl font-bold shadow-lg transform transition-all duration-300';
+            } else if (score >= 3) {
+                badge.innerHTML = '🏊‍♀️ Shallow Waters Explorer';
+                badge.className = 'inline-block bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full px-8 py-4 text-xl font-bold shadow-lg transform transition-all duration-300';
+            }
+        }
+
+        // Add some initial floating bubbles
+        function createFloatingBubble() {
+            const bubble = document.createElement('div');
+            bubble.innerHTML = '○';
+            bubble.className = 'fixed text-cyan-300 opacity-30 pointer-events-none floating';
+            bubble.style.left = Math.random() * window.innerWidth + 'px';
+            bubble.style.top = Math.random() * window.innerHeight + 'px';
+            bubble.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            bubble.style.animationDelay = Math.random() * 3 + 's';
+            
+            document.body.appendChild(bubble);
+            
+            setTimeout(() => {
+                if (bubble.parentNode) {
+                    bubble.parentNode.removeChild(bubble);
+                }
+            }, 6000);
+        }
+
+        // Create floating bubbles periodically
+        setInterval(createFloatingBubble, 2000);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970f9a28f41d0430',t:'MTc1NTUwMTEzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

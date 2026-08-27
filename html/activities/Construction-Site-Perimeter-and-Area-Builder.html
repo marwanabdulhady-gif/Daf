@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construction Site Space Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .slide-in { animation: slideIn 0.5s ease-out; }
+        .pulse-animation { animation: pulse 2s infinite; }
+        .fade-in { animation: fadeIn 0.3s ease-out; }
+        .dragging { transform: rotate(2deg); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .construction-grid {
+            background-image: 
+                linear-gradient(rgba(255, 193, 7, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 193, 7, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .rectangle-piece {
+            cursor: grab;
+            transition: all 0.3s ease;
+            border: 2px dashed #ffc107;
+        }
+        .rectangle-piece:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
+        .rectangle-piece.dragging {
+            cursor: grabbing;
+            z-index: 1000;
+        }
+        .drop-zone {
+            transition: all 0.3s ease;
+        }
+        .drop-zone.drag-over {
+            background-color: rgba(255, 193, 7, 0.1);
+            border-color: #ffc107;
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white min-h-screen font-sans">
+    <!-- Header -->
+    <div class="bg-gray-900 border-b-4 border-yellow-400 p-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="text-4xl">🚧</span>
+                <div>
+                    <h1 class="text-2xl font-bold text-yellow-400">Construction Site Space Planner</h1>
+                    <p class="text-gray-300">Drag rectangles to build floor plans • Calculate perimeter & area</p>
+                </div>
+            </div>
+            <div class="bg-yellow-400 text-gray-900 px-4 py-2 rounded-full font-bold flex items-center space-x-2">
+                <span>📐</span>
+                <span>Space Planner</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto p-6">
+        <div class="grid lg:grid-cols-3 gap-6">
+            <!-- Rectangle Pieces Panel -->
+            <div class="bg-gray-700 rounded-lg p-6 border-2 border-gray-600">
+                <h2 class="text-xl font-bold text-yellow-400 mb-4 flex items-center">
+                    <span class="mr-2">🧱</span>
+                    Building Pieces
+                </h2>
+                <div class="space-y-4">
+                    <div class="rectangle-piece bg-yellow-400 text-gray-900 p-4 rounded cursor-grab" 
+                         draggable="true" data-width="4" data-height="2">
+                        <div class="font-bold text-center">4 × 2</div>
+                        <div class="text-sm text-center">Rectangle</div>
+                    </div>
+                    <div class="rectangle-piece bg-yellow-400 text-gray-900 p-4 rounded cursor-grab" 
+                         draggable="true" data-width="3" data-height="3">
+                        <div class="font-bold text-center">3 × 3</div>
+                        <div class="text-sm text-center">Square</div>
+                    </div>
+                    <div class="rectangle-piece bg-yellow-400 text-gray-900 p-4 rounded cursor-grab" 
+                         draggable="true" data-width="6" data-height="1">
+                        <div class="font-bold text-center">6 × 1</div>
+                        <div class="text-sm text-center">Beam</div>
+                    </div>
+                    <div class="rectangle-piece bg-yellow-400 text-gray-900 p-4 rounded cursor-grab" 
+                         draggable="true" data-width="2" data-height="4">
+                        <div class="font-bold text-center">2 × 4</div>
+                        <div class="text-sm text-center">Column</div>
+                    </div>
+                </div>
+                <button onclick="clearFloorPlan()" class="w-full mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded transition-colors">
+                    🗑️ Clear Floor Plan
+                </button>
+            </div>
+
+            <!-- Construction Area -->
+            <div class="bg-gray-700 rounded-lg p-6 border-2 border-gray-600">
+                <h2 class="text-xl font-bold text-yellow-400 mb-4 flex items-center">
+                    <span class="mr-2">🏗️</span>
+                    Floor Plan Builder
+                </h2>
+                <div id="construction-area" class="construction-grid bg-gray-600 rounded-lg h-80 relative border-2 border-dashed border-gray-500 drop-zone">
+                    <div class="absolute inset-0 flex items-center justify-center text-gray-400 pointer-events-none">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">📐</div>
+                            <div>Drag rectangles here to build</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculations Panel -->
+            <div class="bg-gray-700 rounded-lg p-6 border-2 border-gray-600">
+                <h2 class="text-xl font-bold text-yellow-400 mb-4 flex items-center">
+                    <span class="mr-2">🧮</span>
+                    Measurements
+                </h2>
+                <div id="calculations" class="space-y-4">
+                    <div class="bg-gray-800 p-4 rounded">
+                        <div class="text-yellow-400 font-bold mb-2">Total Area</div>
+                        <div class="text-2xl font-bold" id="total-area">0 units²</div>
+                        <div class="text-sm text-gray-400 mt-1">Sum of all rectangles</div>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded">
+                        <div class="text-yellow-400 font-bold mb-2">Total Perimeter</div>
+                        <div class="text-2xl font-bold" id="total-perimeter">0 units</div>
+                        <div class="text-sm text-gray-400 mt-1">Outer boundary only</div>
+                    </div>
+                    <div id="piece-details" class="space-y-2">
+                        <!-- Individual piece calculations will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formula Reference -->
+        <div class="mt-6 bg-gray-700 rounded-lg p-6 border-2 border-gray-600">
+            <h2 class="text-xl font-bold text-yellow-400 mb-4 flex items-center">
+                <span class="mr-2">📚</span>
+                Construction Formulas
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-800 p-4 rounded">
+                    <h3 class="font-bold text-yellow-400 mb-2">Rectangle Area</h3>
+                    <div class="text-lg font-mono">A = length × width</div>
+                    <div class="text-sm text-gray-400 mt-1">Square units of floor space</div>
+                </div>
+                <div class="bg-gray-800 p-4 rounded">
+                    <h3 class="font-bold text-yellow-400 mb-2">Rectangle Perimeter</h3>
+                    <div class="text-lg font-mono">P = 2(length + width)</div>
+                    <div class="text-sm text-gray-400 mt-1">Linear units around the edge</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let placedPieces = [];
+        let draggedElement = null;
+        let dragOffset = { x: 0, y: 0 };
+
+        // Drag and drop functionality
+        document.querySelectorAll('.rectangle-piece').forEach(piece => {
+            piece.addEventListener('dragstart', handleDragStart);
+            piece.addEventListener('dragend', handleDragEnd);
+        });
+
+        const constructionArea = document.getElementById('construction-area');
+        constructionArea.addEventListener('dragover', handleDragOver);
+        constructionArea.addEventListener('drop', handleDrop);
+        constructionArea.addEventListener('dragenter', handleDragEnter);
+        constructionArea.addEventListener('dragleave', handleDragLeave);
+
+        function handleDragStart(e) {
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'copy';
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            draggedElement = null;
+        }
+
+        function handleDragEnter(e) {
+            e.preventDefault();
+            constructionArea.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            if (!constructionArea.contains(e.relatedTarget)) {
+                constructionArea.classList.remove('drag-over');
+            }
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'copy';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            constructionArea.classList.remove('drag-over');
+            
+            if (!draggedElement) return;
+
+            const rect = constructionArea.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const width = parseInt(draggedElement.dataset.width);
+            const height = parseInt(draggedElement.dataset.height);
+            
+            // Create new piece in construction area
+            const newPiece = createPlacedPiece(width, height, x - 30, y - 20);
+            constructionArea.appendChild(newPiece);
+            
+            placedPieces.push({
+                width: width,
+                height: height,
+                element: newPiece
+            });
+            
+            updateCalculations();
+            animateNewPiece(newPiece);
+        }
+
+        function createPlacedPiece(width, height, x, y) {
+            const piece = document.createElement('div');
+            piece.className = 'absolute bg-yellow-400 text-gray-900 rounded border-2 border-yellow-500 cursor-move';
+            piece.style.left = Math.max(0, Math.min(x, constructionArea.clientWidth - width * 20)) + 'px';
+            piece.style.top = Math.max(0, Math.min(y, constructionArea.clientHeight - height * 20)) + 'px';
+            piece.style.width = (width * 20) + 'px';
+            piece.style.height = (height * 20) + 'px';
+            
+            piece.innerHTML = `
+                <div class="h-full flex flex-col items-center justify-center text-xs font-bold">
+                    <div>${width} × ${height}</div>
+                    <div class="text-xs opacity-75">A=${width * height}</div>
+                </div>
+                <button onclick="removePiece(this.parentElement)" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center hover:bg-red-600">×</button>
+            `;
+            
+            // Make placed pieces draggable within construction area
+            piece.addEventListener('mousedown', startDrag);
+            
+            return piece;
+        }
+
+        function startDrag(e) {
+            const piece = e.target.closest('.absolute');
+            if (!piece || e.target.tagName === 'BUTTON') return;
+            
+            const rect = piece.getBoundingClientRect();
+            const containerRect = constructionArea.getBoundingClientRect();
+            
+            dragOffset.x = e.clientX - rect.left;
+            dragOffset.y = e.clientY - rect.top;
+            
+            function onMouseMove(e) {
+                const x = e.clientX - containerRect.left - dragOffset.x;
+                const y = e.clientY - containerRect.top - dragOffset.y;
+                
+                piece.style.left = Math.max(0, Math.min(x, constructionArea.clientWidth - piece.offsetWidth)) + 'px';
+                piece.style.top = Math.max(0, Math.min(y, constructionArea.clientHeight - piece.offsetHeight)) + 'px';
+            }
+            
+            function onMouseUp() {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            }
+            
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+        }
+
+        function removePiece(piece) {
+            const index = placedPieces.findIndex(p => p.element === piece);
+            if (index > -1) {
+                placedPieces.splice(index, 1);
+                piece.remove();
+                updateCalculations();
+            }
+        }
+
+        function clearFloorPlan() {
+            placedPieces = [];
+            constructionArea.querySelectorAll('.absolute').forEach(piece => {
+                if (!piece.classList.contains('inset-0')) {
+                    piece.remove();
+                }
+            });
+            updateCalculations();
+        }
+
+        function updateCalculations() {
+            const totalArea = placedPieces.reduce((sum, piece) => sum + (piece.width * piece.height), 0);
+            const totalPerimeter = calculateTotalPerimeter();
+            
+            document.getElementById('total-area').textContent = `${totalArea} units²`;
+            document.getElementById('total-perimeter').textContent = `${totalPerimeter} units`;
+            
+            updatePieceDetails();
+        }
+
+        function calculateTotalPerimeter() {
+            if (placedPieces.length === 0) return 0;
+            
+            // For simplicity, calculate perimeter as if pieces don't overlap
+            // In a real application, you'd need more complex geometry calculations
+            return placedPieces.reduce((sum, piece) => {
+                return sum + (2 * (piece.width + piece.height));
+            }, 0);
+        }
+
+        function updatePieceDetails() {
+            const detailsContainer = document.getElementById('piece-details');
+            detailsContainer.innerHTML = '';
+            
+            if (placedPieces.length === 0) {
+                detailsContainer.innerHTML = '<div class="text-gray-400 text-center py-4">No pieces placed yet</div>';
+                return;
+            }
+            
+            placedPieces.forEach((piece, index) => {
+                const area = piece.width * piece.height;
+                const perimeter = 2 * (piece.width + piece.height);
+                
+                const detail = document.createElement('div');
+                detail.className = 'bg-gray-800 p-3 rounded fade-in';
+                detail.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div class="font-bold text-yellow-400">${piece.width} × ${piece.height} Rectangle</div>
+                        <div class="text-sm text-gray-400">Piece ${index + 1}</div>
+                    </div>
+                    <div class="text-sm mt-1">
+                        <div>Area: ${area} units² (${piece.width} × ${piece.height})</div>
+                        <div>Perimeter: ${perimeter} units (2 × (${piece.width} + ${piece.height}))</div>
+                    </div>
+                `;
+                detailsContainer.appendChild(detail);
+            });
+        }
+
+        function animateNewPiece(piece) {
+            piece.classList.add('slide-in');
+            setTimeout(() => {
+                piece.classList.add('pulse-animation');
+                setTimeout(() => piece.classList.remove('pulse-animation'), 2000);
+            }, 500);
+        }
+
+        // Initialize
+        updateCalculations();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970fa517020252c7',t:'MTc1NTUwMTU4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

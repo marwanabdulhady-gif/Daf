@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraction Matchmaker - Interactive Lesson</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fraction-bar {
+            background: linear-gradient(90deg, #4ade80 0%, #4ade80 var(--fill-percent, 0%), #f3f4f6 var(--fill-percent, 0%));
+            border: 2px solid #1e40af;
+        }
+        .slider-track {
+            background: linear-gradient(90deg, #0891b2 0%, #1e40af 100%);
+        }
+        .slider-thumb {
+            background: #fbbf24;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .star-animation {
+            animation: starPop 0.6s ease-out;
+        }
+        @keyframes starPop {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+            100% { transform: scale(1) rotate(360deg); opacity: 1; }
+        }
+        .badge-glow {
+            animation: badgeGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes badgeGlow {
+            0% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.5); }
+            100% { box-shadow: 0 0 30px rgba(34, 197, 94, 0.8); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-cyan-50 to-indigo-100 min-h-screen p-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-indigo-800 mb-2">Fraction Matchmaker 💘</h1>
+            <p class="text-lg text-cyan-700">Master equivalent fractions through interactive exploration!</p>
+            
+            <!-- Badge -->
+            <div id="badge" class="inline-block mt-4 px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-600 text-white rounded-full font-bold text-lg shadow-lg opacity-0 transition-all duration-500">
+                🏆 Fraction Matchmaker Earned! 💘
+            </div>
+        </div>
+
+        <!-- Level Selector -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white rounded-lg p-2 shadow-lg">
+                <button onclick="setLevel(1)" id="level1-btn" class="px-6 py-3 rounded-lg font-semibold transition-all bg-gradient-to-r from-emerald-500 to-cyan-600 text-white">
+                    Level 1: Visual Match
+                </button>
+                <button onclick="setLevel(2)" id="level2-btn" class="px-6 py-3 rounded-lg font-semibold transition-all text-indigo-600 hover:bg-indigo-50">
+                    Level 2: Generate
+                </button>
+                <button onclick="setLevel(3)" id="level3-btn" class="px-6 py-3 rounded-lg font-semibold transition-all text-indigo-600 hover:bg-indigo-50">
+                    Level 3: Justify
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="bg-white rounded-xl shadow-xl p-8 mb-6">
+            <!-- Level 1: Visual Match -->
+            <div id="level1-content">
+                <h2 class="text-2xl font-bold text-indigo-800 mb-6 text-center">Match the Equivalent Fractions</h2>
+                
+                <!-- Target Fraction -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-4">Target: <span id="target-fraction">1/2</span></h3>
+                    <div class="bg-gray-100 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="text-sm font-medium text-gray-600 w-16">🟪🟩</span>
+                            <div id="target-bar" class="fraction-bar h-8 w-80 rounded-lg" style="--fill-percent: 50%"></div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm font-medium text-gray-600 w-16">Number:</span>
+                            <div class="relative w-80 h-8 bg-gray-200 rounded-lg">
+                                <div id="target-number-bar" class="absolute top-0 left-0 h-full bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-lg" style="width: 50%"></div>
+                                <div id="target-number-text" class="absolute top-1/2 transform -translate-y-1/2 text-xs font-bold text-white" style="left: 25%">1/2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Fraction -->
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-4">Find the Match: <span id="current-fraction">2/4</span></h3>
+                    <div class="bg-gray-100 rounded-lg p-4">
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-medium text-gray-600 w-16">◻️◻️</span>
+                            <div id="interactive-bar" class="fraction-bar h-8 w-80 rounded-lg" style="--fill-percent: 50%"></div>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <span class="text-sm font-medium text-gray-600 w-16">Slider:</span>
+                            <div class="relative w-80">
+                                <input type="range" id="fraction-slider" min="0" max="100" value="50" 
+                                       class="w-full h-3 slider-track rounded-lg appearance-none cursor-pointer">
+                                <div id="slider-marker" class="absolute top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-6 h-6 slider-thumb rounded-full border-2 border-white cursor-pointer" style="left: 50%"></div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <span id="match-status" class="text-lg font-semibold text-gray-600">Slide to match the target!</span>
+                            <div id="star-container" class="inline-block ml-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2: Generate -->
+            <div id="level2-content" class="hidden">
+                <h2 class="text-2xl font-bold text-indigo-800 mb-6 text-center">Generate Equivalent Fractions</h2>
+                
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-4">Given: <span id="given-fraction">3/4</span></h3>
+                    <div class="bg-gray-100 rounded-lg p-4 mb-6">
+                        <div class="flex items-center">
+                            <span class="text-sm font-medium text-gray-600 w-16">🟪🟩🟩</span>
+                            <div id="given-bar" class="fraction-bar h-8 w-80 rounded-lg" style="--fill-percent: 75%"></div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-4">Create an equivalent fraction:</h3>
+                    <div class="flex items-center justify-center space-x-4 mb-4">
+                        <input type="number" id="numerator-input" min="1" max="20" class="w-16 h-12 text-center text-xl font-bold border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                        <span class="text-2xl font-bold text-indigo-800">/</span>
+                        <input type="number" id="denominator-input" min="1" max="20" class="w-16 h-12 text-center text-xl font-bold border-2 border-indigo-300 rounded-lg focus:border-indigo-500 focus:outline-none">
+                        <button onclick="checkEquivalent()" class="px-6 py-3 bg-gradient-to-r from-emerald-500 to-cyan-600 text-white rounded-lg font-semibold hover:from-emerald-600 hover:to-cyan-700 transition-all">
+                            Check ✓
+                        </button>
+                    </div>
+                    <div id="generate-feedback" class="text-center text-lg font-semibold"></div>
+                </div>
+            </div>
+
+            <!-- Level 3: Justify -->
+            <div id="level3-content" class="hidden">
+                <h2 class="text-2xl font-bold text-indigo-800 mb-6 text-center">Justify Why Fractions Are Equivalent</h2>
+                
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold text-cyan-700 mb-4">Are these fractions equivalent?</h3>
+                    <div class="grid grid-cols-2 gap-6 mb-6">
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <h4 class="font-semibold text-center mb-2"><span id="frac1">2/3</span></h4>
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-gray-600 w-16">🟪🟪</span>
+                                <div id="justify-bar1" class="fraction-bar h-8 w-60 rounded-lg" style="--fill-percent: 66.67%"></div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <h4 class="font-semibold text-center mb-2"><span id="frac2">4/6</span></h4>
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium text-gray-600 w-16">🟪🟪🟪🟪</span>
+                                <div id="justify-bar2" class="fraction-bar h-8 w-60 rounded-lg" style="--fill-percent: 66.67%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mb-4">
+                        <button onclick="selectAnswer(true)" id="yes-btn" class="px-8 py-3 mx-2 bg-gradient-to-r from-emerald-500 to-cyan-600 text-white rounded-lg font-semibold hover:from-emerald-600 hover:to-cyan-700 transition-all">
+                            Yes, they're equivalent
+                        </button>
+                        <button onclick="selectAnswer(false)" id="no-btn" class="px-8 py-3 mx-2 bg-gray-400 text-white rounded-lg font-semibold hover:bg-gray-500 transition-all">
+                            No, they're different
+                        </button>
+                    </div>
+                    
+                    <div id="justify-explanation" class="bg-indigo-50 rounded-lg p-4 hidden">
+                        <h4 class="font-semibold text-indigo-800 mb-2">Explanation:</h4>
+                        <p id="explanation-text" class="text-indigo-700"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress -->
+            <div class="text-center">
+                <button onclick="nextProblem()" id="next-btn" class="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all">
+                    Next Problem →
+                </button>
+            </div>
+        </div>
+
+        <!-- Score Display -->
+        <div class="text-center">
+            <div class="inline-block bg-white rounded-lg px-6 py-3 shadow-lg">
+                <span class="text-lg font-semibold text-indigo-800">Score: <span id="score">0</span>/10</span>
+                <span class="ml-4 text-lg">⭐ <span id="stars">0</span></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLevel = 1;
+        let score = 0;
+        let stars = 0;
+        let currentProblem = 0;
+        let problems = {
+            1: [
+                {target: [1,2], interactive: [2,4]},
+                {target: [1,3], interactive: [2,6]},
+                {target: [2,3], interactive: [4,6]},
+                {target: [1,4], interactive: [3,12]},
+                {target: [3,4], interactive: [6,8]}
+            ],
+            2: [
+                {given: [3,4]}, {given: [2,5]}, {given: [1,3]}, {given: [5,6]}, {given: [2,3]}
+            ],
+            3: [
+                {frac1: [2,3], frac2: [4,6], equivalent: true},
+                {frac1: [1,2], frac2: [3,5], equivalent: false},
+                {frac1: [3,5], frac2: [6,10], equivalent: true},
+                {frac1: [2,4], frac2: [1,3], equivalent: false},
+                {frac1: [4,8], frac2: [1,2], equivalent: true}
+            ]
+        };
+
+        function setLevel(level) {
+            currentLevel = level;
+            currentProblem = 0;
+            
+            // Update button styles
+            document.querySelectorAll('[id$="-btn"]').forEach(btn => {
+                if (btn.id.includes('level')) {
+                    btn.className = 'px-6 py-3 rounded-lg font-semibold transition-all text-indigo-600 hover:bg-indigo-50';
+                }
+            });
+            document.getElementById(`level${level}-btn`).className = 'px-6 py-3 rounded-lg font-semibold transition-all bg-gradient-to-r from-emerald-500 to-cyan-600 text-white';
+            
+            // Show/hide content
+            document.querySelectorAll('[id$="-content"]').forEach(content => content.classList.add('hidden'));
+            document.getElementById(`level${level}-content`).classList.remove('hidden');
+            
+            loadProblem();
+        }
+
+        function loadProblem() {
+            const problem = problems[currentLevel][currentProblem];
+            
+            if (currentLevel === 1) {
+                loadLevel1Problem(problem);
+            } else if (currentLevel === 2) {
+                loadLevel2Problem(problem);
+            } else if (currentLevel === 3) {
+                loadLevel3Problem(problem);
+            }
+        }
+
+        function loadLevel1Problem(problem) {
+            hasAnswered = false;
+            
+            const [targetNum, targetDen] = problem.target;
+            const [intNum, intDen] = problem.interactive;
+            
+            document.getElementById('target-fraction').textContent = `${targetNum}/${targetDen}`;
+            document.getElementById('current-fraction').textContent = `${intNum}/${intDen}`;
+            
+            const targetPercent = (targetNum / targetDen) * 100;
+            document.getElementById('target-bar').style.setProperty('--fill-percent', `${targetPercent}%`);
+            
+            // Update target number bar
+            document.getElementById('target-number-bar').style.width = `${targetPercent}%`;
+            document.getElementById('target-number-text').textContent = `${targetNum}/${targetDen}`;
+            document.getElementById('target-number-text').style.left = `${targetPercent/2}%`;
+            
+            // Start slider away from target
+            let startPosition;
+            if (targetPercent < 50) {
+                startPosition = Math.min(90, targetPercent + 30 + Math.random() * 20);
+            } else {
+                startPosition = Math.max(10, targetPercent - 30 - Math.random() * 20);
+            }
+            
+            document.getElementById('fraction-slider').value = startPosition;
+            updateSlider();
+            
+            document.getElementById('match-status').textContent = 'Slide to match the target!';
+            document.getElementById('star-container').innerHTML = '';
+        }
+
+        function loadLevel2Problem(problem) {
+            hasAnswered = false;
+            
+            const [num, den] = problem.given;
+            document.getElementById('given-fraction').textContent = `${num}/${den}`;
+            
+            const percent = (num / den) * 100;
+            document.getElementById('given-bar').style.setProperty('--fill-percent', `${percent}%`);
+            
+            document.getElementById('numerator-input').value = '';
+            document.getElementById('denominator-input').value = '';
+            document.getElementById('generate-feedback').textContent = '';
+        }
+
+        function loadLevel3Problem(problem) {
+            hasAnswered = false;
+            
+            const [num1, den1] = problem.frac1;
+            const [num2, den2] = problem.frac2;
+            
+            document.getElementById('frac1').textContent = `${num1}/${den1}`;
+            document.getElementById('frac2').textContent = `${num2}/${den2}`;
+            
+            const percent1 = (num1 / den1) * 100;
+            const percent2 = (num2 / den2) * 100;
+            
+            document.getElementById('justify-bar1').style.setProperty('--fill-percent', `${percent1}%`);
+            document.getElementById('justify-bar2').style.setProperty('--fill-percent', `${percent2}%`);
+            
+            document.getElementById('justify-explanation').classList.add('hidden');
+            document.getElementById('yes-btn').className = 'px-8 py-3 mx-2 bg-gradient-to-r from-emerald-500 to-cyan-600 text-white rounded-lg font-semibold hover:from-emerald-600 hover:to-cyan-700 transition-all';
+            document.getElementById('no-btn').className = 'px-8 py-3 mx-2 bg-gray-400 text-white rounded-lg font-semibold hover:from-emerald-600 hover:to-cyan-700 transition-all';
+        }
+
+        let hasAnswered = false;
+
+        function updateSlider() {
+            const slider = document.getElementById('fraction-slider');
+            const value = slider.value;
+            const marker = document.getElementById('slider-marker');
+            
+            marker.style.left = `${value}%`;
+            
+            // Update the interactive bar to match slider position
+            document.getElementById('interactive-bar').style.setProperty('--fill-percent', `${value}%`);
+            
+            const problem = problems[currentLevel][currentProblem];
+            const [targetNum, targetDen] = problem.target;
+            const targetPercent = (targetNum / targetDen) * 100;
+            
+            if (Math.abs(value - targetPercent) < 2 && !hasAnswered) {
+                hasAnswered = true;
+                showStar();
+                document.getElementById('match-status').textContent = 'Perfect match! ⭐';
+                score++;
+                stars++;
+                updateScore();
+                
+                // Auto-advance to next problem after a short delay
+                setTimeout(() => {
+                    nextProblem();
+                }, 1500);
+            } else if (!hasAnswered) {
+                document.getElementById('match-status').textContent = 'Keep sliding to match!';
+                document.getElementById('star-container').innerHTML = '';
+            }
+        }
+
+        function checkEquivalent() {
+            if (hasAnswered) return;
+            
+            const num = parseInt(document.getElementById('numerator-input').value);
+            const den = parseInt(document.getElementById('denominator-input').value);
+            const problem = problems[currentLevel][currentProblem];
+            const [givenNum, givenDen] = problem.given;
+            
+            if (!num || !den) {
+                document.getElementById('generate-feedback').innerHTML = '<span class="text-red-600">Please enter both numbers!</span>';
+                return;
+            }
+            
+            const givenValue = givenNum / givenDen;
+            const inputValue = num / den;
+            
+            if (Math.abs(givenValue - inputValue) < 0.001) {
+                hasAnswered = true;
+                showStar();
+                document.getElementById('generate-feedback').innerHTML = '<span class="text-green-600">Correct! ⭐ These fractions are equivalent!</span>';
+                score++;
+                stars++;
+                updateScore();
+                
+                // Auto-advance to next problem after a short delay
+                setTimeout(() => {
+                    nextProblem();
+                }, 2000);
+            } else {
+                document.getElementById('generate-feedback').innerHTML = '<span class="text-red-600">Not quite. Try again!</span>';
+            }
+        }
+
+        function selectAnswer(answer) {
+            if (hasAnswered) return;
+            
+            const problem = problems[currentLevel][currentProblem];
+            const correct = problem.equivalent;
+            
+            hasAnswered = true;
+            
+            if (answer === correct) {
+                showStar();
+                score++;
+                stars++;
+                updateScore();
+                
+                // Auto-advance to next problem after showing explanation
+                setTimeout(() => {
+                    nextProblem();
+                }, 3000);
+            }
+            
+            // Show explanation
+            const [num1, den1] = problem.frac1;
+            const [num2, den2] = problem.frac2;
+            const explanation = correct ? 
+                `Yes! Both fractions equal ${(num1/den1).toFixed(3)}. You can multiply ${num1}/${den1} by ${den2/den1}/${den2/den1} to get ${num2}/${den2}.` :
+                `No, these fractions are different. ${num1}/${den1} = ${(num1/den1).toFixed(3)} but ${num2}/${den2} = ${(num2/den2).toFixed(3)}.`;
+            
+            document.getElementById('explanation-text').textContent = explanation;
+            document.getElementById('justify-explanation').classList.remove('hidden');
+        }
+
+        function showStar() {
+            const container = document.getElementById('star-container');
+            const star = document.createElement('span');
+            star.textContent = '⭐';
+            star.className = 'star-animation text-2xl';
+            container.innerHTML = '';
+            container.appendChild(star);
+            
+            // Check for badge
+            if (stars >= 5 && !document.getElementById('badge').classList.contains('opacity-100')) {
+                setTimeout(() => {
+                    const badge = document.getElementById('badge');
+                    badge.classList.remove('opacity-0');
+                    badge.classList.add('opacity-100', 'badge-glow');
+                }, 500);
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('stars').textContent = stars;
+        }
+
+        function nextProblem() {
+            currentProblem++;
+            if (currentProblem >= problems[currentLevel].length) {
+                currentProblem = 0;
+            }
+            loadProblem();
+        }
+
+        // Event listeners
+        document.getElementById('fraction-slider').addEventListener('input', updateSlider);
+        
+        // Initialize
+        loadProblem();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970f7ff534ce7895',t:'MTc1NTUwMDA2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

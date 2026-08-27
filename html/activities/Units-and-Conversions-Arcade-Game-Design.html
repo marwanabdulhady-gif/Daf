@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Units & Conversions Arcade</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #00ffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .arcade-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .title {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00ffff, #39ff14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { filter: brightness(1); }
+            to { filter: brightness(1.2); }
+        }
+        
+        .scoreboard {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(57, 255, 20, 0.1));
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        .scoreboard-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .scoreboard-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #39ff14;
+        }
+        
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .score-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .score-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #39ff14;
+        }
+        
+        .score-label {
+            font-size: 0.9rem;
+            color: #00ffff;
+            margin-top: 5px;
+        }
+        
+        .progress-targets {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .target {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            background: #1a1a2e;
+        }
+        
+        .target.lit {
+            background: linear-gradient(45deg, #00ffff, #39ff14);
+            border-color: #39ff14;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+            animation: pulse 1s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .game-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .game-panel {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(57, 255, 20, 0.05));
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+        }
+        
+        .panel-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #39ff14;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .conversion-question {
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #00ffff;
+        }
+        
+        .answer-input {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #00ffff;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            color: #39ff14;
+            width: 150px;
+            text-align: center;
+            margin: 0 10px;
+        }
+        
+        .answer-input:focus {
+            outline: none;
+            border-color: #39ff14;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+        }
+        
+        .unit-ladder {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .ladder-step {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .ladder-step:hover {
+            background: rgba(57, 255, 20, 0.2);
+            border-color: #39ff14;
+            transform: translateX(5px);
+        }
+        
+        .ladder-step.selected {
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(57, 255, 20, 0.3));
+            border-color: #39ff14;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+        }
+        
+        .line-plot {
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plot-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffff, #39ff14);
+            top: 50%;
+            left: 10px;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+        
+        .plot-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #39ff14;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+        }
+        
+        .plot-point:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.8);
+        }
+        
+        .arcade-button {
+            background: linear-gradient(45deg, #00ffff, #39ff14);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+            margin: 5px;
+        }
+        
+        .arcade-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(57, 255, 20, 0.4);
+        }
+        
+        .arcade-button:active {
+            transform: translateY(0);
+        }
+        
+        .conversion-ace-ticket {
+            background: linear-gradient(135deg, #39ff14, #00ffff);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            color: #000;
+            font-weight: 700;
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+            display: none;
+            animation: ticketAppear 1s ease-out;
+        }
+        
+        @keyframes ticketAppear {
+            from { opacity: 0; transform: scale(0.8) rotateY(90deg); }
+            to { opacity: 1; transform: scale(1) rotateY(0deg); }
+        }
+        
+        .ticket-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .feedback {
+            text-align: center;
+            margin: 15px 0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            min-height: 25px;
+        }
+        
+        .correct { color: #39ff14; }
+        .incorrect { color: #ff3939; }
+        
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .game-area { grid-template-columns: 1fr; }
+            .score-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="arcade-container">
+        <div class="header">
+            <h1 class="title">🕹️ UNITS & CONVERSIONS ARCADE 🕹️</h1>
+        </div>
+        
+        <div class="scoreboard">
+            <div class="scoreboard-header">
+                <span class="scoreboard-title">📊 ARCADE SCOREBOARD 📊</span>
+            </div>
+            <div class="score-grid">
+                <div class="score-item">
+                    <div class="score-value" id="score">0</div>
+                    <div class="score-label">SCORE</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-value" id="streak">0</div>
+                    <div class="score-label">STREAK</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-value" id="level">1</div>
+                    <div class="score-label">LEVEL</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-value" id="accuracy">100%</div>
+                    <div class="score-label">ACCURACY</div>
+                </div>
+            </div>
+            <div class="progress-targets">
+                <div class="target" data-target="10">🎯</div>
+                <div class="target" data-target="25">🎯</div>
+                <div class="target" data-target="50">🎯</div>
+                <div class="target" data-target="100">🎯</div>
+                <div class="target" data-target="200">🎯</div>
+            </div>
+        </div>
+        
+        <div class="game-area">
+            <div class="game-panel">
+                <h2 class="panel-title">⚡ QUICK CONVERSION ROUND ⚡</h2>
+                <div class="conversion-question">
+                    <div class="question-text" id="question">Convert 5 feet to inches</div>
+                    <input type="number" class="answer-input" id="answer" placeholder="?">
+                    <button class="arcade-button" onclick="checkAnswer()">SUBMIT</button>
+                </div>
+                <div class="feedback" id="feedback"></div>
+                <button class="arcade-button" onclick="newQuestion()">NEW QUESTION</button>
+            </div>
+            
+            <div class="game-panel">
+                <h2 class="panel-title">🪜 UNIT LADDER CLIMB 🪜</h2>
+                <div class="unit-ladder" id="unitLadder">
+                    <div class="ladder-step" onclick="selectStep(this, 'km')">Kilometers (km)</div>
+                    <div class="ladder-step" onclick="selectStep(this, 'm')">Meters (m)</div>
+                    <div class="ladder-step" onclick="selectStep(this, 'cm')">Centimeters (cm)</div>
+                    <div class="ladder-step" onclick="selectStep(this, 'mm')">Millimeters (mm)</div>
+                </div>
+                <div class="feedback" id="ladderFeedback"></div>
+                <button class="arcade-button" onclick="newLadderChallenge()">NEW CHALLENGE</button>
+            </div>
+        </div>
+        
+        <div class="game-area">
+            <div class="game-panel">
+                <h2 class="panel-title">📈 LINE PLOT MINI-GAME 📈</h2>
+                <div class="line-plot" id="linePlot">
+                    <div class="plot-line"></div>
+                </div>
+                <div class="feedback" id="plotFeedback"></div>
+                <button class="arcade-button" onclick="newPlotChallenge()">NEW PLOT</button>
+            </div>
+            
+            <div class="game-panel">
+                <h2 class="panel-title">⏱️ TIME CHALLENGE ⏱️</h2>
+                <div class="conversion-question">
+                    <div class="question-text" id="timeQuestion">Convert 3 hours to minutes</div>
+                    <input type="number" class="answer-input" id="timeAnswer" placeholder="?">
+                    <button class="arcade-button" onclick="checkTimeAnswer()">SUBMIT</button>
+                </div>
+                <div class="feedback" id="timeFeedback"></div>
+                <button class="arcade-button" onclick="newTimeQuestion()">NEW TIME</button>
+            </div>
+        </div>
+        
+        <div class="conversion-ace-ticket" id="aceTicket">
+            <div class="ticket-title">🎟️ CONVERSION ACE TICKET 🎟️</div>
+            <div>CONGRATULATIONS!</div>
+            <div>You've mastered the Units & Conversions Arcade!</div>
+            <div>Score: <span id="finalScore">0</span> points</div>
+        </div>
+    </div>
+
+    <script>
+        let gameState = {
+            score: 0,
+            streak: 0,
+            level: 1,
+            totalQuestions: 0,
+            correctAnswers: 0,
+            currentQuestion: null,
+            currentLadderTarget: null,
+            currentPlotTarget: null
+        };
+
+        const conversions = {
+            length: [
+                {question: "Convert 5 feet to inches", answer: 60, unit: "inches"},
+                {question: "Convert 2 yards to feet", answer: 6, unit: "feet"},
+                {question: "Convert 100 cm to meters", answer: 1, unit: "meters"},
+                {question: "Convert 3 km to meters", answer: 3000, unit: "meters"},
+                {question: "Convert 24 inches to feet", answer: 2, unit: "feet"},
+                {question: "Convert 1.5 meters to cm", answer: 150, unit: "cm"}
+            ],
+            weight: [
+                {question: "Convert 2 pounds to ounces", answer: 32, unit: "ounces"},
+                {question: "Convert 5 kg to grams", answer: 5000, unit: "grams"},
+                {question: "Convert 1000 grams to kg", answer: 1, unit: "kg"},
+                {question: "Convert 3 tons to pounds", answer: 6000, unit: "pounds"}
+            ],
+            time: [
+                {question: "Convert 3 hours to minutes", answer: 180, unit: "minutes"},
+                {question: "Convert 120 seconds to minutes", answer: 2, unit: "minutes"},
+                {question: "Convert 2 days to hours", answer: 48, unit: "hours"},
+                {question: "Convert 5 minutes to seconds", answer: 300, unit: "seconds"}
+            ]
+        };
+
+        const ladderChallenges = [
+            {instruction: "Click units from LARGEST to SMALLEST", order: ['km', 'm', 'cm', 'mm']},
+            {instruction: "Click units from SMALLEST to LARGEST", order: ['mm', 'cm', 'm', 'km']}
+        ];
+
+        function updateScoreboard() {
+            document.getElementById('score').textContent = gameState.score;
+            document.getElementById('streak').textContent = gameState.streak;
+            document.getElementById('level').textContent = gameState.level;
+            
+            const accuracy = gameState.totalQuestions > 0 ? 
+                Math.round((gameState.correctAnswers / gameState.totalQuestions) * 100) : 100;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+            
+            // Light up targets
+            document.querySelectorAll('.target').forEach(target => {
+                const targetScore = parseInt(target.dataset.target);
+                if (gameState.score >= targetScore) {
+                    target.classList.add('lit');
+                }
+            });
+            
+            // Show ace ticket at 200 points
+            if (gameState.score >= 200) {
+                document.getElementById('finalScore').textContent = gameState.score;
+                document.getElementById('aceTicket').style.display = 'block';
+            }
+        }
+
+        function newQuestion() {
+            const categories = Object.keys(conversions);
+            const category = categories[Math.floor(Math.random() * categories.length)];
+            const questions = conversions[category];
+            gameState.currentQuestion = questions[Math.floor(Math.random() * questions.length)];
+            
+            document.getElementById('question').textContent = gameState.currentQuestion.question;
+            document.getElementById('answer').value = '';
+            document.getElementById('feedback').textContent = '';
+        }
+
+        function checkAnswer() {
+            const userAnswer = parseFloat(document.getElementById('answer').value);
+            const feedback = document.getElementById('feedback');
+            
+            gameState.totalQuestions++;
+            
+            if (Math.abs(userAnswer - gameState.currentQuestion.answer) < 0.01) {
+                gameState.score += 10 * gameState.level;
+                gameState.streak++;
+                gameState.correctAnswers++;
+                feedback.textContent = '🎉 CORRECT! +' + (10 * gameState.level) + ' points';
+                feedback.className = 'feedback correct';
+                
+                if (gameState.streak % 5 === 0) {
+                    gameState.level++;
+                    feedback.textContent += ' 🆙 LEVEL UP!';
+                }
+            } else {
+                gameState.streak = 0;
+                feedback.textContent = '❌ Incorrect. Answer: ' + gameState.currentQuestion.answer + ' ' + gameState.currentQuestion.unit;
+                feedback.className = 'feedback incorrect';
+            }
+            
+            updateScoreboard();
+        }
+
+        function selectStep(element, unit) {
+            if (!gameState.currentLadderTarget) return;
+            
+            const expectedUnit = gameState.currentLadderTarget.order[gameState.currentLadderTarget.currentStep];
+            const feedback = document.getElementById('ladderFeedback');
+            
+            if (unit === expectedUnit) {
+                element.classList.add('selected');
+                gameState.currentLadderTarget.currentStep++;
+                
+                if (gameState.currentLadderTarget.currentStep >= gameState.currentLadderTarget.order.length) {
+                    gameState.score += 15;
+                    gameState.correctAnswers++;
+                    feedback.textContent = '🎉 LADDER COMPLETE! +15 points';
+                    feedback.className = 'feedback correct';
+                    gameState.currentLadderTarget = null;
+                } else {
+                    feedback.textContent = '✅ Correct! Continue...';
+                    feedback.className = 'feedback correct';
+                }
+            } else {
+                feedback.textContent = '❌ Wrong order! Try again.';
+                feedback.className = 'feedback incorrect';
+                // Reset ladder
+                document.querySelectorAll('.ladder-step').forEach(step => step.classList.remove('selected'));
+                gameState.currentLadderTarget.currentStep = 0;
+            }
+            
+            gameState.totalQuestions++;
+            updateScoreboard();
+        }
+
+        function newLadderChallenge() {
+            const challenge = ladderChallenges[Math.floor(Math.random() * ladderChallenges.length)];
+            gameState.currentLadderTarget = {...challenge, currentStep: 0};
+            
+            document.querySelectorAll('.ladder-step').forEach(step => step.classList.remove('selected'));
+            document.getElementById('ladderFeedback').textContent = challenge.instruction;
+            document.getElementById('ladderFeedback').className = 'feedback';
+        }
+
+        function newPlotChallenge() {
+            const plot = document.getElementById('linePlot');
+            // Clear existing points
+            plot.querySelectorAll('.plot-point').forEach(point => point.remove());
+            
+            // Add random points
+            const numPoints = 3 + Math.floor(Math.random() * 3);
+            const targetValue = Math.random() * 100 + 50;
+            
+            for (let i = 0; i < numPoints; i++) {
+                const point = document.createElement('div');
+                point.className = 'plot-point';
+                point.style.left = (20 + i * 60) + 'px';
+                point.style.top = (50 + Math.random() * 100) + 'px';
+                point.dataset.value = Math.round(targetValue + (Math.random() - 0.5) * 40);
+                
+                point.onclick = () => selectPlotPoint(point);
+                plot.appendChild(point);
+            }
+            
+            gameState.currentPlotTarget = targetValue;
+            document.getElementById('plotFeedback').textContent = `Find the point closest to ${Math.round(targetValue)}`;
+            document.getElementById('plotFeedback').className = 'feedback';
+        }
+
+        function selectPlotPoint(point) {
+            const value = parseInt(point.dataset.value);
+            const target = gameState.currentPlotTarget;
+            const feedback = document.getElementById('plotFeedback');
+            
+            gameState.totalQuestions++;
+            
+            // Check if this is the closest point
+            const allPoints = document.querySelectorAll('.plot-point');
+            let isClosest = true;
+            
+            allPoints.forEach(p => {
+                if (p !== point && Math.abs(parseInt(p.dataset.value) - target) < Math.abs(value - target)) {
+                    isClosest = false;
+                }
+            });
+            
+            if (isClosest) {
+                gameState.score += 12;
+                gameState.correctAnswers++;
+                feedback.textContent = `🎯 BULLSEYE! Value: ${value} (+12 points)`;
+                feedback.className = 'feedback correct';
+                point.style.background = '#39ff14';
+                point.style.transform = 'scale(1.5)';
+            } else {
+                feedback.textContent = `❌ Not the closest. Value: ${value}`;
+                feedback.className = 'feedback incorrect';
+                point.style.background = '#ff3939';
+            }
+            
+            updateScoreboard();
+        }
+
+        function newTimeQuestion() {
+            const timeQuestions = conversions.time;
+            gameState.currentTimeQuestion = timeQuestions[Math.floor(Math.random() * timeQuestions.length)];
+            
+            document.getElementById('timeQuestion').textContent = gameState.currentTimeQuestion.question;
+            document.getElementById('timeAnswer').value = '';
+            document.getElementById('timeFeedback').textContent = '';
+        }
+
+        function checkTimeAnswer() {
+            const userAnswer = parseFloat(document.getElementById('timeAnswer').value);
+            const feedback = document.getElementById('timeFeedback');
+            
+            gameState.totalQuestions++;
+            
+            if (Math.abs(userAnswer - gameState.currentTimeQuestion.answer) < 0.01) {
+                gameState.score += 8;
+                gameState.correctAnswers++;
+                feedback.textContent = '⏰ TIME MASTER! +8 points';
+                feedback.className = 'feedback correct';
+            } else {
+                feedback.textContent = '❌ Incorrect. Answer: ' + gameState.currentTimeQuestion.answer + ' ' + gameState.currentTimeQuestion.unit;
+                feedback.className = 'feedback incorrect';
+            }
+            
+            updateScoreboard();
+        }
+
+        // Initialize game
+        newQuestion();
+        newLadderChallenge();
+        newPlotChallenge();
+        newTimeQuestion();
+        updateScoreboard();
+
+        // Allow Enter key to submit answers
+        document.getElementById('answer').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkAnswer();
+        });
+        
+        document.getElementById('timeAnswer').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkTimeAnswer();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970f9fbf8076f445',t:'MTc1NTUwMTM2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

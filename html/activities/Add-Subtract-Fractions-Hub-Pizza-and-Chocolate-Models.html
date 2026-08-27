@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraction Chef - Pizza & Chocolate Fractions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+        }
+        
+        .pizza-slice {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .pizza-slice:hover {
+            transform: scale(1.1);
+        }
+        
+        .chocolate-piece {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .chocolate-piece:hover {
+            transform: scale(1.05);
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        
+        .chef-hat {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-red-50 to-orange-50 min-h-screen">
+    <div class="container mx-auto px-4 py-6">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-red-700 mb-2">🍕 Fraction Chef Academy 🍫</h1>
+            <p class="text-lg text-red-600">Master adding and subtracting fractions with delicious models!</p>
+            
+            <!-- Progress Bar -->
+            <div class="mt-4 bg-red-200 rounded-full h-4 max-w-md mx-auto">
+                <div id="progressBar" class="progress-bar bg-red-500 h-4 rounded-full flex items-center justify-end pr-2" style="width: 0%">
+                    <span class="text-white text-xs font-bold" id="progressText">0/10 🍕</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Left Panel - Visual Models -->
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-red-200">
+                <h2 class="text-2xl font-bold text-red-700 mb-4 text-center">Visual Models</h2>
+                
+                <!-- Model Selector -->
+                <div class="flex justify-center mb-6">
+                    <button id="pizzaBtn" class="bg-red-500 text-white px-4 py-2 rounded-l-lg font-bold hover:bg-red-600 transition-colors">🍕 Pizza</button>
+                    <button id="chocolateBtn" class="bg-amber-700 text-white px-4 py-2 rounded-r-lg font-bold hover:bg-amber-800 transition-colors">🍫 Chocolate</button>
+                </div>
+
+                <!-- Pizza Model -->
+                <div id="pizzaModel" class="model-container">
+                    <div class="text-center mb-4">
+                        <h3 class="text-xl font-bold text-red-600 mb-2">Pizza Fractions</h3>
+                        <p class="text-sm text-gray-600">Click slices to add or subtract!</p>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-8 mb-6">
+                        <!-- First Pizza -->
+                        <div class="text-center">
+                            <p class="font-bold text-red-600 mb-2">First Pizza</p>
+                            <div class="relative w-32 h-32 mx-auto">
+                                <svg viewBox="0 0 100 100" class="w-full h-full">
+                                    <circle cx="50" cy="50" r="45" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+                                    <!-- Pizza slices -->
+                                    <g id="pizza1Slices">
+                                        <path d="M 50 50 L 50 5 A 45 45 0 0 1 81.82 18.18 Z" fill="#ef4444" class="pizza-slice" data-pizza="1" data-slice="0"/>
+                                        <path d="M 50 50 L 81.82 18.18 A 45 45 0 0 1 95 50 Z" fill="#ef4444" class="pizza-slice" data-pizza="1" data-slice="1"/>
+                                        <path d="M 50 50 L 95 50 A 45 45 0 0 1 81.82 81.82 Z" fill="#ef4444" class="pizza-slice" data-pizza="1" data-slice="2"/>
+                                        <path d="M 50 50 L 81.82 81.82 A 45 45 0 0 1 50 95 Z" fill="#ef4444" class="pizza-slice" data-pizza="1" data-slice="3"/>
+                                        <path d="M 50 50 L 50 95 A 45 45 0 0 1 18.18 81.82 Z" fill="#ef4444" class="pizza-slice" data-pizza="1" data-slice="4"/>
+                                        <path d="M 50 50 L 18.18 81.82 A 45 45 0 0 1 5 50 Z" fill="#ef4444" class="pizza-slice" data-pizza="1" data-slice="5"/>
+                                        <path d="M 50 50 L 5 50 A 45 45 0 0 1 18.18 18.18 Z" fill="#ef4444" class="pizza-slice" data-pizza="1" data-slice="6"/>
+                                        <path d="M 50 50 L 18.18 18.18 A 45 45 0 0 1 50 5 Z" fill="#ef4444" class="pizza-slice" data-pizza="1" data-slice="7"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p id="pizza1Fraction" class="font-bold text-lg text-red-600 mt-2">0/8</p>
+                        </div>
+
+                        <!-- Operation -->
+                        <div class="flex items-center">
+                            <button id="operationBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg font-bold text-2xl hover:bg-red-600 transition-colors">+</button>
+                        </div>
+
+                        <!-- Second Pizza -->
+                        <div class="text-center">
+                            <p class="font-bold text-red-600 mb-2">Second Pizza</p>
+                            <div class="relative w-32 h-32 mx-auto">
+                                <svg viewBox="0 0 100 100" class="w-full h-full">
+                                    <circle cx="50" cy="50" r="45" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+                                    <g id="pizza2Slices">
+                                        <path d="M 50 50 L 50 5 A 45 45 0 0 1 81.82 18.18 Z" fill="#ef4444" class="pizza-slice" data-pizza="2" data-slice="0"/>
+                                        <path d="M 50 50 L 81.82 18.18 A 45 45 0 0 1 95 50 Z" fill="#ef4444" class="pizza-slice" data-pizza="2" data-slice="1"/>
+                                        <path d="M 50 50 L 95 50 A 45 45 0 0 1 81.82 81.82 Z" fill="#ef4444" class="pizza-slice" data-pizza="2" data-slice="2"/>
+                                        <path d="M 50 50 L 81.82 81.82 A 45 45 0 0 1 50 95 Z" fill="#ef4444" class="pizza-slice" data-pizza="2" data-slice="3"/>
+                                        <path d="M 50 50 L 50 95 A 45 45 0 0 1 18.18 81.82 Z" fill="#ef4444" class="pizza-slice" data-pizza="2" data-slice="4"/>
+                                        <path d="M 50 50 L 18.18 81.82 A 45 45 0 0 1 5 50 Z" fill="#ef4444" class="pizza-slice" data-pizza="2" data-slice="5"/>
+                                        <path d="M 50 50 L 5 50 A 45 45 0 0 1 18.18 18.18 Z" fill="#ef4444" class="pizza-slice" data-pizza="2" data-slice="6"/>
+                                        <path d="M 50 50 L 18.18 18.18 A 45 45 0 0 1 50 5 Z" fill="#ef4444" class="pizza-slice" data-pizza="2" data-slice="7"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p id="pizza2Fraction" class="font-bold text-lg text-red-600 mt-2">0/8</p>
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="text-center">
+                        <p class="font-bold text-xl text-red-700 mb-2">Result:</p>
+                        <p id="pizzaResult" class="font-bold text-2xl text-red-600">0/8</p>
+                    </div>
+                </div>
+
+                <!-- Chocolate Model -->
+                <div id="chocolateModel" class="model-container hidden">
+                    <div class="text-center mb-4">
+                        <h3 class="text-xl font-bold text-amber-700 mb-2">Chocolate Bar Fractions</h3>
+                        <p class="text-sm text-gray-600">Click pieces to add or subtract!</p>
+                    </div>
+                    
+                    <div class="flex justify-center items-center space-x-8 mb-6">
+                        <!-- First Chocolate Bar -->
+                        <div class="text-center">
+                            <p class="font-bold text-amber-700 mb-2">First Bar</p>
+                            <div class="bg-amber-800 rounded-lg p-2 w-32">
+                                <div class="grid grid-cols-2 gap-1" id="chocolate1Grid">
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="1" data-piece="0"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="1" data-piece="1"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="1" data-piece="2"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="1" data-piece="3"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="1" data-piece="4"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="1" data-piece="5"></div>
+                                </div>
+                            </div>
+                            <p id="chocolate1Fraction" class="font-bold text-lg text-amber-700 mt-2">0/6</p>
+                        </div>
+
+                        <!-- Operation -->
+                        <div class="flex items-center">
+                            <button id="chocolateOperationBtn" class="bg-amber-700 text-white px-4 py-2 rounded-lg font-bold text-2xl hover:bg-amber-800 transition-colors">+</button>
+                        </div>
+
+                        <!-- Second Chocolate Bar -->
+                        <div class="text-center">
+                            <p class="font-bold text-amber-700 mb-2">Second Bar</p>
+                            <div class="bg-amber-800 rounded-lg p-2 w-32">
+                                <div class="grid grid-cols-2 gap-1" id="chocolate2Grid">
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="2" data-piece="0"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="2" data-piece="1"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="2" data-piece="2"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="2" data-piece="3"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="2" data-piece="4"></div>
+                                    <div class="chocolate-piece bg-amber-600 h-8 rounded cursor-pointer hover:bg-amber-500 transition-colors" data-chocolate="2" data-piece="5"></div>
+                                </div>
+                            </div>
+                            <p id="chocolate2Fraction" class="font-bold text-lg text-amber-700 mt-2">0/6</p>
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="text-center">
+                        <p class="font-bold text-xl text-amber-800 mb-2">Result:</p>
+                        <p id="chocolateResult" class="font-bold text-2xl text-amber-700">0/6</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Equation & Word Problems -->
+            <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-red-200">
+                <h2 class="text-2xl font-bold text-red-700 mb-4 text-center">Equation & Word Problem</h2>
+                
+                <!-- Equation Display -->
+                <div class="bg-red-50 rounded-lg p-4 mb-6 text-center">
+                    <h3 class="text-lg font-bold text-red-600 mb-2">Mathematical Equation</h3>
+                    <p id="equation" class="text-2xl font-bold text-red-700">0/8 + 0/8 = 0/8</p>
+                </div>
+
+                <!-- Word Problem -->
+                <div class="bg-orange-50 rounded-lg p-4 mb-6">
+                    <h3 class="text-lg font-bold text-orange-700 mb-2">Word Problem</h3>
+                    <p id="wordProblem" class="text-gray-700 leading-relaxed">
+                        🍕 Sarah has a pizza cut into 8 equal slices. She ate 0 slices from the first pizza and 0 slices from the second pizza. How many slices did she eat in total?
+                    </p>
+                </div>
+
+                <!-- Fraction Tiles -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold text-red-600 mb-3">Fraction Tiles</h3>
+                    <div class="grid grid-cols-4 gap-2" id="fractionTiles">
+                        <!-- Tiles will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button id="newProblemBtn" class="bg-red-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-red-600 transition-colors">
+                        🎲 New Problem
+                    </button>
+                    <button id="checkAnswerBtn" class="bg-green-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-green-600 transition-colors">
+                        ✓ Check Answer
+                    </button>
+                    <button id="resetBtn" class="bg-gray-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-gray-600 transition-colors">
+                        🔄 Reset
+                    </button>
+                </div>
+
+                <!-- Feedback -->
+                <div id="feedback" class="mt-4 text-center font-bold text-lg hidden"></div>
+            </div>
+        </div>
+
+        <!-- Achievement Modal -->
+        <div id="achievementModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white rounded-xl p-8 text-center max-w-md mx-4">
+                <div class="chef-hat text-6xl mb-4">👩‍🍳</div>
+                <h2 class="text-3xl font-bold text-red-700 mb-2">Congratulations!</h2>
+                <p class="text-xl text-red-600 mb-4">You've earned your Fraction Chef hat!</p>
+                <p class="text-gray-600 mb-6">You've mastered adding and subtracting fractions with like denominators!</p>
+                <button id="closeModal" class="bg-red-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-600 transition-colors">
+                    Continue Cooking! 🍕
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game state
+        let currentModel = 'pizza';
+        let pizza1Selected = [];
+        let pizza2Selected = [];
+        let chocolate1Selected = [];
+        let chocolate2Selected = [];
+        let currentOperation = '+';
+        let problemsCompleted = 0;
+        let isAddition = true;
+
+        // Initialize the game
+        function init() {
+            setupEventListeners();
+            updateDisplay();
+            generateFractionTiles();
+            newProblem();
+        }
+
+        function setupEventListeners() {
+            // Model switcher
+            document.getElementById('pizzaBtn').addEventListener('click', () => switchModel('pizza'));
+            document.getElementById('chocolateBtn').addEventListener('click', () => switchModel('chocolate'));
+
+            // Operation buttons
+            document.getElementById('operationBtn').addEventListener('click', toggleOperation);
+            document.getElementById('chocolateOperationBtn').addEventListener('click', toggleChocolateOperation);
+
+            // Pizza slices
+            document.querySelectorAll('.pizza-slice').forEach(slice => {
+                slice.addEventListener('click', handlePizzaClick);
+            });
+
+            // Chocolate pieces
+            document.querySelectorAll('.chocolate-piece').forEach(piece => {
+                piece.addEventListener('click', handleChocolateClick);
+            });
+
+            // Action buttons
+            document.getElementById('newProblemBtn').addEventListener('click', newProblem);
+            document.getElementById('checkAnswerBtn').addEventListener('click', checkAnswer);
+            document.getElementById('resetBtn').addEventListener('click', resetProblem);
+            document.getElementById('closeModal').addEventListener('click', closeModal);
+        }
+
+        function switchModel(model) {
+            currentModel = model;
+            
+            if (model === 'pizza') {
+                document.getElementById('pizzaModel').classList.remove('hidden');
+                document.getElementById('chocolateModel').classList.add('hidden');
+                document.getElementById('pizzaBtn').classList.add('bg-red-500');
+                document.getElementById('pizzaBtn').classList.remove('bg-gray-400');
+                document.getElementById('chocolateBtn').classList.add('bg-gray-400');
+                document.getElementById('chocolateBtn').classList.remove('bg-amber-700');
+            } else {
+                document.getElementById('pizzaModel').classList.add('hidden');
+                document.getElementById('chocolateModel').classList.remove('hidden');
+                document.getElementById('chocolateBtn').classList.add('bg-amber-700');
+                document.getElementById('chocolateBtn').classList.remove('bg-gray-400');
+                document.getElementById('pizzaBtn').classList.add('bg-gray-400');
+                document.getElementById('pizzaBtn').classList.remove('bg-red-500');
+            }
+            
+            updateDisplay();
+        }
+
+        function handlePizzaClick(event) {
+            const pizza = parseInt(event.target.dataset.pizza);
+            const slice = parseInt(event.target.dataset.slice);
+            
+            if (pizza === 1) {
+                const index = pizza1Selected.indexOf(slice);
+                if (index > -1) {
+                    pizza1Selected.splice(index, 1);
+                } else {
+                    pizza1Selected.push(slice);
+                }
+            } else {
+                const index = pizza2Selected.indexOf(slice);
+                if (index > -1) {
+                    pizza2Selected.splice(index, 1);
+                } else {
+                    pizza2Selected.push(slice);
+                }
+            }
+            
+            updateDisplay();
+        }
+
+        function handleChocolateClick(event) {
+            const chocolate = parseInt(event.target.dataset.chocolate);
+            const piece = parseInt(event.target.dataset.piece);
+            
+            if (chocolate === 1) {
+                const index = chocolate1Selected.indexOf(piece);
+                if (index > -1) {
+                    chocolate1Selected.splice(index, 1);
+                } else {
+                    chocolate1Selected.push(piece);
+                }
+            } else {
+                const index = chocolate2Selected.indexOf(piece);
+                if (index > -1) {
+                    chocolate2Selected.splice(index, 1);
+                } else {
+                    chocolate2Selected.push(piece);
+                }
+            }
+            
+            updateDisplay();
+        }
+
+        function toggleOperation() {
+            currentOperation = currentOperation === '+' ? '-' : '+';
+            isAddition = currentOperation === '+';
+            document.getElementById('operationBtn').textContent = currentOperation;
+            updateDisplay();
+        }
+
+        function toggleChocolateOperation() {
+            currentOperation = currentOperation === '+' ? '-' : '+';
+            isAddition = currentOperation === '+';
+            document.getElementById('chocolateOperationBtn').textContent = currentOperation;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            if (currentModel === 'pizza') {
+                updatePizzaDisplay();
+            } else {
+                updateChocolateDisplay();
+            }
+        }
+
+        function updatePizzaDisplay() {
+            // Update pizza slice colors
+            document.querySelectorAll('[data-pizza="1"] .pizza-slice').forEach((slice, index) => {
+                if (pizza1Selected.includes(index)) {
+                    slice.setAttribute('fill', '#dc2626');
+                } else {
+                    slice.setAttribute('fill', '#fbbf24');
+                }
+            });
+
+            document.querySelectorAll('[data-pizza="2"] .pizza-slice').forEach((slice, index) => {
+                if (pizza2Selected.includes(index)) {
+                    slice.setAttribute('fill', '#dc2626');
+                } else {
+                    slice.setAttribute('fill', '#fbbf24');
+                }
+            });
+
+            // Update fractions
+            document.getElementById('pizza1Fraction').textContent = `${pizza1Selected.length}/8`;
+            document.getElementById('pizza2Fraction').textContent = `${pizza2Selected.length}/8`;
+
+            // Calculate result
+            let result;
+            if (isAddition) {
+                result = pizza1Selected.length + pizza2Selected.length;
+            } else {
+                result = Math.max(0, pizza1Selected.length - pizza2Selected.length);
+            }
+            
+            document.getElementById('pizzaResult').textContent = `${result}/8`;
+
+            // Update equation
+            document.getElementById('equation').textContent = 
+                `${pizza1Selected.length}/8 ${currentOperation} ${pizza2Selected.length}/8 = ${result}/8`;
+
+            // Update word problem
+            updateWordProblem();
+        }
+
+        function updateChocolateDisplay() {
+            // Update chocolate piece colors
+            document.querySelectorAll('[data-chocolate="1"] .chocolate-piece').forEach((piece, index) => {
+                if (chocolate1Selected.includes(index)) {
+                    piece.classList.remove('bg-amber-600');
+                    piece.classList.add('bg-amber-900');
+                } else {
+                    piece.classList.remove('bg-amber-900');
+                    piece.classList.add('bg-amber-600');
+                }
+            });
+
+            document.querySelectorAll('[data-chocolate="2"] .chocolate-piece').forEach((piece, index) => {
+                if (chocolate2Selected.includes(index)) {
+                    piece.classList.remove('bg-amber-600');
+                    piece.classList.add('bg-amber-900');
+                } else {
+                    piece.classList.remove('bg-amber-900');
+                    piece.classList.add('bg-amber-600');
+                }
+            });
+
+            // Update fractions
+            document.getElementById('chocolate1Fraction').textContent = `${chocolate1Selected.length}/6`;
+            document.getElementById('chocolate2Fraction').textContent = `${chocolate2Selected.length}/6`;
+
+            // Calculate result
+            let result;
+            if (isAddition) {
+                result = chocolate1Selected.length + chocolate2Selected.length;
+            } else {
+                result = Math.max(0, chocolate1Selected.length - chocolate2Selected.length);
+            }
+            
+            document.getElementById('chocolateResult').textContent = `${result}/6`;
+
+            // Update equation
+            document.getElementById('equation').textContent = 
+                `${chocolate1Selected.length}/6 ${currentOperation} ${chocolate2Selected.length}/6 = ${result}/6`;
+
+            // Update word problem
+            updateWordProblem();
+        }
+
+        function updateWordProblem() {
+            const problems = {
+                pizza: {
+                    addition: [
+                        `🍕 Maria ordered two pizzas for her party. Each pizza was cut into 8 equal slices. She served ${pizza1Selected.length} slices from the first pizza and ${pizza2Selected.length} slices from the second pizza. How many slices did she serve in total?`,
+                        `🍕 At lunch, Jake ate ${pizza1Selected.length} slices from one pizza and ${pizza2Selected.length} slices from another pizza. Each pizza had 8 equal slices. How many slices did Jake eat altogether?`,
+                        `🍕 The pizza restaurant delivered ${pizza1Selected.length} slices from the first pizza and ${pizza2Selected.length} slices from the second pizza. Each pizza was divided into 8 equal parts. What fraction represents the total slices delivered?`
+                    ],
+                    subtraction: [
+                        `🍕 Tom had ${pizza1Selected.length} slices of pizza out of 8 total slices. He gave away ${pizza2Selected.length} slices to his friend. How many slices does Tom have left?`,
+                        `🍕 Sarah started with ${pizza1Selected.length} pizza slices out of 8. After eating ${pizza2Selected.length} slices, how many slices remain?`,
+                        `🍕 The cafeteria had ${pizza1Selected.length} slices of pizza available out of 8 total. Students took ${pizza2Selected.length} slices. What fraction of pizza is left?`
+                    ]
+                },
+                chocolate: {
+                    addition: [
+                        `🍫 Emma broke off ${chocolate1Selected.length} pieces from her first chocolate bar and ${chocolate2Selected.length} pieces from her second bar. Each bar has 6 equal pieces. How many pieces did she break off in total?`,
+                        `🍫 The recipe calls for ${chocolate1Selected.length} pieces from one chocolate bar and ${chocolate2Selected.length} pieces from another bar. Each bar is divided into 6 equal pieces. What fraction of chocolate is needed?`,
+                        `🍫 Alex shared ${chocolate1Selected.length} pieces from the first chocolate bar and ${chocolate2Selected.length} pieces from the second bar with friends. Each bar has 6 pieces. How many pieces did Alex share altogether?`
+                    ],
+                    subtraction: [
+                        `🍫 Lily had ${chocolate1Selected.length} pieces of chocolate out of 6 total pieces. She ate ${chocolate2Selected.length} pieces. How many pieces does she have left?`,
+                        `🍫 The chocolate bar started with ${chocolate1Selected.length} pieces out of 6. After using ${chocolate2Selected.length} pieces for baking, what fraction remains?`,
+                        `🍫 Ben collected ${chocolate1Selected.length} chocolate pieces out of 6. He gave ${chocolate2Selected.length} pieces to his sister. What fraction of chocolate does Ben have now?`
+                    ]
+                }
+            };
+
+            const category = isAddition ? 'addition' : 'subtraction';
+            const problemArray = problems[currentModel][category];
+            const randomProblem = problemArray[Math.floor(Math.random() * problemArray.length)];
+            
+            document.getElementById('wordProblem').textContent = randomProblem;
+        }
+
+        function generateFractionTiles() {
+            const tilesContainer = document.getElementById('fractionTiles');
+            tilesContainer.innerHTML = '';
+            
+            const denominators = currentModel === 'pizza' ? 8 : 6;
+            
+            for (let i = 0; i <= denominators; i++) {
+                const tile = document.createElement('div');
+                tile.className = 'bg-red-100 border-2 border-red-300 rounded-lg p-2 text-center font-bold text-red-700 hover:bg-red-200 cursor-pointer transition-colors';
+                tile.textContent = `${i}/${denominators}`;
+                tile.addEventListener('click', () => selectFractionTile(i, denominators));
+                tilesContainer.appendChild(tile);
+            }
+        }
+
+        function selectFractionTile(numerator, denominator) {
+            // This could be used for additional interaction or validation
+            console.log(`Selected fraction: ${numerator}/${denominator}`);
+        }
+
+        function newProblem() {
+            resetProblem();
+            
+            // Generate random fractions for a new problem
+            const maxDenominator = currentModel === 'pizza' ? 8 : 6;
+            const num1 = Math.floor(Math.random() * (maxDenominator - 1)) + 1;
+            const num2 = Math.floor(Math.random() * (maxDenominator - 1)) + 1;
+            
+            // Randomly choose addition or subtraction
+            isAddition = Math.random() > 0.5;
+            currentOperation = isAddition ? '+' : '-';
+            
+            // For subtraction, ensure first number is larger
+            if (!isAddition && num1 < num2) {
+                [num1, num2] = [num2, num1];
+            }
+            
+            // Set the visual model
+            if (currentModel === 'pizza') {
+                for (let i = 0; i < num1; i++) {
+                    pizza1Selected.push(i);
+                }
+                for (let i = 0; i < num2; i++) {
+                    pizza2Selected.push(i);
+                }
+                document.getElementById('operationBtn').textContent = currentOperation;
+            } else {
+                for (let i = 0; i < num1; i++) {
+                    chocolate1Selected.push(i);
+                }
+                for (let i = 0; i < num2; i++) {
+                    chocolate2Selected.push(i);
+                }
+                document.getElementById('chocolateOperationBtn').textContent = currentOperation;
+            }
+            
+            updateDisplay();
+            generateFractionTiles();
+            
+            // Hide feedback
+            document.getElementById('feedback').classList.add('hidden');
+        }
+
+        function checkAnswer() {
+            const feedback = document.getElementById('feedback');
+            feedback.classList.remove('hidden');
+            
+            // For now, we'll consider any interaction as correct to encourage learning
+            feedback.textContent = '🎉 Great job! You\'re learning fractions!';
+            feedback.className = 'mt-4 text-center font-bold text-lg text-green-600';
+            
+            // Update progress
+            problemsCompleted++;
+            updateProgress();
+            
+            if (problemsCompleted >= 10) {
+                setTimeout(showAchievement, 1000);
+            }
+        }
+
+        function resetProblem() {
+            pizza1Selected = [];
+            pizza2Selected = [];
+            chocolate1Selected = [];
+            chocolate2Selected = [];
+            currentOperation = '+';
+            isAddition = true;
+            
+            document.getElementById('operationBtn').textContent = '+';
+            document.getElementById('chocolateOperationBtn').textContent = '+';
+            document.getElementById('feedback').classList.add('hidden');
+            
+            updateDisplay();
+        }
+
+        function updateProgress() {
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const percentage = (problemsCompleted / 10) * 100;
+            
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${problemsCompleted}/10 🍕`;
+        }
+
+        function showAchievement() {
+            document.getElementById('achievementModal').classList.remove('hidden');
+            createConfetti();
+        }
+
+        function closeModal() {
+            document.getElementById('achievementModal').classList.add('hidden');
+        }
+
+        function createConfetti() {
+            const colors = ['#ef4444', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+
+        // Initialize the game when the page loads
+        init();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970f8799e39388e3',t:'MTc1NTUwMDM3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

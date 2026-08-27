@@ -1,0 +1,122 @@
+[
+  {
+    "playPath": "#/play/add-subtract-fractions-hub-pizza-and-chocolate-models",
+    "source": "pages/Add-Subtract-Fractions-Hub-Pizza-and-Chocolate-Models.html",
+    "title": "Add Subtract Fractions Hub Pizza And Chocolate Models",
+    "category": "Fractions",
+    "slug": "add-subtract-fractions-hub-pizza-and-chocolate-models",
+    "catSlug": "fractions"
+  },
+  {
+    "playPath": "#/play/construction-site-perimeter-and-area-builder",
+    "source": "pages/Construction-Site-Perimeter-and-Area-Builder.html",
+    "title": "Construction Site Perimeter And Area Builder",
+    "category": "Measurement",
+    "slug": "construction-site-perimeter-and-area-builder",
+    "catSlug": "measurement"
+  },
+  {
+    "playPath": "#/play/decimals-discovery-pack-scuba-dive-theme",
+    "source": "pages/Decimals-Discovery-Pack-Scuba-Dive-Theme.html",
+    "title": "Decimals Discovery Pack Scuba Dive Theme",
+    "category": "Decimals",
+    "slug": "decimals-discovery-pack-scuba-dive-theme",
+    "catSlug": "decimals"
+  },
+  {
+    "playPath": "#/play/desert-trail-rounding-quest-for-grade-4",
+    "source": "pages/Desert-Trail-Rounding-Quest-for-Grade-4.html",
+    "title": "Desert Trail Rounding Quest For Grade 4",
+    "category": "Number & Operations",
+    "slug": "desert-trail-rounding-quest-for-grade-4",
+    "catSlug": "number-operations"
+  },
+  {
+    "playPath": "#/play/division-expedition-exploring-quotients-and-remainders",
+    "source": "pages/Division-Expedition-Exploring-Quotients-and-Remainders.html",
+    "title": "Division Expedition Exploring Quotients And Remainders",
+    "category": "Division",
+    "slug": "division-expedition-exploring-quotients-and-remainders",
+    "catSlug": "division"
+  },
+  {
+    "playPath": "#/play/geometry-gallery-walk-exploring-lines-angles-and-symmetry",
+    "source": "pages/Geometry-Gallery-Walk-Exploring-Lines-Angles-and-Symmetry.html",
+    "title": "Geometry Gallery Walk Exploring Lines Angles And Symmetry",
+    "category": "Geometry",
+    "slug": "geometry-gallery-walk-exploring-lines-angles-and-symmetry",
+    "catSlug": "geometry"
+  },
+  {
+    "playPath": "#/play/grade-4-multiplication-strategies-studio",
+    "source": "pages/Grade-4-Multiplication-Strategies-Studio.html",
+    "title": "Grade 4 Multiplication Strategies Studio",
+    "category": "Multiplication",
+    "slug": "grade-4-multiplication-strategies-studio",
+    "catSlug": "multiplication"
+  },
+  {
+    "playPath": "#/play/interactive-equivalent-fractions",
+    "source": "pages/Interactive-Equivalent-Fractions.html",
+    "title": "Interactive Equivalent Fractions",
+    "category": "Fractions",
+    "slug": "interactive-equivalent-fractions",
+    "catSlug": "fractions"
+  },
+  {
+    "playPath": "#/play/math-patterns-workshop-factors-multiples-prime-numbers",
+    "source": "pages/Math-Patterns-Workshop-Factors-Multiples-Prime-Numbers.html",
+    "title": "Math Patterns Workshop Factors Multiples Prime Numbers",
+    "category": "Number & Operations",
+    "slug": "math-patterns-workshop-factors-multiples-prime-numbers",
+    "catSlug": "number-operations"
+  },
+  {
+    "playPath": "#/play/mini-course-on-multiplying-fractions-with-visuals",
+    "source": "pages/Mini-Course-on-Multiplying-Fractions-with-Visuals.html",
+    "title": "Mini Course On Multiplying Fractions With Visuals",
+    "category": "Fractions",
+    "slug": "mini-course-on-multiplying-fractions-with-visuals",
+    "catSlug": "fractions"
+  },
+  {
+    "playPath": "#/play/mini-market-math-problem-solving-deck",
+    "source": "pages/Mini-Market-Math-Problem-Solving-Deck.html",
+    "title": "Mini Market Math Problem Solving Deck",
+    "category": "Other",
+    "slug": "mini-market-math-problem-solving-deck",
+    "catSlug": "other"
+  },
+  {
+    "playPath": "#/play/mixed-number-makeover-activity-design",
+    "source": "pages/Mixed-Number-Makeover-Activity-Design.html",
+    "title": "Mixed Number Makeover Activity Design",
+    "category": "Fractions",
+    "slug": "mixed-number-makeover-activity-design",
+    "catSlug": "fractions"
+  },
+  {
+    "playPath": "#/play/multiplication-as-comparison",
+    "source": "pages/Multiplication-as-Comparison.html",
+    "title": "Multiplication As Comparison",
+    "category": "Multiplication",
+    "slug": "multiplication-as-comparison",
+    "catSlug": "multiplication"
+  },
+  {
+    "playPath": "#/play/units-and-conversions-arcade-game-design",
+    "source": "pages/Units-and-Conversions-Arcade-Game-Design.html",
+    "title": "Units And Conversions Arcade Game Design",
+    "category": "Measurement",
+    "slug": "units-and-conversions-arcade-game-design",
+    "catSlug": "measurement"
+  },
+  {
+    "playPath": "#/play/place-value-canva-code-game",
+    "source": "pages/place-value-canva-code-game.html",
+    "title": "Place Value Canva Code Game",
+    "category": "Number & Operations",
+    "slug": "place-value-canva-code-game",
+    "catSlug": "number-operations"
+  }
+]

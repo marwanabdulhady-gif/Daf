@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication as Comparison - Grade 4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'royal-purple': '#663399',
+                        'royal-purple-light': '#8855bb',
+                        'royal-purple-dark': '#442266',
+                        'bright-yellow': '#ffdd00',
+                        'bright-yellow-light': '#ffee44'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        @keyframes celebrate {
+            0% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(1.2) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        .bounce { animation: bounce 2s infinite; }
+        .celebrate { animation: celebrate 0.6s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-royal-purple to-royal-purple-dark min-h-screen text-white font-sans">
+    <div class="container mx-auto px-4 py-6">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-bright-yellow mb-2">Multiplication as Comparison</h1>
+            <p class="text-xl text-bright-yellow-light">Learn "times as many" with balance scales! ⚖️</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="bg-white bg-opacity-20 rounded-full p-2 mb-8 max-w-md mx-auto">
+            <div class="flex justify-between items-center">
+                <div id="progress-1" class="flex items-center space-x-2 px-3 py-2 rounded-full bg-bright-yellow text-royal-purple font-bold">
+                    <span>1×</span>
+                    <span class="text-sm">Basic</span>
+                </div>
+                <div id="progress-3" class="flex items-center space-x-2 px-3 py-2 rounded-full bg-white bg-opacity-30 text-white">
+                    <span>3×</span>
+                    <span class="text-sm">Medium</span>
+                </div>
+                <div id="progress-5" class="flex items-center space-x-2 px-3 py-2 rounded-full bg-white bg-opacity-30 text-white">
+                    <span>5×</span>
+                    <span class="text-sm">Advanced</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Problem Display -->
+        <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-6 max-w-4xl mx-auto">
+            <div class="text-center mb-4">
+                <h2 class="text-2xl font-bold text-bright-yellow mb-2">Problem <span id="problem-number">1</span></h2>
+                <div class="text-lg" id="story-text">
+                    Sarah has 3 stickers. Emma has 2 times as many stickers as Sarah. How many stickers does Emma have?
+                </div>
+            </div>
+
+            <!-- Balance Scale Visual -->
+            <div class="flex justify-center items-center mb-6">
+                <div class="text-center">
+                    <div class="text-sm text-bright-yellow-light mb-2">Sarah's stickers</div>
+                    <div class="bg-bright-yellow rounded-lg p-4 mb-2">
+                        <div id="left-items" class="flex flex-wrap justify-center gap-1">
+                            <div class="w-6 h-6 bg-royal-purple rounded text-white text-xs flex items-center justify-center">⭐</div>
+                            <div class="w-6 h-6 bg-royal-purple rounded text-white text-xs flex items-center justify-center">⭐</div>
+                            <div class="w-6 h-6 bg-royal-purple rounded text-white text-xs flex items-center justify-center">⭐</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mx-8 text-4xl">⚖️</div>
+                
+                <div class="text-center">
+                    <div class="text-sm text-bright-yellow-light mb-2">Emma's stickers</div>
+                    <div class="bg-bright-yellow rounded-lg p-4 mb-2">
+                        <div id="right-items" class="flex flex-wrap justify-center gap-1">
+                            <div class="text-2xl text-royal-purple">?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arrow and Equation -->
+            <div class="text-center mb-6">
+                <div class="text-3xl mb-2">➡️</div>
+                <div class="text-xl font-bold text-bright-yellow">
+                    <span id="equation-text">3 × 2 = ?</span>
+                </div>
+            </div>
+
+            <!-- Bar Model -->
+            <div class="mb-6">
+                <div class="text-center text-bright-yellow-light mb-3">Bar Model</div>
+                <div class="flex justify-center items-end space-x-4">
+                    <div class="text-center">
+                        <div class="text-sm text-bright-yellow-light mb-1">Sarah</div>
+                        <div id="bar-left" class="bg-bright-yellow h-12 w-16 rounded flex items-center justify-center text-royal-purple font-bold">
+                            3
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-sm text-bright-yellow-light mb-1">Emma (2 times as many)</div>
+                        <div id="bar-right" class="bg-bright-yellow-light h-12 w-32 rounded flex items-center justify-center text-royal-purple font-bold border-2 border-dashed border-bright-yellow">
+                            ?
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Answer Options -->
+            <div class="flex justify-center space-x-4 mb-4">
+                <button id="answer-a" class="bg-white bg-opacity-20 hover:bg-bright-yellow hover:text-royal-purple px-6 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105">
+                    5
+                </button>
+                <button id="answer-b" class="bg-white bg-opacity-20 hover:bg-bright-yellow hover:text-royal-purple px-6 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105">
+                    6
+                </button>
+                <button id="answer-c" class="bg-white bg-opacity-20 hover:bg-bright-yellow hover:text-royal-purple px-6 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105">
+                    8
+                </button>
+            </div>
+
+            <!-- Feedback -->
+            <div id="feedback" class="text-center text-lg font-bold min-h-8"></div>
+        </div>
+
+        <!-- Next Button -->
+        <div class="text-center mb-6">
+            <button id="next-btn" class="bg-bright-yellow text-royal-purple px-8 py-3 rounded-full font-bold text-lg hover:bg-bright-yellow-light transition-all duration-300 transform hover:scale-105 opacity-0 pointer-events-none">
+                Next Problem ➡️
+            </button>
+        </div>
+
+        <!-- Medal Display -->
+        <div id="medal-display" class="text-center opacity-0 pointer-events-none">
+            <div class="bg-bright-yellow text-royal-purple rounded-xl p-8 max-w-md mx-auto">
+                <div class="text-6xl mb-4">🥇</div>
+                <h2 class="text-3xl font-bold mb-2">Comparison Champion!</h2>
+                <p class="text-lg">You've mastered multiplication as comparison!</p>
+                <button id="restart-btn" class="mt-4 bg-royal-purple text-bright-yellow px-6 py-2 rounded-lg font-bold hover:bg-royal-purple-light transition-all duration-300">
+                    Try Again
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const problems = [
+            // Tier 1: Basic (1-3 times)
+            {
+                tier: 1,
+                story: "Sarah has 3 stickers. Emma has 2 times as many stickers as Sarah. How many stickers does Emma have?",
+                equation: "3 × 2 = ?",
+                leftAmount: 3,
+                multiplier: 2,
+                correctAnswer: 6,
+                options: [5, 6, 8],
+                leftLabel: "Sarah's stickers",
+                rightLabel: "Emma's stickers",
+                barLeftLabel: "Sarah",
+                barRightLabel: "Emma (2 times as many)",
+                icon: "⭐"
+            },
+            {
+                tier: 1,
+                story: "Tom has 4 toy cars. Jake has 3 times as many cars as Tom. How many cars does Jake have?",
+                equation: "4 × 3 = ?",
+                leftAmount: 4,
+                multiplier: 3,
+                correctAnswer: 12,
+                options: [10, 12, 14],
+                leftLabel: "Tom's cars",
+                rightLabel: "Jake's cars",
+                barLeftLabel: "Tom",
+                barRightLabel: "Jake (3 times as many)",
+                icon: "🚗"
+            },
+            {
+                tier: 1,
+                story: "Lisa has 2 books. Maya has 3 times as many books as Lisa. How many books does Maya have?",
+                equation: "2 × 3 = ?",
+                leftAmount: 2,
+                multiplier: 3,
+                correctAnswer: 6,
+                options: [5, 6, 8],
+                leftLabel: "Lisa's books",
+                rightLabel: "Maya's books",
+                barLeftLabel: "Lisa",
+                barRightLabel: "Maya (3 times as many)",
+                icon: "📚"
+            },
+            // Tier 2: Medium (4-6 times)
+            {
+                tier: 2,
+                story: "Alex has 3 marbles. Ben has 4 times as many marbles as Alex. How many marbles does Ben have?",
+                equation: "3 × 4 = ?",
+                leftAmount: 3,
+                multiplier: 4,
+                correctAnswer: 12,
+                options: [10, 12, 15],
+                leftLabel: "Alex's marbles",
+                rightLabel: "Ben's marbles",
+                barLeftLabel: "Alex",
+                barRightLabel: "Ben (4 times as many)",
+                icon: "⚪"
+            },
+            {
+                tier: 2,
+                story: "Kate has 2 pencils. Sam has 5 times as many pencils as Kate. How many pencils does Sam have?",
+                equation: "2 × 5 = ?",
+                leftAmount: 2,
+                multiplier: 5,
+                correctAnswer: 10,
+                options: [8, 10, 12],
+                leftLabel: "Kate's pencils",
+                rightLabel: "Sam's pencils",
+                barLeftLabel: "Kate",
+                barRightLabel: "Sam (5 times as many)",
+                icon: "✏️"
+            },
+            {
+                tier: 2,
+                story: "Dan has 4 cookies. Lily has 6 times as many cookies as Dan. How many cookies does Lily have?",
+                equation: "4 × 6 = ?",
+                leftAmount: 4,
+                multiplier: 6,
+                correctAnswer: 24,
+                options: [20, 24, 28],
+                leftLabel: "Dan's cookies",
+                rightLabel: "Lily's cookies",
+                barLeftLabel: "Dan",
+                barRightLabel: "Lily (6 times as many)",
+                icon: "🍪"
+            },
+            // Tier 3: Advanced (7-9 times)
+            {
+                tier: 3,
+                story: "Ruby has 3 flowers. Max has 7 times as many flowers as Ruby. How many flowers does Max have?",
+                equation: "3 × 7 = ?",
+                leftAmount: 3,
+                multiplier: 7,
+                correctAnswer: 21,
+                options: [18, 21, 24],
+                leftLabel: "Ruby's flowers",
+                rightLabel: "Max's flowers",
+                barLeftLabel: "Ruby",
+                barRightLabel: "Max (7 times as many)",
+                icon: "🌸"
+            },
+            {
+                tier: 3,
+                story: "Zoe has 2 stickers. Ryan has 8 times as many stickers as Zoe. How many stickers does Ryan have?",
+                equation: "2 × 8 = ?",
+                leftAmount: 2,
+                multiplier: 8,
+                correctAnswer: 16,
+                options: [14, 16, 18],
+                leftLabel: "Zoe's stickers",
+                rightLabel: "Ryan's stickers",
+                barLeftLabel: "Zoe",
+                barRightLabel: "Ryan (8 times as many)",
+                icon: "⭐"
+            },
+            {
+                tier: 3,
+                story: "Amy has 3 balloons. Jack has 9 times as many balloons as Amy. How many balloons does Jack have?",
+                equation: "3 × 9 = ?",
+                leftAmount: 3,
+                multiplier: 9,
+                correctAnswer: 27,
+                options: [24, 27, 30],
+                leftLabel: "Amy's balloons",
+                rightLabel: "Jack's balloons",
+                barLeftLabel: "Amy",
+                barRightLabel: "Jack (9 times as many)",
+                icon: "🎈"
+            }
+        ];
+
+        let currentProblem = 0;
+        let correctAnswers = 0;
+
+        function updateProgressBar() {
+            const problem = problems[currentProblem];
+            const progress1 = document.getElementById('progress-1');
+            const progress3 = document.getElementById('progress-3');
+            const progress5 = document.getElementById('progress-5');
+
+            // Reset all
+            [progress1, progress3, progress5].forEach(p => {
+                p.className = 'flex items-center space-x-2 px-3 py-2 rounded-full bg-white bg-opacity-30 text-white';
+            });
+
+            // Highlight current tier
+            if (problem.tier === 1) {
+                progress1.className = 'flex items-center space-x-2 px-3 py-2 rounded-full bg-bright-yellow text-royal-purple font-bold';
+            } else if (problem.tier === 2) {
+                progress1.className = 'flex items-center space-x-2 px-3 py-2 rounded-full bg-green-500 text-white font-bold';
+                progress3.className = 'flex items-center space-x-2 px-3 py-2 rounded-full bg-bright-yellow text-royal-purple font-bold';
+            } else {
+                progress1.className = 'flex items-center space-x-2 px-3 py-2 rounded-full bg-green-500 text-white font-bold';
+                progress3.className = 'flex items-center space-x-2 px-3 py-2 rounded-full bg-green-500 text-white font-bold';
+                progress5.className = 'flex items-center space-x-2 px-3 py-2 rounded-full bg-bright-yellow text-royal-purple font-bold';
+            }
+        }
+
+        function displayProblem() {
+            const problem = problems[currentProblem];
+            
+            document.getElementById('problem-number').textContent = currentProblem + 1;
+            document.getElementById('story-text').textContent = problem.story;
+            document.getElementById('equation-text').textContent = problem.equation;
+
+            // Update labels
+            document.querySelector('.text-center .text-sm:first-child').textContent = problem.leftLabel;
+            document.querySelector('.text-center:last-child .text-sm').textContent = problem.rightLabel;
+            document.getElementById('bar-left').parentElement.querySelector('.text-sm').textContent = problem.barLeftLabel;
+            document.getElementById('bar-right').parentElement.querySelector('.text-sm').textContent = problem.barRightLabel;
+
+            // Update left items
+            const leftItems = document.getElementById('left-items');
+            leftItems.innerHTML = '';
+            for (let i = 0; i < problem.leftAmount; i++) {
+                const item = document.createElement('div');
+                item.className = 'w-6 h-6 bg-royal-purple rounded text-white text-xs flex items-center justify-center';
+                item.textContent = problem.icon;
+                leftItems.appendChild(item);
+            }
+
+            // Reset right items
+            document.getElementById('right-items').innerHTML = '<div class="text-2xl text-royal-purple">?</div>';
+
+            // Update bar model
+            document.getElementById('bar-left').textContent = problem.leftAmount;
+            document.getElementById('bar-right').textContent = '?';
+            document.getElementById('bar-right').style.width = `${problem.leftAmount * problem.multiplier * 8}px`;
+
+            // Update answer options
+            const buttons = ['answer-a', 'answer-b', 'answer-c'];
+            problem.options.forEach((option, index) => {
+                const btn = document.getElementById(buttons[index]);
+                btn.textContent = option;
+                btn.className = 'bg-white bg-opacity-20 hover:bg-bright-yellow hover:text-royal-purple px-6 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105';
+                btn.onclick = () => checkAnswer(option, btn);
+            });
+
+            // Clear feedback and hide next button
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('next-btn').className = 'bg-bright-yellow text-royal-purple px-8 py-3 rounded-full font-bold text-lg hover:bg-bright-yellow-light transition-all duration-300 transform hover:scale-105 opacity-0 pointer-events-none';
+
+            updateProgressBar();
+        }
+
+        function checkAnswer(selectedAnswer, button) {
+            const problem = problems[currentProblem];
+            const feedback = document.getElementById('feedback');
+            const rightItems = document.getElementById('right-items');
+            const barRight = document.getElementById('bar-right');
+
+            if (selectedAnswer === problem.correctAnswer) {
+                button.className = 'bg-green-500 text-white px-6 py-3 rounded-lg font-bold celebrate';
+                feedback.textContent = '🎉 Correct! Great job!';
+                feedback.className = 'text-center text-lg font-bold min-h-8 text-green-400';
+                correctAnswers++;
+
+                // Show the correct answer visually
+                rightItems.innerHTML = '';
+                for (let i = 0; i < problem.correctAnswer; i++) {
+                    const item = document.createElement('div');
+                    item.className = 'w-6 h-6 bg-royal-purple rounded text-white text-xs flex items-center justify-center bounce';
+                    item.textContent = problem.icon;
+                    item.style.animationDelay = `${i * 0.1}s`;
+                    rightItems.appendChild(item);
+                }
+
+                barRight.textContent = problem.correctAnswer;
+                barRight.className = 'bg-green-400 h-12 rounded flex items-center justify-center text-royal-purple font-bold';
+
+                // Show next button
+                document.getElementById('next-btn').className = 'bg-bright-yellow text-royal-purple px-8 py-3 rounded-full font-bold text-lg hover:bg-bright-yellow-light transition-all duration-300 transform hover:scale-105 opacity-100';
+            } else {
+                button.className = 'bg-red-500 text-white px-6 py-3 rounded-lg font-bold';
+                feedback.textContent = '❌ Try again! Think about "times as many"';
+                feedback.className = 'text-center text-lg font-bold min-h-8 text-red-400';
+            }
+
+            // Disable all buttons after selection
+            ['answer-a', 'answer-b', 'answer-c'].forEach(id => {
+                document.getElementById(id).style.pointerEvents = 'none';
+            });
+        }
+
+        function nextProblem() {
+            currentProblem++;
+            if (currentProblem >= problems.length) {
+                showMedal();
+            } else {
+                displayProblem();
+                // Re-enable buttons
+                ['answer-a', 'answer-b', 'answer-c'].forEach(id => {
+                    document.getElementById(id).style.pointerEvents = 'auto';
+                });
+            }
+        }
+
+        function showMedal() {
+            document.querySelector('.container > div:nth-child(3)').style.display = 'none'; // Hide problem
+            document.getElementById('next-btn').style.display = 'none';
+            
+            const medalDisplay = document.getElementById('medal-display');
+            medalDisplay.className = 'text-center opacity-100';
+            medalDisplay.querySelector('.bg-bright-yellow').classList.add('celebrate');
+        }
+
+        function restart() {
+            currentProblem = 0;
+            correctAnswers = 0;
+            document.querySelector('.container > div:nth-child(3)').style.display = 'block';
+            document.getElementById('next-btn').style.display = 'block';
+            document.getElementById('medal-display').className = 'text-center opacity-0 pointer-events-none';
+            displayProblem();
+            ['answer-a', 'answer-b', 'answer-c'].forEach(id => {
+                document.getElementById(id).style.pointerEvents = 'auto';
+            });
+        }
+
+        // Event listeners
+        document.getElementById('next-btn').onclick = nextProblem;
+        document.getElementById('restart-btn').onclick = restart;
+
+        // Initialize
+        displayProblem();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970f4589556b0dc8',t:'MTc1NTQ5NzY3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
