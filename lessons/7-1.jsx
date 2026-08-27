@@ -114,7 +114,7 @@ const LESSON = {
       goal: "Notice a factor: each rectangle hands you two numbers that multiply to the tile count.",
       pull: "Each rectangle hands you two factors at once.",
       rail: { launch: "Fictional frame. Look at the rectangles — no working yet.",
-        monitor: ["Counting the rectangles", "Reading the side labels", "Wonding why those numbers"],
+        monitor: ["Counting the rectangles", "Reading the side labels", "Wondering why those numbers"],
         connect: "What do the side labels of each rectangle multiply to?",
         misconception: "Thinking a number has only one rectangular shape." } },
 
@@ -207,7 +207,7 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <StoryShell lane="fiction" character="lantern" support="mariam"
+          <StoryShell opener lane="fiction" character="lantern" support="mariam"
             title="A tile with more than one shape"
             text="12 reef tiles make three different rectangles: 1×12, 2×6, 3×4. The same pieces, the different shapes."
             clue="Each rectangle hands you two factors at once.">

@@ -101,7 +101,7 @@ const LESSON = {
       goal: "Notice factors light up in pairs, and the testing can stop.",
       pull: "How do you know you have found them all?",
       rail: { launch: "Fictional frame. Look at the lit numbers — no working yet.",
-        monitor: ["Seeing the pairs", "Noticing the gaps", "Wonding when to stop"],
+        monitor: ["Seeing the pairs", "Noticing the gaps", "Wondering when to stop"],
         connect: "What do the lit numbers share?",
         misconception: "Testing numbers at random, in no order." } },
 
@@ -194,7 +194,7 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <StoryShell lane="fiction" character="lantern"
+          <StoryShell opener lane="fiction" character="lantern"
             title="The grid that lights up"
             text="On the reef grid, some numbers light up when tested against 24 — 1 and 24, 2 and 12, 3 and 8. 7 stays dark."
             clue="Factors light up in pairs — and the testing can stop.">

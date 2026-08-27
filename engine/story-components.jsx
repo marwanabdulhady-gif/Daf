@@ -193,9 +193,11 @@ const STORY_LANES = {
   amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
 };
 
-function StoryShell({ lane, character, pose, support, title, text, clue, children, compact }) {
+function StoryShell({ lane, character, pose, support, title, text, clue, children, compact, opener }) {
   const info = STORY_LANES[lane || "fiction"];
   const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  const gremlin = opener && typeof gremlinFor === "function" && typeof LESSON !== "undefined"
+    ? gremlinFor(LESSON.code) : null;
   return (
     <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
       <div className="story-ribbon">
@@ -210,6 +212,10 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
               lanes as a curious companion — never the sacred Amanah lane */}
           {(lane === "fiction" || info.cls === "stem") ? <GremlinAvatar size={50} /> : null}
         </div>
+        {gremlin && <div className="gremlin-opener" role="note">
+          <b><Icon name="fa-eye" /> Trap to watch for: {gremlin.name}</b>
+          <span>“{gremlin.trap}”</span>
+        </div>}
         <div className="story-ribbon-copy">
           <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
           <b>{title}</b>

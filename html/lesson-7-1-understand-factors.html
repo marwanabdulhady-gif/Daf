@@ -804,6 +804,14 @@
         border-radius: 999px; padding: 5px 14px;
       }
       .gremlin-tamed i { color: var(--ok); }
+      .gremlin-opener { grid-column: 2 / -1; display: flex; gap: 10px; align-items: baseline;
+        margin: -2px 0 2px; padding: 7px 10px; border: 1px solid rgba(201,162,39,.38);
+        border-radius: 10px; background: linear-gradient(90deg, rgba(201,162,39,.13), rgba(18,133,124,.08));
+        color: rgba(234,244,242,.86); font-size: 11px; line-height: 1.35; }
+      .gremlin-opener b { color: #f2d37a; white-space: nowrap; letter-spacing: .02em; }
+      .gremlin-opener b i { margin-right: 5px; }
+      .gremlin-opener span { color: rgba(234,244,242,.72); font-style: italic; }
+      @media (max-width: 760px) { .gremlin-opener { grid-column: 1 / -1; flex-wrap: wrap; gap: 3px 8px; } }
 
       .critic-brief {
         background: var(--daf-mint); border: 1.5px solid var(--daf-line); border-radius: 13px;
@@ -4719,9 +4727,11 @@ const STORY_LANES = {
   amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
 };
 
-function StoryShell({ lane, character, pose, support, title, text, clue, children, compact }) {
+function StoryShell({ lane, character, pose, support, title, text, clue, children, compact, opener }) {
   const info = STORY_LANES[lane || "fiction"];
   const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  const gremlin = opener && typeof gremlinFor === "function" && typeof LESSON !== "undefined"
+    ? gremlinFor(LESSON.code) : null;
   return (
     <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
       <div className="story-ribbon">
@@ -4736,6 +4746,10 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
               lanes as a curious companion — never the sacred Amanah lane */}
           {(lane === "fiction" || info.cls === "stem") ? <GremlinAvatar size={50} /> : null}
         </div>
+        {gremlin && <div className="gremlin-opener" role="note">
+          <b><Icon name="fa-eye" /> Trap to watch for: {gremlin.name}</b>
+          <span>“{gremlin.trap}”</span>
+        </div>}
         <div className="story-ribbon-copy">
           <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
           <b>{title}</b>
@@ -6172,7 +6186,7 @@ const LESSON = {
       goal: "Notice a factor: each rectangle hands you two numbers that multiply to the tile count.",
       pull: "Each rectangle hands you two factors at once.",
       rail: { launch: "Fictional frame. Look at the rectangles — no working yet.",
-        monitor: ["Counting the rectangles", "Reading the side labels", "Wonding why those numbers"],
+        monitor: ["Counting the rectangles", "Reading the side labels", "Wondering why those numbers"],
         connect: "What do the side labels of each rectangle multiply to?",
         misconception: "Thinking a number has only one rectangular shape." } },
 
@@ -6265,7 +6279,7 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <StoryShell lane="fiction" character="lantern" support="mariam"
+          <StoryShell opener lane="fiction" character="lantern" support="mariam"
             title="A tile with more than one shape"
             text="12 reef tiles make three different rectangles: 1×12, 2×6, 3×4. The same pieces, the different shapes."
             clue="Each rectangle hands you two factors at once.">

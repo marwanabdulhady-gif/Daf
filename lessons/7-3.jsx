@@ -172,7 +172,7 @@ const LESSON = {
       goal: "Notice repeated reasoning: the same method, the same checks, a bigger tile.",
       pull: "How do you know you have found them all — every time?",
       rail: { launch: "Fictional frame. Look at the list for 24 — no working yet.",
-        monitor: ["Reading the pairs of 24", "Predicting the pairs of 36", "Wonding what stays the same"],
+        monitor: ["Reading the pairs of 24", "Predicting the pairs of 36", "Wondering what stays the same"],
         connect: "What part of the method never changes, tile after tile?",
         misconception: "Starting each new tile with a new, random method." } },
 
@@ -285,7 +285,7 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <StoryShell lane="fiction" character="lantern"
+          <StoryShell opener lane="fiction" character="lantern"
             title="The method that repeats"
             text="The pair method ran on 24. The reef tiles are growing — 36, then 48. The method must run again, the same way."
             clue="Same order, same tests, same stopping rule — bigger tile.">

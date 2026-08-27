@@ -109,7 +109,7 @@ const LESSON = {
       goal: "Notice a number that cannot be split into a rectangular pair: exactly two factors.",
       pull: "7 tiles make only 1 × 7. That is the whole idea.",
       rail: { launch: "Fictional frame. Look at the lit numbers — no working yet.",
-        monitor: ["Seeing 2 lit", "Noticing the even numbers dark", "Wonding why 1 is special"],
+        monitor: ["Seeing 2 lit", "Noticing the even numbers dark", "Wondering why 1 is special"],
         connect: "What is different about the numbers that stay lit?",
         misconception: "Thinking a single pair means the tile is broken." } },
 
@@ -202,7 +202,7 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <StoryShell lane="fiction" character="lantern"
+          <StoryShell opener lane="fiction" character="lantern"
             title="The indivisible border tile"
             text="7 tiles make only 1 × 7 — one rectangular pair. Most tiles make several; some make exactly one. And 1 makes none."
             clue="Exactly two factors: 1 and itself.">

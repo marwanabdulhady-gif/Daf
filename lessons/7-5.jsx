@@ -115,7 +115,7 @@ const LESSON = {
       goal: "Notice a multiple: where you land when you count in that number.",
       pull: "The gap is always 6 — that is counting in sixes.",
       rail: { launch: "Fictional frame. Look at the marked days — no working yet.",
-        monitor: ["Seeing the even marks", "Reading the constant gap", "Wonding what comes after 48"],
+        monitor: ["Seeing the even marks", "Reading the constant gap", "Wondering what comes after 48"],
         connect: "What do all the marked days share?",
         misconception: "Thinking a multiple must be bigger than the number (a number is a multiple of itself)." } },
 
@@ -208,7 +208,7 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <StoryShell lane="fiction" character="lantern"
+          <StoryShell opener lane="fiction" character="lantern"
             title="When will the teams meet?"
             text="The cleaning team lands every 6 days: 6, 12, 18, 24... The inspection team lands every 4 days. On which days do they meet?"
             clue="The gap is always 6 — that is counting in sixes.">

@@ -804,6 +804,14 @@
         border-radius: 999px; padding: 5px 14px;
       }
       .gremlin-tamed i { color: var(--ok); }
+      .gremlin-opener { grid-column: 2 / -1; display: flex; gap: 10px; align-items: baseline;
+        margin: -2px 0 2px; padding: 7px 10px; border: 1px solid rgba(201,162,39,.38);
+        border-radius: 10px; background: linear-gradient(90deg, rgba(201,162,39,.13), rgba(18,133,124,.08));
+        color: rgba(234,244,242,.86); font-size: 11px; line-height: 1.35; }
+      .gremlin-opener b { color: #f2d37a; white-space: nowrap; letter-spacing: .02em; }
+      .gremlin-opener b i { margin-right: 5px; }
+      .gremlin-opener span { color: rgba(234,244,242,.72); font-style: italic; }
+      @media (max-width: 760px) { .gremlin-opener { grid-column: 1 / -1; flex-wrap: wrap; gap: 3px 8px; } }
 
       .critic-brief {
         background: var(--daf-mint); border: 1.5px solid var(--daf-line); border-radius: 13px;

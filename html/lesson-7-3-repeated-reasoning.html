@@ -804,6 +804,14 @@
         border-radius: 999px; padding: 5px 14px;
       }
       .gremlin-tamed i { color: var(--ok); }
+      .gremlin-opener { grid-column: 2 / -1; display: flex; gap: 10px; align-items: baseline;
+        margin: -2px 0 2px; padding: 7px 10px; border: 1px solid rgba(201,162,39,.38);
+        border-radius: 10px; background: linear-gradient(90deg, rgba(201,162,39,.13), rgba(18,133,124,.08));
+        color: rgba(234,244,242,.86); font-size: 11px; line-height: 1.35; }
+      .gremlin-opener b { color: #f2d37a; white-space: nowrap; letter-spacing: .02em; }
+      .gremlin-opener b i { margin-right: 5px; }
+      .gremlin-opener span { color: rgba(234,244,242,.72); font-style: italic; }
+      @media (max-width: 760px) { .gremlin-opener { grid-column: 1 / -1; flex-wrap: wrap; gap: 3px 8px; } }
 
       .critic-brief {
         background: var(--daf-mint); border: 1.5px solid var(--daf-line); border-radius: 13px;
@@ -4719,9 +4727,11 @@ const STORY_LANES = {
   amanah: { label: "Amanah Window", icon: "fa-book", cls: "amanah" }
 };
 
-function StoryShell({ lane, character, pose, support, title, text, clue, children, compact }) {
+function StoryShell({ lane, character, pose, support, title, text, clue, children, compact, opener }) {
   const info = STORY_LANES[lane || "fiction"];
   const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  const gremlin = opener && typeof gremlinFor === "function" && typeof LESSON !== "undefined"
+    ? gremlinFor(LESSON.code) : null;
   return (
     <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
       <div className="story-ribbon">
@@ -4736,6 +4746,10 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
               lanes as a curious companion — never the sacred Amanah lane */}
           {(lane === "fiction" || info.cls === "stem") ? <GremlinAvatar size={50} /> : null}
         </div>
+        {gremlin && <div className="gremlin-opener" role="note">
+          <b><Icon name="fa-eye" /> Trap to watch for: {gremlin.name}</b>
+          <span>“{gremlin.trap}”</span>
+        </div>}
         <div className="story-ribbon-copy">
           <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
           <b>{title}</b>
@@ -6230,7 +6244,7 @@ const LESSON = {
       goal: "Notice repeated reasoning: the same method, the same checks, a bigger tile.",
       pull: "How do you know you have found them all — every time?",
       rail: { launch: "Fictional frame. Look at the list for 24 — no working yet.",
-        monitor: ["Reading the pairs of 24", "Predicting the pairs of 36", "Wonding what stays the same"],
+        monitor: ["Reading the pairs of 24", "Predicting the pairs of 36", "Wondering what stays the same"],
         connect: "What part of the method never changes, tile after tile?",
         misconception: "Starting each new tile with a new, random method." } },
 
@@ -6343,7 +6357,7 @@ const LESSON = {
     switch (i) {
       case 0:
         return (
-          <StoryShell lane="fiction" character="lantern"
+          <StoryShell opener lane="fiction" character="lantern"
             title="The method that repeats"
             text="The pair method ran on 24. The reef tiles are growing — 36, then 48. The method must run again, the same way."
             clue="Same order, same tests, same stopping rule — bigger tile.">

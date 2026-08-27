@@ -11,7 +11,12 @@
   "Periodical cicadas and prime-number life cycles (mathscareers.org.uk 'A bug's life'; mathcurious.com cicada activities): periodical cicadas emerge every 13 or 17 years — both prime — so their cycles rarely overlap with predators on 2-to-6-year cycles or with each other (13 and 17 coincide only every 221 years); a real, documented scientific example of primes and least common multiples in nature, with skip-counting, timeline and role-play activities for elementary students",
   "Georgia Organics Farm to School, 'Planting a Square Foot Garden' (farmtoschool.georgiaorganics.org, grades 3-5): students partition a 12-by-12 inch square into 9 equal cells using arrays and division (3 times 3 is 9; 12 divided by 3 is 4 inches), then combine modules into larger gardens and compute possible configurations — modular garden tiles built from factor pairs",
   "Vivify STEM, 'Design a School Garden' STEM project guide (grades 4-8): a multidisciplinary engineering-design challenge where students plan a long-term garden — modular beds, research and site planning — the modular-tile design brief this unit's production mirrors",
-  "NGSS Science and Engineering Practice 2 (Developing and Using Models) and Practice 4 (Analyzing Data), grades 3-5: rectangular arrays as models of multiplication, and schedule data organised to find repeating overlaps"
+  "NGSS Science and Engineering Practice 2 (Developing and Using Models) and Practice 4 (Analyzing Data), grades 3-5: rectangular arrays as models of multiplication, and schedule data organised to find repeating overlaps",
+  "Illustrative Mathematics Grade 4 Unit 1 Lesson 3, 'Prime and Composite Numbers' (curriculum.illustrativemathematics.org): vetted card-sort and rectangle-area investigation; students sort rectangle cards, draw an additional rectangle, connect side lengths to factor pairs, and explain why 1 is neither prime nor composite",
+  "Illustrative Mathematics Grade 4 Unit 1 Lesson 7, 'Find Factors and Multiples' (curriculum.illustrativemathematics.org): factor/multiple statement routine and the collaborative 'Find the Number' game on a 1–100 board, with precise language and repeated reasoning",
+  "Smithsonian National Museum of Natural History, 'Periodical Cicadas' (naturalhistory.si.edu/education/teaching-resources/life-science/periodical-cicadas): student-accessible biological background confirming 13- and 17-year emergences; use as the factual source, while presenting the predator-avoidance explanation as a hypothesis rather than a settled fact",
+  "NSTA/NGSS, Science and Engineering Practice 2, 'Developing and Using Models' (ngss.nsta.org/Practices.aspx?id=2): grades 3–5 guidance to build, revise, evaluate limitations of, and use simple physical or diagram models to describe or predict patterns",
+  "Illustrative Mathematics, 'The Locker Game' (tasks.illustrativemathematics.org/content-standards/4/OA/B/4/tasks/938): classroom game in which repeated touches on lockers reveal factor-count patterns; a suitable optional extension for the prime/composite lesson"
  ],
  "screens": {
   "prep": {
@@ -60,10 +65,22 @@
     "independent": {
      "prompt": "Which list gives every factor of 24?",
      "options": [
-      { "v": "a", "text": "1, 2, 3, 4, 6, 8, 12, 24" },
-      { "v": "b", "text": "1, 2, 3, 4, 6, 12, 24" },
-      { "v": "c", "text": "2, 3, 4, 6, 8, 12, 24" },
-      { "v": "d", "text": "1, 2, 3, 4, 6, 8, 24" }
+      {
+       "v": "a",
+       "text": "1, 2, 3, 4, 6, 8, 12, 24"
+      },
+      {
+       "v": "b",
+       "text": "1, 2, 3, 4, 6, 12, 24"
+      },
+      {
+       "v": "c",
+       "text": "2, 3, 4, 6, 8, 12, 24"
+      },
+      {
+       "v": "d",
+       "text": "1, 2, 3, 4, 6, 8, 24"
+      }
      ],
      "right": "a",
      "yes": "Yes — the rectangles are 1x24, 2x12, 3x8 and 4x6, giving 1, 2, 3, 4, 6, 8, 12 and 24. Option b drops 8, c drops 1, d drops 12.",
@@ -119,10 +136,22 @@
     "independent": {
      "prompt": "Is 9 a factor of 48?",
      "options": [
-      { "v": "a", "text": "yes" },
-      { "v": "b", "text": "no" },
-      { "v": "c", "text": "only if you round" },
-      { "v": "d", "text": "cannot tell" }
+      {
+       "v": "a",
+       "text": "yes"
+      },
+      {
+       "v": "b",
+       "text": "no"
+      },
+      {
+       "v": "c",
+       "text": "only if you round"
+      },
+      {
+       "v": "d",
+       "text": "cannot tell"
+      }
      ],
      "right": "b",
      "yes": "Yes — 'no' is correct: 9 times 5 is 45 and 9 times 6 is 54, so no full rectangle of 48 tiles has a side of 9. Nine is not a factor.",
@@ -178,10 +207,22 @@
     "independent": {
      "prompt": "How many factor pairs does 48 have?",
      "options": [
-      { "v": "a", "text": "4" },
-      { "v": "b", "text": "5" },
-      { "v": "c", "text": "6" },
-      { "v": "d", "text": "10" }
+      {
+       "v": "a",
+       "text": "4"
+      },
+      {
+       "v": "b",
+       "text": "5"
+      },
+      {
+       "v": "c",
+       "text": "6"
+      },
+      {
+       "v": "d",
+       "text": "10"
+      }
      ],
      "right": "b",
      "yes": "Yes — 1x48, 2x24, 3x16, 4x12 and 6x8: five pairs (ten factors, counted once each). The ordered test stops after 6 pairs with 8, which repeats 6x8.",
@@ -237,10 +278,22 @@
     "independent": {
      "prompt": "A border tile is ordered as a 47-square count. The supplier's clerk writes 'composite, splits into 7 rows'. Test the clerk's claim — how should the border be labelled?",
      "options": [
-      { "v": "a", "text": "47 is prime; 7 rows leaves 5 tiles over" },
-      { "v": "b", "text": "47 is composite; the clerk's 7 rows split it evenly" },
-      { "v": "c", "text": "47 is square; a 7-by-7 border fits it" },
-      { "v": "d", "text": "47 is composite; it splits into 4 rows of 12" }
+      {
+       "v": "a",
+       "text": "47 is prime; 7 rows leaves 5 tiles over"
+      },
+      {
+       "v": "b",
+       "text": "47 is composite; the clerk's 7 rows split it evenly"
+      },
+      {
+       "v": "c",
+       "text": "47 is square; a 7-by-7 border fits it"
+      },
+      {
+       "v": "d",
+       "text": "47 is composite; it splits into 4 rows of 12"
+      }
      ],
      "right": "a",
      "yes": "Yes — 7 times 6 is 42 and 7 times 7 is 49, so 7 fails; no side from 2 to the crossing point divides 47, leaving only the 1x47 rectangle. 47 is prime.",
@@ -296,10 +349,22 @@
     "independent": {
      "prompt": "Watering runs every 4 days and inspection every 6 days, starting together on day 0. On which day do they first meet again?",
      "options": [
-      { "v": "a", "text": "day 10" },
-      { "v": "b", "text": "day 12" },
-      { "v": "c", "text": "day 24" },
-      { "v": "d", "text": "day 6" }
+      {
+       "v": "a",
+       "text": "day 10"
+      },
+      {
+       "v": "b",
+       "text": "day 12"
+      },
+      {
+       "v": "c",
+       "text": "day 24"
+      },
+      {
+       "v": "d",
+       "text": "day 6"
+      }
      ],
      "right": "b",
      "yes": "Yes — waterings land on 4, 8, 12, 16... and inspections on 6, 12, 18...; the first shared day after 0 is 12. Day 24 is shared too, but not first.",
