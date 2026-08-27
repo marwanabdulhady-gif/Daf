@@ -11,8 +11,8 @@ const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
 const cur = JSON.parse(fs.readFileSync(path.join(ROOT, "curriculum.json"), "utf8"));
-const htmlFiles = fs.readdirSync(path.join(ROOT, "html"));
-const lessonFiles = fs.readdirSync(path.join(ROOT, "lessons"));
+const htmlFiles = fs.readdirSync(path.join(ROOT, "html")).filter(f => f.endsWith(".html"));
+const lessonFiles = fs.readdirSync(path.join(ROOT, "lessons")).filter(f => f.endsWith(".jsx"));
 
 function getHtmlFile(code) {
   const norm = code.replace(".", "-");
