@@ -46,7 +46,8 @@ function Ambient() {
   return <canvas ref={ref} className="ambient" />;
 }
 
-function Header({ game, onOverview, onRail, onMath, onDojo }) {
+function Header({ game, onOverview, onRail, onMath, onDojo, onActivity }) {
+  const hasAct = typeof window !== "undefined" && !!window.DAF_ACTIVITY;
   return (
     <header className="header">
       <div className="brand">
@@ -66,6 +67,11 @@ function Header({ game, onOverview, onRail, onMath, onDojo }) {
           <span>{Object.keys(game.present).filter((n) => game.present[n]).length} here</span>
           <em>★ {game.classXp}</em>
         </button>
+        {hasAct && (
+          <button className="btn btn-ghost btn-sm" onClick={onActivity} title="Activity Lab & Manipulatives (A)" style={{ color: "var(--daf-gold)" }}>
+            <Icon name="fa-flask" />
+          </button>
+        )}
         <button className="btn btn-ghost btn-sm" onClick={onMath} title="Math inventory (M)">
           <Icon name="fa-square-root-variable" />
         </button>
@@ -256,6 +262,94 @@ function MathInventory({ onClose }) {
             </button>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function ActivityModal({ onClose }) {
+  const act = typeof window !== "undefined" ? window.DAF_ACTIVITY : null;
+  if (!act) return null;
+
+  return (
+    <div className="modal" style={{ maxWidth: "1080px", width: "95vw", height: "88vh", display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px", flexShrink: 0 }}>
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+            <h2 style={{ fontSize: "20px", display: "flex", alignItems: "center", gap: "8px" }}>
+              <Icon name="fa-flask" style={{ color: "var(--daf-gold)" }} /> {act.title}
+            </h2>
+            <span style={{
+              background: "rgba(201,162,39,.18)", border: "1px solid var(--daf-gold)", borderRadius: "20px",
+              padding: "3px 10px", fontSize: "11px", fontWeight: 800, color: "var(--daf-gold)"
+            }}>{act.badge}</span>
+          </div>
+          <span style={{ fontSize: "12px", color: "#a9c9c4" }}>{act.description}</span>
+        </div>
+        <button className="btn btn-gold btn-sm" onClick={onClose}>
+          <Icon name="fa-xmark" /> Close (Esc)
+        </button>
+      </div>
+
+      <div style={{
+        display: "grid", gridTemplateColumns: "1.15fr 0.85fr", gap: "18px", flex: 1, minHeight: 0, overflowY: "auto"
+      }}>
+        <div style={{
+          background: "rgba(0,0,0,.35)", border: "1px solid rgba(255,255,255,.12)", borderRadius: "14px",
+          display: "flex", flexDirection: "column", overflow: "hidden", minHeight: "360px"
+        }}>
+          <div style={{
+            padding: "10px 14px", background: "rgba(18,133,124,.2)", borderBottom: "1px solid rgba(255,255,255,.08)",
+            display: "flex", justifyContent: "space-between", alignItems: "center"
+          }}>
+            <span style={{ fontSize: "12px", fontWeight: 800, color: "#1AA79B" }}>
+              <Icon name="fa-shapes" /> Interactive Sandbox & Manipulative
+            </span>
+            {act.file && (
+              <a href={"activities/" + act.file} target="_blank" rel="noreferrer" style={{
+                color: "var(--daf-gold)", fontSize: "11px", fontWeight: 700, textDecoration: "none"
+              }}>
+                Open Standalone <Icon name="fa-arrow-up-right-from-square" />
+              </a>
+            )}
+          </div>
+          <iframe
+            src={act.file ? "activities/" + act.file : undefined}
+            style={{ flex: 1, width: "100%", height: "100%", minHeight: "340px", border: "none" }}
+            title={act.title}
+          />
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px", overflowY: "auto" }}>
+          <div style={{
+            background: "rgba(255,255,255,.04)", border: "1px solid rgba(255,255,255,.1)", borderRadius: "12px",
+            padding: "14px"
+          }}>
+            <b style={{ color: "var(--daf-gold)", fontSize: "13px", display: "flex", alignItems: "center", gap: "6px", marginBottom: "10px" }}>
+              <Icon name="fa-compass-drafting" /> STEAM Inquiry Cycle
+            </b>
+            {act.stem && (
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px", fontSize: "12px" }}>
+                <div><b style={{ color: "#1AA79B" }}>1. ASK:</b> <span style={{ color: "#cfe8e3" }}>{act.stem.ask}</span></div>
+                <div><b style={{ color: "#1AA79B" }}>2. PLAN:</b> <span style={{ color: "#cfe8e3" }}>{act.stem.plan}</span></div>
+                <div><b style={{ color: "#1AA79B" }}>3. BUILD:</b> <span style={{ color: "#cfe8e3" }}>{act.stem.build}</span></div>
+                <div><b style={{ color: "#1AA79B" }}>4. SHARE:</b> <span style={{ color: "#cfe8e3" }}>{act.stem.share}</span></div>
+              </div>
+            )}
+          </div>
+
+          <div style={{
+            background: "rgba(201,162,39,.08)", border: "1.5px dashed rgba(201,162,39,.4)", borderRadius: "12px",
+            padding: "14px"
+          }}>
+            <b style={{ color: "var(--daf-gold)", fontSize: "12.5px", display: "flex", alignItems: "center", gap: "6px", marginBottom: "6px" }}>
+              <Icon name="fa-robot" /> AI in the Loop (Critic / Audit Challenge)
+            </b>
+            <p style={{ fontSize: "12px", color: "#e1d6a6", lineHeight: 1.45 }}>
+              {act.ai || "Use AI to challenge calculations and audit edge cases. Students defend their work."}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -825,6 +919,9 @@ function App() {
   const [overview, setOverview] = useState(false);
   const [rail, setRail] = useState(false);
   const [mathList, setMathList] = useState(false);
+  const [activityOpen, setActivityOpen] = useState(false);
+
+  window.__DAF_OPEN_ACTIVITY = () => setActivityOpen(true);
 
   const [game, dispatch] = useReducer(gameReducer, null, freshGame);
   const [dojo, setDojo] = useState(false);
@@ -876,7 +973,7 @@ function App() {
     const go = (d) => setI((x) => Math.max(0, Math.min(SEQ.metas.length - 1, x + d)));
     const fn = (e) => {
       const k = e.key;
-      if (k === "Escape") { setOverview(false); setMathList(false); setRail(false); return; }
+      if (k === "Escape") { setOverview(false); setMathList(false); setRail(false); setActivityOpen(false); return; }
       /* never hijack a form control: a student adjusting a slider with the
          arrow keys must move the slider, not the lesson. */
       var tag = ((e.target && e.target.tagName) || "").toLowerCase();
@@ -884,7 +981,7 @@ function App() {
           (e.target && e.target.isContentEditable)) return;
       if (dojo) return; /* the dojo owns its own keys, including Esc, P, N */
       if (k.toLowerCase() === "p" || k.toLowerCase() === "n") { setDojo(true); return; }
-      if (overview || mathList) return;
+      if (overview || mathList || activityOpen) return;
       if (k === "ArrowRight" || k === " " || k === "PageDown" || k === "ArrowDown") { e.preventDefault(); go(1); }
       else if (k === "ArrowLeft" || k === "PageUp" || k === "ArrowUp") { e.preventDefault(); go(-1); }
       else if (k === "Home") setI(0);
@@ -893,10 +990,11 @@ function App() {
       else if (k.toLowerCase() === "o") setOverview(true);
       else if (k.toLowerCase() === "t") setRail((v) => !v);
       else if (k.toLowerCase() === "m") setMathList(true);
+      else if (k.toLowerCase() === "a") setActivityOpen((v) => !v);
     };
     addEventListener("keydown", fn);
     return () => removeEventListener("keydown", fn);
-  }, [overview, mathList, dojo]);
+  }, [overview, mathList, dojo, activityOpen]);
 
   useEffect(() => {
     const mh = (e) => {
@@ -917,7 +1015,8 @@ function App() {
       <Header game={game} onDojo={() => setDojo(true)}
         onOverview={() => setOverview(true)}
         onRail={() => setRail((v) => !v)}
-        onMath={() => setMathList(true)} />
+        onMath={() => setMathList(true)}
+        onActivity={() => setActivityOpen(true)} />
       <div className="progress" style={{ width: ((i + 1) / SEQ.metas.length) * 100 + "%" }} />
 
       {game.flash && !dojo && <div className="flash">{game.flash}</div>}
@@ -956,6 +1055,7 @@ function App() {
       {overview && <Overview current={i} onSelect={setI} onClose={() => setOverview(false)} />}
       {mathList && <MathInventory onClose={() => setMathList(false)} />}
       {rail && <TeacherRail meta={meta} onClose={() => setRail(false)} />}
+      {activityOpen && <ActivityModal onClose={() => setActivityOpen(false)} />}
       {dojo && <Dojo game={game} dispatch={dispatch} job={dojoJob}
         onClose={() => { setDojo(false); setDojoJob(null); }} />}
     </div>

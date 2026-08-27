@@ -997,6 +997,33 @@ function CriticBoard({ award }) {
         </div>}
       </div>
 
+      {typeof window !== "undefined" && window.DAF_ACTIVITY && (
+        <div className="glass-card gsap-auto" style={{
+          background: "linear-gradient(135deg, rgba(18,133,124,.22), rgba(201,162,39,.15))",
+          borderColor: "rgba(201,162,39,.45)",
+          padding: "12px 16px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "10px"
+        }}>
+          <div>
+            <div style={{ fontSize: "11px", fontWeight: 900, color: "var(--daf-gold)", textTransform: "uppercase", letterSpacing: ".08em" }}>
+              <Icon name="fa-flask" /> {window.DAF_ACTIVITY.badge}
+            </div>
+            <div style={{ fontSize: "13px", fontWeight: 800, color: "#fff", marginTop: "2px" }}>
+              {window.DAF_ACTIVITY.title}
+            </div>
+          </div>
+          <button className="btn btn-gold btn-sm"
+            onClick={() => { if (typeof window.__DAF_OPEN_ACTIVITY === "function") window.__DAF_OPEN_ACTIVITY(); }}
+            title="Open Interactive Manipulative & STEAM Sandbox (A)">
+            <Icon name="fa-shapes" /> Open Sandbox Lab (A)
+          </button>
+        </div>
+      )}
+
       {C.production && (
         <div className="critic-production gsap-auto">
           <div className="critic-production-tag"><Icon name="fa-flask" /> The production — choose one and build it; the critic examines it</div>
