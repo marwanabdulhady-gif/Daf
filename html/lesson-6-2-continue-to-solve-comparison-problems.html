@@ -956,6 +956,92 @@
       }
       @keyframes wallPop { 0% { transform: scale(.4); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
+      /* =====================================================================
+         PRINT · Ctrl+P turns the CURRENT slide into a one-page handout.
+
+         The deck is a fixed 100vh app with everything absolutely positioned,
+         so print has to undo the viewport lock and let the slide flow.
+         Only one .screen is in the DOM at a time, so this is naturally one
+         page — the slide the teacher is standing on.
+
+         Careful: the answer choices in ExploreChips are <button> elements, so
+         buttons are NOT hidden wholesale. Pure actions go; anything carrying
+         mathematics stays and is restyled to read as a printed option.
+         ===================================================================== */
+      @media print {
+        @page { size: A4 landscape; margin: 10mm; }
+
+        * {
+          -webkit-print-color-adjust: exact; print-color-adjust: exact;
+          box-shadow: none !important; animation: none !important; transition: none !important;
+        }
+
+        /* release the viewport lock */
+        html, body, #root { width: auto; height: auto; overflow: visible; background: #fff; }
+        body { background: #fff; color: #000; }
+        .app { width: auto; height: auto; position: static; overflow: visible; background: #fff; }
+
+        /* projector chrome has no meaning on paper */
+        .ambient, .progress, .dots, .nav, .flash, .header-right,
+        .modal, .rail { display: none !important; }
+
+        .header {
+          position: static; height: auto; padding: 0 0 6px;
+          background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none;
+          border-bottom: 2.5px solid var(--daf-gold);
+        }
+        .brand-star { width: 32px; height: 32px; }
+        .brand-txt b { font-size: 13px; }
+        .head-center b { color: #000; font-size: 13px; }
+        .head-center span { font-size: 8.5px; }
+
+        .stage-wrap { position: static; inset: auto; }
+        .screen {
+          height: auto; overflow: visible; background: #fff;
+          grid-template-rows: auto auto;
+        }
+        .screen .copy {
+          overflow: visible; background: #fff;
+          backdrop-filter: none; -webkit-backdrop-filter: none;
+        }
+        /* the caption bar clamps to 2 lines / 1 line on screen — paper gets all of it */
+        .screen .copy h1, .screen .copy .lead {
+          display: block; overflow: visible; -webkit-line-clamp: unset;
+        }
+        .screen .visual { padding: 8px 0 0; overflow: visible; }
+        .screen .visual > .glass-panel,
+        .screen .visual > .story-shell,
+        .screen .visual .story-content > .glass-panel {
+          max-height: none; overflow: visible;
+        }
+        .glass-panel { background: #fff; border: 1px solid #999; }
+        canvas { max-width: 100%; }
+
+        /* actions go; the mathematics stays */
+        .btn, .sijill-btn, .saved-x, .class-chip,
+        input, select, textarea { display: none !important; }
+        /* ...but these buttons ARE the answer choices, so they stay as options */
+        .chip-row .btn, .chip-bar .btn {
+          display: inline-flex !important; background: #fff !important;
+          border: 1px solid #666 !important; color: #000 !important;
+        }
+        .award-row { border: 1px solid #666 !important; background: #fff !important; }
+
+        .footer {
+          position: static; height: auto; padding: 5px 0; margin-top: 6px;
+          background: #fff; color: #000; border-top: 1px solid #999;
+        }
+        .footer .pull { color: #333; opacity: 1; }
+
+        /* handout lines, so the printed slide can actually be handed in */
+        .app::after {
+          content: "Name: ______________________________     Class: ____________     Date: ____________     Teacher check: \2610";
+          display: block; margin-top: 8px; padding-top: 7px;
+          border-top: 1px solid #999;
+          font: 700 10px "JetBrains Mono", monospace; color: #333; letter-spacing: .03em;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -3551,8 +3637,10 @@
    Design follows the research gate (docs/research/pr-02-source-review-infrastructure.md,
    S1/S2): the state is tiny, best-effort and NON-CRITICAL — when storage is
    missing, cleared or evicted every deck behaves exactly as before (folio
-   pips fall back to position-based), and one tap can export a JSON backup.
-   There is no server, no sync and no cross-machine state.
+   pips fall back to position-based), and one tap can export a JSON backup and
+   another can merge that backup back in on a different computer.
+   There is no server, no sync and no cross-machine state: moving between
+   machines is an explicit teacher action (export here, import there).
    =========================================================================== */
 const FOLIO_KEY = "daf.folio.v1";
 
@@ -3627,6 +3715,84 @@ function folioExport(className) {
   document.body.appendChild(a);
   a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
+
+/* Import the return trip for folioExport.
+
+   A teacher exports on the classroom machine, carries the JSON to the second
+   machine (or back after a rebuild) and merges it in. Deliberately
+   NON-DESTRUCTIVE: a merge adds or refreshes stamps and never removes one, so
+   importing the same file twice is identical to importing it once, and a stale
+   backup can never erase work this computer has already recorded. The
+   per-lesson timestamp decides the winner, so the newest stamp survives either
+   way round.
+
+   `payload` is either the parsed object or the raw JSON text produced by
+   folioExport. Returns { added, refreshed, unchanged, rejected, className }
+   where `rejected` counts lesson entries the backup was not allowed to carry
+   (anything that is not a lesson code -> timestamp pair), or { error } when
+   the payload is not a folio backup at all. Nothing is stored unless at least
+   one valid entry survives, and storage failure reports error, never throws. */
+function folioMerge(payload) {
+  let doc = payload;
+  if (typeof payload === "string") {
+    try { doc = JSON.parse(payload); } catch (e) { return { error: "That file is not valid JSON." }; }
+  }
+  if (!doc || typeof doc !== "object" || Array.isArray(doc)) return { error: "That file is not a folio backup." };
+  const stt = doc.state;
+  if (!stt || typeof stt !== "object" || Array.isArray(stt) ||
+      !stt.lessons || typeof stt.lessons !== "object" || Array.isArray(stt.lessons)) {
+    return { error: "That file has no class folio stamps in it." };
+  }
+  const className = (typeof doc.class === "string" && doc.class.trim()) ? doc.class.trim() : null;
+  if (!className) return { error: "That backup does not say which class it belongs to." };
+  /* the same shapes folioStamp will write: "1-1", "17-10" or "boss-13" */
+  const CODE = /^(?:\d+-\d+|boss-\d+)$/;
+  const st = folioLoad();
+  const c = st.classes[className] || (st.classes[className] = { lessons: {} });
+  if (!c.lessons) c.lessons = {};
+  const out = { added: 0, refreshed: 0, unchanged: 0, rejected: 0, className: className };
+  for (const key of Object.keys(stt.lessons)) {
+    const stamp = stt.lessons[key];
+    if (!CODE.test(key) || typeof stamp !== "string" || Number.isNaN(Date.parse(stamp))) { out.rejected++; continue; }
+    const prev = c.lessons[key];
+    if (prev === undefined) { c.lessons[key] = stamp; out.added++; }
+    else if (prev === stamp) { out.unchanged++; }
+    else if (Date.parse(stamp) > Date.parse(prev)) { c.lessons[key] = stamp; out.refreshed++; }
+    else { out.unchanged++; } /* this computer already holds the newer stamp */
+  }
+  if (!out.added && !out.refreshed) return out; /* nothing to write: leave storage alone */
+  c.updatedAt = new Date().toISOString();
+  if (!folioSave(st)) return { error: "This computer would not save the import (storage full or blocked)." };
+  return out;
+}
+
+/* Browser half: open a file picker and merge the chosen backup.
+   Calls `done(result)` — { added, refreshed, unchanged, rejected, className }
+   on success, or { error } on any failure. Never throws. */
+function folioImportFile(done) {
+  const report = (r) => { try { if (done) done(r); } catch (e) {} return r; };
+  try {
+    if (typeof document === "undefined" || !document.createElement) return report({ error: "File import needs a browser." });
+    const inp = document.createElement("input");
+    inp.type = "file";
+    inp.accept = ".json,application/json";
+    inp.style.position = "fixed";
+    inp.style.left = "-9999px";
+    inp.addEventListener("change", () => {
+      const file = inp.files && inp.files[0];
+      const finish = () => { setTimeout(() => { try { inp.remove(); } catch (e) {} }, 400); };
+      if (!file) return (finish(), report({ error: "No file was chosen." }));
+      const reader = new FileReader();
+      reader.onload = () => { const r = folioMerge(String(reader.result)); finish(); report(r); };
+      reader.onerror = () => { finish(); report({ error: "That file could not be read." }); };
+      try { reader.readAsText(file); }
+      catch (e) { finish(); report({ error: "That file could not be read." }); }
+    });
+    document.body.appendChild(inp);
+    inp.click();
+    return true;
+  } catch (e) { return report({ error: "File import is not available here." }); }
 }
 /* ===========================================================================
    THE FOG GREMLINS · creature engine (pure canvas, D = draw.js)
@@ -4154,7 +4320,7 @@ window.GREMLINS = GREMLINS;
 ;</script>
     <script>window.DAF_STORY = {"title":"The Lantern of Numeria — The Tale of the Seventeen Doors","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"supporting":[{"id":"hafizah","name":"Hafizah","role":"the Lantern Keeper","doors":[1,17],"prop":"lantern"},{"id":"zafir","name":"Ustadh Zafir","role":"the traveling scholar","doors":[2,5,6,7,13,17],"prop":"compass"},{"id":"rashed","name":"Rashed","role":"the Rival's Report","doors":[2,5,6,7,13,17],"prop":"clipboard"},{"id":"abulaila","name":"Abu Laila","role":"the merchant of the souq","doors":[2],"prop":"ledger"},{"id":"ihsan","name":"Ihsan","role":"the auditor","doors":[2,6],"prop":"seal"},{"id":"khalida","name":"Khalida","role":"the foreman","doors":[3,4],"prop":"ruler"},{"id":"mansur","name":"Mansur","role":"the caravan master","doors":[5],"prop":"tally"},{"id":"salma","name":"Salma","role":"the council scribe","doors":[6],"prop":"quill"},{"id":"mariam","name":"Mariam","role":"the architect","doors":[7,14,16],"prop":"compass"},{"id":"munira","name":"Munira","role":"the ferrywoman of the Fraction Isles","doors":[8],"prop":"oar"},{"id":"farida","name":"Farida","role":"the head cook","doors":[9],"prop":"ladle"},{"id":"zaynab","name":"Zaynab","role":"the clockmaker","doors":[10],"prop":"key"},{"id":"rashid","name":"Rashid","role":"the pearl diver","doors":[11],"prop":"mask"},{"id":"amina","name":"Amina","role":"the dockmaster","doors":[12],"prop":"clipboard"},{"id":"yusuf","name":"Yusuf","role":"the market warden","doors":[13],"prop":"balance"},{"id":"farid","name":"Farid","role":"the astronomer","doors":[15],"prop":"astrolabe"}],"unit":{"topic":6,"chapter":"The council of competing plans","question":"Which plan best serves the city when no single operation tells the whole story?","artifact":"A multi-step decision board with assumptions and checks","pbl":"Compare two school-service proposals using multi-step whole-number models.","bridge":"The chosen plan needs repeatable modules that fit several spaces. The council asks for every possible rectangular arrangement: factors.","lessonCount":6,"lessonCodes":["6-1","6-2","6-3","6-4","6-5","6-6"]},"lesson":{"code":"6-2","curriculumTitle":"Continue to Solve Comparison Problems","standard":"4.OA.A.2","storyBeat":"The claim changes direction","technique":"Foreshadowing and prediction","storyMove":"A second report states the unknown in a different position.","studentMission":"Continue solving comparison problems and label the meaning of each quantity.","handoff":"A plan with three steps — costs, capacity and remaining resources in one scenario.","screenPlan":{"shape":"compact-practice","shapeLabel":"Compact practice","recommended":8,"planningBand":"7–9","reason":"This continuation lesson can reactivate the previous model quickly and devote its limited screens to a new variation."},"implementationStatus":"story-built","index":1,"numberInUnit":2},"stemWindows":[],"amanahWindows":[]};</script>
     <script>window.DAF_STAGE = {"lessons":{"6-2":{"code":"6-2","title":"Continue to Solve Comparison Problems","standard":"4.OA.A.2","screens":{"prep":{"phase":"prep","title":"The <em>council briefing</em> was already at home","lead":"Before class, the class met the competing-plans briefing — the first claim and three home questions, at each student's own pace.","goal":"Recover the first exposure, so the council session begins with thinking — not with content delivery.","pull":"Now the probe: what does the class already hold about comparing and combining plans?","rail":{"launch":"Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.","monitor":["Reading the core objects aloud","Recalling the home questions","Comparing notes against the briefing"],"connect":"Which of the home questions does today's work answer?","misconception":"Treating the briefing as a finished lesson. It is first exposure, not mastery."}},"diagnose":{"phase":"diagnose","title":"The <em>gap map</em> for the council","lead":"Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.","goal":"Build a gap map: what is known, and what is missing, before the first claim is drawn.","pull":"Knowledge building closes exactly what the map flags.","rail":{"launch":"Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.","monitor":["Voting honestly over confident guesses","Naming a gap without blame","Connecting a gap back to the briefing"],"connect":"Which flagged gap is the most expensive one to leave open?","misconception":"Turning the probe into a grade, or letting confident guessing mask a real gap."}},"practice":{"phase":"practice","title":"Practice — feedback in <em>seconds, not days</em>","lead":"First with the model open, then alone, then the harder lane — every answer met in the moment.","goal":"Guided, then independent — with feedback that arrives in seconds, not days.","pull":"Now a genuinely new situation from the council.","rail":{"launch":"Item one is supported: the model stays open. Item two is independent: no model until it is missed.","monitor":["Using the model before answering","Self-checking after a miss","Moving on without waiting for the teacher"],"connect":"Where did the seconds-fast feedback change what the class did next?","misconception":"Treating the supported item as the exam and the independent item as a warm-up."}},"critic":{"phase":"produce","title":"A genuinely <em>new situation</em> from the council","lead":"The class produces its own work in a situation it has not seen before, then defends it. AI enters here — as a critic, never as an author.","goal":"Build the STEM production, transfer the method into new territory, and defend it through critique.","pull":"One individual task now decides each student's next path.","rail":{"launch":"The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.","monitor":["Stating the method before the critique","Defending with evidence from the work","Distinguishing a trap from a method"],"connect":"Which challenge actually changed the work, and which one did it already survive?","misconception":"Letting the critic — or the deck — supply the answer. The production must be the students'."}}},"prep":{"objects":["compare","addCompare"],"home":["The claim changes direction: the top shelf holds 72 books, which is 6 times as many as the bottom shelf. Where does the question mark sit now — on the long bar or on the single bar?","If 6 copies of the bottom shelf make 72, what single-bar number fits? Check by drawing six equal pieces that total 72.","A councillor reads '6 times as many' and multiplies 72 by 6. What is wrong with what that bar would show — which quantity was already known?"]},"diagnose":{"claims":["I can locate the unknown on the bar model whether it is the long bar or the single bar.","I can divide to find a single-bar quantity when the multiplied total is known.","I can label every quantity in a comparison so the equation means something.","I can check the found base by multiplying it back to the total."]},"practice":{"model":["compare","addCompare"],"items":[{"mode":"guided","prompt":"A shop has 84 pens in 7 equal boxes. How many pens are in one box?","options":[{"v":"a","text":"77"},{"v":"b","text":"12"},{"v":"c","text":"588"},{"v":"d","text":"91"}],"right":"b","yes":"Yes — 84 shared into 7 equal boxes is 12 each.","notYet":"Not yet — draw the bars and look at what is missing.","hint":"The total is known and the boxes are equal, so divide."},{"mode":"independent","prompt":"A school kitchen prepares 96 meals for the late shift — that is 4 times as many as it prepares for the early shift. How many meals does the early shift get?","options":[{"v":"a","text":"24"},{"v":"b","text":"100"},{"v":"c","text":"384"},{"v":"d","text":"20"}],"right":"a","yes":"Yes — 4 equal bars total 96, so one bar is 96 divided by 4, or 24. The unknown is the single bar this time, so the operation is division.","notYet":"Not yet — the 96 is four copies of the unknown bar; split 96 into four equal pieces rather than multiplying."},{"mode":"harder","prompt":"The top shelf holds 72 books — 6 times as many as the bottom shelf. The council also asks how many books the two shelves hold together and how many more the top holds. Give all three numbers with the bar evidence.","answer":"Bottom shelf: 72 divided by 6 is 12. Together: 72 plus 12 is 84. The gap: 72 minus 12 is 60 more on top. The same comparison answers three questions — base (12), total (84) and difference (60) — depending on what the bar is asked."}]},"critic":{"situation":"A second report states the unknown in a different position.","mission":"Continue solving comparison problems and label the meaning of each quantity.","method":{"options":["Whole known, parts equal — divide. One part known, multiplier given — multiply. The bar shows which.","Answering 588 — the whole was multiplied by the boxes.","Copy the example and change the labels"],"right":0},"challenges":[{"tag":"The trap","question":"The critic reads the work and names the most likely trap in it: Answering 588 — the whole was multiplied by the boxes. How does your production dodge it?","options":["We checked against this: placing the unknown part","The numbers look right, so the method must be right","It can't fail — the answer matches the example"],"right":0,"explain":"The critic never corrects — it makes the class check its own evidence."},{"tag":"The reasoning","question":"Collect responses to open tomorrow.","options":["Dividing 84 by 7","Because it worked once","Because it matches the example"],"right":0,"explain":"A reason tied to the structure survives a new situation; a reason tied to one answer does not."},{"tag":"The transfer","question":"Last, the critic asks for transfer — Continue solving comparison problems and label the meaning of each quantity. What is the first move?","options":["Find a total at home that splits into equal groups and work out one group","Copy the lesson's numbers and change the labels","Ask the class what they think first"],"right":0,"explain":"Transfer is the first move, not the answer. The critic stops there — the work is the students'."}],"production":{"options":[{"kind":"drawing","task":"An unknown-position drawing sheet: draw three comparison problems side by side with the question mark in three different places — on the long bar, on the single bar, and on the difference — so a classmate can see which operation each position demands.","stem":"ask which three unknowns to place → plan the bars → draw the three marked situations → test each with its inverse operation → share the sheet on the wall","ai":false},{"kind":"presentation","task":"A 90-second direction-change talk: present one comparison where the unknown is the long bar and one where it is the single bar, narrate why the operation flips between multiply and divide, and close with the check that proves both.","stem":"ask why the operation flips → plan the two cases → build both bar models → test each by the inverse operation → deliver the talk to the council","ai":false},{"kind":"video","task":"A claim-check clip with the AI as councillor: ask the AI to write two 'times as many' claims with different unknown positions, solve each yourself on camera with the bar model, and correct on screen any claim the AI sets up as an addition instead of a multiplication.","stem":"ask what each unknown position requires → plan the two claims → request them from the AI → test each with a drawn bar on camera → share the clip on the wall","ai":true}]}},"gate":{"ixl":["AH8","9GX"],"revisitOld":6},"wall":{"artifact":"Council board · moved unknowns drawn","next":"A plan with three steps — costs, capacity and remaining resources in one scenario."}}}};</script>
-    <script>window.DAF_ACTIVITY = {"id":"ch06","title":"Caravan Crossroads: Multi-Step Strip Model Lab","badge":"Chapter 06 · Multi-Step Problem Solving","description":"Construct multi-part strip diagrams to break complex, multi-operation word problems into manageable steps.","file":"activity-ch06-caravan-multi-step-problem-lab.html","stem":{"ask":"How do comparison bars help us identify whether to multiply, add, or subtract first in multi-step scenarios?","plan":"Draw strip diagrams comparing Caravan A and Caravan B before calculating the combined total.","build":"Calculate the hidden sub-step (Caravan B amount) before answering the main question (Total sacks).","share":"Explain your multi-step equation: Total = A + (N × A) to a partner."},"ai":"Ask AI to critique a student solution that adds 120 + 3 instead of multiplying 120 x 3.","kind":"stripDiagrams"}
+    <script>window.DAF_ACTIVITY = {"id":"lesson-6-2-activity","title":"Caravan Crossroads: Multi-Step Strip Model Lab","badge":"Chapter 06 · Multi-Step Problem Solving","description":"Interactive STEAM Activity Lab with live manipulative sandbox and Stage 5 AI-in-the-loop defense prompts.","file":"lesson-6-2-continue-to-solve-comparison-problems-activity.html","col":"#fa7e19"}
 ;</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
@@ -7329,7 +7495,15 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
-          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-export" /> folio export</a>
+          <a onClick={() => folioImportFile((r) => {
+            if (r && r.error) { window.alert(r.error); return; }
+            window.DAF_FOLIO = folioFor(game.section);
+            const n = r.className === game.section ? "" : " (saved under " + r.className + ")";
+            window.alert("Folio backup merged: " + r.added + " new, " + r.refreshed + " updated, " +
+              r.unchanged + " already here" + (r.rejected ? ", " + r.rejected + " ignored" : "") + "." + n +
+              (r.className === game.section ? "\nOpen the folio again to see the restored stamps." : ""));
+          })} title="Merge a folio backup from another computer into this one (adds stamps, never removes)"><Icon name="fa-file-arrow-up" /> folio import</a>
           <a onClick={() => {
             if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
               folioReset(game.section);
@@ -7338,7 +7512,7 @@ function Dojo({ game, dispatch, job, onClose }) {
           }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
         </span>
         <span className="dj-note">
-          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
+          Folio state lives only on this computer — export before switching machines and import the backup on the other one; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>

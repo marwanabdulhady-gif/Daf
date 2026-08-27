@@ -121,9 +121,93 @@
     .ai-title { font-size: 12px; font-weight: 900; color: var(--daf-deep); display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
     .ai-desc { font-size: 11.5px; color: var(--daf-ink-2); line-height: 1.45; }
 
+    /* Artifact card — the student names the model and defends it in writing.
+       Both fields are stamped onto the exported PNG, so the download is
+       gradable evidence rather than an anonymous screenshot. */
+    .artifact-box {
+      background: rgba(18,133,124,.07); border: 1.5px solid var(--daf-teal); border-radius: 12px;
+      padding: 12px 14px; display: flex; flex-direction: column; gap: 9px;
+    }
+    .artifact-title {
+      font-size: 12px; font-weight: 900; color: var(--daf-deep);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .artifact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    @media (max-width: 620px) { .artifact-row { grid-template-columns: 1fr; } }
+    .artifact-field { display: flex; flex-direction: column; gap: 4px; }
+    .artifact-label { font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--daf-deep); }
+    .artifact-input {
+      background: #fff; border: 1.5px solid var(--daf-line); border-radius: 8px; color: var(--daf-ink);
+      padding: 7px 10px; font: 700 12.5px inherit; outline: none; width: 100%;
+    }
+    .artifact-input:focus { border-color: var(--daf-teal); }
+    textarea.artifact-input { resize: vertical; min-height: 74px; line-height: 1.45; font-weight: 500; }
+    .artifact-hint { font-size: 10.5px; color: var(--daf-ink-2); line-height: 1.4; }
+    .artifact-actions { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .artifact-status { font-size: 11px; font-weight: 800; color: var(--daf-teal); margin-right: auto; }
+    .artifact-status.err { color: var(--daf-ink-2); }
+
     footer {
       padding: 14px 24px; font-size: 11px; color: var(--daf-ink-2); border-top: 1px solid var(--daf-line);
       text-align: center; background: rgba(255,255,255,.8);
+    }
+
+    /* =====================================================================
+       PRINT — Ctrl+P gives the teacher a one-page paper worksheet:
+       the STEM inquiry prompts, a graph grid to draw on, and answer lines.
+       Everything interactive is dropped; only the mathematics remains.
+       ===================================================================== */
+    .print-sheet { display: none; }
+
+    @media print {
+      @page { size: A4 portrait; margin: 12mm; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-shadow: none !important; }
+      html, body { width: auto; min-height: 0; background: #fff; display: block; }
+      body { color: #000; }
+      .header {
+        height: auto; padding: 0 0 6px; background: #fff; backdrop-filter: none;
+        border-bottom: 2.5px solid var(--daf-gold);
+      }
+      .brand-star { width: 30px; height: 30px; }
+      .head-center b { font-size: 12.5px; color: #000; }
+      .head-center span { font-size: 9px; }
+      .header-chips .chip { border: 1px solid #666; background: #fff; color: #000; font-size: 8.5px; padding: 2px 7px; }
+      main { display: block; max-width: none; padding: 7px 0 0; }
+      /* the live sandbox, its controls and the on-screen artifact form are
+         screen-only: paper cannot run a slider, and the student writes by hand */
+      .glass-panel:first-of-type, .artifact-box { display: none !important; }
+      .glass-panel { background: #fff; border: 1px solid #999; padding: 9px 11px; margin-bottom: 7px; }
+      .panel-title { font-size: 14px; }
+      .panel-sub { font-size: 10.5px; }
+      .prod-card { border: 1px solid #999; break-inside: avoid; page-break-inside: avoid; padding: 8px 10px; }
+      .prod-task { font-size: 11px; }
+      .prod-stem { font-size: 9.5px; }
+      .ai-box { background: #fff; border: 1px dashed #666; }
+      footer { background: #fff; border-top: 1px solid #999; padding: 7px 0; font-size: 9px; }
+
+      /* the paper worksheet switches on */
+      .print-sheet { display: block; break-inside: avoid; page-break-inside: avoid; }
+      .ps-block { border: 1px solid #999; border-radius: 6px; padding: 8px 10px; margin-bottom: 7px; }
+      .ps-h {
+        font: 900 11px 'Cabinet Grotesk', sans-serif; letter-spacing: .04em;
+        text-transform: uppercase; color: #000; margin-bottom: 6px;
+        border-bottom: 1px solid #bbb; padding-bottom: 3px;
+      }
+      .ps-names { display: flex; gap: 14px; flex-wrap: wrap; }
+      .ps-name { flex: 1 1 30%; font-size: 10px; font-weight: 700; }
+      .ps-name i { display: inline-block; border-bottom: 1px solid #333; min-width: 92px; height: 12px; margin-left: 4px; }
+      .ps-q { font-size: 10.5px; font-weight: 700; line-height: 1.5; margin: 5px 0 2px; }
+      .ps-q span { display: inline-block; width: 15px; font-weight: 900; }
+      .ps-lines { margin-top: 4px; }
+      .ps-line { border-bottom: 1px dotted #888; height: 17px; }
+      .ps-grid {
+        height: 132px; border: 1px solid #999; border-radius: 4px;
+        background-image:
+          linear-gradient(to right, #ddd 1px, transparent 1px),
+          linear-gradient(to bottom, #ddd 1px, transparent 1px);
+        background-size: 13.2px 13.2px;
+      }
+      .ps-foot { display: flex; justify-content: space-between; font-size: 9px; color: #333; margin-top: 6px; }
     }
   </style>
 </head>
@@ -231,8 +315,74 @@
           The AI examines, challenges, and audits candidate calculations. <b>Students verify and build every piece themselves — AI is a critic, never an author.</b>
         </div>
       </div>
+
+      <div class="artifact-box">
+        <div class="artifact-title">
+          <i class="fa-solid fa-camera" style="color:var(--daf-teal)"></i> Export Artifact Card
+        </div>
+        <div class="artifact-row">
+          <div class="artifact-field">
+            <label class="artifact-label" for="artifactName">Student name</label>
+            <input class="artifact-input" id="artifactName" type="text" placeholder="Who built this model?" autocomplete="off">
+          </div>
+          <div class="artifact-field">
+            <label class="artifact-label" for="artifactClass">Class</label>
+            <input class="artifact-input" id="artifactClass" type="text" placeholder="e.g. 4A" autocomplete="off">
+          </div>
+        </div>
+        <div class="artifact-field">
+          <label class="artifact-label" for="artifactNote">My claim — what does the model prove, and how do I know?</label>
+          <textarea class="artifact-input" id="artifactNote" placeholder="I claim that … because the model shows … and I tested it by …"></textarea>
+        </div>
+        <div class="artifact-hint">
+          The card is stamped with your sandbox, your claim, the lesson and the standard — ready for the Evidence Wall or for grading.
+          The AI never writes this part.
+        </div>
+        <div class="artifact-actions">
+          <span class="artifact-status" id="artifactStatus"></span>
+          <button class="btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Worksheet</button>
+          <button class="btn gold" onclick="exportArtifactCard()"><i class="fa-solid fa-download"></i> Export Artifact Card</button>
+        </div>
+      </div>
     </section>
   </main>
+
+  <!-- Print-only paper worksheet: never shown on screen -->
+  <div class="print-sheet">
+    <div class="ps-block">
+      <div class="ps-h">Student Record</div>
+      <div class="ps-names">
+        <span class="ps-name">Name <i></i></span>
+        <span class="ps-name">Class <i></i></span>
+        <span class="ps-name">Date <i></i></span>
+      </div>
+    </div>
+
+    <div class="ps-block">
+      <div class="ps-h">STEM Inquiry — answer in full sentences</div>
+      <div class="ps-q"><span>1.</span>A fold-test symmetry kit: fold ten paper shapes to test mirror lines, mount each folded-then-unfolded sheet with its actual fold lines marked and its symmetry count written.</div><div class="ps-q"><span>2.</span>A symmetric garden-bed design: draw an elevation of a garden or facade half, complete its mirror half across a drawn symmetry line, and mark every fold line your design possesses.</div><div class="ps-q"><span>3.</span>The symmetry hunt with the AI as photographer: ask the AI to list five symmetric objects and their fold-line counts, film and fold each real object yourself, and correct any count the AI over-claimed (a rectangle called four-fold).</div>
+    </div>
+
+    <div class="ps-block">
+      <div class="ps-h">My Model — draw and label it on the grid</div>
+      <div class="ps-grid"></div>
+    </div>
+
+    <div class="ps-block">
+      <div class="ps-h">My Claim — what does the model prove, and how do I know?</div>
+      <div class="ps-lines">
+        <div class="ps-line"></div>
+        <div class="ps-line"></div>
+        <div class="ps-line"></div>
+      </div>
+    </div>
+
+    <div class="ps-foot">
+      <span>Standard: 4.G.A.3</span>
+      <span>AI is a critic, never an author — every line above is the student's own work.</span>
+      <span>Teacher check &#9744;</span>
+    </div>
+  </div>
 
   <footer>
     Savvas enVision Mathematics (2026 - 2027) · Grade 4 · Dar Al Fikr Schools · Lesson 16-4 Activity Lab
@@ -276,6 +426,192 @@
       
 
     drawTool();
+
+    /* ---- Artifact card export ------------------------------------------
+       Composites the live sandbox, the student's OWN claim and the lesson
+       identity onto one branded PNG. Nothing here is authored for the
+       student: the claim text is whatever they typed, so the download is
+       their evidence, ready for the Evidence Wall or for grading.
+       Pure client-side — no network, no server, works from the file:// deck. */
+    const ARTIFACT = {
+      code: "16-4",
+      title: "Lesson 16-4 · Line Symmetry",
+      topic: "Lines, Angles, and Shapes · Geometry Gardens",
+      standard: "4.G.A.3",
+      ixl: "9FD · MWS"
+    };
+
+    /* the official 8-point star, drawn from the same vertices as the brand mark */
+    const STAR_PTS = [[20,0],[24.2,10.1],[34.1,5.9],[29.9,16],[40,20],[29.9,24],[34.1,34.1],
+      [24,29.9],[20,40],[15.8,29.9],[5.9,34.1],[10.1,24],[0,20],[10.1,15.8],[5.9,5.9],[16,10.1]];
+
+    function brandStar(g, cx, cy, size, fill) {
+      const k = size / 40;
+      g.save();
+      g.translate(cx - size / 2, cy - size / 2);
+      g.scale(k, k);
+      g.beginPath();
+      for (let i = 0; i < STAR_PTS.length; i++) {
+        if (i === 0) g.moveTo(STAR_PTS[i][0], STAR_PTS[i][1]);
+        else g.lineTo(STAR_PTS[i][0], STAR_PTS[i][1]);
+      }
+      g.closePath();
+      g.fillStyle = fill;
+      g.fill();
+      g.restore();
+    }
+
+    function cardRect(g, x, y, w, h, r) {
+      g.beginPath();
+      g.moveTo(x + r, y);
+      g.lineTo(x + w - r, y); g.quadraticCurveTo(x + w, y, x + w, y + r);
+      g.lineTo(x + w, y + h - r); g.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      g.lineTo(x + r, y + h); g.quadraticCurveTo(x, y + h, x, y + h - r);
+      g.lineTo(x, y + r); g.quadraticCurveTo(x, y, x + r, y);
+      g.closePath();
+    }
+
+    /* word-wrap onto the card; returns the y for the next line */
+    function cardWrap(g, text, x, y, maxW, lineH, maxLines) {
+      const words = String(text).replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
+      if (!words.length) return y;
+      let line = "", lines = 0;
+      for (let i = 0; i < words.length; i++) {
+        const trial = line ? line + " " + words[i] : words[i];
+        if (g.measureText(trial).width > maxW && line) {
+          lines++;
+          g.fillText(line, x, y);
+          if (lines >= maxLines) {
+            /* out of room: say so rather than silently dropping the claim */
+            const rest = words.slice(i).join(" ");
+            let tail = rest;
+            while (g.measureText(tail + " …").width > maxW && tail.length > 1) tail = tail.slice(0, -1);
+            g.fillText(tail + " …", x, y + lineH);
+            return y + lineH * 2;
+          }
+          y += lineH;
+          line = words[i];
+        } else line = trial;
+      }
+      g.fillText(line, x, y);
+      return y + lineH;
+    }
+
+    function ruled(g, label, x, y, w, value) {
+      g.strokeStyle = "#47616A"; g.lineWidth = 1.4;
+      g.beginPath(); g.moveTo(x, y); g.lineTo(x + w, y); g.stroke();
+      g.fillStyle = "#47616A"; g.font = "700 10px 'JetBrains Mono', monospace";
+      g.fillText(label.toUpperCase(), x, y + 13);
+      if (value) {
+        g.fillStyle = "#10242B"; g.font = "700 13px sans-serif";
+        g.fillText(value, x, y - 6);
+      }
+    }
+
+    function exportArtifactCard() {
+      const status = document.getElementById("artifactStatus");
+      try {
+        const W = 900, H = 1240;
+        const out = document.createElement("canvas");
+        out.width = W; out.height = H;
+        const g = out.getContext("2d");
+
+        const name = (document.getElementById("artifactName").value || "").trim();
+        const cls = (document.getElementById("artifactClass").value || "").trim();
+        const note = (document.getElementById("artifactNote").value || "").trim();
+
+        /* paper + brand band */
+        g.fillStyle = "#FFFFFF"; g.fillRect(0, 0, W, H);
+        g.fillStyle = "#0A5F58"; g.fillRect(0, 0, W, 148);
+        g.fillStyle = "#C9A227"; g.fillRect(0, 148, W, 7);
+        brandStar(g, 66, 74, 62, "#1AA79B");
+
+        g.textAlign = "left"; g.textBaseline = "alphabetic";
+        g.fillStyle = "#FFFFFF"; g.font = "900 30px 'Cabinet Grotesk', sans-serif";
+        g.fillText("Dar Al Fikr Schools", 112, 66);
+        g.fillStyle = "#9FC4BD"; g.font = "800 13px 'JetBrains Mono', monospace";
+        g.fillText("FAITH · RIGHTEOUSNESS · WISDOM", 112, 94);
+        g.textAlign = "right";
+        g.fillStyle = "#E3C05A"; g.font = "900 15px 'JetBrains Mono', monospace";
+        g.fillText("STAGE 5 · ARTIFACT CARD", W - 40, 62);
+        g.fillStyle = "#9FC4BD"; g.font = "700 13px 'JetBrains Mono', monospace";
+        g.fillText("LESSON " + ARTIFACT.code, W - 40, 88);
+
+        /* lesson identity */
+        let y = 198;
+        g.textAlign = "left";
+        g.fillStyle = "#10242B"; g.font = "900 25px 'Cabinet Grotesk', sans-serif";
+        y = cardWrap(g, ARTIFACT.title, 44, y, W - 88, 30, 2);
+        g.fillStyle = "#47616A"; g.font = "700 13.5px sans-serif";
+        y = cardWrap(g, ARTIFACT.topic, 44, y + 4, W - 88, 18, 1);
+
+        /* meta strip */
+        y += 12;
+        g.fillStyle = "#F7FBFA"; g.strokeStyle = "#CDE7E3"; g.lineWidth = 1.5;
+        cardRect(g, 44, y, W - 88, 48, 9); g.fill(); g.stroke();
+        g.fillStyle = "#0A5F58"; g.font = "800 10px 'JetBrains Mono', monospace";
+        g.fillText("STANDARD", 60, y + 19);
+        g.fillText("IXL SKILLS", 400, y + 19);
+        g.fillStyle = "#10242B"; g.font = "700 13px 'JetBrains Mono', monospace";
+        g.fillText(ARTIFACT.standard, 60, y + 37);
+        g.fillText(ARTIFACT.ixl.length > 42 ? ARTIFACT.ixl.slice(0, 42) + "…" : ARTIFACT.ixl, 400, y + 37);
+        y += 68;
+
+        /* the student's sandbox, exactly as they left it */
+        let iw = W - 88;
+        let ih = Math.round(iw * canvas.height / canvas.width);
+        if (ih > 400) { ih = 400; iw = Math.round(ih * canvas.width / canvas.height); }
+        const ix = Math.round((W - iw) / 2);
+        g.fillStyle = "#08161A";
+        cardRect(g, ix - 7, y - 7, iw + 14, ih + 14, 12); g.fill();
+        g.drawImage(canvas, ix, y, iw, ih);
+        g.strokeStyle = "#C9A227"; g.lineWidth = 2.5;
+        cardRect(g, ix - 7, y - 7, iw + 14, ih + 14, 12); g.stroke();
+        g.fillStyle = "#47616A"; g.font = "700 10.5px 'JetBrains Mono', monospace";
+        g.fillText("LIVE SANDBOX — AS THE STUDENT LEFT IT", ix, y + ih + 24);
+        y += ih + 48;
+
+        /* the student's own claim */
+        g.fillStyle = "#0A5F58"; g.font = "900 13px 'Cabinet Grotesk', sans-serif";
+        g.fillText("MY CLAIM — WHAT THE MODEL PROVES AND HOW I KNOW", 44, y);
+        g.strokeStyle = "#C9A227"; g.lineWidth = 2.5;
+        g.beginPath(); g.moveTo(44, y + 8); g.lineTo(W - 44, y + 8); g.stroke();
+        g.fillStyle = note ? "#10242B" : "#8A94A6";
+        g.font = note ? "500 15px sans-serif" : "italic 500 14px sans-serif";
+        cardWrap(g, note || "(claim left blank — the student writes this part, never the AI)",
+          44, y + 34, W - 88, 23, 5);
+
+        /* signature block */
+        const by = H - 128;
+        ruled(g, "student", 44, by, 300, name);
+        ruled(g, "class", 384, by, 150, cls);
+        ruled(g, "date", 574, by, 130, new Date().toISOString().slice(0, 10));
+        ruled(g, "teacher check", 744, by, 112, "");
+
+        /* footer rule */
+        g.fillStyle = "#C9A227"; g.fillRect(0, H - 34, W, 4);
+        g.fillStyle = "#47616A"; g.font = "700 11px sans-serif";
+        g.textAlign = "left";
+        g.fillText("Savvas enVision Mathematics (2026 - 2027) · Grade 4 · Dar Al Fikr Schools", 44, H - 14);
+        g.textAlign = "right";
+        g.fillText("AI is a critic, never an author.", W - 44, H - 14);
+
+        /* download */
+        const safe = (name || "student").replace(/[^A-Za-z0-9._-]+/g, "-");
+        const fname = "daf-artifact-" + ARTIFACT.code + "-" + safe + ".png";
+        const a = document.createElement("a");
+        a.href = out.toDataURL("image/png");
+        a.download = fname;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => a.remove(), 400);
+        status.className = "artifact-status";
+        status.textContent = "Saved " + fname + (name ? "" : " — add your name so it can be graded");
+      } catch (e) {
+        status.className = "artifact-status err";
+        status.textContent = "Export failed: " + ((e && e.message) || e);
+      }
+    }
   </script>
 </body>
 </html>

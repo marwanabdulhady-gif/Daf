@@ -845,7 +845,15 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
-          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-export" /> folio export</a>
+          <a onClick={() => folioImportFile((r) => {
+            if (r && r.error) { window.alert(r.error); return; }
+            window.DAF_FOLIO = folioFor(game.section);
+            const n = r.className === game.section ? "" : " (saved under " + r.className + ")";
+            window.alert("Folio backup merged: " + r.added + " new, " + r.refreshed + " updated, " +
+              r.unchanged + " already here" + (r.rejected ? ", " + r.rejected + " ignored" : "") + "." + n +
+              (r.className === game.section ? "\nOpen the folio again to see the restored stamps." : ""));
+          })} title="Merge a folio backup from another computer into this one (adds stamps, never removes)"><Icon name="fa-file-arrow-up" /> folio import</a>
           <a onClick={() => {
             if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
               folioReset(game.section);
@@ -854,7 +862,7 @@ function Dojo({ game, dispatch, job, onClose }) {
           }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
         </span>
         <span className="dj-note">
-          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
+          Folio state lives only on this computer — export before switching machines and import the backup on the other one; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>

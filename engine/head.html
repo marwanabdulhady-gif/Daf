@@ -956,6 +956,92 @@
       }
       @keyframes wallPop { 0% { transform: scale(.4); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
+      /* =====================================================================
+         PRINT · Ctrl+P turns the CURRENT slide into a one-page handout.
+
+         The deck is a fixed 100vh app with everything absolutely positioned,
+         so print has to undo the viewport lock and let the slide flow.
+         Only one .screen is in the DOM at a time, so this is naturally one
+         page — the slide the teacher is standing on.
+
+         Careful: the answer choices in ExploreChips are <button> elements, so
+         buttons are NOT hidden wholesale. Pure actions go; anything carrying
+         mathematics stays and is restyled to read as a printed option.
+         ===================================================================== */
+      @media print {
+        @page { size: A4 landscape; margin: 10mm; }
+
+        * {
+          -webkit-print-color-adjust: exact; print-color-adjust: exact;
+          box-shadow: none !important; animation: none !important; transition: none !important;
+        }
+
+        /* release the viewport lock */
+        html, body, #root { width: auto; height: auto; overflow: visible; background: #fff; }
+        body { background: #fff; color: #000; }
+        .app { width: auto; height: auto; position: static; overflow: visible; background: #fff; }
+
+        /* projector chrome has no meaning on paper */
+        .ambient, .progress, .dots, .nav, .flash, .header-right,
+        .modal, .rail { display: none !important; }
+
+        .header {
+          position: static; height: auto; padding: 0 0 6px;
+          background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none;
+          border-bottom: 2.5px solid var(--daf-gold);
+        }
+        .brand-star { width: 32px; height: 32px; }
+        .brand-txt b { font-size: 13px; }
+        .head-center b { color: #000; font-size: 13px; }
+        .head-center span { font-size: 8.5px; }
+
+        .stage-wrap { position: static; inset: auto; }
+        .screen {
+          height: auto; overflow: visible; background: #fff;
+          grid-template-rows: auto auto;
+        }
+        .screen .copy {
+          overflow: visible; background: #fff;
+          backdrop-filter: none; -webkit-backdrop-filter: none;
+        }
+        /* the caption bar clamps to 2 lines / 1 line on screen — paper gets all of it */
+        .screen .copy h1, .screen .copy .lead {
+          display: block; overflow: visible; -webkit-line-clamp: unset;
+        }
+        .screen .visual { padding: 8px 0 0; overflow: visible; }
+        .screen .visual > .glass-panel,
+        .screen .visual > .story-shell,
+        .screen .visual .story-content > .glass-panel {
+          max-height: none; overflow: visible;
+        }
+        .glass-panel { background: #fff; border: 1px solid #999; }
+        canvas { max-width: 100%; }
+
+        /* actions go; the mathematics stays */
+        .btn, .sijill-btn, .saved-x, .class-chip,
+        input, select, textarea { display: none !important; }
+        /* ...but these buttons ARE the answer choices, so they stay as options */
+        .chip-row .btn, .chip-bar .btn {
+          display: inline-flex !important; background: #fff !important;
+          border: 1px solid #666 !important; color: #000 !important;
+        }
+        .award-row { border: 1px solid #666 !important; background: #fff !important; }
+
+        .footer {
+          position: static; height: auto; padding: 5px 0; margin-top: 6px;
+          background: #fff; color: #000; border-top: 1px solid #999;
+        }
+        .footer .pull { color: #333; opacity: 1; }
+
+        /* handout lines, so the printed slide can actually be handed in */
+        .app::after {
+          content: "Name: ______________________________     Class: ____________     Date: ____________     Teacher check: \2610";
+          display: block; margin-top: 8px; padding-top: 7px;
+          border-top: 1px solid #999;
+          font: 700 10px "JetBrains Mono", monospace; color: #333; letter-spacing: .03em;
+        }
+      }
+
     </style>
   </head>
   <body>

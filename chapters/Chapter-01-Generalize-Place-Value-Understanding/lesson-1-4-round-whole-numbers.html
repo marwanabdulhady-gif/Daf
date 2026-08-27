@@ -956,6 +956,92 @@
       }
       @keyframes wallPop { 0% { transform: scale(.4); } 70% { transform: scale(1.15); } 100% { transform: scale(1); } }
 
+      /* =====================================================================
+         PRINT · Ctrl+P turns the CURRENT slide into a one-page handout.
+
+         The deck is a fixed 100vh app with everything absolutely positioned,
+         so print has to undo the viewport lock and let the slide flow.
+         Only one .screen is in the DOM at a time, so this is naturally one
+         page — the slide the teacher is standing on.
+
+         Careful: the answer choices in ExploreChips are <button> elements, so
+         buttons are NOT hidden wholesale. Pure actions go; anything carrying
+         mathematics stays and is restyled to read as a printed option.
+         ===================================================================== */
+      @media print {
+        @page { size: A4 landscape; margin: 10mm; }
+
+        * {
+          -webkit-print-color-adjust: exact; print-color-adjust: exact;
+          box-shadow: none !important; animation: none !important; transition: none !important;
+        }
+
+        /* release the viewport lock */
+        html, body, #root { width: auto; height: auto; overflow: visible; background: #fff; }
+        body { background: #fff; color: #000; }
+        .app { width: auto; height: auto; position: static; overflow: visible; background: #fff; }
+
+        /* projector chrome has no meaning on paper */
+        .ambient, .progress, .dots, .nav, .flash, .header-right,
+        .modal, .rail { display: none !important; }
+
+        .header {
+          position: static; height: auto; padding: 0 0 6px;
+          background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none;
+          border-bottom: 2.5px solid var(--daf-gold);
+        }
+        .brand-star { width: 32px; height: 32px; }
+        .brand-txt b { font-size: 13px; }
+        .head-center b { color: #000; font-size: 13px; }
+        .head-center span { font-size: 8.5px; }
+
+        .stage-wrap { position: static; inset: auto; }
+        .screen {
+          height: auto; overflow: visible; background: #fff;
+          grid-template-rows: auto auto;
+        }
+        .screen .copy {
+          overflow: visible; background: #fff;
+          backdrop-filter: none; -webkit-backdrop-filter: none;
+        }
+        /* the caption bar clamps to 2 lines / 1 line on screen — paper gets all of it */
+        .screen .copy h1, .screen .copy .lead {
+          display: block; overflow: visible; -webkit-line-clamp: unset;
+        }
+        .screen .visual { padding: 8px 0 0; overflow: visible; }
+        .screen .visual > .glass-panel,
+        .screen .visual > .story-shell,
+        .screen .visual .story-content > .glass-panel {
+          max-height: none; overflow: visible;
+        }
+        .glass-panel { background: #fff; border: 1px solid #999; }
+        canvas { max-width: 100%; }
+
+        /* actions go; the mathematics stays */
+        .btn, .sijill-btn, .saved-x, .class-chip,
+        input, select, textarea { display: none !important; }
+        /* ...but these buttons ARE the answer choices, so they stay as options */
+        .chip-row .btn, .chip-bar .btn {
+          display: inline-flex !important; background: #fff !important;
+          border: 1px solid #666 !important; color: #000 !important;
+        }
+        .award-row { border: 1px solid #666 !important; background: #fff !important; }
+
+        .footer {
+          position: static; height: auto; padding: 5px 0; margin-top: 6px;
+          background: #fff; color: #000; border-top: 1px solid #999;
+        }
+        .footer .pull { color: #333; opacity: 1; }
+
+        /* handout lines, so the printed slide can actually be handed in */
+        .app::after {
+          content: "Name: ______________________________     Class: ____________     Date: ____________     Teacher check: \2610";
+          display: block; margin-top: 8px; padding-top: 7px;
+          border-top: 1px solid #999;
+          font: 700 10px "JetBrains Mono", monospace; color: #333; letter-spacing: .03em;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -3551,8 +3637,10 @@
    Design follows the research gate (docs/research/pr-02-source-review-infrastructure.md,
    S1/S2): the state is tiny, best-effort and NON-CRITICAL — when storage is
    missing, cleared or evicted every deck behaves exactly as before (folio
-   pips fall back to position-based), and one tap can export a JSON backup.
-   There is no server, no sync and no cross-machine state.
+   pips fall back to position-based), and one tap can export a JSON backup and
+   another can merge that backup back in on a different computer.
+   There is no server, no sync and no cross-machine state: moving between
+   machines is an explicit teacher action (export here, import there).
    =========================================================================== */
 const FOLIO_KEY = "daf.folio.v1";
 
@@ -3627,6 +3715,84 @@ function folioExport(className) {
   document.body.appendChild(a);
   a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
+
+/* Import the return trip for folioExport.
+
+   A teacher exports on the classroom machine, carries the JSON to the second
+   machine (or back after a rebuild) and merges it in. Deliberately
+   NON-DESTRUCTIVE: a merge adds or refreshes stamps and never removes one, so
+   importing the same file twice is identical to importing it once, and a stale
+   backup can never erase work this computer has already recorded. The
+   per-lesson timestamp decides the winner, so the newest stamp survives either
+   way round.
+
+   `payload` is either the parsed object or the raw JSON text produced by
+   folioExport. Returns { added, refreshed, unchanged, rejected, className }
+   where `rejected` counts lesson entries the backup was not allowed to carry
+   (anything that is not a lesson code -> timestamp pair), or { error } when
+   the payload is not a folio backup at all. Nothing is stored unless at least
+   one valid entry survives, and storage failure reports error, never throws. */
+function folioMerge(payload) {
+  let doc = payload;
+  if (typeof payload === "string") {
+    try { doc = JSON.parse(payload); } catch (e) { return { error: "That file is not valid JSON." }; }
+  }
+  if (!doc || typeof doc !== "object" || Array.isArray(doc)) return { error: "That file is not a folio backup." };
+  const stt = doc.state;
+  if (!stt || typeof stt !== "object" || Array.isArray(stt) ||
+      !stt.lessons || typeof stt.lessons !== "object" || Array.isArray(stt.lessons)) {
+    return { error: "That file has no class folio stamps in it." };
+  }
+  const className = (typeof doc.class === "string" && doc.class.trim()) ? doc.class.trim() : null;
+  if (!className) return { error: "That backup does not say which class it belongs to." };
+  /* the same shapes folioStamp will write: "1-1", "17-10" or "boss-13" */
+  const CODE = /^(?:\d+-\d+|boss-\d+)$/;
+  const st = folioLoad();
+  const c = st.classes[className] || (st.classes[className] = { lessons: {} });
+  if (!c.lessons) c.lessons = {};
+  const out = { added: 0, refreshed: 0, unchanged: 0, rejected: 0, className: className };
+  for (const key of Object.keys(stt.lessons)) {
+    const stamp = stt.lessons[key];
+    if (!CODE.test(key) || typeof stamp !== "string" || Number.isNaN(Date.parse(stamp))) { out.rejected++; continue; }
+    const prev = c.lessons[key];
+    if (prev === undefined) { c.lessons[key] = stamp; out.added++; }
+    else if (prev === stamp) { out.unchanged++; }
+    else if (Date.parse(stamp) > Date.parse(prev)) { c.lessons[key] = stamp; out.refreshed++; }
+    else { out.unchanged++; } /* this computer already holds the newer stamp */
+  }
+  if (!out.added && !out.refreshed) return out; /* nothing to write: leave storage alone */
+  c.updatedAt = new Date().toISOString();
+  if (!folioSave(st)) return { error: "This computer would not save the import (storage full or blocked)." };
+  return out;
+}
+
+/* Browser half: open a file picker and merge the chosen backup.
+   Calls `done(result)` — { added, refreshed, unchanged, rejected, className }
+   on success, or { error } on any failure. Never throws. */
+function folioImportFile(done) {
+  const report = (r) => { try { if (done) done(r); } catch (e) {} return r; };
+  try {
+    if (typeof document === "undefined" || !document.createElement) return report({ error: "File import needs a browser." });
+    const inp = document.createElement("input");
+    inp.type = "file";
+    inp.accept = ".json,application/json";
+    inp.style.position = "fixed";
+    inp.style.left = "-9999px";
+    inp.addEventListener("change", () => {
+      const file = inp.files && inp.files[0];
+      const finish = () => { setTimeout(() => { try { inp.remove(); } catch (e) {} }, 400); };
+      if (!file) return (finish(), report({ error: "No file was chosen." }));
+      const reader = new FileReader();
+      reader.onload = () => { const r = folioMerge(String(reader.result)); finish(); report(r); };
+      reader.onerror = () => { finish(); report({ error: "That file could not be read." }); };
+      try { reader.readAsText(file); }
+      catch (e) { finish(); report({ error: "That file could not be read." }); }
+    });
+    document.body.appendChild(inp);
+    inp.click();
+    return true;
+  } catch (e) { return report({ error: "File import is not available here." }); }
 }
 /* ===========================================================================
    THE FOG GREMLINS · creature engine (pure canvas, D = draw.js)
@@ -4154,7 +4320,7 @@ window.GREMLINS = GREMLINS;
 ;</script>
     <script>window.DAF_STORY = {"title":"The Lantern of Numeria — The Tale of the Seventeen Doors","characters":[{"id":"omar","name":"Omar","gender":"boy","role":"Evidence keeper","functions":["examines records and measurements","asks whether claims are supported","notices missing information","maintains the Evidence Folio"]},{"id":"zayd","name":"Zayd","gender":"boy","role":"Model builder","functions":["builds diagrams and prototypes","tests alternative strategies","makes productive mistakes","maintains the Design Folio"]}],"supporting":[{"id":"hafizah","name":"Hafizah","role":"the Lantern Keeper","doors":[1,17],"prop":"lantern"},{"id":"zafir","name":"Ustadh Zafir","role":"the traveling scholar","doors":[2,5,6,7,13,17],"prop":"compass"},{"id":"rashed","name":"Rashed","role":"the Rival's Report","doors":[2,5,6,7,13,17],"prop":"clipboard"},{"id":"abulaila","name":"Abu Laila","role":"the merchant of the souq","doors":[2],"prop":"ledger"},{"id":"ihsan","name":"Ihsan","role":"the auditor","doors":[2,6],"prop":"seal"},{"id":"khalida","name":"Khalida","role":"the foreman","doors":[3,4],"prop":"ruler"},{"id":"mansur","name":"Mansur","role":"the caravan master","doors":[5],"prop":"tally"},{"id":"salma","name":"Salma","role":"the council scribe","doors":[6],"prop":"quill"},{"id":"mariam","name":"Mariam","role":"the architect","doors":[7,14,16],"prop":"compass"},{"id":"munira","name":"Munira","role":"the ferrywoman of the Fraction Isles","doors":[8],"prop":"oar"},{"id":"farida","name":"Farida","role":"the head cook","doors":[9],"prop":"ladle"},{"id":"zaynab","name":"Zaynab","role":"the clockmaker","doors":[10],"prop":"key"},{"id":"rashid","name":"Rashid","role":"the pearl diver","doors":[11],"prop":"mask"},{"id":"amina","name":"Amina","role":"the dockmaster","doors":[12],"prop":"clipboard"},{"id":"yusuf","name":"Yusuf","role":"the market warden","doors":[13],"prop":"balance"},{"id":"farid","name":"Farid","role":"the astronomer","doors":[15],"prop":"astrolabe"}],"unit":{"topic":1,"chapter":"The census in the brass lantern","question":"Can the class recover a damaged city census without changing what any digit means?","artifact":"A restored census folio and place-value key","pbl":"Teams prepare a one-page population and services brief for the fictional city of Numeria.","bridge":"The recovered population is much larger than expected. The council cannot plan services until the damaged budget ledger is audited.","lessonCount":5,"lessonCodes":["1-1","1-2","1-3","1-4","1-5"]},"lesson":{"code":"1-4","curriculumTitle":"Round Whole Numbers","standard":"4.NBT.A.3","storyBeat":"The supply officer cannot count every box","technique":"Choice with a consequence","storyMove":"Exact totals will arrive too late; the council needs a useful estimate now.","studentMission":"Round each population to the requested place and explain why that precision is enough.","implementationStatus":"story-built","handoff":"The estimate sheet is sealed and the supply order goes out. Two teams now hold different population statements before the council. The question that opens “Problem Solving: Construct Arguments”: which statement is supported by the evidence — and what makes an argument sound?","screenPlan":{"shape":"strategy-workshop","shapeLabel":"Strategy workshop","recommended":9,"planningBand":"8–11","reason":"The mathematics is best served by a focused compare–practise–choose sequence rather than a long investigation."},"index":3,"numberInUnit":4},"stemWindows":[],"amanahWindows":[]};</script>
     <script>window.DAF_STAGE = {"lessons":{"1-4":{"code":"1-4","title":"Round Whole Numbers","standard":"4.NBT.A.3","screens":{"prep":{"phase":"prep","title":"The <em>census briefing</em> was already at home","lead":"Before class, the class met the place-value briefing — the headline numbers and three home questions, at each student's own pace.","goal":"Recover the first exposure, so the census work begins with thinking — not with content delivery.","pull":"Now the probe: what does the class already hold about place value?","rail":{"launch":"Do not teach here. Confirm the briefing reached the class, then ask what they wondered at home.","monitor":["Reading the core objects aloud","Recalling the home questions","Comparing notes against the briefing"],"connect":"Which of the home questions does today's work answer?","misconception":"Treating the briefing as a finished lesson. It is first exposure, not mastery."}},"diagnose":{"phase":"diagnose","title":"The <em>gap map</em> for the census office","lead":"Four checkpoints from the briefing. The class votes what it already holds — we are mapping gaps, not scoring students.","goal":"Build a gap map: what is known, and what is missing, before the first fragment is restored.","pull":"Knowledge building closes exactly what the map flags.","rail":{"launch":"Say it out loud: this screen is an instrument, not a test. No names, no marks, no pressure.","monitor":["Voting honestly over confident guesses","Naming a gap without blame","Connecting a gap back to the briefing"],"connect":"Which flagged gap is the most expensive one to leave open?","misconception":"Turning the probe into a grade, or letting confident guessing mask a real gap."}},"practice":{"phase":"practice","title":"Practice — feedback in <em>seconds, not days</em>","lead":"First with the model open, then with it closed, on the census records. Every answer is met in the moment, not after a delayed correction.","goal":"Guided, then independent — learning happens at the moment of doing.","pull":"Now a genuinely new situation from the archive. The critic arrives — as a critic, never as an author.","rail":{"launch":"Item one is supported: the model stays open. Item two is independent: no model until it is missed.","monitor":["Using the model before answering","Self-checking after a miss","Moving on without waiting for the teacher"],"connect":"Where did the seconds-fast feedback change what the class did next?","misconception":"Treating the supported item as the exam and the independent item as a warm-up."}},"critic":{"phase":"produce","title":"A genuinely <em>new situation</em> from the archive","lead":"The class defends its place-value method in a situation it has not seen before. AI enters here — as a critic, never as an author.","goal":"Transfer the method into new territory and defend it through critique.","pull":"One individual task now decides each student's next path.","rail":{"launch":"The critic examines, challenges and critiques. It never writes the work — the students produce, the critic presses.","monitor":["Stating the method before the critique","Defending with evidence from the work","Distinguishing a trap from a method"],"connect":"Which challenge actually changed the work, and which one did it already survive?","misconception":"Letting the critic — or the deck — supply the answer. The production must be the students'."}}},"prep":{"objects":["crowd","toThousand"],"home":["What is halfway between 3,000 and 4,000? Between 3,200 and 3,300?","The report needs about, not exactly. When do you round up, and when do you round down?","Round 4,861 to the nearest thousand. Which way did it go — and what told you?"]},"diagnose":{"claims":["I can read and write numbers up to one million in a place-value chart.","I can find the halfway point between two values a place apart.","I can round a number to the nearest ten and to the nearest hundred.","I can decide which side of the halfway point a number sits on."]},"practice":{"model":["crowd","toThousand"],"items":[{"mode":"guided","prompt":"The order form asks for the nearest hundred. Which number goes on it?","options":[{"v":"a","text":"6,700"},{"v":"b","text":"6,800"},{"v":"c","text":"6,750"},{"v":"d","text":"6,748"}],"right":"a","yes":"Yes — halfway between 6,700 and 6,800 is 6,750, and 6,748 sits before it, so it rounds down to 6,700.","notYet":"Not yet — find the halfway point of the hundreds and see which side 6,748 sits on.","hint":"Halfway between 6,700 and 6,800 is 6,750."},{"mode":"independent","prompt":"The council signs the form for 5,612. It asks for the nearest thousand. Which number goes on it?","options":[{"v":"a","text":"5,000"},{"v":"b","text":"6,000"},{"v":"c","text":"5,600"},{"v":"d","text":"5,610"}],"right":"b","yes":"Yes — halfway at the thousands is 5,500, and 5,612 sits past it, so it rounds up to 6,000.","notYet":"Not yet — find the halfway point of the thousands and see which side 5,612 sits on."},{"mode":"harder","prompt":"Round 450 to the nearest hundred. Two students disagree — 400 and 500. Who is right, and what does the class rule say about a number that sits exactly on the halfway point?","answer":"500 — the rule is: at or past halfway, round up. 450 sits exactly on halfway.","hint":"The board rule says: at or past it, round up."}]},"critic":{"situation":"Exact totals will arrive too late; the council needs a useful estimate now.","mission":"Round each population to the requested place and explain why that precision is enough.","method":{"options":["Find halfway for the requested place. At or past it, round up; before it, round down.","Copy the example and change the labels","Rounding 6,748 up to 6,800 because '8 is big' — the tens digit does not round to the nearest hundred."],"right":0},"challenges":[{"tag":"The trap","question":"The critic reads the work and names the most likely trap in it: Rounding 6,748 up to 6,800 because '8 is big' — the tens digit does not round to the nearest hundred. How does your production dodge it?","options":["The numbers look right, so the method must be right","We checked against this: finding halfway at 6,750","It can't fail — the answer matches the example"],"right":1,"explain":"The critic never corrects — it makes the class check its own evidence."},{"tag":"The reasoning","question":"Which place decided it — and where is the halfway point of that place?","options":["Because it matches the example","Because it worked once","Placing 6,748 before it"],"right":2,"explain":"A reason tied to the structure survives a new situation; a reason tied to one answer does not."},{"tag":"The transfer","question":"Last, the critic asks for transfer — Round each population to the requested place and explain why that precision is enough. What is the first move?","options":["Round a real number to two different places. Write down why each estimate is useful for a different decision","Ask the class what they think first","Copy the lesson's numbers and change the labels"],"right":0,"explain":"Transfer is the first move, not the answer. The critic stops there — the work is the students'."}],"production":{"options":[{"kind":"map","task":"A halfway map: draw the line between two rounded values, mark the halfway point, and place a real number on the right side of it with the rounding written beside it.","stem":"ask which side of halfway a number sits on → plan the line and the halfway mark → build the map → test it with a number exactly on halfway → share it with the council","ai":false},{"kind":"presentation","task":"A 60-second 'why this precision is enough' talk: round the district populations to the requested place, defend why that precision is enough for the council's decision, and show the halfway line behind the call.","stem":"ask how precise the estimate must be → plan the argument → round to the requested place → test it against the halfway line → share it at the council table","ai":false},{"kind":"mini-project","task":"A one-page estimation report on a real number: research one real budget or population figure with the AI, verify it, round it the lesson way, and write the report. The AI challenges your rounding once and you defend it.","stem":"ask what the council actually needs → plan the report → research a real figure with the AI (verify it) → round and explain → test against the halfway line → share it on the wall","ai":true}]}},"gate":{"ixl":["QV7","CT2"],"revisitOld":6},"wall":{"artifact":"Population and services brief · estimate sheet","next":"Two teams will defend different population statements before the council. A sound argument earns the seal."}}}};</script>
-    <script>window.DAF_ACTIVITY = {"id":"ch01","title":"Place-Value Harbor: Interactive Census Chart","badge":"Chapter 01 · Place Value Lab","description":"Explore numbers up to 1,000,000 across periods (Millions, Thousands, Ones) and model the 10x value shift.","file":"activity-ch01-place-value-census-chart.html","stem":{"ask":"How does the position of each digit in a 6-digit census number determine its total worth?","plan":"Deconstruct a civic population number into standard, expanded, and period forms.","build":"Construct an annotated place-value chart showing the 10x value growth across adjacent columns.","share":"Read your multi-digit figure aloud period-by-period and defend each zero's role as a place holder."},"ai":"Ask AI to generate a population figure with identical digits in two places (e.g. 70,700) and explain how many times greater the first digit is than the second.","kind":"placeValueChart"}
+    <script>window.DAF_ACTIVITY = {"id":"lesson-1-4-activity","title":"Place-Value Harbor: Interactive Census Chart","badge":"Chapter 01 · Place Value Lab","description":"Interactive STEAM Activity Lab with live manipulative sandbox and Stage 5 AI-in-the-loop defense prompts.","file":"lesson-1-4-round-whole-numbers-activity.html","col":"#6042a6"}
 ;</script>
     <script type="text/babel" data-presets="daf-react">
 const { useState, useEffect, useRef, useReducer, useMemo, Component } = React;
@@ -7477,7 +7643,15 @@ function Dojo({ game, dispatch, job, onClose }) {
         <span className="dj-exports">
           <a onClick={() => exportSheet(game, "csv")}><Icon name="fa-file-csv" /> class sheet</a>
           <a onClick={() => exportSheet(game, "log")}><Icon name="fa-list-check" /> points log</a>
-          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-import" /> folio export</a>
+          <a onClick={() => folioExport(game.section)} title="Download the class folio stamps as JSON (this computer only)"><Icon name="fa-file-export" /> folio export</a>
+          <a onClick={() => folioImportFile((r) => {
+            if (r && r.error) { window.alert(r.error); return; }
+            window.DAF_FOLIO = folioFor(game.section);
+            const n = r.className === game.section ? "" : " (saved under " + r.className + ")";
+            window.alert("Folio backup merged: " + r.added + " new, " + r.refreshed + " updated, " +
+              r.unchanged + " already here" + (r.rejected ? ", " + r.rejected + " ignored" : "") + "." + n +
+              (r.className === game.section ? "\nOpen the folio again to see the restored stamps." : ""));
+          })} title="Merge a folio backup from another computer into this one (adds stamps, never removes)"><Icon name="fa-file-arrow-up" /> folio import</a>
           <a onClick={() => {
             if (window.confirm("Clear the folio stamps for " + game.section + " on this computer?")) {
               folioReset(game.section);
@@ -7486,7 +7660,7 @@ function Dojo({ game, dispatch, job, onClose }) {
           }} title="Remove this class's folio stamps from this computer"><Icon name="fa-eraser" /> reset folio</a>
         </span>
         <span className="dj-note">
-          Folio state lives only on this computer — export before switching machines; reset clears it. It stores class lesson stamps only, never student names.
+          Folio state lives only on this computer — export before switching machines and import the backup on the other one; reset clears it. It stores class lesson stamps only, never student names.
         </span>
       </div>
     </div>

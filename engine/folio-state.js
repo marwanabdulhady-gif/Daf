@@ -10,8 +10,10 @@
    Design follows the research gate (docs/research/pr-02-source-review-infrastructure.md,
    S1/S2): the state is tiny, best-effort and NON-CRITICAL — when storage is
    missing, cleared or evicted every deck behaves exactly as before (folio
-   pips fall back to position-based), and one tap can export a JSON backup.
-   There is no server, no sync and no cross-machine state.
+   pips fall back to position-based), and one tap can export a JSON backup and
+   another can merge that backup back in on a different computer.
+   There is no server, no sync and no cross-machine state: moving between
+   machines is an explicit teacher action (export here, import there).
    =========================================================================== */
 const FOLIO_KEY = "daf.folio.v1";
 
@@ -86,4 +88,82 @@ function folioExport(className) {
   document.body.appendChild(a);
   a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
+
+/* Import the return trip for folioExport.
+
+   A teacher exports on the classroom machine, carries the JSON to the second
+   machine (or back after a rebuild) and merges it in. Deliberately
+   NON-DESTRUCTIVE: a merge adds or refreshes stamps and never removes one, so
+   importing the same file twice is identical to importing it once, and a stale
+   backup can never erase work this computer has already recorded. The
+   per-lesson timestamp decides the winner, so the newest stamp survives either
+   way round.
+
+   `payload` is either the parsed object or the raw JSON text produced by
+   folioExport. Returns { added, refreshed, unchanged, rejected, className }
+   where `rejected` counts lesson entries the backup was not allowed to carry
+   (anything that is not a lesson code -> timestamp pair), or { error } when
+   the payload is not a folio backup at all. Nothing is stored unless at least
+   one valid entry survives, and storage failure reports error, never throws. */
+function folioMerge(payload) {
+  let doc = payload;
+  if (typeof payload === "string") {
+    try { doc = JSON.parse(payload); } catch (e) { return { error: "That file is not valid JSON." }; }
+  }
+  if (!doc || typeof doc !== "object" || Array.isArray(doc)) return { error: "That file is not a folio backup." };
+  const stt = doc.state;
+  if (!stt || typeof stt !== "object" || Array.isArray(stt) ||
+      !stt.lessons || typeof stt.lessons !== "object" || Array.isArray(stt.lessons)) {
+    return { error: "That file has no class folio stamps in it." };
+  }
+  const className = (typeof doc.class === "string" && doc.class.trim()) ? doc.class.trim() : null;
+  if (!className) return { error: "That backup does not say which class it belongs to." };
+  /* the same shapes folioStamp will write: "1-1", "17-10" or "boss-13" */
+  const CODE = /^(?:\d+-\d+|boss-\d+)$/;
+  const st = folioLoad();
+  const c = st.classes[className] || (st.classes[className] = { lessons: {} });
+  if (!c.lessons) c.lessons = {};
+  const out = { added: 0, refreshed: 0, unchanged: 0, rejected: 0, className: className };
+  for (const key of Object.keys(stt.lessons)) {
+    const stamp = stt.lessons[key];
+    if (!CODE.test(key) || typeof stamp !== "string" || Number.isNaN(Date.parse(stamp))) { out.rejected++; continue; }
+    const prev = c.lessons[key];
+    if (prev === undefined) { c.lessons[key] = stamp; out.added++; }
+    else if (prev === stamp) { out.unchanged++; }
+    else if (Date.parse(stamp) > Date.parse(prev)) { c.lessons[key] = stamp; out.refreshed++; }
+    else { out.unchanged++; } /* this computer already holds the newer stamp */
+  }
+  if (!out.added && !out.refreshed) return out; /* nothing to write: leave storage alone */
+  c.updatedAt = new Date().toISOString();
+  if (!folioSave(st)) return { error: "This computer would not save the import (storage full or blocked)." };
+  return out;
+}
+
+/* Browser half: open a file picker and merge the chosen backup.
+   Calls `done(result)` — { added, refreshed, unchanged, rejected, className }
+   on success, or { error } on any failure. Never throws. */
+function folioImportFile(done) {
+  const report = (r) => { try { if (done) done(r); } catch (e) {} return r; };
+  try {
+    if (typeof document === "undefined" || !document.createElement) return report({ error: "File import needs a browser." });
+    const inp = document.createElement("input");
+    inp.type = "file";
+    inp.accept = ".json,application/json";
+    inp.style.position = "fixed";
+    inp.style.left = "-9999px";
+    inp.addEventListener("change", () => {
+      const file = inp.files && inp.files[0];
+      const finish = () => { setTimeout(() => { try { inp.remove(); } catch (e) {} }, 400); };
+      if (!file) return (finish(), report({ error: "No file was chosen." }));
+      const reader = new FileReader();
+      reader.onload = () => { const r = folioMerge(String(reader.result)); finish(); report(r); };
+      reader.onerror = () => { finish(); report({ error: "That file could not be read." }); };
+      try { reader.readAsText(file); }
+      catch (e) { finish(); report({ error: "That file could not be read." }); }
+    });
+    document.body.appendChild(inp);
+    inp.click();
+    return true;
+  } catch (e) { return report({ error: "File import is not available here." }); }
 }

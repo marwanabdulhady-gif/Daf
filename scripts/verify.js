@@ -68,6 +68,87 @@ for (const file of files) {
       ok(okShape, file + " · G20d all seven stages have content");
     }
   }
+  /* G21 — print. Ctrl+P must produce a handout, not a clipped 100vh screenshot.
+     The deck is a viewport-locked app, so the print block has to exist and has
+     to release that lock. */
+  const printM = src.match(/@media print\s*\{/);
+  ok(!!printM, file + " · G21a print stylesheet present");
+  if (printM) {
+    /* take the balanced @media print block */
+    let depth = 0, end = -1;
+    const braceAt = src.indexOf("{", printM.index);
+    for (let k = braceAt; k < src.length; k++) {
+      if (src[k] === "{") depth++;
+      else if (src[k] === "}") { depth--; if (depth === 0) { end = k; break; } }
+    }
+    const block = end > -1 ? src.slice(braceAt, end + 1) : "";
+    ok(/@page\s*\{/.test(block), file + " · G21b print sets an @page size");
+    ok(/html,\s*body,\s*#root[^{]*\{[^}]*overflow:\s*visible/.test(block),
+      file + " · G21c print releases the viewport lock");
+    ok(/\.nav[^{]*\{[^}]*display:\s*none/.test(block), file + " · G21d print drops the projector nav");
+
+    /* G22 — the answer choices in ExploreChips are <button class="btn">, so a
+       blanket `.btn { display: none !important }` would print a worksheet with
+       no questions on it. The override has to actually win the cascade:
+       both !important, so specificity decides. Parse the rules for real —
+       a substring test on ".btn {" misses selector lists and passes vacuously. */
+    const inner = block.slice(1, -1);
+    const rules = [];
+    {
+      let at = 0;
+      while (at < inner.length) {
+        const open = inner.indexOf("{", at);
+        if (open === -1) break;
+        let depth = 1, k = open + 1;
+        while (k < inner.length && depth > 0) {
+          if (inner[k] === "{") depth++;
+          else if (inner[k] === "}") depth--;
+          k++;
+        }
+        rules.push({ sel: inner.slice(at, open).trim(), body: inner.slice(open + 1, k - 1) });
+        at = k;
+      }
+    }
+    const spec = (s) => (s.match(/#[\w-]+/g) || []).length * 100
+      + (s.match(/\.[\w-]+|\[[^\]]*\]|::?[\w-]+/g) || []).length;
+    /* does this selector reach a <button class="btn"> (inside .chip-row or not)? */
+    const hitsOption = (s) => {
+      const last = s.split(/[\s>+~]+/).pop() || "";
+      return last === "button" || last.startsWith("button.") || last.startsWith("button:")
+        || /(^|\.)btn([.:\[]|$)/.test(last);
+    };
+    const parts = (r) => r.sel.split(",").map((s) => s.trim()).filter(hitsOption);
+    const hiding = rules.filter((r) => /display:\s*none\s*!important/.test(r.body) && parts(r).length);
+    const keeping = rules.filter((r) => /display:\s*(?:inline-flex|inline-block|flex|block)\s*!important/.test(r.body) && parts(r).length);
+    const best = (list) => list.reduce((m, r) => Math.max(m, ...parts(r).map(spec)), 0);
+    if (hiding.length) {
+      ok(keeping.length > 0 && best(keeping) > best(hiding),
+        file + ` · G22a answer choices stay printable (hide ${best(hiding)} vs keep ${best(keeping)})`);
+      /* Specificity alone is not enough: an override aimed at a class that no
+         longer wraps the option buttons wins the cascade and matches nothing.
+         Tie the override to the wrapper the engine actually renders. */
+      const keepSels = keeping.map((r) => r.sel).join(" ");
+      const wrapper = (keepSels.match(/\.([\w-]+)\s+\.btn\b/) || [])[1];
+      ok(!!wrapper && new RegExp('className="?' + wrapper).test(jsx)
+        && new RegExp('<button[^]*?className=\\{?"?btn').test(
+          jsx.slice(Math.max(0, jsx.indexOf('"' + wrapper + '"') - 40), jsx.indexOf('"' + wrapper + '"') + 400)),
+        file + ` · G22b the override targets a real option wrapper (${wrapper || "none found"})`);
+    } else {
+      ok(true, file + " · G22a answer choices stay printable (no blanket hide)");
+      ok(true, file + " · G22b the override targets a real option wrapper (no blanket hide)");
+    }
+  }
+
+  /* G23 — the class folio has to travel both ways. Export alone is a dead end:
+     a teacher who cannot load the backup on the second machine has lost the
+     stamps anyway. */
+  ok(/function folioExport\s*\(/.test(src), file + " · G23a folio export ships");
+  /* word-boundary the names: folioImportFile_DISABLED must not satisfy a
+     substring test and leave decks shipping an export with no way back in */
+  ok(/function folioMerge\s*\(/.test(src) && /function folioImportFile\s*\(/.test(src),
+    file + " · G23b folio import ships");
+  ok(/[^A-Za-z_]folioImportFile\s*\(/.test(jsx), file + " · G23c folio import is wired to a control");
+
   console.log((fail === before ? "  PASS  " : "  ---   ") + file + "  (" + nMetas + " lesson screens"
     + (codeM ? " + 4 stage screens" : "") + ")");
 }
