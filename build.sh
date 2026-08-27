@@ -9,7 +9,7 @@ OUT="html/lesson-${CODE}-$(echo "$TITLE" | tr '[:upper:] ' '[:lower:]-' | tr -cd
 
 sed "s|<!--PAGE_TITLE-->|Dar Al Fikr · Grade 4 · Lesson ${CODE} — ${TITLE}|" engine/head.html > "$OUT"
 echo '    <script>' >> "$OUT"
-cat engine/omml.js engine/draw.js engine/folio-state.js >> "$OUT"
+cat engine/omml.js engine/draw.js engine/folio-state.js engine/creatures.js >> "$OUT"
 printf '    </%s>\n' "script" >> "$OUT"
 # --- class roster, stamped in at build time so the deck works with no server ---
 printf '    <script>window.DAF_ROSTER = ' >> "$OUT"

@@ -820,8 +820,9 @@ function PracticeSprint({ award }) {
 
   if (finished) {
     return (
-      <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px", textAlign: "center" }}>
-        <Sketch draw={drawSprint(items.length, -1, items.length, true)} height={130} />
+      <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px", textAlign: "center", alignItems: "center" }}>
+        <Sketch draw={drawSprint(items.length, -1, items.length, true)} height={110} />
+        <Gremlin state="tamed" code={LESSON.code} size={120} />
         <div style={{ fontSize: 15, fontWeight: 900, color: "var(--daf-deep)" }}>
           Sprint complete — {items.length} items, every answer met in the moment.
         </div>
@@ -982,7 +983,10 @@ function CriticBoard({ award }) {
 
   return (
     <div className="glass-panel critic-panel" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-      <Sketch draw={drawCritic(chDone, accepted, C.challenges.length)} height={148} />
+      <Sketch draw={drawCritic(chDone, accepted, C.challenges.length)} height={120} />
+
+      {/* the Fog Gremlin of this unit: smug with its trap until the proof is accepted, then tamed */}
+      <Gremlin state={accepted ? "tamed" : "trap"} code={LESSON.code} size={150} whisper />
 
       <div className="critic-brief">
         <div className="critic-brief-tag"><Icon name="fa-location-crosshairs" /> A genuinely new situation</div>

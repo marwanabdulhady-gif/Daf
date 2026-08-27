@@ -166,6 +166,50 @@ function Sketch({ draw, height, style }) {
   );
 }
 
+/* The Fog Gremlin of the current unit — a friendly non-human trickster that
+   holds the door's trap. state: 'trap' (puffed, smug whisper) until the
+   proof is accepted, then 'tamed' (happy, prop fixed). It is non-violent:
+   the class never strikes it — it is correct-ted and helps next door. */
+function Gremlin({ state, code, size, whisper }) {
+  const g = (typeof GREMLINS !== "undefined") && GREMLINS[(code && String(code).split("-")[0]) || "1"];
+  const def = g || GREMLINS["1"];
+  const st = state === "tamed" ? "tamed" : "trap";
+  const draw = (ctx, W, H, frame) => {
+    ctx.clearRect(0, 0, W, H);
+    drawGremlin(ctx, W / 2, H - 14, { state: st, frame: frame, r: Math.min(W, H) * 0.34, code: code });
+  };
+  return (
+    <div className={"gremlin-wrap g-" + st}>
+      <Sketch draw={draw} height={size || 150} />
+      <div className="gremlin-name"><i className="fa-solid fa-mask" /> {def.name}</div>
+      {whisper && st === "trap" && (
+        <div className="gremlin-whisper">
+          <i className="fa-solid fa-comment-dots" /> “{def.trap || whisper}”
+        </div>
+      )}
+      {st === "tamed" && (
+        <div className="gremlin-tamed"><i className="fa-solid fa-circle-check" /> the proof holds — it helps now</div>
+      )}
+    </div>
+  );
+}
+
+/* A small recurring companion that peeks into the STORY / knowledge screens:
+   curious ('peek') — it watches the build, hiding its fumbled prop. Lives in
+   the story ribbon cast alongside Omar & Zayd. */
+function GremlinAvatar({ code, size }) {
+  const draw = (ctx, W, H, frame) => {
+    ctx.clearRect(0, 0, W, H);
+    drawGremlin(ctx, W / 2, H - 2, { state: "peek", frame: frame, r: Math.min(W, H) * 0.42, code: code });
+  };
+  const def = (typeof GREMLINS !== "undefined" && GREMLINS[(String(code || LESSON.code)).split("-")[0]]) || GREMLINS["1"];
+  return (
+    <span className="gremlin-avatar" title={"The " + def.name + " — watch for its trick"}>
+      <Sketch draw={draw} style={{ width: (size || 52) + "px", height: (size || 52) + "px" }} />
+    </span>
+  );
+}
+
 function XPBar({ xp, max }) {
   return (
     <div className="xp-wrap">

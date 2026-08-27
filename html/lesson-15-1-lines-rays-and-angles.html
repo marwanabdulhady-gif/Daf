@@ -114,142 +114,106 @@
       /* ---------------- stage ---------------- */
       .stage-wrap { position: absolute; inset-inline: 0; top: 72px; bottom: 36px; z-index: 3; }
 
+      /* =====================================================================
+         VISUAL-FIRST STAGE LAYOUT
+         Every slide is ONE full-width column: a slim one-line caption bar on
+         top, then the visual / interactive as the hero filling the rest.
+         There is no side text column (the full narration is in the Teacher
+         rail, key T). The visual keeps its existing single-region scroll.
+         ===================================================================== */
       .screen {
-        width: 100%; height: 100%; position: relative; display: grid;
-        grid-template-columns: minmax(300px, 34%) 1fr;
+        width: 100%; height: 100%; position: relative;
+        display: grid; grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto minmax(0, 1fr);
         overflow: hidden;
         background: linear-gradient(145deg, #ffffff 0%, #fbfefd 60%, #eef8f6 100%);
         animation: screenIn 0.66s var(--ease) both;
       }
       .screen.full { grid-template-columns: 1fr; }
 
-      /* =====================================================================
-         VISUAL-FIRST LAYOUT (the default) — the slide IS a stage.
-         The copy collapses into a compact, scrollable band along the top;
-         the canvas + interactive own the dominant area below and scroll
-         within the slide when content is tall. Three auto layouts:
-           · .l-stage  — story/build/canvas screens: copy band + big stage
-           · .l-studio — interactive stage widgets (gap map, sprint, critic,
-                         gate, wall): near full-width widget, slim title strip
-           · .l-board — the modeled-rule board: full-bleed drawing, float text
-         The legacy side-by-side grid is kept only as the narrow fallback.
-         ===================================================================== */
-      .screen.l-stage,
-      .screen.l-studio,
-      .screen.l-board {
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: auto minmax(0, 1fr);
-      }
-      .screen.l-stage .copy,
-      .screen.l-studio .copy,
-      .screen.l-board .copy {
-        flex-direction: row; align-items: center; flex-wrap: wrap; column-gap: 18px;
-        justify-content: flex-start;
-        padding: 12px 30px 10px;
-        max-height: 132px; overflow-y: auto;
+      /* the caption bar replaces the old text column */
+      .screen .copy {
+        grid-row: 1; min-height: 0;
+        display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px;
+        padding: 9px clamp(18px, 3vw, 44px);
         border-bottom: 1.5px solid color-mix(in srgb, var(--c) 18%, transparent);
-        background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.66));
-        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        background:
+          linear-gradient(color-mix(in srgb, var(--c) 8%, transparent), color-mix(in srgb, var(--c) 8%, transparent))
+          left 50% bottom 0 / 100% 100% no-repeat,
+          rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        overflow: hidden;
       }
-      .screen.l-studio .copy { max-height: 96px; }
-      .screen.l-board .copy { max-height: 84px; }
-      /* the compact copy band: chip + tag cluster left, headline fills,
-         the lead and goal collapse behind a disclosure for more room */
-      .screen.l-stage .copy h1,
-      .screen.l-studio .copy h1,
-      .screen.l-board .copy h1 {
-        order: 2; flex: 1 1 320px; margin: 0;
-        font-size: clamp(19px, 1.85vw, 30px); line-height: 1.08; letter-spacing: -0.03em;
+      /* slim accent rule in the current chapter colour along the top */
+      .screen .copy::before {
+        content: ""; flex: 0 0 3px; align-self: stretch;
+        background: var(--c-grad); border-radius: 3px;
       }
-      .screen.l-stage .copy .stage-chip,
-      .screen.l-studio .copy .stage-chip,
-      .screen.l-board .copy .stage-chip { order: 1; margin: 0 0 4px; }
-      .screen.l-stage .copy .phase-tag,
-      .screen.l-studio .copy .phase-tag,
-      .screen.l-board .copy .phase-tag { order: 1; margin: 0 0 4px; padding: 4px 10px; }
-      .screen.l-stage .copy .lead,
-      .screen.l-board .copy .lead {
-        order: 3; flex: 1 1 100%; margin-top: 2px;
-        font-size: 13px; line-height: 1.45; max-width: none;
+      .screen .copy .copy-star { display: none; }
+      .screen .copy .stage-chip { margin: 0; flex: 0 0 auto; }
+      .screen .copy .phase-tag {
+        margin: 0; flex: 0 0 auto; padding: 4px 12px; font-size: 9.5px;
       }
-      .screen.l-stage .copy .goal { order: 4; flex: 1 1 100%; margin-top: 4px; }
-      .screen.l-studio .copy .lead,
-      .screen.l-studio .copy .goal { display: none; }
-      .screen.l-board .copy .goal { display: none; }
-      .screen.l-stage .copy-star,
-      .screen.l-studio .copy-star,
-      .screen.l-board .copy-star { display: none; }
+      .screen .copy h1 {
+        flex: 1 1 260px; min-width: 0; margin: 0;
+        font-size: clamp(16px, 1.5vw, 23px); line-height: 1.18;
+        letter-spacing: -0.02em; font-weight: 900;
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .screen .copy .lead {
+        order: 4; flex: 1 1 100%; min-width: 0; margin: 0;
+        font-size: 12.5px; line-height: 1.4; color: var(--daf-ink-2);
+        display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .screen .copy .goal { display: none; }
 
-      /* the stage area fills the row beneath the band; content scrolls */
-      .screen.l-stage .visual,
-      .screen.l-studio .visual,
-      .screen.l-board .visual {
-        grid-row: 2; padding: 14px 30px 46px;
-        align-items: stretch; justify-content: center;
+      /* STORY screens already carry their title + narration in the story
+         ribbon (with the characters), so the caption bar stays a slim
+         chip strip and the ribbon is tightened — more room for the canvas. */
+      .screen:has(.visual .story-shell) .copy h1,
+      .screen:has(.visual .story-shell) .copy .lead { display: none; }
+      .screen:has(.visual .story-shell) .copy { padding-block: 7px; }
+      .screen .visual .story-ribbon {
+        min-height: 60px; padding: 6px 14px; gap: 10px;
       }
-      .screen.l-stage .visual > *,
-      .screen.l-studio .visual > * { max-height: 100%; }
-      .screen.l-stage .visual > .glass-panel,
-      .screen.l-studio .visual > .glass-panel {
-        justify-content: flex-start; overflow-y: auto;
-        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.3) transparent;
-      }
-      /* interactive widgets get a roomier max width so cards/chips breathe */
-      .screen.l-studio .visual { padding-inline: clamp(20px, 5vw, 72px); }
-      .screen.l-board .visual { padding: 10px 24px 40px; }
-      /* full-bleed board: the rule drawing owns the whole stage */
-      .screen.l-board .visual > .glass-panel,
-      .screen.l-board .visual > .story-shell {
-        max-height: 100%; overflow: hidden;
-      }
-
-      /* On the story build screens (stage 3), the in-stage story ribbon
-         already carries the scene title + text, so the top band tightens to
-         a single line — no duplicated narrative, maximum room for the
-         interactive. The teacher rail (T) still shows the full meta. */
-      .screen.l-stage .copy:has(~ .visual .story-shell) .lead,
-      .screen.l-stage .copy:has(~ .visual .story-shell) .goal { display: none; }
-      .screen.l-stage .copy:has(~ .visual .story-shell) { max-height: 78px; align-items: center; padding-block: 9px; }
-      .screen.l-stage .copy:has(~ .visual .story-shell) h1 { font-size: clamp(16px, 1.5vw, 23px); }
-      .screen.l-stage .copy:has(~ .visual .story-shell) .stage-chip { margin-bottom: 0; }
-      /* the in-stage story ribbon becomes a slim single-row caption bar */
-      .screen.l-stage .visual .story-shell { gap: 8px; }
-      .screen.l-stage .visual .story-shell .story-ribbon {
-        min-height: 64px; grid-template-columns: auto minmax(0, 1fr) auto; padding: 7px 14px;
-      }
-      .screen.l-stage .visual .story-shell .story-ribbon-copy p {
+      .screen .visual .story-ribbon .story-cast { min-width: 52px; }
+      .screen .visual .story-ribbon .story-ribbon-copy b { font-size: 13px; }
+      .screen .visual .story-ribbon .story-ribbon-copy p {
+        margin: 2px 0 0; font-size: 10.5px; line-height: 1.35;
         display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
       }
-      .screen.l-stage .visual .story-shell .story-ribbon-copy small { display: none; }
+      .screen .visual .story-ribbon .story-ribbon-copy small { display: none; }
 
-      /* gentle scrollbar inside the scrolling copy band */
-      .screen.l-stage .copy::-webkit-scrollbar,
-      .screen.l-studio .copy::-webkit-scrollbar,
-      .screen.l-board .copy::-webkit-scrollbar { height: 5px; }
-      .screen.l-stage .copy::-webkit-scrollbar-thumb,
-      .screen.l-studio .copy::-webkit-scrollbar-thumb,
-      .screen.l-board .copy::-webkit-scrollbar-thumb { background: rgba(18,133,124,.2); border-radius: 999px; }
-
-      /* narrow screens keep the readable side-by-side split; very short
-         viewports let the copy band grow and scroll */
-      @media (max-width: 940px) {
-        .screen.l-stage, .screen.l-board {
-          grid-template-columns: minmax(280px, 38%) 1fr;
-          grid-template-rows: minmax(0, 1fr);
-        }
-        .screen.l-stage .copy, .screen.l-board .copy {
-          flex-direction: column; align-items: flex-start; justify-content: center;
-          grid-row: 1 / span 2; max-height: none; border-bottom: none;
-          background: none; backdrop-filter: none; padding: 26px 18px 40px 30px;
-        }
-        .screen.l-stage .visual, .screen.l-board .visual { grid-row: 1 / span 2; }
-        .screen.l-stage .copy h1, .screen.l-board .copy h1 {
-          order: 0; flex: none; font-size: clamp(24px, 2.4vw, 40px);
-        }
-        .screen.l-stage .copy .lead, .screen.l-board .copy .lead,
-        .screen.l-stage .copy .goal, .screen.l-board .copy .goal { display: block; flex: none; }
-        .screen.l-stage .copy-star, .screen.l-board .copy-star { display: block; }
+      /* the visual fills the row below and scrolls as ONE region if tall */
+      .screen .visual {
+        grid-row: 2; min-height: 0;
+        padding: clamp(14px, 2vw, 24px) clamp(14px, 3.4vw, 56px) 46px;
+        align-items: stretch; justify-content: center;
       }
+      .screen .visual > .glass-panel,
+      .screen .visual > .story-shell {
+        width: 100%; max-width: 1180px; max-height: 100%;
+        margin-inline: auto;
+      }
+      /* the interactive stage widgets benefit from a wider reading width */
+      .screen .visual .critic-panel,
+      .screen .visual .sprint-panel,
+      .screen .visual .wall-panel { max-width: none; }
+      /* board (the modeled rule) stays full-bleed and unframed */
+      .screen .visual .glass-panel:has(> .board-stage) { max-width: none; }
+      .screen .visual .board-stage { min-height: 300px; }
+      /* story shell ribbon does not scroll; the panel below does */
+      .screen .visual .story-shell { overflow: hidden; }
+      .screen .visual .story-ribbon { flex: 0 0 auto; }
+      .screen .visual .story-content { flex: 1 1 auto; min-height: 0; }
+      .screen .visual .story-content > .glass-panel {
+        max-height: 100%; overflow-y: auto; overflow-x: hidden;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.35) transparent;
+      }
+      .screen .visual .story-content > .glass-panel::-webkit-scrollbar { width: 8px; }
+      .screen .visual .story-content > .glass-panel::-webkit-scrollbar-thumb { background: rgba(18,133,124,.3); border-radius: 999px; }
       .screen:before {
         content: ""; position: absolute; inset: 0; pointer-events: none;
         background-image:
@@ -267,9 +231,7 @@
          light paper, teal + gold accents. Panels are borderless so the canvas
          and the controls float directly on the stage (the canvas paints the
          same paper via the light-stage remap in draw.js — no board, no box).
-         Interactive controls span the full stage width, not a bordered box.
-         In the visual-first layouts the canvas grows to fill the taller
-         stage instead of staying at its fixed inline height. */
+         Interactive controls span the full stage width, not a bordered box. */
       .visual > .glass-panel,
       .visual > .story-shell .glass-panel {
         background: transparent; border: none; box-shadow: none;
@@ -277,27 +239,6 @@
       }
       .visual > .glass-panel:has(canvas),
       .visual > .story-shell .glass-panel:has(canvas) { padding: 6px; }
-      /* canvas-heavy panels fill the stage and the canvas grows to use the
-         larger visual area (the drawing re-fits via the ResizeObserver).
-         Paths cover both bare panels (.visual > .glass-panel) and in-story
-         panels (.visual .story-shell … .glass-panel). */
-      .screen.l-stage .visual .glass-panel:has(canvas:not(.ambient)),
-      .screen.l-studio .visual .glass-panel:has(canvas:not(.ambient)) {
-        flex: 1 1 auto; min-height: 0; justify-content: stretch;
-      }
-      .screen.l-stage .visual .glass-panel > canvas:not(.ambient),
-      .screen.l-studio .visual .glass-panel > canvas:not(.ambient),
-      .screen.l-stage .visual .board-stage canvas,
-      .screen.l-studio .visual .board-stage canvas {
-        width: 100% !important;
-        flex: 1 1 320px; min-height: 320px;
-        height: auto !important;
-      }
-      /* story content also fills the taller stage */
-      .screen.l-stage .visual .story-content,
-      .screen.l-studio .visual .story-content { min-height: 0; flex: 1 1 auto; }
-      .screen.l-stage .visual .story-content > .glass-panel,
-      .screen.l-studio .visual .story-content > .glass-panel { flex: 1 1 auto; min-height: 0; }
       .chip-bar { width: 100%; padding: 2px 2px 4px; }
       .chip-label { font-weight: 900; font-size: 12px; color: var(--c); margin: 0 2px 9px; }
       .chip-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
@@ -307,11 +248,9 @@
       /* THE STAGE — board screens are full-stage: the drawing owns the whole
          visual area at full height (no framed box), Dar Al Fikr deep-teal
          surface with the logo-gold breathing frame drawn by D.stage itself. */
-      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; flex: 1; min-height: 0; }
-      .board-stage { position: relative; flex: 1; min-height: 260px; }
+      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; }
+      .board-stage { position: relative; flex: 1; min-height: 300px; }
       .stage-caption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 11.5px; color: rgba(16,36,43,.62); padding: 0 18px; pointer-events: none; }
-      /* board screens run the full-bleed .l-board layout chosen by the Frame */
-      .screen.l-board .glass-panel:has(> .board-stage) { padding: 0; }
 
       /* Staggered element reveals (Syntax-Academy revealUp, English edition):
          every element on the screen enters with a .08s offset. Disabled under
@@ -333,21 +272,23 @@
 
       .copy {
         position: relative; z-index: 5;
-        padding: 34px 22px 46px 44px;
-        display: flex; flex-direction: column; justify-content: center;
+        display: flex; align-items: center;
       }
 
       .visual {
         position: relative; z-index: 4; min-width: 0; min-height: 0;
         display: flex; align-items: stretch; justify-content: center;
-        padding: 20px 40px 42px 14px;
       }
       .visual > .glass-panel {
-        display: flex; flex-direction: column; justify-content: center;
-        max-height: 100%; overflow-y: auto;
+        display: flex; flex-direction: column; justify-content: flex-start;
+        max-height: 100%; overflow-y: auto; overflow-x: hidden;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.35) transparent;
       }
-      .visual > .glass-panel::-webkit-scrollbar { width: 6px; }
-      .visual > .glass-panel::-webkit-scrollbar-thumb { background: rgba(18,133,124,.22); border-radius: 999px; }
+      .visual > .glass-panel::-webkit-scrollbar { width: 8px; }
+      .visual > .glass-panel::-webkit-scrollbar-thumb { background: rgba(18,133,124,.3); border-radius: 999px; }
+      /* the story shell scrolls as one region too */
+      .visual > .story-shell { justify-content: flex-start; }
+      .visual .story-content { flex: 0 0 auto; }
 
       .copy-star {
         position: absolute; width: 300px; height: 300px;
@@ -828,6 +769,41 @@
       .sprint-model-math { display: flex; justify-content: center; }
       .sprint-model-empty { font-size: 11px; color: var(--daf-ink-2); font-style: italic; }
       .sprint-fb { border-top: 1px dashed var(--daf-line); padding-top: 11px; }
+
+      /* the recurring gremlin that peeks into the story ribbon */
+      .gremlin-avatar { display: inline-flex; flex: 0 0 auto; align-items: flex-end;
+        justify-content: center; line-height: 0; cursor: default;
+        filter: drop-shadow(0 4px 6px rgba(7,30,39,.14)); }
+      .gremlin-avatar canvas { display: block; }
+
+      /* the Fog Gremlin — friendly non-human trickster on the production gate */
+      .gremlin-wrap {
+        display: flex; flex-direction: column; align-items: center; gap: 6px;
+        width: 100%;
+      }
+      .gremlin-wrap canvas { display: block; }
+      .gremlin-name {
+        display: inline-flex; align-items: center; gap: 7px;
+        font: 900 11px "JetBrains Mono", monospace; letter-spacing: .06em;
+        text-transform: uppercase; color: var(--daf-deep);
+        background: var(--daf-mint); border: 1px solid var(--daf-line);
+        padding: 4px 12px; border-radius: 999px;
+      }
+      .gremlin-name i { color: var(--c); }
+      .gremlin-whisper {
+        position: relative; max-width: 460px; text-align: center;
+        font: 700 12.5px/1.5 "Lemonada", "Satoshi", cursive, sans-serif;
+        color: #7a5a10; background: #fff8ec; border: 1.5px dashed var(--warn);
+        border-radius: 14px; padding: 9px 16px;
+      }
+      .gremlin-whisper i { color: var(--warn); margin-right: 6px; }
+      .gremlin-tamed {
+        display: inline-flex; align-items: center; gap: 7px;
+        font-weight: 800; font-size: 12px; color: #1e5b2a;
+        background: #eff8ef; border: 1.5px solid var(--ok);
+        border-radius: 999px; padding: 5px 14px;
+      }
+      .gremlin-tamed i { color: var(--ok); }
 
       .critic-brief {
         background: var(--daf-mint); border: 1.5px solid var(--daf-line); border-radius: 13px;
@@ -3632,6 +3608,350 @@ function folioExport(className) {
   a.click();
   setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
 }
+/* ===========================================================================
+   THE FOG GREMLINS · creature engine (pure canvas, D = draw.js)
+   ---------------------------------------------------------------------------
+   One friendly, blocky, NON-HUMAN trickster per unit (Topics 1–17) + the
+   Muddler boss — designed like a ClassDojo monster crossed with a Minecraft /
+   Roblox avatar: chunky toy-BLOCK body, big square eyes, modular little arms
+   and feet, horn / antenna / wing stud parts. Cute, never scary, non-violent:
+   the class never strikes it — they prove the math and it gets *correct-ted*
+   (tamed), turning a helper.
+
+   States:
+     · 'trap'  — puffed up, smug square brow, smirk, holding the broken math
+     · 'tamed' — happy arc eyes, open block smile, the prop fixed
+     · 'peek'  — small, curious, wide eyes — the recurring companion that
+                 peeks into the story / knowledge screens
+
+   Archetypes:
+     blob   — chunky Dojo-style monster with little horns (most units)
+     dragon — blocky Minecraft-style body, block wings + spine studs (3,4,8,13)
+     alien  — blocky Roblox-style little robot with antennae (10,14,15,17)
+   =========================================================================== */
+
+var GREMLINS = {
+  "1":  { kind: "blob",   col: ["#7d8ea6", "#566677"], prop: "shifter",
+          name: "Digit-Shifter", trap: "The number didn't change — a digit just moved a chair." },
+  "2":  { kind: "blob",   col: ["#d89a55", "#b07135"], prop: "swap",
+          name: "The Swapper", trap: "Same two numbers, so the answer is the same." },
+  "3":  { kind: "dragon", col: ["#f0b429", "#c98e14"], prop: "rows",
+          name: "Tile-Counter", trap: "Just count them all — counting never lies." },
+  "4":  { kind: "dragon", col: ["#f2913f", "#cf6f24"], prop: "zeros",
+          name: "Zero-Attacher", trap: "Multiply the small numbers and stick the zeros on the end." },
+  "5":  { kind: "blob",   col: ["#5fa89a", "#3f7d72"], prop: "remainder",
+          name: "Remainder-Dropper", trap: "The leftover doesn't matter — the whole groups are the answer." },
+  "6":  { kind: "blob",   col: ["#a87fc4", "#81609e"], prop: "rusher",
+          name: "The Rusher", trap: "This path is already working — why change it?" },
+  "7":  { kind: "blob",   col: ["#46b3a6", "#318278"], prop: "pair",
+          name: "Missing-Pair", trap: "You've found the shapes — the ones you didn't find don't exist." },
+  "8":  { kind: "dragon", col: ["#5fb2e6", "#3a86b8"], prop: "twins",
+          name: "Close-Islands", trap: "They look different, so they must be different." },
+  "9":  { kind: "blob",   col: ["#e5809a", "#bb5473"], prop: "tray",
+          name: "Tray-Mixer", trap: "Same pieces, different trays — the total is the same." },
+  "10": { kind: "alien",  col: ["#8498bd", "#5f7396"], prop: "clock",
+          name: "Late-Batch", trap: "The batches are the same size, so the clock doesn't matter." },
+  "11": { kind: "blob",   col: ["#4fb3a6", "#358077"], prop: "parrot",
+          name: "False-Claim", trap: "The report is confident and the plot looks right — that's enough." },
+  "12": { kind: "blob",   col: ["#9b82cc", "#745fa0"], prop: "label",
+          name: "Longer-Label", trap: "More digits means more — the longer label is the bigger number." },
+  "13": { kind: "dragon", col: ["#d6b033", "#a8871a"], prop: "scales",
+          name: "Loose-Wedge", trap: "It looks like a right angle — measuring just slows you down." },
+  "14": { kind: "alien",  col: ["#7d94d8", "#5a70b4"], prop: "pattern",
+          name: "Pattern-Breaker", trap: "It held for three steps, so the rule is the rule." },
+  "15": { kind: "alien",  col: ["#7b90e0", "#566bc2"], prop: "wedge",
+          name: "Wobble-Wedge", trap: "Set the arm by eye — the wedges only slow you down." },
+  "16": { kind: "blob",   col: ["#69b07c", "#4a8b5d"], prop: "shapes",
+          name: "Confident-Classifier", trap: "It has the sides I checked — the property I missed can't matter." },
+  "17": { kind: "alien",  col: ["#c07dd9", "#9657b4"], prop: "wisp",
+          name: "The New Fog", trap: "A hundredth is smaller than a tenth — so 0.9 must be less than 0.95… right?" },
+  boss: { kind: "blob",   col: ["#566474", "#33404c"], prop: "muddler",
+          name: "The Muddler", trap: "5 metres is 50 centimetres. Agree, and I am fed." }
+};
+
+function gremlinKey(code) {
+  if (code === "boss" || /^boss/.test(String(code))) return "boss";
+  var n = parseInt(String(code).split("-")[0], 10);
+  return String(n);
+}
+function gremlinFor(code) { return GREMLINS[gremlinKey(code)] || GREMLINS["1"]; }
+
+/* small rounded-rect block helper (blocky Minecraft/Roblox corners) */
+function blk(ctx, x, y, w, h, r, fill, stroke, lw) {
+  r = Math.min(r == null ? 7 : r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+  if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+  if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = lw || 2; ctx.stroke(); }
+}
+
+function drawGremlin(ctx, cx, baseY, o) {
+  o = o || {};
+  var state = o.state === "tamed" ? "tamed" : o.state === "peek" ? "peek" : "trap";
+  var frame = o.frame || 0;
+  var r = o.r || 60, s = r / 60;
+  var g = gremlinFor(o.code || "1");
+  var bob = Math.sin(frame / 24) * 2.2 * s;
+
+  var bodyW = r * 1.5, bodyH = r * 1.42;
+  var cy = baseY - bodyH * 0.52 + bob;
+  var top = cy - bodyH / 2, left = cx - bodyW / 2, right = cx + bodyW / 2;
+
+  ctx.save();
+  if (o.alpha != null) ctx.globalAlpha = o.alpha;
+  ctx.lineJoin = "round";
+
+  /* blocky shadow */
+  ctx.fillStyle = "rgba(16,36,43,.12)";
+  blk(ctx, cx - bodyW * 0.42, baseY - 4 * s, bodyW * 0.84, 10 * s, 5 * s, "rgba(16,36,43,.12)");
+
+  /* ---- modular side parts (behind the body) ---- */
+  /* little block arms */
+  var armSwing = Math.sin(frame / 16) * 3 * s * (state === "tamed" ? 1.6 : 0.6);
+  [-1, 1].forEach(function (side) {
+    var ax = side < 0 ? left - 12 * s : right - 2 * s;
+    var ay = cy - bodyH * 0.12 + armSwing * side;
+    ctx.save();
+    ctx.translate(ax + 7 * s, ay);
+    ctx.rotate(side * 0.18 + (state === "tamed" ? side * -0.5 : 0));
+    blk(ctx, -7 * s, -7 * s, 14 * s, 26 * s, 5 * s, g.col[1]);
+    ctx.restore();
+  });
+
+  /* kind extras */
+  if (g.kind === "dragon") {
+    /* blocky wings */
+    [-1, 1].forEach(function (side) {
+      var wx = side < 0 ? left + 4 * s : right - 4 * s;
+      var wy = cy - bodyH * 0.42 + Math.sin(frame / 20 + side) * 3 * s;
+      ctx.fillStyle = g.col[1];
+      ctx.beginPath();
+      ctx.moveTo(wx, wy + 10 * s);
+      ctx.lineTo(wx + side * r * 0.52, wy - r * 0.42);
+      ctx.lineTo(wx + side * r * 0.30, wy + r * 0.16);
+      ctx.lineTo(wx + side * r * 0.10, wy + r * 0.26);
+      ctx.closePath(); ctx.fill();
+    });
+    /* spine studs (Minecraft-style bumps on top) */
+    ctx.fillStyle = g.col[1];
+    for (var si = -1; si <= 1; si++) {
+      blk(ctx, cx + si * 20 * s - 6 * s, top - 10 * s + Math.abs(si) * 5 * s,
+        12 * s, 12 * s, 3 * s, g.col[1]);
+    }
+  } else if (g.kind === "alien") {
+    /* blocky antennae with glowing square tips */
+    [-1, 1].forEach(function (side) {
+      var ax = cx + side * r * 0.34, ay = top;
+      ctx.strokeStyle = g.col[1]; ctx.lineWidth = 5 * s; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(ax, ay);
+      ctx.lineTo(ax + side * r * 0.16, ay - r * 0.34); ctx.stroke();
+      var tipGlow = 0.6 + Math.sin(frame / 14 + side) * 0.35;
+      blk(ctx, ax + side * r * 0.16 - 6 * s, ay - r * 0.34 - 12 * s,
+        12 * s, 12 * s, 3 * s, g.col[0]);
+      ctx.fillStyle = "rgba(255,255,255," + (0.35 + tipGlow * 0.5) + ")";
+      blk(ctx, ax + side * r * 0.16 - 3 * s, ay - r * 0.34 - 9 * s, 6 * s, 6 * s, 2 * s,
+        "rgba(255,255,255," + (0.4 + tipGlow * 0.5) + ")");
+    });
+  } else {
+    /* Dojo-style little block horns */
+    ctx.fillStyle = g.col[1];
+    [-1, 1].forEach(function (side) {
+      var hx = cx + side * bodyW * 0.30, hy = top;
+      ctx.beginPath();
+      ctx.moveTo(hx - 8 * s, hy);
+      ctx.lineTo(hx + side * 2 * s, hy - r * 0.26);
+      ctx.lineTo(hx + 9 * s, hy);
+      ctx.closePath(); ctx.fill();
+    });
+  }
+
+  /* ---- the chunky block body ---- */
+  var grd = ctx.createLinearGradient(0, top, 0, top + bodyH);
+  grd.addColorStop(0, g.col[0]); grd.addColorStop(1, g.col[1]);
+  var puffed = state === "trap" ? 1.05 : 1;
+  blk(ctx, cx - (bodyW * puffed) / 2, top, bodyW * puffed, bodyH, 16 * s, grd,
+    state === "trap" ? "rgba(255,255,255,.5)" : null, 3 * s);
+
+  /* lighter belly block */
+  blk(ctx, cx - bodyW * 0.30, cy - bodyH * 0.02, bodyW * 0.60, bodyH * 0.52, 12 * s,
+    "rgba(255,255,255,.16)");
+
+  /* feet — chunky blocks */
+  ctx.fillStyle = g.col[1];
+  var feetN = g.kind === "alien" ? 3 : 2;
+  for (var fi = 0; fi < feetN; fi++) {
+    var fx = cx + (fi - (feetN - 1) / 2) * bodyW * 0.42;
+    blk(ctx, fx - 11 * s, baseY - 12 * s, 22 * s, 14 * s, 5 * s, g.col[1]);
+  }
+
+  /* ---- big square Dojo eyes ---- */
+  var ew = r * 0.30, eh = r * 0.34, eyeGap = r * 0.30, eyeY = cy - r * 0.14;
+  [-1, 1].forEach(function (side) {
+    var ex = cx + side * eyeGap - ew / 2;
+    blk(ctx, ex, eyeY - eh / 2, ew, eh, 7 * s, "#F7FBFA", "#10242B", 2.5 * s);
+    if (state === "tamed") {
+      /* happy block-arc eyes */
+      ctx.strokeStyle = "#10242B"; ctx.lineWidth = 3.4 * s; ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.arc(cx + side * eyeGap, eyeY + eh * 0.18, eh * 0.42, Math.PI * 1.12, Math.PI * 1.88);
+      ctx.stroke();
+    } else if (state === "peek") {
+      /* wide curious eyes — big pupils */
+      var py = eyeY + eh * 0.12 + Math.sin(frame / 40) * 1.5 * s;
+      blk(ctx, cx + side * eyeGap - ew * 0.26, py - ew * 0.26, ew * 0.52, ew * 0.52, 4 * s, "#10242B");
+      blk(ctx, cx + side * eyeGap - ew * 0.26 + 3 * s, py - ew * 0.26 + 3 * s, ew * 0.18, ew * 0.18, 2 * s, "#fff");
+    } else {
+      /* trap: smug — square pupils looking aside */
+      var ty = eyeY + eh * 0.14;
+      blk(ctx, cx + side * eyeGap - ew * 0.24 + side * 3 * s, ty - ew * 0.24, ew * 0.48, ew * 0.48, 3 * s, "#10242B");
+      /* the smug square eyebrow */
+      ctx.strokeStyle = "#10242B"; ctx.lineWidth = 4 * s; ctx.lineCap = "square";
+      ctx.beginPath();
+      ctx.moveTo(ex - 2 * s, eyeY - eh * 0.62);
+      ctx.lineTo(ex + ew + 2 * s, eyeY - eh * 0.74);
+      ctx.stroke();
+    }
+  });
+
+  /* mouth — blocky smirk (trap/peek) or open block smile (tamed) */
+  var my = cy + r * 0.34, mw = r * 0.16;
+  ctx.strokeStyle = "#10242B"; ctx.lineWidth = 3.6 * s; ctx.lineCap = "round";
+  if (state === "tamed") {
+    ctx.fillStyle = "#10242B";
+    ctx.beginPath(); ctx.arc(cx, my - mw * 0.2, mw, 0.1 * Math.PI, 0.9 * Math.PI);
+    ctx.closePath(); ctx.fill();
+    /* a little gold tooth */
+    ctx.fillStyle = "#f4d47a";
+    blk(ctx, cx - 4 * s, my + mw * 0.5, 8 * s, 7 * s, 2 * s, "#f4d47a");
+  } else {
+    ctx.beginPath();
+    ctx.moveTo(cx - mw, my);
+    ctx.lineTo(cx + mw, my - (state === "peek" ? 0 : 5 * s));
+    ctx.stroke();
+  }
+
+  /* cheeks */
+  ctx.fillStyle = "rgba(255,255,255,.25)";
+  [-1, 1].forEach(function (side) {
+    blk(ctx, cx + side * r * 0.46 - 5 * s, cy + r * 0.16, 10 * s, 7 * s, 3 * s, "rgba(255,255,255,.22)");
+  });
+
+  /* ---- the math prop it fumbles with (only in trap/tamed, hidden in peek) ---- */
+  if (state !== "peek") drawGremlinProp(ctx, g.prop, cx, cy, r, s, state, frame, g);
+
+  ctx.restore();
+}
+
+/* blocky math props. trap = broken/misplaced, tamed = corrected. */
+function drawGremlinProp(ctx, prop, bx, by, r, s, state, frame, g) {
+  var px = bx, py = by + r * 0.74;
+  var tamed = state === "tamed";
+  var gold = "#C9A227", teal = "#12857c", ink = "#10242B", warn = "#c74440";
+  ctx.save();
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
+
+  switch (prop) {
+    case "remainder": {
+      /* a little bundle of blocks it drops in trap, carries in tamed */
+      var droop = tamed ? 0 : r * 0.26 + Math.sin(frame / 20) * 2;
+      ctx.strokeStyle = gold; ctx.lineWidth = 3 * s; ctx.lineCap = "round";
+      [-1, 0, 1].forEach(function (k) {
+        blk(ctx, px + k * 13 * s + (tamed ? 0 : k * 3 * s) - 6 * s,
+          py + droop - Math.abs(k) * 5 * s - 6 * s, 13 * s, 13 * s, 3 * s, "#e9c46a", "#a07f16", 2 * s);
+      });
+      ctx.beginPath();
+      ctx.moveTo(px - 14 * s, py + droop - 12 * s);
+      ctx.lineTo(px + 14 * s, py + droop + 6 * s);
+      ctx.stroke();
+      if (tamed) { ctx.fillStyle = teal; ctx.font = "800 " + (10 * s) + "px 'JetBrains Mono', monospace";
+        ctx.fillText("✓ kept", px, py + 26 * s); }
+      break;
+    }
+    case "label": case "shifter": {
+      /* a blocky stretched word-label */
+      var w = (tamed ? r * 0.52 : r * 0.78) * (prop === "shifter" ? 0.85 : 1);
+      blk(ctx, px - w / 2, py - 13 * s, w, 24 * s, 7 * s, tamed ? "#e8f6f4" : "#fff6d8",
+        tamed ? teal : "#b08a1a", 3 * s);
+      ctx.fillStyle = ink; ctx.font = "800 " + (11 * s) + "px 'JetBrains Mono', monospace";
+      ctx.fillText(prop === "label" ? (tamed ? "0.9=0.90" : "0.095!") : "3142", px, py);
+      if (!tamed) {
+        ctx.strokeStyle = warn; ctx.lineWidth = 3.4 * s;
+        ctx.beginPath(); ctx.moveTo(px - w * 0.36, py - 9 * s); ctx.lineTo(px - w * 0.16, py + 9 * s); ctx.stroke();
+      }
+      break;
+    }
+    case "twins": case "shapes": {
+      /* two near-identical block tiles */
+      [-1, 1].forEach(function (side) {
+        var tx = px + side * 17 * s - 12 * s;
+        blk(ctx, tx, py - 13 * s, 24 * s, 26 * s, 6 * s, tamed ? teal : "#3a82b0");
+        /* two square eyes on each tile */
+        blk(ctx, tx + 6 * s, py - 5 * s, 5 * s, 5 * s, 1.5 * s, "#F7FBFA");
+        blk(ctx, tx + 15 * s, py - 5 * s, 5 * s, 5 * s, 1.5 * s, "#F7FBFA");
+      });
+      if (tamed) { ctx.strokeStyle = gold; ctx.lineWidth = 3 * s;
+        ctx.beginPath(); ctx.arc(px, py + 2 * s, r * 0.30, 0, Math.PI * 2); ctx.stroke(); }
+      break;
+    }
+    case "parrot": {
+      /* a confident blocky claim-bird */
+      ctx.fillStyle = tamed ? teal : warn;
+      blk(ctx, px - 15 * s, py - 12 * s, 30 * s, 24 * s, 7 * s, tamed ? teal : warn);
+      blk(ctx, px + 8 * s, py - 22 * s, 16 * s, 14 * s, 5 * s, tamed ? teal : warn);
+      /* beak */
+      ctx.fillStyle = "#f4c542";
+      ctx.beginPath();
+      ctx.moveTo(px + 23 * s, py - 17 * s); ctx.lineTo(px + 32 * s, py - 14 * s); ctx.lineTo(px + 23 * s, py - 11 * s);
+      ctx.closePath(); ctx.fill();
+      ctx.fillStyle = "#F7FBFA";
+      if (tamed) {
+        ctx.strokeStyle = "#F7FBFA"; ctx.lineWidth = 2.4 * s; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.arc(px + 16 * s, py - 15 * s, 3 * s, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke();
+      } else {
+        blk(ctx, px + 14 * s, py - 17 * s, 5 * s, 5 * s, 1.5 * s, "#F7FBFA");
+      }
+      break;
+    }
+    case "zeros": case "scales": case "wisp": case "muddler": {
+      /* measure wisps it stirs (block dashes), corrected gold star when tamed */
+      var col = tamed ? teal : "#8a93a4";
+      ctx.lineCap = "round";
+      for (var i = -1; i <= 1; i++) {
+        ctx.strokeStyle = col; ctx.globalAlpha = tamed ? 0.95 : 0.55 - Math.abs(i) * 0.12;
+        ctx.lineWidth = 4 * s;
+        var wy = py + i * 9 * s;
+        ctx.beginPath(); ctx.moveTo(px - 26 * s, wy);
+        ctx.lineTo(px - 8 * s, wy + Math.sin(frame / 16 + i) * 2);
+        ctx.moveTo(px + 8 * s, wy + Math.sin(frame / 16 + i) * 2);
+        ctx.lineTo(px + 26 * s, wy);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      }
+      if (tamed && D) D.star8(ctx, px, py + r * 0.40, 9 * s, 1, gold, 2);
+      break;
+    }
+    default: {
+      blk(ctx, px - 12 * s, py - 12 * s, 24 * s, 24 * s, 6 * s, tamed ? teal : g.col[1]);
+      ctx.fillStyle = "#F7FBFA"; ctx.font = "800 " + (14 * s) + "px 'JetBrains Mono', monospace";
+      ctx.fillText(tamed ? "✓" : "?", px, py);
+    }
+  }
+  ctx.restore();
+}
+
+if (typeof D !== "undefined" && D) {
+  D.gremlin = drawGremlin;
+  D.gremlinFor = gremlinFor;
+  D.GREMLINS = GREMLINS;
+}
+window.drawGremlin = drawGremlin;
+window.gremlinFor = gremlinFor;
+window.GREMLINS = GREMLINS;
     </script>
     <script>window.DAF_ROSTER = {
   "school": "Dar Al Fikr Schools",
@@ -3965,6 +4285,50 @@ function Sketch({ draw, height, style }) {
       onMouseMove={(e) => pointer(e, false)}
       style={Object.assign({ width: "100%", height: (height || 300) + "px", display: "block" }, style || {})}
     />
+  );
+}
+
+/* The Fog Gremlin of the current unit — a friendly non-human trickster that
+   holds the door's trap. state: 'trap' (puffed, smug whisper) until the
+   proof is accepted, then 'tamed' (happy, prop fixed). It is non-violent:
+   the class never strikes it — it is correct-ted and helps next door. */
+function Gremlin({ state, code, size, whisper }) {
+  const g = (typeof GREMLINS !== "undefined") && GREMLINS[(code && String(code).split("-")[0]) || "1"];
+  const def = g || GREMLINS["1"];
+  const st = state === "tamed" ? "tamed" : "trap";
+  const draw = (ctx, W, H, frame) => {
+    ctx.clearRect(0, 0, W, H);
+    drawGremlin(ctx, W / 2, H - 14, { state: st, frame: frame, r: Math.min(W, H) * 0.34, code: code });
+  };
+  return (
+    <div className={"gremlin-wrap g-" + st}>
+      <Sketch draw={draw} height={size || 150} />
+      <div className="gremlin-name"><i className="fa-solid fa-mask" /> {def.name}</div>
+      {whisper && st === "trap" && (
+        <div className="gremlin-whisper">
+          <i className="fa-solid fa-comment-dots" /> “{def.trap || whisper}”
+        </div>
+      )}
+      {st === "tamed" && (
+        <div className="gremlin-tamed"><i className="fa-solid fa-circle-check" /> the proof holds — it helps now</div>
+      )}
+    </div>
+  );
+}
+
+/* A small recurring companion that peeks into the STORY / knowledge screens:
+   curious ('peek') — it watches the build, hiding its fumbled prop. Lives in
+   the story ribbon cast alongside Omar & Zayd. */
+function GremlinAvatar({ code, size }) {
+  const draw = (ctx, W, H, frame) => {
+    ctx.clearRect(0, 0, W, H);
+    drawGremlin(ctx, W / 2, H - 2, { state: "peek", frame: frame, r: Math.min(W, H) * 0.42, code: code });
+  };
+  const def = (typeof GREMLINS !== "undefined" && GREMLINS[(String(code || LESSON.code)).split("-")[0]]) || GREMLINS["1"];
+  return (
+    <span className="gremlin-avatar" title={"The " + def.name + " — watch for its trick"}>
+      <Sketch draw={draw} style={{ width: (size || 52) + "px", height: (size || 52) + "px" }} />
+    </span>
   );
 }
 
@@ -4368,6 +4732,9 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
             : character ? <StoryCharacter id={character} pose={pose} size={60} />
             : <StoryLantern size={54} />}
           {support ? <SupportCharacter id={support} size={46} /> : null}
+          {/* the recurring Fog Gremlin peeks into the fiction + story (STEM)
+              lanes as a curious companion — never the sacred Amanah lane */}
+          {(lane === "fiction" || info.cls === "stem") ? <GremlinAvatar size={50} /> : null}
         </div>
         <div className="story-ribbon-copy">
           <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>
@@ -5291,8 +5658,9 @@ function PracticeSprint({ award }) {
 
   if (finished) {
     return (
-      <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px", textAlign: "center" }}>
-        <Sketch draw={drawSprint(items.length, -1, items.length, true)} height={130} />
+      <div className="glass-panel" style={{ display: "flex", flexDirection: "column", gap: "13px", textAlign: "center", alignItems: "center" }}>
+        <Sketch draw={drawSprint(items.length, -1, items.length, true)} height={110} />
+        <Gremlin state="tamed" code={LESSON.code} size={120} />
         <div style={{ fontSize: 15, fontWeight: 900, color: "var(--daf-deep)" }}>
           Sprint complete — {items.length} items, every answer met in the moment.
         </div>
@@ -5453,7 +5821,10 @@ function CriticBoard({ award }) {
 
   return (
     <div className="glass-panel critic-panel" style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-      <Sketch draw={drawCritic(chDone, accepted, C.challenges.length)} height={148} />
+      <Sketch draw={drawCritic(chDone, accepted, C.challenges.length)} height={120} />
+
+      {/* the Fog Gremlin of this unit: smug with its trap until the proof is accepted, then tamed */}
+      <Gremlin state={accepted ? "tamed" : "trap"} code={LESSON.code} size={150} whisper />
 
       <div className="critic-brief">
         <div className="critic-brief-tag"><Icon name="fa-location-crosshairs" /> A genuinely new situation</div>
@@ -6263,31 +6634,6 @@ function MathInventory({ onClose }) {
 
 function Frame({ meta, stage, children }) {
   const vref = useRef(null);
-  const [layout, setLayout] = useState("l-stage");
-  /* VISUAL-FIRST LAYOUT: pick the layout that gives the visual and the
-     interactive the most room, automatically per screen:
-       · l-board  — the modelled-rule board screen (BoardScreen) → full-bleed
-       · l-studio — the interactive stage widgets (gap map, practice sprint,
-                    critic/production gate, mastery gate, evidence wall)
-       · l-stage  — every story / explore / build canvas screen (default):
-                    a compact copy band on top, the stage fills the rest and
-                    scrolls inside the slide.
-     Detection runs after mount from the real DOM so it works for the lesson
-     Visual cases and the engine stage widgets alike. */
-  useEffect(() => {
-    let l = "l-stage";
-    if (vref.current) {
-      if (vref.current.querySelector(".board-stage")) l = "l-board";
-      else if (stage === 4 || stage === 5 || stage === 6 || stage === 7
-        || meta.phase === "practice" || meta.phase === "produce" || meta.phase === "swyk"
-        || vref.current.querySelector(
-        ".gap-rows,.sprint-panel,.critic-panel,.wall-panel,.q-panel,.lane-grid,.critic-production")) {
-        l = "l-studio";
-      }
-    }
-    setLayout(l);
-  }, [meta.title, stage]);
-
   useEffect(() => {
     if (!window.gsap || !vref.current) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -6304,7 +6650,7 @@ function Frame({ meta, stage, children }) {
   const ph = PHASES[meta.phase];
   const st = stage && STAGES[stage];
   return (
-    <div className={"screen " + layout} data-layout={layout}>
+    <div className="screen">
       <section className="copy">
         <Star8 className="copy-star" />
         {st && (
@@ -6317,7 +6663,7 @@ function Frame({ meta, stage, children }) {
         <p className="lead">{meta.lead}</p>
         <div className="goal"><b>Goal · </b>{meta.goal}</div>
       </section>
-      <section className={"visual visual-" + layout} ref={vref}>
+      <section className="visual" ref={vref}>
         <Boundary>{children}</Boundary>
       </section>
     </div>

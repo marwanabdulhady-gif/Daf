@@ -206,6 +206,9 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
             : character ? <StoryCharacter id={character} pose={pose} size={60} />
             : <StoryLantern size={54} />}
           {support ? <SupportCharacter id={support} size={46} /> : null}
+          {/* the recurring Fog Gremlin peeks into the fiction + story (STEM)
+              lanes as a curious companion — never the sacred Amanah lane */}
+          {(lane === "fiction" || info.cls === "stem") ? <GremlinAvatar size={50} /> : null}
         </div>
         <div className="story-ribbon-copy">
           <span className="story-lane"><Icon name={info.icon} /> {info.label}</span>

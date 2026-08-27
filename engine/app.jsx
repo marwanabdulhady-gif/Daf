@@ -263,31 +263,6 @@ function MathInventory({ onClose }) {
 
 function Frame({ meta, stage, children }) {
   const vref = useRef(null);
-  const [layout, setLayout] = useState("l-stage");
-  /* VISUAL-FIRST LAYOUT: pick the layout that gives the visual and the
-     interactive the most room, automatically per screen:
-       · l-board  — the modelled-rule board screen (BoardScreen) → full-bleed
-       · l-studio — the interactive stage widgets (gap map, practice sprint,
-                    critic/production gate, mastery gate, evidence wall)
-       · l-stage  — every story / explore / build canvas screen (default):
-                    a compact copy band on top, the stage fills the rest and
-                    scrolls inside the slide.
-     Detection runs after mount from the real DOM so it works for the lesson
-     Visual cases and the engine stage widgets alike. */
-  useEffect(() => {
-    let l = "l-stage";
-    if (vref.current) {
-      if (vref.current.querySelector(".board-stage")) l = "l-board";
-      else if (stage === 4 || stage === 5 || stage === 6 || stage === 7
-        || meta.phase === "practice" || meta.phase === "produce" || meta.phase === "swyk"
-        || vref.current.querySelector(
-        ".gap-rows,.sprint-panel,.critic-panel,.wall-panel,.q-panel,.lane-grid,.critic-production")) {
-        l = "l-studio";
-      }
-    }
-    setLayout(l);
-  }, [meta.title, stage]);
-
   useEffect(() => {
     if (!window.gsap || !vref.current) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -304,7 +279,7 @@ function Frame({ meta, stage, children }) {
   const ph = PHASES[meta.phase];
   const st = stage && STAGES[stage];
   return (
-    <div className={"screen " + layout} data-layout={layout}>
+    <div className="screen">
       <section className="copy">
         <Star8 className="copy-star" />
         {st && (
@@ -317,7 +292,7 @@ function Frame({ meta, stage, children }) {
         <p className="lead">{meta.lead}</p>
         <div className="goal"><b>Goal · </b>{meta.goal}</div>
       </section>
-      <section className={"visual visual-" + layout} ref={vref}>
+      <section className="visual" ref={vref}>
         <Boundary>{children}</Boundary>
       </section>
     </div>
