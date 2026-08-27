@@ -116,12 +116,140 @@
 
       .screen {
         width: 100%; height: 100%; position: relative; display: grid;
-        grid-template-columns: minmax(320px, 36%) 1fr;
+        grid-template-columns: minmax(300px, 34%) 1fr;
         overflow: hidden;
         background: linear-gradient(145deg, #ffffff 0%, #fbfefd 60%, #eef8f6 100%);
         animation: screenIn 0.66s var(--ease) both;
       }
       .screen.full { grid-template-columns: 1fr; }
+
+      /* =====================================================================
+         VISUAL-FIRST LAYOUT (the default) — the slide IS a stage.
+         The copy collapses into a compact, scrollable band along the top;
+         the canvas + interactive own the dominant area below and scroll
+         within the slide when content is tall. Three auto layouts:
+           · .l-stage  — story/build/canvas screens: copy band + big stage
+           · .l-studio — interactive stage widgets (gap map, sprint, critic,
+                         gate, wall): near full-width widget, slim title strip
+           · .l-board — the modeled-rule board: full-bleed drawing, float text
+         The legacy side-by-side grid is kept only as the narrow fallback.
+         ===================================================================== */
+      .screen.l-stage,
+      .screen.l-studio,
+      .screen.l-board {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto minmax(0, 1fr);
+      }
+      .screen.l-stage .copy,
+      .screen.l-studio .copy,
+      .screen.l-board .copy {
+        flex-direction: row; align-items: center; flex-wrap: wrap; column-gap: 18px;
+        justify-content: flex-start;
+        padding: 12px 30px 10px;
+        max-height: 132px; overflow-y: auto;
+        border-bottom: 1.5px solid color-mix(in srgb, var(--c) 18%, transparent);
+        background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.66));
+        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      }
+      .screen.l-studio .copy { max-height: 96px; }
+      .screen.l-board .copy { max-height: 84px; }
+      /* the compact copy band: chip + tag cluster left, headline fills,
+         the lead and goal collapse behind a disclosure for more room */
+      .screen.l-stage .copy h1,
+      .screen.l-studio .copy h1,
+      .screen.l-board .copy h1 {
+        order: 2; flex: 1 1 320px; margin: 0;
+        font-size: clamp(19px, 1.85vw, 30px); line-height: 1.08; letter-spacing: -0.03em;
+      }
+      .screen.l-stage .copy .stage-chip,
+      .screen.l-studio .copy .stage-chip,
+      .screen.l-board .copy .stage-chip { order: 1; margin: 0 0 4px; }
+      .screen.l-stage .copy .phase-tag,
+      .screen.l-studio .copy .phase-tag,
+      .screen.l-board .copy .phase-tag { order: 1; margin: 0 0 4px; padding: 4px 10px; }
+      .screen.l-stage .copy .lead,
+      .screen.l-board .copy .lead {
+        order: 3; flex: 1 1 100%; margin-top: 2px;
+        font-size: 13px; line-height: 1.45; max-width: none;
+      }
+      .screen.l-stage .copy .goal { order: 4; flex: 1 1 100%; margin-top: 4px; }
+      .screen.l-studio .copy .lead,
+      .screen.l-studio .copy .goal { display: none; }
+      .screen.l-board .copy .goal { display: none; }
+      .screen.l-stage .copy-star,
+      .screen.l-studio .copy-star,
+      .screen.l-board .copy-star { display: none; }
+
+      /* the stage area fills the row beneath the band; content scrolls */
+      .screen.l-stage .visual,
+      .screen.l-studio .visual,
+      .screen.l-board .visual {
+        grid-row: 2; padding: 14px 30px 46px;
+        align-items: stretch; justify-content: center;
+      }
+      .screen.l-stage .visual > *,
+      .screen.l-studio .visual > * { max-height: 100%; }
+      .screen.l-stage .visual > .glass-panel,
+      .screen.l-studio .visual > .glass-panel {
+        justify-content: flex-start; overflow-y: auto;
+        scrollbar-width: thin; scrollbar-color: rgba(18,133,124,.3) transparent;
+      }
+      /* interactive widgets get a roomier max width so cards/chips breathe */
+      .screen.l-studio .visual { padding-inline: clamp(20px, 5vw, 72px); }
+      .screen.l-board .visual { padding: 10px 24px 40px; }
+      /* full-bleed board: the rule drawing owns the whole stage */
+      .screen.l-board .visual > .glass-panel,
+      .screen.l-board .visual > .story-shell {
+        max-height: 100%; overflow: hidden;
+      }
+
+      /* On the story build screens (stage 3), the in-stage story ribbon
+         already carries the scene title + text, so the top band tightens to
+         a single line — no duplicated narrative, maximum room for the
+         interactive. The teacher rail (T) still shows the full meta. */
+      .screen.l-stage .copy:has(~ .visual .story-shell) .lead,
+      .screen.l-stage .copy:has(~ .visual .story-shell) .goal { display: none; }
+      .screen.l-stage .copy:has(~ .visual .story-shell) { max-height: 78px; align-items: center; padding-block: 9px; }
+      .screen.l-stage .copy:has(~ .visual .story-shell) h1 { font-size: clamp(16px, 1.5vw, 23px); }
+      .screen.l-stage .copy:has(~ .visual .story-shell) .stage-chip { margin-bottom: 0; }
+      /* the in-stage story ribbon becomes a slim single-row caption bar */
+      .screen.l-stage .visual .story-shell { gap: 8px; }
+      .screen.l-stage .visual .story-shell .story-ribbon {
+        min-height: 64px; grid-template-columns: auto minmax(0, 1fr) auto; padding: 7px 14px;
+      }
+      .screen.l-stage .visual .story-shell .story-ribbon-copy p {
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      }
+      .screen.l-stage .visual .story-shell .story-ribbon-copy small { display: none; }
+
+      /* gentle scrollbar inside the scrolling copy band */
+      .screen.l-stage .copy::-webkit-scrollbar,
+      .screen.l-studio .copy::-webkit-scrollbar,
+      .screen.l-board .copy::-webkit-scrollbar { height: 5px; }
+      .screen.l-stage .copy::-webkit-scrollbar-thumb,
+      .screen.l-studio .copy::-webkit-scrollbar-thumb,
+      .screen.l-board .copy::-webkit-scrollbar-thumb { background: rgba(18,133,124,.2); border-radius: 999px; }
+
+      /* narrow screens keep the readable side-by-side split; very short
+         viewports let the copy band grow and scroll */
+      @media (max-width: 940px) {
+        .screen.l-stage, .screen.l-board {
+          grid-template-columns: minmax(280px, 38%) 1fr;
+          grid-template-rows: minmax(0, 1fr);
+        }
+        .screen.l-stage .copy, .screen.l-board .copy {
+          flex-direction: column; align-items: flex-start; justify-content: center;
+          grid-row: 1 / span 2; max-height: none; border-bottom: none;
+          background: none; backdrop-filter: none; padding: 26px 18px 40px 30px;
+        }
+        .screen.l-stage .visual, .screen.l-board .visual { grid-row: 1 / span 2; }
+        .screen.l-stage .copy h1, .screen.l-board .copy h1 {
+          order: 0; flex: none; font-size: clamp(24px, 2.4vw, 40px);
+        }
+        .screen.l-stage .copy .lead, .screen.l-board .copy .lead,
+        .screen.l-stage .copy .goal, .screen.l-board .copy .goal { display: block; flex: none; }
+        .screen.l-stage .copy-star, .screen.l-board .copy-star { display: block; }
+      }
       .screen:before {
         content: ""; position: absolute; inset: 0; pointer-events: none;
         background-image:
@@ -139,7 +267,9 @@
          light paper, teal + gold accents. Panels are borderless so the canvas
          and the controls float directly on the stage (the canvas paints the
          same paper via the light-stage remap in draw.js — no board, no box).
-         Interactive controls span the full stage width, not a bordered box. */
+         Interactive controls span the full stage width, not a bordered box.
+         In the visual-first layouts the canvas grows to fill the taller
+         stage instead of staying at its fixed inline height. */
       .visual > .glass-panel,
       .visual > .story-shell .glass-panel {
         background: transparent; border: none; box-shadow: none;
@@ -147,6 +277,27 @@
       }
       .visual > .glass-panel:has(canvas),
       .visual > .story-shell .glass-panel:has(canvas) { padding: 6px; }
+      /* canvas-heavy panels fill the stage and the canvas grows to use the
+         larger visual area (the drawing re-fits via the ResizeObserver).
+         Paths cover both bare panels (.visual > .glass-panel) and in-story
+         panels (.visual .story-shell … .glass-panel). */
+      .screen.l-stage .visual .glass-panel:has(canvas:not(.ambient)),
+      .screen.l-studio .visual .glass-panel:has(canvas:not(.ambient)) {
+        flex: 1 1 auto; min-height: 0; justify-content: stretch;
+      }
+      .screen.l-stage .visual .glass-panel > canvas:not(.ambient),
+      .screen.l-studio .visual .glass-panel > canvas:not(.ambient),
+      .screen.l-stage .visual .board-stage canvas,
+      .screen.l-studio .visual .board-stage canvas {
+        width: 100% !important;
+        flex: 1 1 320px; min-height: 320px;
+        height: auto !important;
+      }
+      /* story content also fills the taller stage */
+      .screen.l-stage .visual .story-content,
+      .screen.l-studio .visual .story-content { min-height: 0; flex: 1 1 auto; }
+      .screen.l-stage .visual .story-content > .glass-panel,
+      .screen.l-studio .visual .story-content > .glass-panel { flex: 1 1 auto; min-height: 0; }
       .chip-bar { width: 100%; padding: 2px 2px 4px; }
       .chip-label { font-weight: 900; font-size: 12px; color: var(--c); margin: 0 2px 9px; }
       .chip-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
@@ -156,10 +307,11 @@
       /* THE STAGE — board screens are full-stage: the drawing owns the whole
          visual area at full height (no framed box), Dar Al Fikr deep-teal
          surface with the logo-gold breathing frame drawn by D.stage itself. */
-      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; }
-      .board-stage { position: relative; flex: 1; min-height: 300px; }
+      .glass-panel:has(> .board-stage) { background: transparent; border: none; box-shadow: none; padding: 0; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+      .board-stage { position: relative; flex: 1; min-height: 260px; }
       .stage-caption { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 11.5px; color: rgba(16,36,43,.62); padding: 0 18px; pointer-events: none; }
-      .screen:has(.board-stage) { grid-template-columns: minmax(270px, 29%) 1fr; }
+      /* board screens run the full-bleed .l-board layout chosen by the Frame */
+      .screen.l-board .glass-panel:has(> .board-stage) { padding: 0; }
 
       /* Staggered element reveals (Syntax-Academy revealUp, English edition):
          every element on the screen enters with a .08s offset. Disabled under
@@ -186,7 +338,7 @@
       }
 
       .visual {
-        position: relative; z-index: 4; min-width: 0;
+        position: relative; z-index: 4; min-width: 0; min-height: 0;
         display: flex; align-items: stretch; justify-content: center;
         padding: 20px 40px 42px 14px;
       }
@@ -6072,6 +6224,31 @@ function MathInventory({ onClose }) {
 
 function Frame({ meta, stage, children }) {
   const vref = useRef(null);
+  const [layout, setLayout] = useState("l-stage");
+  /* VISUAL-FIRST LAYOUT: pick the layout that gives the visual and the
+     interactive the most room, automatically per screen:
+       · l-board  — the modelled-rule board screen (BoardScreen) → full-bleed
+       · l-studio — the interactive stage widgets (gap map, practice sprint,
+                    critic/production gate, mastery gate, evidence wall)
+       · l-stage  — every story / explore / build canvas screen (default):
+                    a compact copy band on top, the stage fills the rest and
+                    scrolls inside the slide.
+     Detection runs after mount from the real DOM so it works for the lesson
+     Visual cases and the engine stage widgets alike. */
+  useEffect(() => {
+    let l = "l-stage";
+    if (vref.current) {
+      if (vref.current.querySelector(".board-stage")) l = "l-board";
+      else if (stage === 4 || stage === 5 || stage === 6 || stage === 7
+        || meta.phase === "practice" || meta.phase === "produce" || meta.phase === "swyk"
+        || vref.current.querySelector(
+        ".gap-rows,.sprint-panel,.critic-panel,.wall-panel,.q-panel,.lane-grid,.critic-production")) {
+        l = "l-studio";
+      }
+    }
+    setLayout(l);
+  }, [meta.title, stage]);
+
   useEffect(() => {
     if (!window.gsap || !vref.current) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -6088,7 +6265,7 @@ function Frame({ meta, stage, children }) {
   const ph = PHASES[meta.phase];
   const st = stage && STAGES[stage];
   return (
-    <div className="screen">
+    <div className={"screen " + layout} data-layout={layout}>
       <section className="copy">
         <Star8 className="copy-star" />
         {st && (
@@ -6101,7 +6278,7 @@ function Frame({ meta, stage, children }) {
         <p className="lead">{meta.lead}</p>
         <div className="goal"><b>Goal · </b>{meta.goal}</div>
       </section>
-      <section className="visual" ref={vref}>
+      <section className={"visual visual-" + layout} ref={vref}>
         <Boundary>{children}</Boundary>
       </section>
     </div>
