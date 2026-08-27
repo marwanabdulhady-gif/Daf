@@ -14,4 +14,5 @@ for (const b of (d.bosses||[]))
   ./build.sh "$code" "$title" > /dev/null
 done
 node scripts/make-index.js > /dev/null 2>&1 || true
+node scripts/organize.js > /dev/null 2>&1 || true
 echo "rebuilt $(ls html | wc -l) lessons"
