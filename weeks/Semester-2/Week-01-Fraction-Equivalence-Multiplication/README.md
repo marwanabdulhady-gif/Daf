@@ -10,6 +10,12 @@
 | **8.1** | Equivalent Fractions: Area Models | Chapter 8 | `4.NF.A.1` | HYC | [`lesson-8-1-equivalent-fractions-area-models.html`](lesson-8-1-equivalent-fractions-area-models.html) |
 | **8.2** | Equivalent Fractions: Number Lines | Chapter 8 | `4.NF.A.1` | WQL · CLW | [`lesson-8-2-equivalent-fractions-number-lines.html`](lesson-8-2-equivalent-fractions-number-lines.html) |
 | **8.3** | Generate Equivalent Fractions: Multiplication | Chapter 8 | `4.NF.A.1` | 7CY · 7LH | [`lesson-8-3-generate-equivalent-fractions-multiplication.html`](lesson-8-3-generate-equivalent-fractions-multiplication.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **The Fraction Isles: Equivalent Fraction Strips** | [`activity-ch08-fraction-isles-equivalence-strips.html`](activity-ch08-fraction-isles-equivalence-strips.html) |
+
 
 ## Instructions for Teachers & Students
 

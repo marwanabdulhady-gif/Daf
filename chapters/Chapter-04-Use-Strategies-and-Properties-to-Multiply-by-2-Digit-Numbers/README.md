@@ -16,7 +16,13 @@
 | **4-6** | Use Partial Products to Multiply by 2-Digit Numbers | `4.NBT.B.5` | XLZ · MLC · GZG | [`lesson-4-6-use-partial-products-to-multiply-by-2-digit-numbers.html`](lesson-4-6-use-partial-products-to-multiply-by-2-digit-numbers.html)<br>[`4-6.jsx`](4-6.jsx) |
 | **4-7** | Problem Solving: Make Sense and Persevere | `MP.1` | RM5 | [`lesson-4-7-problem-solving-make-sense-and-persevere.html`](lesson-4-7-problem-solving-make-sense-and-persevere.html)<br>[`4-7.jsx`](4-7.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **The Tower of Times: 2-Digit Area Model Builder** | `Chapter 04 · 2-Digit Multiplication` | Construct 4-box area models to calculate 2-digit by 2-digit products floor-by-floor. | [`activity-ch04-tower-of-times-partial-products.html`](activity-ch04-tower-of-times-partial-products.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

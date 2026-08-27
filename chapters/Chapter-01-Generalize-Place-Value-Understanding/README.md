@@ -14,7 +14,13 @@
 | **1-4** | Round Whole Numbers | `4.NBT.A.3` | QV7 · CT2 | [`lesson-1-4-round-whole-numbers.html`](lesson-1-4-round-whole-numbers.html)<br>[`1-4.jsx`](1-4.jsx) |
 | **1-5** | Problem Solving: Construct Arguments | `MP.3` | EFV · XVJ | [`lesson-1-5-problem-solving-construct-arguments.html`](lesson-1-5-problem-solving-construct-arguments.html)<br>[`1-5.jsx`](1-5.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **Place-Value Harbor: Interactive Census Chart** | `Chapter 01 · Place Value Lab` | Explore numbers up to 1,000,000 across periods (Millions, Thousands, Ones) and model the 10x value shift. | [`activity-ch01-place-value-census-chart.html`](activity-ch01-place-value-census-chart.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

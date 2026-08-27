@@ -10,6 +10,12 @@
 | **3.1** | Multiply by Multiples of 10, 100, and 1,000 | Chapter 3 | `4.NBT.B.5` | W6B · 2RP | [`lesson-3-1-multiply-by-multiples-of-10-100-and-1000.html`](lesson-3-1-multiply-by-multiples-of-10-100-and-1000.html) |
 | **3.2** | Estimate Products | Chapter 3 | `4.NBT.B.5` | WDG | [`lesson-3-2-estimate-products.html`](lesson-3-2-estimate-products.html) |
 | **3.3** | Use Arrays and Partial Products to Multiply | Chapter 3 | `4.NBT.B.5` | GUB · 8UH | [`lesson-3-3-use-arrays-and-partial-products-to-multiply.html`](lesson-3-3-use-arrays-and-partial-products-to-multiply.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Product Palm Grove: 1-Digit Area Model Lab** | [`activity-ch03-area-model-multiplication-lab.html`](activity-ch03-area-model-multiplication-lab.html) |
+
 
 ## Instructions for Teachers & Students
 

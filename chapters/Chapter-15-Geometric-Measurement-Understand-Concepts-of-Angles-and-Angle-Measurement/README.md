@@ -15,7 +15,13 @@
 | **15-5** | Add and Subtract Angle Measures | `4.MD.C.7` | VJY · YUA · MBL | [`lesson-15-5-add-and-subtract-angle-measures.html`](lesson-15-5-add-and-subtract-angle-measures.html)<br>[`15-5.jsx`](15-5.jsx) |
 | **15-6** | Problem Solving: Use Appropriate Tools | `MP.5` | JBL | [`lesson-15-6-problem-solving-use-appropriate-tools.html`](lesson-15-6-problem-solving-use-appropriate-tools.html)<br>[`15-6.jsx`](15-6.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **Angle Heights: Interactive Protractor Studio** | `Chapter 15 · Angle Measurement` | Measure angles in degrees using a circular 360° and 180° protractor and solve additive angle puzzles. | [`activity-ch15-angle-heights-protractor-lab.html`](activity-ch15-angle-heights-protractor-lab.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

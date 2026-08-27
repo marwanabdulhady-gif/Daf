@@ -14,7 +14,13 @@
 | **7-4** | Prime and Composite Numbers | `4.OA.B.4` | L9R | [`lesson-7-4-prime-and-composite-numbers.html`](lesson-7-4-prime-and-composite-numbers.html)<br>[`7-4.jsx`](7-4.jsx) |
 | **7-5** | Multiples | `4.OA.B.4` | EFB | [`lesson-7-5-multiples.html`](lesson-7-5-multiples.html)<br>[`7-5.jsx`](7-5.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **Factor Reef: Factor Rainbow & Primes Explorer** | `Chapter 07 · Factors & Multiples` | Discover all factor pairs of a target number, construct factor rainbows, and classify as prime or composite. | [`activity-ch07-factor-reef-pairs-explorer.html`](activity-ch07-factor-reef-pairs-explorer.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

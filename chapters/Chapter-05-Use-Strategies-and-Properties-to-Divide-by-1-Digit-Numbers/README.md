@@ -19,7 +19,13 @@
 | **5-9** | Choose a Strategy to Divide | `4.NBT.B.6` | GE8 · DKK · 2UB | [`lesson-5-9-choose-a-strategy-to-divide.html`](lesson-5-9-choose-a-strategy-to-divide.html)<br>[`5-9.jsx`](5-9.jsx) |
 | **5-10** | Problem Solving: Model with Math | `MP.4` | SLS | [`lesson-5-10-problem-solving-model-with-math.html`](lesson-5-10-problem-solving-model-with-math.html)<br>[`5-10.jsx`](5-10.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **Division Dunes: Partial Quotients Sandbox** | `Chapter 05 · Division Strategies` | Explore sharing caravan cargo into equal loads and calculating partial quotients with remainders. | [`activity-ch05-division-dunes-quotient-lab.html`](activity-ch05-division-dunes-quotient-lab.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

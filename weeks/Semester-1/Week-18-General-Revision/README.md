@@ -9,6 +9,12 @@
 - **Individualized Intervention / IXL Skill Reinforcement**
 - **Exam Preparation & Problem Solving Defense**
 
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Semester 1 General Revision Arena** | [`activity-sem1-general-revision-arena.html`](activity-sem1-general-revision-arena.html) |
+
 
 ## Instructions for Teachers & Students
 

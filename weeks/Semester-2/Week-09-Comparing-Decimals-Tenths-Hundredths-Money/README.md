@@ -10,6 +10,12 @@
 | **12.3** | Compare Decimals | Chapter 12 | `4.NF.C.7` | CV7 · DY5 · EAL · T2W | [`lesson-12-3-compare-decimals.html`](lesson-12-3-compare-decimals.html) |
 | **12.4** | Add Fractions with Denominators of 10 or 100 | Chapter 12 | `4.NF.C.5` | 9RJ · TZH | [`lesson-12-4-add-fractions-with-denominators-of-10-or-100.html`](lesson-12-4-add-fractions-with-denominators-of-10-or-100.html) |
 | **12.5** | Solve Word Problems Involving Money | Chapter 12 | `4.MD.A.2` | 2D5 · RTE · 92H | [`lesson-12-5-solve-word-problems-involving-money.html`](lesson-12-5-solve-word-problems-involving-money.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Decimal Docks: Tenths & Hundredths Grid Tool** | [`activity-ch12-decimal-docks-tenths-hundredths.html`](activity-ch12-decimal-docks-tenths-hundredths.html) |
+
 
 ## Instructions for Teachers & Students
 

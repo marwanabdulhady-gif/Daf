@@ -9,6 +9,12 @@
 - **Focus Areas: Place Value, Whole Number Operations, Multiplication, Division, Factors & Fractions**
 - **Interactive Review Decks & Formative Practice**
 
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Semester 1 General Revision Arena** | [`activity-sem1-general-revision-arena.html`](activity-sem1-general-revision-arena.html) |
+
 
 ## Instructions for Teachers & Students
 

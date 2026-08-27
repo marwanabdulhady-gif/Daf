@@ -15,7 +15,13 @@
 | **12-5** | Solve Word Problems Involving Money | `4.MD.A.2` | 2D5 · RTE · 92H | [`lesson-12-5-solve-word-problems-involving-money.html`](lesson-12-5-solve-word-problems-involving-money.html)<br>[`12-5.jsx`](12-5.jsx) |
 | **12-6** | Problem Solving: Look For and Use Structure | `MP.7` | K5N · UGK | [`lesson-12-6-problem-solving-look-for-and-use-structure.html`](lesson-12-6-problem-solving-look-for-and-use-structure.html)<br>[`12-6.jsx`](12-6.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **Decimal Docks: Tenths & Hundredths Grid Tool** | `Chapter 12 · Decimal Place Value` | Compare tenths and hundredths side-by-side using 10-strip and 100-grid visual models and money conversions. | [`activity-ch12-decimal-docks-tenths-hundredths.html`](activity-ch12-decimal-docks-tenths-hundredths.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

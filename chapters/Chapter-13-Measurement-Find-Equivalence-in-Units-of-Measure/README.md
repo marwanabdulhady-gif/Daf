@@ -17,7 +17,13 @@
 | **13-7** | Problem Solving: Precision | `MP.6` | A2E · UST · KXC | [`lesson-13-7-problem-solving-precision.html`](lesson-13-7-problem-solving-precision.html)<br>[`13-7.jsx`](13-7.jsx) |
 | **BOSS** | Boss The Muddler of the Measure Market | Review Battle | — | [`lesson-boss-13-boss-the-muddler-of-the-measure-market.html`](lesson-boss-13-boss-the-muddler-of-the-measure-market.html) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **The Measure Market: Unit Equivalence & Boss Battle** | `Chapter 13 · Measurement Boss Battle` | Convert units of length, capacity, and mass to defeat The Muddler of the Measure Market in a whole-class review duel. | [`activity-ch13-boss-measure-market-battle.html`](activity-ch13-boss-measure-market-battle.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

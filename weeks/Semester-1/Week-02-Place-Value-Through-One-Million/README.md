@@ -10,6 +10,12 @@
 | **1.1** | Numbers Through One Million | Chapter 1 | `4.NBT.A.2` | 4R6 · 7WT · 5G4 · 2PZ · Z47 | [`lesson-1-1-numbers-through-one-million.html`](lesson-1-1-numbers-through-one-million.html) |
 | **1.2** | Place Value Relationships | Chapter 1 | `4.NBT.A.1` | 9DJ · YAV · D7G · J5M · B5N | [`lesson-1-2-place-value-relationships.html`](lesson-1-2-place-value-relationships.html) |
 | **1.3** | Compare Whole Numbers | Chapter 1 | `4.NBT.A.2` | 6Y2 · USN · 94E | [`lesson-1-3-compare-whole-numbers.html`](lesson-1-3-compare-whole-numbers.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Place-Value Harbor: Interactive Census Chart** | [`activity-ch01-place-value-census-chart.html`](activity-ch01-place-value-census-chart.html) |
+
 
 ## Instructions for Teachers & Students
 

@@ -9,6 +9,12 @@
 |---|---|---|---|---|---|
 | **16.4** | Line Symmetry | Chapter 16 | `4.G.A.3` | 9FD · MWS | [`lesson-16-4-line-symmetry.html`](lesson-16-4-line-symmetry.html) |
 | **16.5** | Draw Shapes with Line Symmetry | Chapter 16 | `4.G.A.3` | SQF | [`lesson-16-5-draw-shapes-with-line-symmetry.html`](lesson-16-5-draw-shapes-with-line-symmetry.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Geometry Gardens: Lines & Symmetry Studio** | [`activity-ch16-geometry-gardens-symmetry-studio.html`](activity-ch16-geometry-gardens-symmetry-studio.html) |
+
 
 ## Instructions for Teachers & Students
 

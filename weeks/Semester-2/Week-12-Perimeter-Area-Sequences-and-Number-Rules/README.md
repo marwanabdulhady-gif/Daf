@@ -10,6 +10,13 @@
 | **13.6** | Solve Perimeter and Area Problems | Chapter 13 | `4.MD.A.3` | UPZ · HNX | [`lesson-13-6-solve-perimeter-and-area-problems.html`](lesson-13-6-solve-perimeter-and-area-problems.html) |
 | **14.1** | Number Sequences | Chapter 14 | `4.OA.C.5` | DWF · C9H · 35J | [`lesson-14-1-number-sequences.html`](lesson-14-1-number-sequences.html) |
 | **14.2** | Patterns: Number Rules | Chapter 14 | `4.OA.C.5` | UZ6 · HDS | [`lesson-14-2-patterns-number-rules.html`](lesson-14-2-patterns-number-rules.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **The Measure Market: Unit Equivalence & Boss Battle** | [`activity-ch13-boss-measure-market-battle.html`](activity-ch13-boss-measure-market-battle.html) |
+| **Pattern Oasis: Sequence & Repeating Shapes Lab** | [`activity-ch14-pattern-oasis-sequence-builder.html`](activity-ch14-pattern-oasis-sequence-builder.html) |
+
 
 ## Instructions for Teachers & Students
 

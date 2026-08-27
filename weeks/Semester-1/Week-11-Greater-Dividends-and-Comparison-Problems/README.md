@@ -10,6 +10,13 @@
 | **5.6** | Use Partial Quotients to Divide: Greater Dividends | Chapter 5 | `4.NBT.B.6` | EGL · 6UL | [`lesson-5-6-use-partial-quotients-to-divide-greater-dividends.html`](lesson-5-6-use-partial-quotients-to-divide-greater-dividends.html) |
 | **6.1** | Solve Comparison Problems | Chapter 6 | `4.OA.A.2` | GGE · YCW | [`lesson-6-1-solve-comparison-problems.html`](lesson-6-1-solve-comparison-problems.html) |
 | **6.2** | Continue to Solve Comparison Problems | Chapter 6 | `4.OA.A.2` | AH8 · 9GX | [`lesson-6-2-continue-to-solve-comparison-problems.html`](lesson-6-2-continue-to-solve-comparison-problems.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Division Dunes: Partial Quotients Sandbox** | [`activity-ch05-division-dunes-quotient-lab.html`](activity-ch05-division-dunes-quotient-lab.html) |
+| **Caravan Crossroads: Multi-Step Strip Model Lab** | [`activity-ch06-caravan-multi-step-problem-lab.html`](activity-ch06-caravan-multi-step-problem-lab.html) |
+
 
 ## Instructions for Teachers & Students
 

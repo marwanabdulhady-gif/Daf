@@ -9,6 +9,12 @@
 |---|---|---|---|---|---|
 | **15.4** | Measure and Draw Angles | Chapter 15 | `4.MD.C.6` | NCN · R9K | [`lesson-15-4-measure-and-draw-angles.html`](lesson-15-4-measure-and-draw-angles.html) |
 | **15.5** | Add and Subtract Angle Measures | Chapter 15 | `4.MD.C.7` | VJY · YUA · MBL | [`lesson-15-5-add-and-subtract-angle-measures.html`](lesson-15-5-add-and-subtract-angle-measures.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Angle Heights: Interactive Protractor Studio** | [`activity-ch15-angle-heights-protractor-lab.html`](activity-ch15-angle-heights-protractor-lab.html) |
+
 
 ## Instructions for Teachers & Students
 

@@ -19,7 +19,13 @@
 | **9-9** | Subtract Mixed Numbers | `4.NF.B.3c` | SLQ · QRB · S9V | [`lesson-9-9-subtract-mixed-numbers.html`](lesson-9-9-subtract-mixed-numbers.html)<br>[`9-9.jsx`](9-9.jsx) |
 | **9-10** | Problem Solving: Model with Math | `MP.4` | XBR · 6KM · YB5 | [`lesson-9-10-problem-solving-model-with-math.html`](lesson-9-10-problem-solving-model-with-math.html)<br>[`9-10.jsx`](9-10.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **Kunafa Kitchens: Like Denominator Fraction Slicer** | `Chapter 09 · Fraction Addition` | Slice circular kunafa trays to add and subtract fractions with like denominators and mixed numbers. | [`activity-ch09-kunafa-kitchen-fraction-addition.html`](activity-ch09-kunafa-kitchen-fraction-addition.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

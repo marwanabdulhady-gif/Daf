@@ -9,6 +9,12 @@
 - **Focus Areas: Fractions, Decimals, Measurement, Patterns & Geometry**
 - **Interactive Review Decks & Formative Practice**
 
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Semester 2 General Revision Arena** | [`activity-sem2-general-revision-arena.html`](activity-sem2-general-revision-arena.html) |
+
 
 ## Instructions for Teachers & Students
 

@@ -16,7 +16,13 @@
 | **8-6** | Compare Fractions | `4.NF.A.2` | M8N · 99U · 7XF · 7GK | [`lesson-8-6-compare-fractions.html`](lesson-8-6-compare-fractions.html)<br>[`8-6.jsx`](8-6.jsx) |
 | **8-7** | Problem Solving: Construct Arguments | `MP.3` | 7C4 | [`lesson-8-7-problem-solving-construct-arguments.html`](lesson-8-7-problem-solving-construct-arguments.html)<br>[`8-7.jsx`](8-7.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **The Fraction Isles: Equivalent Fraction Strips** | `Chapter 08 · Fraction Equivalence` | Align fraction strips and number lines to visually prove equivalence between halves, fourths, sixths, and eighths. | [`activity-ch08-fraction-isles-equivalence-strips.html`](activity-ch08-fraction-isles-equivalence-strips.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

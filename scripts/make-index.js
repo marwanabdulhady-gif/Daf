@@ -4,13 +4,15 @@
    - 16 Chapters View (organized by topic / chapter with full lesson links)
    - Semester 1 Weekly Distribution (Weeks 1 to 19, Academic Year 2026 - 2027)
    - Semester 2 Weekly Distribution (Weeks 1 to 19, Academic Year 2026 - 2027)
+   - Interactive Activities & STEAM Manipulatives Lab (19 standalone tools)
    State lives in localStorage (daf.map.v1). */
 
 const fs = require("fs");
 const path = require("path");
+const { ACTIVITIES } = require("./build-activities");
 
 const cur = JSON.parse(fs.readFileSync("curriculum.json", "utf8"));
-const files = fs.existsSync("html") ? fs.readdirSync("html") : [];
+const files = fs.existsSync("html") ? fs.readdirSync("html").filter(f => f.endsWith(".html")) : [];
 const fileFor = (code) => {
   const norm = code.replace(".", "-");
   return files.find((f) => f.startsWith("lesson-" + norm + "-"));
@@ -60,48 +62,48 @@ const topicData = cur.topics.map((t, i) => {
 
 // Semester 1 (2026 - 2027)
 const SEMESTER_1 = [
-  { week: 1, title: "Orientation, Reinforcement & Diagnostic Assessment", lessons: [], notes: "Orientation · Reinforcement · Diagnostic Assessment" },
-  { week: 2, title: "Place Value Through One Million & Comparing Whole Numbers", lessons: ["1.1", "1.2", "1.3"] },
-  { week: 3, title: "Rounding Whole Numbers & Mental Math Addition/Subtraction", lessons: ["1.4", "2.1"] },
-  { week: 4, title: "Estimating Sums/Differences & Adding Multi-Digit Numbers", lessons: ["2.2", "2.3", "2.4"] },
-  { week: 5, title: "Subtracting Multi-Digit Numbers & Across Zeros", lessons: ["2.5", "2.6", "2.7"] },
-  { week: 6, title: "Multiplication by Multiples of 10, 100, 1000, Estimates & Arrays", lessons: ["3.1", "3.2", "3.3"] },
-  { week: 7, title: "Area Models, Mental Math Multiplication & Problem Solving", lessons: ["3.4", "3.6", "3.8"] },
-  { week: 8, title: "Multiplying Multiples of 10, 2-Digit Models & Estimation", lessons: ["4.1", "4.2", "4.3"] },
-  { week: 9, title: "Area Models / Partial Products & Mental Math Quotients / Estimates", lessons: ["4.5", "5.1", "5.2"] },
-  { week: 10, title: "Greater Dividends, Interpreting Remainders & Partial Quotients", lessons: ["5.3", "5.4", "5.5"] },
-  { week: 11, title: "Greater Dividends Division & Solving Comparison Problems", lessons: ["5.6", "6.1", "6.2"] },
-  { week: 12, title: "Multi-Step Problem Solving & Modeling", lessons: ["6.3", "6.5", "6.6"] },
-  { week: 13, title: "Understanding Factors & Repeated Reasoning", lessons: ["7.1", "7.2", "7.3"] },
-  { week: 14, title: "Prime, Composite Numbers & Multiples", lessons: ["7.4", "7.5"] },
-  { week: 15, title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)", lessons: ["8.1", "8.2", "8.3"] },
-  { week: 16, title: "Equivalent Fractions (Division, Benchmarks & Comparison)", lessons: ["8.4", "8.5", "8.6"] },
-  { week: 17, title: "General Revision", lessons: [], notes: "Comprehensive Semester 1 Review (Chapters 1 to 8)" },
-  { week: 18, title: "General Revision", lessons: [], notes: "Exam Preparation, Gap Map Closure & Intervention" },
-  { week: 19, title: "SEMESTER 1 - FINAL EXAMINATIONS", lessons: [], notes: "Semester 1 Final Examinations Administration" }
+  { week: 1, title: "Orientation, Reinforcement & Diagnostic Assessment", lessons: [], notes: "Orientation · Reinforcement · Diagnostic Assessment", activityFile: "activity-week01-diagnostic-readiness-map.html" },
+  { week: 2, title: "Place Value Through One Million & Comparing Whole Numbers", lessons: ["1.1", "1.2", "1.3"], activityFile: "activity-ch01-place-value-census-chart.html" },
+  { week: 3, title: "Rounding Whole Numbers & Mental Math Addition/Subtraction", lessons: ["1.4", "2.1"], activityFile: "activity-ch01-place-value-census-chart.html" },
+  { week: 4, title: "Estimating Sums/Differences & Adding Multi-Digit Numbers", lessons: ["2.2", "2.3", "2.4"], activityFile: "activity-ch02-souq-of-sums-mental-math.html" },
+  { week: 5, title: "Subtracting Multi-Digit Numbers & Across Zeros", lessons: ["2.5", "2.6", "2.7"], activityFile: "activity-ch02-souq-of-sums-mental-math.html" },
+  { week: 6, title: "Multiplication by Multiples of 10, 100, 1000, Estimates & Arrays", lessons: ["3.1", "3.2", "3.3"], activityFile: "activity-ch03-area-model-multiplication-lab.html" },
+  { week: 7, title: "Area Models, Mental Math Multiplication & Problem Solving", lessons: ["3.4", "3.6", "3.8"], activityFile: "activity-ch03-area-model-multiplication-lab.html" },
+  { week: 8, title: "Multiplying Multiples of 10, 2-Digit Models & Estimation", lessons: ["4.1", "4.2", "4.3"], activityFile: "activity-ch04-tower-of-times-partial-products.html" },
+  { week: 9, title: "Area Models / Partial Products & Mental Math Quotients / Estimates", lessons: ["4.5", "5.1", "5.2"], activityFile: "activity-ch04-tower-of-times-partial-products.html" },
+  { week: 10, title: "Greater Dividends, Interpreting Remainders & Partial Quotients", lessons: ["5.3", "5.4", "5.5"], activityFile: "activity-ch05-division-dunes-quotient-lab.html" },
+  { week: 11, title: "Greater Dividends Division & Solving Comparison Problems", lessons: ["5.6", "6.1", "6.2"], activityFile: "activity-ch05-division-dunes-quotient-lab.html" },
+  { week: 12, title: "Multi-Step Problem Solving & Modeling", lessons: ["6.3", "6.5", "6.6"], activityFile: "activity-ch06-caravan-multi-step-problem-lab.html" },
+  { week: 13, title: "Understanding Factors & Repeated Reasoning", lessons: ["7.1", "7.2", "7.3"], activityFile: "activity-ch07-factor-reef-pairs-explorer.html" },
+  { week: 14, title: "Prime, Composite Numbers & Multiples", lessons: ["7.4", "7.5"], activityFile: "activity-ch07-factor-reef-pairs-explorer.html" },
+  { week: 15, title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)", lessons: ["8.1", "8.2", "8.3"], activityFile: "activity-ch08-fraction-isles-equivalence-strips.html" },
+  { week: 16, title: "Equivalent Fractions (Division, Benchmarks & Comparison)", lessons: ["8.4", "8.5", "8.6"], activityFile: "activity-ch08-fraction-isles-equivalence-strips.html" },
+  { week: 17, title: "General Revision", lessons: [], notes: "Comprehensive Semester 1 Review (Chapters 1 to 8)", activityFile: "activity-sem1-general-revision-arena.html" },
+  { week: 18, title: "General Revision", lessons: [], notes: "Exam Preparation, Gap Map Closure & Intervention", activityFile: "activity-sem1-general-revision-arena.html" },
+  { week: 19, title: "SEMESTER 1 - FINAL EXAMINATIONS", lessons: [], notes: "Semester 1 Final Examinations Administration", activityFile: "activity-sem1-general-revision-arena.html" }
 ];
 
 // Semester 2 (2026 - 2027)
 const SEMESTER_2 = [
-  { week: 1, title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)", lessons: ["8.1", "8.2", "8.3"] },
-  { week: 2, title: "Equivalent Fractions (Division, Benchmarks & Comparison)", lessons: ["8.4", "8.5", "8.6"] },
-  { week: 3, title: "Fraction Addition & Decomposing Fractions", lessons: ["9.1", "9.2", "9.3"] },
-  { week: 4, title: "Subtracting Like Denominators, Mixed Numbers Modeling", lessons: ["9.5", "9.6", "9.7"] },
-  { week: 5, title: "Add/Subtract Mixed Numbers & Unit Fraction Multiples", lessons: ["9.8", "9.9", "10.1"] },
-  { week: 6, title: "Multiplying Fractions by Whole Numbers & Time Problems", lessons: ["10.2", "10.3", "10.4"] },
-  { week: 7, title: "Reading, Making & Using Line Plots", lessons: ["11.1", "11.2", "11.3"] },
-  { week: 8, title: "Critique Reasoning & Fractions and Decimals", lessons: ["11.4", "12.1", "12.2"] },
-  { week: 9, title: "Comparing Decimals, Tenths/Hundredths & Money Problems", lessons: ["12.3", "12.4", "12.5"] },
-  { week: 10, title: "Decimal Structure & Customary Length and Capacity", lessons: ["12.6", "13.1", "13.2"] },
-  { week: 11, title: "Customary Weight & Metric Length, Capacity and Mass", lessons: ["13.3", "13.4", "13.5"] },
-  { week: 12, title: "Perimeter & Area Problems, Number Sequences & Rules", lessons: ["13.6", "14.1", "14.2"] },
-  { week: 13, title: "Repeating Shapes Patterns & Understanding Angles", lessons: ["14.3", "15.1", "15.2"] },
-  { week: 14, title: "Measuring, Drawing & Adding/Subtracting Angles", lessons: ["15.4", "15.5"] },
-  { week: 15, title: "Lines, Classifying Triangles & Quadrilaterals", lessons: ["16.1", "16.2", "16.3"] },
-  { week: 16, title: "Line Symmetry & Drawing Symmetrical Shapes", lessons: ["16.4", "16.5"] },
-  { week: 17, title: "General Revision", lessons: [], notes: "Comprehensive Semester 2 Review (Chapters 8 to 16)" },
-  { week: 18, title: "General Revision", lessons: [], notes: "Exam Preparation, Geometry & Fraction Mastery" },
-  { week: 19, title: "SEMESTER 2 - FINAL EXAMINATIONS", lessons: [], notes: "Semester 2 Final Examinations Administration" }
+  { week: 1, title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)", lessons: ["8.1", "8.2", "8.3"], activityFile: "activity-ch08-fraction-isles-equivalence-strips.html" },
+  { week: 2, title: "Equivalent Fractions (Division, Benchmarks & Comparison)", lessons: ["8.4", "8.5", "8.6"], activityFile: "activity-ch08-fraction-isles-equivalence-strips.html" },
+  { week: 3, title: "Fraction Addition & Decomposing Fractions", lessons: ["9.1", "9.2", "9.3"], activityFile: "activity-ch09-kunafa-kitchen-fraction-addition.html" },
+  { week: 4, title: "Subtracting Like Denominators, Mixed Numbers Modeling", lessons: ["9.5", "9.6", "9.7"], activityFile: "activity-ch09-kunafa-kitchen-fraction-addition.html" },
+  { week: 5, title: "Add/Subtract Mixed Numbers & Unit Fraction Multiples", lessons: ["9.8", "9.9", "10.1"], activityFile: "activity-ch09-kunafa-kitchen-fraction-addition.html" },
+  { week: 6, title: "Multiplying Fractions by Whole Numbers & Time Problems", lessons: ["10.2", "10.3", "10.4"], activityFile: "activity-ch10-scaling-strait-fraction-multiplier.html" },
+  { week: 7, title: "Reading, Making & Using Line Plots", lessons: ["11.1", "11.2", "11.3"], activityFile: "activity-ch11-pearl-ledger-line-plot-diver.html" },
+  { week: 8, title: "Critique Reasoning & Fractions and Decimals", lessons: ["11.4", "12.1", "12.2"], activityFile: "activity-ch11-pearl-ledger-line-plot-diver.html" },
+  { week: 9, title: "Comparing Decimals, Tenths/Hundredths & Money Problems", lessons: ["12.3", "12.4", "12.5"], activityFile: "activity-ch12-decimal-docks-tenths-hundredths.html" },
+  { week: 10, title: "Decimal Structure & Customary Length and Capacity", lessons: ["12.6", "13.1", "13.2"], activityFile: "activity-ch12-decimal-docks-tenths-hundredths.html" },
+  { week: 11, title: "Customary Weight & Metric Length, Capacity and Mass", lessons: ["13.3", "13.4", "13.5"], activityFile: "activity-ch13-boss-measure-market-battle.html" },
+  { week: 12, title: "Perimeter & Area Problems, Number Sequences & Rules", lessons: ["13.6", "14.1", "14.2"], activityFile: "activity-ch13-boss-measure-market-battle.html" },
+  { week: 13, title: "Repeating Shapes Patterns & Understanding Angles", lessons: ["14.3", "15.1", "15.2"], activityFile: "activity-ch14-pattern-oasis-sequence-builder.html" },
+  { week: 14, title: "Measuring, Drawing & Adding/Subtracting Angles", lessons: ["15.4", "15.5"], activityFile: "activity-ch15-angle-heights-protractor-lab.html" },
+  { week: 15, title: "Lines, Classifying Triangles & Quadrilaterals", lessons: ["16.1", "16.2", "16.3"], activityFile: "activity-ch16-geometry-gardens-symmetry-studio.html" },
+  { week: 16, title: "Line Symmetry & Drawing Symmetrical Shapes", lessons: ["16.4", "16.5"], activityFile: "activity-ch16-geometry-gardens-symmetry-studio.html" },
+  { week: 17, title: "General Revision", lessons: [], notes: "Comprehensive Semester 2 Review (Chapters 8 to 16)", activityFile: "activity-sem2-general-revision-arena.html" },
+  { week: 18, title: "General Revision", lessons: [], notes: "Exam Preparation, Geometry & Fraction Mastery", activityFile: "activity-sem2-general-revision-arena.html" },
+  { week: 19, title: "SEMESTER 2 - FINAL EXAMINATIONS", lessons: [], notes: "Semester 2 Final Examinations Administration", activityFile: "activity-sem2-general-revision-arena.html" }
 ];
 
 function enrichSemester(semList) {
@@ -256,6 +258,7 @@ const html = `<!doctype html>
   <button class="tab-btn" onclick="showTab('chaptersView')">&#128218; Chapters View (1–16)</button>
   <button class="tab-btn" onclick="showTab('sem1View')">&#128197; Semester 1 (2026–2027)</button>
   <button class="tab-btn" onclick="showTab('sem2View')">&#128197; Semester 2 (2026–2027)</button>
+  <button class="tab-btn" onclick="showTab('activitiesView')">&#127912; Activities & STEAM Labs</button>
 </div>
 
 <!-- TAB 1: WORLD MAP -->
@@ -270,7 +273,7 @@ const html = `<!doctype html>
 <div id="chaptersView" class="tab-content">
   <div class="section-header">
     <h2>16 Chapters of Grade 4 Mathematics</h2>
-    <p>Complete curriculum aligned with Savvas enVision Mathematics (2026 - 2027). Each chapter folder contains standalone interactive HTML and JSX source decks.</p>
+    <p>Complete curriculum aligned with Savvas enVision Mathematics (2026 - 2027). Each chapter folder contains standalone interactive HTML, JSX source decks, and STEAM production activities.</p>
   </div>
   <div class="grid-container" id="chaptersGrid"></div>
 </div>
@@ -293,6 +296,15 @@ const html = `<!doctype html>
   <div class="grid-container" id="sem2Grid"></div>
 </div>
 
+<!-- TAB 5: ACTIVITIES LAB -->
+<div id="activitiesView" class="tab-content">
+  <div class="section-header">
+    <h2>Standalone STEAM Production Activities & Manipulatives</h2>
+    <p>Interactive student production sandboxes, AI-in-the-loop inquiry tools, and review boss battles for projector and independent practice.</p>
+  </div>
+  <div class="grid-container" id="activitiesGrid"></div>
+</div>
+
 <aside class="panel" id="panel">
   <button class="p-close" id="pClose" title="Close">&#10005;</button>
   <div class="p-head">
@@ -306,12 +318,13 @@ const html = `<!doctype html>
   <div class="p-list" id="pList"></div>
 </aside>
 
-<footer>Savvas enVision Mathematics (Grade 4) · 17 topics · 114 lessons · Academic Year 2026 - 2027</footer>
+<footer>Savvas enVision Mathematics (Grade 4) · 17 topics · 114 lessons · 19 STEAM activities · Academic Year 2026 - 2027</footer>
 
 <script>
 const DATA = ${JSON.stringify(topicData)};
 const S1 = ${JSON.stringify(s1Data)};
 const S2 = ${JSON.stringify(s2Data)};
+const ACTS = ${JSON.stringify(ACTIVITIES)};
 
 const KEY = "daf.map.v1";
 const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } };
@@ -322,8 +335,9 @@ function showTab(id) {
   document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
   document.querySelectorAll(".tab-btn").forEach(el => el.classList.remove("active"));
   document.getElementById(id).classList.add("active");
+  const tabIds = ["mapView", "chaptersView", "sem1View", "sem2View", "activitiesView"];
   const btns = Array.from(document.querySelectorAll(".tab-btn"));
-  const idx = ["mapView", "chaptersView", "sem1View", "sem2View"].indexOf(id);
+  const idx = tabIds.indexOf(id);
   if (idx >= 0 && btns[idx]) btns[idx].classList.add("active");
 }
 
@@ -467,7 +481,33 @@ function renderSemester(semData, containerId, semFolder) {
     } else {
       htmlContent += '<div style="font-size:12px;color:#9fc4bd;padding:8px 0;font-style:italic;">' + (w.notes || "Classroom activities & review") + '</div>';
     }
+
+    if (w.activityFile) {
+      htmlContent += '<a class="lesson-chip" href="html/activities/' + w.activityFile + '" style="border-color:rgba(26,167,155,.6);background:rgba(26,167,155,.12);">';
+      htmlContent += '<span class="chip-code" style="color:var(--teal2)">&#127912;</span>';
+      htmlContent += '<span class="chip-title">Launch Weekly Activity</span>';
+      htmlContent += '</a>';
+    }
+    
     htmlContent += '</div>';
+    card.innerHTML = htmlContent;
+    container.appendChild(card);
+  });
+}
+
+// Render Activities Grid
+function renderActivities() {
+  const container = document.getElementById("activitiesGrid");
+  container.innerHTML = "";
+  ACTS.forEach(act => {
+    const card = document.createElement("div");
+    card.className = "grid-card";
+    
+    let htmlContent = '<div class="card-badge">' + act.badge + '</div>';
+    htmlContent += '<div class="card-title">' + act.title + '</div>';
+    htmlContent += '<div class="card-sub">' + act.description + '</div>';
+    htmlContent += '<div style="flex:1"></div>';
+    htmlContent += '<a class="folder-link-btn" href="html/activities/' + act.fileName + '" style="background:var(--teal);color:#fff;border-color:var(--teal2);justify-content:center;">&#9654; Launch Activity Sandbox</a>';
     
     card.innerHTML = htmlContent;
     container.appendChild(card);
@@ -489,6 +529,7 @@ draw();
 renderChapters();
 renderSemester(S1, "sem1Grid", "Semester-1");
 renderSemester(S2, "sem2Grid", "Semester-2");
+renderActivities();
 </script>
 </body>
 </html>
@@ -496,5 +537,5 @@ renderSemester(S2, "sem2Grid", "Semester-2");
 
 fs.writeFileSync("index.html", html);
 const built = topicData.reduce((a, t) => a + t.lessons.filter((l) => l.file).length, 0);
-console.log("index.html — map & curriculum hub (2026 - 2027) · " + built + " lesson links · " +
-  topicData.filter((t) => t.boss && t.boss.file).length + " boss(es) on the map");
+console.log("index.html — map & curriculum hub with activities tab · " + built + " lesson links · " +
+  ACTIVITIES.length + " interactive activities");

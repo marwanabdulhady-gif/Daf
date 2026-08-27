@@ -15,7 +15,13 @@
 | **16-5** | Draw Shapes with Line Symmetry | `4.G.A.3` | SQF | [`lesson-16-5-draw-shapes-with-line-symmetry.html`](lesson-16-5-draw-shapes-with-line-symmetry.html)<br>[`16-5.jsx`](16-5.jsx) |
 | **16-6** | Problem Solving: Critique Reasoning | `MP.3` | C98 · SKK | [`lesson-16-6-problem-solving-critique-reasoning.html`](lesson-16-6-problem-solving-critique-reasoning.html)<br>[`16-6.jsx`](16-6.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **Geometry Gardens: Lines & Symmetry Studio** | `Chapter 16 · Geometry & Symmetry` | Classify 2D shapes (triangles, quadrilaterals) and draw lines of symmetry across garden polygons. | [`activity-ch16-geometry-gardens-symmetry-studio.html`](activity-ch16-geometry-gardens-symmetry-studio.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

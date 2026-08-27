@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dar Al Fikr · Grade 4 Math Activity — Angle Heights: Interactive Protractor Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0B1F24; --panel: #102D35; --panel2: #163A44; --line: rgba(255,255,255,.12);
+      --teal: #12857C; --teal2: #1AA79B; --gold: #C9A227; --gold2: #E5BE3E;
+      --ink: #10242B; --mint: #E8F6F4; --text: #EAF4F2; --sub: #9fc4bd;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(1200px 700px at 75% -10%, #14343C 0%, var(--bg) 62%);
+      color: var(--text); min-height: 100vh; display: flex; flex-direction: column;
+    }
+    header {
+      padding: 16px 28px; border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+      background: rgba(11,31,36,.6); backdrop-filter: blur(8px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand svg { width: 34px; height: 34px; color: var(--gold); }
+    .brand-title { font-weight: 800; font-size: 14px; letter-spacing: .02em; }
+    .brand-sub { font-size: 9.5px; letter-spacing: .18em; color: var(--sub); text-transform: uppercase; }
+    .act-badge {
+      display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
+      background: rgba(201,162,39,.15); border: 1px solid var(--gold); border-radius: 20px;
+      color: var(--gold); font-size: 11.5px; font-weight: 800; font-family: 'Cabinet Grotesk', sans-serif;
+    }
+    main {
+      flex: 1; max-width: 1280px; width: 100%; margin: 0 auto; padding: 24px 28px;
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px;
+    }
+    @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+    
+    .card {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 16px;
+      padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,.35); display: flex; flex-direction: column; gap: 16px;
+    }
+    .card-title {
+      font-size: 20px; font-weight: 900; color: #fff; font-family: 'Cabinet Grotesk', sans-serif;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card-sub { font-size: 13px; color: var(--sub); line-height: 1.5; }
+    
+    /* Interactive Workspace */
+    .canvas-wrap {
+      background: #08161A; border: 1.5px solid rgba(26,167,155,.3); border-radius: 12px;
+      position: relative; overflow: hidden; min-height: 320px; display: flex; align-items: center; justify-content: center;
+    }
+    canvas { display: block; max-width: 100%; height: auto; }
+    
+    .controls-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;
+    }
+    .ctrl-box {
+      background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px;
+    }
+    .ctrl-label { font-size: 11px; font-weight: 700; color: var(--sub); margin-bottom: 6px; display: block; }
+    .ctrl-input {
+      width: 100%; background: #08161A; border: 1px solid rgba(255,255,255,.2); color: #fff;
+      padding: 6px 10px; border-radius: 6px; font: 700 13px inherit; outline: none;
+    }
+    .ctrl-input:focus { border-color: var(--teal2); box-shadow: 0 0 8px rgba(26,167,155,.4); }
+    
+    .btn {
+      background: var(--teal); border: 1.5px solid var(--teal2); color: #fff; border-radius: 10px;
+      padding: 9px 16px; font: 800 13px inherit; cursor: pointer; transition: all .18s; display: inline-flex;
+      align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn:hover { background: var(--teal2); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(26,167,155,.4); }
+    .btn.gold { background: var(--gold); border-color: var(--gold2); color: var(--ink); }
+    .btn.gold:hover { background: var(--gold2); box-shadow: 0 4px 14px rgba(201,162,39,.4); }
+    
+    /* STEM Steps */
+    .stem-timeline { display: flex; flex-direction: column; gap: 12px; }
+    .stem-step {
+      background: rgba(255,255,255,.03); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .step-num {
+      width: 26px; height: 26px; border-radius: 50%; background: var(--teal); color: #fff;
+      font: 900 12px 'Cabinet Grotesk', sans-serif; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .step-content b { display: block; font-size: 13px; color: var(--gold); margin-bottom: 2px; }
+    .step-content p { font-size: 12px; color: var(--sub); line-height: 1.4; }
+    
+    .ai-box {
+      background: rgba(201,162,39,.08); border: 1.5px dashed rgba(201,162,39,.5); border-radius: 12px; padding: 14px 16px;
+    }
+    .ai-title { font-size: 12.5px; font-weight: 800; color: var(--gold); display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .ai-desc { font-size: 11.5px; color: #e1d6a6; line-height: 1.45; }
+    
+    footer {
+      padding: 16px 28px; font-size: 11px; color: var(--sub); border-top: 1px solid var(--line);
+      text-align: center; background: rgba(11,31,36,.6);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 40 40" fill="currentColor">
+        <path d="M20 0l4.2 10.1L34.1 5.9 29.9 16 40 20l-10.1 4.2 4.2 9.9L24 29.9 20 40l-4.2-10.1L5.9 34.1 10.1 24 0 20l10.1-4.2L5.9 5.9 16 10.1z"/>
+      </svg>
+      <div>
+        <div class="brand-title">Dar Al Fikr Schools · Math Department</div>
+        <div class="brand-sub">Savvas enVision Mathematics · Grade 4 (2026 - 2027)</div>
+      </div>
+    </div>
+    <div class="act-badge">
+      <i class="fa-solid fa-flask"></i> Chapter 15 · Angle Measurement
+    </div>
+  </header>
+
+  <main>
+    <!-- Left Column: Interactive Tool / Sandbox -->
+    <section class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-shapes" style="color:var(--teal2)"></i>
+        Angle Heights: Interactive Protractor Studio
+      </div>
+      <div class="card-sub">Measure angles in degrees using a circular 360° and 180° protractor and solve additive angle puzzles.</div>
+      
+      <div class="canvas-wrap">
+        <canvas id="actCanvas" width="580" height="340"></canvas>
+      </div>
+
+      <div class="controls-grid">
+        
+      <div class="ctrl-box">
+        <label class="ctrl-label">Angle Degree (°)</label>
+        <input type="range" class="ctrl-input" id="angDeg" min="10" max="180" value="65" oninput="drawAngles()">
+      </div>
+    
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <button class="btn" id="resetBtn" onclick="resetCanvas()"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+        <button class="btn gold" id="actionBtn" onclick="runAction()"><i class="fa-solid fa-play"></i> Measure Angle</button>
+      </div>
+    </section>
+
+    <!-- Right Column: STEM Inquiry & Production Steps -->
+    <section class="card">
+      <div class="card-title">
+        <i class="fa-solid fa-compass-drafting" style="color:var(--gold)"></i>
+        STEAM Inquiry Build
+      </div>
+      
+      <div class="stem-timeline">
+        <div class="stem-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <b>ASK & DEFINE</b>
+            <p>How does a protractor relate 1/360th unit turns to full degree angles?</p>
+          </div>
+        </div>
+        <div class="stem-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <b>PLAN & MODEL</b>
+            <p>Align the vertex and baseline ray with 0° on the protractor scale.</p>
+          </div>
+        </div>
+        <div class="stem-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <b>BUILD & TEST</b>
+            <p>Measure acute, right, and obtuse angles and find missing adjacent angle values.</p>
+          </div>
+        </div>
+        <div class="stem-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <b>SHARE & DEFEND</b>
+            <p>Demonstrate that two adjacent angles forming a straight line sum to 180°.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-box">
+        <div class="ai-title">
+          <i class="fa-solid fa-robot"></i> AI in the Loop (Critic / Audit Challenge)
+        </div>
+        <div class="ai-desc">
+          Ask AI to generate a geometric puzzle with three adjacent angles that form a 90° right angle, with one angle unknown.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Savvas enVision Mathematics · Grade 4 · Academic Year 2026 - 2027 · Dar Al Fikr Interactive Lessons
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("actCanvas");
+    const ctx = canvas.getContext("2d");
+
+    
+      function drawAngles() {
+        ctx.clearRect(0,0,580,340);
+        ctx.fillStyle = "#0E272E";
+        ctx.fillRect(0,0,580,340);
+        
+        const deg = parseInt(document.getElementById("angDeg").value, 10) || 45;
+        
+        ctx.fillStyle = "#B3488F";
+        ctx.font = "bold 16px 'Cabinet Grotesk', sans-serif";
+        ctx.fillText("ANGLE HEIGHTS · PROTRACTOR MEASUREMENT STUDIO", 30, 35);
+        
+        const cx = 240, cy = 200, r = 120;
+        
+        // Semi-circle Protractor
+        ctx.strokeStyle = "rgba(255,255,255,.25)"; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(cx, cy, r, Math.PI, 0, false); ctx.stroke();
+        
+        // Ticks
+        for(let a=0; a<=180; a+=15) {
+          const rad = (180 - a) * Math.PI / 180;
+          const x1 = cx + (r - 10) * Math.cos(rad);
+          const y1 = cy - (r - 10) * Math.sin(rad);
+          const x2 = cx + r * Math.cos(rad);
+          const y2 = cy - r * Math.sin(rad);
+          ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+        }
+        
+        // Base Ray
+        ctx.strokeStyle = "#1AA79B"; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + r, cy); ctx.stroke();
+        
+        // Angle Ray
+        const targetRad = (180 - deg) * Math.PI / 180;
+        ctx.strokeStyle = "#C9A227";
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + r * Math.cos(targetRad), cy - r * Math.sin(targetRad));
+        ctx.stroke();
+        
+        // Arc
+        ctx.strokeStyle = "#B3488F"; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, 40, (180 - deg)*Math.PI/180, Math.PI, false); ctx.stroke();
+        
+        ctx.fillStyle = "#fff"; ctx.font = "bold 18px monospace";
+        ctx.fillText(deg + "°", cx + 50, cy - 30);
+        
+        const type = deg < 90 ? "ACUTE" : (deg === 90 ? "RIGHT" : "OBTUSE");
+        ctx.fillStyle = "#B3488F"; ctx.font = "bold 14px 'Satoshi', sans-serif";
+        ctx.fillText("Classification: " + type + " ANGLE", 30, 275);
+      }
+      function resetCanvas() { document.getElementById("angDeg").value = 65; drawAngles(); }
+      function runAction() { drawAngles(); }
+      drawAngles();
+    
+  </script>
+</body>
+</html>

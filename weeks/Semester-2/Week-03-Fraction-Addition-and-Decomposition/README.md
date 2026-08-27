@@ -10,6 +10,12 @@
 | **9.1** | Model Addition of Fractions | Chapter 9 | `4.NF.B.3` | EMQ · Z63 · 6QH · Y5W | [`lesson-9-1-model-addition-of-fractions.html`](lesson-9-1-model-addition-of-fractions.html) |
 | **9.2** | Decompose Fractions | Chapter 9 | `4.NF.B.3b` | N2Z · UEW · UX6 | [`lesson-9-2-decompose-fractions.html`](lesson-9-2-decompose-fractions.html) |
 | **9.3** | Add Fractions with Like Denominators | Chapter 9 | `4.NF.B.3a` | PDU | [`lesson-9-3-add-fractions-with-like-denominators.html`](lesson-9-3-add-fractions-with-like-denominators.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Kunafa Kitchens: Like Denominator Fraction Slicer** | [`activity-ch09-kunafa-kitchen-fraction-addition.html`](activity-ch09-kunafa-kitchen-fraction-addition.html) |
+
 
 ## Instructions for Teachers & Students
 

@@ -10,6 +10,12 @@
 | **8.4** | Generate Equivalent Fractions: Division | Chapter 8 | `4.NF.A.1` | GSG · JMX | [`lesson-8-4-generate-equivalent-fractions-division.html`](lesson-8-4-generate-equivalent-fractions-division.html) |
 | **8.5** | Use Benchmarks to Compare Fractions | Chapter 8 | `4.NF.A.2` | LUS · EHJ · UKZ | [`lesson-8-5-use-benchmarks-to-compare-fractions.html`](lesson-8-5-use-benchmarks-to-compare-fractions.html) |
 | **8.6** | Compare Fractions | Chapter 8 | `4.NF.A.2` | M8N · 99U · 7XF · 7GK | [`lesson-8-6-compare-fractions.html`](lesson-8-6-compare-fractions.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **The Fraction Isles: Equivalent Fraction Strips** | [`activity-ch08-fraction-isles-equivalence-strips.html`](activity-ch08-fraction-isles-equivalence-strips.html) |
+
 
 ## Instructions for Teachers & Students
 

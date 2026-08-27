@@ -8,6 +8,12 @@
 - **Semester 1 Final Examinations Administration**
 - **Mastery Gate & Summative Assessment Evaluation**
 
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Semester 1 General Revision Arena** | [`activity-sem1-general-revision-arena.html`](activity-sem1-general-revision-arena.html) |
+
 
 ## Instructions for Teachers & Students
 

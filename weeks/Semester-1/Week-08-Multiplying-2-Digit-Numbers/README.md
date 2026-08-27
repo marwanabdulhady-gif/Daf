@@ -10,6 +10,12 @@
 | **4.1** | Multiply Multiples of 10 | Chapter 4 | `4.NBT.B.5` | A6Y | [`lesson-4-1-multiply-multiples-of-10.html`](lesson-4-1-multiply-multiples-of-10.html) |
 | **4.2** | Use Models to Multiply 2-Digit Numbers by Multiples of 10 | Chapter 4 | `4.NBT.B.5` | YJH | [`lesson-4-2-use-models-to-multiply-2-digit-numbers-by-multiples-of-10.html`](lesson-4-2-use-models-to-multiply-2-digit-numbers-by-multiples-of-10.html) |
 | **4.3** | Estimate: Use Rounding or Compatible Numbers | Chapter 4 | `4.NBT.B.5` | 2TR · WGL · KLA | [`lesson-4-3-estimate-use-rounding-or-compatible-numbers.html`](lesson-4-3-estimate-use-rounding-or-compatible-numbers.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **The Tower of Times: 2-Digit Area Model Builder** | [`activity-ch04-tower-of-times-partial-products.html`](activity-ch04-tower-of-times-partial-products.html) |
+
 
 ## Instructions for Teachers & Students
 

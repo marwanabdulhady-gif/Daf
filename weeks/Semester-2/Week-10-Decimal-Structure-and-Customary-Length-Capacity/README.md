@@ -10,6 +10,13 @@
 | **12.6** | Problem Solving: Look For and Use Structure | Chapter 12 | `MP.7` | K5N · UGK | [`lesson-12-6-problem-solving-look-for-and-use-structure.html`](lesson-12-6-problem-solving-look-for-and-use-structure.html) |
 | **13.1** | Equivalence with Customary Units of Length | Chapter 13 | `4.MD.A.1` | M97 · T8A | [`lesson-13-1-equivalence-with-customary-units-of-length.html`](lesson-13-1-equivalence-with-customary-units-of-length.html) |
 | **13.2** | Equivalence with Customary Units of Capacity | Chapter 13 | `4.MD.A.1` | WGQ · WND | [`lesson-13-2-equivalence-with-customary-units-of-capacity.html`](lesson-13-2-equivalence-with-customary-units-of-capacity.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Decimal Docks: Tenths & Hundredths Grid Tool** | [`activity-ch12-decimal-docks-tenths-hundredths.html`](activity-ch12-decimal-docks-tenths-hundredths.html) |
+| **The Measure Market: Unit Equivalence & Boss Battle** | [`activity-ch13-boss-measure-market-battle.html`](activity-ch13-boss-measure-market-battle.html) |
+
 
 ## Instructions for Teachers & Students
 

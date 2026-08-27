@@ -10,6 +10,13 @@
 | **9.8** | Add Mixed Numbers | Chapter 9 | `4.NF.B.3c` | AXT | [`lesson-9-8-add-mixed-numbers.html`](lesson-9-8-add-mixed-numbers.html) |
 | **9.9** | Subtract Mixed Numbers | Chapter 9 | `4.NF.B.3c` | SLQ · QRB · S9V | [`lesson-9-9-subtract-mixed-numbers.html`](lesson-9-9-subtract-mixed-numbers.html) |
 | **10.1** | Fractions as Multiples of Unit Fractions | Chapter 10 | `4.NF.B.4a` | XKJ · VYG · EXQ · 8J3 · DSB | [`lesson-10-1-fractions-as-multiples-of-unit-fractions.html`](lesson-10-1-fractions-as-multiples-of-unit-fractions.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Kunafa Kitchens: Like Denominator Fraction Slicer** | [`activity-ch09-kunafa-kitchen-fraction-addition.html`](activity-ch09-kunafa-kitchen-fraction-addition.html) |
+| **The Scaling Strait: Whole Number × Fraction Lab** | [`activity-ch10-scaling-strait-fraction-multiplier.html`](activity-ch10-scaling-strait-fraction-multiplier.html) |
+
 
 ## Instructions for Teachers & Students
 

@@ -10,6 +10,12 @@
 | **5.3** | Mental Math: Estimate Quotients for Greater Dividends | Chapter 5 | `4.NBT.B.6` | MPG · VC2 | [`lesson-5-3-mental-math-estimate-quotients-for-greater-dividends.html`](lesson-5-3-mental-math-estimate-quotients-for-greater-dividends.html) |
 | **5.4** | Interpret Remainders | Chapter 5 | `4.OA.A.3` | 7BS · PYQ · 5WV | [`lesson-5-4-interpret-remainders.html`](lesson-5-4-interpret-remainders.html) |
 | **5.5** | Use Partial Quotients to Divide | Chapter 5 | `4.NBT.B.6` | BTM · 7LG | [`lesson-5-5-use-partial-quotients-to-divide.html`](lesson-5-5-use-partial-quotients-to-divide.html) |
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Division Dunes: Partial Quotients Sandbox** | [`activity-ch05-division-dunes-quotient-lab.html`](activity-ch05-division-dunes-quotient-lab.html) |
+
 
 ## Instructions for Teachers & Students
 

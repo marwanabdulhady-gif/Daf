@@ -17,7 +17,13 @@
 | **2-7** | Subtract Across Zeros | `4.NBT.B.4` | LZZ | [`lesson-2-7-subtract-across-zeros.html`](lesson-2-7-subtract-across-zeros.html)<br>[`2-7.jsx`](2-7.jsx) |
 | **2-8** | Problem Solving: Reasoning | `MP.2` | CZM · RJJ · F5H | [`lesson-2-8-problem-solving-reasoning.html`](lesson-2-8-problem-solving-reasoning.html)<br>[`2-8.jsx`](2-8.jsx) |
 
+## 🎨 STEAM Production Activities & Manipulatives
+
+| Activity Name | Badge | Description | File Link |
+|---|---|---|---|
+| **The Souq of Sums: Mental Math & Regrouping Simulator** | `Chapter 02 · Addition & Subtraction` | Simulate multi-digit addition with regrouping and subtraction across zeros using interactive ledger strips. | [`activity-ch02-souq-of-sums-mental-math.html`](activity-ch02-souq-of-sums-mental-math.html) |
+
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson.
+- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
 - Source JSX decks are located alongside the HTML files.

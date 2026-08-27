@@ -9,6 +9,12 @@
 - **Reinforcement of Prerequisite Skills**
 - **Diagnostic Assessment (Math Gap Map & Readiness)**
 
+## 🎨 STEAM Production Activities & Manipulatives for this Week
+
+| Activity Title | File Link |
+|---|---|
+| **Diagnostic Math Readiness Gap Map** | [`activity-week01-diagnostic-readiness-map.html`](activity-week01-diagnostic-readiness-map.html) |
+
 
 ## Instructions for Teachers & Students
 
