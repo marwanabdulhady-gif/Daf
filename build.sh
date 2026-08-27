@@ -28,7 +28,9 @@ printf '    <script>window.DAF_ACTIVITY = ' >> "$OUT"
 node -e 'const reg = require("./engine/activities-registry.js"); console.log(JSON.stringify(reg.getActivityForLesson("'"$CODE"'")));' >> "$OUT"
 printf ';</%s>\n' "script" >> "$OUT"
 echo '    <script type="text/babel" data-presets="daf-react">' >> "$OUT"
-cat engine/primitives.jsx engine/story-components.jsx engine/routines.jsx "$SRC" engine/app.jsx >> "$OUT"
+# the week layer sits after the lesson (it reads LESSON) and before the app
+# (which asks it for the week's extra screens)
+cat engine/primitives.jsx engine/story-components.jsx engine/routines.jsx "$SRC" engine/week-screens.jsx engine/app.jsx >> "$OUT"
 printf '    </%s>\n' "script" >> "$OUT"
 printf '  </body>\n</html>\n' >> "$OUT"
 echo "built $OUT ($(wc -l < "$OUT") lines, $(du -h "$OUT" | cut -f1))"

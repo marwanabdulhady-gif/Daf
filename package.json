@@ -18,6 +18,11 @@
     "check:stages": "node scripts/check-stage-plan.js",
     "check:quest-production": "node scripts/check-quest-production.js",
     "organize": "node scripts/organize.js",
+    "weeks:extract": "node scripts/extract-week-content.js",
+    "weeks:stamp": "node scripts/stamp-weeks.js",
+    "weeks:decks": "node scripts/build-week-decks.js",
+    "check:weeks": "node scripts/check-weeks.js",
+    "smoke:weeks": "node scripts/smoke-week.js",
     "rebuild": "./rebuild-all.sh"
   },
   "keywords": [

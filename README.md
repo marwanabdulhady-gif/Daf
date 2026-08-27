@@ -93,6 +93,78 @@ To deepen a topic: research first, add `stage/topics/<n>.json` with `sources`, r
 `npm run build:stages`, then `npm run check:stages` and `node scripts/smoke-stage.js` over the
 topic's lessons.
 
+## The Week Layer — the printed page, inside the deck
+
+The weeks in `weeks/` are the department's own planning files, and they are the
+**content authority** for what a class actually teaches on Wednesday:
+
+```
+weeks/week-02.md  ·  weeks/S2 week-01 (7).md       ← every number as printed
+        │  npm run weeks:extract  (scripts/extract-week-content.js)
+        ▼
+weeks/week-content.json                              ← blocks · items · answers · figures
+        │  npm run weeks:stamp    (scripts/stamp-weeks.js)
+        ▼
+weeks/Semester-1/Week-02-…/lesson-1-1-….html         ← same deck + window.DAF_WEEK
+```
+
+A stamped deck opens that week's page **as slides inside the seven stages**
+(`engine/week-screens.jsx`, spliced in by `stageSequence()`):
+
+| The week's slide | Where it lands | What it carries |
+|---|---|---|
+| `week:open` | start of stage 3 | the week, the *I can…*, the Essential Question, Solve & Share, the FIKR routine for the week |
+| `week:bridge` | end of stage 3 | the Visual Learning Bridge, modelled live, plus **Convince Me!** |
+| `week:example` | end of stage 3 | the Another Example, worked |
+| `week:practice` | stage 4 | Do You Understand? · Do You Know How? · Independent Practice, as printed |
+| `week:problem` | stage 5 | the Problem Solving / HOT page — AI as critic, never author |
+| `week:assess` | stage 6 | Assessment Practice, self-marked |
+| `week:close` | stage 7 | homework / fluency, vocabulary, the week's STEM page, muhasabah |
+
+The header of a stamped copy reads `Sem 1 · Week 02`, and its press-`O`
+overview shows the week's screens alongside the lesson's own.
+
+**Every slide is drawn, not just written.** `weeks/week-content.json` attaches
+a *model* to the printed numbers, and `drawWeekFig()` renders it on a live
+canvas: place-value charts, number lines and rounding lines, the column
+algorithm with its carries, area models and partial products, partial quotients
+with remainders, fraction bars / lines / mixed bars, hundredths grids, money
+and bar strips, clocks, line plots, factor rectangles and grids, pattern plots,
+rectangles for area and perimeter, prisms for volume, angles, lines/rays and
+shape classification with symmetry. 469 of the printed items carry their own
+model, and every section that has none gets its topic's model from the numbers
+on the page.
+
+**No answer is invented.** Where the printed text makes the answer computable
+(expanded form, number names, `>`, `<`, `=`, rounding, digit-and-place,
+ten-times relationships, the four operations with fractions and decimals,
+remainders, unit conversion, elapsed time, area and perimeter, money) the deck
+marks itself in seconds. Everywhere else the item goes to the board with its
+model open — the boy justifies his own work, the deck never guesses for him.
+
+`html/` and `chapters/` keep the unstamped lesson deck: the week content is
+per-week, so a deck only carries it when it was opened from a week folder.
+
+### Weeks that teach no numbered lesson
+
+Semester 1's orientation week, both semesters' two revision weeks and both
+final-examination weeks have no `lessons/X-Y.jsx` behind them — they get their
+own deck instead (`scripts/build-week-decks.js`, source `lessons/week-deck.jsx`):
+the must-know lists, the Quick Practice runs, the skills checklist, the exam
+scope and structure, all read out of the week file, one screen per printed page.
+
+### Checks
+
+```bash
+npm run check:weeks          # fidelity + every drawing (see scripts/check-weeks.js)
+node scripts/smoke-week.js --all     # boot and walk every stamped deck
+```
+
+`check:weeks` re-reads every week file and asserts that the I-can sentence,
+every numbered item and every printed number reached the deck that week uses —
+currently **97 stamped decks, 0 differences**. It then runs every figure the
+week layer can build against a stub canvas (2,621 frames, no throws).
+
 ## Storytelling curriculum proposal
 
 The proposed year-long story frame is **[The Lantern of Numeria](docs/plans/storytelling-curriculum-plan.html)**. It connects all 17 topics and maps a story purpose, student mission and handoff for every one of the 114 lessons. Its machine-readable source is [`story/story-map.json`](story/story-map.json).
@@ -529,6 +601,12 @@ npm run verify                                         # guardrail checks across
 npm run check:topic -- 17                              # deep consistency check for one topic
 npm run sweep:topic -- 17                              # live browser pass over one topic
 npm run sweep                                          # full sweep — every lesson, every screen
+npm run weeks:extract                                  # weeks/*.md → weeks/week-content.json
+npm run weeks:stamp                                    # stamp each week into its folder's decks
+npm run weeks:decks                                    # decks for the orientation / revision / exam weeks
+npm run check:weeks                                    # week fidelity vs the md + every drawing runs
+npm run smoke:weeks -- --all                           # boot and walk every stamped deck
+./rebuild-all.sh                                       # everything above, in the right order
 ```
 
 The shipped `.html` files need **no build and no install** — just a browser.

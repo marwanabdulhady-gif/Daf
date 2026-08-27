@@ -15,4 +15,9 @@ for (const b of (d.bosses||[]))
 done
 node scripts/make-index.js > /dev/null 2>&1 || true
 node scripts/organize.js > /dev/null 2>&1 || true
+# the weekly planning files are the content authority: re-extract them and
+# stamp each week's slice into that week's copies of the decks
+node scripts/extract-week-content.js --quiet
+node scripts/stamp-weeks.js --quiet
+node scripts/build-week-decks.js --quiet
 echo "rebuilt $(ls html | wc -l) lessons"

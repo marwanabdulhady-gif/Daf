@@ -46,6 +46,15 @@ function Ambient() {
   return <canvas ref={ref} className="ambient" />;
 }
 
+/* when this copy of the deck was stamped for a teaching week, the header says so */
+const WK_HDR = (typeof window !== "undefined" && window.DAF_WEEK)
+  ? { semester: window.DAF_WEEK.semester,
+      weekPadded: String(window.DAF_WEEK.week).padStart(2, "0"),
+      focus: window.DAF_WEEK.focus,
+      lessonPage: (window.DAF_WEEK.lessons || {})[LESSON.code] &&
+                  window.DAF_WEEK.lessons[LESSON.code].page }
+  : null;
+
 function Header({ game, onOverview, onRail, onMath, onDojo, onActivity }) {
   const hasAct = typeof window !== "undefined" && !!window.DAF_ACTIVITY;
   return (
@@ -58,7 +67,12 @@ function Header({ game, onOverview, onRail, onMath, onDojo, onActivity }) {
         </div>
       </div>
       <div className="head-center">
-        <b>{LESSON.title}</b>
+        <b>{LESSON.title}{WK_HDR && (
+          <span className="week-chip" title={WK_HDR.focus || ""}>
+            <Icon name="fa-calendar-week" /> Sem {WK_HDR.semester} · Week {WK_HDR.weekPadded}
+            <b>{WK_HDR.lessonPage ? " · enVision " + WK_HDR.lessonPage : ""}</b>
+          </span>
+        )}</b>
         <span>{LESSON.unit}</span>
       </div>
       <div className="header-right">
@@ -440,9 +454,60 @@ function stageSequence() {
   out.stages.push(4, 5, 6);
   out.visuals.push("stage:practice", "stage:critic", swykIdx);
   for (let i = swykIdx + 1; i < metas.length; i++) { out.metas.push(metas[i]); out.stages.push(7); out.visuals.push(i); }
+
+  /* ---- the week layer ---------------------------------------------------
+     A deck opened from weeks/Semester-N/Week-NN/ carries that week's printed
+     content (window.DAF_WEEK). Its screens are spliced into the seven-stage
+     sequence at the stage the FIKR frame puts them in — the page is not a
+     handout bolted on the side, it IS stages 3-7. With no week payload
+     (html/, chapters/, any other copy) nothing changes. */
+  out.week = insertWeekScreens(out);
   return out;
 }
+
+/* splice week: screens into an assembled sequence by their anchor */
+function insertWeekScreens(out) {
+  let arc;
+  try { arc = typeof weekScreenPlan === "function" ? weekScreenPlan() : []; }
+  catch (e) { arc = []; }
+  if (!arc || !arc.length) return null;
+  const idxOf = (v) => out.visuals.indexOf(v);
+  const gateIdx = Math.max(0, idxOf("stage:critic") + 1);
+  const buildEnd = idxOf("stage:practice") >= 0 ? idxOf("stage:practice") : out.metas.length;
+  const at = [];
+  arc.forEach((s) => {
+    let pos = out.metas.length;
+    if (s.anchor === "build-start") pos = Math.max(2, idxOf("stage:diagnose") + 1);
+    else if (s.anchor === "build-end") pos = buildEnd;
+    else if (s.anchor === "practice") pos = Math.max(buildEnd, idxOf("stage:practice") + 1);
+    else if (s.anchor === "produce") pos = Math.max(0, idxOf("stage:critic") + 1);
+    else if (s.anchor === "gate") pos = gateIdx + 1;
+    else if (s.anchor === "end") pos = out.metas.length;
+    at.push({ pos, s });
+  });
+  /* insert from the back so earlier positions stay valid */
+  /* from the back so earlier positions stay valid; at the same anchor keep the
+     arc's own order (bridge before example, guided before independent) */
+  at.sort((a, b) => (b.pos - a.pos) || (arc.indexOf(b.s) - arc.indexOf(a.s)));
+  let added = 0;
+  at.forEach(({ pos, s }) => {
+    const p = Math.max(0, Math.min(out.metas.length, pos));
+    out.metas.splice(p, 0, s.meta);
+    out.stages.splice(p, 0, s.stage);
+    out.visuals.splice(p, 0, "week:" + s.key);
+    added++;
+  });
+  return added;
+}
 const SEQ = stageSequence();
+
+/* the deck's own screens and the week's screens, dispatched from one place */
+function DeckScreens({ k, award, game }) {
+  if (typeof k === "string" && k.slice(0, 5) === "week:") {
+    return <WeekScreens k={k.slice(5)} award={award} game={game} />;
+  }
+  return <StageScreens k={k.slice(6)} award={award} game={game} />;
+}
 
 function StageScreens({ k, award, game }) {
   switch (k) {
@@ -1032,7 +1097,7 @@ function App() {
       <div className="stage-wrap" key={i + "-" + replay}>
         <Frame meta={meta} stage={SEQ.stages[i]} quest={i === 0 && typeof STORY !== "undefined" ? STORY.lesson : null}>
           {typeof SEQ.visuals[i] === "string"
-            ? <StageScreens k={SEQ.visuals[i].slice(6)} award={award} game={game} />
+            ? <DeckScreens k={SEQ.visuals[i]} award={award} game={game} />
             : <LESSON.Visual i={SEQ.visuals[i]} award={award} game={game} />}
           {SEQ.stages[i] === 7 && <EvidenceWall game={game} award={award} />}
         </Frame>

@@ -172,7 +172,7 @@ const SEMESTER_1 = [
     week: 16,
     title: "Equivalent Fractions (Division, Benchmarks & Comparing Fractions)",
     folderName: "Week-16-Equivalent-Fractions-Division-and-Comparing",
-    lessons: ["8.4", "8.5", "8.6"]
+    lessons: ["8.4", "8.5", "8.6", "8.7"]
   },
   {
     week: 17,
@@ -220,7 +220,7 @@ const SEMESTER_2 = [
     week: 2,
     title: "Equivalent Fractions (Division, Benchmarks & Comparing Fractions)",
     folderName: "Week-02-Equivalent-Fractions-Division-Comparing",
-    lessons: ["8.4", "8.5", "8.6"]
+    lessons: ["8.4", "8.5", "8.6", "8.7"]
   },
   {
     week: 3,
@@ -238,13 +238,13 @@ const SEMESTER_2 = [
     week: 5,
     title: "Add Mixed Numbers, Subtract Mixed Numbers & Fractions as Multiples of Unit Fractions",
     folderName: "Week-05-Mixed-Numbers-and-Unit-Fractions",
-    lessons: ["9.8", "9.9", "10.1"]
+    lessons: ["9.8", "9.9", "9.10", "10.1"]
   },
   {
     week: 6,
     title: "Multiplying Fractions by Whole Numbers (Models & Symbols) & Time Problems",
     folderName: "Week-06-Multiplying-Fractions-and-Time-Problems",
-    lessons: ["10.2", "10.3", "10.4"]
+    lessons: ["10.2", "10.3", "10.4", "10.5"]
   },
   {
     week: 7,
@@ -280,19 +280,19 @@ const SEMESTER_2 = [
     week: 12,
     title: "Perimeter & Area Problems, Number Sequences & Number Rules",
     folderName: "Week-12-Perimeter-Area-Sequences-and-Number-Rules",
-    lessons: ["13.6", "14.1", "14.2"]
+    lessons: ["13.6", "13.7", "14.1", "14.2"]
   },
   {
     week: 13,
     title: "Repeating Shapes Patterns, Lines/Rays/Angles & Understanding Angles",
     folderName: "Week-13-Repeating-Shapes-and-Angle-Concepts",
-    lessons: ["14.3", "15.1", "15.2"]
+    lessons: ["14.3", "14.4", "15.1", "15.2"]
   },
   {
     week: 14,
     title: "Measure and Draw Angles & Add/Subtract Angle Measures",
     folderName: "Week-14-Measuring-Drawing-Adding-Subtracting-Angles",
-    lessons: ["15.4", "15.5"]
+    lessons: ["15.4", "15.5", "15.6"]
   },
   {
     week: 15,
@@ -304,7 +304,7 @@ const SEMESTER_2 = [
     week: 16,
     title: "Line Symmetry & Drawing Shapes with Line Symmetry",
     folderName: "Week-16-Line-Symmetry",
-    lessons: ["16.4", "16.5"]
+    lessons: ["16.4", "16.5", "16.6"]
   },
   {
     week: 17,
@@ -445,6 +445,14 @@ let weeksReadme = `# Grade 4 Mathematics — Weekly Curriculum Distribution (202
 weeksReadme += `Organized by Semester and Week according to the Math Department Curriculum Distribution for Academic Year **2026 - 2027**:\n\n`;
 weeksReadme += `- **[Semester 1 (2026 - 2027)](./Semester-1)**: Weeks 1 to 19 (Place value, Addition/Subtraction, Multiplication, Division, Factors, Equivalent Fractions)\n`;
 weeksReadme += `- **[Semester 2 (2026 - 2027)](./Semester-2)**: Weeks 1 to 19 (Fractions, Decimals, Measurement, Patterns, Geometry & Angles)\n\n`;
+weeksReadme += `## These folders are the teaching copies\n\n`;
+weeksReadme += `The decks in \`Semester-1/Week-NN-…\` and \`Semester-2/Week-NN-…\` are not plain copies of \`html/\`: each one carries that `
+  + `week's own page from the week file in this folder (\`week-02.md\` = Semester 1, \`S2 week-01 (2).md\` = Semester 2) as extra slides — `
+  + `the *I can…* statement, the Essential Question, Solve & Share, the Visual Learning Bridge with **Convince Me!**, the Another Example, `
+  + `the guided / independent runs, the Problem Solving page, Assessment Practice and the homework line, each with the model drawn from the `
+  + `printed numbers. Weeks that teach no numbered lesson get their own deck (\`week-NN-*.html\`).\n\n`;
+weeksReadme += `Rebuild after editing a week file: \`./rebuild-all.sh\` (it runs \`scripts/extract-week-content.js\`, \`scripts/stamp-weeks.js\` and `
+  + `\`scripts/build-week-decks.js\` for you). Check the copy with \`npm run check:weeks\`.\n\n`;
 
 // Helper to write semester week folder
 function buildSemesterWeeks(semesterList, semesterDir, semesterName, academicYear) {
