@@ -196,13 +196,18 @@ const STORY_LANES = {
 function StoryShell({ lane, character, pose, support, title, text, clue, children, compact, opener }) {
   const info = STORY_LANES[lane || "fiction"];
   const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  const [castOpen, setCastOpen] = useState(false);
   const gremlin = opener && typeof gremlinFor === "function" && typeof LESSON !== "undefined"
     ? gremlinFor(LESSON.code) : null;
   return (
     <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
       <div className="story-ribbon">
         <UnitShapeMotif topic={topic} />
-        <div className="story-cast">
+        <div className="story-cast" role="button" tabIndex="0"
+          aria-label="Open the character mission card"
+          title="Tap the characters to see today's mission"
+          onClick={() => setCastOpen((v) => !v)}
+          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setCastOpen((v) => !v); } }}>
           {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
             : character === "lantern" ? <StoryLantern size={58} />
             : character ? <StoryCharacter id={character} pose={pose} size={60} />
@@ -212,6 +217,10 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
               lanes as a curious companion — never the sacred Amanah lane */}
           {(lane === "fiction" || info.cls === "stem") ? <GremlinAvatar size={50} /> : null}
         </div>
+        {castOpen && lane === "fiction" && <div className="cast-mission" role="status">
+          <b><Icon name="fa-compass" /> Mission crew</b>
+          <span>Omar checks the evidence. Zayd builds the model. Tap again to close.</span>
+        </div>}
         {gremlin && <div className="gremlin-opener" role="note">
           <b><Icon name="fa-eye" /> Trap to watch for: {gremlin.name}</b>
           <span>“{gremlin.trap}”</span>

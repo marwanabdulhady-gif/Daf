@@ -401,8 +401,9 @@
       .lane-amanah .story-ribbon { border-color: rgba(56,140,70,.3); background: linear-gradient(112deg,#fff,#eff8ef); }
       .story-motif { position: absolute; inset-inline-end: 0; bottom: -18px; width: 210px; height: 115px; color: #6042A6; opacity: .075; pointer-events: none; }
       .lane-stem .story-motif { color: #2D70B3; }.lane-amanah .story-motif { color: #388C46; }
-      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; }
-      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); }
+      .story-cast { position: relative; z-index: 2; display: flex; align-items: end; min-width: 58px; justify-content: center; cursor: pointer; border-radius: 14px; transition: transform .18s ease, background .18s ease; }
+      .story-cast:hover,.story-cast:focus-visible { transform: translateY(-2px) scale(1.04); background: rgba(201,162,39,.13); outline: 2px solid rgba(201,162,39,.45); outline-offset: 2px; }
+      .story-character,.story-lantern { display: block; flex: 0 0 auto; filter: drop-shadow(0 5px 5px rgba(7,30,39,.12)); pointer-events: none; }
       .story-ribbon-copy { position: relative; z-index: 2; min-width: 0; }
       .story-lane { display: inline-flex; gap: 6px; align-items: center; font-size: 8.5px; font-weight: 950; letter-spacing: .13em; text-transform: uppercase; color: #6042A6; }
       .lane-stem .story-lane { color: #2D70B3; }.lane-amanah .story-lane { color: #388C46; }
@@ -804,6 +805,8 @@
         border-radius: 999px; padding: 5px 14px;
       }
       .gremlin-tamed i { color: var(--ok); }
+      .cast-mission { grid-column: 1 / -1; display: flex; gap: 8px; align-items: baseline; padding: 6px 9px; border-radius: 9px; background: rgba(18,133,124,.1); color: var(--daf-ink-2); font-size: 10px; line-height: 1.35; }
+      .cast-mission b { color: #12857C; white-space: nowrap; }
       .gremlin-opener { grid-column: 2 / -1; display: flex; gap: 10px; align-items: baseline;
         margin: -2px 0 2px; padding: 7px 10px; border: 1px solid rgba(201,162,39,.38);
         border-radius: 10px; background: linear-gradient(90deg, rgba(201,162,39,.13), rgba(18,133,124,.08));
@@ -4745,13 +4748,18 @@ const STORY_LANES = {
 function StoryShell({ lane, character, pose, support, title, text, clue, children, compact, opener }) {
   const info = STORY_LANES[lane || "fiction"];
   const topic = STORY && STORY.unit ? STORY.unit.topic : 0;
+  const [castOpen, setCastOpen] = useState(false);
   const gremlin = opener && typeof gremlinFor === "function" && typeof LESSON !== "undefined"
     ? gremlinFor(LESSON.code) : null;
   return (
     <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
       <div className="story-ribbon">
         <UnitShapeMotif topic={topic} />
-        <div className="story-cast">
+        <div className="story-cast" role="button" tabIndex="0"
+          aria-label="Open the character mission card"
+          title="Tap the characters to see today's mission"
+          onClick={() => setCastOpen((v) => !v)}
+          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setCastOpen((v) => !v); } }}>
           {character === "both" ? <><StoryCharacter id="omar" pose={pose} size={52} /><StoryCharacter id="zayd" pose={pose} size={52} /></>
             : character === "lantern" ? <StoryLantern size={58} />
             : character ? <StoryCharacter id={character} pose={pose} size={60} />
@@ -4761,6 +4769,10 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
               lanes as a curious companion — never the sacred Amanah lane */}
           {(lane === "fiction" || info.cls === "stem") ? <GremlinAvatar size={50} /> : null}
         </div>
+        {castOpen && lane === "fiction" && <div className="cast-mission" role="status">
+          <b><Icon name="fa-compass" /> Mission crew</b>
+          <span>Omar checks the evidence. Zayd builds the model. Tap again to close.</span>
+        </div>}
         {gremlin && <div className="gremlin-opener" role="note">
           <b><Icon name="fa-eye" /> Trap to watch for: {gremlin.name}</b>
           <span>“{gremlin.trap}”</span>
