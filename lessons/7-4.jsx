@@ -203,9 +203,9 @@ const LESSON = {
       case 0:
         return (
           <StoryShell opener lane="fiction" character="lantern"
-            title="The indivisible border tile"
-            text="7 tiles make only 1 × 7 — one rectangular pair. Most tiles make several; some make exactly one. And 1 makes none."
-            clue="Exactly two factors: 1 and itself.">
+            title="Some tiles make many rectangles"
+            text="Some tiles make many rectangles. Some make only one. Help the builders name the special tiles prime, composite, or neither."
+            clue="A prime number has exactly two factors.">
             <NoticeWonder draw={makeSieve(3)} height={256} award={award}
               notices={["2 is green", "Most even numbers are not", "The gaps get bigger", "1 is not green"]}
               wonders={["Why those numbers?", "Is 1 special?", "Do they ever stop?"]} />

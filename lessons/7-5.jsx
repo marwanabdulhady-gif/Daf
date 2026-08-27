@@ -209,9 +209,9 @@ const LESSON = {
       case 0:
         return (
           <StoryShell opener lane="fiction" character="lantern"
-            title="When will the teams meet?"
-            text="The cleaning team lands every 6 days: 6, 12, 18, 24... The inspection team lands every 4 days. On which days do they meet?"
-            clue="The gap is always 6 — that is counting in sixes.">
+            title="Two reef crews work on repeating schedules"
+            text="Two reef crews work on repeating schedules. Mark their days on one calendar and find the first day they can work together."
+            clue="Multiples are the landing points when you count in equal steps.">
             <NoticeWonder draw={makeMultiples75(1)} height={256} award={award}
               notices={["They are all even", "The gap is always 6", "It starts at 6", "48 is the last one shown"]}
               wonders={["What comes next?", "Do they ever stop?", "Is 6 a multiple of itself?"]} />

@@ -208,9 +208,9 @@ const LESSON = {
       case 0:
         return (
           <StoryShell opener lane="fiction" character="lantern" support="mariam"
-            title="A tile with more than one shape"
-            text="12 reef tiles make three different rectangles: 1×12, 2×6, 3×4. The same pieces, the different shapes."
-            clue="Each rectangle hands you two factors at once.">
+            title="The reef builders need one tile that can fit many garden beds"
+            text="The reef builders need one tile that can fit many garden beds. Can your team make every rectangle from 12 squares?"
+            clue="Build the first reef tile: every rectangle is a factor pair.">
             <NoticeWonder draw={makeRects(2)} height={256} award={award}
               notices={["They all use 12 tiles", "The shapes are different", "One is a single row", "The sides are labelled"]}
               wonders={["How many rectangles are there?", "Why those numbers?", "Would 5 work?"]} />

@@ -286,9 +286,9 @@ const LESSON = {
       case 0:
         return (
           <StoryShell opener lane="fiction" character="lantern"
-            title="The method that repeats"
-            text="The pair method ran on 24. The reef tiles are growing — 36, then 48. The method must run again, the same way."
-            clue="Same order, same tests, same stopping rule — bigger tile.">
+            title="The reef tile is bigger now: 24, 36, then 48"
+            text="The reef tile is bigger now: 24, 36, then 48. Use the same fair test each time and look for a pattern."
+            clue="Use the same method on a bigger tile.">
             <NoticeWonder draw={makeSearch(24)} height={256} award={award}
               notices={["Some numbers are green", "1 and 24 are both green", "There are gaps", "8 is green but 7 is not"]}
               wonders={["Why those numbers?", "Is there a pattern?", "How do you know it works on a bigger tile?"]} />

@@ -33,8 +33,8 @@ var GREMLINS = {
           name: "Remainder-Dropper", trap: "The leftover doesn't matter — the whole groups are the answer." },
   "6":  { kind: "blob",   col: ["#a87fc4", "#81609e"], prop: "rusher",
           name: "The Rusher", trap: "This path is already working — why change it?" },
-  "7":  { kind: "blob",   col: ["#46b3a6", "#318278"], prop: "pair",
-          name: "Missing-Pair", trap: "You've found the shapes — the ones you didn't find don't exist." },
+  "7":  { kind: "blob",   col: ["#59D8C8", "#167F83"], prop: "pair",
+          name: "Pairy the Reef Sprite", trap: "One rectangle is enough — let’s skip the rest!" },
   "8":  { kind: "dragon", col: ["#5fb2e6", "#3a86b8"], prop: "twins",
           name: "Close-Islands", trap: "They look different, so they must be different." },
   "9":  { kind: "blob",   col: ["#e5809a", "#bb5473"], prop: "tray",
@@ -178,6 +178,21 @@ function drawGremlin(ctx, cx, baseY, o) {
     var fx = cx + (fi - (feetN - 1) / 2) * bodyW * 0.42;
     blk(ctx, fx - 11 * s, baseY - 12 * s, 22 * s, 14 * s, 5 * s, g.col[1]);
   }
+
+  /* toy-like face details: a soft shine and a tiny unit badge make the
+     creature feel collectible and friendly, not like a flat warning icon. */
+  ctx.save();
+  ctx.globalAlpha = state === "trap" ? 0.42 : 0.58;
+  blk(ctx, left + bodyW * 0.16, top + bodyH * 0.12, bodyW * 0.16, bodyH * 0.08,
+    5 * s, "rgba(255,255,255,.72)");
+  ctx.restore();
+  ctx.fillStyle = state === "tamed" ? "#F4D47A" : "rgba(255,255,255,.22)";
+  blk(ctx, cx - 10 * s, cy + bodyH * 0.19, 20 * s, 12 * s, 5 * s,
+    state === "tamed" ? "#F4D47A" : "rgba(16,36,43,.18)");
+  ctx.fillStyle = "#10242B";
+  ctx.font = "800 " + (8 * s) + "px 'JetBrains Mono', monospace";
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  ctx.fillText(state === "tamed" ? "OK" : "?", cx, cy + bodyH * 0.19);
 
   /* ---- big square Dojo eyes ---- */
   var ew = r * 0.30, eh = r * 0.34, eyeGap = r * 0.30, eyeY = cy - r * 0.14;

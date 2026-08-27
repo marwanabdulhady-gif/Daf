@@ -195,9 +195,9 @@ const LESSON = {
       case 0:
         return (
           <StoryShell opener lane="fiction" character="lantern"
-            title="The grid that lights up"
-            text="On the reef grid, some numbers light up when tested against 24 — 1 and 24, 2 and 12, 3 and 8. 7 stays dark."
-            clue="Factors light up in pairs — and the testing can stop.">
+            title="Pairy has hidden some partners on the reef grid"
+            text="Pairy has hidden some partners on the reef grid. Test the numbers in order and find every pair for 24."
+            clue="Find every pair. Stop only when the partners meet.">
             <NoticeWonder draw={makeSearch(24)} height={256} award={award}
               notices={["Some numbers are green", "1 and 24 are both green", "There are gaps", "8 is green but 7 is not"]}
               wonders={["Why those numbers?", "Is there a pattern?", "How many are there?"]} />

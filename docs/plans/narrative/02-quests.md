@@ -137,20 +137,20 @@ The trap is the door's minion in action (unnamed before door 13, named after).
 
 **Tale close:** the council signs. But the city's next design is a *module* — one tile that must fit many rooms — and the architect will accept it only when no shape is missing. *Door seven lies on the reef.*
 
-### Quest 7 · The reef of hidden rectangles (Topic 7 · 4.OA.B.4, MP.8)
-**Giver:** the architect (first appearance — she returns for doors 14–16). **Place:** the reef platform, where a modular tile is to be cast.
-**Promise:** Which dimensions let one module serve many designs?
-**Artifact:** the approved module tile, with its full factor-pair certificate.
-**Presence:** the stain guards the *missing pair* — the factor pair the class is most tempted to stop at (7-2). At 7-4 the indivisible border tile appears: a number that makes only one rectangle. The class should stop fearing it; it is the strongest border there is.
-**Climax:** 7-5, when will the teams meet — cycles overlap on particular days; the repeated reasoning is certified. **Reward:** the module tile; the seal.
+### Quest 7 · The Reef Builders' Tile Challenge (Topic 7 · 4.OA.B.4, MP.8)
+**Giver:** Mariam, the reef architect. **Place:** a bright modular reef workshop beside the garden beds.
+**Promise:** Can one tile fit many designs if the builders find every possible rectangle?
+**Artifact:** a signed tile-and-calendar kit: factor pairs, prime/composite labels, and repeating crew days.
+**Companion:** Pairy the Reef Sprite is curious and playful. Pairy suggests a shortcut; students test the idea rather than fight the creature.
+**Climax:** 7-5, when the crews' schedules overlap and the class presents a plan that works. **Reward:** the certified kit; the reef seal.
 
-| # | Mission | Objective | The fog whispers |
+| # | Mission | Objective | Pairy's shortcut |
 |---|---|---|---|
-| 7-1 | A tile with more than one shape | Understand factors: one number, several rectangles | "A rectangle is one shape — the first one you find." |
-| 7-2 | Every possible rectangle | Find every factor pair, no pair missing | "You've found the shapes — the ones you didn't find don't exist." |
-| 7-3 | The rectangle pattern repeats | Repeated reasoning: the method as dimensions grow | "Each new tile needs a fresh look — patterns are for children." |
-| 7-4 | The indivisible border tile | Prime vs. composite; one pair is not a flaw | "Only one shape? It must be broken." |
-| 7-5 | When will the teams meet? | Multiples; cycles that overlap on particular days | "They meet every day — they're both on the reef." |
+| 7-1 | Make the first tile | Build rectangles and read factor pairs | “One rectangle is enough — let’s skip the rest!” |
+| 7-2 | Find every partner | Test in order and stop when the pairs meet | “If you cannot see a pair, it must not exist.” |
+| 7-3 | Grow the pattern | Repeat the method on larger tiles | “A bigger tile needs a brand-new trick.” |
+| 7-4 | Name the special tiles | Classify prime, composite, and 1 | “Only one shape? That tile is broken.” |
+| 7-5 | Mark the meeting days | Generate multiples and find shared days | “The crews will meet whenever they feel like it.” |
 
 **Tale close:** the module is cast. Across the water, two islands each claim the same water share — with different names on the map. *Door eight is an island with two names.*
 
