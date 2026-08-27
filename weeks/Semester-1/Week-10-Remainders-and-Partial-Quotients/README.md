@@ -3,21 +3,15 @@
 **Academic Year:** 2026 - 2027  
 **Department:** Mathematics · Grade 4  
 
-## Lessons Scheduled
+## Lessons & STEAM Activities Scheduled
 
-| Lesson Code | Lesson Title | Chapter | Standard | IXL Skill Codes | Interactive Lesson File |
-|---|---|---|---|---|---|
-| **5.3** | Mental Math: Estimate Quotients for Greater Dividends | Chapter 5 | `4.NBT.B.6` | MPG · VC2 | [`lesson-5-3-mental-math-estimate-quotients-for-greater-dividends.html`](lesson-5-3-mental-math-estimate-quotients-for-greater-dividends.html) |
-| **5.4** | Interpret Remainders | Chapter 5 | `4.OA.A.3` | 7BS · PYQ · 5WV | [`lesson-5-4-interpret-remainders.html`](lesson-5-4-interpret-remainders.html) |
-| **5.5** | Use Partial Quotients to Divide | Chapter 5 | `4.NBT.B.6` | BTM · 7LG | [`lesson-5-5-use-partial-quotients-to-divide.html`](lesson-5-5-use-partial-quotients-to-divide.html) |
-## 🎨 STEAM Production Activities & Manipulatives for this Week
-
-| Activity Title | File Link |
-|---|---|
-| **Division Dunes: Partial Quotients Sandbox** | [`activity-ch05-division-dunes-quotient-lab.html`](activity-ch05-division-dunes-quotient-lab.html) |
-
+| Lesson Code | Lesson Title | Chapter | Standard | IXL Codes | Lesson Slide Deck | STEAM Activity Lab |
+|---|---|---|---|---|---|---|
+| **5.3** | Mental Math: Estimate Quotients for Greater Dividends | Chapter 5 | `4.NBT.B.6` | MPG · VC2 | [`lesson-5-3-mental-math-estimate-quotients-for-greater-dividends.html`](lesson-5-3-mental-math-estimate-quotients-for-greater-dividends.html) | [`lesson-5-3-mental-math-estimate-quotients-for-greater-dividends-activity.html`](lesson-5-3-mental-math-estimate-quotients-for-greater-dividends-activity.html) |
+| **5.4** | Interpret Remainders | Chapter 5 | `4.OA.A.3` | 7BS · PYQ · 5WV | [`lesson-5-4-interpret-remainders.html`](lesson-5-4-interpret-remainders.html) | [`lesson-5-4-interpret-remainders-activity.html`](lesson-5-4-interpret-remainders-activity.html) |
+| **5.5** | Use Partial Quotients to Divide | Chapter 5 | `4.NBT.B.6` | BTM · 7LG | [`lesson-5-5-use-partial-quotients-to-divide.html`](lesson-5-5-use-partial-quotients-to-divide.html) | [`lesson-5-5-use-partial-quotients-to-divide-activity.html`](lesson-5-5-use-partial-quotients-to-divide-activity.html) |
 
 ## Instructions for Teachers & Students
 
-- **Interactive Slides:** Launch the `.html` file in any browser for class presentation and student exploration.
-- **Seven Stages:** Follow the 7-stage sequence (Preparation → Intelligent Diagnose → Knowledge Building → Practice → Production / B → Mastery Gate → Smart Production).
+- **Interactive Slides:** Launch the `lesson-*.html` file in any browser for class presentation and student exploration.
+- **STEAM Activity Labs:** Launch `lesson-*-activity.html` for the dedicated interactive sandbox and student build tasks.

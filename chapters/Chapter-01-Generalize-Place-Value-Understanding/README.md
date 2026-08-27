@@ -4,23 +4,17 @@
 
 **Standards:** `4.NBT.A`
 
-## Lessons in this Chapter
+## Lessons & Interactive Activities in this Chapter
 
-| Lesson Code | Lesson Title | Standard | IXL Skill Codes | Files |
-|---|---|---|---|---|
-| **1-1** | Numbers Through One Million | `4.NBT.A.2` | 4R6 · 7WT · 5G4 · 2PZ · Z47 | [`lesson-1-1-numbers-through-one-million.html`](lesson-1-1-numbers-through-one-million.html)<br>[`1-1.jsx`](1-1.jsx) |
-| **1-2** | Place Value Relationships | `4.NBT.A.1` | 9DJ · YAV · D7G · J5M · B5N | [`lesson-1-2-place-value-relationships.html`](lesson-1-2-place-value-relationships.html)<br>[`1-2.jsx`](1-2.jsx) |
-| **1-3** | Compare Whole Numbers | `4.NBT.A.2` | 6Y2 · USN · 94E | [`lesson-1-3-compare-whole-numbers.html`](lesson-1-3-compare-whole-numbers.html)<br>[`1-3.jsx`](1-3.jsx) |
-| **1-4** | Round Whole Numbers | `4.NBT.A.3` | QV7 · CT2 | [`lesson-1-4-round-whole-numbers.html`](lesson-1-4-round-whole-numbers.html)<br>[`1-4.jsx`](1-4.jsx) |
-| **1-5** | Problem Solving: Construct Arguments | `MP.3` | EFV · XVJ | [`lesson-1-5-problem-solving-construct-arguments.html`](lesson-1-5-problem-solving-construct-arguments.html)<br>[`1-5.jsx`](1-5.jsx) |
-
-## 🎨 STEAM Production Activities & Manipulatives
-
-| Activity Name | Badge | Description | File Link |
-|---|---|---|---|
-| **Place-Value Harbor: Interactive Census Chart** | `Chapter 01 · Place Value Lab` | Explore numbers up to 1,000,000 across periods (Millions, Thousands, Ones) and model the 10x value shift. | [`activity-ch01-place-value-census-chart.html`](activity-ch01-place-value-census-chart.html) |
+| Lesson Code | Lesson Title | Standard | IXL Codes | Lesson Slide Deck | STEAM Activity Lab |
+|---|---|---|---|---|---|
+| **1-1** | Numbers Through One Million | `4.NBT.A.2` | 4R6 · 7WT · 5G4 · 2PZ · Z47 | [`lesson-1-1-numbers-through-one-million.html`](lesson-1-1-numbers-through-one-million.html) | [`lesson-1-1-numbers-through-one-million-activity.html`](lesson-1-1-numbers-through-one-million-activity.html) |
+| **1-2** | Place Value Relationships | `4.NBT.A.1` | 9DJ · YAV · D7G · J5M · B5N | [`lesson-1-2-place-value-relationships.html`](lesson-1-2-place-value-relationships.html) | [`lesson-1-2-place-value-relationships-activity.html`](lesson-1-2-place-value-relationships-activity.html) |
+| **1-3** | Compare Whole Numbers | `4.NBT.A.2` | 6Y2 · USN · 94E | [`lesson-1-3-compare-whole-numbers.html`](lesson-1-3-compare-whole-numbers.html) | [`lesson-1-3-compare-whole-numbers-activity.html`](lesson-1-3-compare-whole-numbers-activity.html) |
+| **1-4** | Round Whole Numbers | `4.NBT.A.3` | QV7 · CT2 | [`lesson-1-4-round-whole-numbers.html`](lesson-1-4-round-whole-numbers.html) | [`lesson-1-4-round-whole-numbers-activity.html`](lesson-1-4-round-whole-numbers-activity.html) |
+| **1-5** | Problem Solving: Construct Arguments | `MP.3` | EFV · XVJ | [`lesson-1-5-problem-solving-construct-arguments.html`](lesson-1-5-problem-solving-construct-arguments.html) | [`lesson-1-5-problem-solving-construct-arguments-activity.html`](lesson-1-5-problem-solving-construct-arguments-activity.html) |
 
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
-- Source JSX decks are located alongside the HTML files.
+- **Lesson Slides**: Open any `lesson-*.html` file directly in your browser for the full 7-stage interactive lesson.
+- **Activity Labs**: Open any `lesson-*-activity.html` file directly for the dedicated STEAM production sandbox and manipulative.

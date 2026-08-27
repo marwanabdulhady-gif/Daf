@@ -4,18 +4,24 @@
    - 16 Chapters View (organized by topic / chapter with full lesson links)
    - Semester 1 Weekly Distribution (Weeks 1 to 19, Academic Year 2026 - 2027)
    - Semester 2 Weekly Distribution (Weeks 1 to 19, Academic Year 2026 - 2027)
-   - Interactive Activities & STEAM Manipulatives Lab (19 standalone tools)
+   - Interactive Activities & STEAM Manipulatives Lab (All matching lesson activity decks)
    State lives in localStorage (daf.map.v1). */
 
 const fs = require("fs");
 const path = require("path");
-const { ACTIVITIES } = require("./build-activities");
 
 const cur = JSON.parse(fs.readFileSync("curriculum.json", "utf8"));
-const files = fs.existsSync("html") ? fs.readdirSync("html").filter(f => f.endsWith(".html")) : [];
+const files = fs.existsSync("html") ? fs.readdirSync("html").filter(f => f.endsWith(".html") && !f.endsWith("-activity.html")) : [];
+const actFiles = fs.existsSync("html/activities") ? fs.readdirSync("html/activities").filter(f => f.endsWith("-activity.html")) : [];
+
 const fileFor = (code) => {
   const norm = code.replace(".", "-");
   return files.find((f) => f.startsWith("lesson-" + norm + "-"));
+};
+
+const actFileFor = (code) => {
+  const norm = code.replace(".", "-");
+  return actFiles.find((f) => f.startsWith("lesson-" + norm + "-"));
 };
 
 const REGIONS = [
@@ -49,61 +55,65 @@ const POS = [
 const topicData = cur.topics.map((t, i) => {
   const r = REGIONS[i];
   const lessons = t.lessons.map((l) => ({
-    code: l.code, title: l.title, std: l.standard || t.standards, file: fileFor(l.code) || null,
+    code: l.code,
+    title: l.title,
+    std: l.standard || t.standards,
+    file: fileFor(l.code) || null,
+    actFile: actFileFor(l.code) || null,
     ixl: l.ixl || []
   }));
   const boss = (cur.bosses || []).find((b) => b.topic === t.n);
   return {
     n: t.n, topic: t.title, name: r.name, col: r.col, blurb: r.blurb,
     x: POS[i][0], y: POS[i][1], lessons,
-    boss: boss ? { name: boss.name, file: fileFor(boss.code) || null } : null
+    boss: boss ? { name: boss.name, file: fileFor(boss.code) || null, actFile: actFileFor(boss.code) || null } : null
   };
 });
 
 // Semester 1 (2026 - 2027)
 const SEMESTER_1 = [
-  { week: 1, title: "Orientation, Reinforcement & Diagnostic Assessment", lessons: [], notes: "Orientation · Reinforcement · Diagnostic Assessment", activityFile: "activity-week01-diagnostic-readiness-map.html" },
-  { week: 2, title: "Place Value Through One Million & Comparing Whole Numbers", lessons: ["1.1", "1.2", "1.3"], activityFile: "activity-ch01-place-value-census-chart.html" },
-  { week: 3, title: "Rounding Whole Numbers & Mental Math Addition/Subtraction", lessons: ["1.4", "2.1"], activityFile: "activity-ch01-place-value-census-chart.html" },
-  { week: 4, title: "Estimating Sums/Differences & Adding Multi-Digit Numbers", lessons: ["2.2", "2.3", "2.4"], activityFile: "activity-ch02-souq-of-sums-mental-math.html" },
-  { week: 5, title: "Subtracting Multi-Digit Numbers & Across Zeros", lessons: ["2.5", "2.6", "2.7"], activityFile: "activity-ch02-souq-of-sums-mental-math.html" },
-  { week: 6, title: "Multiplication by Multiples of 10, 100, 1000, Estimates & Arrays", lessons: ["3.1", "3.2", "3.3"], activityFile: "activity-ch03-area-model-multiplication-lab.html" },
-  { week: 7, title: "Area Models, Mental Math Multiplication & Problem Solving", lessons: ["3.4", "3.6", "3.8"], activityFile: "activity-ch03-area-model-multiplication-lab.html" },
-  { week: 8, title: "Multiplying Multiples of 10, 2-Digit Models & Estimation", lessons: ["4.1", "4.2", "4.3"], activityFile: "activity-ch04-tower-of-times-partial-products.html" },
-  { week: 9, title: "Area Models / Partial Products & Mental Math Quotients / Estimates", lessons: ["4.5", "5.1", "5.2"], activityFile: "activity-ch04-tower-of-times-partial-products.html" },
-  { week: 10, title: "Greater Dividends, Interpreting Remainders & Partial Quotients", lessons: ["5.3", "5.4", "5.5"], activityFile: "activity-ch05-division-dunes-quotient-lab.html" },
-  { week: 11, title: "Greater Dividends Division & Solving Comparison Problems", lessons: ["5.6", "6.1", "6.2"], activityFile: "activity-ch05-division-dunes-quotient-lab.html" },
-  { week: 12, title: "Multi-Step Problem Solving & Modeling", lessons: ["6.3", "6.5", "6.6"], activityFile: "activity-ch06-caravan-multi-step-problem-lab.html" },
-  { week: 13, title: "Understanding Factors & Repeated Reasoning", lessons: ["7.1", "7.2", "7.3"], activityFile: "activity-ch07-factor-reef-pairs-explorer.html" },
-  { week: 14, title: "Prime, Composite Numbers & Multiples", lessons: ["7.4", "7.5"], activityFile: "activity-ch07-factor-reef-pairs-explorer.html" },
-  { week: 15, title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)", lessons: ["8.1", "8.2", "8.3"], activityFile: "activity-ch08-fraction-isles-equivalence-strips.html" },
-  { week: 16, title: "Equivalent Fractions (Division, Benchmarks & Comparison)", lessons: ["8.4", "8.5", "8.6"], activityFile: "activity-ch08-fraction-isles-equivalence-strips.html" },
-  { week: 17, title: "General Revision", lessons: [], notes: "Comprehensive Semester 1 Review (Chapters 1 to 8)", activityFile: "activity-sem1-general-revision-arena.html" },
-  { week: 18, title: "General Revision", lessons: [], notes: "Exam Preparation, Gap Map Closure & Intervention", activityFile: "activity-sem1-general-revision-arena.html" },
-  { week: 19, title: "SEMESTER 1 - FINAL EXAMINATIONS", lessons: [], notes: "Semester 1 Final Examinations Administration", activityFile: "activity-sem1-general-revision-arena.html" }
+  { week: 1, title: "Orientation, Reinforcement & Diagnostic Assessment", lessons: [], notes: "Orientation · Reinforcement · Diagnostic Assessment" },
+  { week: 2, title: "Place Value Through One Million & Comparing Whole Numbers", lessons: ["1.1", "1.2", "1.3"] },
+  { week: 3, title: "Rounding Whole Numbers & Mental Math Addition/Subtraction", lessons: ["1.4", "2.1"] },
+  { week: 4, title: "Estimating Sums/Differences & Adding Multi-Digit Numbers", lessons: ["2.2", "2.3", "2.4"] },
+  { week: 5, title: "Subtracting Multi-Digit Numbers & Across Zeros", lessons: ["2.5", "2.6", "2.7"] },
+  { week: 6, title: "Multiplication by Multiples of 10, 100, 1000, Estimates & Arrays", lessons: ["3.1", "3.2", "3.3"] },
+  { week: 7, title: "Area Models, Mental Math Multiplication & Problem Solving", lessons: ["3.4", "3.6", "3.8"] },
+  { week: 8, title: "Multiplying Multiples of 10, 2-Digit Models & Estimation", lessons: ["4.1", "4.2", "4.3"] },
+  { week: 9, title: "Area Models / Partial Products & Mental Math Quotients / Estimates", lessons: ["4.5", "5.1", "5.2"] },
+  { week: 10, title: "Greater Dividends, Interpreting Remainders & Partial Quotients", lessons: ["5.3", "5.4", "5.5"] },
+  { week: 11, title: "Greater Dividends Division & Solving Comparison Problems", lessons: ["5.6", "6.1", "6.2"] },
+  { week: 12, title: "Multi-Step Problem Solving & Modeling", lessons: ["6.3", "6.5", "6.6"] },
+  { week: 13, title: "Understanding Factors & Repeated Reasoning", lessons: ["7.1", "7.2", "7.3"] },
+  { week: 14, title: "Prime, Composite Numbers & Multiples", lessons: ["7.4", "7.5"] },
+  { week: 15, title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)", lessons: ["8.1", "8.2", "8.3"] },
+  { week: 16, title: "Equivalent Fractions (Division, Benchmarks & Comparison)", lessons: ["8.4", "8.5", "8.6"] },
+  { week: 17, title: "General Revision", lessons: [], notes: "Comprehensive Semester 1 Review (Chapters 1 to 8)" },
+  { week: 18, title: "General Revision", lessons: [], notes: "Exam Preparation, Gap Map Closure & Intervention" },
+  { week: 19, title: "SEMESTER 1 - FINAL EXAMINATIONS", lessons: [], notes: "Semester 1 Final Examinations Administration" }
 ];
 
 // Semester 2 (2026 - 2027)
 const SEMESTER_2 = [
-  { week: 1, title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)", lessons: ["8.1", "8.2", "8.3"], activityFile: "activity-ch08-fraction-isles-equivalence-strips.html" },
-  { week: 2, title: "Equivalent Fractions (Division, Benchmarks & Comparison)", lessons: ["8.4", "8.5", "8.6"], activityFile: "activity-ch08-fraction-isles-equivalence-strips.html" },
-  { week: 3, title: "Fraction Addition & Decomposing Fractions", lessons: ["9.1", "9.2", "9.3"], activityFile: "activity-ch09-kunafa-kitchen-fraction-addition.html" },
-  { week: 4, title: "Subtracting Like Denominators, Mixed Numbers Modeling", lessons: ["9.5", "9.6", "9.7"], activityFile: "activity-ch09-kunafa-kitchen-fraction-addition.html" },
-  { week: 5, title: "Add/Subtract Mixed Numbers & Unit Fraction Multiples", lessons: ["9.8", "9.9", "10.1"], activityFile: "activity-ch09-kunafa-kitchen-fraction-addition.html" },
-  { week: 6, title: "Multiplying Fractions by Whole Numbers & Time Problems", lessons: ["10.2", "10.3", "10.4"], activityFile: "activity-ch10-scaling-strait-fraction-multiplier.html" },
-  { week: 7, title: "Reading, Making & Using Line Plots", lessons: ["11.1", "11.2", "11.3"], activityFile: "activity-ch11-pearl-ledger-line-plot-diver.html" },
-  { week: 8, title: "Critique Reasoning & Fractions and Decimals", lessons: ["11.4", "12.1", "12.2"], activityFile: "activity-ch11-pearl-ledger-line-plot-diver.html" },
-  { week: 9, title: "Comparing Decimals, Tenths/Hundredths & Money Problems", lessons: ["12.3", "12.4", "12.5"], activityFile: "activity-ch12-decimal-docks-tenths-hundredths.html" },
-  { week: 10, title: "Decimal Structure & Customary Length and Capacity", lessons: ["12.6", "13.1", "13.2"], activityFile: "activity-ch12-decimal-docks-tenths-hundredths.html" },
-  { week: 11, title: "Customary Weight & Metric Length, Capacity and Mass", lessons: ["13.3", "13.4", "13.5"], activityFile: "activity-ch13-boss-measure-market-battle.html" },
-  { week: 12, title: "Perimeter & Area Problems, Number Sequences & Rules", lessons: ["13.6", "14.1", "14.2"], activityFile: "activity-ch13-boss-measure-market-battle.html" },
-  { week: 13, title: "Repeating Shapes Patterns & Understanding Angles", lessons: ["14.3", "15.1", "15.2"], activityFile: "activity-ch14-pattern-oasis-sequence-builder.html" },
-  { week: 14, title: "Measuring, Drawing & Adding/Subtracting Angles", lessons: ["15.4", "15.5"], activityFile: "activity-ch15-angle-heights-protractor-lab.html" },
-  { week: 15, title: "Lines, Classifying Triangles & Quadrilaterals", lessons: ["16.1", "16.2", "16.3"], activityFile: "activity-ch16-geometry-gardens-symmetry-studio.html" },
-  { week: 16, title: "Line Symmetry & Drawing Symmetrical Shapes", lessons: ["16.4", "16.5"], activityFile: "activity-ch16-geometry-gardens-symmetry-studio.html" },
-  { week: 17, title: "General Revision", lessons: [], notes: "Comprehensive Semester 2 Review (Chapters 8 to 16)", activityFile: "activity-sem2-general-revision-arena.html" },
-  { week: 18, title: "General Revision", lessons: [], notes: "Exam Preparation, Geometry & Fraction Mastery", activityFile: "activity-sem2-general-revision-arena.html" },
-  { week: 19, title: "SEMESTER 2 - FINAL EXAMINATIONS", lessons: [], notes: "Semester 2 Final Examinations Administration", activityFile: "activity-sem2-general-revision-arena.html" }
+  { week: 1, title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)", lessons: ["8.1", "8.2", "8.3"] },
+  { week: 2, title: "Equivalent Fractions (Division, Benchmarks & Comparison)", lessons: ["8.4", "8.5", "8.6"] },
+  { week: 3, title: "Fraction Addition & Decomposing Fractions", lessons: ["9.1", "9.2", "9.3"] },
+  { week: 4, title: "Subtracting Like Denominators, Mixed Numbers Modeling", lessons: ["9.5", "9.6", "9.7"] },
+  { week: 5, title: "Add/Subtract Mixed Numbers & Unit Fraction Multiples", lessons: ["9.8", "9.9", "10.1"] },
+  { week: 6, title: "Multiplying Fractions by Whole Numbers & Time Problems", lessons: ["10.2", "10.3", "10.4"] },
+  { week: 7, title: "Reading, Making & Using Line Plots", lessons: ["11.1", "11.2", "11.3"] },
+  { week: 8, title: "Critique Reasoning & Fractions and Decimals", lessons: ["11.4", "12.1", "12.2"] },
+  { week: 9, title: "Comparing Decimals, Tenths/Hundredths & Money Problems", lessons: ["12.3", "12.4", "12.5"] },
+  { week: 10, title: "Decimal Structure & Customary Length and Capacity", lessons: ["12.6", "13.1", "13.2"] },
+  { week: 11, title: "Customary Weight & Metric Length, Capacity and Mass", lessons: ["13.3", "13.4", "13.5"] },
+  { week: 12, title: "Perimeter & Area Problems, Number Sequences & Rules", lessons: ["13.6", "14.1", "14.2"] },
+  { week: 13, title: "Repeating Shapes Patterns & Understanding Angles", lessons: ["14.3", "15.1", "15.2"] },
+  { week: 14, title: "Measuring, Drawing & Adding/Subtracting Angles", lessons: ["15.4", "15.5"] },
+  { week: 15, title: "Lines, Classifying Triangles & Quadrilaterals", lessons: ["16.1", "16.2", "16.3"] },
+  { week: 16, title: "Line Symmetry & Drawing Symmetrical Shapes", lessons: ["16.4", "16.5"] },
+  { week: 17, title: "General Revision", lessons: [], notes: "Comprehensive Semester 2 Review (Chapters 8 to 16)" },
+  { week: 18, title: "General Revision", lessons: [], notes: "Exam Preparation, Geometry & Fraction Mastery" },
+  { week: 19, title: "SEMESTER 2 - FINAL EXAMINATIONS", lessons: [], notes: "Semester 2 Final Examinations Administration" }
 ];
 
 function enrichSemester(semList) {
@@ -119,7 +129,8 @@ function enrichSemester(semList) {
         chapter: chNum,
         title: l ? l.title : code,
         std: l ? (l.standard || t.standards) : "",
-        file: fileFor(code)
+        file: fileFor(code),
+        actFile: actFileFor(code)
       };
     });
     return { ...w, lessonDetails: enrichedLessons };
@@ -177,7 +188,7 @@ const html = `<!doctype html>
   .node:hover circle.face{filter:brightness(1.25)}
   .node text{pointer-events:none;user-select:none}
   
-  .panel{position:fixed;top:0;inset-inline-end:0;height:100vh;width:min(450px,94vw);z-index:50;
+  .panel{position:fixed;top:0;inset-inline-end:0;height:100vh;width:min(470px,94vw);z-index:50;
     background:#0E272E;border-inline-start:1.5px solid rgba(201,162,39,.35);
     box-shadow:-18px 0 50px rgba(0,0,0,.5);transform:translateX(110%);transition:transform .28s ease;
     display:flex;flex-direction:column}
@@ -208,7 +219,7 @@ const html = `<!doctype html>
   .p-close:hover{color:#fff}
 
   /* Grid Views */
-  .grid-container{display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:18px;margin-top:14px}
+  .grid-container{display:grid;grid-template-columns:repeat(auto-fill, minmax(330px, 1fr));gap:18px;margin-top:14px}
   .grid-card{background:var(--card);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px;
     transition:all .2s;display:flex;flex-direction:column}
   .grid-card:hover{background:var(--card-hover);border-color:var(--teal2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
@@ -216,13 +227,17 @@ const html = `<!doctype html>
     background:rgba(26,167,155,.2);color:var(--teal2);margin-bottom:8px}
   .card-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:6px}
   .card-sub{font-size:12px;color:#9fc4bd;margin-bottom:14px}
-  .lesson-chip-list{display:flex;flex-direction:column;gap:6px;flex:1}
-  .lesson-chip{display:flex;align-items:center;gap:10px;text-decoration:none;color:#EAF4F2;background:rgba(255,255,255,.04);
+  .lesson-chip-list{display:flex;flex-direction:column;gap:7px;flex:1}
+  .lesson-chip-pair{display:flex;align-items:center;gap:6px}
+  .lesson-chip{flex:1;display:flex;align-items:center;gap:8px;text-decoration:none;color:#EAF4F2;background:rgba(255,255,255,.04);
     border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 10px;font-size:12px;transition:all .15s}
   .lesson-chip:hover{border-color:var(--gold);background:rgba(201,162,39,.1);color:#fff}
   .chip-code{font:800 11px "Courier New",monospace;color:var(--gold);min-width:32px}
   .chip-title{flex:1;font-weight:600}
-  .chip-std{font-size:10px;color:#8faaa5}
+  
+  .act-link-btn{display:inline-flex;align-items:center;justify-content:center;padding:7px 10px;border-radius:8px;
+    background:rgba(26,167,155,.15);border:1px solid var(--teal2);color:var(--teal2);text-decoration:none;font-size:11px;font-weight:800;transition:all .15s}
+  .act-link-btn:hover{background:var(--teal2);color:#0B1F24}
 
   .folder-link-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:7px 12px;font-size:11.5px;
     font-weight:700;color:var(--teal2);border:1px solid var(--teal2);border-radius:8px;text-decoration:none;transition:all .15s}
@@ -258,12 +273,11 @@ const html = `<!doctype html>
   <button class="tab-btn" onclick="showTab('chaptersView')">&#128218; Chapters View (1–16)</button>
   <button class="tab-btn" onclick="showTab('sem1View')">&#128197; Semester 1 (2026–2027)</button>
   <button class="tab-btn" onclick="showTab('sem2View')">&#128197; Semester 2 (2026–2027)</button>
-  <button class="tab-btn" onclick="showTab('activitiesView')">&#127912; Activities & STEAM Labs</button>
 </div>
 
 <!-- TAB 1: WORLD MAP -->
 <div id="mapView" class="tab-content active">
-  <div class="note"><b>Interactive World Map:</b> Click on any region along the caravan route to view lessons, standards, and stamp regions rebuilt.</div>
+  <div class="note"><b>Interactive World Map:</b> Click on any region along the caravan route to view lessons, standards, launch matching STEAM activities, and stamp regions rebuilt.</div>
   <div class="stage">
     <svg class="map" id="map" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg"></svg>
   </div>
@@ -273,7 +287,7 @@ const html = `<!doctype html>
 <div id="chaptersView" class="tab-content">
   <div class="section-header">
     <h2>16 Chapters of Grade 4 Mathematics</h2>
-    <p>Complete curriculum aligned with Savvas enVision Mathematics (2026 - 2027). Each chapter folder contains standalone interactive HTML, JSX source decks, and STEAM production activities.</p>
+    <p>Complete curriculum aligned with Savvas enVision Mathematics (2026 - 2027). Each chapter contains standalone interactive HTML slides, JSX source decks, and matching STEAM activity labs.</p>
   </div>
   <div class="grid-container" id="chaptersGrid"></div>
 </div>
@@ -296,15 +310,6 @@ const html = `<!doctype html>
   <div class="grid-container" id="sem2Grid"></div>
 </div>
 
-<!-- TAB 5: ACTIVITIES LAB -->
-<div id="activitiesView" class="tab-content">
-  <div class="section-header">
-    <h2>Standalone STEAM Production Activities & Manipulatives</h2>
-    <p>Interactive student production sandboxes, AI-in-the-loop inquiry tools, and review boss battles for projector and independent practice.</p>
-  </div>
-  <div class="grid-container" id="activitiesGrid"></div>
-</div>
-
 <aside class="panel" id="panel">
   <button class="p-close" id="pClose" title="Close">&#10005;</button>
   <div class="p-head">
@@ -318,13 +323,12 @@ const html = `<!doctype html>
   <div class="p-list" id="pList"></div>
 </aside>
 
-<footer>Savvas enVision Mathematics (Grade 4) · 17 topics · 114 lessons · 19 STEAM activities · Academic Year 2026 - 2027</footer>
+<footer>Savvas enVision Mathematics (Grade 4) · 17 topics · 114 lessons · 115 matching activity decks · Academic Year 2026 - 2027</footer>
 
 <script>
 const DATA = ${JSON.stringify(topicData)};
 const S1 = ${JSON.stringify(s1Data)};
 const S2 = ${JSON.stringify(s2Data)};
-const ACTS = ${JSON.stringify(ACTIVITIES)};
 
 const KEY = "daf.map.v1";
 const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } };
@@ -335,7 +339,7 @@ function showTab(id) {
   document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
   document.querySelectorAll(".tab-btn").forEach(el => el.classList.remove("active"));
   document.getElementById(id).classList.add("active");
-  const tabIds = ["mapView", "chaptersView", "sem1View", "sem2View", "activitiesView"];
+  const tabIds = ["mapView", "chaptersView", "sem1View", "sem2View"];
   const btns = Array.from(document.querySelectorAll(".tab-btn"));
   const idx = tabIds.indexOf(id);
   if (idx >= 0 && btns[idx]) btns[idx].classList.add("active");
@@ -396,12 +400,27 @@ function openPanel(r) {
   const list = document.getElementById("pList");
   list.innerHTML = "";
   r.lessons.forEach((l) => {
+    const row = document.createElement("div");
+    row.style.cssText = "display:flex;align-items:center;gap:6px;margin-bottom:7px";
+    
     const a = document.createElement(l.file ? "a" : "div");
     a.className = "p-lesson" + (l.file ? "" : " dead");
+    a.style.cssText = "flex:1;margin-bottom:0";
     if (l.file) a.href = "html/" + l.file;
     a.innerHTML = '<span class="c">' + l.code + '</span><div class="t">' + l.title +
       '</div><div class="s">' + (l.std || "") + "</div>";
-    list.appendChild(a);
+    row.appendChild(a);
+
+    if (l.actFile) {
+      const actA = document.createElement("a");
+      actA.className = "act-link-btn";
+      actA.href = "html/activities/" + l.actFile;
+      actA.title = "Launch STEAM Activity Lab";
+      actA.innerHTML = '<i class="fa-solid fa-flask"></i>';
+      row.appendChild(actA);
+    }
+    
+    list.appendChild(row);
   });
   if (r.boss && r.boss.file) {
     const a = document.createElement("a");
@@ -431,17 +450,28 @@ function renderChapters() {
     
     t.lessons.forEach(l => {
       const href = l.file ? ("html/" + l.file) : "#";
+      const actHref = l.actFile ? ("html/activities/" + l.actFile) : "#";
+      htmlContent += '<div class="lesson-chip-pair">';
       htmlContent += '<a class="lesson-chip" href="' + href + '">';
       htmlContent += '<span class="chip-code">' + l.code + '</span>';
       htmlContent += '<span class="chip-title">' + l.title + '</span>';
       htmlContent += '</a>';
+      if (l.actFile) {
+        htmlContent += '<a class="act-link-btn" href="' + actHref + '" title="Launch Activity Lab"><i class="fa-solid fa-flask"></i></a>';
+      }
+      htmlContent += '</div>';
     });
     
     if (t.boss && t.boss.file) {
+      htmlContent += '<div class="lesson-chip-pair">';
       htmlContent += '<a class="lesson-chip" href="html/' + t.boss.file + '" style="border-color:rgba(201,162,39,.6);background:rgba(201,162,39,.1);">';
       htmlContent += '<span class="chip-code" style="color:var(--gold)">BOSS</span>';
       htmlContent += '<span class="chip-title">' + t.boss.name + '</span>';
       htmlContent += '</a>';
+      if (t.boss.actFile) {
+        htmlContent += '<a class="act-link-btn" href="html/activities/' + t.boss.actFile + '" title="Launch Boss Activity"><i class="fa-solid fa-flask"></i></a>';
+      }
+      htmlContent += '</div>';
     }
     
     htmlContent += '</div>';
@@ -473,41 +503,21 @@ function renderSemester(semData, containerId, semFolder) {
     if (w.lessonDetails && w.lessonDetails.length > 0) {
       w.lessonDetails.forEach(l => {
         const href = l.file ? ("html/" + l.file) : "#";
+        const actHref = l.actFile ? ("html/activities/" + l.actFile) : "#";
+        htmlContent += '<div class="lesson-chip-pair">';
         htmlContent += '<a class="lesson-chip" href="' + href + '">';
         htmlContent += '<span class="chip-code">' + l.code + '</span>';
         htmlContent += '<span class="chip-title">' + l.title + '</span>';
         htmlContent += '</a>';
+        if (l.actFile) {
+          htmlContent += '<a class="act-link-btn" href="' + actHref + '" title="Launch STEAM Activity Lab"><i class="fa-solid fa-flask"></i></a>';
+        }
+        htmlContent += '</div>';
       });
     } else {
       htmlContent += '<div style="font-size:12px;color:#9fc4bd;padding:8px 0;font-style:italic;">' + (w.notes || "Classroom activities & review") + '</div>';
     }
-
-    if (w.activityFile) {
-      htmlContent += '<a class="lesson-chip" href="html/activities/' + w.activityFile + '" style="border-color:rgba(26,167,155,.6);background:rgba(26,167,155,.12);">';
-      htmlContent += '<span class="chip-code" style="color:var(--teal2)">&#127912;</span>';
-      htmlContent += '<span class="chip-title">Launch Weekly Activity</span>';
-      htmlContent += '</a>';
-    }
-    
     htmlContent += '</div>';
-    card.innerHTML = htmlContent;
-    container.appendChild(card);
-  });
-}
-
-// Render Activities Grid
-function renderActivities() {
-  const container = document.getElementById("activitiesGrid");
-  container.innerHTML = "";
-  ACTS.forEach(act => {
-    const card = document.createElement("div");
-    card.className = "grid-card";
-    
-    let htmlContent = '<div class="card-badge">' + act.badge + '</div>';
-    htmlContent += '<div class="card-title">' + act.title + '</div>';
-    htmlContent += '<div class="card-sub">' + act.description + '</div>';
-    htmlContent += '<div style="flex:1"></div>';
-    htmlContent += '<a class="folder-link-btn" href="html/activities/' + act.fileName + '" style="background:var(--teal);color:#fff;border-color:var(--teal2);justify-content:center;">&#9654; Launch Activity Sandbox</a>';
     
     card.innerHTML = htmlContent;
     container.appendChild(card);
@@ -529,7 +539,6 @@ draw();
 renderChapters();
 renderSemester(S1, "sem1Grid", "Semester-1");
 renderSemester(S2, "sem2Grid", "Semester-2");
-renderActivities();
 </script>
 </body>
 </html>
@@ -537,5 +546,5 @@ renderActivities();
 
 fs.writeFileSync("index.html", html);
 const built = topicData.reduce((a, t) => a + t.lessons.filter((l) => l.file).length, 0);
-console.log("index.html — map & curriculum hub with activities tab · " + built + " lesson links · " +
-  ACTIVITIES.length + " interactive activities");
+console.log("index.html — map & curriculum hub · " + built + " lesson links · " +
+  actFiles.length + " matching activity decks");

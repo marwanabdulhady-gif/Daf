@@ -3,22 +3,15 @@
 **Academic Year:** 2026 - 2027  
 **Department:** Mathematics · Grade 4  
 
-## Lessons Scheduled
+## Lessons & STEAM Activities Scheduled
 
-| Lesson Code | Lesson Title | Chapter | Standard | IXL Skill Codes | Interactive Lesson File |
-|---|---|---|---|---|---|
-| **5.6** | Use Partial Quotients to Divide: Greater Dividends | Chapter 5 | `4.NBT.B.6` | EGL · 6UL | [`lesson-5-6-use-partial-quotients-to-divide-greater-dividends.html`](lesson-5-6-use-partial-quotients-to-divide-greater-dividends.html) |
-| **6.1** | Solve Comparison Problems | Chapter 6 | `4.OA.A.2` | GGE · YCW | [`lesson-6-1-solve-comparison-problems.html`](lesson-6-1-solve-comparison-problems.html) |
-| **6.2** | Continue to Solve Comparison Problems | Chapter 6 | `4.OA.A.2` | AH8 · 9GX | [`lesson-6-2-continue-to-solve-comparison-problems.html`](lesson-6-2-continue-to-solve-comparison-problems.html) |
-## 🎨 STEAM Production Activities & Manipulatives for this Week
-
-| Activity Title | File Link |
-|---|---|
-| **Division Dunes: Partial Quotients Sandbox** | [`activity-ch05-division-dunes-quotient-lab.html`](activity-ch05-division-dunes-quotient-lab.html) |
-| **Caravan Crossroads: Multi-Step Strip Model Lab** | [`activity-ch06-caravan-multi-step-problem-lab.html`](activity-ch06-caravan-multi-step-problem-lab.html) |
-
+| Lesson Code | Lesson Title | Chapter | Standard | IXL Codes | Lesson Slide Deck | STEAM Activity Lab |
+|---|---|---|---|---|---|---|
+| **5.6** | Use Partial Quotients to Divide: Greater Dividends | Chapter 5 | `4.NBT.B.6` | EGL · 6UL | [`lesson-5-6-use-partial-quotients-to-divide-greater-dividends.html`](lesson-5-6-use-partial-quotients-to-divide-greater-dividends.html) | [`lesson-5-6-use-partial-quotients-to-divide-greater-dividends-activity.html`](lesson-5-6-use-partial-quotients-to-divide-greater-dividends-activity.html) |
+| **6.1** | Solve Comparison Problems | Chapter 6 | `4.OA.A.2` | GGE · YCW | [`lesson-6-1-solve-comparison-problems.html`](lesson-6-1-solve-comparison-problems.html) | [`lesson-6-1-solve-comparison-problems-activity.html`](lesson-6-1-solve-comparison-problems-activity.html) |
+| **6.2** | Continue to Solve Comparison Problems | Chapter 6 | `4.OA.A.2` | AH8 · 9GX | [`lesson-6-2-continue-to-solve-comparison-problems.html`](lesson-6-2-continue-to-solve-comparison-problems.html) | [`lesson-6-2-continue-to-solve-comparison-problems-activity.html`](lesson-6-2-continue-to-solve-comparison-problems-activity.html) |
 
 ## Instructions for Teachers & Students
 
-- **Interactive Slides:** Launch the `.html` file in any browser for class presentation and student exploration.
-- **Seven Stages:** Follow the 7-stage sequence (Preparation → Intelligent Diagnose → Knowledge Building → Practice → Production / B → Mastery Gate → Smart Production).
+- **Interactive Slides:** Launch the `lesson-*.html` file in any browser for class presentation and student exploration.
+- **STEAM Activity Labs:** Launch `lesson-*-activity.html` for the dedicated interactive sandbox and student build tasks.

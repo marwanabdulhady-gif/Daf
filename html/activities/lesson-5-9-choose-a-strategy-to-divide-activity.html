@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dar Al Fikr · Lesson 5-9 — Choose a Strategy to Divide Activity Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,800,900&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --daf-teal: #12857c; --daf-teal-2: #1aa79b; --daf-deep: #0a5f58;
+      --daf-gold: #c9a227; --daf-gold-2: #e3c05a; --daf-ink: #10242b; --daf-ink-2: #47616a;
+      --daf-mint: #e8f6f4; --daf-paper: #f7fbfa; --daf-line: #cde7e3;
+      --c: #fa7e19; --c-2: #fca358;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; min-height: 100vh; }
+    body {
+      font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f7fbfa 0%, #e8f6f4 55%, #f2faf8 100%);
+      color: var(--daf-ink); display: flex; flex-direction: column;
+    }
+    h1, h2, h3 { font-family: 'Cabinet Grotesk', 'Satoshi', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Header */
+    .header {
+      height: 72px; padding: 6px 24px; z-index: 50;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(20px);
+      border-bottom: 3px solid var(--daf-gold); box-shadow: 0 10px 30px rgba(10, 95, 88, 0.07);
+    }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand-star { width: 38px; height: 38px; color: var(--daf-teal); flex-shrink: 0; }
+    .brand-txt b { display: block; font-size: 14.5px; color: var(--daf-deep); line-height: 1.1; }
+    .brand-txt span { font-size: 8.5px; letter-spacing: 0.14em; color: var(--daf-ink-2); font-weight: 800; }
+    
+    .head-center { text-align: center; }
+    .head-center b { display: block; color: var(--c); font-size: 15px; letter-spacing: 0.04em; }
+    .head-center span { font-size: 10px; letter-spacing: 0.1em; color: var(--daf-ink-2); font-weight: 800; }
+    
+    .header-chips { display: flex; align-items: center; gap: 8px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 999px;
+      font: 800 10.5px 'JetBrains Mono', monospace; letter-spacing: .05em; text-transform: uppercase;
+    }
+    .chip-gold { background: rgba(201,162,39,.14); border: 1px solid var(--daf-gold); color: var(--daf-deep); }
+    .chip-topic { background: rgba(18,133,124,.1); border: 1px solid var(--daf-teal); color: var(--daf-teal); }
+
+    /* Main Grid */
+    main {
+      flex: 1; max-width: 1340px; width: 100%; margin: 0 auto; padding: 22px 24px 36px;
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px;
+    }
+    @media (max-width: 960px) { main { grid-template-columns: 1fr; } }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.88); border: 1.5px solid var(--daf-line); border-radius: 16px;
+      padding: 20px; box-shadow: 0 12px 36px rgba(10, 95, 88, 0.06); display: flex; flex-direction: column; gap: 14px;
+    }
+    .panel-title {
+      font-size: 19px; font-weight: 900; color: var(--daf-deep); display: flex; align-items: center; gap: 8px;
+    }
+    .panel-sub { font-size: 12.5px; color: var(--daf-ink-2); line-height: 1.45; }
+
+    /* Interactive Canvas Box */
+    .canvas-wrap {
+      background: #08161A; border: 1.5px solid rgba(26,167,155,.3); border-radius: 12px;
+      position: relative; overflow: hidden; min-height: 310px; display: flex; align-items: center; justify-content: center;
+    }
+    canvas { display: block; max-width: 100%; height: auto; }
+
+    .controls-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;
+    }
+    .ctrl-box {
+      background: var(--daf-mint); border: 1px solid var(--daf-line); border-radius: 10px; padding: 9px 12px;
+    }
+    .ctrl-label { font-size: 11px; font-weight: 800; color: var(--daf-deep); margin-bottom: 5px; display: block; }
+    .ctrl-input {
+      width: 100%; background: #fff; border: 1.5px solid var(--daf-line); color: var(--daf-ink);
+      padding: 6px 10px; border-radius: 6px; font: 700 13px inherit; outline: none; transition: border-color .15s;
+    }
+    .ctrl-input:focus { border-color: var(--daf-teal); }
+
+    .btn {
+      background: var(--daf-teal); border: 1.5px solid var(--daf-teal-2); color: #fff; border-radius: 10px;
+      padding: 8px 16px; font: 800 12.5px inherit; cursor: pointer; transition: all .18s; display: inline-flex;
+      align-items: center; justify-content: center; gap: 6px;
+    }
+    .btn:hover { background: var(--daf-teal-2); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(26,167,155,.3); }
+    .btn.gold { background: var(--daf-gold); border-color: var(--daf-gold-2); color: var(--daf-ink); }
+    .btn.gold:hover { background: var(--daf-gold-2); box-shadow: 0 4px 14px rgba(201,162,39,.3); }
+
+    /* Production Cards */
+    .prod-card {
+      background: #fff; border: 1.5px solid var(--daf-line); border-radius: 12px; padding: 12px 14px;
+      display: flex; flex-direction: column; gap: 6px; transition: all .18s;
+    }
+    .prod-card:hover { border-color: var(--daf-gold); box-shadow: 0 4px 16px rgba(201,162,39,.18); }
+    .prod-head { display: flex; align-items: center; justify-content: space-between; }
+    .prod-kind {
+      font: 900 10px 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--daf-gold); background: rgba(201,162,39,.12); border: 1px solid rgba(201,162,39,.35);
+      padding: 2px 8px; border-radius: 6px;
+    }
+    .prod-ai-tag {
+      font: 900 9.5px 'JetBrains Mono', monospace; text-transform: uppercase; color: #6042a6;
+      background: rgba(96,66,166,.08); border: 1px solid rgba(96,66,166,.25); padding: 2px 7px; border-radius: 999px;
+    }
+    .prod-task { font-size: 12.5px; font-weight: 700; color: var(--daf-ink); line-height: 1.45; }
+    .prod-stem { font-size: 11px; color: var(--daf-ink-2); line-height: 1.4; }
+
+    /* AI Box */
+    .ai-box {
+      background: rgba(201,162,39,.08); border: 1.5px dashed var(--daf-gold); border-radius: 12px; padding: 12px 14px;
+    }
+    .ai-title { font-size: 12px; font-weight: 900; color: var(--daf-deep); display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+    .ai-desc { font-size: 11.5px; color: var(--daf-ink-2); line-height: 1.45; }
+
+    footer {
+      padding: 14px 24px; font-size: 11px; color: var(--daf-ink-2); border-top: 1px solid var(--daf-line);
+      text-align: center; background: rgba(255,255,255,.8);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <svg class="brand-star" viewBox="0 0 40 40" fill="currentColor">
+        <path d="M20 0l4.2 10.1L34.1 5.9 29.9 16 40 20l-10.1 4.2 4.2 9.9L24 29.9 20 40l-4.2-10.1L5.9 34.1 10.1 24 0 20l10.1-4.2L5.9 5.9 16 10.1z"/>
+      </svg>
+      <div class="brand-txt">
+        <b>Dar Al Fikr Schools</b>
+        <span>FAITH · RIGHTEOUSNESS · WISDOM</span>
+      </div>
+    </div>
+
+    <div class="head-center">
+      <b>Lesson 5-9 · Choose a Strategy to Divide — STEAM Activity Lab</b>
+      <span>Topic 5: Use Strategies and Properties to Divide by 1-Digit Numbers · Division Dunes</span>
+    </div>
+
+    <div class="header-chips">
+      <span class="chip chip-gold"><i class="fa-solid fa-flask"></i> Stage 5 Production</span>
+      <span class="chip chip-topic"><i class="fa-solid fa-graduation-cap"></i> IXL GE8 · DKK · 2UB</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Left Column: Interactive Manipulative & Simulation -->
+    <section class="glass-panel">
+      <div class="panel-title">
+        <i class="fa-solid fa-shapes" style="color:var(--c)"></i>
+        Interactive Math Manipulative & Sandbox
+      </div>
+      <div class="panel-sub">
+        Standard: <b class="mono" style="color:var(--daf-deep)">4.NBT.B.6</b> — Use the live controls below to explore calculations, test conjectures, and verify mathematical relationships.
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="actCanvas" width="560" height="320"></canvas>
+      </div>
+
+      <div class="controls-grid">
+        <div class="ctrl-box">
+          <label class="ctrl-label">Primary Value (A)</label>
+          <input type="number" class="ctrl-input" id="inputVal1" value="36" oninput="drawTool()">
+        </div>
+        <div class="ctrl-box">
+          <label class="ctrl-label">Secondary Value (B)</label>
+          <input type="number" class="ctrl-input" id="inputVal2" value="4" oninput="drawTool()">
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:flex-end;">
+        <button class="btn" onclick="drawTool()"><i class="fa-solid fa-rotate-left"></i> Reset View</button>
+        <button class="btn gold" onclick="drawTool()"><i class="fa-solid fa-play"></i> Run Sandbox</button>
+      </div>
+    </section>
+
+    <!-- Right Column: Stage 5 STEAM Production Choices -->
+    <section class="glass-panel">
+      <div class="panel-title">
+        <i class="fa-solid fa-compass-drafting" style="color:var(--daf-gold)"></i>
+        Stage 5 STEAM Production Builds
+      </div>
+      <div class="panel-sub">
+        Choose 1 of 3 student production artifacts to build and defend against the Proof Critic.
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        
+          <div class="prod-card">
+            <div class="prod-head">
+              <span class="prod-kind"><i class="fa-solid fa-cube"></i> design</span>
+              
+            </div>
+            <div class="prod-task">A method-picker wheel design: build a spinning wheel that shows the three strategies and the number features that point to each (zeros-and-fact, large sheet, small split), with five example manifests pinned to the sector each one belongs to.</div>
+            <div class="prod-stem"><i class="fa-solid fa-arrows-spin" style="color:var(--daf-teal)"></i> ask what features the wheel reads → plan the sectors → build the wheel and pin the five manifests → test each pin by solving → share the wheel at the gate</div>
+          </div>
+        
+          <div class="prod-card">
+            <div class="prod-head">
+              <span class="prod-kind"><i class="fa-solid fa-cube"></i> presentation</span>
+              
+            </div>
+            <div class="prod-task">A 90-second strategy talk: take three manifests, present your read of each (what the numbers look like), name the strategy before computing, and solve each one — closing with the sentence that justifies all three choices.</div>
+            <div class="prod-stem"><i class="fa-solid fa-arrows-spin" style="color:var(--daf-teal)"></i> ask what the audience must learn → plan the three reads → name then solve each manifest → test each answer by estimate → deliver the talk at the gate</div>
+          </div>
+        
+          <div class="prod-card">
+            <div class="prod-head">
+              <span class="prod-kind"><i class="fa-solid fa-cube"></i> map</span>
+              <span class="prod-ai-tag"><i class="fa-solid fa-robot"></i> AI in the loop</span>
+            </div>
+            <div class="prod-task">An AI-method audit map: ask the AI to recommend a strategy for six divisions, build a two-column map of its recommendation versus your own tested recommendation, and mark where the AI chose a slower or wrong method — with the estimate that proves your choice.</div>
+            <div class="prod-stem"><i class="fa-solid fa-arrows-spin" style="color:var(--daf-teal)"></i> ask what makes a strategy efficient → plan the audit columns → request six recommendations from the AI → test each division both ways → post the map on the wall</div>
+          </div>
+        
+      </div>
+
+      <div class="ai-box">
+        <div class="ai-title">
+          <i class="fa-solid fa-robot" style="color:#6042a6"></i> AI in the Loop (Critic / Defense Rule)
+        </div>
+        <div class="ai-desc">
+          The AI examines, challenges, and audits candidate calculations. <b>Students verify and build every piece themselves — AI is a critic, never an author.</b>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Savvas enVision Mathematics (2026 - 2027) · Grade 4 · Dar Al Fikr Schools · Lesson 5-9 Activity Lab
+  </footer>
+
+  <script>
+    const canvas = document.getElementById("actCanvas");
+    const ctx = canvas.getContext("2d");
+
+    
+        function drawTool() {
+          ctx.clearRect(0, 0, 560, 320);
+          ctx.fillStyle = "#0E272E"; ctx.fillRect(0, 0, 560, 320);
+          const D = parseInt(document.getElementById("inputVal1").value, 10) || 475;
+          const V = parseInt(document.getElementById("inputVal2").value, 10) || 4;
+          const q = Math.floor(D / V), r = D % V;
+          ctx.fillStyle = "#FA7E19"; ctx.font = "bold 15px 'Cabinet Grotesk', sans-serif";
+          ctx.fillText("DIVISION DUNES · PARTIAL QUOTIENTS (" + D + " ÷ " + V + ")", 24, 30);
+          ctx.fillStyle = "#fff"; ctx.font = "bold 18px monospace"; ctx.fillText(V + " ) " + D, 70, 70);
+          let rem = D, stepY = 95, pQs = [];
+          if (rem >= V * 100) { const c = Math.floor(rem / (V * 100)) * 100; pQs.push(c); rem -= c * V; }
+          if (rem >= V * 10) { const c = Math.floor(rem / (V * 10)) * 10; pQs.push(c); rem -= c * V; }
+          if (rem >= V) { const c = Math.floor(rem / V); pQs.push(c); rem -= c * V; }
+          ctx.font = "12.5px monospace";
+          pQs.forEach(pq => {
+            ctx.fillStyle = "#9fc4bd"; ctx.fillText("- " + (pq * V) + "  (" + pq + " × " + V + ")", 85, stepY); stepY += 22;
+          });
+          ctx.strokeStyle = "#1AA79B"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(70, stepY - 8); ctx.lineTo(220, stepY - 8); ctx.stroke();
+          ctx.fillStyle = "#E25555"; ctx.fillText("Remainder: " + r, 85, stepY + 12);
+          ctx.fillStyle = "#C9A227"; ctx.font = "bold 15px 'Satoshi', sans-serif";
+          ctx.fillText("Quotient: " + q + " R " + r + " (Each share = " + q + ")", 24, 245);
+        }
+      
+
+    drawTool();
+  </script>
+</body>
+</html>

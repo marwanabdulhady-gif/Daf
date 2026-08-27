@@ -4,26 +4,20 @@
 
 **Standards:** `4.MD.A`
 
-## Lessons in this Chapter
+## Lessons & Interactive Activities in this Chapter
 
-| Lesson Code | Lesson Title | Standard | IXL Skill Codes | Files |
-|---|---|---|---|---|
-| **13-1** | Equivalence with Customary Units of Length | `4.MD.A.1` | M97 · T8A | [`lesson-13-1-equivalence-with-customary-units-of-length.html`](lesson-13-1-equivalence-with-customary-units-of-length.html)<br>[`13-1.jsx`](13-1.jsx) |
-| **13-2** | Equivalence with Customary Units of Capacity | `4.MD.A.1` | WGQ · WND | [`lesson-13-2-equivalence-with-customary-units-of-capacity.html`](lesson-13-2-equivalence-with-customary-units-of-capacity.html)<br>[`13-2.jsx`](13-2.jsx) |
-| **13-3** | Equivalence with Customary Units of Weight | `4.MD.A.1` | TVC · SVP · MKS | [`lesson-13-3-equivalence-with-customary-units-of-weight.html`](lesson-13-3-equivalence-with-customary-units-of-weight.html)<br>[`13-3.jsx`](13-3.jsx) |
-| **13-4** | Equivalence with Metric Units of Length | `4.MD.A.1` | Z5S · NWG · STH | [`lesson-13-4-equivalence-with-metric-units-of-length.html`](lesson-13-4-equivalence-with-metric-units-of-length.html)<br>[`13-4.jsx`](13-4.jsx) |
-| **13-5** | Equivalence with Metric Units of Capacity and Mass | `4.MD.A.1` | ZXS · UJW · 4W9 · WZY | [`lesson-13-5-equivalence-with-metric-units-of-capacity-and-mass.html`](lesson-13-5-equivalence-with-metric-units-of-capacity-and-mass.html)<br>[`13-5.jsx`](13-5.jsx) |
-| **13-6** | Solve Perimeter and Area Problems | `4.MD.A.3` | UPZ · HNX | [`lesson-13-6-solve-perimeter-and-area-problems.html`](lesson-13-6-solve-perimeter-and-area-problems.html)<br>[`13-6.jsx`](13-6.jsx) |
-| **13-7** | Problem Solving: Precision | `MP.6` | A2E · UST · KXC | [`lesson-13-7-problem-solving-precision.html`](lesson-13-7-problem-solving-precision.html)<br>[`13-7.jsx`](13-7.jsx) |
-| **BOSS** | Boss The Muddler of the Measure Market | Review Battle | — | [`lesson-boss-13-boss-the-muddler-of-the-measure-market.html`](lesson-boss-13-boss-the-muddler-of-the-measure-market.html) |
-
-## 🎨 STEAM Production Activities & Manipulatives
-
-| Activity Name | Badge | Description | File Link |
-|---|---|---|---|
-| **The Measure Market: Unit Equivalence & Boss Battle** | `Chapter 13 · Measurement Boss Battle` | Convert units of length, capacity, and mass to defeat The Muddler of the Measure Market in a whole-class review duel. | [`activity-ch13-boss-measure-market-battle.html`](activity-ch13-boss-measure-market-battle.html) |
+| Lesson Code | Lesson Title | Standard | IXL Codes | Lesson Slide Deck | STEAM Activity Lab |
+|---|---|---|---|---|---|
+| **13-1** | Equivalence with Customary Units of Length | `4.MD.A.1` | M97 · T8A | [`lesson-13-1-equivalence-with-customary-units-of-length.html`](lesson-13-1-equivalence-with-customary-units-of-length.html) | [`lesson-13-1-equivalence-with-customary-units-of-length-activity.html`](lesson-13-1-equivalence-with-customary-units-of-length-activity.html) |
+| **13-2** | Equivalence with Customary Units of Capacity | `4.MD.A.1` | WGQ · WND | [`lesson-13-2-equivalence-with-customary-units-of-capacity.html`](lesson-13-2-equivalence-with-customary-units-of-capacity.html) | [`lesson-13-2-equivalence-with-customary-units-of-capacity-activity.html`](lesson-13-2-equivalence-with-customary-units-of-capacity-activity.html) |
+| **13-3** | Equivalence with Customary Units of Weight | `4.MD.A.1` | TVC · SVP · MKS | [`lesson-13-3-equivalence-with-customary-units-of-weight.html`](lesson-13-3-equivalence-with-customary-units-of-weight.html) | [`lesson-13-3-equivalence-with-customary-units-of-weight-activity.html`](lesson-13-3-equivalence-with-customary-units-of-weight-activity.html) |
+| **13-4** | Equivalence with Metric Units of Length | `4.MD.A.1` | Z5S · NWG · STH | [`lesson-13-4-equivalence-with-metric-units-of-length.html`](lesson-13-4-equivalence-with-metric-units-of-length.html) | [`lesson-13-4-equivalence-with-metric-units-of-length-activity.html`](lesson-13-4-equivalence-with-metric-units-of-length-activity.html) |
+| **13-5** | Equivalence with Metric Units of Capacity and Mass | `4.MD.A.1` | ZXS · UJW · 4W9 · WZY | [`lesson-13-5-equivalence-with-metric-units-of-capacity-and-mass.html`](lesson-13-5-equivalence-with-metric-units-of-capacity-and-mass.html) | [`lesson-13-5-equivalence-with-metric-units-of-capacity-and-mass-activity.html`](lesson-13-5-equivalence-with-metric-units-of-capacity-and-mass-activity.html) |
+| **13-6** | Solve Perimeter and Area Problems | `4.MD.A.3` | UPZ · HNX | [`lesson-13-6-solve-perimeter-and-area-problems.html`](lesson-13-6-solve-perimeter-and-area-problems.html) | [`lesson-13-6-solve-perimeter-and-area-problems-activity.html`](lesson-13-6-solve-perimeter-and-area-problems-activity.html) |
+| **13-7** | Problem Solving: Precision | `MP.6` | A2E · UST · KXC | [`lesson-13-7-problem-solving-precision.html`](lesson-13-7-problem-solving-precision.html) | [`lesson-13-7-problem-solving-precision-activity.html`](lesson-13-7-problem-solving-precision-activity.html) |
+| **BOSS** | Boss The Muddler of the Measure Market | Review Battle | — | [`lesson-boss-13-boss-the-muddler-of-the-measure-market.html`](lesson-boss-13-boss-the-muddler-of-the-measure-market.html) | [`lesson-boss-13-boss-the-muddler-of-the-measure-market-activity.html`](lesson-boss-13-boss-the-muddler-of-the-measure-market-activity.html) |
 
 ## How to Open
 
-- Open any `.html` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.
-- Source JSX decks are located alongside the HTML files.
+- **Lesson Slides**: Open any `lesson-*.html` file directly in your browser for the full 7-stage interactive lesson.
+- **Activity Labs**: Open any `lesson-*-activity.html` file directly for the dedicated STEAM production sandbox and manipulative.

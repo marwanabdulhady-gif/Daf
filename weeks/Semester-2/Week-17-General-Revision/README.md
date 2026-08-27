@@ -3,20 +3,14 @@
 **Academic Year:** 2026 - 2027  
 **Department:** Mathematics · Grade 4  
 
-## Focus Activities
+## Focus Activities & Review
 
 - **Comprehensive Semester 2 Review (Chapters 8 - 16)**
 - **Focus Areas: Fractions, Decimals, Measurement, Patterns & Geometry**
 - **Interactive Review Decks & Formative Practice**
 
-## 🎨 STEAM Production Activities & Manipulatives for this Week
-
-| Activity Title | File Link |
-|---|---|
-| **Semester 2 General Revision Arena** | [`activity-sem2-general-revision-arena.html`](activity-sem2-general-revision-arena.html) |
-
 
 ## Instructions for Teachers & Students
 
-- **Interactive Slides:** Launch the `.html` file in any browser for class presentation and student exploration.
-- **Seven Stages:** Follow the 7-stage sequence (Preparation → Intelligent Diagnose → Knowledge Building → Practice → Production / B → Mastery Gate → Smart Production).
+- **Interactive Slides:** Launch the `lesson-*.html` file in any browser for class presentation and student exploration.
+- **STEAM Activity Labs:** Launch `lesson-*-activity.html` for the dedicated interactive sandbox and student build tasks.

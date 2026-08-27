@@ -4,18 +4,25 @@
  * Organizes the Grade 4 Mathematics curriculum, interactive lessons,
  * and STEAM activities into dedicated Chapters and Weekly Schedule folders
  * for Academic Year 2026 - 2027.
+ * 
+ * Ensures:
+ * - Activity files have matching naming: <lesson-name>-activity.html
+ * - Full Dar Al Fikr styling and structure
+ * - Clean sync across chapters/ and weeks/
  */
 
 const fs = require("fs");
 const path = require("path");
-const { ACTIVITIES } = require("./build-activities");
+
+// Run build-activities first to ensure all 115 activity files are fresh
+require("./build-activities");
 
 const ROOT = path.resolve(__dirname, "..");
 const cur = JSON.parse(fs.readFileSync(path.join(ROOT, "curriculum.json"), "utf8"));
-const htmlFiles = fs.readdirSync(path.join(ROOT, "html")).filter(f => f.endsWith(".html"));
+const htmlFiles = fs.readdirSync(path.join(ROOT, "html")).filter(f => f.endsWith(".html") && !f.endsWith("-activity.html"));
 const lessonFiles = fs.readdirSync(path.join(ROOT, "lessons")).filter(f => f.endsWith(".jsx"));
 const activitiesDir = path.join(ROOT, "html", "activities");
-const activityFiles = fs.existsSync(activitiesDir) ? fs.readdirSync(activitiesDir).filter(f => f.endsWith(".html")) : [];
+const activityFiles = fs.existsSync(activitiesDir) ? fs.readdirSync(activitiesDir).filter(f => f.endsWith("-activity.html")) : [];
 
 function getHtmlFile(code) {
   const norm = code.replace(".", "-");
@@ -25,6 +32,11 @@ function getHtmlFile(code) {
 function getJsxFile(code) {
   const norm = code.replace(".", "-");
   return lessonFiles.find(f => f === `${norm}.jsx`);
+}
+
+function getActivityFile(code) {
+  const norm = code.replace(".", "-");
+  return activityFiles.find(f => f.startsWith(`lesson-${norm}-`) && f.endsWith("-activity.html"));
 }
 
 function pad2(n) {
@@ -70,113 +82,97 @@ const SEMESTER_1 = [
       "Orientation & Classroom Routines",
       "Reinforcement of Prerequisite Skills",
       "Diagnostic Assessment (Math Gap Map & Readiness)"
-    ],
-    activityFiles: ["activity-week01-diagnostic-readiness-map.html"]
+    ]
   },
   {
     week: 2,
     title: "Numbers Through One Million, Place Value & Comparing Whole Numbers",
     folderName: "Week-02-Place-Value-Through-One-Million",
-    lessons: ["1.1", "1.2", "1.3"],
-    activityFiles: ["activity-ch01-place-value-census-chart.html"]
+    lessons: ["1.1", "1.2", "1.3"]
   },
   {
     week: 3,
     title: "Rounding Whole Numbers & Finding Sums/Differences with Mental Math",
     folderName: "Week-03-Rounding-and-Mental-Sums",
-    lessons: ["1.4", "2.1"],
-    activityFiles: ["activity-ch01-place-value-census-chart.html"]
+    lessons: ["1.4", "2.1"]
   },
   {
     week: 4,
     title: "Estimating Sums/Differences & Adding Multi-Digit Whole Numbers",
     folderName: "Week-04-Estimating-and-Adding-Whole-Numbers",
-    lessons: ["2.2", "2.3", "2.4"],
-    activityFiles: ["activity-ch02-souq-of-sums-mental-math.html"]
+    lessons: ["2.2", "2.3", "2.4"]
   },
   {
     week: 5,
     title: "Subtracting Whole Numbers, Greater Numbers & Subtracting Across Zeros",
     folderName: "Week-05-Subtracting-Whole-and-Greater-Numbers",
-    lessons: ["2.5", "2.6", "2.7"],
-    activityFiles: ["activity-ch02-souq-of-sums-mental-math.html"]
+    lessons: ["2.5", "2.6", "2.7"]
   },
   {
     week: 6,
     title: "Multiplying Multiples of 10, 100, 1000, Estimating Products & Arrays",
     folderName: "Week-06-Multiplication-by-10-100-1000-and-Arrays",
-    lessons: ["3.1", "3.2", "3.3"],
-    activityFiles: ["activity-ch03-area-model-multiplication-lab.html"]
+    lessons: ["3.1", "3.2", "3.3"]
   },
   {
     week: 7,
     title: "Area Models, Mental Math Multiplication & Problem Solving (Model with Math)",
     folderName: "Week-07-Area-Models-Mental-Math-and-Modeling",
-    lessons: ["3.4", "3.6", "3.8"],
-    activityFiles: ["activity-ch03-area-model-multiplication-lab.html"]
+    lessons: ["3.4", "3.6", "3.8"]
   },
   {
     week: 8,
     title: "Multiplying Multiples of 10, 2-Digit Models & Rounding/Compatible Estimation",
     folderName: "Week-08-Multiplying-2-Digit-Numbers",
-    lessons: ["4.1", "4.2", "4.3"],
-    activityFiles: ["activity-ch04-tower-of-times-partial-products.html"]
+    lessons: ["4.1", "4.2", "4.3"]
   },
   {
     week: 9,
     title: "Area Models / Partial Products & Mental Math Quotients / Estimates",
     folderName: "Week-09-Area-Models-and-Mental-Division",
-    lessons: ["4.5", "5.1", "5.2"],
-    activityFiles: ["activity-ch04-tower-of-times-partial-products.html", "activity-ch05-division-dunes-quotient-lab.html"]
+    lessons: ["4.5", "5.1", "5.2"]
   },
   {
     week: 10,
     title: "Estimating Greater Dividends, Interpreting Remainders & Partial Quotients",
     folderName: "Week-10-Remainders-and-Partial-Quotients",
-    lessons: ["5.3", "5.4", "5.5"],
-    activityFiles: ["activity-ch05-division-dunes-quotient-lab.html"]
+    lessons: ["5.3", "5.4", "5.5"]
   },
   {
     week: 11,
     title: "Partial Quotients (Greater Dividends) & Solving Comparison Problems",
     folderName: "Week-11-Greater-Dividends-and-Comparison-Problems",
-    lessons: ["5.6", "6.1", "6.2"],
-    activityFiles: ["activity-ch05-division-dunes-quotient-lab.html", "activity-ch06-caravan-multi-step-problem-lab.html"]
+    lessons: ["5.6", "6.1", "6.2"]
   },
   {
     week: 12,
     title: "Multi-Step Problem Modeling, Solving & Perseverance",
     folderName: "Week-12-Multi-Step-Problem-Solving",
-    lessons: ["6.3", "6.5", "6.6"],
-    activityFiles: ["activity-ch06-caravan-multi-step-problem-lab.html"]
+    lessons: ["6.3", "6.5", "6.6"]
   },
   {
     week: 13,
     title: "Understanding Factors, Finding Factors & Repeated Reasoning",
     folderName: "Week-13-Understanding-Factors-and-Reasoning",
-    lessons: ["7.1", "7.2", "7.3"],
-    activityFiles: ["activity-ch07-factor-reef-pairs-explorer.html"]
+    lessons: ["7.1", "7.2", "7.3"]
   },
   {
     week: 14,
     title: "Prime and Composite Numbers & Multiples",
     folderName: "Week-14-Prime-Composite-and-Multiples",
-    lessons: ["7.4", "7.5"],
-    activityFiles: ["activity-ch07-factor-reef-pairs-explorer.html"]
+    lessons: ["7.4", "7.5"]
   },
   {
     week: 15,
     title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)",
     folderName: "Week-15-Equivalent-Fractions-Area-and-Number-Lines",
-    lessons: ["8.1", "8.2", "8.3"],
-    activityFiles: ["activity-ch08-fraction-isles-equivalence-strips.html"]
+    lessons: ["8.1", "8.2", "8.3"]
   },
   {
     week: 16,
     title: "Equivalent Fractions (Division, Benchmarks & Comparing Fractions)",
     folderName: "Week-16-Equivalent-Fractions-Division-and-Comparing",
-    lessons: ["8.4", "8.5", "8.6"],
-    activityFiles: ["activity-ch08-fraction-isles-equivalence-strips.html"]
+    lessons: ["8.4", "8.5", "8.6"]
   },
   {
     week: 17,
@@ -187,8 +183,7 @@ const SEMESTER_1 = [
       "Comprehensive Semester 1 Review (Chapters 1 - 8)",
       "Focus Areas: Place Value, Whole Number Operations, Multiplication, Division, Factors & Fractions",
       "Interactive Review Decks & Formative Practice"
-    ],
-    activityFiles: ["activity-sem1-general-revision-arena.html"]
+    ]
   },
   {
     week: 18,
@@ -199,8 +194,7 @@ const SEMESTER_1 = [
       "Mastery Practice & Mock Assessment",
       "Individualized Intervention / IXL Skill Reinforcement",
       "Exam Preparation & Problem Solving Defense"
-    ],
-    activityFiles: ["activity-sem1-general-revision-arena.html"]
+    ]
   },
   {
     week: 19,
@@ -210,8 +204,7 @@ const SEMESTER_1 = [
     activities: [
       "Semester 1 Final Examinations Administration",
       "Mastery Gate & Summative Assessment Evaluation"
-    ],
-    activityFiles: ["activity-sem1-general-revision-arena.html"]
+    ]
   }
 ];
 
@@ -221,113 +214,97 @@ const SEMESTER_2 = [
     week: 1,
     title: "Equivalent Fractions (Area Models, Number Lines & Multiplication)",
     folderName: "Week-01-Fraction-Equivalence-Multiplication",
-    lessons: ["8.1", "8.2", "8.3"],
-    activityFiles: ["activity-ch08-fraction-isles-equivalence-strips.html"]
+    lessons: ["8.1", "8.2", "8.3"]
   },
   {
     week: 2,
     title: "Equivalent Fractions (Division, Benchmarks & Comparing Fractions)",
     folderName: "Week-02-Equivalent-Fractions-Division-Comparing",
-    lessons: ["8.4", "8.5", "8.6"],
-    activityFiles: ["activity-ch08-fraction-isles-equivalence-strips.html"]
+    lessons: ["8.4", "8.5", "8.6"]
   },
   {
     week: 3,
     title: "Model Addition of Fractions, Decompose Fractions & Add Like Denominators",
     folderName: "Week-03-Fraction-Addition-and-Decomposition",
-    lessons: ["9.1", "9.2", "9.3"],
-    activityFiles: ["activity-ch09-kunafa-kitchen-fraction-addition.html"]
+    lessons: ["9.1", "9.2", "9.3"]
   },
   {
     week: 4,
     title: "Subtract Like Denominators, Add/Subtract Fractions & Mixed Numbers Modeling",
     folderName: "Week-04-Subtracting-Fractions-and-Mixed-Numbers",
-    lessons: ["9.5", "9.6", "9.7"],
-    activityFiles: ["activity-ch09-kunafa-kitchen-fraction-addition.html"]
+    lessons: ["9.5", "9.6", "9.7"]
   },
   {
     week: 5,
     title: "Add Mixed Numbers, Subtract Mixed Numbers & Fractions as Multiples of Unit Fractions",
     folderName: "Week-05-Mixed-Numbers-and-Unit-Fractions",
-    lessons: ["9.8", "9.9", "10.1"],
-    activityFiles: ["activity-ch09-kunafa-kitchen-fraction-addition.html", "activity-ch10-scaling-strait-fraction-multiplier.html"]
+    lessons: ["9.8", "9.9", "10.1"]
   },
   {
     week: 6,
     title: "Multiplying Fractions by Whole Numbers (Models & Symbols) & Time Problems",
     folderName: "Week-06-Multiplying-Fractions-and-Time-Problems",
-    lessons: ["10.2", "10.3", "10.4"],
-    activityFiles: ["activity-ch10-scaling-strait-fraction-multiplier.html"]
+    lessons: ["10.2", "10.3", "10.4"]
   },
   {
     week: 7,
     title: "Reading Line Plots, Making Line Plots & Using Line Plots to Solve Problems",
     folderName: "Week-07-Line-Plots",
-    lessons: ["11.1", "11.2", "11.3"],
-    activityFiles: ["activity-ch11-pearl-ledger-line-plot-diver.html"]
+    lessons: ["11.1", "11.2", "11.3"]
   },
   {
     week: 8,
     title: "Critique Reasoning & Fractions and Decimals (Representation & Number Lines)",
     folderName: "Week-08-Critique-Reasoning-and-Fractions-to-Decimals",
-    lessons: ["11.4", "12.1", "12.2"],
-    activityFiles: ["activity-ch11-pearl-ledger-line-plot-diver.html", "activity-ch12-decimal-docks-tenths-hundredths.html"]
+    lessons: ["11.4", "12.1", "12.2"]
   },
   {
     week: 9,
     title: "Comparing Decimals, Denominators of 10 and 100 & Word Problems with Money",
     folderName: "Week-09-Comparing-Decimals-Tenths-Hundredths-Money",
-    lessons: ["12.3", "12.4", "12.5"],
-    activityFiles: ["activity-ch12-decimal-docks-tenths-hundredths.html"]
+    lessons: ["12.3", "12.4", "12.5"]
   },
   {
     week: 10,
     title: "Decimal Structure & Equivalence with Customary Units (Length & Capacity)",
     folderName: "Week-10-Decimal-Structure-and-Customary-Length-Capacity",
-    lessons: ["12.6", "13.1", "13.2"],
-    activityFiles: ["activity-ch12-decimal-docks-tenths-hundredths.html", "activity-ch13-boss-measure-market-battle.html"]
+    lessons: ["12.6", "13.1", "13.2"]
   },
   {
     week: 11,
     title: "Customary Weight & Metric Units (Length, Capacity and Mass)",
     folderName: "Week-11-Units-of-Weight-Metric-Length-Capacity-Mass",
-    lessons: ["13.3", "13.4", "13.5"],
-    activityFiles: ["activity-ch13-boss-measure-market-battle.html"]
+    lessons: ["13.3", "13.4", "13.5"]
   },
   {
     week: 12,
     title: "Perimeter & Area Problems, Number Sequences & Number Rules",
     folderName: "Week-12-Perimeter-Area-Sequences-and-Number-Rules",
-    lessons: ["13.6", "14.1", "14.2"],
-    activityFiles: ["activity-ch13-boss-measure-market-battle.html", "activity-ch14-pattern-oasis-sequence-builder.html"]
+    lessons: ["13.6", "14.1", "14.2"]
   },
   {
     week: 13,
     title: "Repeating Shapes Patterns, Lines/Rays/Angles & Understanding Angles",
     folderName: "Week-13-Repeating-Shapes-and-Angle-Concepts",
-    lessons: ["14.3", "15.1", "15.2"],
-    activityFiles: ["activity-ch14-pattern-oasis-sequence-builder.html", "activity-ch15-angle-heights-protractor-lab.html"]
+    lessons: ["14.3", "15.1", "15.2"]
   },
   {
     week: 14,
     title: "Measure and Draw Angles & Add/Subtract Angle Measures",
     folderName: "Week-14-Measuring-Drawing-Adding-Subtracting-Angles",
-    lessons: ["15.4", "15.5"],
-    activityFiles: ["activity-ch15-angle-heights-protractor-lab.html"]
+    lessons: ["15.4", "15.5"]
   },
   {
     week: 15,
     title: "Lines & Classifying Triangles and Quadrilaterals",
     folderName: "Week-15-Lines-Triangles-and-Quadrilaterals",
-    lessons: ["16.1", "16.2", "16.3"],
-    activityFiles: ["activity-ch16-geometry-gardens-symmetry-studio.html"]
+    lessons: ["16.1", "16.2", "16.3"]
   },
   {
     week: 16,
     title: "Line Symmetry & Drawing Shapes with Line Symmetry",
     folderName: "Week-16-Line-Symmetry",
-    lessons: ["16.4", "16.5"],
-    activityFiles: ["activity-ch16-geometry-gardens-symmetry-studio.html"]
+    lessons: ["16.4", "16.5"]
   },
   {
     week: 17,
@@ -338,8 +315,7 @@ const SEMESTER_2 = [
       "Comprehensive Semester 2 Review (Chapters 8 - 16)",
       "Focus Areas: Fractions, Decimals, Measurement, Patterns & Geometry",
       "Interactive Review Decks & Formative Practice"
-    ],
-    activityFiles: ["activity-sem2-general-revision-arena.html"]
+    ]
   },
   {
     week: 18,
@@ -350,8 +326,7 @@ const SEMESTER_2 = [
       "Mastery Practice & Mock Assessment",
       "Individualized Intervention / IXL Skill Reinforcement",
       "Exam Preparation & Shape/Angle Problem Solving"
-    ],
-    activityFiles: ["activity-sem2-general-revision-arena.html"]
+    ]
   },
   {
     week: 19,
@@ -361,8 +336,7 @@ const SEMESTER_2 = [
     activities: [
       "Semester 2 Final Examinations Administration",
       "Mastery Gate & End of Year Assessment Evaluation"
-    ],
-    activityFiles: ["activity-sem2-general-revision-arena.html"]
+    ]
   }
 ];
 
@@ -376,95 +350,89 @@ function copyFileSafe(src, dest) {
   }
 }
 
-// Map curriculum topic lessons metadata
+// Clean old files matching pattern
+function cleanOldFiles(dir) {
+  if (!fs.existsSync(dir)) return;
+  const items = fs.readdirSync(dir);
+  items.forEach(item => {
+    if (item.startsWith("activity-ch") || item.startsWith("activity-sem") || item.startsWith("activity-week")) {
+      try { fs.unlinkSync(path.join(dir, item)); } catch(e) {}
+    }
+  });
+}
+
 const topicMap = {};
 cur.topics.forEach(t => {
   topicMap[t.n] = t;
 });
 
-// Map activities per chapter
-const chapterActivities = {};
-ACTIVITIES.forEach(act => {
-  if (act.chapterNum) {
-    if (!chapterActivities[act.chapterNum]) chapterActivities[act.chapterNum] = [];
-    chapterActivities[act.chapterNum].push(act);
-  }
-});
-
 // Build CHAPTERS folder hierarchy
-console.log("Creating chapters/ folder structure and copying lessons & activities...");
+console.log("Creating chapters/ folder structure and distributing lessons & matching activities...");
 const chaptersDir = path.join(ROOT, "chapters");
 ensureDir(chaptersDir);
 
 let chaptersReadme = `# Grade 4 Mathematics — Chapters Organization\n\n`;
 chaptersReadme += `This directory organizes all Savvas enVision Grade 4 mathematics interactive lessons and STEAM activities by Chapter (Chapters 1 to 16, plus Grade 5 Step-Up Topic 17).\n\n`;
-chaptersReadme += `| Chapter | Title | Lessons | STEAM Activities | Files Included |\n`;
+chaptersReadme += `| Chapter | Title | Lessons | Interactive Decks | Activities Included |\n`;
 chaptersReadme += `|---|---|---|---|---|\n`;
 
 CHAPTERS.forEach(ch => {
   const folderName = `Chapter-${pad2(ch.n)}-${sanitizeFolderName(ch.title)}`;
   const chDir = path.join(chaptersDir, folderName);
   ensureDir(chDir);
+  cleanOldFiles(chDir);
 
   const topicData = topicMap[ch.n];
   const topicLessons = topicData ? topicData.lessons : [];
   const boss = (cur.bosses || []).find(b => b.topic === ch.n);
-  const chActs = chapterActivities[ch.n] || [];
 
   let readme = `# Chapter ${ch.n}: ${ch.title}\n\n`;
   readme += `**Savvas enVision Mathematics (Grade 4) — Dar Al Fikr Schools (Academic Year 2026 - 2027)**\n\n`;
   if (topicData && topicData.standards) {
     readme += `**Standards:** \`${topicData.standards}\`\n\n`;
   }
-  readme += `## Lessons in this Chapter\n\n`;
-  readme += `| Lesson Code | Lesson Title | Standard | IXL Skill Codes | Files |\n`;
-  readme += `|---|---|---|---|---|\n`;
+  readme += `## Lessons & Interactive Activities in this Chapter\n\n`;
+  readme += `| Lesson Code | Lesson Title | Standard | IXL Codes | Lesson Slide Deck | STEAM Activity Lab |\n`;
+  readme += `|---|---|---|---|---|---|\n`;
 
   topicLessons.forEach(l => {
     const htmlFile = getHtmlFile(l.code);
     const jsxFile = getJsxFile(l.code);
+    const actFile = getActivityFile(l.code);
 
     if (htmlFile) copyFileSafe(path.join(ROOT, "html", htmlFile), path.join(chDir, htmlFile));
     if (jsxFile) copyFileSafe(path.join(ROOT, "lessons", jsxFile), path.join(chDir, jsxFile));
+    if (actFile) copyFileSafe(path.join(activitiesDir, actFile), path.join(chDir, actFile));
 
     const htmlLink = htmlFile ? `[\`${htmlFile}\`](${htmlFile})` : "—";
-    const jsxLink = jsxFile ? `[\`${jsxFile}\`](${jsxFile})` : "—";
+    const actLink = actFile ? `[\`${actFile}\`](${actFile})` : "—";
     const ixlCodes = (l.ixl || []).join(" · ") || "—";
-    readme += `| **${l.code}** | ${l.title} | \`${l.standard || topicData.standards || "—"}\` | ${ixlCodes} | ${htmlLink}<br>${jsxLink} |\n`;
+    readme += `| **${l.code}** | ${l.title} | \`${l.standard || topicData.standards || "—"}\` | ${ixlCodes} | ${htmlLink} | ${actLink} |\n`;
   });
 
   if (boss) {
     const bossHtml = getHtmlFile(boss.code);
     const bossJsx = getJsxFile(boss.code);
+    const bossAct = getActivityFile(boss.code);
     if (bossHtml) copyFileSafe(path.join(ROOT, "html", bossHtml), path.join(chDir, bossHtml));
     if (bossJsx) copyFileSafe(path.join(ROOT, "lessons", bossJsx), path.join(chDir, bossJsx));
-    readme += `| **BOSS** | ${boss.title || boss.name} | Review Battle | — | [\`${bossHtml}\`](${bossHtml}) |\n`;
+    if (bossAct) copyFileSafe(path.join(activitiesDir, bossAct), path.join(chDir, bossAct));
+    readme += `| **BOSS** | ${boss.title || boss.name} | Review Battle | — | [\`${bossHtml}\`](${bossHtml}) | [\`${bossAct}\`](${bossAct}) |\n`;
   }
 
-  // Add activities section
-  if (chActs.length > 0) {
-    readme += `\n## 🎨 STEAM Production Activities & Manipulatives\n\n`;
-    readme += `| Activity Name | Badge | Description | File Link |\n`;
-    readme += `|---|---|---|---|\n`;
-    chActs.forEach(act => {
-      copyFileSafe(path.join(activitiesDir, act.fileName), path.join(chDir, act.fileName));
-      readme += `| **${act.title}** | \`${act.badge}\` | ${act.description} | [\`${act.fileName}\`](${act.fileName}) |\n`;
-    });
-  }
-
-  readme += `\n## How to Open\n\n- Open any \`.html\` file directly in your browser for the full 7-stage interactive lesson or STEAM activity.\n`;
-  readme += `- Source JSX decks are located alongside the HTML files.\n`;
+  readme += `\n## How to Open\n\n`;
+  readme += `- **Lesson Slides**: Open any \`lesson-*.html\` file directly in your browser for the full 7-stage interactive lesson.\n`;
+  readme += `- **Activity Labs**: Open any \`lesson-*-activity.html\` file directly for the dedicated STEAM production sandbox and manipulative.\n`;
 
   fs.writeFileSync(path.join(chDir, "README.md"), readme);
 
-  const actSummary = chActs.length > 0 ? chActs.map(a => a.title).join("<br>") : "—";
-  chaptersReadme += `| [**Chapter ${ch.n}**](./${folderName}) | ${ch.title} | ${topicLessons.length} lessons | ${actSummary} | Interactive HTML, JSX & Activities |\n`;
+  chaptersReadme += `| [**Chapter ${ch.n}**](./${folderName}) | ${ch.title} | ${topicLessons.length} lessons | Interactive HTML & JSX | Matching \`*-activity.html\` Decks |\n`;
 });
 
 fs.writeFileSync(path.join(chaptersDir, "README.md"), chaptersReadme);
 
 // Build WEEKS folder hierarchy
-console.log("Creating weeks/ folder structure and copying scheduled lessons & activities...");
+console.log("Creating weeks/ folder structure and distributing scheduled lessons & activities...");
 const weeksDir = path.join(ROOT, "weeks");
 ensureDir(weeksDir);
 
@@ -482,21 +450,22 @@ weeksReadme += `- **[Semester 2 (2026 - 2027)](./Semester-2)**: Weeks 1 to 19 (F
 function buildSemesterWeeks(semesterList, semesterDir, semesterName, academicYear) {
   let semReadme = `# Math Department Curriculum Distribution — ${semesterName} (${academicYear})\n\n`;
   semReadme += `**Savvas enVision Mathematics — Grade 4 · Dar Al Fikr Schools**\n\n`;
-  semReadme += `| Week | Title | Lessons / Activities | STEAM Activities | Folder Link |\n`;
+  semReadme += `| Week | Title | Lessons Scheduled | Lesson Decks & Activity Labs | Folder Link |\n`;
   semReadme += `|---|---|---|---|---|\n`;
 
   semesterList.forEach(w => {
     const weekFolder = path.join(semesterDir, w.folderName);
     ensureDir(weekFolder);
+    cleanOldFiles(weekFolder);
 
     let weekDoc = `# ${semesterName} — Week ${w.week}: ${w.title}\n\n`;
     weekDoc += `**Academic Year:** ${academicYear}  \n`;
     weekDoc += `**Department:** Mathematics · Grade 4  \n\n`;
 
     if (w.lessons && w.lessons.length > 0) {
-      weekDoc += `## Lessons Scheduled\n\n`;
-      weekDoc += `| Lesson Code | Lesson Title | Chapter | Standard | IXL Skill Codes | Interactive Lesson File |\n`;
-      weekDoc += `|---|---|---|---|---|---|\n`;
+      weekDoc += `## Lessons & STEAM Activities Scheduled\n\n`;
+      weekDoc += `| Lesson Code | Lesson Title | Chapter | Standard | IXL Codes | Lesson Slide Deck | STEAM Activity Lab |\n`;
+      weekDoc += `|---|---|---|---|---|---|---|\n`;
 
       w.lessons.forEach(code => {
         const norm = code.replace(".", "-");
@@ -510,50 +479,34 @@ function buildSemesterWeeks(semesterList, semesterDir, semesterName, academicYea
 
         const htmlFile = getHtmlFile(code);
         const jsxFile = getJsxFile(code);
+        const actFile = getActivityFile(code);
 
         if (htmlFile) copyFileSafe(path.join(ROOT, "html", htmlFile), path.join(weekFolder, htmlFile));
         if (jsxFile) copyFileSafe(path.join(ROOT, "lessons", jsxFile), path.join(weekFolder, jsxFile));
+        if (actFile) copyFileSafe(path.join(activitiesDir, actFile), path.join(weekFolder, actFile));
 
         const htmlLink = htmlFile ? `[\`${htmlFile}\`](${htmlFile})` : "—";
-        weekDoc += `| **${code}** | ${lTitle} | Chapter ${chNum} | \`${lStd}\` | ${lIxl} | ${htmlLink} |\n`;
+        const actLink = actFile ? `[\`${actFile}\`](${actFile})` : "—";
+        weekDoc += `| **${code}** | ${lTitle} | Chapter ${chNum} | \`${lStd}\` | ${lIxl} | ${htmlLink} | ${actLink} |\n`;
       });
     }
 
     if (w.activities && w.activities.length > 0) {
-      weekDoc += `## Focus Activities\n\n`;
+      weekDoc += `## Focus Activities & Review\n\n`;
       w.activities.forEach(act => {
         weekDoc += `- **${act}**\n`;
       });
       weekDoc += `\n`;
     }
 
-    // Copy associated activities
-    if (w.activityFiles && w.activityFiles.length > 0) {
-      weekDoc += `## 🎨 STEAM Production Activities & Manipulatives for this Week\n\n`;
-      weekDoc += `| Activity Title | File Link |\n`;
-      weekDoc += `|---|---|\n`;
-      w.activityFiles.forEach(actFileName => {
-        const actObj = ACTIVITIES.find(a => a.fileName === actFileName);
-        const actTitle = actObj ? actObj.title : actFileName;
-        copyFileSafe(path.join(activitiesDir, actFileName), path.join(weekFolder, actFileName));
-        weekDoc += `| **${actTitle}** | [\`${actFileName}\`](${actFileName}) |\n`;
-      });
-      weekDoc += `\n`;
-    }
-
     weekDoc += `\n## Instructions for Teachers & Students\n\n`;
-    weekDoc += `- **Interactive Slides:** Launch the \`.html\` file in any browser for class presentation and student exploration.\n`;
-    weekDoc += `- **Seven Stages:** Follow the 7-stage sequence (Preparation → Intelligent Diagnose → Knowledge Building → Practice → Production / B → Mastery Gate → Smart Production).\n`;
+    weekDoc += `- **Interactive Slides:** Launch the \`lesson-*.html\` file in any browser for class presentation and student exploration.\n`;
+    weekDoc += `- **STEAM Activity Labs:** Launch \`lesson-*-activity.html\` for the dedicated interactive sandbox and student build tasks.\n`;
 
     fs.writeFileSync(path.join(weekFolder, "README.md"), weekDoc);
 
     const lessonsSummary = w.lessons.length > 0 ? w.lessons.map(l => `Lesson ${l}`).join(", ") : (w.activities || []).join(", ");
-    const actsSummary = (w.activityFiles || []).map(f => {
-      const actObj = ACTIVITIES.find(a => a.fileName === f);
-      return actObj ? actObj.title : f;
-    }).join("<br>") || "—";
-
-    semReadme += `| **Week ${w.week}** | ${w.title} | ${lessonsSummary} | ${actsSummary} | [Open Folder](./${w.folderName}) |\n`;
+    semReadme += `| **Week ${w.week}** | ${w.title} | ${lessonsSummary} | Interactive Slides & Activity Labs | [Open Folder](./${w.folderName}) |\n`;
   });
 
   fs.writeFileSync(path.join(semesterDir, "README.md"), semReadme);
@@ -567,59 +520,41 @@ fs.writeFileSync(path.join(weeksDir, "README.md"), weeksReadme);
 console.log("Generating CURRICULUM_DISTRIBUTION.md...");
 let masterDoc = `# Savvas enVision Grade 4 Mathematics — Curriculum Distribution & Lesson Organization (2026 - 2027)\n\n`;
 masterDoc += `**Dar Al Fikr Schools · Math Department · Academic Year 2026 - 2027**\n\n`;
-masterDoc += `This repository has been arranged into three structured views:\n`;
-masterDoc += `1. **[Chapters Directory (1 to 16)](chapters/README.md)** — All 16 core chapters, Topic 17 Step-Up, and their STEAM activities.\n`;
+masterDoc += `This repository provides complete lesson decks and matching STEAM activity labs arranged into three structured views:\n`;
+masterDoc += `1. **[Chapters Directory (1 to 16)](chapters/README.md)** — All 16 core chapters, Topic 17 Step-Up, slide decks, and matching \`*-activity.html\` labs.\n`;
 masterDoc += `2. **[Weekly Schedules Directory (2026 - 2027)](weeks/README.md)** — Distributed into Semester 1 and Semester 2 (Weeks 1 to 19).\n`;
-masterDoc += `3. **[Interactive Activities Directory](html/activities/README.md)** — Standalone interactive labs, manipulatives, and boss reviews.\n\n`;
+masterDoc += `3. **[Interactive Activities Directory](html/activities/README.md)** — All 115 matching standalone interactive activity decks.\n\n`;
 
 masterDoc += `## Table of Contents\n\n`;
 masterDoc += `- [1. Chapters Overview (Chapters 1 to 16)](#1-chapters-overview)\n`;
 masterDoc += `- [2. Semester 1 Distribution (2026 - 2027)](#2-semester-1-distribution-2026---2027)\n`;
-masterDoc += `- [3. Semester 2 Distribution (2026 - 2027)](#3-semester-2-distribution-2026---2027)\n`;
-masterDoc += `- [4. Standalone STEAM Activities & Manipulatives](#4-standalone-steam-activities--manipulatives)\n\n`;
+masterDoc += `- [3. Semester 2 Distribution (2026 - 2027)](#3-semester-2-distribution-2026---2027)\n\n`;
 
 masterDoc += `## 1. Chapters Overview\n\n`;
-masterDoc += `| Chapter | Chapter Title | Lessons | STEAM Activity | Folder |\n`;
+masterDoc += `| Chapter | Chapter Title | Lessons | Lesson Decks & STEAM Activity Labs | Folder |\n`;
 masterDoc += `|---|---|---|---|---|\n`;
 CHAPTERS.forEach(ch => {
   const folderName = `Chapter-${pad2(ch.n)}-${sanitizeFolderName(ch.title)}`;
   const t = topicMap[ch.n];
-  const chActs = chapterActivities[ch.n] || [];
-  const actName = chActs.length > 0 ? chActs[0].title : "—";
-  masterDoc += `| **Chapter ${ch.n}** | ${ch.title} | ${t ? t.lessons.length : 0} lessons | ${actName} | [\`chapters/${folderName}\`](chapters/${folderName}) |\n`;
+  masterDoc += `| **Chapter ${ch.n}** | ${ch.title} | ${t ? t.lessons.length : 0} lessons | \`lesson-*.html\` + \`lesson-*-activity.html\` | [\`chapters/${folderName}\`](chapters/${folderName}) |\n`;
 });
 
 masterDoc += `\n## 2. Semester 1 Distribution (2026 - 2027)\n\n`;
-masterDoc += `| Week | Focus / Title | Scheduled Lessons | Weekly Activity | Folder |\n`;
+masterDoc += `| Week | Focus / Title | Scheduled Lessons | Decks & Activities | Folder |\n`;
 masterDoc += `|---|---|---|---|---|\n`;
 SEMESTER_1.forEach(w => {
   const lStr = w.lessons.length > 0 ? w.lessons.map(l => `\`${l}\``).join(", ") : (w.notes || []).join(", ");
-  const actName = (w.activityFiles || []).map(f => {
-    const actObj = ACTIVITIES.find(a => a.fileName === f);
-    return actObj ? actObj.title : f;
-  }).join(", ") || "—";
-  masterDoc += `| **Week ${pad2(w.week)}** | ${w.title} | ${lStr} | ${actName} | [\`weeks/Semester-1/${w.folderName}\`](weeks/Semester-1/${w.folderName}) |\n`;
+  masterDoc += `| **Week ${pad2(w.week)}** | ${w.title} | ${lStr} | \`lesson-*.html\` + \`*-activity.html\` | [\`weeks/Semester-1/${w.folderName}\`](weeks/Semester-1/${w.folderName}) |\n`;
 });
 
 masterDoc += `\n## 3. Semester 2 Distribution (2026 - 2027)\n\n`;
-masterDoc += `| Week | Focus / Title | Scheduled Lessons | Weekly Activity | Folder |\n`;
+masterDoc += `| Week | Focus / Title | Scheduled Lessons | Decks & Activities | Folder |\n`;
 masterDoc += `|---|---|---|---|---|\n`;
 SEMESTER_2.forEach(w => {
   const lStr = w.lessons.length > 0 ? w.lessons.map(l => `\`${l}\``).join(", ") : (w.notes || []).join(", ");
-  const actName = (w.activityFiles || []).map(f => {
-    const actObj = ACTIVITIES.find(a => a.fileName === f);
-    return actObj ? actObj.title : f;
-  }).join(", ") || "—";
-  masterDoc += `| **Week ${pad2(w.week)}** | ${w.title} | ${lStr} | ${actName} | [\`weeks/Semester-2/${w.folderName}\`](weeks/Semester-2/${w.folderName}) |\n`;
-});
-
-masterDoc += `\n## 4. Standalone STEAM Activities & Manipulatives\n\n`;
-masterDoc += `| Activity Name | Focus / Badge | File Path |\n`;
-masterDoc += `|---|---|---|\n`;
-ACTIVITIES.forEach(act => {
-  masterDoc += `| **${act.title}** | \`${act.badge}\` | [\`html/activities/${act.fileName}\`](html/activities/${act.fileName}) |\n`;
+  masterDoc += `| **Week ${pad2(w.week)}** | ${w.title} | ${lStr} | \`lesson-*.html\` + \`*-activity.html\` | [\`weeks/Semester-2/${w.folderName}\`](weeks/Semester-2/${w.folderName}) |\n`;
 });
 
 fs.writeFileSync(path.join(ROOT, "CURRICULUM_DISTRIBUTION.md"), masterDoc);
 
-console.log("Organized successfully with activities integrated!");
+console.log("Organization complete! All matching activity files are synchronized.");

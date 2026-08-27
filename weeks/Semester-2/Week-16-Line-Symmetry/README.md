@@ -3,20 +3,14 @@
 **Academic Year:** 2026 - 2027  
 **Department:** Mathematics · Grade 4  
 
-## Lessons Scheduled
+## Lessons & STEAM Activities Scheduled
 
-| Lesson Code | Lesson Title | Chapter | Standard | IXL Skill Codes | Interactive Lesson File |
-|---|---|---|---|---|---|
-| **16.4** | Line Symmetry | Chapter 16 | `4.G.A.3` | 9FD · MWS | [`lesson-16-4-line-symmetry.html`](lesson-16-4-line-symmetry.html) |
-| **16.5** | Draw Shapes with Line Symmetry | Chapter 16 | `4.G.A.3` | SQF | [`lesson-16-5-draw-shapes-with-line-symmetry.html`](lesson-16-5-draw-shapes-with-line-symmetry.html) |
-## 🎨 STEAM Production Activities & Manipulatives for this Week
-
-| Activity Title | File Link |
-|---|---|
-| **Geometry Gardens: Lines & Symmetry Studio** | [`activity-ch16-geometry-gardens-symmetry-studio.html`](activity-ch16-geometry-gardens-symmetry-studio.html) |
-
+| Lesson Code | Lesson Title | Chapter | Standard | IXL Codes | Lesson Slide Deck | STEAM Activity Lab |
+|---|---|---|---|---|---|---|
+| **16.4** | Line Symmetry | Chapter 16 | `4.G.A.3` | 9FD · MWS | [`lesson-16-4-line-symmetry.html`](lesson-16-4-line-symmetry.html) | [`lesson-16-4-line-symmetry-activity.html`](lesson-16-4-line-symmetry-activity.html) |
+| **16.5** | Draw Shapes with Line Symmetry | Chapter 16 | `4.G.A.3` | SQF | [`lesson-16-5-draw-shapes-with-line-symmetry.html`](lesson-16-5-draw-shapes-with-line-symmetry.html) | [`lesson-16-5-draw-shapes-with-line-symmetry-activity.html`](lesson-16-5-draw-shapes-with-line-symmetry-activity.html) |
 
 ## Instructions for Teachers & Students
 
-- **Interactive Slides:** Launch the `.html` file in any browser for class presentation and student exploration.
-- **Seven Stages:** Follow the 7-stage sequence (Preparation → Intelligent Diagnose → Knowledge Building → Practice → Production / B → Mastery Gate → Smart Production).
+- **Interactive Slides:** Launch the `lesson-*.html` file in any browser for class presentation and student exploration.
+- **STEAM Activity Labs:** Launch `lesson-*-activity.html` for the dedicated interactive sandbox and student build tasks.
