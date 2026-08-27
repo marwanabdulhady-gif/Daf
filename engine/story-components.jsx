@@ -199,6 +199,7 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
   const [castOpen, setCastOpen] = useState(false);
   const gremlin = opener && typeof gremlinFor === "function" && typeof LESSON !== "undefined"
     ? gremlinFor(LESSON.code) : null;
+  const mission = opener && STORY && STORY.lesson ? STORY.lesson.studentMission : null;
   return (
     <div className={"story-shell lane-" + info.cls + (compact ? " compact" : "")}>
       <div className="story-ribbon">
@@ -220,6 +221,10 @@ function StoryShell({ lane, character, pose, support, title, text, clue, childre
         {castOpen && lane === "fiction" && <div className="cast-mission" role="status">
           <b><Icon name="fa-compass" /> Mission crew</b>
           <span>Omar checks the evidence. Zayd builds the model. Tap again to close.</span>
+        </div>}
+        {mission && <div className="story-mission" role="note">
+          <b><Icon name="fa-flag-checkered" /> Today's mission</b>
+          <span>{mission}</span>
         </div>}
         {gremlin && <div className="gremlin-opener" role="note">
           <b><Icon name="fa-eye" /> Trap to watch for: {gremlin.name}</b>

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "title": "The Lantern of Numeria — The Tale of the Seventeen Doors",
-  "status": "Topics 1-7 story-built · remaining topics mapped for later PRs",
+  "status": "Topics 1-17 quest-mapped · every built lesson has a visible mission, handoff and production artifact link",
   "premise": "In present-day Jeddah, two fictional Grade 4 archivists, Omar and Zayd, find a brass lantern holding a water-damaged civic design journal. Their class restores seventeen linked folios — each restored folio is one of the city's seventeen doors, each unit is a quest through one door, and each lesson is a mission of that quest. A stain of confusion in the journal's margins (the Muddler of the Measure Market, whose face the class meets only at door 13) is what damaged them; the stain is labelled fictional, like Numeria. Using each recovered idea, the class designs Numeria: an explicitly fictional exhibition city built on amanah, evidence and beneficial knowledge, and ends the year writing the letter forward to the Grade 5 class. Narrative contract: docs/plans/narrative/00-epic-architecture.md.",
   "drivingQuestion": "How can mathematics help us design a city that deserves people’s trust?",
   "influences": {
